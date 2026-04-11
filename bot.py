@@ -2365,8 +2365,8 @@ html_parts.append(f"""<!DOCTYPE html>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta name="description" content="NUZU News: Real News in Real Time. Breaking headlines from 200+ trusted sources across US, World, Middle East, Tech, Business, Sports and Culture.">
     <meta name="theme-color" content="#0D1B4B">
-    <script>if("serviceWorker"in navigator){{navigator.serviceWorker.register("/NUZU/sw.js").catch(function(){{}});}}</script>
-    <link rel="apple-touch-icon" href="/NUZU/icons/icon-192.png">
+    <script>if("serviceWorker"in navigator){{navigator.serviceWorker.register("/sw.js").catch(function(){{}});}}</script>
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="NUZU News">
@@ -5091,7 +5091,7 @@ html_parts.append(f"""
       <button class="set-homepage-btn" onclick="document.getElementById('homepage-instructions').style.display=document.getElementById('homepage-instructions').style.display==='block'?'none':'block'">&#127968; Set NUZU as My Homepage</button>
       <div id="homepage-instructions" class="homepage-instructions" style="display:none">
         <strong>How to set NUZU as your homepage:</strong><br>
-        <span class="hp-browser"><b>Chrome:</b> Settings &rarr; On startup &rarr; Open a specific page &rarr; Add <code>https://theseanmitchell.github.io/NUZU/</code></span><br>
+        <span class="hp-browser"><b>Chrome:</b> Settings &rarr; On startup &rarr; Open a specific page &rarr; Add <code>https://theseanmitchell.github.io/</code></span><br>
         <span class="hp-browser"><b>Firefox:</b> Settings &rarr; Home &rarr; Homepage &rarr; Custom URLs &rarr; paste the URL above</span><br>
         <span class="hp-browser"><b>Safari:</b> Preferences &rarr; General &rarr; Homepage &rarr; paste the URL above</span><br>
         <span class="hp-browser"><b>Edge:</b> Settings &rarr; Start, home, and new tabs &rarr; Open these pages &rarr; Add the URL above</span>
@@ -5131,7 +5131,7 @@ try:
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
     ET.SubElement(channel, "title").text = "NUZU News"
-    ET.SubElement(channel, "link").text = "https://theseanmitchell.github.io/NUZU/"
+    ET.SubElement(channel, "link").text = "https://theseanmitchell.github.io/"
     ET.SubElement(channel, "description").text = "NUZU: Real News in Real Time. Breaking headlines from 200+ trusted sources."
     ET.SubElement(channel, "language").text = "en-us"
     ET.SubElement(channel, "lastBuildDate").text = datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")
@@ -5178,7 +5178,7 @@ try:
     feed_doc = {
         "version":       "1.1",
         "title":         "NUZU News",
-        "home_page_url": "https://theseanmitchell.github.io/NUZU/",
+        "home_page_url": "https://theseanmitchell.github.io/",
         "description":   "NUZU: Real News in Real Time",
         "updated":       datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "items":         feed_items,
@@ -5230,8 +5230,8 @@ try:
         "name": "NUZU News",
         "short_name": "NUZU",
         "description": "Real News in Real Time — breaking headlines from 200+ trusted sources.",
-        "start_url": "/NUZU/",
-        "scope": "/NUZU/",
+        "start_url": "/",
+        "scope": "/",
         "display": "standalone",
         "orientation": "any",
         "theme_color": "#0D1B4B",
@@ -5251,20 +5251,20 @@ try:
             {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
         ],
         "shortcuts": [
-            {"name": "US News",      "short_name": "US",      "url": "/NUZU/?section=us&source=shortcut",       "description": "Latest US political and national news",   "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
-            {"name": "World News",   "short_name": "World",   "url": "/NUZU/?section=world&source=shortcut",    "description": "Global news and international events",    "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
-            {"name": "Saved Articles","short_name": "Saved",  "url": "/NUZU/?panel=saved&source=shortcut",      "description": "Your bookmarked articles",                 "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
-            {"name": "Breaking News", "short_name": "Breaking","url": "/NUZU/?section=mideast&source=shortcut", "description": "Middle East and breaking coverage",        "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
+            {"name": "US News",      "short_name": "US",      "url": "/?section=us&source=shortcut",       "description": "Latest US political and national news",   "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
+            {"name": "World News",   "short_name": "World",   "url": "/?section=world&source=shortcut",    "description": "Global news and international events",    "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
+            {"name": "Saved Articles","short_name": "Saved",  "url": "/?panel=saved&source=shortcut",      "description": "Your bookmarked articles",                 "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
+            {"name": "Breaking News", "short_name": "Breaking","url": "/?section=mideast&source=shortcut", "description": "Middle East and breaking coverage",        "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
         ],
         "screenshots": [
             {"src": "screenshots/phone-1.png",  "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "NUZU News — Breaking headlines"},
             {"src": "screenshots/phone-2.png",  "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "NUZU News — Middle East coverage"},
             {"src": "screenshots/tablet-1.png", "sizes": "1600x2560", "type": "image/png", "form_factor": "wide",   "label": "NUZU News — Full desktop view"},
         ],
-        "id": "/NUZU/",
+        "id": "/",
         "display_override": ["standalone", "minimal-ui", "browser"],
         "share_target": {
-            "action": "/NUZU/share-target/",
+            "action": "/share-target/",
             "method": "GET",
             "params": {"title": "title", "text": "text", "url": "url"}
         },
@@ -5283,15 +5283,15 @@ try:
     sw_content = """// NUZU News Service Worker v2.0
 const CACHE_NAME = 'nuzu-v4';
 const STATIC_CACHE = 'nuzu-static-v4';
-const OFFLINE_URL = '/NUZU/offline.html';
+const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_URLS = [
-  '/NUZU/',
-  '/NUZU/index.html',
-  '/NUZU/offline.html',
-  '/NUZU/manifest.json',
-  '/NUZU/icons/icon-192.png',
-  '/NUZU/icons/icon-512.png',
+  '/',
+  '/index.html',
+  '/offline.html',
+  '/manifest.json',
+  '/icons/icon-192.png',
+  '/icons/icon-512.png',
 ];
 
 self.addEventListener('install', event => {
@@ -5368,13 +5368,13 @@ self.addEventListener('fetch', event => {
 });
 
 self.addEventListener('push', event => {
-  let data = { title: 'NUZU Breaking News', body: 'New headlines available', url: '/NUZU/' };
+  let data = { title: 'NUZU Breaking News', body: 'New headlines available', url: '/' };
   try { if (event.data) data = { ...data, ...event.data.json() }; } catch(e) {}
   event.waitUntil(
     self.registration.showNotification(data.title, {
       body: data.body,
-      icon: '/NUZU/icons/icon-192.png',
-      badge: '/NUZU/icons/icon-96.png',
+      icon: '/icons/icon-192.png',
+      badge: '/icons/icon-96.png',
       tag: 'nuzu-breaking',
       renotify: true,
       data: { url: data.url },
@@ -5389,11 +5389,11 @@ self.addEventListener('push', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close();
   if (event.action === 'dismiss') return;
-  const url = event.notification.data?.url || '/NUZU/';
+  const url = event.notification.data?.url || '/';
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
       for (const client of clientList) {
-        if (client.url.includes('/NUZU/') && 'focus' in client) return client.focus();
+        if (client.url.includes('/') && 'focus' in client) return client.focus();
       }
       if (clients.openWindow) return clients.openWindow(url);
     })
@@ -5403,7 +5403,7 @@ self.addEventListener('notificationclick', event => {
 self.addEventListener('periodicsync', event => {
   if (event.tag === 'nuzu-headlines-refresh') {
     event.waitUntil(
-      fetch('/NUZU/feed.json?sw=1&_=' + Date.now())
+      fetch('/feed.json?sw=1&_=' + Date.now())
         .then(r => r.json())
         .then(data => self.clients.matchAll({ type: 'window' }).then(clients => {
           clients.forEach(client => client.postMessage({ type: 'NUZU_UPDATE', updated: data.updated }));
