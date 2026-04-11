@@ -3,15 +3,15 @@
 
 const CACHE_NAME = 'nuzu-v4';
 const STATIC_CACHE = 'nuzu-static-v4';
-const OFFLINE_URL = '/NUZU/offline.html';
+const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_URLS = [
-  '/NUZU/',
-  '/NUZU/index.html',
-  '/NUZU/offline.html',
-  '/NUZU/manifest.json',
-  '/NUZU/icons/icon-192.png',
-  '/NUZU/icons/icon-512.png',
+  '/',
+  '/index.html',
+  '/offline.html',
+  '/manifest.json',
+  '/icons/icon-192.png',
+  '/icons/icon-512.png',
 ];
 
 // Install — precache shell assets
@@ -105,7 +105,7 @@ self.addEventListener('fetch', event => {
 
 // Push notifications
 self.addEventListener('push', event => {
-  let data = { title: 'NUZU Breaking News', body: 'New headlines available', url: '/NUZU/' };
+  let data = { title: 'NUZU Breaking News', body: 'New headlines available', url: '/' };
   try {
     if (event.data) data = { ...data, ...event.data.json() };
   } catch (e) {}
@@ -113,8 +113,8 @@ self.addEventListener('push', event => {
   event.waitUntil(
     self.registration.showNotification(data.title, {
       body: data.body,
-      icon: '/NUZU/icons/icon-192.png',
-      badge: '/NUZU/icons/icon-96.png',
+      icon: '/icons/icon-192.png',
+      badge: '/icons/icon-96.png',
       tag: 'nuzu-breaking',
       renotify: true,
       requireInteraction: false,
@@ -132,12 +132,12 @@ self.addEventListener('notificationclick', event => {
   event.notification.close();
   if (event.action === 'dismiss') return;
 
-  const url = event.notification.data?.url || '/NUZU/';
+  const url = event.notification.data?.url || '/';
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true })
       .then(clientList => {
         for (const client of clientList) {
-          if (client.url.includes('/NUZU/') && 'focus' in client) {
+          if (client.url.includes('/') && 'focus' in client) {
             return client.focus();
           }
         }
@@ -150,7 +150,7 @@ self.addEventListener('notificationclick', event => {
 self.addEventListener('periodicsync', event => {
   if (event.tag === 'nuzu-headlines-refresh') {
     event.waitUntil(
-      fetch('/NUZU/feed.json?sw=1&_=' + Date.now())
+      fetch('/feed.json?sw=1&_=' + Date.now())
         .then(r => r.json())
         .then(data => {
           // Notify open clients of new content
