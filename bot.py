@@ -174,31 +174,6 @@ def get_friendly_source(raw_name):
     return raw_name.split(" - ")[-1].strip() if " - " in raw_name else raw_name
 
 
-def get_domain_from_url(url):
-    """Extract base domain from URL for favicon lookup."""
-    try:
-        from urllib.parse import urlparse
-        parsed = urlparse(url)
-        domain = parsed.netloc.lower().replace('www.', '')
-        parts = domain.split('.')
-        if len(parts) > 2:
-            domain = '.'.join(parts[-2:])
-        return domain
-    except Exception:
-        return ''
-
-def get_favicon_html(link_url, size=14):
-    """Return an img tag for the source favicon using Google's service."""
-    domain = get_domain_from_url(link_url)
-    if not domain:
-        return ''
-    _oe = "this.style.display='none'"
-    return (
-        f'<img src="https://www.google.com/s2/favicons?domain={domain}&sz={size*2}"'
-        f' width="{size}" height="{size}" alt="" class="src-favicon"'
-        f' loading="lazy" onerror="{_oe}">'
-    )
-
 def make_keyword_pattern(keywords):
     sorted_kws = sorted(keywords, key=len, reverse=True)
     escaped = [re.escape(kw) for kw in sorted_kws]
@@ -2213,13 +2188,12 @@ def render_clusters(clusters):
             trust_badge = '<span class="trust-badge" title="Verified trusted source">&#10003;</span> ' if trusted else ''
             anchor_id = "hl-" + hashlib.md5(link.encode()).hexdigest()[:8]
             safe_title_attr = display_title.replace('"', "'")
-            favicon = get_favicon_html(link)
             out += (
                 f'<div id="{anchor_id}" class="headline" data-link="{link}" data-ts="{int(ts)}">'
                 f'{hot_dot}{trust_badge}'
                 f'<span class="title">{display_title}</span>'
                 f' <span class="ts-label">{time_str}</span>'
-                f' <span class="src-label">\u2014 {favicon}{friendly}</span>'
+                f' <span class="src-label">\u2014 {friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
                 f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
@@ -2255,7 +2229,7 @@ def render_clusters(clusters):
                 f'<div class="cluster-lead">'
                 f'<span class="title">{display_title}</span>'
                 f' <span class="ts-label">{time_str}</span>'
-                f' <span class="src-label">\u2014 {get_favicon_html(lead_link)}{lead_friendly}</span>'
+                f' <span class="src-label">\u2014 {lead_friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
                 f' <a class="link" href="{lead_link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
@@ -2272,7 +2246,7 @@ def render_clusters(clusters):
                     f'<div class="cluster-item" data-link="{link}">'
                     f'<span class="title">{dtitle}</span>'
                     f' <span class="ts-label">{ts_str}</span>'
-                    f' <span class="src-label">\u2014 {get_favicon_html(link)}{friendly}</span>'
+                    f' <span class="src-label">\u2014 {friendly}</span>'
                     f' <button class="share-btn" data-link="{link}" data-title="{safe_dt}" aria-label="Share article" title="Share">&#8679;</button>'
                     f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
                     f'</div>\n'
@@ -2892,13 +2866,6 @@ html_parts.append(f"""<!DOCTYPE html>
     .title {{ color: var(--nuzu-white); font-size: 1em; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.45; }}
     .ts-label {{ color: var(--nuzu-dim); font-size: 0.78em; margin-left: 4px; }}
     .src-label {{ color: var(--nuzu-muted); font-size: 0.85em; }}
-    .src-favicon {{
-        display: inline-block; vertical-align: middle;
-        margin-right: 3px; border-radius: 2px;
-        width: 14px; height: 14px; flex-shrink: 0;
-        position: relative; top: -1px;
-    }}
-    .src-favicon-wrap {{ display: inline-flex; align-items: center; gap: 3px; }}
 
     .new-dot {{ color: var(--nuzu-white); font-size: 0.55em; vertical-align: middle; margin-right: 2px; }}
     .trust-badge {{ color: #4CAF50; font-size: 0.65em; vertical-align: middle; margin-right: 2px; }}
@@ -3565,13 +3532,13 @@ html_parts.append(f"""
 <nav class="sticky-nav" role="navigation" aria-label="NUZU main navigation">
   <a href="#" class="site-name" aria-label="NUZU News home">NUZU</a>
   <a href="#section-us"       class="nav-link nav-us"       role="menuitem">US</a>
-  <a href="#section-local"     class="nav-link nav-local"     role="menuitem">Local</a>
   <a href="#section-mideast"  class="nav-link nav-mideast"  role="menuitem">Mid East</a>
   <a href="#section-world"    class="nav-link nav-world"    role="menuitem">World</a>
   <a href="#section-tech"     class="nav-link nav-tech"     role="menuitem">Tech</a>
   <a href="#section-business" class="nav-link nav-business" role="menuitem">Business</a>
   <a href="#section-sports"   class="nav-link nav-sports"   role="menuitem">Sports</a>
   <a href="#section-culture"  class="nav-link nav-culture"  role="menuitem">Culture</a>
+  <a href="#section-local"     class="nav-link nav-local"     role="menuitem">Local</a>
   <button class="saved-nav-btn" id="saved-nav-btn" aria-label="Saved articles">
     &#9733; Saved<span class="saved-count-badge" id="saved-count-badge"></span>
   </button>
@@ -3922,7 +3889,7 @@ _DEFAULT_SECTION_ORDER = [
     "section-us","section-mideast","section-world","section-tech",
     "section-business","section-sports","section-culture",
 ]
-_derived_order = []
+_derived_order = ['section-us']  # US always first
 for c in first_seven:
     sid = _MRO_SECTION_ID_MAP.get(c[0])
     if sid and sid not in _derived_order:
@@ -3982,36 +3949,6 @@ SECTION_DATA = [
 print(f"  Section page order (MRO-driven): {[s[0] for s in SECTION_DATA]}")
 
 html_parts.append('<div id="sections-wrapper">\n')
-html_parts.append('''
-<div id="section-local" class="section-wrap">
-  <div class="section-banner local-color-banner">
-    <div class="section-banner-inner">
-      <h2 class="section-title" style="color:#2E7D32;font-family:'Inter',Arial,sans-serif;font-size:1em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;">
-        <span class="sec-dot" style="background:#2E7D32;display:inline-block;width:12px;height:12px;border-radius:50%;flex-shrink:0;"></span>
-        LOCAL NEWS &mdash; <span id="local-location-label" style="font-weight:400;letter-spacing:0.06em;">Your Area</span>
-      </h2>
-    </div>
-  </div>
-  <div id="section-local-cols" class="section-columns">
-    <div class="container">
-      <div class="column" id="local-headlines-col">
-        <p style="color:var(--nuzu-dim);font-size:0.88em;line-height:1.9;" id="local-loading-msg">
-          &#127757; Tap below to see news from your city and region.<br><br>
-          <button id="local-enable-btn" style="background:var(--nuzu-blue);color:#fff;border:none;padding:9px 20px;border-radius:4px;cursor:pointer;font-size:0.88em;font-family:'Inter',Arial,sans-serif;font-weight:600;letter-spacing:0.04em;">
-            &#x25B6; Enable Local News
-          </button>
-        </p>
-      </div>
-      <div class="column">
-        <p style="color:var(--nuzu-dim);font-size:0.82em;line-height:1.8;padding-top:8px;">
-          NUZU Local uses your browser&rsquo;s location to show news from your area. Your location never leaves your device.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-<hr class="top-divider">
-''')
 
 for i, (sid, sc, bi, ri, bt, rt) in enumerate(SECTION_DATA):
     html_parts.append(section_block(sid, sc, bi, ri, bt, rt))
@@ -4026,6 +3963,35 @@ for i, (sid, sc, bi, ri, bt, rt) in enumerate(SECTION_DATA):
 
 html_parts.append('</div>\n')
 
+html_parts.append('''
+<hr class="top-divider">
+<div id="section-local" class="section-wrap">
+  <div class="section-banner local-color-banner">
+    <div class="section-banner-inner">
+      <h2 class="section-title" style="color:#2E7D32;font-family:'Inter',Arial,sans-serif;font-size:1em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;">
+        <span class="sec-dot" style="background:#2E7D32;display:inline-block;width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-right:2px;"></span>
+        LOCAL &amp; REGIONAL &mdash; <span id="local-location-label" style="font-weight:400;letter-spacing:0.06em;">Your Area</span>
+      </h2>
+      <button class="section-collapse-btn" data-target="section-local-cols" aria-label="Collapse section" title="Collapse / expand">&#9660;</button>
+    </div>
+  </div>
+  <div id="section-local-cols" class="section-columns">
+    <div class="container" style="display:block;max-width:1400px;margin:0 auto;padding:16px 20px;">
+      <p style="color:var(--nuzu-dim);font-size:0.82em;margin-bottom:14px;">
+        &#127757; Enable location for headlines near you &mdash; up to 10 stories from your region over the last 3 weeks.
+      </p>
+      <div id="local-headlines-col">
+        <p style="color:var(--nuzu-dim);font-size:0.88em;" id="local-loading-msg">
+          <button id="local-enable-btn" style="background:var(--nuzu-blue);color:#fff;border:none;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:0.85em;font-family:'Inter',Arial,sans-serif;font-weight:600;">
+            &#x25B6; Enable Local News
+          </button>
+          &nbsp; <span style="color:var(--nuzu-dim);font-size:0.85em;">Your location stays on your device.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+''')
 
 # ====================== FOOTER ======================
 _now_utc = datetime.utcnow()
@@ -5028,53 +4994,111 @@ document.addEventListener('click', function(e) {{
   if(decBtn) decBtn.addEventListener('click',function(){{ if(curIdx>0){{ curIdx--; applySize(); }} }});
 }})();
 
-// ── Local News Section ──
+// ── Local & Regional News Section ──
 (function() {{
-  var enableBtn=document.getElementById('local-enable-btn');
-  var loadingMsg=document.getElementById('local-loading-msg');
-  var col=document.getElementById('local-headlines-col');
-  var locLabel=document.getElementById('local-location-label');
-  var LOC_KEY='nuzu_local_loc';
-  function fetchLocalNews(cityName) {{
-    if(locLabel) locLabel.textContent=cityName||'Your Area';
-    var q=encodeURIComponent((cityName||'local')+' news');
-    var apiUrl='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent('https://news.google.com/rss/search?q='+q+'+when:1d&hl=en-US&gl=US&ceid=US:en')+'&api_key=&count=20';
-    col.innerHTML='<p style="color:var(--nuzu-dim);font-size:0.85em;">Loading local headlines…</p>';
-    fetch(apiUrl).then(function(r){{ return r.json(); }}).then(function(data) {{
-      var items=data.items||[];
-      if(!items.length) {{ col.innerHTML='<p style="color:var(--nuzu-dim)">No local headlines found. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Try Google News &#8599;</a></p>'; return; }}
-      var html='';
-      items.slice(0,15).forEach(function(item) {{
-        var title=(item.title||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-        var link=item.link||'#';
-        var source=(item.author||'').replace(/ - .*/,'').trim();
-        var pubDate=item.pubDate?new Date(item.pubDate).toLocaleTimeString([],{{hour:'2-digit',minute:'2-digit'}}):'';
-        html+='<div class="local-headline"><span class="title">'+title+'</span>'+(pubDate?' <span class="ts-label">'+pubDate+'</span>':'')+(source?' <span class="src-label">&mdash; '+source+'</span>':'')+' <a class="link" href="'+link+'" target="_blank" rel="noopener noreferrer">↗ Read</a></div>';
+  var enableBtn  = document.getElementById('local-enable-btn');
+  var loadingMsg = document.getElementById('local-loading-msg');
+  var col        = document.getElementById('local-headlines-col');
+  var locLabel   = document.getElementById('local-location-label');
+  var LOC_KEY    = 'nuzu_local_loc';
+  var MAX_ITEMS  = 10;
+
+  function renderItems(items, locationName) {{
+    if (locLabel) locLabel.textContent = locationName || 'Your Area';
+    var filtered = items.slice(0, MAX_ITEMS);
+    if (!filtered.length) {{
+      col.innerHTML = '<p style="color:var(--nuzu-dim);font-size:0.85em;">No regional headlines found. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Try Google News &#8599;</a></p>';
+      return;
+    }}
+    var html = '';
+    filtered.forEach(function(item) {{
+      var title  = (item.title||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      var link   = item.link || '#';
+      var source = (item.author||item.source||'').replace(/ - .*/,'').trim();
+      var pd     = item.pubDate ? new Date(item.pubDate) : null;
+      var dateStr = pd ? pd.toLocaleDateString([],{{month:'short',day:'numeric'}}) : '';
+      html += '<div class="local-headline">'
+            + '<span class="title">' + title + '</span>'
+            + (dateStr ? ' <span class="ts-label">' + dateStr + '</span>' : '')
+            + (source  ? ' <span class="src-label">&mdash; ' + source + '</span>' : '')
+            + ' <a class="link" href="' + link + '" target="_blank" rel="noopener noreferrer">↗ Read</a>'
+            + '</div>';
+    }});
+    col.innerHTML = html;
+  }}
+
+  function fetchRegionalNews(city, state) {{
+    // Build search query: prefer state-level for broader coverage
+    var locationName = city ? city + (state ? ', ' + state : '') : (state || 'Your Area');
+    var query = state || city || 'local';
+    // Use 3-week window (when:21d)
+    var rssUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query + ' news') + '+when:21d&hl=en-US&gl=US&ceid=US:en';
+    var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl) + '&count=15';
+
+    col.innerHTML = '<p style="color:var(--nuzu-dim);font-size:0.85em;">Loading regional headlines…</p>';
+
+    fetch(apiUrl)
+      .then(function(r) {{ return r.json(); }})
+      .then(function(data) {{ renderItems(data.items || [], locationName); }})
+      .catch(function() {{
+        // Fallback: try city only
+        if (city && city !== query) {{
+          var fallbackUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://news.google.com/rss/search?q=' + encodeURIComponent(city + ' news') + '+when:21d&hl=en-US&gl=US&ceid=US:en') + '&count=15';
+          fetch(fallbackUrl).then(function(r){{ return r.json(); }}).then(function(d){{ renderItems(d.items||[], locationName); }}).catch(function(){{
+            col.innerHTML = '<p style="color:var(--nuzu-dim)">Could not load. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Google News &#8599;</a></p>';
+          }});
+        }} else {{
+          col.innerHTML = '<p style="color:var(--nuzu-dim)">Could not load. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Google News &#8599;</a></p>';
+        }}
       }});
-      col.innerHTML=html;
-    }}).catch(function() {{
-      col.innerHTML='<p style="color:var(--nuzu-dim)">Could not load. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Google News &#8599;</a></p>';
+  }}
+
+  function getLocationInfo(lat, lon, cb) {{
+    fetch('https://nominatim.openstreetmap.org/reverse?lat=' + lat + '&lon=' + lon + '&format=json')
+      .then(function(r) {{ return r.json(); }})
+      .then(function(d) {{
+        var a = d.address || {{}};
+        var city  = a.city || a.town || a.village || a.county || '';
+        var state = a.state || '';
+        cb(city, state);
+      }})
+      .catch(function() {{ cb('', ''); }});
+  }}
+
+  // Load from saved location
+  try {{
+    var saved = localStorage.getItem(LOC_KEY);
+    if (saved) {{
+      var loc = JSON.parse(saved);
+      if (loadingMsg) loadingMsg.style.display = 'none';
+      fetchRegionalNews(loc.city || '', loc.state || '');
+      return;
+    }}
+  }} catch(e) {{}}
+
+  if (enableBtn) {{
+    enableBtn.addEventListener('click', function() {{
+      enableBtn.textContent = 'Getting location…';
+      enableBtn.disabled = true;
+      if (!navigator.geolocation) {{
+        if (loadingMsg) loadingMsg.innerHTML = '<span style="color:var(--nuzu-dim)">Geolocation not supported by your browser.</span>';
+        return;
+      }}
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {{
+          var lat = pos.coords.latitude, lon = pos.coords.longitude;
+          getLocationInfo(lat, lon, function(city, state) {{
+            try {{ localStorage.setItem(LOC_KEY, JSON.stringify({{lat:lat, lon:lon, city:city, state:state}})); }} catch(e) {{}}
+            if (loadingMsg) loadingMsg.style.display = 'none';
+            fetchRegionalNews(city, state);
+          }});
+        }},
+        function() {{
+          if (loadingMsg) loadingMsg.innerHTML = '<span style="color:var(--nuzu-dim)">Location access denied.</span> <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">View top news &#8599;</a>';
+        }}
+      );
     }});
   }}
-  function getCityName(lat,lon,cb) {{
-    fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json')
-      .then(function(r){{ return r.json(); }})
-      .then(function(d) {{ var a=d.address||{{}}; var city=a.city||a.town||a.village||a.county||''; var state=a.state||''; cb(city+(state?', '+state:'')); }})
-      .catch(function(){{ cb(''); }});
-  }}
-  try {{ var saved=localStorage.getItem(LOC_KEY); if(saved) {{ var loc=JSON.parse(saved); if(loadingMsg) loadingMsg.style.display='none'; fetchLocalNews(loc.city); return; }} }} catch(e){{}}
-  if(enableBtn) enableBtn.addEventListener('click',function() {{
-    enableBtn.textContent='Getting location…'; enableBtn.disabled=true;
-    if(!navigator.geolocation) {{ if(loadingMsg) loadingMsg.innerHTML='Geolocation not supported.'; return; }}
-    navigator.geolocation.getCurrentPosition(function(pos) {{
-      var lat=pos.coords.latitude, lon=pos.coords.longitude;
-      getCityName(lat,lon,function(cityName) {{
-        try{{ localStorage.setItem(LOC_KEY,JSON.stringify({{lat:lat,lon:lon,city:cityName}})); }}catch(e){{}}
-        if(loadingMsg) loadingMsg.style.display='none';
-        fetchLocalNews(cityName);
-      }});
-    }},function() {{ if(loadingMsg) loadingMsg.innerHTML='Location access denied. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">View top news &#8599;</a>'; }});
-  }});
 }})();
 
 // ── Progressive section loading ──
