@@ -2064,8 +2064,8 @@ world_matches    = _section_results.get("world",    [])
 business_matches = _section_results.get("business", [])
 
 # ====================== TIME SPLIT ======================
-THREE_HOURS      = 3 * 3600
-TWENTY_ONE_HOURS = 21 * 3600
+THREE_HOURS      = 12 * 3600   # Breaking window: last 12 hours
+TWENTY_ONE_HOURS = 24 * 3600   # Daily extends 12h -> 36h total
 MAX_ITEMS        = 50
 
 def split_breaking_daily(all_matches, max_items=MAX_ITEMS):
@@ -2090,10 +2090,11 @@ sports_breaking,  sports_recent  = split_breaking_daily(sports_matches)
 tech_breaking,    tech_recent    = split_breaking_daily(tech_matches)
 
 def split_culture(all_matches, max_items=MAX_ITEMS):
-    SEVENTY_TWO_HOURS = 72 * 3600
+    CULTURE_BREAKING = 48 * 3600   # Culture breaking = last 48 hours
+    CULTURE_DAILY    = 72 * 3600   # Culture daily    = up to 72 hours
     now = time.time()
-    breaking_raw = [m for m in all_matches if (now - m[0]) <= THREE_HOURS]
-    daily_raw    = [m for m in all_matches if THREE_HOURS < (now - m[0]) <= SEVENTY_TWO_HOURS]
+    breaking_raw = [m for m in all_matches if (now - m[0]) <= CULTURE_BREAKING]
+    daily_raw    = [m for m in all_matches if CULTURE_BREAKING < (now - m[0]) <= CULTURE_DAILY]
     breaking_filled = list(breaking_raw[:max_items])
     if len(breaking_filled) < max_items:
         needed = max_items - len(breaking_filled)
@@ -2212,7 +2213,6 @@ def render_clusters(clusters):
             n_sources = len(sources_list)
             sources_str = ", ".join(sources_list)
             lead_friendly = get_friendly_source(lead_source)
-            bias_html = get_cluster_bias_html(cluster)
             cluster_id = "cl-" + hashlib.md5(lead_link.encode()).hexdigest()[:8]
             safe_title_attr = display_title.replace('"', "'")
             out += (
@@ -2223,8 +2223,6 @@ def render_clusters(clusters):
                 f'<button class="cluster-toggle-btn" data-target="{cluster_id}" aria-label="Expand story coverage" title="Show/hide all coverage">&#9654; Show all coverage</button>'
                 f'</div>\n'
             )
-            if bias_html:
-                out += bias_html + '\n'
             out += (
                 f'<div class="cluster-lead">'
                 f'<span class="title">{display_title}</span>'
@@ -2348,58 +2346,8 @@ SECTION_COLORS = {
     "culture":  "#7B2D8B",
 }
 
-# ── Media Bias Ratings (AllSides/Ad Fontes consensus only) ──
-MEDIA_BIAS_RATINGS = {
-    "reuters": "center", "associated press": "center", "ap news": "center",
-    "bloomberg": "center", "bbc": "center", "bbc news": "center",
-    "axios": "center", "the hill": "center", "pbs": "center",
-    "pbs newshour": "center", "usa today": "center", "abc news": "center",
-    "new york times": "center-left", "nyt": "center-left",
-    "washington post": "center-left", "wapo": "center-left",
-    "the guardian": "center-left", "guardian": "center-left",
-    "npr": "center-left", "the atlantic": "center-left",
-    "cbs news": "center-left", "nbc news": "center-left",
-    "wall street journal": "center-right", "wsj": "center-right",
-    "financial times": "center-right", "ft": "center-right",
-    "the economist": "center-right",
-    "al jazeera": "center", "france 24": "center",
-    "deutsche welle": "center", "dw": "center",
-    "agence france-presse": "center", "afp": "center",
-}
+# Bias bar removed
 
-BIAS_CFG = {
-    "center-left":  {"bg": "rgba(30,80,200,0.18)",  "color": "#7aadff", "label": "L", "title": "Center-Left"},
-    "center":       {"bg": "rgba(120,120,120,0.18)", "color": "#aaaaaa", "label": "C", "title": "Center"},
-    "center-right": {"bg": "rgba(200,80,30,0.18)",  "color": "#ffaa77", "label": "R", "title": "Center-Right"},
-}
-
-def get_cluster_bias_html(cluster):
-    if len(cluster) < 2:
-        return ''
-    counts = {"center-left": 0, "center": 0, "center-right": 0}
-    total = 0
-    for item in cluster:
-        sname = item[2].lower()
-        for key, bias in MEDIA_BIAS_RATINGS.items():
-            if key in sname:
-                counts[bias] += 1
-                total += 1
-                break
-    if total < 2:
-        return ''
-    bars = []
-    for bias in ["center-left", "center", "center-right"]:
-        cnt = counts[bias]
-        if cnt > 0:
-            pct = int((cnt / total) * 100)
-            cfg = BIAS_CFG[bias]
-            bars.append(
-                f'<span class="bias-seg" style="width:{pct}%;background:{cfg["bg"]};color:{cfg["color"]}" '
-                f'title="{cfg["title"]}: {cnt} source(s)">{cfg["label"]}</span>'
-            )
-    if not bars:
-        return ''
-    return f'<div class="bias-bar" title="Source diversity across political perspectives">{"".join(bars)}</div>'
 
 
 # ── Breaking banner setup ──
@@ -2438,12 +2386,12 @@ html_parts.append(f"""<!DOCTYPE html>
     /* ── CSS Custom Properties (Design Tokens) ── */
     :root {{
         --nuzu-navy:    #000000;
-        --nuzu-dark:    #07101E;
+        --nuzu-dark:    #020912;
         --nuzu-blue:    #1E4FD8;
         --nuzu-blue-l:  #2563EB;
         --nuzu-light:   #7EB3FF;
         --nuzu-border:  #0F1E35;
-        --nuzu-card:    #050D1A;
+        --nuzu-card:    #060C1A;
         --nuzu-muted:   #4A6A99;
         --nuzu-dim:     #2A3D5C;
         --nuzu-text:    #D0DAE8;
@@ -2612,7 +2560,7 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* ── Hero Masthead ── */
     .nuzu-hero {{
-        text-align: center; padding: 26px 20px 18px;
+        text-align: center; padding: 10px 20px 8px;
         background: linear-gradient(180deg, #000000 0%, #07101E 100%);
         border-bottom: 1px solid var(--nuzu-border);
         position: relative; overflow: hidden;
@@ -2667,7 +2615,7 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* ── Top Stories / MRO Strip ── */
     .top-stories-strip {{
-        max-width: 1400px; margin: 0 auto 16px auto; padding: 0 20px;
+        max-width: 1400px; margin: 0 auto 4px auto; padding: 0 20px;
     }}
     .top-stories-title {{
         font-size: 0.72em; font-weight: bold; letter-spacing: 0.1em;
@@ -2711,7 +2659,7 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* ── Search Bar ── */
     .search-bar-wrap {{
-        max-width: 1400px; margin: 0 auto 18px auto; padding: 12px 20px;
+        max-width: 1400px; margin: 0 auto 4px auto; padding: 12px 20px;
         background: var(--nuzu-card); border-top: 1px solid var(--nuzu-border);
         border-bottom: 1px solid var(--nuzu-border);
         display: flex; align-items: center; gap: 10px;
@@ -2732,45 +2680,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .search-bar-wrap button:hover {{ background: var(--nuzu-blue-l); }}
 
-    /* ── Ad Slots ── */
-    .ad-slot {{
-        background: var(--nuzu-card); border: 1px dashed var(--nuzu-border);
-        border-radius: 4px; padding: 14px 20px; margin-bottom: 16px;
-        text-align: center;
-    }}
-    .ad-slot-label {{
-        font-size: 0.65em; color: var(--nuzu-dim); letter-spacing: 0.1em;
-        text-transform: uppercase; display: block; margin-bottom: 6px;
-    }}
-    .ad-slot-inner {{ color: var(--nuzu-muted); font-size: 0.88em; }}
-    .ad-slot-inner a {{ color: var(--nuzu-light); }}
-
-    /* ── Sponsored Section ── */
-    .sponsored-section {{
-        max-width: 1400px; margin: 0 auto 16px auto; padding: 0 20px;
-    }}
-    .sponsored-label {{
-        font-size: 0.65em; color: var(--nuzu-dim); letter-spacing: 0.1em;
-        text-transform: uppercase; display: block; margin-bottom: 8px;
-    }}
-    .sponsored-content {{
-        background: var(--nuzu-card); border: 1px solid var(--nuzu-border);
-        border-radius: 4px; padding: 16px 20px;
-        display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-    }}
-    .sponsored-logo {{
-        font-size: 1.2em; font-weight: bold; color: var(--nuzu-light);
-        flex-shrink: 0;
-    }}
-    .sponsored-text {{ flex: 1; font-size: 0.85em; color: var(--nuzu-muted); }}
-    .sponsored-cta {{
-        background: var(--nuzu-blue); color: #fff; text-decoration: none;
-        padding: 8px 18px; border-radius: 4px; font-size: 0.82em;
-        font-weight: bold; transition: background 0.15s; white-space: nowrap;
-    }}
-    .sponsored-cta:hover {{ background: var(--nuzu-blue-l); }}
-
-    /* ── Section Layout ── */
+            /* ── Section Layout ── */
     .container {{
         display: flex; flex-wrap: wrap; gap: 30px;
         max-width: 1400px; margin: 0 auto; padding: 0 20px;
@@ -2779,8 +2689,8 @@ html_parts.append(f"""<!DOCTYPE html>
     .column {{ flex: 1; min-width: 300px; }}
     .section-wrap {{ padding: 0 0 10px 0; }}
     .top-divider {{
-        border: 0; height: 3px;
-        background: var(--nuzu-border); margin: 28px 0;
+        border: 0; height: 2px;
+        background: var(--nuzu-border); margin: 8px 0;
     }}
     .src-summary {{ color: var(--nuzu-dim); font-size: 0.78em; margin-bottom: 12px; }}
     /* ── Section Banners ── */
@@ -2791,13 +2701,13 @@ html_parts.append(f"""<!DOCTYPE html>
         max-width: 1400px; margin: 0 auto; padding: 12px 20px;
         display: flex; align-items: center; justify-content: space-between;
     }}
-    .us-color-banner       {{ border-left: 4px solid #C0392B; background: linear-gradient(90deg, rgba(192,57,43,0.09) 0%, transparent 55%); }}
-    .mideast-color-banner  {{ border-left: 4px solid #D35400; background: linear-gradient(90deg, rgba(211,84,0,0.09) 0%, transparent 55%); }}
-    .world-color-banner    {{ border-left: 4px solid #1A6FA8; background: linear-gradient(90deg, rgba(26,111,168,0.09) 0%, transparent 55%); }}
-    .tech-color-banner     {{ border-left: 4px solid #1E4FD8; background: linear-gradient(90deg, rgba(30,79,216,0.09) 0%, transparent 55%); }}
-    .business-color-banner {{ border-left: 4px solid #8B6914; background: linear-gradient(90deg, rgba(139,105,20,0.09) 0%, transparent 55%); }}
-    .sports-color-banner   {{ border-left: 4px solid #1A7A4A; background: linear-gradient(90deg, rgba(26,122,74,0.09) 0%, transparent 55%); }}
-    .culture-color-banner  {{ border-left: 4px solid #7B2D8B; background: linear-gradient(90deg, rgba(123,45,139,0.09) 0%, transparent 55%); }}
+    .us-color-banner       {{ border-left: 4px solid #C0392B; background: linear-gradient(90deg, rgba(192,57,43,0.15) 0%, transparent 55%); }}
+    .mideast-color-banner  {{ border-left: 4px solid #D35400; background: linear-gradient(90deg, rgba(211,84,0,0.15) 0%, transparent 55%); }}
+    .world-color-banner    {{ border-left: 4px solid #1A6FA8; background: linear-gradient(90deg, rgba(26,111,168,0.15) 0%, transparent 55%); }}
+    .tech-color-banner     {{ border-left: 4px solid #1E4FD8; background: linear-gradient(90deg, rgba(30,79,216,0.15) 0%, transparent 55%); }}
+    .business-color-banner {{ border-left: 4px solid #8B6914; background: linear-gradient(90deg, rgba(139,105,20,0.15) 0%, transparent 55%); }}
+    .sports-color-banner   {{ border-left: 4px solid #1A7A4A; background: linear-gradient(90deg, rgba(26,122,74,0.15) 0%, transparent 55%); }}
+    .culture-color-banner  {{ border-left: 4px solid #7B2D8B; background: linear-gradient(90deg, rgba(123,45,139,0.15) 0%, transparent 55%); }}
     .local-color-banner    {{ border-left: 4px solid #2E7D32; background: linear-gradient(90deg, rgba(46,125,50,0.09) 0%, transparent 55%); }}
 
 
@@ -2861,7 +2771,7 @@ html_parts.append(f"""<!DOCTYPE html>
         border-bottom: 1px solid var(--nuzu-border); line-height: 1.5;
         border-radius: 4px; transition: background 0.15s;
     }}
-    .headline:hover {{ background: var(--nuzu-glow, rgba(30,79,216,0.06)); }}
+    .headline:hover {{ background: var(--nuzu-glow, rgba(30,79,216,0.10)); }}
     .headline.seen-item {{ opacity: 0.55; }}
     .title {{ color: var(--nuzu-white); font-size: 1em; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.45; }}
     .ts-label {{ color: var(--nuzu-dim); font-size: 0.78em; margin-left: 4px; }}
@@ -2902,16 +2812,7 @@ html_parts.append(f"""<!DOCTYPE html>
         border-bottom: 1px solid var(--nuzu-border); line-height: 1.5;
     }}
     .cluster-item:last-child {{ border-bottom: none; margin-bottom: 0; }}
-    /* ── Source Diversity (Bias) Bar ── */
-    .bias-bar {{
-        display: flex; height: 14px; border-radius: 3px; overflow: hidden;
-        margin-top: 5px; gap: 1px; border: 1px solid var(--nuzu-border);
-    }}
-    .bias-seg {{
-        display: flex; align-items: center; justify-content: center;
-        font-size: 0.58em; font-weight: 900; letter-spacing: 0.04em;
-        min-width: 14px; transition: width 0.3s ease;
-    }}
+        /* bias bar removed */
 
     .cluster-item.seen-item {{ opacity: 0.55; }}
 
@@ -3041,13 +2942,13 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode #section-culture  .cluster {{ background: #F8EEF8 !important; border-left-color: #7B2D8B !important; }}
     body.light-mode .saved-articles-panel {{ background: #F5F8FF !important; border-left-color: var(--nuzu-blue) !important; }}
     body.light-mode .section-banner {{ background: #f8f9fc !important; }}
-    body.light-mode .us-color-banner       {{ background: linear-gradient(90deg, rgba(192,57,43,0.06) 0%, transparent 55%) !important; }}
-    body.light-mode .mideast-color-banner  {{ background: linear-gradient(90deg, rgba(211,84,0,0.06) 0%, transparent 55%) !important; }}
-    body.light-mode .world-color-banner    {{ background: linear-gradient(90deg, rgba(26,111,168,0.06) 0%, transparent 55%) !important; }}
-    body.light-mode .tech-color-banner     {{ background: linear-gradient(90deg, rgba(30,79,216,0.06) 0%, transparent 55%) !important; }}
-    body.light-mode .business-color-banner {{ background: linear-gradient(90deg, rgba(139,105,20,0.06) 0%, transparent 55%) !important; }}
-    body.light-mode .sports-color-banner   {{ background: linear-gradient(90deg, rgba(26,122,74,0.06) 0%, transparent 55%) !important; }}
-    body.light-mode .culture-color-banner  {{ background: linear-gradient(90deg, rgba(123,45,139,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .us-color-banner       {{ background: linear-gradient(90deg, rgba(192,57,43,0.10) 0%, transparent 55%) !important; }}
+    body.light-mode .mideast-color-banner  {{ background: linear-gradient(90deg, rgba(211,84,0,0.10) 0%, transparent 55%) !important; }}
+    body.light-mode .world-color-banner    {{ background: linear-gradient(90deg, rgba(26,111,168,0.10) 0%, transparent 55%) !important; }}
+    body.light-mode .tech-color-banner     {{ background: linear-gradient(90deg, rgba(30,79,216,0.10) 0%, transparent 55%) !important; }}
+    body.light-mode .business-color-banner {{ background: linear-gradient(90deg, rgba(139,105,20,0.10) 0%, transparent 55%) !important; }}
+    body.light-mode .sports-color-banner   {{ background: linear-gradient(90deg, rgba(26,122,74,0.10) 0%, transparent 55%) !important; }}
+    body.light-mode .culture-color-banner  {{ background: linear-gradient(90deg, rgba(123,45,139,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .local-color-banner    {{ background: linear-gradient(90deg, rgba(46,125,50,0.06) 0%, transparent 55%) !important; }}
     body.light-mode .nuzu-hero {{ background: linear-gradient(180deg, #e8edf8 0%, #f5f8ff 100%) !important; }}
     body.light-mode .nuzu-hero-wordmark {{ filter: none; }}
@@ -3469,6 +3370,52 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .swipe-hint {{ animation: swipeHint 1.4s ease 2s 2 both; }}
 
+
+    /* ─── FIX 6: Equal-height card columns ─── */
+    .section-col-card {{
+        border: 1px solid var(--nuzu-border);
+        border-radius: 6px;
+        padding: 14px 16px;
+        min-height: 160px;
+        display: flex;
+        flex-direction: column;
+    }}
+    .section-col-label {{
+        font-size: 0.63em; font-weight: 800; letter-spacing: 0.11em;
+        text-transform: uppercase; margin-bottom: 8px; padding-bottom: 6px;
+        border-bottom: 1px solid var(--nuzu-border);
+        display: flex; align-items: center; gap: 6px;
+    }}
+    .scl-dot {{ width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }}
+    .scl-breaking {{ color: #E06060; }}
+    .scl-daily    {{ color: var(--nuzu-muted); }}
+    .section-col-inner {{ flex: 1; overflow: hidden; }}
+    .container.equal-cols {{ align-items: stretch; }}
+    .container.equal-cols .column {{ display: flex; flex-direction: column; }}
+    .container.equal-cols .column .section-col-card {{ flex: 1; }}
+
+    /* ─── FIX 7: Per-section card tints + hover colors ─── */
+    #section-us       .section-col-card {{ background:#090101; border-left:2px solid rgba(192,57,43,0.35); }}
+    #section-mideast  .section-col-card {{ background:#090500; border-left:2px solid rgba(211,84,0,0.35); }}
+    #section-world    .section-col-card {{ background:#010912; border-left:2px solid rgba(26,111,168,0.35); }}
+    #section-tech     .section-col-card {{ background:#010712; border-left:2px solid rgba(30,79,216,0.35); }}
+    #section-business .section-col-card {{ background:#080700; border-left:2px solid rgba(139,105,20,0.35); }}
+    #section-sports   .section-col-card {{ background:#010a04; border-left:2px solid rgba(26,122,74,0.35); }}
+    #section-culture  .section-col-card {{ background:#080008; border-left:2px solid rgba(123,45,139,0.35); }}
+    #section-us       .headline:hover {{ background:rgba(192,57,43,0.10) !important; }}
+    #section-mideast  .headline:hover {{ background:rgba(211,84,0,0.07) !important; }}
+    #section-world    .headline:hover {{ background:rgba(26,111,168,0.07) !important; }}
+    #section-tech     .headline:hover {{ background:rgba(30,79,216,0.07) !important; }}
+    #section-business .headline:hover {{ background:rgba(139,105,20,0.07) !important; }}
+    #section-sports   .headline:hover {{ background:rgba(26,122,74,0.07) !important; }}
+    #section-culture  .headline:hover {{ background:rgba(123,45,139,0.07) !important; }}
+    body.light-mode #section-us       .section-col-card{{background:#FFF5F5!important;border-left-color:rgba(192,57,43,0.25)!important;}}
+    body.light-mode #section-mideast  .section-col-card{{background:#FFF8F0!important;border-left-color:rgba(211,84,0,0.25)!important;}}
+    body.light-mode #section-world    .section-col-card{{background:#EEF5FF!important;border-left-color:rgba(26,111,168,0.25)!important;}}
+    body.light-mode #section-tech     .section-col-card{{background:#EEF2FF!important;border-left-color:rgba(30,79,216,0.25)!important;}}
+    body.light-mode #section-business .section-col-card{{background:#FDFAEE!important;border-left-color:rgba(139,105,20,0.25)!important;}}
+    body.light-mode #section-sports   .section-col-card{{background:#EEFBF3!important;border-left-color:rgba(26,122,74,0.25)!important;}}
+    body.light-mode #section-culture  .section-col-card{{background:#FDF0FF!important;border-left-color:rgba(123,45,139,0.25)!important;}}
         </style>
 </head>
 <body>
@@ -3774,15 +3721,6 @@ ts_html += '''<div class="search-bar-wrap">
   <span id="search-result-count" style="font-size:0.8em;color:var(--nuzu-muted);white-space:nowrap;"></span>
 </div>\n'''
 
-ts_html += '''<div style="max-width:1400px;margin:0 auto;padding:0 20px 12px 20px;">
-  <div class="ad-slot" id="ad-top">
-    <span class="ad-slot-label">Advertisement</span>
-    <div class="ad-slot-inner">
-      &#128226; Your Ad Here &mdash;
-      <a href="mailto:TheSeanMitchell@protonmail.com?subject=NUZU Advertising Inquiry">Partner with NUZU</a>
-    </div>
-  </div>
-</div>\n\n'''
 
 ts_html += '''<!-- VIDEO BANNER desktop only -->
 <div class="banner">
@@ -3804,11 +3742,11 @@ html_parts.append(ts_html)
 
 # ====================== SECTION BLOCKS ======================
 def section_block(section_id, color_class, breaking_items, recent_items,
-                  breaking_title, recent_title):
+                  breaking_title, recent_title, breaking_threshold=12*3600):
     _sid = section_id.replace("section-", "")
     _combined_clusters = SECTION_CLUSTERS[_sid]["combined"]
     now = time.time()
-    _breaking_threshold = 3 * 3600
+    _breaking_threshold = breaking_threshold
     _b_clusters = []
     _r_clusters = []
     for _cl in _combined_clusters:
@@ -3824,6 +3762,22 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     r_summary = source_summary(_r_items) if _r_items else ''
     b_content = render_clusters(_b_clusters) if _b_clusters else '<p style="color:var(--nuzu-dim)">No breaking news in the last 3 hours.</p>\n'
     r_content = render_clusters(_r_clusters) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
+    _dot_map = {
+        'us-color':       '#C0392B',
+        'mideast-color':  '#D35400',
+        'world-color':    '#1A6FA8',
+        'tech-color':     '#1E4FD8',
+        'business-color': '#8B6914',
+        'sports-color':   '#1A7A4A',
+        'culture-color':  '#7B2D8B',
+    }
+    _hex = _dot_map.get(color_class, '#555555')
+    if color_class == 'culture-color':
+        _b_label = 'BREAKING &#8212; Last 48 Hours'
+        _r_label = 'RECENT &#8212; Up to 72 Hours'
+    else:
+        _b_label = 'BREAKING &#8212; Last 12 Hours'
+        _r_label = 'RECENT &#8212; Up to 36 Hours'
     return (
         f'<div id="{section_id}" class="section-wrap">\n'
         f'<div class="section-banner {color_class}-banner">'
@@ -3833,15 +3787,22 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         f'aria-label="Collapse section" title="Collapse / expand">&#9660;</button>'
         f'</div></div>\n'
         f'<div id="{section_id}-cols" class="section-columns">\n'
-        f'<div class="container">\n'
+        f'<div class="container equal-cols">\n'
         f'<div class="column">\n'
-        f'{b_summary}{b_content}'
+        f'<div class="section-col-card">\n'
+        f'<div class="section-col-label scl-breaking">'
+        f'<span class="scl-dot" style="background:{_hex}"></span>'
+        f'{_b_label}</div>\n'
+        f'<div class="section-col-inner">{b_summary}{b_content}</div>\n'
+        f'</div>\n'
         f'</div>\n'
         f'<div class="column">\n'
-        f'<div class="section-title-row">'
-        f'<h2 class="section-title {color_class}">{recent_title}</h2>'
+        f'<div class="section-col-card">\n'
+        f'<div class="section-col-label scl-daily">'
+        f'<span class="scl-dot" style="background:{_hex};opacity:0.5"></span>'
+        f'{_r_label}</div>\n'
+        f'<div class="section-col-inner">{r_summary}{r_content}</div>\n'
         f'</div>\n'
-        f'{r_summary}{r_content}'
         f'</div>\n'
         f'</div>\n'
         f'</div>\n'
@@ -3849,35 +3810,10 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     )
 
 # ── Sponsored section (between Business and Sports) ──
-SPONSORED_BLOCK = """
-<div class="sponsored-section">
-  <span class="sponsored-label">&#9670; Sponsored</span>
-  <div class="sponsored-content">
-    <div class="sponsored-logo">Your Logo</div>
-    <div class="sponsored-text">
-      <strong>Advertise on NUZU</strong> &mdash; Reach a daily audience of engaged news readers
-      across US politics, business, tech, sports, and world events.
-      Premium placement available.
-    </div>
-    <a class="sponsored-cta" href="mailto:TheSeanMitchell@protonmail.com?subject=NUZU Sponsorship">
-      Get in Touch
-    </a>
-  </div>
-</div>
-"""
+SPONSORED_BLOCK = ""
 
 # ── Mid-page ad slot ──
-MID_AD_BLOCK = """
-<div style="max-width:1400px;margin:0 auto;padding:0 20px;">
-  <div class="ad-slot" id="ad-mid">
-    <span class="ad-slot-label">Advertisement</span>
-    <div class="ad-slot-inner">
-      &#128226; Your Ad Here &mdash;
-      <a href="mailto:TheSeanMitchell@protonmail.com?subject=NUZU Advertising Inquiry">Partner with NUZU</a>
-    </div>
-  </div>
-</div>
-"""
+MID_AD_BLOCK = ""
 
 # ── Derive section order from MRO popularity ──
 _MRO_SECTION_ID_MAP = {
@@ -3906,37 +3842,44 @@ _ALL_SECTION_DATA = {
     "section-us": (
         "us-color", us_breaking, us_recent,
         '<span class="sec-dot" style="background:#C0392B"></span>US &mdash; Breaking News',
-        '<span class="sec-dot" style="background:#C0392B"></span>US &mdash; Daily Headlines'
+        '<span class="sec-dot" style="background:#C0392B"></span>US &mdash; Daily Headlines',
+        12*3600
     ),
     "section-mideast": (
         "mideast-color", middle_breaking, middle_recent,
         '<span class="sec-dot" style="background:#D35400"></span>MIDDLE EAST &mdash; Breaking News',
-        '<span class="sec-dot" style="background:#D35400"></span>MIDDLE EAST &mdash; Daily Headlines'
+        '<span class="sec-dot" style="background:#D35400"></span>MIDDLE EAST &mdash; Daily Headlines',
+        12*3600
     ),
     "section-world": (
         "world-color", world_breaking, world_recent,
         '<span class="sec-dot" style="background:#1A6FA8"></span>WORLD &mdash; Breaking News',
-        '<span class="sec-dot" style="background:#1A6FA8"></span>WORLD &mdash; Daily Headlines'
+        '<span class="sec-dot" style="background:#1A6FA8"></span>WORLD &mdash; Daily Headlines',
+        12*3600
     ),
     "section-tech": (
         "tech-color", tech_breaking, tech_recent,
         '<span class="sec-dot" style="background:#1E4FD8"></span>TECH &mdash; Breaking News',
-        '<span class="sec-dot" style="background:#1E4FD8"></span>TECH &mdash; Daily Headlines'
+        '<span class="sec-dot" style="background:#1E4FD8"></span>TECH &mdash; Daily Headlines',
+        12*3600
     ),
     "section-business": (
         "business-color", business_breaking, business_recent,
         '<span class="sec-dot" style="background:#8B6914"></span>BUSINESS &mdash; Breaking News',
-        '<span class="sec-dot" style="background:#8B6914"></span>BUSINESS &mdash; Daily Headlines'
+        '<span class="sec-dot" style="background:#8B6914"></span>BUSINESS &mdash; Daily Headlines',
+        12*3600
     ),
     "section-sports": (
         "sports-color", sports_breaking, sports_recent,
         '<span class="sec-dot" style="background:#1A7A4A"></span>SPORTS &mdash; Breaking News',
-        '<span class="sec-dot" style="background:#1A7A4A"></span>SPORTS &mdash; Daily Headlines'
+        '<span class="sec-dot" style="background:#1A7A4A"></span>SPORTS &mdash; Daily Headlines',
+        12*3600
     ),
     "section-culture": (
         "culture-color", culture_breaking, culture_recent,
         '<span class="sec-dot" style="background:#7B2D8B"></span>CULTURE &mdash; Breaking News',
-        '<span class="sec-dot" style="background:#7B2D8B"></span>CULTURE &mdash; Daily Headlines'
+        '<span class="sec-dot" style="background:#7B2D8B"></span>CULTURE &mdash; Daily Headlines',
+        48*3600
     ),
 }
 
@@ -3950,8 +3893,9 @@ print(f"  Section page order (MRO-driven): {[s[0] for s in SECTION_DATA]}")
 
 html_parts.append('<div id="sections-wrapper">\n')
 
-for i, (sid, sc, bi, ri, bt, rt) in enumerate(SECTION_DATA):
-    html_parts.append(section_block(sid, sc, bi, ri, bt, rt))
+for i, (sid, sc, bi, ri, bt, rt, *_bthresh) in enumerate(SECTION_DATA):
+    _bt = _bthresh[0] if _bthresh else 12*3600
+    html_parts.append(section_block(sid, sc, bi, ri, bt, rt, breaking_threshold=_bt))
     if i < len(SECTION_DATA) - 1:
         html_parts.append('<hr class="top-divider">\n')
     # Insert sponsored block between business and sports
@@ -4984,10 +4928,18 @@ document.addEventListener('click', function(e) {{
   var incBtn=document.getElementById('font-increase-btn'), decBtn=document.getElementById('font-decrease-btn');
   function loadSize() {{ try {{ var s=localStorage.getItem(FSKEY); if(s!==null) curIdx=parseInt(s,10); }} catch(e){{}} }}
   function applySize() {{
-    document.documentElement.style.fontSize=sizes[curIdx]+'px';
+    // FIX 5: set body font-size with !important to override clamp() CSS
+    document.body.style.setProperty('font-size', sizes[curIdx]+'px', 'important');
+    document.documentElement.style.fontSize = sizes[curIdx]+'px';
     try {{ localStorage.setItem(FSKEY,curIdx); }} catch(e){{}}
-    if(decBtn) decBtn.disabled=curIdx<=0;
-    if(incBtn) incBtn.disabled=curIdx>=sizes.length-1;
+    if(decBtn) {{
+      decBtn.disabled = (curIdx <= 0);
+      decBtn.style.opacity = (curIdx <= 0) ? '0.35' : '1';
+    }}
+    if(incBtn) {{
+      incBtn.disabled = (curIdx >= sizes.length-1);
+      incBtn.style.opacity = (curIdx >= sizes.length-1) ? '0.35' : '1';
+    }}
   }}
   loadSize(); applySize();
   if(incBtn) incBtn.addEventListener('click',function(){{ if(curIdx<sizes.length-1){{ curIdx++; applySize(); }} }});
