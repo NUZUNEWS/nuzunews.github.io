@@ -173,6 +173,32 @@ def get_friendly_source(raw_name):
             return SOURCE_MAP[key]
     return raw_name.split(" - ")[-1].strip() if " - " in raw_name else raw_name
 
+
+def get_domain_from_url(url):
+    """Extract base domain from URL for favicon lookup."""
+    try:
+        from urllib.parse import urlparse
+        parsed = urlparse(url)
+        domain = parsed.netloc.lower().replace('www.', '')
+        parts = domain.split('.')
+        if len(parts) > 2:
+            domain = '.'.join(parts[-2:])
+        return domain
+    except Exception:
+        return ''
+
+def get_favicon_html(link_url, size=14):
+    """Return an img tag for the source favicon using Google's service."""
+    domain = get_domain_from_url(link_url)
+    if not domain:
+        return ''
+    _oe = "this.style.display='none'"
+    return (
+        f'<img src="https://www.google.com/s2/favicons?domain={domain}&sz={size*2}"'
+        f' width="{size}" height="{size}" alt="" class="src-favicon"'
+        f' loading="lazy" onerror="{_oe}">'
+    )
+
 def make_keyword_pattern(keywords):
     sorted_kws = sorted(keywords, key=len, reverse=True)
     escaped = [re.escape(kw) for kw in sorted_kws]
@@ -2187,15 +2213,16 @@ def render_clusters(clusters):
             trust_badge = '<span class="trust-badge" title="Verified trusted source">&#10003;</span> ' if trusted else ''
             anchor_id = "hl-" + hashlib.md5(link.encode()).hexdigest()[:8]
             safe_title_attr = display_title.replace('"', "'")
+            favicon = get_favicon_html(link)
             out += (
                 f'<div id="{anchor_id}" class="headline" data-link="{link}" data-ts="{int(ts)}">'
                 f'{hot_dot}{trust_badge}'
                 f'<span class="title">{display_title}</span>'
                 f' <span class="ts-label">{time_str}</span>'
-                f' <span class="src-label">\u2014 {friendly}</span>'
+                f' <span class="src-label">\u2014 {favicon}{friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
-                f' <a class="link nuzu-article-link" href="{link}" data-title="{safe_title_attr}">[Read]</a>'
+                f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
                 f'</div>\n'
             )
         else:
@@ -2211,6 +2238,7 @@ def render_clusters(clusters):
             n_sources = len(sources_list)
             sources_str = ", ".join(sources_list)
             lead_friendly = get_friendly_source(lead_source)
+            bias_html = get_cluster_bias_html(cluster)
             cluster_id = "cl-" + hashlib.md5(lead_link.encode()).hexdigest()[:8]
             safe_title_attr = display_title.replace('"', "'")
             out += (
@@ -2220,13 +2248,14 @@ def render_clusters(clusters):
                 f'<span class="cluster-badge">{n_sources} sources</span>'
                 f'<button class="cluster-toggle-btn" data-target="{cluster_id}" aria-label="Expand story coverage" title="Show/hide all coverage">&#9654; Show all coverage</button>'
                 f'</div>\n'
-                f'<div class="cluster-lead">'
+                + (bias_html + '\n' if bias_html else '')
+                + f'<div class="cluster-lead">'
                 f'<span class="title">{display_title}</span>'
                 f' <span class="ts-label">{time_str}</span>'
-                f' <span class="src-label">\u2014 {lead_friendly}</span>'
+                f' <span class="src-label">\u2014 {get_favicon_html(lead_link)}{lead_friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
-                f' <a class="link nuzu-article-link" href="{lead_link}" data-title="{safe_title_attr}">[Read]</a>'
+                f' <a class="link" href="{lead_link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
                 f'</div>\n'
                 f'<div id="{cluster_id}" class="cluster-items-wrap collapsed">\n'
                 f'<div class="cluster-sources-line">{sources_str}</div>\n'
@@ -2240,9 +2269,9 @@ def render_clusters(clusters):
                     f'<div class="cluster-item" data-link="{link}">'
                     f'<span class="title">{dtitle}</span>'
                     f' <span class="ts-label">{ts_str}</span>'
-                    f' <span class="src-label">\u2014 {friendly}</span>'
+                    f' <span class="src-label">\u2014 {get_favicon_html(link)}{friendly}</span>'
                     f' <button class="share-btn" data-link="{link}" data-title="{safe_dt}" aria-label="Share article" title="Share">&#8679;</button>'
-                    f' <a class="link nuzu-article-link" href="{link}" data-title="{safe_dt}">[Read]</a>'
+                    f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
                     f'</div>\n'
                 )
             out += '</div>\n</div>\n'
@@ -2342,6 +2371,60 @@ SECTION_COLORS = {
     "culture":  "#7B2D8B",
 }
 
+# ── Media Bias Ratings (AllSides/Ad Fontes consensus only) ──
+MEDIA_BIAS_RATINGS = {
+    "reuters": "center", "associated press": "center", "ap news": "center",
+    "bloomberg": "center", "bbc": "center", "bbc news": "center",
+    "axios": "center", "the hill": "center", "pbs": "center",
+    "pbs newshour": "center", "usa today": "center", "abc news": "center",
+    "new york times": "center-left", "nyt": "center-left",
+    "washington post": "center-left", "wapo": "center-left",
+    "the guardian": "center-left", "guardian": "center-left",
+    "npr": "center-left", "the atlantic": "center-left",
+    "cbs news": "center-left", "nbc news": "center-left",
+    "wall street journal": "center-right", "wsj": "center-right",
+    "financial times": "center-right", "ft": "center-right",
+    "the economist": "center-right",
+    "al jazeera": "center", "france 24": "center",
+    "deutsche welle": "center", "dw": "center",
+    "agence france-presse": "center", "afp": "center",
+}
+
+BIAS_CFG = {
+    "center-left":  {"bg": "rgba(30,80,200,0.18)",  "color": "#7aadff", "label": "L", "title": "Center-Left"},
+    "center":       {"bg": "rgba(120,120,120,0.18)", "color": "#aaaaaa", "label": "C", "title": "Center"},
+    "center-right": {"bg": "rgba(200,80,30,0.18)",  "color": "#ffaa77", "label": "R", "title": "Center-Right"},
+}
+
+def get_cluster_bias_html(cluster):
+    if len(cluster) < 2:
+        return ''
+    counts = {"center-left": 0, "center": 0, "center-right": 0}
+    total = 0
+    for item in cluster:
+        sname = item[2].lower()
+        for key, bias in MEDIA_BIAS_RATINGS.items():
+            if key in sname:
+                counts[bias] += 1
+                total += 1
+                break
+    if total < 2:
+        return ''
+    bars = []
+    for bias in ["center-left", "center", "center-right"]:
+        cnt = counts[bias]
+        if cnt > 0:
+            pct = int((cnt / total) * 100)
+            cfg = BIAS_CFG[bias]
+            bars.append(
+                f'<span class="bias-seg" style="width:{pct}%;background:{cfg["bg"]};color:{cfg["color"]}" '
+                f'title="{cfg["title"]}: {cnt} source(s)">{cfg["label"]}</span>'
+            )
+    if not bars:
+        return ''
+    return f'<div class="bias-bar" title="Source diversity across political perspectives">{"".join(bars)}</div>'
+
+
 # ── Breaking banner setup ──
 _now = time.time()
 hot_items = sorted(
@@ -2371,20 +2454,24 @@ html_parts.append(f"""<!DOCTYPE html>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="NUZU News">
     <meta name="mobile-web-app-capable" content="yes">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
     /* ── CSS Custom Properties (Design Tokens) ── */
     :root {{
-        --nuzu-navy:    #070F2B;
-        --nuzu-dark:    #0D1B4B;
+        --nuzu-navy:    #000000;
+        --nuzu-dark:    #07101E;
         --nuzu-blue:    #1E4FD8;
         --nuzu-blue-l:  #2563EB;
         --nuzu-light:   #7EB3FF;
-        --nuzu-border:  #1A2A4A;
-        --nuzu-card:    #0A1535;
-        --nuzu-muted:   #5577AA;
-        --nuzu-dim:     #3A4A6A;
-        --nuzu-text:    #CDD5E0;
+        --nuzu-border:  #0F1E35;
+        --nuzu-card:    #050D1A;
+        --nuzu-muted:   #4A6A99;
+        --nuzu-dim:     #2A3D5C;
+        --nuzu-text:    #D0DAE8;
         --nuzu-white:   #FFFFFF;
+        --nuzu-glow:    rgba(30,79,216,0.07);
     }}
 
     /* ── Reset & Base ── */
@@ -2393,7 +2480,7 @@ html_parts.append(f"""<!DOCTYPE html>
     body {{
         background: var(--nuzu-dark);
         color: var(--nuzu-text);
-        font-family: Arial, sans-serif;
+        font-family: 'Inter', Arial, sans-serif;
         line-height: 1.6;
         padding-top: 48px;
         font-size: clamp(15px, 1.05vw, 18px);
@@ -2431,6 +2518,7 @@ html_parts.append(f"""<!DOCTYPE html>
     .sticky-nav a.nav-business {{ border-left-color: {SECTION_COLORS["business"]}; }}
     .sticky-nav a.nav-sports   {{ border-left-color: {SECTION_COLORS["sports"]}; }}
     .sticky-nav a.nav-culture  {{ border-left-color: {SECTION_COLORS["culture"]}; }}
+    .sticky-nav a.nav-local    {{ border-left-color: #2E7D32; }}
 
     /* ── Saved Articles Nav Button ── */
     .saved-nav-btn {{
@@ -2449,6 +2537,16 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
 
     /* ── Light/Dark Toggle ── */
+
+    /* ── Font Size Buttons ── */
+    .font-size-btn {{
+        background: none; border: 1px solid var(--nuzu-border);
+        border-radius: 4px; color: var(--nuzu-muted);
+        font-size: 0.66em; font-weight: bold; padding: 2px 6px;
+        cursor: pointer; transition: color 0.15s, border-color 0.15s;
+        flex-shrink: 0; font-family: Arial, sans-serif; letter-spacing: 0.03em;
+    }}
+    .font-size-btn:hover {{ color: var(--nuzu-white); border-color: var(--nuzu-muted); }}
     .light-toggle-wrap {{
         display: flex; align-items: center; gap: 7px;
         margin-left: auto; flex-shrink: 0; padding-left: 16px;
@@ -2488,57 +2586,90 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* ── Breaking Banner ── */
     .breaking-banner {{
-        background: var(--nuzu-blue); color: var(--nuzu-white);
-        padding: 9px 16px; font-size: 0.88em; font-weight: bold;
-        display: flex; align-items: center; gap: 10px; flex-wrap: nowrap;
-        overflow: hidden;
-        animation: pulse-bg 3s ease-in-out infinite alternate;
+        background: #000;
+        border-bottom: 1px solid #0F1E35;
+        color: var(--nuzu-white);
+        padding: 0; font-size: 0.84em; font-weight: 600;
+        display: flex; align-items: stretch; flex-wrap: nowrap;
+        overflow: hidden; height: 38px;
+        font-family: 'Inter', Arial, sans-serif;
     }}
     .breaking-banner .bb-label {{
-        background: var(--nuzu-white); color: var(--nuzu-blue);
-        padding: 2px 8px; border-radius: 3px; font-size: 0.76em;
-        letter-spacing: 0.08em; flex-shrink: 0;
+        background: #B71C1C; color: #fff;
+        padding: 0 16px; font-size: 0.7em;
+        letter-spacing: 0.14em; flex-shrink: 0;
+        display: flex; align-items: center; gap: 7px;
+        font-weight: 800; text-transform: uppercase;
+        border-right: 1px solid rgba(255,255,255,0.08);
+    }}
+    .bb-pulse-dot {{
+        width: 7px; height: 7px; border-radius: 50%;
+        background: #fff; flex-shrink: 0;
+        animation: bb-pulse 1.5s ease-in-out infinite;
+    }}
+    @keyframes bb-pulse {{
+        0%,100% {{ opacity: 1; transform: scale(1); }}
+        50% {{ opacity: 0.25; transform: scale(0.5); }}
     }}
     .breaking-banner .bb-text {{
         flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        animation: slidein 0.4s ease;
+        display: flex; align-items: center; padding: 0 16px;
+        animation: bb-slidein 0.5s cubic-bezier(0.16,1,0.3,1);
+        color: #dde8f8; cursor: pointer; transition: color 0.15s;
     }}
+    .breaking-banner .bb-text:hover {{ color: #fff; }}
     .breaking-banner .bb-counter {{
-        font-size: 0.72em; opacity: 0.6; flex-shrink: 0;
+        font-size: 0.66em; opacity: 0.4; flex-shrink: 0;
+        display: flex; align-items: center; padding: 0 14px;
+        border-left: 1px solid var(--nuzu-border);
     }}
     .bb-section-pill {{
-        font-size: 0.7em; font-weight: bold; letter-spacing: 0.07em;
-        text-transform: uppercase; padding: 2px 7px; border-radius: 3px;
-        flex-shrink: 0; margin-left: 4px;
+        font-size: 0.66em; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; padding: 2px 8px; border-radius: 2px;
+        flex-shrink: 0; margin-right: 8px;
     }}
-    @keyframes pulse-bg {{
-        from {{ background: var(--nuzu-blue); }}
-        to   {{ background: var(--nuzu-blue-l); }}
-    }}
-    @keyframes slidein {{
-        from {{ opacity: 0; transform: translateY(4px); }}
-        to   {{ opacity: 1; transform: translateY(0); }}
+    @keyframes bb-slidein {{
+        from {{ opacity: 0; transform: translateX(14px); }}
+        to   {{ opacity: 1; transform: translateX(0); }}
     }}
 
     /* ── Hero Masthead ── */
     .nuzu-hero {{
-        text-align: center; padding: 14px 20px 10px;
-        background: linear-gradient(180deg, var(--nuzu-navy) 0%, var(--nuzu-dark) 100%);
+        text-align: center; padding: 26px 20px 18px;
+        background: linear-gradient(180deg, #000000 0%, #07101E 100%);
         border-bottom: 1px solid var(--nuzu-border);
+        position: relative; overflow: hidden;
+    }}
+    .nuzu-hero::before {{
+        content: '';
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse 70% 90% at 50% 0%, rgba(30,79,216,0.15) 0%, transparent 70%);
+        pointer-events: none;
     }}
     .nuzu-hero-wordmark {{
-        font-size: 4em; font-weight: 900; letter-spacing: 0.08em;
-        background: linear-gradient(135deg, #fff 60%, var(--nuzu-light));
+        font-size: 5em; font-weight: 900; letter-spacing: 0.15em;
+        font-family: 'Playfair Display', Georgia, serif;
+        background: linear-gradient(135deg, #ffffff 0%, #b8d4ff 55%, #7EB3FF 100%);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        line-height: 1;
+        line-height: 1; position: relative;
+        filter: drop-shadow(0 0 40px rgba(126,179,255,0.25));
+    }}
+    .nuzu-hero-date {{
+        color: var(--nuzu-dim); font-size: 0.7em; letter-spacing: 0.08em;
+        text-transform: uppercase; margin-top: 6px;
+        font-family: 'Inter', Arial, sans-serif;
     }}
     .nuzu-hero-tagline {{
-        color: var(--nuzu-light); font-size: 0.82em; letter-spacing: 0.14em;
-        text-transform: uppercase; margin-top: 6px;
+        color: var(--nuzu-muted); font-size: 0.72em; letter-spacing: 0.2em;
+        text-transform: uppercase; margin-top: 8px;
+        font-family: 'Inter', Arial, sans-serif;
+        border-top: 1px solid var(--nuzu-border); padding-top: 10px;
+        display: inline-block; padding-left: 24px; padding-right: 24px;
     }}
     @media (max-width: 900px) {{
-        .nuzu-hero {{ padding: 10px 16px 8px; }}
-        .nuzu-hero-wordmark {{ font-size: 2.4em; }}
+        .nuzu-hero {{ padding: 16px 16px 12px; }}
+        .nuzu-hero-wordmark {{ font-size: 3em; letter-spacing: 0.12em; }}
+        .nuzu-hero-date {{ display: none; }}
     }}
 
     /* ── Video Banner ── */
@@ -2675,13 +2806,30 @@ html_parts.append(f"""<!DOCTYPE html>
         background: var(--nuzu-border); margin: 28px 0;
     }}
     .src-summary {{ color: var(--nuzu-dim); font-size: 0.78em; margin-bottom: 12px; }}
+    /* ── Section Banners ── */
+    .section-banner {{
+        width: 100%; border-bottom: 1px solid var(--nuzu-border);
+    }}
+    .section-banner-inner {{
+        max-width: 1400px; margin: 0 auto; padding: 12px 20px;
+        display: flex; align-items: center; justify-content: space-between;
+    }}
+    .us-color-banner       {{ border-left: 4px solid #C0392B; background: linear-gradient(90deg, rgba(192,57,43,0.09) 0%, transparent 55%); }}
+    .mideast-color-banner  {{ border-left: 4px solid #D35400; background: linear-gradient(90deg, rgba(211,84,0,0.09) 0%, transparent 55%); }}
+    .world-color-banner    {{ border-left: 4px solid #1A6FA8; background: linear-gradient(90deg, rgba(26,111,168,0.09) 0%, transparent 55%); }}
+    .tech-color-banner     {{ border-left: 4px solid #1E4FD8; background: linear-gradient(90deg, rgba(30,79,216,0.09) 0%, transparent 55%); }}
+    .business-color-banner {{ border-left: 4px solid #8B6914; background: linear-gradient(90deg, rgba(139,105,20,0.09) 0%, transparent 55%); }}
+    .sports-color-banner   {{ border-left: 4px solid #1A7A4A; background: linear-gradient(90deg, rgba(26,122,74,0.09) 0%, transparent 55%); }}
+    .culture-color-banner  {{ border-left: 4px solid #7B2D8B; background: linear-gradient(90deg, rgba(123,45,139,0.09) 0%, transparent 55%); }}
+    .local-color-banner    {{ border-left: 4px solid #2E7D32; background: linear-gradient(90deg, rgba(46,125,50,0.09) 0%, transparent 55%); }}
+
 
     /* ── Section Titles ── */
     .section-title {{
-        font-size: 1.4em; margin: 0 0 6px; font-weight: 900;
-        text-decoration: underline; text-decoration-thickness: 2px;
-        display: flex; align-items: center; gap: 8px;
-        letter-spacing: 0.06em; text-transform: uppercase;
+        font-size: 1.0em; margin: 0 0 0 0; font-weight: 700;
+        font-family: 'Inter', Arial, sans-serif;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        display: flex; align-items: center; gap: 10px;
     }}
     .sec-dot {{
         display: inline-block; width: 12px; height: 12px;
@@ -2697,6 +2845,21 @@ html_parts.append(f"""<!DOCTYPE html>
     .section-title-row {{ display: flex; align-items: center; margin-bottom: 6px; }}
     .section-title-row .section-title {{ margin-bottom: 0; }}
     .section-columns {{ transition: none; }}
+
+    /* ── Local News Section ── */
+    .local-color-banner {{ border-left: 4px solid #2E7D32; background: linear-gradient(90deg, rgba(46,125,50,0.09) 0%, transparent 55%); }}
+    .local-headline {{ margin-bottom: 12px; padding: 8px 10px; border-bottom: 1px solid var(--nuzu-border); border-radius: 4px; transition: background 0.15s; }}
+    .local-headline:hover {{ background: rgba(46,125,50,0.06); }}
+    .local-headline .title {{ color: var(--nuzu-white); font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.45; }}
+    #section-local-cols .cluster {{ border-left-color: #1B5E20; background: #020d04; }}
+
+    /* ── Progressive Loading ── */
+    .section-columns.lazy-pending {{
+        opacity: 0; transform: translateY(14px);
+        transition: opacity 0.45s ease, transform 0.45s ease;
+    }}
+    .section-columns.lazy-loaded {{ opacity: 1; transform: translateY(0); }}
+
     .section-columns.collapsed {{ display: none; }}
     .section-collapse-btn {{
         background: none; border: none; cursor: pointer;
@@ -2717,13 +2880,23 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* ── Headlines ── */
     .headline {{
-        margin-bottom: 14px; padding-bottom: 10px;
+        margin-bottom: 10px; padding: 8px 10px 10px 10px;
         border-bottom: 1px solid var(--nuzu-border); line-height: 1.5;
+        border-radius: 4px; transition: background 0.15s;
     }}
+    .headline:hover {{ background: var(--nuzu-glow, rgba(30,79,216,0.06)); }}
     .headline.seen-item {{ opacity: 0.55; }}
-    .title {{ color: var(--nuzu-white); font-size: 1em; }}
+    .title {{ color: var(--nuzu-white); font-size: 1em; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.45; }}
     .ts-label {{ color: var(--nuzu-dim); font-size: 0.78em; margin-left: 4px; }}
-    .src-label {{ color: var(--nuzu-muted); font-size: 0.88em; }}
+    .src-label {{ color: var(--nuzu-muted); font-size: 0.85em; }}
+    .src-favicon {{
+        display: inline-block; vertical-align: middle;
+        margin-right: 3px; border-radius: 2px;
+        width: 14px; height: 14px; flex-shrink: 0;
+        position: relative; top: -1px;
+    }}
+    .src-favicon-wrap {{ display: inline-flex; align-items: center; gap: 3px; }}
+
     .new-dot {{ color: var(--nuzu-white); font-size: 0.55em; vertical-align: middle; margin-right: 2px; }}
     .trust-badge {{ color: #4CAF50; font-size: 0.65em; vertical-align: middle; margin-right: 2px; }}
 
@@ -2759,15 +2932,31 @@ html_parts.append(f"""<!DOCTYPE html>
         border-bottom: 1px solid var(--nuzu-border); line-height: 1.5;
     }}
     .cluster-item:last-child {{ border-bottom: none; margin-bottom: 0; }}
+    /* ── Source Diversity (Bias) Bar ── */
+    .bias-bar {{
+        display: flex; height: 14px; border-radius: 3px; overflow: hidden;
+        margin-top: 5px; gap: 1px; border: 1px solid var(--nuzu-border);
+    }}
+    .bias-seg {{
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.58em; font-weight: 900; letter-spacing: 0.04em;
+        min-width: 14px; transition: width 0.3s ease;
+    }}
+
     .cluster-item.seen-item {{ opacity: 0.55; }}
 
     /* ── Article Links & Bookmark ── */
     .link {{
-        color: var(--nuzu-dim); text-decoration: underline;
-        font-size: 0.85em; margin-left: 6px; cursor: pointer;
-        transition: color 0.15s;
+        color: #4A7FD8; text-decoration: none;
+        font-size: 0.76em; margin-left: 6px; cursor: pointer;
+        transition: color 0.15s, background 0.15s, border-color 0.15s;
+        padding: 2px 7px; border-radius: 3px;
+        border: 1px solid rgba(30,79,216,0.25);
+        background: rgba(30,79,216,0.07);
+        font-family: 'Inter', Arial, sans-serif; font-weight: 500;
+        letter-spacing: 0.02em;
     }}
-    .link:hover {{ color: var(--nuzu-white); }}
+    .link:hover {{ color: #fff; background: rgba(30,79,216,0.22); border-color: #1E4FD8; }}
     .bookmark-btn {{
         background: none; border: none; cursor: pointer;
         color: var(--nuzu-dim); font-size: 0.85em; padding: 0 4px;
@@ -2812,57 +3001,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .saved-item-remove:hover {{ color: #E74C3C; }}
 
-    /* ── In-App Article Reader ── */
-    .nuzu-reader-overlay {{
-        display: none; position: fixed; inset: 0; z-index: 5000;
-        background: #000; flex-direction: column;
-    }}
-    .nuzu-reader-overlay.open {{ display: flex; }}
-    .nuzu-reader-header {{
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 10px 16px; background: var(--nuzu-navy);
-        border-bottom: 2px solid var(--nuzu-blue); flex-shrink: 0; gap: 12px;
-    }}
-    .nuzu-reader-logo {{
-        font-size: 1em; font-weight: 900; letter-spacing: 0.1em;
-        color: var(--nuzu-white); flex-shrink: 0;
-    }}
-    .nuzu-reader-title {{
-        flex: 1; font-size: 0.82em; color: var(--nuzu-text);
-        overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    }}
-    .nuzu-reader-controls {{ display: flex; gap: 8px; flex-shrink: 0; }}
-    .nuzu-reader-btn {{
-        background: none; border: 1px solid var(--nuzu-border); border-radius: 4px;
-        color: var(--nuzu-light); font-size: 0.78em; padding: 5px 14px;
-        cursor: pointer; transition: border-color 0.15s, color 0.15s; white-space: nowrap;
-    }}
-    .nuzu-reader-btn:hover {{ border-color: var(--nuzu-light); color: var(--nuzu-white); }}
-    .nuzu-reader-btn.primary {{ background: var(--nuzu-blue); border-color: var(--nuzu-blue); color: #fff; }}
-    .nuzu-reader-btn.primary:hover {{ background: var(--nuzu-blue-l); }}
-    .nuzu-reader-iframe-wrap {{ flex: 1; position: relative; }}
-    #nuzu-reader-iframe {{ width: 100%; height: 100%; border: none; display: block; }}
-    .nuzu-reader-loading {{
-        display: none; position: absolute; inset: 0;
-        align-items: center; justify-content: center;
-        flex-direction: column; gap: 16px;
-        background: var(--nuzu-dark); color: var(--nuzu-muted);
-    }}
-    .spinner {{
-        width: 40px; height: 40px; border: 3px solid var(--nuzu-border);
-        border-top-color: var(--nuzu-blue); border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-    }}
-    @keyframes spin {{ to {{ transform: rotate(360deg); }} }}
-    .nuzu-reader-blocked {{
-        display: none; position: absolute; inset: 0;
-        align-items: center; justify-content: center;
-        flex-direction: column; gap: 16px; text-align: center;
-        background: var(--nuzu-dark); padding: 40px;
-    }}
-    .nuzu-reader-blocked.show {{ display: flex; }}
-    .nuzu-reader-blocked h3 {{ color: var(--nuzu-white); font-size: 1.2em; }}
-    .nuzu-reader-blocked p {{ color: var(--nuzu-muted); font-size: 0.88em; line-height: 1.7; }}
+    /* ── In-App Reader removed: articles open in new tab ── */
 
     /* ── Pull-to-Refresh ── */
     .ptr-indicator {{
@@ -2931,6 +3070,19 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode #section-sports   .cluster {{ background: #EEF8F3 !important; border-left-color: #1A7A4A !important; }}
     body.light-mode #section-culture  .cluster {{ background: #F8EEF8 !important; border-left-color: #7B2D8B !important; }}
     body.light-mode .saved-articles-panel {{ background: #F5F8FF !important; border-left-color: var(--nuzu-blue) !important; }}
+    body.light-mode .section-banner {{ background: #f8f9fc !important; }}
+    body.light-mode .us-color-banner       {{ background: linear-gradient(90deg, rgba(192,57,43,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .mideast-color-banner  {{ background: linear-gradient(90deg, rgba(211,84,0,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .world-color-banner    {{ background: linear-gradient(90deg, rgba(26,111,168,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .tech-color-banner     {{ background: linear-gradient(90deg, rgba(30,79,216,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .business-color-banner {{ background: linear-gradient(90deg, rgba(139,105,20,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .sports-color-banner   {{ background: linear-gradient(90deg, rgba(26,122,74,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .culture-color-banner  {{ background: linear-gradient(90deg, rgba(123,45,139,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .local-color-banner    {{ background: linear-gradient(90deg, rgba(46,125,50,0.06) 0%, transparent 55%) !important; }}
+    body.light-mode .nuzu-hero {{ background: linear-gradient(180deg, #e8edf8 0%, #f5f8ff 100%) !important; }}
+    body.light-mode .nuzu-hero-wordmark {{ filter: none; }}
+    body.light-mode .breaking-banner {{ background: #1a1a2e !important; }}
+    body.light-mode .headline:hover {{ background: rgba(30,79,216,0.04) !important; }}
     body.light-mode .float-mode-btn {{ background: #EBF0FA; color: #000; border-color: #D1D9E8; }}
 
     /* ── Float Mode Button ── */
@@ -3364,32 +3516,6 @@ html_parts.append("""
   <div id="wr-grid"></div>
 </div>
 
-<div id="nuzu-reader" class="nuzu-reader-overlay" role="dialog" aria-modal="true" aria-label="NUZU Article Reader">
-  <div class="nuzu-reader-header">
-    <span class="nuzu-reader-logo">NUZU</span>
-    <span class="nuzu-reader-title" id="nuzu-reader-title"></span>
-    <div class="nuzu-reader-controls">
-      <button class="nuzu-reader-btn" id="nuzu-reader-open">Open in Browser</button>
-      <button class="nuzu-reader-btn" id="nuzu-reader-close">&#10005; Close</button>
-    </div>
-  </div>
-  <div class="nuzu-reader-iframe-wrap">
-    <div class="nuzu-reader-loading" id="nuzu-reader-loading">
-      <div class="spinner"></div>
-      <p>Loading article...</p>
-    </div>
-    <div class="nuzu-reader-blocked" id="nuzu-reader-blocked">
-      <div style="font-size:2em;margin-bottom:8px;">&#128240;</div>
-      <h3>Open Full Article</h3>
-      <p>This publisher restricts in-app previewing.<br>Tap below to read the complete article in your browser &mdash; it opens instantly.</p>
-      <button class="nuzu-reader-btn primary" id="nuzu-reader-blocked-open" style="margin-top:8px;padding:12px 28px;font-size:1em;">&#128279; Read Full Article</button>
-      <p style="margin-top:12px;font-size:0.76em;color:var(--nuzu-dim);">Opens in a new tab &bull; Free to read</p>
-    </div>
-    <iframe id="nuzu-reader-iframe"
-      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-      allowfullscreen referrerpolicy="no-referrer"></iframe>
-  </div>
-</div>
 
 <div id="saved-panel" class="saved-articles-panel" role="complementary" aria-label="Saved articles">
   <div class="saved-panel-header">
@@ -3436,6 +3562,7 @@ html_parts.append(f"""
 <nav class="sticky-nav" role="navigation" aria-label="NUZU main navigation">
   <a href="#" class="site-name" aria-label="NUZU News home">NUZU</a>
   <a href="#section-us"       class="nav-link nav-us"       role="menuitem">US</a>
+  <a href="#section-local"     class="nav-link nav-local"     role="menuitem">Local</a>
   <a href="#section-mideast"  class="nav-link nav-mideast"  role="menuitem">Mid East</a>
   <a href="#section-world"    class="nav-link nav-world"    role="menuitem">World</a>
   <a href="#section-tech"     class="nav-link nav-tech"     role="menuitem">Tech</a>
@@ -3447,6 +3574,8 @@ html_parts.append(f"""
   </button>
   <div class="light-toggle-wrap">
     <span class="nav-updated-ago" id="nav-updated-ago"></span>
+    <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size" aria-label="Decrease font size">A-</button>
+    <button class="font-size-btn" id="font-increase-btn" title="Increase font size" aria-label="Increase font size">A+</button>
     <span class="light-toggle-label">Light</span>
     <label class="toggle-switch" title="Toggle light/dark mode">
       <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
@@ -3502,7 +3631,7 @@ if show_breaking_banner:
     banner_json = _json_banner.dumps(banner_data)
     html_parts.append(
         f'<div class="breaking-banner" id="breaking-banner" role="alert" aria-live="polite">'
-        f'<span class="bb-label">&#9679; BREAKING</span>'
+        f'<span class="bb-label"><span class="bb-pulse-dot"></span>BREAKING</span>'
         f'<span class="bb-text" id="bb-text"></span>'
         f'<span class="bb-section-pill" id="bb-section-pill" style="display:none"></span>'
         f'<span class="bb-counter" id="bb-counter"></span>'
@@ -3727,15 +3856,12 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     r_content = render_clusters(_r_clusters) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
     return (
         f'<div id="{section_id}" class="section-wrap">\n'
-        f'<div class="container">\n'
-        f'<div class="column">\n'
-        f'<div class="section-title-row">'
+        f'<div class="section-banner {color_class}-banner">'
+        f'<div class="section-banner-inner">'
         f'<h2 class="section-title {color_class}">{breaking_title}</h2>'
         f'<button class="section-collapse-btn" data-target="{section_id}-cols" '
         f'aria-label="Collapse section" title="Collapse / expand">&#9660;</button>'
-        f'</div>\n'
-        f'</div>\n'
-        f'</div>\n'
+        f'</div></div>\n'
         f'<div id="{section_id}-cols" class="section-columns">\n'
         f'<div class="container">\n'
         f'<div class="column">\n'
@@ -3853,20 +3979,43 @@ SECTION_DATA = [
 print(f"  Section page order (MRO-driven): {[s[0] for s in SECTION_DATA]}")
 
 html_parts.append('<div id="sections-wrapper">\n')
-for i, (sid, sc, bi, ri, bt, rt) in enumerate(SECTION_DATA):
-    html_parts.append(section_block(sid, sc, bi, ri, bt, rt))
-    if i < len(SECTION_DATA) - 1:
-        html_parts.append('<hr class="top-divider">\n')
-    # Insert sponsored block between business and sports
-    if sid == "section-business":
-        html_parts.append(SPONSORED_BLOCK)
-    # Insert mid ad after world section
-    if sid == "section-world":
-        html_parts.append(MID_AD_BLOCK)
+html_parts.append('''
+<div id="section-local" class="section-wrap">
+  <div class="section-banner local-color-banner">
+    <div class="section-banner-inner">
+      <h2 class="section-title" style="color:#2E7D32;font-family:'Inter',Arial,sans-serif;font-size:1em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;">
+        <span class="sec-dot" style="background:#2E7D32;display:inline-block;width:12px;height:12px;border-radius:50%;flex-shrink:0;"></span>
+        LOCAL NEWS &mdash; <span id="local-location-label" style="font-weight:400;letter-spacing:0.06em;">Your Area</span>
+      </h2>
+    </div>
+  </div>
+  <div id="section-local-cols" class="section-columns">
+    <div class="container">
+      <div class="column" id="local-headlines-col">
+        <p style="color:var(--nuzu-dim);font-size:0.88em;line-height:1.9;" id="local-loading-msg">
+          &#127757; Tap below to see news from your city and region.<br><br>
+          <button id="local-enable-btn" style="background:var(--nuzu-blue);color:#fff;border:none;padding:9px 20px;border-radius:4px;cursor:pointer;font-size:0.88em;font-family:'Inter',Arial,sans-serif;font-weight:600;letter-spacing:0.04em;">
+            &#x25B6; Enable Local News
+          </button>
+        </p>
+      </div>
+      <div class="column">
+        <p style="color:var(--nuzu-dim);font-size:0.82em;line-height:1.8;padding-top:8px;">
+          NUZU Local uses your browser&rsquo;s location to show news from your area. Your location never leaves your device.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="top-divider">
+''')
 
-html_parts.append('</div>\n')
 
-# ====================== JAVASCRIPT ======================
+# ====================== FOOTER ======================
+_now_utc = datetime.utcnow()
+_now_pdt = _now_utc + PDT_OFFSET
+update_time = _now_pdt.strftime("%-I:%M %p PDT, %B %-d, %Y")
+
 html_parts.append(f"""
 <script>
 // ── NUZU Feed URLs (hardcoded for reliable restore) ──
@@ -4085,98 +4234,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── In-App Article Reader ──
-(function() {{
-  var overlay   = document.getElementById('nuzu-reader');
-  var iframe    = document.getElementById('nuzu-reader-iframe');
-  var titleEl   = document.getElementById('nuzu-reader-title');
-  var loadingEl = document.getElementById('nuzu-reader-loading');
-  var blockedEl = document.getElementById('nuzu-reader-blocked');
-  var closeBtn  = document.getElementById('nuzu-reader-close');
-  var openBtn   = document.getElementById('nuzu-reader-open');
-  var blockedOpenBtn = document.getElementById('nuzu-reader-blocked-open');
-  var currentUrl = '';
-
-  // Multi-strategy reader: direct → AMP cache → blocked screen
-  var _readerStrategies = [];
-  var _readerStratIdx = 0;
-  var _readerBlockTimer = null;
-
-  function _ampUrl(url) {{
-    return 'https://www.google.com/amp/s/' + url.replace('https://', '').replace('http://', '');
-  }}
-  function _clearReaderTimers() {{
-    if (_readerBlockTimer) {{ clearTimeout(_readerBlockTimer); _readerBlockTimer = null; }}
-    iframe.onload = null; iframe.onerror = null;
-  }}
-  function _tryNextStrategy() {{
-    if (_readerStratIdx >= _readerStrategies.length) {{
-      if (loadingEl) loadingEl.style.display = 'none';
-      if (blockedEl) blockedEl.classList.add('show');
-      return;
-    }}
-    var tryUrl = _readerStrategies[_readerStratIdx];
-    _readerStratIdx++;
-    _clearReaderTimers();
-    if (loadingEl) loadingEl.style.display = 'flex';
-    if (blockedEl) blockedEl.classList.remove('show');
-    iframe.src = 'about:blank';
-    setTimeout(function() {{ iframe.src = tryUrl; }}, 80);
-    _readerBlockTimer = setTimeout(function() {{ _tryNextStrategy(); }}, 5000);
-    iframe.onerror = function() {{ _clearReaderTimers(); _tryNextStrategy(); }};
-    iframe.onload = function() {{
-      _clearReaderTimers();
-      try {{
-        var doc = iframe.contentDocument || iframe.contentWindow.document;
-        if (!doc || !doc.body || doc.body.innerHTML.trim().length < 100) {{
-          _tryNextStrategy(); return;
-        }}
-        if (loadingEl) loadingEl.style.display = 'none';
-      }} catch(e) {{
-        if (loadingEl) loadingEl.style.display = 'none';
-      }}
-    }};
-  }}
-
-  function openReader(url, title) {{
-    currentUrl = url;
-    _readerStratIdx = 0;
-    _clearReaderTimers();
-    _readerStrategies = [ url, _ampUrl(url) ];
-    if (titleEl) titleEl.textContent = title || 'Article';
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    _tryNextStrategy();
-  }}
-
-  function closeReader() {{
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    iframe.src = '';
-    currentUrl = '';
-  }}
-
-  if (closeBtn) closeBtn.addEventListener('click', closeReader);
-  if (openBtn) openBtn.addEventListener('click', function() {{
-    if (currentUrl) window.open(currentUrl, '_blank', 'noopener');
-  }});
-  if (blockedOpenBtn) blockedOpenBtn.addEventListener('click', function() {{
-    if (currentUrl) window.open(currentUrl, '_blank', 'noopener');
-  }});
-  document.addEventListener('keydown', function(e) {{
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeReader();
-  }});
-
-  // Intercept all NUZU article link clicks
-  document.addEventListener('click', function(e) {{
-    var link = e.target.closest('.nuzu-article-link');
-    if (!link) return;
-    e.preventDefault();
-    var url   = link.getAttribute('href') || link.getAttribute('data-link');
-    var title = link.getAttribute('data-title') || '';
-    if (url && url !== '#') openReader(url, title);
-  }});
-}})();
+// ── Article links open in new tab ──
 
 // ── Bookmark / Save Feature ──
 (function() {{
@@ -4215,7 +4273,7 @@ document.addEventListener('DOMContentLoaded', function() {{
         e.preventDefault();
         // Open in reader
         var fakeLink = document.createElement('a');
-        fakeLink.className = 'nuzu-article-link';
+        fakeLink.target = '_blank'; fakeLink.rel = 'noopener noreferrer';
         fakeLink.setAttribute('href', url);
         fakeLink.setAttribute('data-title', saved[url]);
         fakeLink.click();
@@ -4455,26 +4513,33 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Keyboard shortcuts ──
+// ── Keyboard shortcuts & J/K navigation ──
 (function() {{
-  var sections = ['section-us','section-mideast','section-world','section-tech','section-business','section-sports','section-culture'];
+  var sections = ['section-us','section-local','section-mideast','section-world','section-tech','section-business','section-sports','section-culture'];
+  var allHl = [], kbIdx = -1;
+  function refreshHl() {{ allHl = Array.from(document.querySelectorAll('.headline:not(.search-hidden), .cluster:not(.search-hidden)')); }}
+  function setKbFocus(idx) {{
+    allHl.forEach(function(el) {{ el.style.outline = ''; }});
+    if (idx < 0 || idx >= allHl.length) return;
+    var el = allHl[idx];
+    el.style.outline = '2px solid #1E4FD8'; el.style.outlineOffset = '2px'; el.style.borderRadius = '4px';
+    window.scrollTo({{ top: el.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' }});
+  }}
   document.addEventListener('keydown', function(e) {{
     var tag = (document.activeElement.tagName || '').toLowerCase();
     if (tag === 'input' || tag === 'textarea') return;
-    if (e.key === '/') {{
-      e.preventDefault();
-      var inp = document.getElementById('news-search-input');
-      if (inp) inp.focus();
-    }}
+    if (e.key === '/') {{ e.preventDefault(); var inp = document.getElementById('news-search-input'); if (inp) inp.focus(); return; }}
     var num = parseInt(e.key, 10);
-    if (num >= 1 && num <= 7) {{
+    if (num >= 1 && num <= 8) {{
       var sid = sections[num - 1];
       var el = document.getElementById(sid);
-      if (el) {{
-        var top = el.getBoundingClientRect().top + window.pageYOffset - 60;
-        window.scrollTo({{top: top, behavior: 'smooth'}});
-      }}
+      if (el) window.scrollTo({{top: el.getBoundingClientRect().top + window.pageYOffset - 60, behavior: 'smooth'}});
+      return;
     }}
+    if (e.key === 'j' || e.key === 'J') {{ e.preventDefault(); refreshHl(); kbIdx = Math.min(kbIdx+1, allHl.length-1); setKbFocus(kbIdx); return; }}
+    if (e.key === 'k' || e.key === 'K') {{ e.preventDefault(); refreshHl(); kbIdx = Math.max(kbIdx-1, 0); setKbFocus(kbIdx); return; }}
+    if (e.key === 'Enter' && kbIdx >= 0 && allHl[kbIdx]) {{ var lnk = allHl[kbIdx].querySelector('a.link'); if (lnk) window.open(lnk.href,'_blank','noopener'); return; }}
+    if (e.key === 'Escape') {{ allHl.forEach(function(el) {{ el.style.outline=''; }}); kbIdx=-1; }}
   }});
 }})();
 
@@ -4519,7 +4584,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     if (lnk && readLinks.has(lnk)) el.classList.add('seen-item');
   }});
   document.addEventListener('click', function(e) {{
-    var link = e.target.closest('.nuzu-article-link, .ts-link');
+    var link = e.target.closest('a.link, .ts-link');
     if (!link) return;
     var article = link.closest('[data-link]') || link.closest('.top-story-card');
     if (!article) return;
@@ -4580,7 +4645,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   document.addEventListener('click', function(e) {{
     var btn = e.target.closest('.cluster-toggle-btn');
     if (btn) {{ e.stopPropagation(); toggleCluster(btn.getAttribute('data-target')); return; }}
-    if (e.target.closest('.link, .nuzu-article-link, .bookmark-btn')) return;
+    if (e.target.closest('.link, .bookmark-btn')) return;
     var cluster = e.target.closest('.cluster');
     if (!cluster) return;
     var innerBtn = cluster.querySelector('.cluster-toggle-btn');
@@ -4931,14 +4996,102 @@ document.addEventListener('click', function(e) {{
   }}
 }})();
 
+// ── Font size controls ──
+(function() {{
+  var FSKEY='nuzu_font_size', sizes=[13,15,17,19,22], curIdx=1;
+  var incBtn=document.getElementById('font-increase-btn'), decBtn=document.getElementById('font-decrease-btn');
+  function loadSize() {{ try {{ var s=localStorage.getItem(FSKEY); if(s!==null) curIdx=parseInt(s,10); }} catch(e){{}} }}
+  function applySize() {{
+    document.documentElement.style.fontSize=sizes[curIdx]+'px';
+    try {{ localStorage.setItem(FSKEY,curIdx); }} catch(e){{}}
+    if(decBtn) decBtn.disabled=curIdx<=0;
+    if(incBtn) incBtn.disabled=curIdx>=sizes.length-1;
+  }}
+  loadSize(); applySize();
+  if(incBtn) incBtn.addEventListener('click',function(){{ if(curIdx<sizes.length-1){{ curIdx++; applySize(); }} }});
+  if(decBtn) decBtn.addEventListener('click',function(){{ if(curIdx>0){{ curIdx--; applySize(); }} }});
+}})();
+
+// ── Local News Section ──
+(function() {{
+  var enableBtn=document.getElementById('local-enable-btn');
+  var loadingMsg=document.getElementById('local-loading-msg');
+  var col=document.getElementById('local-headlines-col');
+  var locLabel=document.getElementById('local-location-label');
+  var LOC_KEY='nuzu_local_loc';
+  function fetchLocalNews(cityName) {{
+    if(locLabel) locLabel.textContent=cityName||'Your Area';
+    var q=encodeURIComponent((cityName||'local')+' news');
+    var apiUrl='https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent('https://news.google.com/rss/search?q='+q+'+when:1d&hl=en-US&gl=US&ceid=US:en')+'&api_key=&count=20';
+    col.innerHTML='<p style="color:var(--nuzu-dim);font-size:0.85em;">Loading local headlines…</p>';
+    fetch(apiUrl).then(function(r){{ return r.json(); }}).then(function(data) {{
+      var items=data.items||[];
+      if(!items.length) {{ col.innerHTML='<p style="color:var(--nuzu-dim)">No local headlines found. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Try Google News &#8599;</a></p>'; return; }}
+      var html='';
+      items.slice(0,15).forEach(function(item) {{
+        var title=(item.title||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        var link=item.link||'#';
+        var source=(item.author||'').replace(/ - .*/,'').trim();
+        var pubDate=item.pubDate?new Date(item.pubDate).toLocaleTimeString([],{{hour:'2-digit',minute:'2-digit'}}):'';
+        html+='<div class="local-headline"><span class="title">'+title+'</span>'+(pubDate?' <span class="ts-label">'+pubDate+'</span>':'')+(source?' <span class="src-label">&mdash; '+source+'</span>':'')+' <a class="link" href="'+link+'" target="_blank" rel="noopener noreferrer">↗ Read</a></div>';
+      }});
+      col.innerHTML=html;
+    }}).catch(function() {{
+      col.innerHTML='<p style="color:var(--nuzu-dim)">Could not load. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Google News &#8599;</a></p>';
+    }});
+  }}
+  function getCityName(lat,lon,cb) {{
+    fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json')
+      .then(function(r){{ return r.json(); }})
+      .then(function(d) {{ var a=d.address||{{}}; var city=a.city||a.town||a.village||a.county||''; var state=a.state||''; cb(city+(state?', '+state:'')); }})
+      .catch(function(){{ cb(''); }});
+  }}
+  try {{ var saved=localStorage.getItem(LOC_KEY); if(saved) {{ var loc=JSON.parse(saved); if(loadingMsg) loadingMsg.style.display='none'; fetchLocalNews(loc.city); return; }} }} catch(e){{}}
+  if(enableBtn) enableBtn.addEventListener('click',function() {{
+    enableBtn.textContent='Getting location…'; enableBtn.disabled=true;
+    if(!navigator.geolocation) {{ if(loadingMsg) loadingMsg.innerHTML='Geolocation not supported.'; return; }}
+    navigator.geolocation.getCurrentPosition(function(pos) {{
+      var lat=pos.coords.latitude, lon=pos.coords.longitude;
+      getCityName(lat,lon,function(cityName) {{
+        try{{ localStorage.setItem(LOC_KEY,JSON.stringify({{lat:lat,lon:lon,city:cityName}})); }}catch(e){{}}
+        if(loadingMsg) loadingMsg.style.display='none';
+        fetchLocalNews(cityName);
+      }});
+    }},function() {{ if(loadingMsg) loadingMsg.innerHTML='Location access denied. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">View top news &#8599;</a>'; }});
+  }});
+}})();
+
+// ── Progressive section loading ──
+(function() {{
+  if(!window.IntersectionObserver) return;
+  var cols=document.querySelectorAll('.section-columns:not(.collapsed)');
+  cols.forEach(function(el){{ el.classList.add('lazy-pending'); }});
+  var io=new IntersectionObserver(function(entries) {{
+    entries.forEach(function(entry) {{
+      if(entry.isIntersecting) {{ requestAnimationFrame(function(){{ entry.target.classList.remove('lazy-pending'); entry.target.classList.add('lazy-loaded'); }}); io.unobserve(entry.target); }}
+    }});
+  }},{{rootMargin:'120px 0px',threshold:0.01}});
+  cols.forEach(function(el){{ io.observe(el); }});
+}})();
+
+// ── Hero live date ──
+(function() {{
+  var d=new Date();
+  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var dateStr=days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
+  var hero=document.querySelector('.nuzu-hero');
+  if(hero) {{
+    var dateEl=document.createElement('div'); dateEl.className='nuzu-hero-date'; dateEl.textContent=dateStr;
+    var tagline=hero.querySelector('.nuzu-hero-tagline');
+    if(tagline) hero.insertBefore(dateEl,tagline);
+  }}
+}})();
+
+
 }}); // end DOMContentLoaded
 </script>
 """)
-
-# ====================== FOOTER ======================
-_now_utc = datetime.utcnow()
-_now_pdt = _now_utc + PDT_OFFSET
-update_time = _now_pdt.strftime("%-I:%M %p PDT, %B %-d, %Y")
 
 html_parts.append(f"""
 <footer class="site-footer">
