@@ -2248,8 +2248,11 @@ def render_clusters(clusters):
                 f'<span class="cluster-badge">{n_sources} sources</span>'
                 f'<button class="cluster-toggle-btn" data-target="{cluster_id}" aria-label="Expand story coverage" title="Show/hide all coverage">&#9654; Show all coverage</button>'
                 f'</div>\n'
-                + (bias_html + '\n' if bias_html else '')
-                + f'<div class="cluster-lead">'
+            )
+            if bias_html:
+                out += bias_html + '\n'
+            out += (
+                f'<div class="cluster-lead">'
                 f'<span class="title">{display_title}</span>'
                 f' <span class="ts-label">{time_str}</span>'
                 f' <span class="src-label">\u2014 {get_favicon_html(lead_link)}{lead_friendly}</span>'
@@ -4009,6 +4012,19 @@ html_parts.append('''
 </div>
 <hr class="top-divider">
 ''')
+
+for i, (sid, sc, bi, ri, bt, rt) in enumerate(SECTION_DATA):
+    html_parts.append(section_block(sid, sc, bi, ri, bt, rt))
+    if i < len(SECTION_DATA) - 1:
+        html_parts.append('<hr class="top-divider">\n')
+    # Insert sponsored block between business and sports
+    if sid == "section-business":
+        html_parts.append(SPONSORED_BLOCK)
+    # Insert mid ad after world section
+    if sid == "section-world":
+        html_parts.append(MID_AD_BLOCK)
+
+html_parts.append('</div>\n')
 
 
 # ====================== FOOTER ======================
