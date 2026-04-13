@@ -2757,13 +2757,13 @@ html_parts.append(f"""<!DOCTYPE html>
     .section-collapse-btn:hover {{ opacity: 1; }}
 
     /* ── Per-Section Cluster Tints ── */
-    #section-us       .cluster {{ border-left-color: #4a0000; background: #0d0202; }}
-    #section-mideast  .cluster {{ border-left-color: #4a2000; background: #0d0600; }}
-    #section-world    .cluster {{ border-left-color: #0d3040; background: #030e18; }}
-    #section-tech     .cluster {{ border-left-color: #0a2040; background: #030a18; }}
-    #section-business .cluster {{ border-left-color: #3d2d00; background: #120e00; }}
-    #section-sports   .cluster {{ border-left-color: #002a18; background: #000d07; }}
-    #section-culture  .cluster {{ border-left-color: #300030; background: #0d000d; }}
+    #section-us       .cluster {{ border-left-color: #C0392B; background: #160404; }}
+    #section-mideast  .cluster {{ border-left-color: #D35400; background: #160800; }}
+    #section-world    .cluster {{ border-left-color: #1A6FA8; background: #030E1C; }}
+    #section-tech     .cluster {{ border-left-color: #1E4FD8; background: #030A1C; }}
+    #section-business .cluster {{ border-left-color: #A07820; background: #120F00; }}
+    #section-sports   .cluster {{ border-left-color: #1A7A4A; background: #020F06; }}
+    #section-culture  .cluster {{ border-left-color: #9B3DB5; background: #120012; }}
 
     /* ── Headlines ── */
     .headline {{
@@ -2783,10 +2783,12 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* ── Clusters ── */
     .cluster {{
-        margin-bottom: 16px; padding: 10px 12px 4px 12px;
-        border-left: 3px solid var(--nuzu-border); border-bottom: 1px solid var(--nuzu-border);
+        margin-bottom: 16px; padding: 10px 12px 4px 14px;
+        border-left: 4px solid var(--nuzu-border);
+        border-top: 1px solid rgba(217,119,6,0.40);
+        border-bottom: 1px solid var(--nuzu-border);
         background: var(--nuzu-card); cursor: pointer;
-        box-shadow: inset 3px 0 0 rgba(217,119,6,0.18);
+        box-shadow: inset 4px 0 0 rgba(217,119,6,0.22);
     }}
     .cluster-header {{ margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }}
     .cluster-badge {{
@@ -2939,13 +2941,13 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .nuzu-hero-wordmark {{ -webkit-text-fill-color: transparent; }}
     body.light-mode .title {{ color: #000 !important; }}
     body.light-mode .top-story-card {{ background: #EBF0FA !important; }}
-    body.light-mode #section-us       .cluster {{ background: #FFF0F0 !important; border-left-color: #C0392B !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
-    body.light-mode #section-mideast  .cluster {{ background: #FFF5EE !important; border-left-color: #D35400 !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
-    body.light-mode #section-world    .cluster {{ background: #EEF4FB !important; border-left-color: #1A6FA8 !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
-    body.light-mode #section-tech     .cluster {{ background: #EEF4FF !important; border-left-color: #1E4FD8 !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
-    body.light-mode #section-business .cluster {{ background: #FBF8EE !important; border-left-color: #8B6914 !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
-    body.light-mode #section-sports   .cluster {{ background: #EEF8F3 !important; border-left-color: #1A7A4A !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
-    body.light-mode #section-culture  .cluster {{ background: #F8EEF8 !important; border-left-color: #7B2D8B !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
+    body.light-mode #section-us       .cluster {{ background: #FFF0F0 !important; border-left-color: #C0392B !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
+    body.light-mode #section-mideast  .cluster {{ background: #FFF5EE !important; border-left-color: #D35400 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
+    body.light-mode #section-world    .cluster {{ background: #EEF4FB !important; border-left-color: #1A6FA8 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
+    body.light-mode #section-tech     .cluster {{ background: #EEF4FF !important; border-left-color: #1E4FD8 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
+    body.light-mode #section-business .cluster {{ background: #FBF8EE !important; border-left-color: #A07820 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
+    body.light-mode #section-sports   .cluster {{ background: #EEF8F3 !important; border-left-color: #1A7A4A !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
+    body.light-mode #section-culture  .cluster {{ background: #F8EEF8 !important; border-left-color: #9B3DB5 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
     body.light-mode .cluster-badge {{ background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%) !important; color: #fff !important; border-color: rgba(180,83,9,0.5) !important; }}
     body.light-mode .saved-articles-panel {{ background: #F5F8FF !important; border-left-color: var(--nuzu-blue) !important; }}
     body.light-mode .section-banner {{ background: #f8f9fc !important; }}
