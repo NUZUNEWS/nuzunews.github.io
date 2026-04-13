@@ -2777,7 +2777,8 @@ html_parts.append(f"""<!DOCTYPE html>
     .ts-label {{ color: var(--nuzu-dim); font-size: 0.78em; margin-left: 4px; }}
     .src-label {{ color: var(--nuzu-muted); font-size: 0.85em; }}
 
-    .new-dot {{ color: var(--nuzu-white); font-size: 0.55em; vertical-align: middle; margin-right: 2px; }}
+    .new-dot {{ color: #EF4444; font-size: 0.65em; vertical-align: middle; margin-right: 3px; animation: hot-pulse 1.3s ease-in-out infinite; }}
+    @keyframes hot-pulse {{ 0%,100% {{ opacity:1; transform:scale(1); }} 50% {{ opacity:0.2; transform:scale(0.55); }} }}
     .trust-badge {{ color: #4CAF50; font-size: 0.65em; vertical-align: middle; margin-right: 2px; }}
 
     /* ── Clusters ── */
@@ -2785,12 +2786,17 @@ html_parts.append(f"""<!DOCTYPE html>
         margin-bottom: 16px; padding: 10px 12px 4px 12px;
         border-left: 3px solid var(--nuzu-border); border-bottom: 1px solid var(--nuzu-border);
         background: var(--nuzu-card); cursor: pointer;
+        box-shadow: inset 3px 0 0 rgba(217,119,6,0.18);
     }}
     .cluster-header {{ margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }}
     .cluster-badge {{
-        background: var(--nuzu-border); color: var(--nuzu-text);
-        font-size: 0.72em; padding: 2px 7px; border-radius: 10px;
-        font-weight: bold; letter-spacing: 0.04em; flex-shrink: 0;
+        background: linear-gradient(135deg, #78350F 0%, #D97706 100%);
+        color: #FFF7ED;
+        font-size: 0.72em; padding: 2px 9px; border-radius: 10px;
+        font-weight: bold; letter-spacing: 0.05em; flex-shrink: 0;
+        border: 1px solid rgba(217,119,6,0.55);
+        box-shadow: 0 1px 5px rgba(217,119,6,0.30);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }}
     .cluster-lead {{ margin-bottom: 6px; }}
     .cluster-items-wrap {{ transition: none; }}
@@ -2933,13 +2939,14 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .nuzu-hero-wordmark {{ -webkit-text-fill-color: transparent; }}
     body.light-mode .title {{ color: #000 !important; }}
     body.light-mode .top-story-card {{ background: #EBF0FA !important; }}
-    body.light-mode #section-us       .cluster {{ background: #FFF0F0 !important; border-left-color: #C0392B !important; }}
-    body.light-mode #section-mideast  .cluster {{ background: #FFF5EE !important; border-left-color: #D35400 !important; }}
-    body.light-mode #section-world    .cluster {{ background: #EEF4FB !important; border-left-color: #1A6FA8 !important; }}
-    body.light-mode #section-tech     .cluster {{ background: #EEF4FF !important; border-left-color: #1E4FD8 !important; }}
-    body.light-mode #section-business .cluster {{ background: #FBF8EE !important; border-left-color: #8B6914 !important; }}
-    body.light-mode #section-sports   .cluster {{ background: #EEF8F3 !important; border-left-color: #1A7A4A !important; }}
-    body.light-mode #section-culture  .cluster {{ background: #F8EEF8 !important; border-left-color: #7B2D8B !important; }}
+    body.light-mode #section-us       .cluster {{ background: #FFF0F0 !important; border-left-color: #C0392B !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
+    body.light-mode #section-mideast  .cluster {{ background: #FFF5EE !important; border-left-color: #D35400 !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
+    body.light-mode #section-world    .cluster {{ background: #EEF4FB !important; border-left-color: #1A6FA8 !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
+    body.light-mode #section-tech     .cluster {{ background: #EEF4FF !important; border-left-color: #1E4FD8 !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
+    body.light-mode #section-business .cluster {{ background: #FBF8EE !important; border-left-color: #8B6914 !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
+    body.light-mode #section-sports   .cluster {{ background: #EEF8F3 !important; border-left-color: #1A7A4A !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
+    body.light-mode #section-culture  .cluster {{ background: #F8EEF8 !important; border-left-color: #7B2D8B !important; box-shadow: inset 3px 0 0 rgba(217,119,6,0.12) !important; }}
+    body.light-mode .cluster-badge {{ background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%) !important; color: #fff !important; border-color: rgba(180,83,9,0.5) !important; }}
     body.light-mode .saved-articles-panel {{ background: #F5F8FF !important; border-left-color: var(--nuzu-blue) !important; }}
     body.light-mode .section-banner {{ background: #f8f9fc !important; }}
     body.light-mode .us-color-banner       {{ background: linear-gradient(90deg, rgba(192,57,43,0.10) 0%, transparent 55%) !important; }}
@@ -3746,16 +3753,35 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     _sid = section_id.replace("section-", "")
     _combined_clusters = SECTION_CLUSTERS[_sid]["combined"]
     now = time.time()
-    _breaking_threshold = breaking_threshold
     _b_clusters = []
     _r_clusters = []
     for _cl in _combined_clusters:
         _cl.sort(key=lambda x: x[0], reverse=True)
         _lead_age = now - _cl[0][0]
-        if _lead_age <= _breaking_threshold:
+        if _lead_age <= breaking_threshold:
             _b_clusters.append(_cl)
         else:
             _r_clusters.append(_cl)
+
+    # ── Balanced column equalizer ────────────────────────────────────────────
+    # Sort each bucket newest-first so overflow is always the oldest items
+    _b_clusters.sort(key=lambda cl: cl[0][0], reverse=True)
+    _r_clusters.sort(key=lambda cl: cl[0][0], reverse=True)
+    total_cls = len(_b_clusters) + len(_r_clusters)
+    # Each column targets ~half the available clusters (floor: 5, cap: 35)
+    col_cap = min(35, max(5, (total_cls + 1) // 2))
+    if len(_b_clusters) > col_cap:
+        # Oldest "breaking" clusters overflow into daily so both columns fill evenly
+        _r_clusters = _b_clusters[col_cap:] + _r_clusters
+        _b_clusters = _b_clusters[:col_cap]
+        _r_clusters.sort(key=lambda cl: cl[0][0], reverse=True)
+    elif len(_b_clusters) < max(3, col_cap // 4) and len(_r_clusters) > col_cap // 2:
+        # Breaking is very thin — borrow newest daily clusters to pad it
+        borrow = min(col_cap // 4, len(_r_clusters))
+        _b_clusters.extend(_r_clusters[:borrow])
+        _r_clusters = _r_clusters[borrow:]
+    # ── End balanced split ───────────────────────────────────────────────────
+
     _b_items = [item for cl in _b_clusters for item in cl]
     _r_items = [item for cl in _r_clusters for item in cl]
     b_summary = source_summary(_b_items) if _b_items else ''
