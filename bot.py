@@ -3832,7 +3832,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
 '''
         
-        </style>
+</style>
 </head>
 <body>
 """)
