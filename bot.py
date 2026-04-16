@@ -4450,7 +4450,7 @@ var WR_FEEDS = [
 var IS_MOBILE = window.innerWidth <= 900;
 var players = [];
 
-// ── Load YT API desktop only ──
+// - Load YT API desktop only -
 if (!IS_MOBILE) {{
   document.querySelectorAll('.youtube-inset iframe[data-src]').forEach(function(iframe) {{
     iframe.src = iframe.getAttribute('data-src');
