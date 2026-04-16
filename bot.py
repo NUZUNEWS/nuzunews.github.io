@@ -3830,12 +3830,12 @@ html_parts.append(f"""<!DOCTYPE html>
         min-width: 60px;
         text-align: center;
     }}
-'''
-        
-</style>
+    </style>
 </head>
 <body>
 """)
+
+html_parts.append("""
 
 html_parts.append("""
 <div id="wr-overlay" role="dialog" aria-modal="true" aria-label="NUZU Waiting Room">
