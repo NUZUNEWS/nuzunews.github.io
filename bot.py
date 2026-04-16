@@ -3862,7 +3862,7 @@ html_parts.append("""
 
 <div class="ptr-indicator" id="ptr-indicator">&#8635; Release to refresh</div>
 
-<!-- ── Mobile Bottom Navigation Bar ── -->
+<!-- Mobile Bottom Navigation Bar -->
 <nav class="nuzu-bottom-nav" role="navigation" aria-label="NUZU bottom navigation">
   <a href="#section-us" class="nuzu-bottom-nav-item" data-section="section-us" aria-label="US News">
     <span class="bnav-icon">&#127482;&#127480;</span>
