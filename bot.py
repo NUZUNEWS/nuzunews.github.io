@@ -1665,13 +1665,13 @@ JUNK_SOURCE_SUFFIXES = [
     " - washington post"," - npr"," - pbs newshour"," - cnbc"," - forbes",
     " - usa today"," - the wrap"," - variety"," - deadline"," - vulture",
     " - rolling stone"," - pitchfork"," - espn"," - si.com"," - the ringer",
-    " — the atlantic"," — the guardian"," — the economist"," — the hill",
-    " — bloomberg"," — reuters"," — politico"," — axios"," — cnbc",
-    " — foreign affairs"," — foreign policy"," — the new yorker",
+    " - the atlantic"," - the guardian"," - the economist"," - the hill",
+    " - bloomberg"," - reuters"," - politico"," - axios"," - cnbc",
+    " - foreign affairs"," - foreign policy"," - the new yorker",
     " - abc news"," - cbs news"," - nbc news"," - fox news"," - newsweek",
-    " — abc news"," — cbs news"," — nbc news"," — fox news"," — newsweek",
-    " - time magazine"," - time"," — time magazine"," — time",
-    " - al jazeera"," — al jazeera"," - bbc sport"," — bbc sport",
+    " - abc news"," - cbs news"," - nbc news"," - fox news"," - newsweek",
+    " - time magazine"," - time"," - time magazine"," - time",
+    " - al jazeera"," - al jazeera"," - bbc sport"," - bbc sport",
 ]
 
 def _is_junk_title(raw_title):
@@ -1957,7 +1957,7 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                 feed = feedparser.parse(response.read().decode('utf-8', errors='ignore'))
             if feed.bozo:
                 break
-            print(f"  {source_name} — {len(feed.entries)} entries")
+            print(f"  {source_name} - {len(feed.entries)} entries")
             for entry in feed.entries:
                 if count >= 5:
                     break
@@ -2050,7 +2050,7 @@ with ThreadPoolExecutor(max_workers=7) as _sec_executor:
         _sec_name = _sec_futures[_fut]
         try:
             _section_results[_sec_name] = _fut.result()
-            print(f"  Section '{_sec_name}' done — {len(_section_results[_sec_name])} matches")
+            print(f"  Section '{_sec_name}' done - {len(_section_results[_sec_name])} matches")
         except Exception as _e:
             print(f"  Section '{_sec_name}' failed: {_e}")
             _section_results[_sec_name] = []
@@ -2321,7 +2321,7 @@ def render_horoscope_section():
             f'</div>\\n'
         )
  
-    updated_label = f' <span class="horo-updated">— {updated}</span>' if updated else ''
+    updated_label = f' <span class="horo-updated">- {updated}</span>' if updated else ''
  
     return (
         f'<div id="section-horoscopes" class="section-wrap">\\n'
@@ -2364,8 +2364,8 @@ def render_comic_section():
     import re as _re
     clean_desc = _re.sub(r'<[^>]+>', '', raw_desc).strip()
  
-    # Parse title parts: "Classic PD Comic — Series — Strip"
-    parts = [p.strip() for p in raw_title.split('—')]
+    # Parse title parts: "Classic PD Comic - Series - Strip"
+    parts = [p.strip() for p in raw_title.split('-')]
     if len(parts) >= 3:
         series_name   = parts[1]
         display_title = parts[2]
@@ -2410,7 +2410,7 @@ def render_comic_section():
         f'</div>\\n'
         f'<div class="comic-attribution">'
         f'All comics from <a href="https://comicbookplus.com" target="_blank" rel="noopener noreferrer">'
-        f'ComicBookPlus.com</a> — a free archive of public-domain print history. '
+        f'ComicBookPlus.com</a> - a free archive of public-domain print history. '
         f'A different classic every day, cycling through 100+ series.'
         f'</div>\\n'
         f'</div>\\n'
@@ -3467,7 +3467,7 @@ html_parts.append(f"""<!DOCTYPE html>
     @supports (display: grid) {{
         .share-btn {{ display: inline; }}
     }}
-    /* Only show natively if Web Share API is available —
+    /* Only show natively if Web Share API is available -
        JS will add class 'share-api-available' to body */
     body:not(.share-api-available) .share-btn {{ display: none !important; }}
 
@@ -3822,7 +3822,7 @@ html_parts.append(f"""<!DOCTYPE html>
     .youtube-inset:hover .feed-country-label {{ opacity: 0.35; }}
     @media (max-width: 900px) {{ .feed-country-label {{ display: none !important; }} }}
  
-    /* Waiting-room cell number now repurposed as country name — styled wider */
+    /* Waiting-room cell number now repurposed as country name - styled wider */
     #wr-grid .wr-cell-num {{
         font-size: 0.66em;
         letter-spacing: 0.06em;
@@ -4215,7 +4215,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         _b_clusters = _b_clusters[:col_cap]
         _r_clusters.sort(key=lambda cl: cl[0][0], reverse=True)
     elif len(_b_clusters) < max(3, col_cap // 4) and len(_r_clusters) > col_cap // 2:
-        # Breaking is very thin — borrow newest daily clusters to pad it
+        # Breaking is very thin - borrow newest daily clusters to pad it
         borrow = min(col_cap // 4, len(_r_clusters))
         _b_clusters.extend(_r_clusters[:borrow])
         _r_clusters = _r_clusters[borrow:]
@@ -5321,7 +5321,7 @@ document.addEventListener('click', function(e) {{
     setTimeout(function() {{
       if (window.matchMedia('(display-mode: standalone)').matches ||
           window.matchMedia('(display-mode: minimal-ui)').matches) {{
-        // TWA / installed PWA — show native prompt if available
+        // TWA / installed PWA - show native prompt if available
         if (typeof digitalGoods !== 'undefined' || window.Android) return; // handled natively
       }}
       var toast = document.createElement('div');
@@ -5851,7 +5851,7 @@ try:
     manifest = {
         "name": "NUZU News",
         "short_name": "NUZU",
-        "description": "Real News in Real Time — breaking headlines from 200+ trusted sources.",
+        "description": "Real News in Real Time - breaking headlines from 200+ trusted sources.",
         "start_url": "/",
         "scope": "/",
         "display": "standalone",
@@ -5879,9 +5879,9 @@ try:
             {"name": "Breaking News", "short_name": "Breaking","url": "/?section=mideast&source=shortcut", "description": "Middle East and breaking coverage",        "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
         ],
         "screenshots": [
-            {"src": "screenshots/phone-1.png",  "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "NUZU News — Breaking headlines"},
-            {"src": "screenshots/phone-2.png",  "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "NUZU News — Middle East coverage"},
-            {"src": "screenshots/tablet-1.png", "sizes": "1600x2560", "type": "image/png", "form_factor": "wide",   "label": "NUZU News — Full desktop view"},
+            {"src": "screenshots/phone-1.png",  "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "NUZU News - Breaking headlines"},
+            {"src": "screenshots/phone-2.png",  "sizes": "1080x1920", "type": "image/png", "form_factor": "narrow", "label": "NUZU News - Middle East coverage"},
+            {"src": "screenshots/tablet-1.png", "sizes": "1600x2560", "type": "image/png", "form_factor": "wide",   "label": "NUZU News - Full desktop view"},
         ],
         "id": "/",
         "display_override": ["standalone", "minimal-ui", "browser"],
@@ -5899,7 +5899,7 @@ try:
 except Exception as e:
     print(f"WARNING: manifest.json not saved: {str(e)}")
 
-# Generate service worker (sw.js) v2.0 — offline, push, background sync
+# Generate service worker (sw.js) v2.0 - offline, push, background sync
 SW_FILE = os.path.join(CURRENT_DIR, "sw.js")
 try:
     sw_content = """// NUZU News Service Worker v2.0
