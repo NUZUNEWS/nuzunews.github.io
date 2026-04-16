@@ -2418,7 +2418,6 @@ def render_comic_section():
         f'</div>\\n'
         f'</div>\\n'
     )
-'''
 
 # ====================== CANONICAL CLUSTERS ======================
 print("Building canonical cluster sets...")
@@ -4123,7 +4122,7 @@ for count, word in trending_topics:
         f'</a>\n'
     )
 
-ts_html = f"""<div class="top-stories-strip">
+ts_html = f'''<div class="top-stories-strip">
   <p class="top-stories-title">&#9650; Most Reported On</p>
   <div class="top-stories-2col">
     <div class="ts-col">{col1_html}</div>
@@ -4181,7 +4180,7 @@ ts_html += '''<!-- VIDEO BANNER desktop only -->
       <span class="feed-country-label">Middle East</span>
     </div>
   </div>
-</div>\\n"""
+</div>\\n
 '''
 
 html_parts.append(ts_html)
