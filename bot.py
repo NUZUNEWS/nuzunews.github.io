@@ -3834,7 +3834,7 @@ html_parts.append(f"""<!DOCTYPE html>
 <body>
 """)
 
-html_parts.append("""
+html_parts.append(f"""
 
 html_parts.append("""
 <div id="wr-overlay" role="dialog" aria-modal="true" aria-label="NUZU Waiting Room">
