@@ -5460,8 +5460,8 @@ document.addEventListener('click', function(e) {{
     // Build search query: prefer state-level for broader coverage
     var locationName = city ? city + (state ? ', ' + state : '') : (state || 'Your Area');
     var query = state || city || 'local';
-    // Use three-week window (when:21d)
-    var rssUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query + ' news') + '+when:21d&hl=en-US&gl=US&ceid=US:en';
+    // Use three-week window (when:21 days)
+    var rssUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query + ' news') + '+when:21 days&hl=en-US&gl=US&ceid=US:en';
     var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl) + '&count=15';
 
     col.innerHTML = '<p style="color:var(--nuzu-dim);font-size:0.85em;">Loading regional headlines…</p>';
@@ -5472,7 +5472,7 @@ document.addEventListener('click', function(e) {{
       .catch(function() {{
         // Fallback: try city only
         if (city && city !== query) {{
-          var fallbackUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://news.google.com/rss/search?q=' + encodeURIComponent(city + ' news') + '+when:21d&hl=en-US&gl=US&ceid=US:en') + '&count=15';
+          var fallbackUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://news.google.com/rss/search?q=' + encodeURIComponent(city + ' news') + '+when:21 days&hl=en-US&gl=US&ceid=US:en') + '&count=15';
           fetch(fallbackUrl).then(function(r){{ return r.json(); }}).then(function(d){{ renderItems(d.items||[], locationName); }}).catch(function(){{
             col.innerHTML = '<p style="color:var(--nuzu-dim)">Could not load. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Google News &#8599;</a></p>';
           }});
