@@ -3832,7 +3832,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
 '''
         
-</style>
+/style
 </head>
 <body>
 """)
@@ -5335,7 +5335,7 @@ document.addEventListener('click', function(e) {{
         'text-align:center','max-width:300px','width:90%','animation:slideUp 0.3s ease'
       ].join(';');
       toast.innerHTML = [
-        '<style>@keyframes slideUp{{from{{opacity:0;transform:translateX(-50%) translateY(20px)}}to{{opacity:1;transform:translateX(-50%) translateY(0)}}}}</style>',
+        '<style>@keyframes slideUp{{from{{opacity:0;transform:translateX(-50%) translateY(20px)}}to{{opacity:1;transform:translateX(-50%) translateY(0)}}}}/style',
         '<p style="color:#fff;font-weight:bold;margin-bottom:6px;font-size:1em">Enjoying NUZU? &#11088;</p>',
         '<p style="color:#5577AA;font-size:0.82em;margin-bottom:14px;line-height:1.5">A quick rating helps us reach more readers. Takes 5 seconds.</p>',
         '<div style="display:flex;gap:10px;justify-content:center">',
