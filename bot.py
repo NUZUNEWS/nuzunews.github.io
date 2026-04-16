@@ -6038,12 +6038,19 @@ self.addEventListener('periodicsync', event => {
 self.addEventListener('message', event => {
   if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
 });
-""";
-    with open(SW_FILE, "w", encoding="utf-8") as sf:
-        sf.write(sw_content)
-    print(f"SUCCESS: sw.js v2.0 saved")
+    """;
+
+    # Final HTML write (safe fallback)
+    html = "".join(html_parts)
+    with open(INDEX_HTML, "w", encoding="utf-8", errors="replace") as f:
+        f.write(html)
+
+    print("✅ index.html generated successfully")
+    print(f"   Size: {len(html):,} characters")
+
 except Exception as e:
-    print(f"WARNING: sw.js not saved: {str(e)}")
+    print(f"❌ Error building HTML: {e}")
+    raise
 
 print("\nNUZU bot finished successfully.")
 print("Files saved to current directory.")
