@@ -2264,7 +2264,7 @@ def source_summary_from_clusters(clusters):
     sources = set(get_friendly_source(it[2]) for it in all_items)
     return f'<p class="src-summary">{len(all_items)} headlines \u00b7 {len(sources)} sources</p>\n'
 
-# ── Horoscope section renderer ─────────────────────────────────────
+# - Horoscope section renderer ------------------─
 def render_horoscope_section():
     """Read horoscopes.json and return full HTML for the daily horoscope section."""
     import json, os
@@ -2342,7 +2342,7 @@ def render_horoscope_section():
         f'</div>\\n'
     )
     
-# ── Comic section renderer ──────────────────────────────────────────
+# - Comic section renderer ---------------------
 def render_comic_section():
     """Read comics.rss and return full HTML for the daily classic comic section."""
     import feedparser, os
@@ -2491,7 +2491,7 @@ def build_trending_topics(max_topics=10):
 
 trending_topics = build_trending_topics()
 
-# ── Section color palette ──
+# - Section color palette -
 SECTION_COLORS = {
     "us":       "#C0392B",
     "mideast":  "#D35400",
@@ -2502,7 +2502,7 @@ SECTION_COLORS = {
     "culture":  "#7B2D8B",
 }
 
-# ── Breaking banner setup ──
+# - Breaking banner setup -
 _now = time.time()
 hot_items = sorted(
     [it for it in (us_breaking + middle_breaking + world_breaking +
@@ -2535,7 +2535,7 @@ html_parts.append(f"""<!DOCTYPE html>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-    /* ── CSS Custom Properties (Design Tokens) ── */
+    /* - CSS Custom Properties (Design Tokens) - */
     :root {{
         --nuzu-navy:    #000000;
         --nuzu-dark:    #020912;
@@ -2551,7 +2551,7 @@ html_parts.append(f"""<!DOCTYPE html>
         --nuzu-glow:    rgba(30,79,216,0.07);
     }}
 
-    /* ── Reset & Base ── */
+    /* - Reset & Base - */
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
     html {{ scroll-behavior: smooth; }}
     body {{
@@ -2564,7 +2564,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     body.large-text {{ font-size: 19px; }}
 
-    /* ── Sticky Nav ── */
+    /* - Sticky Nav - */
     .sticky-nav {{
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
         background: var(--nuzu-navy);
@@ -2597,7 +2597,7 @@ html_parts.append(f"""<!DOCTYPE html>
     .sticky-nav a.nav-culture  {{ border-left-color: {SECTION_COLORS["culture"]}; }}
     .sticky-nav a.nav-local    {{ border-left-color: #2E7D32; }}
 
-    /* ── Saved Articles Nav Button ── */
+    /* - Saved Articles Nav Button - */
     .saved-nav-btn {{
         background: none; border: 1px solid var(--nuzu-border);
         border-radius: 20px; color: var(--nuzu-light);
@@ -2613,9 +2613,9 @@ html_parts.append(f"""<!DOCTYPE html>
         border-radius: 8px; margin-left: 4px; min-width: 16px; text-align: center;
     }}
 
-    /* ── Light/Dark Toggle ── */
+    /* - Light/Dark Toggle - */
 
-    /* ── Font Size Buttons ── */
+    /* - Font Size Buttons - */
     .font-size-btn {{
         background: none; border: 1px solid var(--nuzu-border);
         border-radius: 4px; color: var(--nuzu-muted);
@@ -2649,7 +2649,7 @@ html_parts.append(f"""<!DOCTYPE html>
         transform: translateX(16px); background: #000000;
     }}
 
-    /* ── Video Toggle ── */
+    /* - Video Toggle - */
     .video-toggle-wrap {{
         display: flex; align-items: center; gap: 7px;
         margin-left: 8px; flex-shrink: 0; padding-left: 10px;
@@ -2661,7 +2661,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     @media (max-width: 900px) {{ .video-toggle-wrap {{ display: none !important; }} }}
 
-    /* ── Breaking Banner ── */
+    /* - Breaking Banner - */
     .breaking-banner {{
         background: #000;
         border-bottom: 1px solid #0F1E35;
@@ -2710,7 +2710,7 @@ html_parts.append(f"""<!DOCTYPE html>
         to   {{ opacity: 1; transform: translateX(0); }}
     }}
 
-    /* ── Hero Masthead ── */
+    /* - Hero Masthead - */
     .nuzu-hero {{
         text-align: center; padding: 10px 20px 8px;
         background: linear-gradient(180deg, #000000 0%, #07101E 100%);
@@ -2749,7 +2749,7 @@ html_parts.append(f"""<!DOCTYPE html>
         .nuzu-hero-date {{ display: none; }}
     }}
 
-    /* ── Video Banner ── */
+    /* - Video Banner - */
     .banner {{
         background: #000; width: 100%; overflow: hidden;
     }}
@@ -2765,7 +2765,7 @@ html_parts.append(f"""<!DOCTYPE html>
         outline: 3px solid var(--nuzu-blue); outline-offset: 2px; border-radius: 3px;
     }}
 
-    /* ── Top Stories / MRO Strip ── */
+    /* - Top Stories / MRO Strip - */
     .top-stories-strip {{
         max-width: 1400px; margin: 0 auto 4px auto; padding: 0 20px;
     }}
@@ -2809,7 +2809,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .mro-jump {{ color: var(--nuzu-dim); font-size: 0.78em; margin-left: 6px; cursor: pointer; }}
 
-    /* ── Search Bar ── */
+    /* - Search Bar - */
     .search-bar-wrap {{
         max-width: 1400px; margin: 0 auto 4px auto; padding: 12px 20px;
         background: var(--nuzu-card); border-top: 1px solid var(--nuzu-border);
@@ -2832,7 +2832,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .search-bar-wrap button:hover {{ background: var(--nuzu-blue-l); }}
 
-            /* ── Section Layout ── */
+            /* - Section Layout - */
     .container {{
         display: flex; flex-wrap: wrap; gap: 30px;
         max-width: 1400px; margin: 0 auto; padding: 0 20px;
@@ -2845,7 +2845,7 @@ html_parts.append(f"""<!DOCTYPE html>
         background: var(--nuzu-border); margin: 8px 0;
     }}
     .src-summary {{ color: var(--nuzu-dim); font-size: 0.78em; margin-bottom: 12px; }}
-    /* ── Section Banners ── */
+    /* - Section Banners - */
     .section-banner {{
         width: 100%; border-bottom: 1px solid var(--nuzu-border);
     }}
@@ -2863,7 +2863,7 @@ html_parts.append(f"""<!DOCTYPE html>
     .local-color-banner    {{ border-left: 4px solid #2E7D32; background: linear-gradient(90deg, rgba(46,125,50,0.09) 0%, transparent 55%); }}
 
 
-    /* ── Section Titles ── */
+    /* - Section Titles - */
     .section-title {{
         font-size: 1.0em; margin: 0 0 0 0; font-weight: 700;
         font-family: 'Inter', Arial, sans-serif;
@@ -2885,14 +2885,14 @@ html_parts.append(f"""<!DOCTYPE html>
     .section-title-row .section-title {{ margin-bottom: 0; }}
     .section-columns {{ transition: none; }}
 
-    /* ── Local News Section ── */
+    /* - Local News Section - */
     .local-color-banner {{ border-left: 4px solid #2E7D32; background: linear-gradient(90deg, rgba(46,125,50,0.09) 0%, transparent 55%); }}
     .local-headline {{ margin-bottom: 12px; padding: 8px 10px; border-bottom: 1px solid var(--nuzu-border); border-radius: 4px; transition: background 0.15s; }}
     .local-headline:hover {{ background: rgba(46,125,50,0.06); }}
     .local-headline .title {{ color: var(--nuzu-white); font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.45; }}
     #section-local-cols .cluster {{ border-left-color: #1B5E20; background: #020d04; }}
 
-    /* ── Progressive Loading ── */
+    /* - Progressive Loading - */
     .section-columns.lazy-pending {{
         opacity: 0; transform: translateY(14px);
         transition: opacity 0.45s ease, transform 0.45s ease;
@@ -2908,7 +2908,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .section-collapse-btn:hover {{ opacity: 1; }}
 
-    /* ── Per-Section Cluster Tints ── */
+    /* - Per-Section Cluster Tints - */
     #section-us       .cluster {{ border-left-color: #C0392B; background: #160404; }}
     #section-mideast  .cluster {{ border-left-color: #D35400; background: #160800; }}
     #section-world    .cluster {{ border-left-color: #1A6FA8; background: #030E1C; }}
@@ -2917,7 +2917,7 @@ html_parts.append(f"""<!DOCTYPE html>
     #section-sports   .cluster {{ border-left-color: #1A7A4A; background: #020F06; }}
     #section-culture  .cluster {{ border-left-color: #9B3DB5; background: #120012; }}
 
-    /* ── Headlines ── */
+    /* - Headlines - */
     .headline {{
         margin-bottom: 10px; padding: 8px 10px 10px 10px;
         border-bottom: 1px solid var(--nuzu-border); line-height: 1.5;
@@ -2933,7 +2933,7 @@ html_parts.append(f"""<!DOCTYPE html>
     @keyframes hot-pulse {{ 0%,100% {{ opacity:1; transform:scale(1); }} 50% {{ opacity:0.2; transform:scale(0.55); }} }}
     .trust-badge {{ color: #4CAF50; font-size: 0.65em; vertical-align: middle; margin-right: 2px; }}
 
-    /* ── Clusters ── */
+    /* - Clusters - */
     .cluster {{
         margin-bottom: 16px; padding: 10px 12px 4px 14px;
         border-left: 4px solid var(--nuzu-border);
@@ -2976,7 +2976,7 @@ html_parts.append(f"""<!DOCTYPE html>
 
     .cluster-item.seen-item {{ opacity: 0.55; }}
 
-    /* ── Article Links & Bookmark ── */
+    /* - Article Links & Bookmark - */
     .link {{
         color: #4A7FD8; text-decoration: none;
         font-size: 0.76em; margin-left: 6px; cursor: pointer;
@@ -2995,7 +2995,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .bookmark-btn:hover, .bookmark-btn.saved {{ color: #f0c040; }}
 
-    /* ── Saved Articles Panel ── */
+    /* - Saved Articles Panel - */
     .saved-articles-panel {{
         position: fixed; top: 0; right: -420px; width: 400px; height: 100vh;
         background: var(--nuzu-navy); border-left: 2px solid var(--nuzu-blue);
@@ -3032,9 +3032,9 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .saved-item-remove:hover {{ color: #E74C3C; }}
 
-    /* ── In-App Reader removed: articles open in new tab ── */
+    /* - In-App Reader removed: articles open in new tab - */
 
-    /* ── Pull-to-Refresh ── */
+    /* - Pull-to-Refresh - */
     .ptr-indicator {{
         position: fixed; top: 48px; left: 50%; transform: translateX(-50%);
         background: var(--nuzu-blue); color: #fff;
@@ -3044,7 +3044,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .ptr-indicator.visible {{ opacity: 1; }}
 
-    /* ── Trending Topics ── */
+    /* - Trending Topics - */
     .trend-tags-wrap {{ display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px; }}
     .trend-tag {{
         display: inline-flex; align-items: center; gap: 6px;
@@ -3059,17 +3059,17 @@ html_parts.append(f"""<!DOCTYPE html>
         font-size: 0.68em; padding: 1px 6px; border-radius: 8px; font-weight: bold;
     }}
 
-    /* ── Updated Ago ── */
+    /* - Updated Ago - */
     .nav-updated-ago {{
         font-size: 0.65em; color: var(--nuzu-dim); margin-right: 8px;
         white-space: nowrap; flex-shrink: 0;
     }}
 
-    /* ── Search Hidden/Match ── */
+    /* - Search Hidden/Match - */
     .headline.search-hidden, .cluster.search-hidden {{ display: none !important; }}
     .headline.search-match {{ outline: 1px solid var(--nuzu-blue); }}
 
-    /* ── Light Mode ── */
+    /* - Light Mode - */
     body.light-mode {{
         background: #FFFFFF !important; color: #1a1a1a !important;
         --nuzu-navy:    #F0F4FB;
@@ -3117,7 +3117,7 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .headline:hover {{ background: rgba(30,79,216,0.04) !important; }}
     body.light-mode .float-mode-btn {{ background: #EBF0FA; color: #000; border-color: #D1D9E8; }}
 
-    /* ── Float Mode Button ── */
+    /* - Float Mode Button - */
     .float-mode-btn {{
         display: none;
         position: fixed; bottom: 20px; right: 16px; z-index: 2000;
@@ -3130,7 +3130,7 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     @media (max-width: 900px) {{ .float-mode-btn {{ display: block; }} }}
 
-    /* ── Professional Footer Styles ── */
+    /* - Professional Footer Styles - */
     .site-footer {{
         margin-top: 50px;
         background: var(--nuzu-navy);
@@ -3289,7 +3289,7 @@ html_parts.append(f"""<!DOCTYPE html>
     .homepage-instructions code {{ color: var(--nuzu-light); font-size: 0.9em; }}
     .hp-browser {{ display: block; }}
 
-    /* ── Waiting Room Overlay (hidden by default) ── */
+    /* - Waiting Room Overlay (hidden by default) - */
     #wr-overlay {{
         display: none;
         position: fixed;
@@ -3332,7 +3332,7 @@ html_parts.append(f"""<!DOCTYPE html>
         padding: 1px 5px; font-size: 0.85em; font-family: monospace;
     }}
 
-    /* ── Waiting Room Grid: 5 cols × 2 rows = 10 feeds ── */
+    /* - Waiting Room Grid: 5 cols × 2 rows = 10 feeds - */
     #wr-grid {{
         flex: 1;
         display: grid;
@@ -3365,7 +3365,7 @@ html_parts.append(f"""<!DOCTYPE html>
         pointer-events: none; user-select: none;
     }}
 
-    /* ── Mobile: Most Reported On full-width makeover ── */
+    /* - Mobile: Most Reported On full-width makeover - */
     @media (max-width: 900px) {{
         .top-stories-2col {{
             flex-direction: column;
@@ -3441,13 +3441,13 @@ html_parts.append(f"""<!DOCTYPE html>
         }}
     }}
 
-    /* ── PWA / Play Store: prevent text size adjust ── */
+    /* - PWA / Play Store: prevent text size adjust - */
     html {{
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
     }}
 
-    /* ── Waiting Room: mobile shows 2×5 grid (portrait) ── */
+    /* - Waiting Room: mobile shows 2×5 grid (portrait) - */
     @media (max-width: 900px) {{
         #wr-grid {{
             grid-template-columns: repeat(2, 1fr);
@@ -3456,7 +3456,7 @@ html_parts.append(f"""<!DOCTYPE html>
         #wr-subtitle {{ display: none; }}
     }}
 
-    /* ── Share Button ── */
+    /* - Share Button - */
     .share-btn {{
         background: none; border: none; cursor: pointer;
         color: var(--nuzu-dim); font-size: 0.85em; padding: 0 4px;
@@ -3471,7 +3471,7 @@ html_parts.append(f"""<!DOCTYPE html>
        JS will add class 'share-api-available' to body */
     body:not(.share-api-available) .share-btn {{ display: none !important; }}
 
-    /* ── Mobile Bottom Navigation Bar ── */
+    /* - Mobile Bottom Navigation Bar - */
     .nuzu-bottom-nav {{
         display: none;
         position: fixed; bottom: 0; left: 0; right: 0; z-index: 1001;
@@ -3517,12 +3517,12 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .nuzu-bottom-nav-item {{ color: #8899BB; }}
     body.light-mode .nuzu-bottom-nav-item.active {{ color: #000; }}
 
-    /* ── Float button: push up above bottom nav on mobile ── */
+    /* - Float button: push up above bottom nav on mobile - */
     @media (max-width: 900px) {{
         .float-mode-btn {{ bottom: 68px !important; }}
     }}
 
-    /* ── Swipe hint animation (first visit only) ── */
+    /* - Swipe hint animation (first visit only) - */
     @keyframes swipeHint {{
         0%   {{ transform: translateX(0); opacity: 1; }}
         40%  {{ transform: translateX(48px); opacity: 0.4; }}
@@ -3532,7 +3532,7 @@ html_parts.append(f"""<!DOCTYPE html>
     .swipe-hint {{ animation: swipeHint 1.4s ease 2s 2 both; }}
 
 
-    /* ─── FIX 6: Equal-height card columns ─── */
+    /* -─ FIX 6: Equal-height card columns -─ */
     .section-col-card {{
         border: 1px solid var(--nuzu-border);
         border-radius: 6px;
@@ -3555,7 +3555,7 @@ html_parts.append(f"""<!DOCTYPE html>
     .container.equal-cols .column {{ display: flex; flex-direction: column; }}
     .container.equal-cols .column .section-col-card {{ flex: 1; }}
 
-    /* ─── FIX 7: Per-section card tints + hover colors ─── */
+    /* -─ FIX 7: Per-section card tints + hover colors -─ */
     #section-us       .section-col-card {{ background:#090101; border-left:2px solid rgba(192,57,43,0.35); }}
     #section-mideast  .section-col-card {{ background:#090500; border-left:2px solid rgba(211,84,0,0.35); }}
     #section-world    .section-col-card {{ background:#010912; border-left:2px solid rgba(26,111,168,0.35); }}
@@ -3890,7 +3890,7 @@ html_parts.append("""
 </nav>
 """)
 
-# ── Sticky nav ──
+# - Sticky nav -
 html_parts.append(f"""
 <nav class="sticky-nav" role="navigation" aria-label="NUZU main navigation">
   <a href="#" class="site-name" aria-label="NUZU News home">NUZU</a>
@@ -3931,7 +3931,7 @@ html_parts.append(f"""
 <button class="float-mode-btn" id="float-mode-btn" aria-label="Toggle light/dark mode">&#9790;</button>
 """)
 
-# ── Breaking banner ──
+# - Breaking banner -
 if show_breaking_banner:
     import json as _json_banner
     _link_to_section = {}
@@ -3972,7 +3972,7 @@ if show_breaking_banner:
         f'<script>window._bbItems={banner_json};window._bbUpdateTs={int(time.time())};</script>\n'
     )
 
-# ── Hero masthead ──
+# - Hero masthead -
 html_parts.append("""
 <div class="nuzu-hero" role="banner">
   <div class="nuzu-hero-wordmark">NUZU</div>
@@ -3980,7 +3980,7 @@ html_parts.append("""
 </div>
 """)
 
-# ── Top ad slot moved below search bar ──
+# - Top ad slot moved below search bar -
 
 # ====================== MRO STRIP ======================
 TAB_ORDER = ["US","Middle East","World","Tech","Business","Sports","Culture"]
@@ -4202,7 +4202,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         else:
             _r_clusters.append(_cl)
 
-    # ── Balanced column equalizer ────────────────────────────────────────────
+    # - Balanced column equalizer ----------------------
     # Sort each bucket newest-first so overflow is always the oldest items
     _b_clusters.sort(key=lambda cl: cl[0][0], reverse=True)
     _r_clusters.sort(key=lambda cl: cl[0][0], reverse=True)
@@ -4219,7 +4219,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         borrow = min(col_cap // 4, len(_r_clusters))
         _b_clusters.extend(_r_clusters[:borrow])
         _r_clusters = _r_clusters[borrow:]
-    # ── End balanced split ───────────────────────────────────────────────────
+    # - End balanced split -------------------------─
 
     _b_items = [item for cl in _b_clusters for item in cl]
     _r_items = [item for cl in _r_clusters for item in cl]
@@ -4274,13 +4274,13 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         f'</div>\n'
     )
 
-# ── Sponsored section (between Business and Sports) ──
+# - Sponsored section (between Business and Sports) -
 SPONSORED_BLOCK = ""
 
-# ── Mid-page ad slot ──
+# - Mid-page ad slot -
 MID_AD_BLOCK = ""
 
-# ── Derive section order from MRO popularity ──
+# - Derive section order from MRO popularity -
 _MRO_SECTION_ID_MAP = {
     "US":"section-us","Middle East":"section-mideast","World":"section-world",
     "Tech":"section-tech","Business":"section-business",
@@ -4401,13 +4401,13 @@ html_parts.append('''
   </div>
 </div>
 ''')
-# ── Horoscope section ─────────────────────────────────────────────
+# - Horoscope section ----------------------─
 _horo_html = render_horoscope_section()
 if _horo_html:
     html_parts.append('<hr class="top-divider">\\n')
     html_parts.append(_horo_html)
  
-# ── Comic section (always last) ────────────────────────────────────
+# - Comic section (always last) ------------------
 _comic_html = render_comic_section()
 if _comic_html:
     html_parts.append('<hr class="top-divider">\\n')
@@ -4543,7 +4543,7 @@ setInterval(function() {{
   if (unmutedPlayer) {{ _muteAllExcept(unmutedPlayer); _setAudioActive(unmutedPlayer); }}
 }}, 2000);
 
-// ── Refresh toast ──
+// - Refresh toast -
 function showRefreshToast() {{
   var toast = document.getElementById('refresh-toast');
   if (!toast) {{
@@ -4565,14 +4565,14 @@ function showRefreshToast() {{
 
 document.addEventListener('DOMContentLoaded', function() {{
 
-// ── Detect Web Share API and enable share buttons ──
+// - Detect Web Share API and enable share buttons -
 (function() {{
   if (navigator.share) {{
     document.body.classList.add('share-api-available');
   }}
 }})();
 
-// ── Bottom nav: sync saved badge + scroll spy ──
+// - Bottom nav: sync saved badge + scroll spy -
 (function() {{
   var bnavSavedBadge = document.getElementById('bnav-saved-badge');
   var bnavSavedBtn   = document.getElementById('bnav-saved-btn');
@@ -4637,9 +4637,9 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Article links open in new tab ──
+// - Article links open in new tab -
 
-// ── Bookmark / Save Feature ──
+// - Bookmark / Save Feature -
 (function() {{
   var BKEY = 'nuzu_saved_articles';
   var saved = {{}};
@@ -4736,7 +4736,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── MRO Smooth Scroll ──
+// - MRO Smooth Scroll -
 (function() {{
   var NAV_HEIGHT = 60;
   document.querySelectorAll('.mro-card').forEach(function(card) {{
@@ -4766,7 +4766,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Light/Dark mode (default: DARK) ──
+// - Light/Dark mode (default: DARK) -
 (function() {{
   var LKEY = 'nuzu_light_mode';
   var toggle   = document.getElementById('light-mode-toggle');
@@ -4807,7 +4807,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }}
 }})();
 
-// ── Video feed toggle ──
+// - Video feed toggle -
 (function() {{
   var VKEY    = 'nuzu_video_on';
   var vtoggle = document.getElementById('video-feed-toggle');
@@ -4843,7 +4843,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   vtoggle.addEventListener('change', function() {{ setVideoMode(!vtoggle.checked); }});
 }})();
 
-// ── Search bar ──
+// - Search bar -
 (function() {{
   var input   = document.getElementById('news-search-input');
   var btn     = document.getElementById('news-search-btn');
@@ -4916,7 +4916,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Keyboard shortcuts & J/K navigation ──
+// - Keyboard shortcuts & J/K navigation -
 (function() {{
   var sections = ['section-us','section-local','section-mideast','section-world','section-tech','section-business','section-sports','section-culture'];
   var allHl = [], kbIdx = -1;
@@ -4946,7 +4946,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Rotating Breaking Banner ──
+// - Rotating Breaking Banner -
 (function() {{
   var items = window._bbItems || [];
   var banner = document.getElementById('breaking-banner');
@@ -4976,7 +4976,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   if (items.length > 1) setInterval(function() {{ idx = (idx + 1) % items.length; show(idx); }}, 5000);
 }})();
 
-// ── Read-article dimming ──
+// - Read-article dimming -
 (function() {{
   var READ_KEY = 'nuzu_read_links';
   var readLinks = new Set();
@@ -4996,7 +4996,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Section collapse ──
+// - Section collapse -
 (function() {{
   var CKEY = 'nuzu_collapsed';
   var SKEY = 'nuzu_scroll';
@@ -5031,7 +5031,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Cluster expand/collapse ──
+// - Cluster expand/collapse -
 (function() {{
   function toggleCluster(targetId) {{
     var wrap = document.getElementById(targetId);
@@ -5056,7 +5056,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Scroll spy ──
+// - Scroll spy -
 (function() {{
   var sections = [
     {{id:'section-us',cls:'nav-us'}},{{id:'section-mideast',cls:'nav-mideast'}},
@@ -5083,7 +5083,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   onScroll();
 }})();
 
-// ── Updated ago ──
+// - Updated ago -
 (function() {{
   var el = document.getElementById('nav-updated-ago');
   if (!el || !window._bbUpdateTs) return;
@@ -5098,7 +5098,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   tick(); setInterval(tick, 30000);
 }})();
 
-// ── Auto-refresh via feed.json polling ──
+// - Auto-refresh via feed.json polling -
 (function() {{
   var FEED_URL = 'feed.json';
   var POLL_MS  = 5 * 60 * 1000;
@@ -5117,7 +5117,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   setTimeout(checkForUpdates, 10000);
 }})();
 
-// ── Pull-to-refresh ──
+// - Pull-to-refresh -
 (function() {{
   var indicator = document.getElementById('ptr-indicator');
   if (!indicator) return;
@@ -5137,7 +5137,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Main-page audio single-source enforcement via postMessage ──
+// - Main-page audio single-source enforcement via postMessage -
 (function() {{
   window.addEventListener('message', function(e) {{
     if (!e.data || typeof e.data !== 'string') return;
@@ -5164,7 +5164,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Waiting Room ──
+// - Waiting Room -
 (function() {{
   var openBtn  = document.getElementById('wr-fullscreen-btn');
   var overlay  = document.getElementById('wr-overlay');
@@ -5262,7 +5262,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Web Share API ──
+// - Web Share API -
 (function() {{
   if (!navigator.share) return;
   document.addEventListener('click', function(e) {{
@@ -5275,7 +5275,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
-// ── Haptic feedback (Android TWA) ──
+// - Haptic feedback (Android TWA) -
 function nuzu_vibrate(ms) {{
   try {{ if (navigator.vibrate) navigator.vibrate(ms || 30); }} catch(e) {{}}
 }}
@@ -5284,14 +5284,14 @@ document.addEventListener('click', function(e) {{
   if (e.target.closest('.cluster-toggle-btn')) nuzu_vibrate(20);
 }});
 
-// ── Light/dark mode: smooth transition ──
+// - Light/dark mode: smooth transition -
 (function() {{
   var style = document.createElement('style');
   style.textContent = 'body {{ transition: background 0.22s ease, color 0.22s ease; }} .cluster, .headline, .top-story-card {{ transition: background 0.22s ease, border-color 0.22s ease; }}';
   document.head.appendChild(style);
 }})();
 
-// ── Swipe-to-save gesture (mobile) ──
+// - Swipe-to-save gesture (mobile) -
 (function() {{
   if (window.innerWidth > 900) return;
   var startX = 0; var startY = 0; var target = null;
@@ -5311,7 +5311,7 @@ document.addEventListener('click', function(e) {{
   }}, {{ passive: true }});
 }})();
 
-// ── In-app rating prompt (after 3rd session) ──
+// - In-app rating prompt (after 3rd session) -
 (function() {{
   try {{
     var RKEY = 'nuzu_sessions';
@@ -5354,7 +5354,7 @@ document.addEventListener('click', function(e) {{
   }} catch(ex) {{}}
 }})();
 
-// ── SW update notification + periodic sync registration ──
+// - SW update notification + periodic sync registration -
 (function() {{
   if (!('serviceWorker' in navigator)) return;
   navigator.serviceWorker.ready.then(function(reg) {{
@@ -5378,7 +5378,7 @@ document.addEventListener('click', function(e) {{
   }}).catch(function() {{}});
 }})();
 
-// ── Open saved panel if URL param present (from manifest shortcut) ──
+// - Open saved panel if URL param present (from manifest shortcut) -
 (function() {{
   var params = new URLSearchParams(window.location.search);
   if (params.get('panel') === 'saved') {{
@@ -5399,7 +5399,7 @@ document.addEventListener('click', function(e) {{
   }}
 }})();
 
-// ── Font size controls ──
+// - Font size controls -
 (function() {{
   var FSKEY='nuzu_font_size', sizes=[13,15,17,19,22], curIdx=1;
   var incBtn=document.getElementById('font-increase-btn'), decBtn=document.getElementById('font-decrease-btn');
@@ -5423,7 +5423,7 @@ document.addEventListener('click', function(e) {{
   if(decBtn) decBtn.addEventListener('click',function(){{ if(curIdx>0){{ curIdx--; applySize(); }} }});
 }})();
 
-// ── Local & Regional News Section ──
+// - Local & Regional News Section -
 (function() {{
   var enableBtn  = document.getElementById('local-enable-btn');
   var loadingMsg = document.getElementById('local-loading-msg');
@@ -5530,7 +5530,7 @@ document.addEventListener('click', function(e) {{
   }}
 }})();
 
-// ── Progressive section loading ──
+// - Progressive section loading -
 (function() {{
   if(!window.IntersectionObserver) return;
   var cols=document.querySelectorAll('.section-columns:not(.collapsed)');
@@ -5543,7 +5543,7 @@ document.addEventListener('click', function(e) {{
   cols.forEach(function(el){{ io.observe(el); }});
 }})();
 
-// ── Hero live date ──
+// - Hero live date -
 (function() {{
   var d=new Date();
   var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -5746,7 +5746,7 @@ except Exception as e:
     print(f"ERROR saving index.html: {str(e)}")
     raise
 
-# ── Write RSS feed ──
+# - Write RSS feed -
 RSS_FILE = os.path.join(CURRENT_DIR, "feed.xml")
 try:
     import xml.etree.ElementTree as ET
@@ -5774,7 +5774,7 @@ try:
 except Exception as e:
     print(f"WARNING: feed.xml not saved: {str(e)}")
 
-# ── Write feed.json ──
+# - Write feed.json -
 import json as _json
 try:
     feed_items = []
@@ -5811,7 +5811,7 @@ try:
 except Exception as e:
     print(f"WARNING: feed.json not saved: {str(e)}")
 
-# ── Write _headers ──
+# - Write _headers -
 try:
     headers_content = """/*
   Cache-Control: public, max-age=720, stale-while-revalidate=60
