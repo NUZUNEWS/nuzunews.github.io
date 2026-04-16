@@ -4123,7 +4123,7 @@ for count, word in trending_topics:
         f'</a>\n'
     )
 
-ts_html = f'''<div class="top-stories-strip">
+ts_html = f"""<div class="top-stories-strip">
   <p class="top-stories-title">&#9650; Most Reported On</p>
   <div class="top-stories-2col">
     <div class="ts-col">{col1_html}</div>
