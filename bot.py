@@ -5726,6 +5726,14 @@ html_parts.append(f"""
 """)
 
 # ====================== WRITE OUTPUT FILES ======================
+html = "".join(html_parts)
+with open(INDEX_HTML, "w", encoding="utf-8", errors="replace") as f:
+    f.write(html)
+print(f"✅ index.html written ({len(html):,} characters)")
+
+print("✅ NUZU bot finished successfully.")
+
+# ====================== WRITE OUTPUT FILES ======================
 all_items_flat = sorted(
     us_breaking + us_recent + middle_breaking + middle_recent +
     world_breaking + world_recent + tech_breaking + tech_recent +
