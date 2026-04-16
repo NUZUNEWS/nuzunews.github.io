@@ -3847,7 +3847,8 @@ html_parts.append("""
 </div>
 """)
 
-html_parts.append(f"""
+
+html_parts.append("""
 <div id="saved-panel" class="saved-articles-panel" role="complementary" aria-label="Saved articles">
   <div class="saved-panel-header">
     <h3>&#9733; Saved Articles</h3>
@@ -3857,7 +3858,7 @@ html_parts.append(f"""
     <p class="saved-panel-empty">No saved articles yet.<br>Tap &#9733; next to any headline to save it.</p>
   </div>
 </div>
-""")
+
 <div class="ptr-indicator" id="ptr-indicator">&#8635; Release to refresh</div>
 
 <!-- Mobile Bottom Navigation Bar -->
@@ -4410,7 +4411,6 @@ _comic_html = render_comic_section()
 if _comic_html:
     html_parts.append('<hr class="top-divider">\\n')
     html_parts.append(_comic_html)
-""")
 
 # ====================== FOOTER ======================
 _now_utc = datetime.utcnow()
@@ -5574,7 +5574,7 @@ html_parts.append(f"""
     </div>
     <p class="footer-mission">
       NUZU News is an independent news aggregator dedicated to factual, multi-source reporting.
-      We pull from the world's most trusted outlets to bring you comprehensive coverage across
+      We pull from the world&#39;s most trusted outlets to bring you comprehensive coverage across
       politics, global affairs, technology, business, sports, and culture &mdash; updated every hour.
       All linked articles remain the intellectual property of their respective publishers.
       NUZU does not host or reproduce article content.
