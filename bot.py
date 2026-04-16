@@ -5713,7 +5713,7 @@ html_parts.append(f"""
       <button class="set-homepage-btn" onclick="document.getElementById('homepage-instructions').style.display=document.getElementById('homepage-instructions').style.display==='block'?'none':'block'">&#127968; Set NUZU as My Homepage</button>
       <div id="homepage-instructions" class="homepage-instructions" style="display:none">
         <strong>How to set NUZU as your homepage:</strong><br>
-        <span class="hp-browser"><b>Chrome:</b> Settings &rarr; On startup &rarr; Open a specific page &rarr; Add <code>https://theseanmitchell.github.io/</code></span><br>
+        <span class="hp-browser"><b>Chrome:</b> Settings &rarr; On startup &rarr; Open a specific page &rarr; Add <code>https://nuzunews.github.io/</code></span><br>
         <span class="hp-browser"><b>Firefox:</b> Settings &rarr; Home &rarr; Homepage &rarr; Custom URLs &rarr; paste the URL above</span><br>
         <span class="hp-browser"><b>Safari:</b> Preferences &rarr; General &rarr; Homepage &rarr; paste the URL above</span><br>
         <span class="hp-browser"><b>Edge:</b> Settings &rarr; Start, home, and new tabs &rarr; Open these pages &rarr; Add the URL above</span>
