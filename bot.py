@@ -5311,7 +5311,7 @@ document.addEventListener('click', function(e) {{
   }}, {{ passive: true }});
 }})();
 
-// - In-app rating prompt (after 3rd session) -
+// - In-app rating prompt (after third session) -
 (function() {{
   try {{
     var RKEY = 'nuzu_sessions';
