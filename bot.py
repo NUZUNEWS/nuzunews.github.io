@@ -2318,13 +2318,13 @@ def render_horoscope_section():
             f'</div>'
             f'<p class="horo-desc">{desc}</p>'
             f'{meta_html}'
-            f'</div>\\n'
+            f'</div>'
         )
  
     updated_label = f' <span class="horo-updated">- {updated}</span>' if updated else ''
  
     return (
-        f'<div id="section-horoscopes" class="section-wrap">\\n'
+        f'<div id="section-horoscopes" class="section-wrap">'
         f'<div class="section-banner horoscope-color-banner">'
         f'<div class="section-banner-inner">'
         f'<h2 class="section-title horoscope-color">'
@@ -2333,13 +2333,13 @@ def render_horoscope_section():
         f'</h2>'
         f'<button class="section-collapse-btn" data-target="section-horoscopes-cols" '
         f'aria-label="Collapse section" title="Collapse / expand">&#9660;</button>'
-        f'</div></div>\\n'
-        f'<div id="section-horoscopes-cols" class="section-columns">\\n'
-        f'<div class="horo-grid">\\n'
+        f'</div></div>'
+        f'<div id="section-horoscopes-cols" class="section-columns">'
+        f'<div class="horo-grid">'
         f'{cards_html}'
-        f'</div>\\n'
-        f'</div>\\n'
-        f'</div>\\n'
+        f'</div>'
+        f'</div>'
+        f'</div>'
     )
     
 # - Comic section renderer ---------------------
@@ -2383,7 +2383,7 @@ def render_comic_section():
     desc_snippet = (clean_desc[:320] + '…') if len(clean_desc) > 320 else clean_desc
  
     return (
-        f'<div id="section-comics" class="section-wrap">\\n'
+        f'<div id="section-comics" class="section-wrap">'
         f'<div class="section-banner comics-color-banner">'
         f'<div class="section-banner-inner">'
         f'<h2 class="section-title comics-color">'
@@ -2392,31 +2392,31 @@ def render_comic_section():
         f'</h2>'
         f'<button class="section-collapse-btn" data-target="section-comics-cols" '
         f'aria-label="Collapse section" title="Collapse / expand">&#9660;</button>'
-        f'</div></div>\\n'
-        f'<div id="section-comics-cols" class="section-columns">\\n'
-        f'<div class="container" style="display:block;max-width:1400px;margin:0 auto;padding:16px 20px;">\\n'
-        f'<div class="comic-card">\\n'
-        f'<div class="comic-card-inner">\\n'
-        f'<span class="comic-pd-badge">&#127381; Public Domain Archive</span>\\n'
+        f'</div></div>'
+        f'<div id="section-comics-cols" class="section-columns">'
+        f'<div class="container" style="display:block;max-width:1400px;margin:0 auto;padding:16px 20px;">'
+        f'<div class="comic-card">'
+        f'<div class="comic-card-inner">'
+        f'<span class="comic-pd-badge">&#127381; Public Domain Archive</span>'
         f'{series_html}'
-        f'<h3 class="comic-title">{display_title}</h3>\\n'
-        f'<p class="comic-desc">{desc_snippet}</p>\\n'
-        f'<div class="comic-footer">\\n'
+        f'<h3 class="comic-title">{display_title}</h3>'
+        f'<p class="comic-desc">{desc_snippet}</p>'
+        f'<div class="comic-footer">'
         f'<a href="{link}" target="_blank" rel="noopener noreferrer" class="comic-read-btn">'
-        f'&#128214;&nbsp;Read This Strip&nbsp;&#8599;</a>\\n'
+        f'&#128214;&nbsp;Read This Strip&nbsp;&#8599;</a>'
         f'<a href="https://comicbookplus.com/?cid=6" target="_blank" rel="noopener noreferrer" '
-        f'class="comic-archive-link">Browse Full Archive &#8599;</a>\\n'
-        f'</div>\\n'
-        f'</div>\\n'
+        f'class="comic-archive-link">Browse Full Archive &#8599;</a>'
+        f'</div>'
+        f'</div>'
         f'<div class="comic-attribution">'
         f'All comics from <a href="https://comicbookplus.com" target="_blank" rel="noopener noreferrer">'
         f'ComicBookPlus.com</a> - a free archive of public-domain print history. '
         f'A different classic every day, cycling through 100+ series.'
-        f'</div>\\n'
-        f'</div>\\n'
-        f'</div>\\n'
-        f'</div>\\n'
-        f'</div>\\n'
+        f'</div>'
+        f'</div>'
+        f'</div>'
+        f'</div>'
+        f'</div>'
     )
 
 # ====================== CANONICAL CLUSTERS ======================
@@ -2568,8 +2568,21 @@ html_parts.append(f"""<!DOCTYPE html>
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
         background: var(--nuzu-navy);
         border-bottom: 3px solid var(--nuzu-blue);
-        display: flex; align-items: center; gap: 0; height: 48px;
-        padding: 0 16px; overflow-x: auto; white-space: nowrap;
+        display: flex; align-items: stretch; gap: 0; height: 48px;
+        padding: 0; overflow: hidden;
+    }}
+    .sticky-nav-tabs {{
+        display: flex; align-items: center; gap: 0;
+        flex: 1; min-width: 0; height: 100%;
+        overflow-x: auto; white-space: nowrap;
+        padding: 0 0 0 16px;
+        scrollbar-width: none;
+    }}
+    .sticky-nav-tabs::-webkit-scrollbar {{ display: none; }}
+    .sticky-nav-controls {{
+        display: flex; align-items: center; gap: 0;
+        flex-shrink: 0; height: 100%;
+        border-left: 1px solid var(--nuzu-border);
     }}
     .sticky-nav .site-name {{
         font-size: 1.1em; font-weight: 900; color: var(--nuzu-white);
@@ -2594,7 +2607,21 @@ html_parts.append(f"""<!DOCTYPE html>
     .sticky-nav a.nav-business {{ border-left-color: {SECTION_COLORS["business"]}; }}
     .sticky-nav a.nav-sports   {{ border-left-color: {SECTION_COLORS["sports"]}; }}
     .sticky-nav a.nav-culture  {{ border-left-color: {SECTION_COLORS["culture"]}; }}
-    .sticky-nav a.nav-local    {{ border-left-color: #2E7D32; }}
+    /* WR nav wrap (always visible, not a video-toggle-wrap) */
+    .wr-nav-wrap {{
+        display: flex; align-items: center; gap: 7px;
+        margin-left: 4px; flex-shrink: 0; padding-left: 10px; padding-right: 10px;
+        border-left: 1px solid var(--nuzu-border);
+        height: 100%;
+    }}
+    .wr-fullscreen-btn {{
+        background: none; border: 1px solid var(--nuzu-border);
+        border-radius: 4px; color: var(--nuzu-muted);
+        font-size: 0.72em; font-weight: bold; padding: 4px 10px;
+        cursor: pointer; transition: color 0.15s, border-color 0.15s, background 0.15s;
+        white-space: nowrap; letter-spacing: 0.04em; font-family: 'Inter', Arial, sans-serif;
+    }}
+    .wr-fullscreen-btn:hover {{ color: var(--nuzu-white); border-color: var(--nuzu-muted); background: rgba(30,79,216,0.10); }}
 
     /* - Saved Articles Nav Button - */
     .saved-nav-btn {{
@@ -2658,7 +2685,71 @@ html_parts.append(f"""<!DOCTYPE html>
         font-size: 0.72em; color: var(--nuzu-muted); letter-spacing: 0.04em;
         text-transform: uppercase; user-select: none; white-space: nowrap;
     }}
+    /* - Video toggle wrap: hide on mobile; WR wrap is separate class and stays visible - */
     @media (max-width: 900px) {{ .video-toggle-wrap {{ display: none !important; }} }}
+
+    /* ─── Mobile: Two-row sticky nav ─── */
+    @media (max-width: 900px) {{
+        body {{ padding-top: 72px; }}
+        .sticky-nav {{
+            height: auto;
+            flex-direction: column;
+            overflow: visible;
+            border-bottom-width: 2px;
+        }}
+        .sticky-nav-tabs {{
+            width: 100%;
+            height: 36px;
+            padding: 0 0 0 10px;
+            flex: none;
+            order: 1;
+        }}
+        .sticky-nav-controls {{
+            width: 100%;
+            height: 36px;
+            order: 2;
+            border-left: none;
+            border-top: 1px solid var(--nuzu-border);
+            padding: 0 8px;
+            gap: 6px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            justify-content: flex-start;
+        }}
+        .sticky-nav-controls::-webkit-scrollbar {{ display: none; }}
+        .sticky-nav .site-name {{
+            height: 36px; line-height: 36px; font-size: 0.95em; margin-right: 8px;
+        }}
+        .sticky-nav a.nav-link {{
+            height: 36px; line-height: 36px; padding: 0 9px; font-size: 0.7em;
+        }}
+        .saved-nav-btn {{
+            margin-left: 0; padding: 3px 9px; font-size: 0.68em; flex-shrink: 0;
+        }}
+        .light-toggle-wrap {{
+            margin-left: 0 !important; padding-left: 0 !important;
+            gap: 5px; flex-shrink: 0;
+            height: 36px;
+        }}
+        .light-toggle-label {{ display: none !important; }}
+        .nav-updated-ago {{ font-size: 0.58em; margin-right: 2px; }}
+        .font-size-btn {{ font-size: 0.63em; padding: 2px 5px; flex-shrink: 0; }}
+        .wr-nav-wrap {{
+            height: 36px; margin-left: 0; padding: 0 6px;
+            border-left: 1px solid var(--nuzu-border);
+            flex-shrink: 0;
+        }}
+        .wr-fullscreen-btn {{ font-size: 0.65em; padding: 3px 7px; white-space: nowrap; }}
+        /* Hide video banner on mobile — iframes never load there */
+        .banner {{ display: none !important; }}
+        /* Tighter hero on mobile */
+        .nuzu-hero {{ padding: 8px 16px 6px !important; }}
+        .nuzu-hero-wordmark {{ font-size: 2.6em; }}
+        .nuzu-hero-tagline {{ margin-top: 5px; padding-top: 7px; font-size: 0.68em; }}
+        /* Eliminate wasted gap between search bar and first section */
+        .search-bar-wrap {{ margin-bottom: 0; }}
+    }}
 
     /* - Breaking Banner - */
     .breaking-banner {{
@@ -2694,15 +2785,11 @@ html_parts.append(f"""<!DOCTYPE html>
         color: #dde8f8; cursor: pointer; transition: color 0.15s;
     }}
     .breaking-banner .bb-text:hover {{ color: #fff; }}
-    .breaking-banner .bb-counter {{
-        font-size: 0.66em; opacity: 0.4; flex-shrink: 0;
-        display: flex; align-items: center; padding: 0 14px;
-        border-left: 1px solid var(--nuzu-border);
-    }}
+    .breaking-banner .bb-counter {{ display: none !important; }}
     .bb-section-pill {{
         font-size: 0.66em; font-weight: 700; letter-spacing: 0.08em;
         text-transform: uppercase; padding: 2px 8px; border-radius: 2px;
-        flex-shrink: 0; margin-right: 8px;
+        flex-shrink: 0; margin-right: 8px; margin-left: 4px;
     }}
     @keyframes bb-slidein {{
         from {{ opacity: 0; transform: translateX(14px); }}
@@ -2711,7 +2798,7 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* - Hero Masthead - */
     .nuzu-hero {{
-        text-align: center; padding: 10px 20px 8px;
+        text-align: center; padding: 6px 20px 4px;
         background: linear-gradient(180deg, #000000 0%, #07101E 100%);
         border-bottom: 1px solid var(--nuzu-border);
         position: relative; overflow: hidden;
@@ -2859,7 +2946,6 @@ html_parts.append(f"""<!DOCTYPE html>
     .business-color-banner {{ border-left: 4px solid #8B6914; background: linear-gradient(90deg, rgba(139,105,20,0.15) 0%, transparent 55%); }}
     .sports-color-banner   {{ border-left: 4px solid #1A7A4A; background: linear-gradient(90deg, rgba(26,122,74,0.15) 0%, transparent 55%); }}
     .culture-color-banner  {{ border-left: 4px solid #7B2D8B; background: linear-gradient(90deg, rgba(123,45,139,0.15) 0%, transparent 55%); }}
-    .local-color-banner    {{ border-left: 4px solid #2E7D32; background: linear-gradient(90deg, rgba(46,125,50,0.09) 0%, transparent 55%); }}
 
 
     /* - Section Titles - */
@@ -2884,12 +2970,7 @@ html_parts.append(f"""<!DOCTYPE html>
     .section-title-row .section-title {{ margin-bottom: 0; }}
     .section-columns {{ transition: none; }}
 
-    /* - Local News Section - */
-    .local-color-banner {{ border-left: 4px solid #2E7D32; background: linear-gradient(90deg, rgba(46,125,50,0.09) 0%, transparent 55%); }}
-    .local-headline {{ margin-bottom: 12px; padding: 8px 10px; border-bottom: 1px solid var(--nuzu-border); border-radius: 4px; transition: background 0.15s; }}
-    .local-headline:hover {{ background: rgba(46,125,50,0.06); }}
-    .local-headline .title {{ color: var(--nuzu-white); font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.45; }}
-    #section-local-cols .cluster {{ border-left-color: #1B5E20; background: #020d04; }}
+    /* - Local News Section removed - */
 
     /* - Progressive Loading - */
     .section-columns.lazy-pending {{
@@ -3109,7 +3190,6 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .business-color-banner {{ background: linear-gradient(90deg, rgba(139,105,20,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .sports-color-banner   {{ background: linear-gradient(90deg, rgba(26,122,74,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .culture-color-banner  {{ background: linear-gradient(90deg, rgba(123,45,139,0.10) 0%, transparent 55%) !important; }}
-    body.light-mode .local-color-banner    {{ background: linear-gradient(90deg, rgba(46,125,50,0.06) 0%, transparent 55%) !important; }}
     body.light-mode .nuzu-hero {{ background: linear-gradient(180deg, #e8edf8 0%, #f5f8ff 100%) !important; }}
     body.light-mode .nuzu-hero-wordmark {{ filter: none; }}
     body.light-mode .breaking-banner {{ background: #1a1a2e !important; }}
@@ -3892,39 +3972,42 @@ html_parts.append("""
 # - Sticky nav -
 html_parts.append(f"""
 <nav class="sticky-nav" role="navigation" aria-label="NUZU main navigation">
-  <a href="#" class="site-name" aria-label="NUZU News home">NUZU</a>
-  <a href="#section-us"       class="nav-link nav-us"       role="menuitem">US</a>
-  <a href="#section-mideast"  class="nav-link nav-mideast"  role="menuitem">Mid East</a>
-  <a href="#section-world"    class="nav-link nav-world"    role="menuitem">World</a>
-  <a href="#section-tech"     class="nav-link nav-tech"     role="menuitem">Tech</a>
-  <a href="#section-business" class="nav-link nav-business" role="menuitem">Business</a>
-  <a href="#section-sports"   class="nav-link nav-sports"   role="menuitem">Sports</a>
-  <a href="#section-culture"  class="nav-link nav-culture"  role="menuitem">Culture</a>
-  <a href="#section-local"     class="nav-link nav-local"     role="menuitem">Local</a>
-  <button class="saved-nav-btn" id="saved-nav-btn" aria-label="Saved articles">
-    &#9733; Saved<span class="saved-count-badge" id="saved-count-badge"></span>
-  </button>
-  <div class="light-toggle-wrap">
-    <span class="nav-updated-ago" id="nav-updated-ago"></span>
-    <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size" aria-label="Decrease font size">A-</button>
-    <button class="font-size-btn" id="font-increase-btn" title="Increase font size" aria-label="Increase font size">A+</button>
-    <span class="light-toggle-label">Light</span>
-    <label class="toggle-switch" title="Toggle light/dark mode">
-      <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
-      <span class="toggle-slider"></span>
-    </label>
+  <div class="sticky-nav-tabs">
+    <a href="#" class="site-name" aria-label="NUZU News home">NUZU</a>
+    <a href="#section-us"       class="nav-link nav-us"       role="menuitem">US</a>
+    <a href="#section-mideast"  class="nav-link nav-mideast"  role="menuitem">Mid East</a>
+    <a href="#section-world"    class="nav-link nav-world"    role="menuitem">World</a>
+    <a href="#section-tech"     class="nav-link nav-tech"     role="menuitem">Tech</a>
+    <a href="#section-business" class="nav-link nav-business" role="menuitem">Business</a>
+    <a href="#section-sports"   class="nav-link nav-sports"   role="menuitem">Sports</a>
+    <a href="#section-culture"  class="nav-link nav-culture"  role="menuitem">Culture</a>
   </div>
-  <div class="video-toggle-wrap">
-    <span class="video-toggle-label">Live Video</span>
-    <label class="toggle-switch" title="Toggle live video">
-      <input type="checkbox" id="video-feed-toggle" aria-label="Toggle live video feeds">
-      <span class="toggle-slider"></span>
-    </label>
-  </div>
-  <div class="video-toggle-wrap" id="waiting-room-wrap">
-    <button class="wr-fullscreen-btn" id="wr-fullscreen-btn" title="Waiting Room fullscreen video wall">
-      &#9654; Waiting Room
+  <div class="sticky-nav-controls">
+    <button class="saved-nav-btn" id="saved-nav-btn" aria-label="Saved articles">
+      &#9733; Saved<span class="saved-count-badge" id="saved-count-badge"></span>
     </button>
+    <div class="light-toggle-wrap">
+      <span class="nav-updated-ago" id="nav-updated-ago"></span>
+      <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size" aria-label="Decrease font size">A-</button>
+      <button class="font-size-btn" id="font-increase-btn" title="Increase font size" aria-label="Increase font size">A+</button>
+      <span class="light-toggle-label">Light</span>
+      <label class="toggle-switch" title="Toggle light/dark mode">
+        <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="video-toggle-wrap">
+      <span class="video-toggle-label">Live Video</span>
+      <label class="toggle-switch" title="Toggle live video">
+        <input type="checkbox" id="video-feed-toggle" aria-label="Toggle live video feeds">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="wr-nav-wrap" id="waiting-room-wrap">
+      <button class="wr-fullscreen-btn" id="wr-fullscreen-btn" title="Waiting Room fullscreen video wall">
+        &#9654; Waiting Room
+      </button>
+    </div>
   </div>
 </nav>
 <button class="float-mode-btn" id="float-mode-btn" aria-label="Toggle light/dark mode">&#9790;</button>
@@ -3964,9 +4047,8 @@ if show_breaking_banner:
     html_parts.append(
         f'<div class="breaking-banner" id="breaking-banner" role="alert" aria-live="polite">'
         f'<span class="bb-label"><span class="bb-pulse-dot"></span>BREAKING</span>'
-        f'<span class="bb-text" id="bb-text"></span>'
         f'<span class="bb-section-pill" id="bb-section-pill" style="display:none"></span>'
-        f'<span class="bb-counter" id="bb-counter"></span>'
+        f'<span class="bb-text" id="bb-text"></span>'
         f'</div>'
         f'<script>window._bbItems={banner_json};window._bbUpdateTs={int(time.time())};</script>\n'
     )
@@ -4180,7 +4262,7 @@ ts_html += '''<!-- VIDEO BANNER desktop only -->
       <span class="feed-country-label">Middle East</span>
     </div>
   </div>
-</div>\\n
+</div>
 '''
 
 html_parts.append(ts_html)
@@ -4371,45 +4453,16 @@ for i, (sid, sc, bi, ri, bt, rt, *_bthresh) in enumerate(SECTION_DATA):
 
 html_parts.append('</div>\n')
 
-html_parts.append('''
-<hr class="top-divider">
-<div id="section-local" class="section-wrap">
-  <div class="section-banner local-color-banner">
-    <div class="section-banner-inner">
-      <h2 class="section-title" style="color:#2E7D32;font-family:'Inter',Arial,sans-serif;font-size:1em;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;">
-        <span class="sec-dot" style="background:#2E7D32;display:inline-block;width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-right:2px;"></span>
-        LOCAL &amp; REGIONAL &mdash; <span id="local-location-label" style="font-weight:400;letter-spacing:0.06em;">Your Area</span>
-      </h2>
-      <button class="section-collapse-btn" data-target="section-local-cols" aria-label="Collapse section" title="Collapse / expand">&#9660;</button>
-    </div>
-  </div>
-  <div id="section-local-cols" class="section-columns">
-    <div class="container" style="display:block;max-width:1400px;margin:0 auto;padding:16px 20px;">
-      <p style="color:var(--nuzu-dim);font-size:0.82em;margin-bottom:14px;">
-        &#127757; Enable location for headlines near you &mdash; up to 10 stories from your region over the last 3 weeks.
-      </p>
-      <div id="local-headlines-col">
-        <p style="color:var(--nuzu-dim);font-size:0.88em;" id="local-loading-msg">
-          <button id="local-enable-btn" style="background:var(--nuzu-blue);color:#fff;border:none;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:0.85em;font-family:'Inter',Arial,sans-serif;font-weight:600;">
-            &#x25B6; Enable Local News
-          </button>
-          &nbsp; <span style="color:var(--nuzu-dim);font-size:0.85em;">Your location stays on your device.</span>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-''')
 # - Horoscope section ----------------------─
 _horo_html = render_horoscope_section()
 if _horo_html:
-    html_parts.append('<hr class="top-divider">\\n')
+    html_parts.append('<hr class="top-divider">\n')
     html_parts.append(_horo_html)
  
 # - Comic section (always last) ------------------
 _comic_html = render_comic_section()
 if _comic_html:
-    html_parts.append('<hr class="top-divider">\\n')
+    html_parts.append('<hr class="top-divider">\n')
     html_parts.append(_comic_html)
 
 # ====================== FOOTER ======================
@@ -4916,7 +4969,7 @@ document.addEventListener('DOMContentLoaded', function() {{
 
 // - Keyboard shortcuts & J/K navigation -
 (function() {{
-  var sections = ['section-us','section-local','section-mideast','section-world','section-tech','section-business','section-sports','section-culture'];
+  var sections = ['section-us','section-mideast','section-world','section-tech','section-business','section-sports','section-culture'];
   var allHl = [], kbIdx = -1;
   function refreshHl() {{ allHl = Array.from(document.querySelectorAll('.headline:not(.search-hidden), .cluster:not(.search-hidden)')); }}
   function setKbFocus(idx) {{
@@ -4949,10 +5002,8 @@ document.addEventListener('DOMContentLoaded', function() {{
   var items = window._bbItems || [];
   var banner = document.getElementById('breaking-banner');
   if (!items.length || !banner) return;
-  var textEl    = document.getElementById('bb-text');
-  var counterEl = document.getElementById('bb-counter');
+  var textEl      = document.getElementById('bb-text');
   var sectionPill = document.getElementById('bb-section-pill');
-  var IS_MOBILE_BB = window.innerWidth <= 900;
   var idx = 0;
   function show(i) {{
     var item = items[i % items.length];
@@ -4961,14 +5012,15 @@ document.addEventListener('DOMContentLoaded', function() {{
       textEl.style.animation = 'none'; void textEl.offsetWidth; textEl.style.animation = '';
       textEl.textContent = item.title;
     }}
-    if (counterEl) counterEl.textContent = (i + 1) + ' / ' + items.length;
-    if (sectionPill && !IS_MOBILE_BB && item.section) {{
+    if (sectionPill && item.section) {{
       sectionPill.textContent = item.section;
       sectionPill.style.display = 'inline';
       sectionPill.style.background = (item.scolor || '#1E4FD8') + '33';
       sectionPill.style.color = '#fff';
       sectionPill.style.border = '1px solid ' + (item.scolor || '#1E4FD8');
-    }} else if (sectionPill) sectionPill.style.display = 'none';
+    }} else if (sectionPill) {{
+      sectionPill.style.display = 'none';
+    }}
   }}
   show(0);
   if (items.length > 1) setInterval(function() {{ idx = (idx + 1) % items.length; show(idx); }}, 5000);
@@ -5019,6 +5071,7 @@ document.addEventListener('DOMContentLoaded', function() {{
       target.classList.add('collapsed'); btn.innerHTML = '&#9654;'; collapsed.add(targetId);
     }}
     saveCollapsed();
+    setTimeout(nuzu_equalColHeights, 50);
   }});
   try {{
     var savedScroll = localStorage.getItem(SKEY);
@@ -5042,6 +5095,7 @@ document.addEventListener('DOMContentLoaded', function() {{
       wrap.classList.add('collapsed');
       if (btn) {{ btn.innerHTML = '&#9654; Show all coverage'; btn.classList.remove('open'); }}
     }}
+    nuzu_equalColHeights();
   }}
   document.addEventListener('click', function(e) {{
     var btn = e.target.closest('.cluster-toggle-btn');
@@ -5053,6 +5107,35 @@ document.addEventListener('DOMContentLoaded', function() {{
     if (innerBtn) toggleCluster(innerBtn.getAttribute('data-target'));
   }});
 }})();
+
+// - Equal-height Breaking / Recent columns -
+// Breaking column defines the height; Recent column matches it (clipped if taller).
+function nuzu_equalColHeights() {{
+  if (window.innerWidth <= 900) return; // mobile: single-column, no equalization needed
+  document.querySelectorAll('.container.equal-cols').forEach(function(container) {{
+    var cols = container.querySelectorAll(':scope > .column');
+    if (cols.length < 2) return;
+    var bCard = cols[0].querySelector('.section-col-card');
+    var rCard = cols[1].querySelector('.section-col-card');
+    if (!bCard || !rCard) return;
+    // Reset any previous overrides so we can measure natural heights
+    bCard.style.height = '';
+    rCard.style.height = '';
+    rCard.style.overflow = '';
+    // Measure natural scroll heights (full content height regardless of CSS)
+    var bH = bCard.scrollHeight;
+    var rH = rCard.scrollHeight;
+    if (bH <= 0) return;
+    // Set recent card height to match breaking (cap it if recent is taller)
+    rCard.style.height = bH + 'px';
+    rCard.style.overflow = 'hidden';
+    // If breaking is shorter than recent's natural height, no change needed for breaking
+    // Breaking column always retains its full natural height
+  }});
+}}
+// Run on load (small delay for fonts/content to settle)
+setTimeout(nuzu_equalColHeights, 250);
+window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
 
 // - Scroll spy -
 (function() {{
@@ -5171,6 +5254,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   if (!openBtn || !overlay || !closeBtn || !grid) return;
   var _mainBannerVisible = false;
   var _wrIsOpen = false;
+  var _overlayIsFullscreen = false; // true only when the overlay element itself is fullscreen
 
   function _suspendMainVideos() {{
     var banner = document.querySelector('.banner');
@@ -5221,21 +5305,63 @@ document.addEventListener('DOMContentLoaded', function() {{
     _suspendMainVideos(); _buildWRGrid();
     overlay.classList.add('wr-open');
     document.body.style.overflow = 'hidden';
-    try {{ if (overlay.requestFullscreen) overlay.requestFullscreen(); else if (overlay.webkitRequestFullscreen) overlay.webkitRequestFullscreen(); }} catch(e) {{}}
+    _overlayIsFullscreen = false;
+    try {{
+      var fsReq = overlay.requestFullscreen
+        ? overlay.requestFullscreen()
+        : (overlay.webkitRequestFullscreen ? (overlay.webkitRequestFullscreen(), Promise.resolve()) : Promise.reject());
+      if (fsReq && typeof fsReq.then === 'function') {{
+        fsReq.then(function() {{ _overlayIsFullscreen = true; }}).catch(function() {{}});
+      }}
+    }} catch(e) {{}}
   }}
   function closeWR() {{
     if (!_wrIsOpen) return; _wrIsOpen = false;
+    _overlayIsFullscreen = false;
     overlay.classList.remove('wr-open');
     document.body.style.overflow = '';
     _destroyWRGrid();
-    try {{ if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen(); else if (document.webkitFullscreenElement && document.webkitExitFullscreen) document.webkitExitFullscreen(); }} catch(e) {{}}
+    try {{
+      if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen();
+      else if (document.webkitFullscreenElement && document.webkitExitFullscreen) document.webkitExitFullscreen();
+    }} catch(e) {{}}
     setTimeout(function() {{ _restoreMainVideos(); }}, 300);
   }}
+
   openBtn.addEventListener('click', openWR);
   closeBtn.addEventListener('click', closeWR);
-  document.addEventListener('keydown', function(e) {{ if (e.key === 'Escape' && _wrIsOpen) closeWR(); }});
-  document.addEventListener('fullscreenchange', function() {{ if (!document.fullscreenElement && _wrIsOpen) closeWR(); }});
-  document.addEventListener('webkitfullscreenchange', function() {{ if (!document.webkitFullscreenElement && _wrIsOpen) closeWR(); }});
+
+  // ESC key: only close WR when no fullscreen element is active
+  // (if a YT video inside WR is fullscreen, ESC exits that video first; a second ESC closes WR)
+  document.addEventListener('keydown', function(e) {{
+    if (e.key !== 'Escape' || !_wrIsOpen) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement || null;
+    if (!fsEl) {{
+      // Nothing is fullscreen — either overlay wasn't fullscreen or it already exited
+      closeWR();
+    }}
+    // If fsEl === overlay: the browser is exiting overlay fullscreen via ESC;
+    //   fullscreenchange will fire and we handle it there.
+    // If fsEl is something else (e.g. a video iframe): the browser exits that video fullscreen;
+    //   we do nothing here — the user is back in WR, they press ESC again to close.
+  }});
+
+  // fullscreenchange: only close WR when the OVERLAY's fullscreen exits (not a child video)
+  function _onFsChange() {{
+    if (!_wrIsOpen) return;
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement || null;
+    if (fsEl === overlay) {{
+      // Overlay just entered fullscreen
+      _overlayIsFullscreen = true;
+    }} else if (!fsEl && _overlayIsFullscreen) {{
+      // Overlay's fullscreen was exited (user pressed ESC or browser forced it)
+      _overlayIsFullscreen = false;
+      closeWR();
+    }}
+    // fsEl is non-null but not overlay → a video cell entered/exited fullscreen; don't close WR
+  }}
+  document.addEventListener('fullscreenchange', _onFsChange);
+  document.addEventListener('webkitfullscreenchange', _onFsChange);
 
   // WR single-audio enforcement
   window.addEventListener('message', function(e) {{
@@ -5419,113 +5545,6 @@ document.addEventListener('click', function(e) {{
   loadSize(); applySize();
   if(incBtn) incBtn.addEventListener('click',function(){{ if(curIdx<sizes.length-1){{ curIdx++; applySize(); }} }});
   if(decBtn) decBtn.addEventListener('click',function(){{ if(curIdx>0){{ curIdx--; applySize(); }} }});
-}})();
-
-// - Local & Regional News Section -
-(function() {{
-  var enableBtn  = document.getElementById('local-enable-btn');
-  var loadingMsg = document.getElementById('local-loading-msg');
-  var col        = document.getElementById('local-headlines-col');
-  var locLabel   = document.getElementById('local-location-label');
-  var LOC_KEY    = 'nuzu_local_loc';
-  var MAX_ITEMS  = 10;
-
-  function renderItems(items, locationName) {{
-    if (locLabel) locLabel.textContent = locationName || 'Your Area';
-    var filtered = items.slice(0, MAX_ITEMS);
-    if (!filtered.length) {{
-      col.innerHTML = '<p style="color:var(--nuzu-dim);font-size:0.85em;">No regional headlines found. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Try Google News &#8599;</a></p>';
-      return;
-    }}
-    var html = '';
-    filtered.forEach(function(item) {{
-      var title  = (item.title||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      var link   = item.link || '#';
-      var source = (item.author||item.source||'').replace(/ - .*/,'').trim();
-      var pd     = item.pubDate ? new Date(item.pubDate) : null;
-      var dateStr = pd ? pd.toLocaleDateString([],{{month:'short',day:'numeric'}}) : '';
-      html += '<div class="local-headline">'
-            + '<span class="title">' + title + '</span>'
-            + (dateStr ? ' <span class="ts-label">' + dateStr + '</span>' : '')
-            + (source  ? ' <span class="src-label">&mdash; ' + source + '</span>' : '')
-            + ' <a class="link" href="' + link + '" target="_blank" rel="noopener noreferrer">↗ Read</a>'
-            + '</div>';
-    }});
-    col.innerHTML = html;
-  }}
-
-  function fetchRegionalNews(city, state) {{
-    // Build search query: prefer state-level for broader coverage
-    var locationName = city ? city + (state ? ', ' + state : '') : (state || 'Your Area');
-    var query = state || city || 'local';
-    // Use three-week window (when:21 days)
-    var rssUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query + ' news') + '+when:21 days&hl=en-US&gl=US&ceid=US:en';
-    var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl) + '&count=15';
-
-    col.innerHTML = '<p style="color:var(--nuzu-dim);font-size:0.85em;">Loading regional headlines…</p>';
-
-    fetch(apiUrl)
-      .then(function(r) {{ return r.json(); }})
-      .then(function(data) {{ renderItems(data.items || [], locationName); }})
-      .catch(function() {{
-        // Fallback: try city only
-        if (city && city !== query) {{
-          var fallbackUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://news.google.com/rss/search?q=' + encodeURIComponent(city + ' news') + '+when:21 days&hl=en-US&gl=US&ceid=US:en') + '&count=15';
-          fetch(fallbackUrl).then(function(r){{ return r.json(); }}).then(function(d){{ renderItems(d.items||[], locationName); }}).catch(function(){{
-            col.innerHTML = '<p style="color:var(--nuzu-dim)">Could not load. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Google News &#8599;</a></p>';
-          }});
-        }} else {{
-          col.innerHTML = '<p style="color:var(--nuzu-dim)">Could not load. <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">Google News &#8599;</a></p>';
-        }}
-      }});
-  }}
-
-  function getLocationInfo(lat, lon, cb) {{
-    fetch('https://nominatim.openstreetmap.org/reverse?lat=' + lat + '&lon=' + lon + '&format=json')
-      .then(function(r) {{ return r.json(); }})
-      .then(function(d) {{
-        var a = d.address || {{}};
-        var city  = a.city || a.town || a.village || a.county || '';
-        var state = a.state || '';
-        cb(city, state);
-      }})
-      .catch(function() {{ cb('', ''); }});
-  }}
-
-  // Load from saved location
-  try {{
-    var saved = localStorage.getItem(LOC_KEY);
-    if (saved) {{
-      var loc = JSON.parse(saved);
-      if (loadingMsg) loadingMsg.style.display = 'none';
-      fetchRegionalNews(loc.city || '', loc.state || '');
-      return;
-    }}
-  }} catch(e) {{}}
-
-  if (enableBtn) {{
-    enableBtn.addEventListener('click', function() {{
-      enableBtn.textContent = 'Getting location…';
-      enableBtn.disabled = true;
-      if (!navigator.geolocation) {{
-        if (loadingMsg) loadingMsg.innerHTML = '<span style="color:var(--nuzu-dim)">Geolocation not supported by your browser.</span>';
-        return;
-      }}
-      navigator.geolocation.getCurrentPosition(
-        function(pos) {{
-          var lat = pos.coords.latitude, lon = pos.coords.longitude;
-          getLocationInfo(lat, lon, function(city, state) {{
-            try {{ localStorage.setItem(LOC_KEY, JSON.stringify({{lat:lat, lon:lon, city:city, state:state}})); }} catch(e) {{}}
-            if (loadingMsg) loadingMsg.style.display = 'none';
-            fetchRegionalNews(city, state);
-          }});
-        }},
-        function() {{
-          if (loadingMsg) loadingMsg.innerHTML = '<span style="color:var(--nuzu-dim)">Location access denied.</span> <a href="https://news.google.com" target="_blank" style="color:var(--nuzu-light)">View top news &#8599;</a>';
-        }}
-      );
-    }});
-  }}
 }})();
 
 // - Progressive section loading -
