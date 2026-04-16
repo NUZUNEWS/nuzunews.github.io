@@ -2687,6 +2687,8 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     /* - Video toggle wrap: hide on mobile; WR wrap is separate class and stays visible - */
     @media (max-width: 900px) {{ .video-toggle-wrap {{ display: none !important; }} }}
+    /* Waiting Room is desktop-only — hide on mobile */
+    @media (max-width: 900px) {{ .wr-nav-wrap {{ display: none !important; }} }}
 
     /* ─── Mobile: Two-row sticky nav ─── */
     @media (max-width: 900px) {{
@@ -3170,7 +3172,12 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .nuzu-hero {{
         background: linear-gradient(180deg, #E0E8F8 0%, #F5F8FF 100%) !important;
     }}
-    body.light-mode .nuzu-hero-wordmark {{ -webkit-text-fill-color: transparent; }}
+    body.light-mode .nuzu-hero-wordmark {{
+        background: linear-gradient(135deg, #0A1A5C 0%, #1E4FD8 60%, #2563EB 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        filter: none !important;
+    }}
     body.light-mode .title {{ color: #000 !important; }}
     body.light-mode .top-story-card {{ background: #EBF0FA !important; }}
     body.light-mode #section-us       .cluster {{ background: #FFF0F0 !important; border-left-color: #C0392B !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
@@ -3191,7 +3198,6 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .sports-color-banner   {{ background: linear-gradient(90deg, rgba(26,122,74,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .culture-color-banner  {{ background: linear-gradient(90deg, rgba(123,45,139,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .nuzu-hero {{ background: linear-gradient(180deg, #e8edf8 0%, #f5f8ff 100%) !important; }}
-    body.light-mode .nuzu-hero-wordmark {{ filter: none; }}
     body.light-mode .breaking-banner {{ background: #1a1a2e !important; }}
     body.light-mode .headline:hover {{ background: rgba(30,79,216,0.04) !important; }}
     body.light-mode .float-mode-btn {{ background: #EBF0FA; color: #000; border-color: #D1D9E8; }}
@@ -3630,9 +3636,10 @@ html_parts.append(f"""<!DOCTYPE html>
     .scl-breaking {{ color: #E06060; }}
     .scl-daily    {{ color: var(--nuzu-muted); }}
     .section-col-inner {{ flex: 1; overflow: hidden; }}
-    .container.equal-cols {{ align-items: stretch; }}
-    .container.equal-cols .column {{ display: flex; flex-direction: column; }}
-    .container.equal-cols .column .section-col-card {{ flex: 1; }}
+    /* equal-cols: JS handles height equalization — no CSS flex tricks that corrupt measurement */
+    .container.equal-cols {{ align-items: flex-start; }}
+    .container.equal-cols .column {{ display: block; }}
+    .container.equal-cols .column .section-col-card {{ height: auto; }}
 
     /* -─ FIX 7: Per-section card tints + hover colors -─ */
     #section-us       .section-col-card {{ background:#090101; border-left:2px solid rgba(192,57,43,0.35); }}
@@ -4657,9 +4664,13 @@ document.addEventListener('DOMContentLoaded', function() {{
   function bnavScrollSpy() {{
     var scrollY = window.pageYOffset + 120;
     var active  = null;
-    for (var i = sections.length - 1; i >= 0; i--) {{
-      if (sections[i] && sections[i].offsetTop <= scrollY) {{
-        active = bnavItems[i]; break;
+    var bestTop = -1;
+    for (var i = 0; i < sections.length; i++) {{
+      if (!sections[i]) continue;
+      var top = sections[i].getBoundingClientRect().top + window.pageYOffset;
+      if (top <= scrollY && top > bestTop) {{
+        bestTop = top;
+        active = bnavItems[i];
       }}
     }}
     bnavItems.forEach(function(item) {{ item.classList.remove('active'); }});
@@ -5109,33 +5120,47 @@ document.addEventListener('DOMContentLoaded', function() {{
 }})();
 
 // - Equal-height Breaking / Recent columns -
-// Breaking column defines the height; Recent column matches it (clipped if taller).
+// Breaking column is the authority. Recent is capped to match it (never taller).
+// Both columns end at exactly the same pixel height on desktop.
 function nuzu_equalColHeights() {{
-  if (window.innerWidth <= 900) return; // mobile: single-column, no equalization needed
+  if (window.innerWidth <= 900) return; // single-column on mobile, skip
   document.querySelectorAll('.container.equal-cols').forEach(function(container) {{
     var cols = container.querySelectorAll(':scope > .column');
     if (cols.length < 2) return;
     var bCard = cols[0].querySelector('.section-col-card');
     var rCard = cols[1].querySelector('.section-col-card');
     if (!bCard || !rCard) return;
-    // Reset any previous overrides so we can measure natural heights
+
+    // Step 1: clear any previous JS-applied constraints so we measure natural height
+    cols[0].style.height = '';
+    cols[1].style.height = '';
     bCard.style.height = '';
     rCard.style.height = '';
     rCard.style.overflow = '';
-    // Measure natural scroll heights (full content height regardless of CSS)
-    var bH = bCard.scrollHeight;
-    var rH = rCard.scrollHeight;
+
+    // Step 2: force layout reflow so offsetHeight reflects natural content
+    void bCard.offsetHeight;
+
+    // Step 3: read natural rendered heights
+    var bH = bCard.offsetHeight;
     if (bH <= 0) return;
-    // Set recent card height to match breaking (cap it if recent is taller)
+
+    // Step 4: cap RECENT at BREAKING height.
+    //   recent < breaking  → pad recent to breaking height (blank space at bottom).
+    //   recent > breaking  → clip recent to breaking height (hides overflow headlines).
     rCard.style.height = bH + 'px';
     rCard.style.overflow = 'hidden';
-    // If breaking is shorter than recent's natural height, no change needed for breaking
-    // Breaking column always retains its full natural height
+
+    // Step 5: set COLUMN wrappers to equal height so borders/backgrounds align cleanly
+    cols[0].style.height = bH + 'px';
+    cols[1].style.height = bH + 'px';
   }});
 }}
-// Run on load (small delay for fonts/content to settle)
-setTimeout(nuzu_equalColHeights, 250);
+// Run after fonts/layout settle; second pass catches late-loading clusters
+setTimeout(nuzu_equalColHeights, 350);
+setTimeout(nuzu_equalColHeights, 1000);
 window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
+
 
 // - Scroll spy -
 (function() {{
@@ -5149,11 +5174,19 @@ window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
   sections.forEach(function(s) {{ navLinks[s.cls] = document.querySelector('.sticky-nav a.' + s.cls); }});
   function onScroll() {{
     var scrollY = window.pageYOffset + 80;
+    // Find the section whose top is closest to (but not past) scrollY.
+    // This works regardless of the order sections appear on the page (MRO-driven).
     var active = null;
-    for (var i = sections.length - 1; i >= 0; i--) {{
-      var el = document.getElementById(sections[i].id);
-      if (el && el.offsetTop <= scrollY) {{ active = sections[i].cls; break; }}
-    }}
+    var bestTop = -1;
+    sections.forEach(function(s) {{
+      var el = document.getElementById(s.id);
+      if (!el) return;
+      var top = el.getBoundingClientRect().top + window.pageYOffset;
+      if (top <= scrollY && top > bestTop) {{
+        bestTop = top;
+        active = s.cls;
+      }}
+    }});
     sections.forEach(function(s) {{
       var link = navLinks[s.cls]; if (!link) return;
       if (s.cls === active) link.classList.add('nav-active');
