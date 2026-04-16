@@ -1,8 +1,0 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.nuzu.news",
-    "sha256_cert_fingerprints": ["E9:CE:19:9B:A1:3C:9F:CA:4C:ED:1E:6C:67:89:E5:42:0D:BB:B0:8E:EA:30:17:41:3F:37:03:38:8A:E4:5E:90"]
-  }
-}]
