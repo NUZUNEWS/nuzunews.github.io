@@ -5460,7 +5460,7 @@ document.addEventListener('click', function(e) {{
     // Build search query: prefer state-level for broader coverage
     var locationName = city ? city + (state ? ', ' + state : '') : (state || 'Your Area');
     var query = state || city || 'local';
-    // Use 3-week window (when:21d)
+    // Use three-week window (when:21d)
     var rssUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query + ' news') + '+when:21d&hl=en-US&gl=US&ceid=US:en';
     var apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl) + '&count=15';
 
