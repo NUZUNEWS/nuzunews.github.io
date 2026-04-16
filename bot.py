@@ -3847,6 +3847,7 @@ html_parts.append("""
   </div>
   <div id="wr-grid"></div>
 </div>
+""")
 
 
 <div id="saved-panel" class="saved-articles-panel" role="complementary" aria-label="Saved articles">
