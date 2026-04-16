@@ -4421,7 +4421,7 @@ update_time = _now_pdt.strftime("%-I:%M %p PDT, %B %-d, %Y")
 
 html_parts.append(f"""
 <script>
-// ── NUZU Feed URLs (hardcoded for reliable restore) ──
+// - NUZU Feed URLs (hardcoded for reliable restore) -
 var MAIN_FEED_SRCS = [
   'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/Ap-UM1O9RBU?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
