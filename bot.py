@@ -3834,8 +3834,6 @@ html_parts.append(f"""<!DOCTYPE html>
 <body>
 """)
 
-html_parts.append(f"""
-
 html_parts.append("""
 <div id="wr-overlay" role="dialog" aria-modal="true" aria-label="NUZU Waiting Room">
   <div id="wr-header">
@@ -3849,7 +3847,7 @@ html_parts.append("""
 </div>
 """)
 
-
+html_parts.append(f"""
 <div id="saved-panel" class="saved-articles-panel" role="complementary" aria-label="Saved articles">
   <div class="saved-panel-header">
     <h3>&#9733; Saved Articles</h3>
@@ -3859,7 +3857,7 @@ html_parts.append("""
     <p class="saved-panel-empty">No saved articles yet.<br>Tap &#9733; next to any headline to save it.</p>
   </div>
 </div>
-
+""")
 <div class="ptr-indicator" id="ptr-indicator">&#8635; Release to refresh</div>
 
 <!-- Mobile Bottom Navigation Bar -->
