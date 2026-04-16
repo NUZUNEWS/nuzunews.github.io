@@ -4412,7 +4412,7 @@ _comic_html = render_comic_section()
 if _comic_html:
     html_parts.append('<hr class="top-divider">\\n')
     html_parts.append(_comic_html)
-'''
+""")
 
 # ====================== FOOTER ======================
 _now_utc = datetime.utcnow()
@@ -6054,3 +6054,7 @@ except Exception as e:
 
 print("\nNUZU bot finished successfully.")
 print("Files saved to current directory.")
+html = "".join(html_parts)
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html)
+print("✅ index.html generated")
