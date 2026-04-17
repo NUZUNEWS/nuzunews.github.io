@@ -21,3 +21,6 @@
 
 /terms.html
   Cache-Control: public, max-age=86400
+
+/about.html
+  Cache-Control: public, max-age=86400
