@@ -173,6 +173,221 @@ def get_friendly_source(raw_name):
             return SOURCE_MAP[key]
     return raw_name.split(" - ")[-1].strip() if " - " in raw_name else raw_name
 
+# ====================== SOURCE DOMAIN / FAVICON MAP ======================
+# Maps publisher names to their real web domains so we can render a small
+# favicon thumbnail next to each cluster via Google's public s2 service:
+#   https://www.google.com/s2/favicons?domain={domain}&sz=128
+# This requires no scraping, no server-side fetching, and is free for users.
+# When no mapping is found, we fall back to a letter-avatar so every cluster
+# still has a visual marker.
+SOURCE_DOMAIN_MAP = {
+    # Wires & flagship
+    "Reuters":"reuters.com","AP":"apnews.com","AP News":"apnews.com",
+    "Associated Press":"apnews.com","AFP":"afp.com",
+    "BBC":"bbc.com","BBC News":"bbc.com","BBC Sport":"bbc.com",
+    "BBC Culture":"bbc.com","BBC Tech":"bbc.com","BBC Technology":"bbc.com",
+    "NYT":"nytimes.com","New York Times":"nytimes.com","NYT Arts":"nytimes.com",
+    "NYT Technology":"nytimes.com","NYT Sport":"nytimes.com",
+    "WaPo":"washingtonpost.com","Washington Post":"washingtonpost.com",
+    "WSJ":"wsj.com","Wall Street Journal":"wsj.com",
+    "FT":"ft.com","Financial Times":"ft.com",
+    "Bloomberg":"bloomberg.com","Bloomberg Gov":"bloomberg.com",
+    "Bloomberg Tech":"bloomberg.com","Bloomberg Sports":"bloomberg.com",
+    "Economist":"economist.com","The Economist":"economist.com",
+    "NPR":"npr.org","PBS":"pbs.org","PBS NewsHour":"pbs.org",
+    "Al Jazeera":"aljazeera.com","Al Arabiya":"alarabiya.net",
+    "Al-Monitor":"al-monitor.com","Al Monitor":"al-monitor.com","Al Bawaba":"albawaba.com",
+    "Guardian":"theguardian.com","The Guardian":"theguardian.com",
+    "Guardian US":"theguardian.com","Guardian Arts":"theguardian.com",
+    "Guardian Sport":"theguardian.com","Guardian Tech":"theguardian.com",
+    # US broadcasters
+    "CBS News":"cbsnews.com","CBS Sports":"cbssports.com",
+    "ABC News":"abcnews.go.com","NBC News":"nbcnews.com","NBC Sports":"nbcsports.com",
+    "FOX Sports":"foxsports.com","FOX News":"foxnews.com",
+    "CNN":"cnn.com","USA Today":"usatoday.com","NewsNation":"newsnationnow.com",
+    "Straight Arrow":"san.com","C-SPAN":"c-span.org",
+    # Politics / analysis
+    "Axios":"axios.com","Politico":"politico.com","Politico Mag":"politico.com",
+    "Politico EU":"politico.eu","The Hill":"thehill.com",
+    "Atlantic":"theatlantic.com","The Atlantic":"theatlantic.com",
+    "New Yorker":"newyorker.com","Bulwark":"thebulwark.com","Dispatch":"thedispatch.com",
+    "Semafor":"semafor.com","Punchbowl":"punchbowl.news",
+    "Foreign Affairs":"foreignaffairs.com","Foreign Policy":"foreignpolicy.com",
+    "538":"fivethirtyeight.com","FiveThirtyEight":"fivethirtyeight.com",
+    "ProPublica":"propublica.org","Just Security":"justsecurity.org",
+    "Lawfare":"lawfaremedia.org","SCOTUSblog":"scotusblog.com",
+    "STAT News":"statnews.com","Stat News":"statnews.com",
+    "Cipher Brief":"thecipherbrief.com","Cook Political":"cookpolitical.com",
+    "RCP":"realclearpolitics.com","RealClearPolitics":"realclearpolitics.com",
+    "Notus":"notus.org","McClatchy":"mcclatchydc.com","Time":"time.com",
+    "Newsweek":"newsweek.com","CS Monitor":"csmonitor.com",
+    "Roll Call":"rollcall.com","Natl Journal":"nationaljournal.com",
+    # Business
+    "CNBC":"cnbc.com","Forbes":"forbes.com",
+    "Fortune":"fortune.com","Barron's":"barrons.com",
+    "MarketWatch":"marketwatch.com","Business Insider":"businessinsider.com",
+    "The Information":"theinformation.com","Kiplinger":"kiplinger.com",
+    "Yahoo Finance":"finance.yahoo.com","Investopedia":"investopedia.com",
+    # Middle East
+    "Times of Israel":"timesofisrael.com","Haaretz":"haaretz.com",
+    "Jerusalem Post":"jpost.com","Israel Hayom":"israelhayom.com",
+    "i24 NEWS":"i24news.tv","Ynet":"ynetnews.com",
+    "Iran Intl":"iranintl.com","Iran International":"iranintl.com",
+    "Press TV":"presstv.ir","Tehran Times":"tehrantimes.com",
+    "Arab News":"arabnews.com","Asharq":"english.aawsat.com",
+    "Ahram Online":"english.ahram.org.eg","Hurriyet":"hurriyetdailynews.com",
+    "Gulf News":"gulfnews.com","National UAE":"thenationalnews.com",
+    "Media Line":"themedialine.org","ME Eye":"middleeasteye.net",
+    "ME Monitor":"middleeastmonitor.com","MEI":"mei.edu",
+    "TRT World":"trtworld.com","Daily Star LB":"dailystar.com.lb",
+    "L'Orient":"today.lorientlejour.com","Mondoweiss":"mondoweiss.net",
+    "E. Intifada":"electronicintifada.net","Jadaliyya":"jadaliyya.com",
+    "Crisis Group":"crisisgroup.org",
+    # World / regional
+    "France 24":"france24.com","DW":"dw.com","Deutsche Welle":"dw.com",
+    "Euronews":"euronews.com","The Local":"thelocal.com",
+    "Irish Times":"irishtimes.com","Independent":"independent.co.uk",
+    "Telegraph":"telegraph.co.uk","The Times":"thetimes.com",
+    "The Australian":"theaustralian.com.au","SMH":"smh.com.au",
+    "The Diplomat":"thediplomat.com","Asia Times":"asiatimes.com",
+    "Nikkei Asia":"asia.nikkei.com","Japan Times":"japantimes.co.jp",
+    "Asahi Shimbun":"asahi.com","NHK World":"www3.nhk.or.jp",
+    "Kyodo News":"english.kyodonews.net","Bangkok Post":"bangkokpost.com",
+    "Straits Times":"straitstimes.com","SCMP":"scmp.com",
+    "South China Morning Post":"scmp.com","Korea Herald":"koreaherald.com",
+    "Korea Times":"koreatimes.co.kr","Hindustan Times":"hindustantimes.com",
+    "The Hindu":"thehindu.com","Reuters UK":"reuters.com",
+    # US local / regional
+    "LAT":"latimes.com","LAT Ent":"latimes.com",
+    "Los Angeles Times":"latimes.com","Chi Tribune":"chicagotribune.com",
+    "Chicago Tribune":"chicagotribune.com","TX Tribune":"texastribune.org",
+    "Philly Inquirer":"inquirer.com","Boston Globe":"bostonglobe.com",
+    "Seattle Times":"seattletimes.com","Denver Post":"denverpost.com",
+    "AZ Republic":"azcentral.com","Star Tribune":"startribune.com",
+    "Oregonian":"oregonlive.com","Sac Bee":"sacbee.com",
+    "SF Chronicle":"sfchronicle.com","Dallas News":"dallasnews.com",
+    "AJC":"ajc.com","Miami Herald":"miamiherald.com",
+    # Sports
+    "ESPN":"espn.com","Sky Sports":"skysports.com",
+    "Yahoo Sports":"sports.yahoo.com","B/R":"bleacherreport.com",
+    "Bleacher Report":"bleacherreport.com","Front Office":"frontofficesports.com",
+    "Sportico":"sportico.com","SBJ":"sportsbusinessjournal.com",
+    "Defector":"defector.com","Yardbarker":"yardbarker.com",
+    "SB Nation":"sbnation.com","Sportskeeda":"sportskeeda.com",
+    "Goal":"goal.com","Goal.com":"goal.com","Marca":"marca.com",
+    "L'Equipe":"lequipe.fr","Cricbuzz":"cricbuzz.com",
+    "Cricinfo":"espncricinfo.com","ESPNcricinfo":"espncricinfo.com",
+    "theScore":"thescore.com","MMA Fighting":"mmafighting.com",
+    "BoxingScene":"boxingscene.com","Golf Digest":"golfdigest.com",
+    "Motorsport":"motorsport.com","Motorsport.com":"motorsport.com",
+    "Autosport":"autosport.com","SI":"si.com",
+    "Sports Illustrated":"si.com","Athletic":"nytimes.com",
+    "The Athletic":"nytimes.com","NCAA":"ncaa.com",
+    "Sporting News":"sportingnews.com","Players Tribune":"theplayerstribune.com",
+    "The Ringer":"theringer.com","The GIST":"thegistsports.com",
+    "Big Lead":"thebiglead.com","Eurosport":"eurosport.com",
+    # Tech
+    "Wired":"wired.com","MIT Tech Review":"technologyreview.com",
+    "Verge":"theverge.com","TechCrunch":"techcrunch.com",
+    "Engadget":"engadget.com","CNET":"cnet.com","ZDNet":"zdnet.com",
+    "IEEE Spectrum":"spectrum.ieee.org","Nature":"nature.com",
+    "Ars Technica":"arstechnica.com","Mashable":"mashable.com",
+    "Gizmodo":"gizmodo.com","TechRadar":"techradar.com",
+    "VentureBeat":"venturebeat.com","Pop Sci":"popsci.com",
+    "Sci American":"scientificamerican.com","The Markup":"themarkup.org",
+    "Markup":"themarkup.org",
+    # Culture / Entertainment
+    "TMZ":"tmz.com","E! News":"eonline.com","People":"people.com",
+    "People Magazine":"people.com","Vanity Fair":"vanityfair.com",
+    "Vogue":"vogue.com","Harper's Bazaar":"harpersbazaar.com",
+    "Elle":"elle.com","Cosmopolitan":"cosmopolitan.com",
+    "Glamour":"glamour.com","GQ":"gq.com","Esquire":"esquire.com",
+    "W Magazine":"wmagazine.com","Refinery29":"refinery29.com",
+    "Just Jared":"justjared.com","THR":"hollywoodreporter.com",
+    "Hollywood Life":"hollywoodlife.com","Variety":"variety.com",
+    "Deadline":"deadline.com","EW":"ew.com",
+    "Billboard":"billboard.com","Rolling Stone":"rollingstone.com",
+    "Pitchfork":"pitchfork.com","Complex":"complex.com",
+    "IndieWire":"indiewire.com","PopSugar":"popsugar.com",
+    "US Weekly":"usmagazine.com","Teen Vogue":"teenvogue.com",
+    "Nylon":"nylon.com","Hyperallergic":"hyperallergic.com",
+    "PetaPixel":"petapixel.com","WWD":"wwd.com",
+    "Fashionista":"fashionista.com","Dazed":"dazeddigital.com",
+    "Artforum":"artforum.com","Frieze":"frieze.com",
+    "Vulture":"vulture.com","AV Club":"avclub.com","NME":"nme.com",
+    "CoS":"consequence.net","Stereogum":"stereogum.com",
+    "Screen Rant":"screenrant.com","Collider":"collider.com",
+    "Lit Hub":"lithub.com","PW":"publishersweekly.com",
+    "Book Riot":"bookriot.com","The Cut":"thecut.com","Cut":"thecut.com",
+    "The Wrap":"thewrap.com","Wrap":"thewrap.com",
+    "Playlist":"theplaylist.net","Art Newspaper":"theartnewspaper.com",
+    "BoF":"businessoffashion.com",
+    # Partisan / opinion
+    "Newsmax":"newsmax.com","Breitbart":"breitbart.com",
+    "Daily Wire":"dailywire.com","HuffPost":"huffpost.com","Vox":"vox.com",
+    "BuzzFeed":"buzzfeednews.com","Vice":"vice.com",
+    "Daily Beast":"thedailybeast.com","Salon":"salon.com",
+    "Slate":"slate.com","Intercept":"theintercept.com",
+    # Think tanks / fact check
+    "Pew Research":"pewresearch.org","Brookings":"brookings.edu",
+    "RAND":"rand.org","CFR":"cfr.org","Atlantic Council":"atlanticcouncil.org",
+    "Ballotpedia":"ballotpedia.org","FactCheck":"factcheck.org",
+    "PolitiFact":"politifact.com","Snopes":"snopes.com",
+    "OpenSecrets":"opensecrets.org","Defense News":"defensenews.com",
+    "Defense One":"defenseone.com","War on Rocks":"warontherocks.com",
+    "Gov Executive":"govexec.com","Governing":"governing.com",
+    "Fed News Net":"federalnewsnetwork.com","Natl Defense":"nationaldefensemagazine.org",
+}
+
+def get_source_domain(source_name):
+    """Return the publisher domain for a given source name, or '' if unknown."""
+    if not source_name:
+        return ''
+    friendly = get_friendly_source(source_name)
+    # Exact matches first (fastest + most reliable)
+    if friendly in SOURCE_DOMAIN_MAP:
+        return SOURCE_DOMAIN_MAP[friendly]
+    if source_name in SOURCE_DOMAIN_MAP:
+        return SOURCE_DOMAIN_MAP[source_name]
+    # Fallback: case-insensitive contains-match against keys
+    fl = friendly.lower().strip()
+    sl = source_name.lower().strip()
+    for key, dom in SOURCE_DOMAIN_MAP.items():
+        kl = key.lower()
+        if kl == fl or kl == sl:
+            return dom
+    for key, dom in SOURCE_DOMAIN_MAP.items():
+        kl = key.lower()
+        if len(kl) >= 4 and (kl in fl or kl in sl):
+            return dom
+    return ''
+
+def get_source_icon_html(source_name, size_class=''):
+    """
+    Return HTML for a small favicon image for this source, or a letter
+    avatar if no domain is mapped. Always returns a fixed-size element
+    so layout is stable and no layout shift occurs when images load/fail.
+    """
+    if not source_name:
+        source_name = ''
+    friendly = get_friendly_source(source_name) if source_name else ''
+    safe_name = (friendly or source_name or '?').replace('"', "'").replace('<','').replace('>','')
+    dom = get_source_domain(source_name)
+    cls = ('nuzu-thumb ' + size_class).strip()
+    if dom:
+        url = 'https://www.google.com/s2/favicons?domain=' + dom + '&sz=128'
+        # Inline onerror swaps to a letter avatar if the favicon request fails
+        letter = (friendly[:1] or '?').upper().replace('"', "'")
+        return (
+            f'<span class="{cls}" data-src-name="{safe_name}" aria-hidden="true">'
+            f'<img src="{url}" alt="" loading="lazy" decoding="async" '
+            f'referrerpolicy="no-referrer" '
+            f"onerror=\"this.style.display='none';this.parentNode.classList.add('nuzu-thumb-letter');this.parentNode.textContent='{letter}';\">"
+            f'</span>'
+        )
+    letter = (friendly[:1] or '?').upper()
+    return f'<span class="{cls} nuzu-thumb-letter" title="{safe_name}" aria-hidden="true">{letter}</span>'
+
 def strip_source_from_title(title):
     """Remove trailing ' - Source Name' appended by RSS aggregators."""
     if " - " not in title:
@@ -2294,14 +2509,16 @@ def render_clusters(clusters, show_trust=True):
                 '<span class="cluster-src-pill">' + s + '</span>' for s in top3_srcs
             )
             _trust_display = trust_bar_html if show_trust else ''
+            _thumb_html = get_source_icon_html(lead_source, 'nuzu-thumb-md')
             out += (
-                f'<div id="{cluster_id}-anchor" class="cluster" data-ts="{int(lead_ts)}">'
+                f'<div id="{cluster_id}-anchor" class="cluster cluster-with-thumb" data-ts="{int(lead_ts)}">'
+                f'{_thumb_html}'
+                f'<div class="cluster-body">'
                 f'<div class="cluster-header">'
                 f'{hot_dot}'
                 f'<span class="cluster-badge">{n_sources} sources</span>'
                 f'<span class="cluster-src-pills">{src_pills}</span>'
                 f'<button class="cluster-toggle-btn" data-target="{cluster_id}" aria-label="Expand story coverage" title="Show/hide all coverage">&#9654; Show all coverage</button>'
-                f'<button class="cluster-share-btn" data-anchor="{cluster_id}-anchor" data-title="{safe_title_attr}" aria-label="Share this story cluster" title="Share this story cluster">&#8679;</button>'
                 f'</div>\n'
                 f'{_trust_display}'
             )
@@ -2335,7 +2552,8 @@ def render_clusters(clusters, show_trust=True):
                     f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗2 Read</a>'
                     f'</div>\n'
                 )
-            out += '</div>\n</div>\n'
+            # Close: cluster-items-wrap, cluster-body, cluster
+            out += '</div>\n</div>\n</div>\n'
     return out
 def render_column(items):
     return render_clusters(cluster_items(items))
@@ -3130,13 +3348,6 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .cluster-toggle-btn:hover {{ color: var(--nuzu-white); border-color: var(--nuzu-muted); }}
     .cluster-toggle-btn.open {{ color: var(--nuzu-text); border-color: var(--nuzu-muted); }}
-    .cluster-share-btn {{
-        background: none; border: 1px solid var(--nuzu-border); border-radius: 10px;
-        color: var(--nuzu-dim); font-size: 0.7em; padding: 2px 7px; cursor: pointer;
-        transition: color 0.15s, border-color 0.15s; flex-shrink: 0;
-    }}
-    .cluster-share-btn:hover {{ color: var(--nuzu-light); border-color: var(--nuzu-muted); }}
-    body:not(.share-api-available) .cluster-share-btn {{ display: none !important; }}
     .cluster-sources-line {{
         color: var(--nuzu-dim); font-size: 0.73em; margin-bottom: 6px;
         padding-bottom: 4px; border-bottom: 1px solid var(--nuzu-border);
@@ -4044,6 +4255,228 @@ html_parts.append(f"""<!DOCTYPE html>
         text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }}
 
+    /* ═══════════════════════════════════════════════════════════════
+       CLUSTER / MRO SOURCE THUMBNAILS (Google s2 favicons)
+       ═══════════════════════════════════════════════════════════════ */
+    .nuzu-thumb {{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background: var(--nuzu-dark);
+        border: 1px solid var(--nuzu-border);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+        user-select: none;
+    }}
+    .nuzu-thumb img {{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 14%;
+        display: block;
+    }}
+    .nuzu-thumb-letter {{
+        font-family: 'Inter', Arial, sans-serif;
+        font-weight: 800;
+        color: var(--nuzu-white);
+        background: linear-gradient(135deg, rgba(30,79,216,0.30) 0%, rgba(30,79,216,0.12) 100%);
+        border-color: rgba(30,79,216,0.35);
+        text-transform: uppercase;
+    }}
+    /* Medium thumb = cluster leads */
+    .nuzu-thumb-md {{ width: 44px; height: 44px; font-size: 1.05em; }}
+    /* Small thumb = MRO cards */
+    .nuzu-thumb-sm {{ width: 36px; height: 36px; font-size: 0.92em; }}
+    body.light-mode .nuzu-thumb {{
+        background: #fff;
+        border-color: #d8dae1;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }}
+    body.light-mode .nuzu-thumb-letter {{
+        background: linear-gradient(135deg, rgba(30,79,216,0.18) 0%, rgba(30,79,216,0.06) 100%);
+        color: #0D1B4B;
+        border-color: rgba(30,79,216,0.25);
+    }}
+
+    /* Cluster layout with thumb: image on left, body fills remaining */
+    .cluster.cluster-with-thumb {{
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }}
+    .cluster .cluster-body {{
+        flex: 1;
+        min-width: 0;
+    }}
+    /* MRO cards: thumb left, content right */
+    .top-story-card.mro-card {{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }}
+    .mro-card .mro-body {{
+        flex: 1;
+        min-width: 0;
+    }}
+    @media (max-width: 900px) {{
+        .nuzu-thumb-md {{ width: 40px; height: 40px; }}
+        .nuzu-thumb-sm {{ width: 34px; height: 34px; }}
+        .cluster.cluster-with-thumb {{ gap: 10px; }}
+    }}
+
+    /* ═══════════════════════════════════════════════════════════════
+       CLUSTERS STAND OUT MORE (polish)
+       ═══════════════════════════════════════════════════════════════ */
+    .cluster {{
+        border-left-width: 5px !important;
+        border-radius: 6px;
+        box-shadow:
+            inset 5px 0 0 rgba(217,119,6,0.22),
+            0 2px 6px rgba(0,0,0,0.22),
+            0 0 0 1px rgba(217,119,6,0.10);
+        transition: transform 0.14s ease, box-shadow 0.14s ease;
+    }}
+    .cluster:hover {{
+        transform: translateY(-1px);
+        box-shadow:
+            inset 5px 0 0 rgba(217,119,6,0.38),
+            0 4px 10px rgba(0,0,0,0.30),
+            0 0 0 1px rgba(217,119,6,0.18);
+    }}
+    body.light-mode .cluster {{
+        box-shadow:
+            inset 5px 0 0 rgba(217,119,6,0.30),
+            0 1px 3px rgba(0,0,0,0.08),
+            0 0 0 1px rgba(217,119,6,0.10);
+    }}
+
+    /* ═══════════════════════════════════════════════════════════════
+       TRUST INDICATORS — MORE VISIBLE
+       ═══════════════════════════════════════════════════════════════ */
+    .cluster-trust-line {{
+        font-size: 0.80em !important;
+        margin: 6px 0 10px 0 !important;
+        gap: 8px !important;
+    }}
+    .cluster-trust-bar-bg {{
+        width: 130px !important;
+        height: 8px !important;
+        border-radius: 4px !important;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.35);
+    }}
+    .cluster-trust-bar-fill {{
+        border-radius: 4px !important;
+        box-shadow: 0 0 6px rgba(34,197,94,0.45);
+    }}
+    .cluster-trust-pct {{
+        font-size: 1.02em !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.02em;
+    }}
+    .cluster-trust-label {{
+        font-size: 0.92em !important;
+    }}
+    .src-tier-pip {{
+        width: 9px !important;
+        height: 9px !important;
+        box-shadow: 0 0 4px currentColor;
+        opacity: 1 !important;
+    }}
+
+    /* ═══════════════════════════════════════════════════════════════
+       PROGRESSIVE LOADING — content-visibility keeps off-screen
+       clusters/headlines from being painted on first load. Native
+       browser support, no JS required. Huge perf win on mobile.
+       ═══════════════════════════════════════════════════════════════ */
+    .cluster {{
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 180px;
+    }}
+    .headline {{
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 64px;
+    }}
+    .cluster-item {{
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 44px;
+    }}
+    /* First N items per column stay fully rendered so hero area is solid */
+    .section-col-inner > .cluster:nth-child(-n+3),
+    .section-col-inner > .headline:nth-child(-n+3) {{
+        content-visibility: visible;
+        contain-intrinsic-size: auto;
+    }}
+
+    /* ═══════════════════════════════════════════════════════════════
+       APP-LIKE POLISH
+       ═══════════════════════════════════════════════════════════════ */
+    html {{ scroll-behavior: smooth; }}
+    @media (prefers-reduced-motion: reduce) {{ html {{ scroll-behavior: auto; }} }}
+    body {{
+        -webkit-tap-highlight-color: transparent;
+        overscroll-behavior-y: contain;
+    }}
+    button, .link, .cluster, .headline, .mro-card,
+    .set-homepage-btn, .trend-tag, .footer-app-btn, .social-icon {{
+        -webkit-tap-highlight-color: transparent;
+    }}
+    button:active, .link:active, .cluster:active,
+    .mro-card:active, .footer-app-btn:active {{
+        transform: scale(0.98);
+    }}
+    /* Pointer: subtle focus ring for keyboard users only */
+    :focus:not(:focus-visible) {{ outline: none; }}
+    :focus-visible {{
+        outline: 2px solid var(--nuzu-blue);
+        outline-offset: 2px;
+        border-radius: 3px;
+    }}
+
+    /* Safe-area padding so PWA on iOS doesn't hide content under notch/home bar */
+    @supports (padding: env(safe-area-inset-top)) {{
+        body {{
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }}
+    }}
+
+    /* ═══════════════════════════════════════════════════════════════
+       PWA INSTALL BUTTON (shown only when beforeinstallprompt fires)
+       ═══════════════════════════════════════════════════════════════ */
+    .pwa-install-btn {{
+        display: none;
+        position: fixed;
+        right: 16px;
+        bottom: 84px;
+        z-index: 1800;
+        background: linear-gradient(135deg, #1E4FD8 0%, #4A7FD8 100%);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 999px;
+        padding: 11px 18px 11px 16px;
+        font-weight: 800;
+        font-size: 0.82em;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+        box-shadow: 0 6px 22px rgba(30,79,216,0.55), 0 2px 5px rgba(0,0,0,0.3);
+        transition: transform 0.15s, box-shadow 0.15s;
+        display: none;
+        align-items: center;
+        gap: 8px;
+    }}
+    .pwa-install-btn.pwa-install-visible {{ display: inline-flex; }}
+    .pwa-install-btn:hover {{ transform: translateY(-1px); box-shadow: 0 10px 28px rgba(30,79,216,0.65); }}
+    .pwa-install-btn .pwa-icon {{ font-size: 1.1em; }}
+    @media (max-width: 900px) {{
+        .pwa-install-btn {{ right: 12px; bottom: 92px; padding: 10px 16px; font-size: 0.78em; }}
+    }}
+    body.light-mode .pwa-install-btn {{
+        color: #fff;
+        box-shadow: 0 6px 22px rgba(30,79,216,0.38), 0 2px 5px rgba(0,0,0,0.15);
+    }}
+
     /* ── Updated-ago prominent ── */
     .nav-updated-ago {{
         font-size: 0.70em; color: var(--nuzu-light); font-weight: 700;
@@ -4462,14 +4895,20 @@ def render_mro_cards(cards):
                 anchor_single  = f"hl-{_mhash}"
                 break
         tag_css = section_css_map.get(section_label, "")
+        # Lead source favicon for the MRO card
+        _lead_src = cluster[0][2] if cluster else ''
+        _thumb_html = get_source_icon_html(_lead_src, 'nuzu-thumb-sm')
         h += (
             f'<div class="top-story-card mro-card" '
             f'data-anchor-cluster="{anchor_cluster}" data-anchor-single="{anchor_single}" '
             f'style="cursor:pointer" title="Jump to story on this page">'
+            f'{_thumb_html}'
+            f'<div class="mro-body">'
             f'<span class="ts-section-tag {tag_css}">{section_label}</span>'
             f'<span class="ts-badge">{n_src} sources</span>'
             f'<span class="ts-headline">{safe_title}</span>'
             f'<span class="ts-link mro-jump">[&#8595; Go to story]</span>'
+            f'</div>'
             f'</div>\n'
         )
     return h
@@ -5012,9 +5451,8 @@ document.addEventListener('DOMContentLoaded', function() {{
     var scrollY = window.pageYOffset + 120;
     var active  = null;
     for (var i = sections.length - 1; i >= 0; i--) {{
-      if (sections[i]) {{
-        var elTop = sections[i].getBoundingClientRect().top + window.pageYOffset;
-        if (elTop <= scrollY) {{ active = bnavItems[i]; break; }}
+      if (sections[i] && sections[i].offsetTop <= scrollY) {{
+        active = bnavItems[i]; break;
       }}
     }}
     bnavItems.forEach(function(item) {{ item.classList.remove('active'); }});
@@ -5495,8 +5933,9 @@ document.addEventListener('DOMContentLoaded', function() {{
 }})();
 
 // - Equal-height Breaking / Recent columns -
-// Breaking column is the height authority. Both columns are locked to its pixel height.
-// The recent column clips (overflow:hidden) if it has more content than breaking.
+// The taller column is the "boss": measure both natural heights, then
+// force the shorter column to match the taller one so there is never
+// dead empty space on one side. Nothing is clipped.
 function nuzu_equalColHeights() {{
   if (window.innerWidth <= 900) return;
   document.querySelectorAll('.container.equal-cols').forEach(function(container) {{
@@ -5505,22 +5944,31 @@ function nuzu_equalColHeights() {{
     var bCard = cols[0].querySelector('.section-col-card');
     var rCard = cols[1].querySelector('.section-col-card');
     if (!bCard || !rCard) return;
+    // Skip sections that are collapsed or not rendered
     var wrap = container.closest('.section-columns');
     if (wrap && wrap.classList.contains('collapsed')) return;
-    // Step 1: fully reset both so we read natural content height
+    // Reset overrides so we measure natural content heights
     bCard.style.height = '';
     rCard.style.height = '';
+    bCard.style.minHeight = '';
+    rCard.style.minHeight = '';
     bCard.style.overflow = '';
     rCard.style.overflow = '';
-    // Step 2: measure natural heights (scrollHeight is the true content height)
-    var bH = Math.max(bCard.scrollHeight, bCard.offsetHeight);
-    var rH = Math.max(rCard.scrollHeight, rCard.offsetHeight);
-    if (bH <= 10 || rH <= 10) return; // section not painted yet – skip
-    // Step 3: breaking column height is the target for both sides
-    var targetH = bH;
-    bCard.style.height = targetH + 'px';      // lock left to its own natural height
-    rCard.style.height = targetH + 'px';      // right matches left exactly
-    rCard.style.overflow = rH > targetH ? 'hidden' : ''; // clip right if it overflows
+    // Force re-layout before measuring so content-visibility items paint
+    void bCard.offsetHeight; void rCard.offsetHeight;
+    // Use the larger of scroll/offset heights — content-visibility can
+    // temporarily report 0 for offscreen items
+    var bH = Math.max(bCard.scrollHeight, bCard.offsetHeight, bCard.getBoundingClientRect().height);
+    var rH = Math.max(rCard.scrollHeight, rCard.offsetHeight, rCard.getBoundingClientRect().height);
+    if (bH <= 10 && rH <= 10) return; // skip unpainted sections
+    // The taller column sets the standard — the shorter column stretches
+    // up to match so no empty dead-space appears on either side.
+    var targetH = Math.max(bH, rH);
+    if (targetH <= 0) return;
+    bCard.style.minHeight = targetH + 'px';
+    rCard.style.minHeight = targetH + 'px';
+    bCard.style.overflow = '';
+    rCard.style.overflow = '';
   }});
 }}
 // Run on load (small delay for fonts/content to settle)
@@ -5545,11 +5993,7 @@ window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
     var active = null;
     for (var i = sections.length - 1; i >= 0; i--) {{
       var el = document.getElementById(sections[i].id);
-      if (el) {{
-        // getBoundingClientRect gives absolute page position regardless of nesting
-        var elTop = el.getBoundingClientRect().top + window.pageYOffset;
-        if (elTop <= scrollY) {{ active = sections[i].cls; break; }}
-      }}
+      if (el && el.offsetTop <= scrollY) {{ active = sections[i].cls; break; }}
     }}
     sections.forEach(function(s) {{
       var link = navLinks[s.cls]; if (!link) return;
@@ -5558,8 +6002,6 @@ window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
     }});
   }}
   window.addEventListener('scroll', onScroll, {{passive:true}});
-  // Also fire on DOMContentLoaded in case page loads mid-scroll
-  document.addEventListener('DOMContentLoaded', onScroll);
   onScroll();
 }})();
 
@@ -5788,30 +6230,13 @@ window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
 // - Web Share API -
 (function() {{
   if (!navigator.share) return;
-  document.body.classList.add('share-api-available');
-
   document.addEventListener('click', function(e) {{
-    // ── Cluster-level share: deep-link directly to this cluster on NUZU ──
-    var clusterBtn = e.target.closest('.cluster-share-btn');
-    if (clusterBtn) {{
-      e.preventDefault(); e.stopPropagation();
-      var anchor   = clusterBtn.getAttribute('data-anchor') || '';
-      var title    = clusterBtn.getAttribute('data-title')  || 'NUZU News';
-      var shareUrl = window.location.origin + window.location.pathname + (anchor ? '#' + anchor : '');
-      navigator.share({{ title: 'NUZU News: ' + title, url: shareUrl }}).catch(function() {{}});
-      return;
-    }}
-
-    // ── Article-level share: route through /go.html so social previews show NUZU ──
     var btn = e.target.closest('.share-btn');
     if (!btn) return;
     e.preventDefault(); e.stopPropagation();
     var title = btn.getAttribute('data-title') || 'NUZU News';
     var url   = btn.getAttribute('data-link')  || window.location.href;
-    var goUrl = window.location.origin + '/go.html'
-              + '?t=' + encodeURIComponent(title)
-              + '&u=' + encodeURIComponent(url);
-    navigator.share({{ title: 'NUZU News: ' + title, url: goUrl }}).catch(function() {{}});
+    navigator.share({{ title: 'NUZU News: ' + title, url: url }}).catch(function() {{}});
   }});
 }})();
 
@@ -5976,6 +6401,55 @@ document.addEventListener('click', function(e) {{
   cols.forEach(function(el){{ io.observe(el); }});
 }})();
 
+// - PWA install prompt (Android / Chrome / Edge) -
+// Captures beforeinstallprompt when fired, shows a floating button, and
+// hides it once the user has installed or dismissed.
+(function() {{
+  var deferred = null;
+  var btn = null;
+  function ensureBtn() {{
+    if (btn) return btn;
+    btn = document.createElement('button');
+    btn.className = 'pwa-install-btn';
+    btn.setAttribute('aria-label', 'Install NUZU as an app');
+    btn.setAttribute('type', 'button');
+    btn.innerHTML = '<span class="pwa-icon">&#8595;</span><span>Install App</span>';
+    document.body.appendChild(btn);
+    btn.addEventListener('click', function() {{
+      if (!deferred) return;
+      try {{ deferred.prompt(); }} catch (e) {{ return; }}
+      deferred.userChoice.then(function(choice) {{
+        try {{ localStorage.setItem('nuzu_pwa_install_choice', choice.outcome || 'unknown'); }} catch(e){{}}
+        deferred = null;
+        btn.classList.remove('pwa-install-visible');
+      }}).catch(function(){{}});
+    }});
+    return btn;
+  }}
+  // Hide the button if already running as installed PWA
+  function isStandalone() {{
+    return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+           window.navigator.standalone === true;
+  }}
+  if (isStandalone()) return;
+  window.addEventListener('beforeinstallprompt', function(e) {{
+    e.preventDefault();
+    deferred = e;
+    var b = ensureBtn();
+    // Respect the user if they've already dismissed twice
+    try {{
+      var skipped = parseInt(localStorage.getItem('nuzu_pwa_skipped') || '0', 10);
+      if (skipped >= 2) return;
+    }} catch(e2) {{}}
+    b.classList.add('pwa-install-visible');
+  }});
+  window.addEventListener('appinstalled', function() {{
+    if (btn) btn.classList.remove('pwa-install-visible');
+    deferred = null;
+    try {{ localStorage.setItem('nuzu_pwa_installed', '1'); }} catch(e){{}}
+  }});
+}})();
+
 // - Hero live date -
 (function() {{
   var d=new Date();
@@ -6111,6 +6585,7 @@ html_parts.append(f"""
       <h3>About</h3>
       <ul>
         <li><a href="#">About NUZU News</a></li>
+        <li><a href="about.html">About NUZU</a></li>
         <li><a href="#">Our Mission</a></li>
         <li><a href="#">How We Curate News</a></li>
         <li><a href="#">Source Standards</a></li>
@@ -6187,6 +6662,7 @@ html_parts.append(f"""
     <p class="footer-copyright">&copy; 2026 NUZU News. All rights reserved.</p>
     <p class="footer-update">Last updated: {update_time}</p>
     <div class="footer-bottom-links">
+      <a href="about.html">About</a>
       <a href="#">Advertise</a>
       <a href="#">Advertising Guidelines</a>
       <a href="#">Purchase Licensing Rights</a>
@@ -6337,6 +6813,9 @@ try:
   Cache-Control: public, max-age=86400
 
 /terms.html
+  Cache-Control: public, max-age=86400
+
+/about.html
   Cache-Control: public, max-age=86400
 """
     with open(HEADERS_FILE, "w") as hf:
