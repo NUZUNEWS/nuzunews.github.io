@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── Open Graph (Facebook, LinkedIn, iMessage, etc.) ── -->
+  <meta property="og:site_name"    content="NUZU News">
+  <meta property="og:type"         content="article">
+  <meta property="og:title"        content="NUZU News — Real News in Real Time">
+  <meta property="og:description"  content="Breaking headlines from 200+ trusted sources across US, World, Middle East, Tech, Business, Sports and Culture. Curated and clustered by NUZU News.">
+  <meta property="og:image"        content="https://nuzunews.github.io/icons/icon-512.png">
+  <meta property="og:image:width"  content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:url"          content="https://nuzunews.github.io/go.html">
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:site"        content="@NUZUNews">
+  <meta name="twitter:title"       content="NUZU News — Real News in Real Time">
+  <meta name="twitter:description" content="Breaking headlines from 200+ trusted sources. Curated and clustered by NUZU News.">
+  <meta name="twitter:image"       content="https://nuzunews.github.io/icons/icon-512.png">
+
+  <!-- ── Standard meta ── -->
+  <meta name="description" content="NUZU News: Real News in Real Time. Breaking headlines from 200+ trusted sources.">
+  <meta name="theme-color" content="#0D1B4B">
+  <title>NUZU News — Opening Article…</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%230D1B4B'/><text x='32' y='46' font-family='Arial,sans-serif' font-size='24' font-weight='900' fill='%23FFFFFF' text-anchor='middle'>NZ</text></svg>">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #020912;
+      color: #D0DAE8;
+      font-family: 'Inter', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 24px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      color: #fff;
+      background: #0D1B4B;
+      padding: 12px 28px;
+      border-radius: 10px;
+    }
+    .tagline {
+      font-size: 0.95rem;
+      color: #4A6A99;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .article-title {
+      font-size: 1.1rem;
+      color: #7EB3FF;
+      max-width: 560px;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 3px solid #0F1E35;
+      border-top-color: #1E4FD8;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-top: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .manual-link {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #4A6A99;
+    }
+    .manual-link a {
+      color: #7EB3FF;
+      text-decoration: underline;
+    }
+    .back-link {
+      margin-top: 6px;
+      font-size: 0.82rem;
+    }
+    .back-link a {
+      color: #4A6A99;
+      text-decoration: none;
+    }
+    .back-link a:hover { color: #D0DAE8; }
+  </style>
+</head>
+<body>
+  <div class="logo">NUZU</div>
+  <div class="tagline">Real News in Real Time</div>
+  <div class="article-title" id="article-title">Opening article…</div>
+  <div class="spinner"></div>
+  <div class="manual-link" id="manual-link"></div>
+  <div class="back-link"><a href="/">← Back to NUZU News</a></div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var dest   = params.get('u') || '';
+      var title  = params.get('t') || '';
+
+      if (title) {
+        document.getElementById('article-title').textContent = title;
+        document.title = 'NUZU News — ' + title;
+      }
+
+      if (dest) {
+        // Show a manual link in case redirect is blocked
+        var ml = document.getElementById('manual-link');
+        ml.innerHTML = 'Not redirecting? <a href="' + dest + '" rel="noopener noreferrer">Open article directly &rarr;</a>';
+
+        // Redirect after a short moment so the page is visible for social crawlers
+        setTimeout(function () {
+          window.location.replace(dest);
+        }, 800);
+      } else {
+        // No destination — send to NUZU home
+        document.getElementById('article-title').textContent = 'No article link found. Sending you home…';
+        setTimeout(function () { window.location.replace('/'); }, 1500);
+      }
+    })();
+  </script>
+</body>
+</html>
