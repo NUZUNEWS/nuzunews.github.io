@@ -173,6 +173,55 @@ def get_friendly_source(raw_name):
             return SOURCE_MAP[key]
     return raw_name.split(" - ")[-1].strip() if " - " in raw_name else raw_name
 
+def strip_source_from_title(title):
+    """Remove trailing ' - Source Name' appended by RSS aggregators."""
+    if " - " not in title:
+        return title
+    parts = title.rsplit(" - ", 1)
+    suffix = parts[1].strip()
+    # Only strip if suffix looks like a short source name (<=5 words)
+    if len(suffix.split()) <= 5:
+        return parts[0].strip()
+    return title
+
+SOURCE_TIERS = {
+    1: {"reuters","ap","ap news","associated press","bbc","bbc news","agence france-presse","afp",
+        "new york times","nyt","wall street journal","wsj","financial times","ft",
+        "the economist","bloomberg","npr","pbs","pbs newshour","al jazeera",
+        "washington post","wapo","abc news","cbs news","nbc news","france 24",
+        "deutsche welle","dw","guardian","the guardian","usa today"},
+    2: {"axios","politico","foreign affairs","foreign policy","propublica","the atlantic",
+        "the new yorker","cnbc","forbes","time","newsweek","wired","mit technology review",
+        "ars technica","the verge","techcrunch","espn","variety","hollywood reporter",
+        "rolling stone","billboard","the hill","semafor","stat news","bloomberg tech"},
+    3: {"tmz","e! news","people magazine","just jared","hollywood life",
+        "breitbart","newsmax","daily wire","fox news","the sun","daily mail","ny post"},
+    4: {"facebook","facebook.com","msn","yahoo","flipboard"},
+}
+
+def get_source_tier(raw_name):
+    """Return reliability tier 1-4 (1=best). Default 2."""
+    nl = raw_name.lower()
+    for t in (1, 2, 3, 4):
+        for s in SOURCE_TIERS[t]:
+            if s in nl:
+                return t
+    return 2
+
+def source_trust_color(raw_name):
+    """Return green/amber/red CSS color for source tier."""
+    t = get_source_tier(raw_name)
+    if t == 1: return "#22c55e"
+    if t == 2: return "#f59e0b"
+    return "#ef4444"
+
+def cluster_trust_pct(cluster):
+    """Return % of items from tier-1 or tier-2 sources."""
+    if not cluster:
+        return 0
+    trusted = sum(1 for _, _, src, _ in cluster if get_source_tier(src) <= 2)
+    return round(trusted / len(cluster) * 100)
+
 
 def make_keyword_pattern(keywords):
     sorted_kws = sorted(keywords, key=len, reverse=True)
@@ -2181,77 +2230,100 @@ def render_clusters(clusters):
         if len(cluster) == 1:
             ts, title, source, link = cluster[0]
             friendly = get_friendly_source(source)
-            trusted  = is_trusted_source(source)
             time_str = ts_to_pdt(ts)
-            display_title = title[0].upper() + title[1:] if title else title
+            clean_title = strip_source_from_title(title)
+            display_title = clean_title[0].upper() + clean_title[1:] if clean_title else clean_title
             is_hot = (now - ts) <= THIRTY_MIN
             hot_dot = '<span class="new-dot" title="Published in the last 30 minutes">&#9679;</span> ' if is_hot else ''
-            trust_badge = '<span class="trust-badge" title="Verified trusted source">&#10003;</span> ' if trusted else ''
+            ts_cls = ' ts-hot' if is_hot else ''
+            tier_color = source_trust_color(source)
+            trust_pip = ('<span class="src-tier-pip" style="background:' + tier_color
+                          + '" title="Source reliability"></span>')
             anchor_id = "hl-" + hashlib.md5(link.encode()).hexdigest()[:8]
             safe_title_attr = display_title.replace('"', "'")
             out += (
                 f'<div id="{anchor_id}" class="headline" data-link="{link}" data-ts="{int(ts)}">'
-                f'{hot_dot}{trust_badge}'
+                f'{hot_dot}'
                 f'<span class="title">{display_title}</span>'
-                f' <span class="ts-label">{time_str}</span>'
-                f' <span class="src-label">\u2014 {friendly}</span>'
+                f' <span class="ts-label{ts_cls}">{time_str}</span>'
+                f' {trust_pip}<span class="src-label">\u2014 {friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
-                f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
+                f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗2 Read</a>'
                 f'</div>\n'
             )
         else:
             cluster.sort(key=lambda x: x[0], reverse=True)
             lead_ts, lead_title, lead_source, lead_link = cluster[0]
-            display_title = lead_title[0].upper() + lead_title[1:] if lead_title else lead_title
+            clean_lead = strip_source_from_title(lead_title)
+            display_title = clean_lead[0].upper() + clean_lead[1:] if clean_lead else clean_lead
             time_str = ts_to_pdt(lead_ts)
             is_hot = (now - lead_ts) <= THIRTY_MIN
             hot_dot = '<span class="new-dot" title="Published in the last 30 minutes">&#9679;</span> ' if is_hot else ''
-            trusted = is_trusted_source(lead_source)
-            trust_badge = '<span class="trust-badge" title="Verified trusted source">&#10003;</span> ' if trusted else ''
+            ts_cls = ' ts-hot' if is_hot else ''
             sources_list = [get_friendly_source(it[2]) for it in cluster]
             n_sources = len(sources_list)
             sources_str = ", ".join(sources_list)
             lead_friendly = get_friendly_source(lead_source)
             cluster_id = "cl-" + hashlib.md5(lead_link.encode()).hexdigest()[:8]
             safe_title_attr = display_title.replace('"', "'")
+            trust_pct = cluster_trust_pct(cluster)
+            trust_bar_color = "#22c55e" if trust_pct >= 80 else "#f59e0b" if trust_pct >= 50 else "#ef4444"
+            trust_bar_html = (
+                f'<div class="cluster-trust-line">'
+                f'<div class="cluster-trust-bar-bg">'
+                f'<div class="cluster-trust-bar-fill" style="width:{trust_pct}%;background:{trust_bar_color}"></div>'
+                f'</div>'
+                f'<span class="cluster-trust-pct" style="color:{trust_bar_color}">{trust_pct}%</span>'
+                f'<span class="cluster-trust-label"> from trusted outlets</span>'
+                f'</div>\n'
+            )
+            top3_srcs = sources_list[:3]
+            src_pills = ''.join(
+                '<span class="cluster-src-pill">' + s + '</span>' for s in top3_srcs
+            )
             out += (
                 f'<div id="{cluster_id}-anchor" class="cluster" data-ts="{int(lead_ts)}">'
                 f'<div class="cluster-header">'
-                f'{hot_dot}{trust_badge}'
+                f'{hot_dot}'
                 f'<span class="cluster-badge">{n_sources} sources</span>'
+                f'<span class="cluster-src-pills">{src_pills}</span>'
                 f'<button class="cluster-toggle-btn" data-target="{cluster_id}" aria-label="Expand story coverage" title="Show/hide all coverage">&#9654; Show all coverage</button>'
                 f'</div>\n'
+                f'{trust_bar_html}'
             )
             out += (
                 f'<div class="cluster-lead">'
                 f'<span class="title">{display_title}</span>'
-                f' <span class="ts-label">{time_str}</span>'
+                f' <span class="ts-label{ts_cls}">{time_str}</span>'
                 f' <span class="src-label">\u2014 {lead_friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
-                f' <a class="link" href="{lead_link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
+                f' <a class="link" href="{lead_link}" target="_blank" rel="noopener noreferrer">↗2 Read</a>'
                 f'</div>\n'
                 f'<div id="{cluster_id}" class="cluster-items-wrap collapsed">\n'
                 f'<div class="cluster-sources-line">{sources_str}</div>\n'
             )
             for ts, title, source, link in cluster:
                 friendly = get_friendly_source(source)
+                tier_color = source_trust_color(source)
                 ts_str = ts_to_pdt(ts)
-                dtitle = title[0].upper() + title[1:] if title else title
+                clean_t = strip_source_from_title(title)
+                dtitle = clean_t[0].upper() + clean_t[1:] if clean_t else clean_t
                 safe_dt = dtitle.replace('"', "'")
+                trust_pip = ('<span class="src-tier-pip" style="background:' + tier_color
+                              + '" title="Source reliability"></span>')
                 out += (
                     f'<div class="cluster-item" data-link="{link}">'
-                    f'<span class="title">{dtitle}</span>'
+                    f'{trust_pip}<span class="title">{dtitle}</span>'
                     f' <span class="ts-label">{ts_str}</span>'
                     f' <span class="src-label">\u2014 {friendly}</span>'
                     f' <button class="share-btn" data-link="{link}" data-title="{safe_dt}" aria-label="Share article" title="Share">&#8679;</button>'
-                    f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗ Read</a>'
+                    f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗2 Read</a>'
                     f'</div>\n'
                 )
             out += '</div>\n</div>\n'
     return out
-
 def render_column(items):
     return render_clusters(cluster_items(items))
 
@@ -2687,8 +2759,6 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     /* - Video toggle wrap: hide on mobile; WR wrap is separate class and stays visible - */
     @media (max-width: 900px) {{ .video-toggle-wrap {{ display: none !important; }} }}
-    /* Waiting Room is desktop-only — hide on mobile */
-    @media (max-width: 900px) {{ .wr-nav-wrap {{ display: none !important; }} }}
 
     /* ─── Mobile: Two-row sticky nav ─── */
     @media (max-width: 900px) {{
@@ -2790,8 +2860,9 @@ html_parts.append(f"""<!DOCTYPE html>
     .breaking-banner .bb-counter {{ display: none !important; }}
     .bb-section-pill {{
         font-size: 0.66em; font-weight: 700; letter-spacing: 0.08em;
-        text-transform: uppercase; padding: 2px 8px; border-radius: 2px;
+        text-transform: uppercase; padding: 0 8px; border-radius: 2px;
         flex-shrink: 0; margin-right: 8px; margin-left: 4px;
+        height: 22px; display: inline-flex; align-items: center; justify-content: center;
     }}
     @keyframes bb-slidein {{
         from {{ opacity: 0; transform: translateX(14px); }}
@@ -3172,12 +3243,7 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .nuzu-hero {{
         background: linear-gradient(180deg, #E0E8F8 0%, #F5F8FF 100%) !important;
     }}
-    body.light-mode .nuzu-hero-wordmark {{
-        background: linear-gradient(135deg, #0A1A5C 0%, #1E4FD8 60%, #2563EB 100%) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        filter: none !important;
-    }}
+    body.light-mode .nuzu-hero-wordmark {{ -webkit-text-fill-color: transparent; }}
     body.light-mode .title {{ color: #000 !important; }}
     body.light-mode .top-story-card {{ background: #EBF0FA !important; }}
     body.light-mode #section-us       .cluster {{ background: #FFF0F0 !important; border-left-color: #C0392B !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
@@ -3198,6 +3264,7 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .sports-color-banner   {{ background: linear-gradient(90deg, rgba(26,122,74,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .culture-color-banner  {{ background: linear-gradient(90deg, rgba(123,45,139,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .nuzu-hero {{ background: linear-gradient(180deg, #e8edf8 0%, #f5f8ff 100%) !important; }}
+    body.light-mode .nuzu-hero-wordmark {{ filter: none; }}
     body.light-mode .breaking-banner {{ background: #1a1a2e !important; }}
     body.light-mode .headline:hover {{ background: rgba(30,79,216,0.04) !important; }}
     body.light-mode .float-mode-btn {{ background: #EBF0FA; color: #000; border-color: #D1D9E8; }}
@@ -3636,10 +3703,9 @@ html_parts.append(f"""<!DOCTYPE html>
     .scl-breaking {{ color: #E06060; }}
     .scl-daily    {{ color: var(--nuzu-muted); }}
     .section-col-inner {{ flex: 1; overflow: hidden; }}
-    /* equal-cols: JS handles height equalization — no CSS flex tricks that corrupt measurement */
-    .container.equal-cols {{ align-items: flex-start; }}
-    .container.equal-cols .column {{ display: block; }}
-    .container.equal-cols .column .section-col-card {{ height: auto; }}
+    .container.equal-cols {{ align-items: stretch; }}
+    .container.equal-cols .column {{ display: flex; flex-direction: column; }}
+    .container.equal-cols .column .section-col-card {{ flex: 1; }}
 
     /* -─ FIX 7: Per-section card tints + hover colors -─ */
     #section-us       .section-col-card {{ background:#090101; border-left:2px solid rgba(192,57,43,0.35); }}
@@ -3916,6 +3982,121 @@ html_parts.append(f"""<!DOCTYPE html>
         min-width: 60px;
         text-align: center;
     }}
+
+    /* ── Source reliability pip ── */
+    .src-tier-pip {{
+        display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+        vertical-align: middle; margin: 0 3px 1px 0; flex-shrink: 0; opacity: 0.9;
+    }}
+
+    /* ── Hot timestamp turns red ── */
+    .ts-hot {{ color: #ef4444 !important; font-weight: 700; }}
+
+    /* ── Cluster trust bar ── */
+    .cluster-trust-line {{
+        display: flex; align-items: center; gap: 6px;
+        margin: 3px 0 7px 0; font-size: 0.70em;
+    }}
+    .cluster-trust-bar-bg {{
+        width: 80px; height: 4px; background: var(--nuzu-border);
+        border-radius: 2px; overflow: hidden; flex-shrink: 0;
+    }}
+    .cluster-trust-bar-fill {{ height: 100%; border-radius: 2px; }}
+    .cluster-trust-pct {{ font-weight: 800; }}
+    .cluster-trust-label {{ color: var(--nuzu-dim); }}
+
+    /* ── Cluster source pills ── */
+    .cluster-src-pills {{ display: inline-flex; gap: 4px; flex-wrap: wrap; align-items: center; }}
+    .cluster-src-pill {{
+        font-size: 0.60em; font-weight: 600; padding: 1px 6px; border-radius: 8px;
+        background: rgba(30,79,216,0.13); border: 1px solid rgba(30,79,216,0.28);
+        color: var(--nuzu-light); white-space: nowrap;
+    }}
+
+    /* ── Enhanced cluster-badge glow ── */
+    .cluster-badge {{
+        background: linear-gradient(135deg,#78350F 0%,#D97706 100%);
+        color: #FFF7ED; font-size: 0.76em; padding: 3px 12px;
+        border-radius: 10px; font-weight: 800; letter-spacing: 0.06em; flex-shrink: 0;
+        border: 1px solid rgba(217,119,6,0.70);
+        box-shadow: 0 0 14px rgba(217,119,6,0.55), 0 2px 6px rgba(0,0,0,0.3);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }}
+
+    /* ── Updated-ago prominent ── */
+    .nav-updated-ago {{
+        font-size: 0.70em; color: var(--nuzu-light); font-weight: 700;
+        letter-spacing: 0.03em; white-space: nowrap; padding: 2px 9px;
+        background: rgba(30,79,216,0.13); border-radius: 10px;
+        border: 1px solid rgba(30,79,216,0.22); margin-right: 4px;
+    }}
+
+    /* ── Mobile section video wraps ── */
+    .mobile-section-video-wrap {{
+        display: none; position: relative;
+        width: 100%; aspect-ratio: 16/9; overflow: hidden;
+        background: #000; border-bottom: 2px solid var(--nuzu-border);
+    }}
+    .mobile-section-video-wrap iframe {{ width: 100%; height: 100%; border: none; display: block; }}
+    .msv-label {{
+        position: absolute; bottom: 6px; left: 8px;
+        font-size: 0.60em; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; color: rgba(255,255,255,0.85);
+        background: rgba(0,0,0,0.55); padding: 2px 7px; border-radius: 3px;
+        pointer-events: none; z-index: 2;
+    }}
+    @media (max-width: 900px) {{
+        .mobile-section-video-wrap {{ display: block; }}
+        .mobile-section-video-wrap.msv-killed {{ display: none !important; }}
+    }}
+
+    /* ── First-launch onboarding overlay ── */
+    #nuzu-onboard {{
+        position: fixed; inset: 0; z-index: 9999;
+        background: rgba(2,9,18,0.97);
+        display: flex; flex-direction: column; align-items: center;
+        justify-content: center; padding: 24px;
+    }}
+    .onboard-wordmark {{
+        font-family: 'Playfair Display',Georgia,serif;
+        font-size: 2.8em; font-weight: 900;
+        background: linear-gradient(135deg,#fff 55%,#7EB3FF);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        margin-bottom: 6px;
+    }}
+    .onboard-sub {{
+        font-size: 0.88em; color: #7EB3FF; margin-bottom: 26px;
+        text-align: center; line-height: 1.55; max-width: 320px;
+    }}
+    .onboard-grid {{
+        display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+        max-width: 340px; width: 100%; margin-bottom: 24px;
+    }}
+    .onboard-btn {{
+        background: rgba(30,79,216,0.10); border: 2px solid rgba(30,79,216,0.28);
+        border-radius: 10px; padding: 14px 8px; cursor: pointer;
+        color: #C8D8EE; font-size: 0.86em; font-weight: 600;
+        text-align: center; line-height: 1.4; transition: all 0.15s;
+        display: flex; flex-direction: column; align-items: center; gap: 5px;
+        font-family: 'Inter',Arial,sans-serif;
+    }}
+    .onboard-btn .ob-icon {{ font-size: 1.55em; line-height: 1; }}
+    .onboard-btn.selected {{
+        background: rgba(30,79,216,0.30); border-color: #1E4FD8;
+        color: #fff; box-shadow: 0 0 14px rgba(30,79,216,0.4);
+    }}
+    .onboard-go {{
+        background: #1E4FD8; color: #fff; border: none; border-radius: 8px;
+        padding: 13px 44px; font-size: 0.96em; font-weight: 700;
+        cursor: pointer; letter-spacing: 0.04em;
+        font-family: 'Inter',Arial,sans-serif; transition: background 0.15s;
+    }}
+    .onboard-go:hover {{ background: #2563EB; }}
+    .onboard-skip {{
+        margin-top: 12px; background: none; border: none;
+        color: #4A6A99; font-size: 0.78em; cursor: pointer;
+        text-decoration: underline; font-family: 'Inter',Arial,sans-serif;
+    }}
     </style>
 </head>
 <body>
@@ -4030,6 +4211,8 @@ if show_breaking_banner:
         ("World",        world_breaking + world_recent),
         ("Business",     business_breaking + business_recent),
         ("Sports",       sports_breaking + sports_recent),
+        ("Tech",         tech_breaking + tech_recent),
+        ("Culture",      culture_breaking + culture_recent),
     ]:
         for _ts, _ttl, _src, _lnk in _sec_items:
             if _lnk not in _link_to_section:
@@ -4331,8 +4514,28 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     else:
         _b_label = 'BREAKING &#8212; Last 12 Hours'
         _r_label = 'RECENT &#8212; Up to 36 Hours'
+    # Mobile section video wrap (hidden on desktop via CSS)
+    _vid_map = {
+        'section-us':       ('iipR5yUp36o',                                  'U.S. Live'),
+        'section-world':    ('fO9e9jnhYK8',                                  'World Live'),
+        'section-mideast':  ('live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg', 'Middle East Live'),
+        'section-business': ('iEpJwprxDdk',                                  'Bloomberg Live'),
+        'section-culture':  ('Ap-UM1O9RBU',                                  'Culture Live'),
+    }
+    _ve = _vid_map.get(section_id)
+    _msv = ''
+    if _ve:
+        _eid, _lbl = _ve
+        _msv = (
+            '<div class="mobile-section-video-wrap" data-msv-section="' + section_id + '">'
+            '<iframe data-msv-src="https://www.youtube.com/embed/' + _eid
+            + '?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1"'
+            ' allow="autoplay;encrypted-media" allowfullscreen></iframe>'
+            '<span class="msv-label">' + _lbl + '</span></div>\n'
+        )
     return (
         f'<div id="{section_id}" class="section-wrap">\n'
+        + _msv +
         f'<div class="section-banner {color_class}-banner">'
         f'<div class="section-banner-inner">'
         f'<h2 class="section-title {color_class}">{breaking_title}</h2>'
@@ -4664,13 +4867,9 @@ document.addEventListener('DOMContentLoaded', function() {{
   function bnavScrollSpy() {{
     var scrollY = window.pageYOffset + 120;
     var active  = null;
-    var bestTop = -1;
-    for (var i = 0; i < sections.length; i++) {{
-      if (!sections[i]) continue;
-      var top = sections[i].getBoundingClientRect().top + window.pageYOffset;
-      if (top <= scrollY && top > bestTop) {{
-        bestTop = top;
-        active = bnavItems[i];
+    for (var i = sections.length - 1; i >= 0; i--) {{
+      if (sections[i] && sections[i].offsetTop <= scrollY) {{
+        active = bnavItems[i]; break;
       }}
     }}
     bnavItems.forEach(function(item) {{ item.classList.remove('active'); }});
@@ -4869,34 +5068,55 @@ document.addEventListener('DOMContentLoaded', function() {{
   }}
 }})();
 
-// - Video feed toggle -
+// - Video feed toggle (desktop + mobile section videos) -
 (function() {{
   var VKEY    = 'nuzu_video_on';
   var vtoggle = document.getElementById('video-feed-toggle');
   var banner  = document.querySelector('.banner');
-  if (!vtoggle || !banner) return;
+  function _loadMSV() {{
+    if (window.innerWidth > 900) return;
+    document.querySelectorAll('.mobile-section-video-wrap iframe[data-msv-src]').forEach(function(ifr) {{
+      ifr.src = ifr.getAttribute('data-msv-src'); ifr.removeAttribute('data-msv-src');
+    }});
+  }}
+  _loadMSV();
+  function _killMSV() {{
+    document.querySelectorAll('.mobile-section-video-wrap').forEach(function(el) {{
+      el.classList.add('msv-killed');
+      var ifr = el.querySelector('iframe'); if (ifr) ifr.src = 'about:blank';
+    }});
+  }}
+  function _restoreMSV() {{
+    document.querySelectorAll('.mobile-section-video-wrap').forEach(function(el) {{
+      el.classList.remove('msv-killed');
+    }});
+    _loadMSV();
+  }}
+  if (!vtoggle) return;
   function setVideoMode(on) {{
-    if (on) {{
-      var insets = banner.querySelectorAll('.youtube-inset');
-      insets.forEach(function(inset, i) {{
-        var existing = inset.querySelector('iframe');
-        if (existing && existing.src && existing.src !== 'about:blank') return;
-        var iframe = existing || document.createElement('iframe');
-        iframe.src = MAIN_FEED_SRCS[i] || MAIN_FEED_SRCS[0];
-        iframe.setAttribute('allow', 'autoplay;encrypted-media');
-        iframe.setAttribute('allowfullscreen', '');
-        iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;';
-        if (!existing) inset.appendChild(iframe);
-      }});
-      banner.style.display = '';
-      vtoggle.checked = false;
-    }} else {{
-      banner.querySelectorAll('.youtube-inset iframe').forEach(function(iframe) {{
-        iframe.src = 'about:blank';
-      }});
-      banner.style.display = 'none';
-      vtoggle.checked = true;
+    if (banner) {{
+      if (on) {{
+        var insets = banner.querySelectorAll('.youtube-inset');
+        insets.forEach(function(inset, i) {{
+          var existing = inset.querySelector('iframe');
+          if (existing && existing.src && existing.src !== 'about:blank') return;
+          var iframe = existing || document.createElement('iframe');
+          iframe.src = MAIN_FEED_SRCS[i] || MAIN_FEED_SRCS[0];
+          iframe.setAttribute('allow', 'autoplay;encrypted-media');
+          iframe.setAttribute('allowfullscreen', '');
+          iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;';
+          if (!existing) inset.appendChild(iframe);
+        }});
+        banner.style.display = '';
+      }} else {{
+        banner.querySelectorAll('.youtube-inset iframe').forEach(function(iframe) {{
+          iframe.src = 'about:blank';
+        }});
+        banner.style.display = 'none';
+      }}
     }}
+    if (on) {{ _restoreMSV(); }} else {{ _killMSV(); }}
+    vtoggle.checked = !on;
     try {{ localStorage.setItem(VKEY, on ? '1' : '0'); }} catch(e) {{}}
   }}
   var savedV = null;
@@ -5120,47 +5340,33 @@ document.addEventListener('DOMContentLoaded', function() {{
 }})();
 
 // - Equal-height Breaking / Recent columns -
-// Breaking column is the authority. Recent is capped to match it (never taller).
-// Both columns end at exactly the same pixel height on desktop.
+// Breaking column defines the height; Recent column matches it (clipped if taller).
 function nuzu_equalColHeights() {{
-  if (window.innerWidth <= 900) return; // single-column on mobile, skip
+  if (window.innerWidth <= 900) return; // mobile: single-column, no equalization needed
   document.querySelectorAll('.container.equal-cols').forEach(function(container) {{
     var cols = container.querySelectorAll(':scope > .column');
     if (cols.length < 2) return;
     var bCard = cols[0].querySelector('.section-col-card');
     var rCard = cols[1].querySelector('.section-col-card');
     if (!bCard || !rCard) return;
-
-    // Step 1: clear any previous JS-applied constraints so we measure natural height
-    cols[0].style.height = '';
-    cols[1].style.height = '';
+    // Reset any previous overrides so we can measure natural heights
     bCard.style.height = '';
     rCard.style.height = '';
     rCard.style.overflow = '';
-
-    // Step 2: force layout reflow so offsetHeight reflects natural content
-    void bCard.offsetHeight;
-
-    // Step 3: read natural rendered heights
-    var bH = bCard.offsetHeight;
+    // Measure natural scroll heights (full content height regardless of CSS)
+    var bH = bCard.scrollHeight;
+    var rH = rCard.scrollHeight;
     if (bH <= 0) return;
-
-    // Step 4: cap RECENT at BREAKING height.
-    //   recent < breaking  → pad recent to breaking height (blank space at bottom).
-    //   recent > breaking  → clip recent to breaking height (hides overflow headlines).
+    // Set recent card height to match breaking (cap it if recent is taller)
     rCard.style.height = bH + 'px';
     rCard.style.overflow = 'hidden';
-
-    // Step 5: set COLUMN wrappers to equal height so borders/backgrounds align cleanly
-    cols[0].style.height = bH + 'px';
-    cols[1].style.height = bH + 'px';
+    // If breaking is shorter than recent's natural height, no change needed for breaking
+    // Breaking column always retains its full natural height
   }});
 }}
-// Run after fonts/layout settle; second pass catches late-loading clusters
-setTimeout(nuzu_equalColHeights, 350);
-setTimeout(nuzu_equalColHeights, 1000);
+// Run on load (small delay for fonts/content to settle)
+setTimeout(nuzu_equalColHeights, 250);
 window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
-
 
 // - Scroll spy -
 (function() {{
@@ -5174,19 +5380,11 @@ window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
   sections.forEach(function(s) {{ navLinks[s.cls] = document.querySelector('.sticky-nav a.' + s.cls); }});
   function onScroll() {{
     var scrollY = window.pageYOffset + 80;
-    // Find the section whose top is closest to (but not past) scrollY.
-    // This works regardless of the order sections appear on the page (MRO-driven).
     var active = null;
-    var bestTop = -1;
-    sections.forEach(function(s) {{
-      var el = document.getElementById(s.id);
-      if (!el) return;
-      var top = el.getBoundingClientRect().top + window.pageYOffset;
-      if (top <= scrollY && top > bestTop) {{
-        bestTop = top;
-        active = s.cls;
-      }}
-    }});
+    for (var i = sections.length - 1; i >= 0; i--) {{
+      var el = document.getElementById(sections[i].id);
+      if (el && el.offsetTop <= scrollY) {{ active = sections[i].cls; break; }}
+    }}
     sections.forEach(function(s) {{
       var link = navLinks[s.cls]; if (!link) return;
       if (s.cls === active) link.classList.add('nav-active');
@@ -5607,6 +5805,54 @@ document.addEventListener('click', function(e) {{
   }}
 }})();
 
+
+// ── First-launch onboarding interest picker ──
+(function() {{
+  try {{ if (localStorage.getItem('nuzu_onboarded_v1')) return; }} catch(e) {{ return; }}
+  var defs = [
+    {{id:'us',       icon:'🇺🇸', label:'US Politics'}},
+    {{id:'mideast',  icon:'🌍',            label:'Middle East'}},
+    {{id:'tech',     icon:'💻',            label:'Tech & AI'}},
+    {{id:'sports',   icon:'🏆',            label:'Sports'}},
+    {{id:'business', icon:'💰',            label:'Business'}},
+    {{id:'culture',  icon:'🎬',            label:'Culture'}},
+  ];
+  var ov = document.createElement('div'); ov.id = 'nuzu-onboard';
+  var h = '<div class="onboard-wordmark">NUZU</div>';
+  h += '<div class="onboard-sub">Pick your interests to personalize your feed.</div>';
+  h += '<div class="onboard-grid" id="ob-grid">';
+  defs.forEach(function(d) {{
+    h += '<button class="onboard-btn" data-id="'+d.id+'"><span class="ob-icon">'+d.icon+'</span>'+d.label+'</button>';
+  }});
+  h += '</div><button class="onboard-go" id="ob-go">Get My Feed &#8594;</button>';
+  h += '<button class="onboard-skip" id="ob-skip">Skip &amp; see everything</button>';
+  ov.innerHTML = h;
+  document.body.insertBefore(ov, document.body.firstChild);
+  var sel = {{}};
+  document.querySelectorAll('#ob-grid .onboard-btn').forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      var id = btn.getAttribute('data-id');
+      if (sel[id]) {{ delete sel[id]; btn.classList.remove('selected'); }}
+      else         {{ sel[id] = 1;    btn.classList.add('selected'); }}
+    }});
+  }});
+  function dismiss(order) {{
+    try {{
+      localStorage.setItem('nuzu_interest_order', JSON.stringify(order));
+      localStorage.setItem('nuzu_onboarded_v1','1');
+    }} catch(e) {{}}
+    ov.style.transition='opacity 0.35s'; ov.style.opacity='0';
+    setTimeout(function(){{ if(ov.parentNode) ov.parentNode.removeChild(ov); }},380);
+  }}
+  document.getElementById('ob-go').addEventListener('click',function() {{
+    var order=Object.keys(sel);
+    if(!order.length) order=defs.map(function(d){{return d.id;}});
+    dismiss(order);
+  }});
+  document.getElementById('ob-skip').addEventListener('click',function() {{
+    dismiss(defs.map(function(d){{return d.id;}}));
+  }});
+}})();
 
 }}); // end DOMContentLoaded
 </script>
