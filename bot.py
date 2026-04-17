@@ -2301,6 +2301,7 @@ def render_clusters(clusters, show_trust=True):
                 f'<span class="cluster-badge">{n_sources} sources</span>'
                 f'<span class="cluster-src-pills">{src_pills}</span>'
                 f'<button class="cluster-toggle-btn" data-target="{cluster_id}" aria-label="Expand story coverage" title="Show/hide all coverage">&#9654; Show all coverage</button>'
+                f'<button class="cluster-share-btn" data-anchor="{cluster_id}-anchor" data-title="{safe_title_attr}" aria-label="Share this story cluster" title="Share this story cluster">&#8679;</button>'
                 f'</div>\n'
                 f'{_trust_display}'
             )
@@ -3129,6 +3130,13 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .cluster-toggle-btn:hover {{ color: var(--nuzu-white); border-color: var(--nuzu-muted); }}
     .cluster-toggle-btn.open {{ color: var(--nuzu-text); border-color: var(--nuzu-muted); }}
+    .cluster-share-btn {{
+        background: none; border: 1px solid var(--nuzu-border); border-radius: 10px;
+        color: var(--nuzu-dim); font-size: 0.7em; padding: 2px 7px; cursor: pointer;
+        transition: color 0.15s, border-color 0.15s; flex-shrink: 0;
+    }}
+    .cluster-share-btn:hover {{ color: var(--nuzu-light); border-color: var(--nuzu-muted); }}
+    body:not(.share-api-available) .cluster-share-btn {{ display: none !important; }}
     .cluster-sources-line {{
         color: var(--nuzu-dim); font-size: 0.73em; margin-bottom: 6px;
         padding-bottom: 4px; border-bottom: 1px solid var(--nuzu-border);
@@ -5004,8 +5012,9 @@ document.addEventListener('DOMContentLoaded', function() {{
     var scrollY = window.pageYOffset + 120;
     var active  = null;
     for (var i = sections.length - 1; i >= 0; i--) {{
-      if (sections[i] && sections[i].offsetTop <= scrollY) {{
-        active = bnavItems[i]; break;
+      if (sections[i]) {{
+        var elTop = sections[i].getBoundingClientRect().top + window.pageYOffset;
+        if (elTop <= scrollY) {{ active = bnavItems[i]; break; }}
       }}
     }}
     bnavItems.forEach(function(item) {{ item.classList.remove('active'); }});
@@ -5486,7 +5495,8 @@ document.addEventListener('DOMContentLoaded', function() {{
 }})();
 
 // - Equal-height Breaking / Recent columns -
-// Breaking column defines the height; Recent column matches it (clipped if taller).
+// Breaking column is the height authority. Both columns are locked to its pixel height.
+// The recent column clips (overflow:hidden) if it has more content than breaking.
 function nuzu_equalColHeights() {{
   if (window.innerWidth <= 900) return;
   document.querySelectorAll('.container.equal-cols').forEach(function(container) {{
@@ -5495,23 +5505,22 @@ function nuzu_equalColHeights() {{
     var bCard = cols[0].querySelector('.section-col-card');
     var rCard = cols[1].querySelector('.section-col-card');
     if (!bCard || !rCard) return;
-    // Skip sections that are collapsed or not rendered
     var wrap = container.closest('.section-columns');
     if (wrap && wrap.classList.contains('collapsed')) return;
-    // Reset overrides so we measure natural content heights
+    // Step 1: fully reset both so we read natural content height
     bCard.style.height = '';
     rCard.style.height = '';
     bCard.style.overflow = '';
     rCard.style.overflow = '';
-    // Use offsetHeight as fallback if scrollHeight is 0 (not yet painted)
+    // Step 2: measure natural heights (scrollHeight is the true content height)
     var bH = Math.max(bCard.scrollHeight, bCard.offsetHeight);
     var rH = Math.max(rCard.scrollHeight, rCard.offsetHeight);
-    if (bH <= 10 || rH <= 10) return; // skip unpainted sections
-    // Both columns match the TALLER one so no content is clipped
-    // Breaking defines min-height; recent is capped to breaking height
-    var targetH = bH; // breaking sets the standard
-    rCard.style.height = targetH + 'px';
-    rCard.style.overflow = targetH < rH ? 'hidden' : '';
+    if (bH <= 10 || rH <= 10) return; // section not painted yet – skip
+    // Step 3: breaking column height is the target for both sides
+    var targetH = bH;
+    bCard.style.height = targetH + 'px';      // lock left to its own natural height
+    rCard.style.height = targetH + 'px';      // right matches left exactly
+    rCard.style.overflow = rH > targetH ? 'hidden' : ''; // clip right if it overflows
   }});
 }}
 // Run on load (small delay for fonts/content to settle)
@@ -5536,7 +5545,11 @@ window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
     var active = null;
     for (var i = sections.length - 1; i >= 0; i--) {{
       var el = document.getElementById(sections[i].id);
-      if (el && el.offsetTop <= scrollY) {{ active = sections[i].cls; break; }}
+      if (el) {{
+        // getBoundingClientRect gives absolute page position regardless of nesting
+        var elTop = el.getBoundingClientRect().top + window.pageYOffset;
+        if (elTop <= scrollY) {{ active = sections[i].cls; break; }}
+      }}
     }}
     sections.forEach(function(s) {{
       var link = navLinks[s.cls]; if (!link) return;
@@ -5545,6 +5558,8 @@ window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
     }});
   }}
   window.addEventListener('scroll', onScroll, {{passive:true}});
+  // Also fire on DOMContentLoaded in case page loads mid-scroll
+  document.addEventListener('DOMContentLoaded', onScroll);
   onScroll();
 }})();
 
@@ -5773,13 +5788,30 @@ window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
 // - Web Share API -
 (function() {{
   if (!navigator.share) return;
+  document.body.classList.add('share-api-available');
+
   document.addEventListener('click', function(e) {{
+    // ── Cluster-level share: deep-link directly to this cluster on NUZU ──
+    var clusterBtn = e.target.closest('.cluster-share-btn');
+    if (clusterBtn) {{
+      e.preventDefault(); e.stopPropagation();
+      var anchor   = clusterBtn.getAttribute('data-anchor') || '';
+      var title    = clusterBtn.getAttribute('data-title')  || 'NUZU News';
+      var shareUrl = window.location.origin + window.location.pathname + (anchor ? '#' + anchor : '');
+      navigator.share({{ title: 'NUZU News: ' + title, url: shareUrl }}).catch(function() {{}});
+      return;
+    }}
+
+    // ── Article-level share: route through /go.html so social previews show NUZU ──
     var btn = e.target.closest('.share-btn');
     if (!btn) return;
     e.preventDefault(); e.stopPropagation();
     var title = btn.getAttribute('data-title') || 'NUZU News';
     var url   = btn.getAttribute('data-link')  || window.location.href;
-    navigator.share({{ title: 'NUZU News: ' + title, url: url }}).catch(function() {{}});
+    var goUrl = window.location.origin + '/go.html'
+              + '?t=' + encodeURIComponent(title)
+              + '&u=' + encodeURIComponent(url);
+    navigator.share({{ title: 'NUZU News: ' + title, url: goUrl }}).catch(function() {{}});
   }});
 }})();
 
