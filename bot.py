@@ -2812,6 +2812,18 @@ hot_items = sorted(
      if (_now - it[0]) <= 1800],
     key=lambda x: x[0], reverse=True
 )
+# Fallback: if no items published in the last 30 minutes, fill the banner
+# with the freshest breaking items we have. This guarantees the scrolling
+# banner ALWAYS appears as long as there is any content at all.
+if not hot_items:
+    _all_breaking = (us_breaking + middle_breaking + world_breaking +
+                     tech_breaking + business_breaking + sports_breaking +
+                     culture_breaking)
+    if not _all_breaking:
+        _all_breaking = (us_recent + middle_recent + world_recent +
+                         tech_recent + business_recent + sports_recent +
+                         culture_recent)
+    hot_items = sorted(_all_breaking, key=lambda x: x[0], reverse=True)[:20]
 show_breaking_banner = len(hot_items) > 0
 
 html_parts = []
@@ -3475,7 +3487,14 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .nuzu-hero {{
         background: linear-gradient(180deg, #E0E8F8 0%, #F5F8FF 100%) !important;
     }}
-    body.light-mode .nuzu-hero-wordmark {{ -webkit-text-fill-color: transparent; }}
+    /* Light-mode NUZU wordmark: invert gradient to dark colors so it's readable */
+    body.light-mode .nuzu-hero-wordmark {{
+        background: linear-gradient(135deg, #0D1B4B 0%, #1E4FD8 55%, #4A7FD8 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        filter: drop-shadow(0 2px 6px rgba(13,27,75,0.12)) !important;
+    }}
     body.light-mode .title {{ color: #000 !important; }}
     body.light-mode .top-story-card {{ background: #EBF0FA !important; }}
     body.light-mode #section-us       .cluster {{ background: #FFF0F0 !important; border-left-color: #C0392B !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
@@ -3496,7 +3515,6 @@ html_parts.append(f"""<!DOCTYPE html>
     body.light-mode .sports-color-banner   {{ background: linear-gradient(90deg, rgba(26,122,74,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .culture-color-banner  {{ background: linear-gradient(90deg, rgba(123,45,139,0.10) 0%, transparent 55%) !important; }}
     body.light-mode .nuzu-hero {{ background: linear-gradient(180deg, #e8edf8 0%, #f5f8ff 100%) !important; }}
-    body.light-mode .nuzu-hero-wordmark {{ filter: none; }}
     body.light-mode .breaking-banner {{ background: #1a1a2e !important; }}
     body.light-mode .headline:hover {{ background: rgba(30,79,216,0.04) !important; }}
     body.light-mode .float-mode-btn {{ background: #EBF0FA; color: #000; border-color: #D1D9E8; }}
@@ -5933,9 +5951,9 @@ document.addEventListener('DOMContentLoaded', function() {{
 }})();
 
 // - Equal-height Breaking / Recent columns -
-// The taller column is the "boss": measure both natural heights, then
-// force the shorter column to match the taller one so there is never
-// dead empty space on one side. Nothing is clipped.
+// Breaking column DICTATES the height. Recent column is force-clipped to
+// match Breaking's natural height exactly (overflow hidden). If Breaking
+// is short, Recent is short too — no dead empty space on either side.
 function nuzu_equalColHeights() {{
   if (window.innerWidth <= 900) return;
   document.querySelectorAll('.container.equal-cols').forEach(function(container) {{
@@ -5947,28 +5965,36 @@ function nuzu_equalColHeights() {{
     // Skip sections that are collapsed or not rendered
     var wrap = container.closest('.section-columns');
     if (wrap && wrap.classList.contains('collapsed')) return;
-    // Reset overrides so we measure natural content heights
+
+    // Reset BOTH cards so we can measure Breaking's natural height cleanly.
     bCard.style.height = '';
-    rCard.style.height = '';
+    bCard.style.maxHeight = '';
     bCard.style.minHeight = '';
+    bCard.style.overflow = '';
+    rCard.style.height = '';
+    rCard.style.maxHeight = '';
     rCard.style.minHeight = '';
-    bCard.style.overflow = '';
     rCard.style.overflow = '';
-    // Force re-layout before measuring so content-visibility items paint
-    void bCard.offsetHeight; void rCard.offsetHeight;
-    // Use the larger of scroll/offset heights — content-visibility can
-    // temporarily report 0 for offscreen items
-    var bH = Math.max(bCard.scrollHeight, bCard.offsetHeight, bCard.getBoundingClientRect().height);
-    var rH = Math.max(rCard.scrollHeight, rCard.offsetHeight, rCard.getBoundingClientRect().height);
-    if (bH <= 10 && rH <= 10) return; // skip unpainted sections
-    // The taller column sets the standard — the shorter column stretches
-    // up to match so no empty dead-space appears on either side.
-    var targetH = Math.max(bH, rH);
-    if (targetH <= 0) return;
-    bCard.style.minHeight = targetH + 'px';
-    rCard.style.minHeight = targetH + 'px';
-    bCard.style.overflow = '';
-    rCard.style.overflow = '';
+
+    // align-items: stretch (default) would force Breaking to match Recent.
+    // Temporarily switch to flex-start so Breaking sits at its NATURAL height.
+    var prevAlign = container.style.alignItems;
+    container.style.alignItems = 'flex-start';
+    void container.offsetHeight; // force reflow
+
+    // Measure Breaking's natural height in the fully-collapsed resting state.
+    var bH = Math.round(bCard.getBoundingClientRect().height);
+
+    // Restore align-items so layout doesn't flash
+    container.style.alignItems = prevAlign;
+
+    if (bH < 50) return; // not painted yet, try again later
+
+    // Force Recent to exactly Breaking's height, clip anything longer.
+    // Breaking stays at its natural size (no stretch, no padding).
+    rCard.style.height = bH + 'px';
+    rCard.style.maxHeight = bH + 'px';
+    rCard.style.overflow = 'hidden';
   }});
 }}
 // Run on load (small delay for fonts/content to settle)
@@ -5977,6 +6003,11 @@ setTimeout(nuzu_equalColHeights, 900);
 setTimeout(nuzu_equalColHeights, 1800);
 setTimeout(nuzu_equalColHeights, 3500);
 window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
+// Re-run when favicon images finish loading (they can affect Breaking height)
+window.addEventListener('load', function(){{ setTimeout(nuzu_equalColHeights, 150); }});
+document.addEventListener('load', function(e){{
+  if (e.target && e.target.tagName === 'IMG') setTimeout(nuzu_equalColHeights, 60);
+}}, true);
 
 // - Scroll spy -
 (function() {{
