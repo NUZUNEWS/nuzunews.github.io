@@ -185,18 +185,29 @@ def strip_source_from_title(title):
     return title
 
 SOURCE_TIERS = {
-    1: {"reuters","ap","ap news","associated press","bbc","bbc news","agence france-presse","afp",
-        "new york times","nyt","wall street journal","wsj","financial times","ft",
-        "the economist","bloomberg","npr","pbs","pbs newshour","al jazeera",
-        "washington post","wapo","abc news","cbs news","nbc news","france 24",
-        "deutsche welle","dw","guardian","the guardian","usa today"},
-    2: {"axios","politico","foreign affairs","foreign policy","propublica","the atlantic",
-        "the new yorker","cnbc","forbes","time","newsweek","wired","mit technology review",
-        "ars technica","the verge","techcrunch","espn","variety","hollywood reporter",
-        "rolling stone","billboard","the hill","semafor","stat news","bloomberg tech"},
-    3: {"tmz","e! news","people magazine","just jared","hollywood life",
-        "breitbart","newsmax","daily wire","fox news","the sun","daily mail","ny post"},
-    4: {"facebook","facebook.com","msn","yahoo","flipboard"},
+    # Tier 1: Major wire services + flagship public-interest outlets only
+    1: {"reuters","ap news","associated press","agence france-presse","afp",
+        "bbc news","bbc","new york times","nyt","washington post","wapo",
+        "wall street journal","wsj","financial times","ft","the economist",
+        "bloomberg","npr","pbs newshour","pbs","al jazeera","france 24",
+        "deutsche welle","dw","the guardian","guardian","abc news",
+        "cbs news","nbc news","usa today","propublica"},
+    # Tier 2: Solid reporting with known editorial stance
+    2: {"axios","politico","cnbc","foreign affairs","foreign policy",
+        "the atlantic","the new yorker","forbes","time","newsweek",
+        "the hill","semafor","stat news","defense news","lawfare",
+        "apnews","ap","wired","mit technology review"},
+    # Tier 3: Opinionated, tabloid, or partisan outlets
+    3: {"fox news","breitbart","newsmax","daily wire","huffpost","vox",
+        "buzzfeed","vice","daily beast","salon","slate","the intercept",
+        "tmz","e! news","people magazine","just jared","hollywood life",
+        "the sun","daily mail","new york post","ny post","the blaze",
+        "oann","one america","epoch times","zero hedge","the federalist",
+        "mother jones","jacobin","national review","weekly standard",
+        "war on rocks","atlantic council","rand","brookings","cfr"},
+    # Tier 4: Aggregators, social media, junk sources
+    4: {"facebook","facebook.com","msn","yahoo","flipboard",
+        "google news","smartnews","patch.com","modern ghana"},
 }
 
 def get_source_tier(raw_name):
@@ -206,7 +217,7 @@ def get_source_tier(raw_name):
         for s in SOURCE_TIERS[t]:
             if s in nl:
                 return t
-    return 2
+    return 3  # default: unknown = below-average trust
 
 def source_trust_color(raw_name):
     """Return green/amber/red CSS color for source tier."""
@@ -2223,7 +2234,7 @@ def cluster_items(items, min_shared=3):
 # ====================== RENDER ======================
 THIRTY_MIN = 1800
 
-def render_clusters(clusters):
+def render_clusters(clusters, show_trust=True):
     now = time.time()
     out = ""
     for cluster in clusters:
@@ -2237,8 +2248,8 @@ def render_clusters(clusters):
             hot_dot = '<span class="new-dot" title="Published in the last 30 minutes">&#9679;</span> ' if is_hot else ''
             ts_cls = ' ts-hot' if is_hot else ''
             tier_color = source_trust_color(source)
-            trust_pip = ('<span class="src-tier-pip" style="background:' + tier_color
-                          + '" title="Source reliability"></span>')
+            trust_pip = (('<span class="src-tier-pip" style="background:' + tier_color
+                          + '" title="Source reliability"></span>') if show_trust else '')
             anchor_id = "hl-" + hashlib.md5(link.encode()).hexdigest()[:8]
             safe_title_attr = display_title.replace('"', "'")
             out += (
@@ -2282,6 +2293,7 @@ def render_clusters(clusters):
             src_pills = ''.join(
                 '<span class="cluster-src-pill">' + s + '</span>' for s in top3_srcs
             )
+            _trust_display = trust_bar_html if show_trust else ''
             out += (
                 f'<div id="{cluster_id}-anchor" class="cluster" data-ts="{int(lead_ts)}">'
                 f'<div class="cluster-header">'
@@ -2290,7 +2302,7 @@ def render_clusters(clusters):
                 f'<span class="cluster-src-pills">{src_pills}</span>'
                 f'<button class="cluster-toggle-btn" data-target="{cluster_id}" aria-label="Expand story coverage" title="Show/hide all coverage">&#9654; Show all coverage</button>'
                 f'</div>\n'
-                f'{trust_bar_html}'
+                f'{_trust_display}'
             )
             out += (
                 f'<div class="cluster-lead">'
@@ -2860,9 +2872,10 @@ html_parts.append(f"""<!DOCTYPE html>
     .breaking-banner .bb-counter {{ display: none !important; }}
     .bb-section-pill {{
         font-size: 0.66em; font-weight: 700; letter-spacing: 0.08em;
-        text-transform: uppercase; padding: 0 8px; border-radius: 2px;
+        text-transform: uppercase; padding: 2px 8px; border-radius: 2px;
         flex-shrink: 0; margin-right: 8px; margin-left: 4px;
-        height: 22px; display: inline-flex; align-items: center; justify-content: center;
+        display: inline-flex; align-items: center; justify-content: center;
+        line-height: 1;
     }}
     @keyframes bb-slidein {{
         from {{ opacity: 0; transform: translateX(14px); }}
@@ -4031,6 +4044,21 @@ html_parts.append(f"""<!DOCTYPE html>
         border: 1px solid rgba(30,79,216,0.22); margin-right: 4px;
     }}
 
+    /* ── Mobile video nav toggle (mobile only) ── */
+    .mobile-vid-toggle-wrap {{
+        display: none; align-items: center; gap: 5px;
+        padding: 0 6px; border-radius: 6px;
+        background: rgba(30,79,216,0.12); border: 1px solid rgba(30,79,216,0.25);
+        height: 26px; flex-shrink: 0;
+    }}
+    .mobile-vid-label {{
+        font-size: 0.66em; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.06em; color: var(--nuzu-light); white-space: nowrap;
+    }}
+    @media (max-width: 900px) {{
+        .mobile-vid-toggle-wrap {{ display: flex; }}
+    }}
+
     /* ── Mobile section video wraps ── */
     .mobile-section-video-wrap {{
         display: none; position: relative;
@@ -4048,6 +4076,28 @@ html_parts.append(f"""<!DOCTYPE html>
     @media (max-width: 900px) {{
         .mobile-section-video-wrap {{ display: block; }}
         .mobile-section-video-wrap.msv-killed {{ display: none !important; }}
+    }}
+
+    /* ── Bottom livestream block ── */
+    .bottom-livestream-wrap {{
+        max-width: 960px; margin: 20px auto 0; padding: 0 20px 30px;
+    }}
+    .bottom-livestream-label {{
+        font-size: 0.72em; font-weight: 700; letter-spacing: 0.12em;
+        text-transform: uppercase; color: var(--nuzu-muted);
+        margin-bottom: 10px; display: flex; align-items: center; gap: 7px;
+    }}
+    .bls-dot {{
+        width: 8px; height: 8px; border-radius: 50%; background: #ef4444;
+        flex-shrink: 0; animation: hot-pulse 1.3s ease-in-out infinite;
+    }}
+    .bottom-livestream-frame {{
+        width: 100%; aspect-ratio: 16/9; overflow: hidden;
+        border-radius: 6px; background: #000;
+        border: 1px solid var(--nuzu-border);
+    }}
+    .bottom-livestream-frame iframe {{
+        width: 100%; height: 100%; border: none; display: block;
     }}
 
     /* ── First-launch onboarding overlay ── */
@@ -4178,6 +4228,13 @@ html_parts.append(f"""
       <span class="nav-updated-ago" id="nav-updated-ago"></span>
       <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size" aria-label="Decrease font size">A-</button>
       <button class="font-size-btn" id="font-increase-btn" title="Increase font size" aria-label="Increase font size">A+</button>
+      <div class="mobile-vid-toggle-wrap" id="mobile-vid-toggle-wrap">
+        <span class="mobile-vid-label">Video</span>
+        <label class="toggle-switch" title="Toggle video feeds on/off">
+          <input type="checkbox" id="mobile-video-toggle" aria-label="Toggle video feeds">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
       <span class="light-toggle-label">Light</span>
       <label class="toggle-switch" title="Toggle light/dark mode">
         <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
@@ -4496,8 +4553,9 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     _r_items = [item for cl in _r_clusters for item in cl]
     b_summary = source_summary(_b_items) if _b_items else ''
     r_summary = source_summary(_r_items) if _r_items else ''
-    b_content = render_clusters(_b_clusters) if _b_clusters else '<p style="color:var(--nuzu-dim)">No breaking news in the last 3 hours.</p>\n'
-    r_content = render_clusters(_r_clusters) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
+    _show_trust = _sid not in {'sports', 'culture', 'tech'}
+    b_content = render_clusters(_b_clusters, show_trust=_show_trust) if _b_clusters else '<p style="color:var(--nuzu-dim)">No breaking news in the last 3 hours.</p>\n'
+    r_content = render_clusters(_r_clusters, show_trust=_show_trust) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
     _dot_map = {
         'us-color':       '#C0392B',
         'mideast-color':  '#D35400',
@@ -4516,11 +4574,13 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         _r_label = 'RECENT &#8212; Up to 36 Hours'
     # Mobile section video wrap (hidden on desktop via CSS)
     _vid_map = {
-        'section-us':       ('iipR5yUp36o',                                  'U.S. Live'),
-        'section-world':    ('fO9e9jnhYK8',                                  'World Live'),
-        'section-mideast':  ('live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg', 'Middle East Live'),
-        'section-business': ('iEpJwprxDdk',                                  'Bloomberg Live'),
-        'section-culture':  ('Ap-UM1O9RBU',                                  'Culture Live'),
+        'section-us':       ('iipR5yUp36o',  'U.S. Live'),
+        'section-world':    ('fO9e9jnhYK8',  'World Live'),
+        'section-mideast':  ('gCNeDWCI0vo',  'Middle East Live'),
+        'section-business': ('iEpJwprxDdk',  'Bloomberg Live'),
+        'section-sports':   ('7NPsqFA14eQ',  'Sports Live'),
+        'section-tech':     ('vytmBNhc9ig',  'Tech Live'),
+        'section-culture':  ('Ap-UM1O9RBU',  'Culture Live'),
     }
     _ve = _vid_map.get(section_id)
     _msv = ''
@@ -4674,6 +4734,20 @@ _comic_html = render_comic_section()
 if _comic_html:
     html_parts.append('<hr class="top-divider">\n')
     html_parts.append(_comic_html)
+
+# - Bottom live stream video -
+html_parts.append("""
+<hr class="top-divider">
+<div class="bottom-livestream-wrap">
+  <div class="bottom-livestream-label">
+    <span class="bls-dot"></span> NUZU Live
+  </div>
+  <div class="bottom-livestream-frame">
+    <iframe src="https://www.youtube.com/embed/DeqZlwpasVE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1"
+            allow="autoplay;encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+""")
 
 # ====================== FOOTER ======================
 _now_utc = datetime.utcnow()
@@ -5123,6 +5197,16 @@ document.addEventListener('DOMContentLoaded', function() {{
   try {{ savedV = localStorage.getItem(VKEY); }} catch(e) {{}}
   if (savedV === '0') setVideoMode(false);
   vtoggle.addEventListener('change', function() {{ setVideoMode(!vtoggle.checked); }});
+  // Wire mobile video toggle to same setVideoMode
+  var mobileVToggle = document.getElementById('mobile-video-toggle');
+  if (mobileVToggle) {{
+    // Sync initial state
+    if (savedV === '0') mobileVToggle.checked = true;
+    mobileVToggle.addEventListener('change', function() {{
+      setVideoMode(!mobileVToggle.checked);
+      if (vtoggle) vtoggle.checked = mobileVToggle.checked;
+    }});
+  }}
 }})();
 
 // - Search bar -
@@ -5365,7 +5449,8 @@ function nuzu_equalColHeights() {{
   }});
 }}
 // Run on load (small delay for fonts/content to settle)
-setTimeout(nuzu_equalColHeights, 250);
+setTimeout(nuzu_equalColHeights, 400);
+setTimeout(nuzu_equalColHeights, 900);
 window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
 
 // - Scroll spy -
@@ -5785,7 +5870,7 @@ document.addEventListener('click', function(e) {{
   cols.forEach(function(el){{ el.classList.add('lazy-pending'); }});
   var io=new IntersectionObserver(function(entries) {{
     entries.forEach(function(entry) {{
-      if(entry.isIntersecting) {{ requestAnimationFrame(function(){{ entry.target.classList.remove('lazy-pending'); entry.target.classList.add('lazy-loaded'); }}); io.unobserve(entry.target); }}
+      if(entry.isIntersecting) {{ requestAnimationFrame(function(){{ entry.target.classList.remove('lazy-pending'); entry.target.classList.add('lazy-loaded'); setTimeout(nuzu_equalColHeights, 80); }}); io.unobserve(entry.target); }}
     }});
   }},{{rootMargin:'120px 0px',threshold:0.01}});
   cols.forEach(function(el){{ io.observe(el); }});
