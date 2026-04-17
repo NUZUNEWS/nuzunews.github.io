@@ -2875,7 +2875,7 @@ html_parts.append(f"""<!DOCTYPE html>
         text-transform: uppercase; padding: 2px 8px; border-radius: 2px;
         flex-shrink: 0; margin-right: 8px; margin-left: 4px;
         display: inline-flex; align-items: center; justify-content: center;
-        line-height: 1;
+        line-height: 1; vertical-align: middle;
     }}
     @keyframes bb-slidein {{
         from {{ opacity: 0; transform: translateX(14px); }}
@@ -4078,6 +4078,41 @@ html_parts.append(f"""<!DOCTYPE html>
         .mobile-section-video-wrap.msv-killed {{ display: none !important; }}
     }}
 
+    /* ── Source key legend popover ── */
+    .src-key-bar {{
+        max-width: 1400px; margin: 0 auto 6px; padding: 0 20px;
+        display: flex; align-items: center; gap: 6px; justify-content: flex-end;
+    }}
+    .src-key-btn {{
+        background: none; border: 1px solid var(--nuzu-border); border-radius: 10px;
+        color: var(--nuzu-muted); font-size: 0.68em; padding: 2px 9px;
+        cursor: pointer; letter-spacing: 0.04em; font-family: 'Inter',Arial,sans-serif;
+        transition: color 0.15s, border-color 0.15s;
+    }}
+    .src-key-btn:hover {{ color: var(--nuzu-text); border-color: var(--nuzu-muted); }}
+    .src-key-popover {{
+        display: none; position: absolute; right: 20px; top: 28px;
+        background: #0A1535; border: 1px solid var(--nuzu-border);
+        border-radius: 8px; padding: 14px 16px; z-index: 500;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5); min-width: 260px;
+        font-size: 0.80em; line-height: 1.7;
+    }}
+    .src-key-popover.open {{ display: block; }}
+    .src-key-wrap {{ position: relative; }}
+    .src-key-row {{ display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }}
+    .src-key-pip {{
+        width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0;
+    }}
+    .src-key-title {{
+        font-size: 0.75em; font-weight: 700; letter-spacing: 0.09em;
+        text-transform: uppercase; color: var(--nuzu-dim); margin-bottom: 8px;
+    }}
+    .src-key-note {{
+        font-size: 0.75em; color: var(--nuzu-dim); margin-top: 8px;
+        border-top: 1px solid var(--nuzu-border); padding-top: 7px; line-height: 1.5;
+    }}
+    body.light-mode .src-key-popover {{ background: #EBF0FA !important; }}
+
     /* ── Bottom livestream block ── */
     .bottom-livestream-wrap {{
         max-width: 960px; margin: 20px auto 0; padding: 0 20px 30px;
@@ -4456,6 +4491,33 @@ ts_html = f'''<div class="top-stories-strip">
   <div class="top-stories-2col">
     <div class="ts-col">{col1_html}</div>
     <div class="ts-col ts-divider-left">{col2_html}</div>
+  </div>
+</div>\n'''
+ts_html += '''
+<div class="src-key-bar">
+  <div class="src-key-wrap">
+    <button class="src-key-btn" id="src-key-btn" aria-label="Source reliability key">
+      &#9432; Source Key
+    </button>
+    <div class="src-key-popover" id="src-key-popover" role="tooltip">
+      <div class="src-key-title">Source Reliability Indicators</div>
+      <div class="src-key-row">
+        <span class="src-key-pip" style="background:#22c55e"></span>
+        <span><strong style="color:#22c55e">Tier 1</strong> &mdash; Wire services &amp; flagship outlets<br>
+        <small>Reuters, AP, BBC, NYT, FT, Bloomberg, NPR, Al Jazeera</small></span>
+      </div>
+      <div class="src-key-row">
+        <span class="src-key-pip" style="background:#f59e0b"></span>
+        <span><strong style="color:#f59e0b">Tier 2</strong> &mdash; Solid editorial reporting<br>
+        <small>Axios, Politico, CNBC, The Atlantic, Foreign Affairs</small></span>
+      </div>
+      <div class="src-key-row">
+        <span class="src-key-pip" style="background:#ef4444"></span>
+        <span><strong style="color:#ef4444">Tier 3</strong> &mdash; Partisan, tabloid, or unverified<br>
+        <small>Opinionated outlets, aggregators, unknown sources</small></span>
+      </div>
+      <div class="src-key-note">The % bar on clustered stories shows what share of sources covering that story are Tier 1 or 2. Applies to news sections only.</div>
+    </div>
   </div>
 </div>\n'''
 
@@ -5329,7 +5391,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     }}
     if (sectionPill && item.section) {{
       sectionPill.textContent = item.section;
-      sectionPill.style.display = 'inline';
+      sectionPill.style.display = 'inline-flex';
       sectionPill.style.background = (item.scolor || '#1E4FD8') + '33';
       sectionPill.style.color = '#fff';
       sectionPill.style.border = '1px solid ' + (item.scolor || '#1E4FD8');
@@ -5426,31 +5488,37 @@ document.addEventListener('DOMContentLoaded', function() {{
 // - Equal-height Breaking / Recent columns -
 // Breaking column defines the height; Recent column matches it (clipped if taller).
 function nuzu_equalColHeights() {{
-  if (window.innerWidth <= 900) return; // mobile: single-column, no equalization needed
+  if (window.innerWidth <= 900) return;
   document.querySelectorAll('.container.equal-cols').forEach(function(container) {{
     var cols = container.querySelectorAll(':scope > .column');
     if (cols.length < 2) return;
     var bCard = cols[0].querySelector('.section-col-card');
     var rCard = cols[1].querySelector('.section-col-card');
     if (!bCard || !rCard) return;
-    // Reset any previous overrides so we can measure natural heights
+    // Skip sections that are collapsed or not rendered
+    var wrap = container.closest('.section-columns');
+    if (wrap && wrap.classList.contains('collapsed')) return;
+    // Reset overrides so we measure natural content heights
     bCard.style.height = '';
     rCard.style.height = '';
+    bCard.style.overflow = '';
     rCard.style.overflow = '';
-    // Measure natural scroll heights (full content height regardless of CSS)
-    var bH = bCard.scrollHeight;
-    var rH = rCard.scrollHeight;
-    if (bH <= 0) return;
-    // Set recent card height to match breaking (cap it if recent is taller)
-    rCard.style.height = bH + 'px';
-    rCard.style.overflow = 'hidden';
-    // If breaking is shorter than recent's natural height, no change needed for breaking
-    // Breaking column always retains its full natural height
+    // Use offsetHeight as fallback if scrollHeight is 0 (not yet painted)
+    var bH = Math.max(bCard.scrollHeight, bCard.offsetHeight);
+    var rH = Math.max(rCard.scrollHeight, rCard.offsetHeight);
+    if (bH <= 10 || rH <= 10) return; // skip unpainted sections
+    // Both columns match the TALLER one so no content is clipped
+    // Breaking defines min-height; recent is capped to breaking height
+    var targetH = bH; // breaking sets the standard
+    rCard.style.height = targetH + 'px';
+    rCard.style.overflow = targetH < rH ? 'hidden' : '';
   }});
 }}
 // Run on load (small delay for fonts/content to settle)
 setTimeout(nuzu_equalColHeights, 400);
 setTimeout(nuzu_equalColHeights, 900);
+setTimeout(nuzu_equalColHeights, 1800);
+setTimeout(nuzu_equalColHeights, 3500);
 window.addEventListener('resize', nuzu_equalColHeights, {{ passive: true }});
 
 // - Scroll spy -
@@ -5937,6 +6005,19 @@ document.addEventListener('click', function(e) {{
   document.getElementById('ob-skip').addEventListener('click',function() {{
     dismiss(defs.map(function(d){{return d.id;}}));
   }});
+}})();
+
+// - Source key legend popover -
+(function() {{
+  var btn = document.getElementById('src-key-btn');
+  var pop = document.getElementById('src-key-popover');
+  if (!btn || !pop) return;
+  btn.addEventListener('click', function(e) {{
+    e.stopPropagation();
+    pop.classList.toggle('open');
+  }});
+  document.addEventListener('click', function() {{ pop.classList.remove('open'); }});
+  pop.addEventListener('click', function(e) {{ e.stopPropagation(); }});
 }})();
 
 }}); // end DOMContentLoaded
