@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://theseanmitchell.github.io/TheMitchellPost/</loc>
+    <loc>https://nuzunews.github.io/</loc>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://theseanmitchell.github.io/TheMitchellPost/about.html</loc>
+    <loc>https://nuzunews.github.io/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://theseanmitchell.github.io/TheMitchellPost/privacy.html</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://nuzunews.github.io/privacy.html</loc>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://theseanmitchell.github.io/TheMitchellPost/terms.html</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://nuzunews.github.io/terms.html</loc>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://nuzunews.github.io/feed.xml</loc>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

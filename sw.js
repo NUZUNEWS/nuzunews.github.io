@@ -1,8 +1,10 @@
-// NUZU News Service Worker v2.0
-// Handles offline, caching, background sync, and push notifications
+// NUZU News Service Worker v3.0
+// Handles offline, caching, background sync, and push notifications.
+// Bump CACHE_VERSION when shipping a new build so old cached HTML is evicted.
 
-const CACHE_NAME = 'nuzu-v4';
-const STATIC_CACHE = 'nuzu-static-v4';
+const CACHE_VERSION = 'v5';
+const CACHE_NAME = 'nuzu-' + CACHE_VERSION;
+const STATIC_CACHE = 'nuzu-static-' + CACHE_VERSION;
 const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_URLS = [
@@ -14,7 +16,7 @@ const PRECACHE_URLS = [
   '/icons/icon-512.png',
 ];
 
-// Install — precache shell assets
+// Install — precache shell assets and skip waiting so new versions activate fast
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(
@@ -26,7 +28,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// Activate — clean old caches
+// Activate — delete every cache that doesn't match the current version
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -88,7 +90,24 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // For static assets (icons, images): cache-first
+  // For favicons in /icons/sources/: cache-first but revalidate in background
+  if (url.pathname.startsWith('/icons/sources/')) {
+    event.respondWith(
+      caches.match(event.request).then(cached => {
+        const fetchPromise = fetch(event.request).then(response => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(STATIC_CACHE).then(c => c.put(event.request, clone));
+          }
+          return response;
+        }).catch(() => cached);
+        return cached || fetchPromise;
+      })
+    );
+    return;
+  }
+
+  // For other static assets (icons, images): cache-first
   event.respondWith(
     caches.match(event.request).then(cached => {
       if (cached) return cached;
@@ -153,7 +172,6 @@ self.addEventListener('periodicsync', event => {
       fetch('/feed.json?sw=1&_=' + Date.now())
         .then(r => r.json())
         .then(data => {
-          // Notify open clients of new content
           return self.clients.matchAll({ type: 'window' }).then(clients => {
             clients.forEach(client => client.postMessage({ type: 'NUZU_UPDATE', updated: data.updated }));
           });

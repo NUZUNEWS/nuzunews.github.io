@@ -19,6 +19,28 @@ INDEX_HTML   = os.path.join(CURRENT_DIR, "index.html")
 HEADERS_FILE = os.path.join(CURRENT_DIR, '_headers')
 FEED_JSON    = os.path.join(CURRENT_DIR, "feed.json")
 
+# ====================== SITE IDENTITY (single source of truth) ======================
+# The canonical public URL of the NUZU News site. All og:url, canonical, RSS,
+# feed.json, sitemap, and 404 references derive from this one constant.
+SITE_BASE_URL    = "https://nuzunews.github.io/"
+SITE_NAME        = "NUZU News"
+SITE_TAGLINE     = "Real News in Real Time"
+SITE_DESCRIPTION = "NUZU News: Real News in Real Time. Breaking headlines from 200+ trusted sources across US, World, Middle East, Tech, Business, Sports and Culture."
+
+# Build stamp used to cache-bust icons and other static assets when the logo
+# set changes. Regenerated every run, so URLs like /icons/sources/bbc.png?v=...
+# are fresh when the underlying PNG is rewritten but stable within a build.
+BUILD_STAMP = datetime.utcnow().strftime("%Y%m%d%H")
+
+# ====================== PERSISTED STATE PATHS ======================
+# State files the bot reads at start and writes at end of each run. Added to
+# the git commit list in refresh.yml so they survive between hourly runs.
+ICONS_SOURCES_DIR = os.path.join(CURRENT_DIR, "icons", "sources")
+os.makedirs(ICONS_SOURCES_DIR, exist_ok=True)
+YESTERDAY_FILE    = os.path.join(CURRENT_DIR, "yesterday_top.json")
+FEED_HEALTH_FILE  = os.path.join(CURRENT_DIR, "feed_health.json")
+
+
 UTM_PARAMS = "utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app"
 
 def add_utm(url):
@@ -383,11 +405,90 @@ SOURCE_ICON_OVERRIDES = {
     "BBC Tech":    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BBC_Logo_2021.svg/256px-BBC_Logo_2021.svg.png",
 }
 
+def _local_icon_path(dom):
+    """Return the local filesystem path for a cached favicon PNG."""
+    safe_dom = re.sub(r'[^a-z0-9.-]', '_', dom.lower())
+    return os.path.join(ICONS_SOURCES_DIR, safe_dom + ".png")
+
+def _local_icon_url(dom):
+    """Return the relative web URL for a cached favicon, with cache-buster."""
+    safe_dom = re.sub(r'[^a-z0-9.-]', '_', dom.lower())
+    return f"icons/sources/{safe_dom}.png?v={BUILD_STAMP}"
+
+def _download_favicon(dom, override_url=None):
+    """
+    Download a favicon for `dom` once and cache it in icons/sources/.
+    Returns True on success (or if already cached). Uses override_url if
+    provided (e.g. Wikimedia Commons for BBC), otherwise Google's s2
+    favicon service at high resolution.
+    Fails silently — renderer falls back to remote URL or letter avatar.
+    """
+    path = _local_icon_path(dom)
+    if os.path.exists(path) and os.path.getsize(path) > 200:
+        return True
+    urls_to_try = []
+    if override_url:
+        urls_to_try.append(override_url)
+    urls_to_try.append(f"https://www.google.com/s2/favicons?domain={dom}&sz=128")
+    for url in urls_to_try:
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 NUZU'})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = resp.read()
+            if data and len(data) > 200:
+                with open(path, 'wb') as f:
+                    f.write(data)
+                return True
+        except Exception:
+            continue
+    return False
+
+def prewarm_source_icons():
+    """
+    Walk every known publisher domain and ensure its favicon is cached
+    locally under icons/sources/. Runs once at startup before HTML render.
+    Already-cached icons are skipped, so this is cheap on subsequent runs.
+    """
+    downloaded = 0
+    skipped = 0
+    failed = 0
+    seen_domains = set()
+    # First: explicit overrides (Wikimedia-hosted BBC etc)
+    for friendly, url in SOURCE_ICON_OVERRIDES.items():
+        dom = SOURCE_DOMAIN_MAP.get(friendly, '') or ''
+        if not dom or dom in seen_domains:
+            continue
+        seen_domains.add(dom)
+        path = _local_icon_path(dom)
+        if os.path.exists(path) and os.path.getsize(path) > 200:
+            skipped += 1
+            continue
+        if _download_favicon(dom, override_url=url):
+            downloaded += 1
+        else:
+            failed += 1
+    # Then: every domain in the map
+    for dom in set(SOURCE_DOMAIN_MAP.values()):
+        if dom in seen_domains:
+            continue
+        seen_domains.add(dom)
+        path = _local_icon_path(dom)
+        if os.path.exists(path) and os.path.getsize(path) > 200:
+            skipped += 1
+            continue
+        if _download_favicon(dom):
+            downloaded += 1
+        else:
+            failed += 1
+    print(f"Favicon cache: {downloaded} downloaded, {skipped} already cached, {failed} failed")
+
 def get_source_icon_html(source_name, size_class=''):
     """
     Return HTML for a small favicon image for this source, or a letter
-    avatar if no domain is mapped. Always returns a fixed-size element
-    so layout is stable and no layout shift occurs when images load/fail.
+    avatar if no domain is mapped. Prefers locally-cached PNGs (fast,
+    no third-party dependency) with fallback to Google s2 and then to
+    a letter avatar. Always returns a fixed-size element so layout is
+    stable and no shift occurs as images load/fail.
     """
     if not source_name:
         source_name = ''
@@ -395,8 +496,27 @@ def get_source_icon_html(source_name, size_class=''):
     safe_name = (friendly or source_name or '?').replace('"', "'").replace('<','').replace('>','')
     cls = ('nuzu-thumb ' + size_class).strip()
     letter = (friendly[:1] or '?').upper().replace('"', "'")
-    # Publishers whose Google favicon reads poorly get a higher-quality override
+    dom = get_source_domain(source_name)
     override_url = SOURCE_ICON_OVERRIDES.get(friendly)
+    if dom:
+        # Prefer local cache if the file exists
+        local_path = _local_icon_path(dom)
+        if os.path.exists(local_path) and os.path.getsize(local_path) > 200:
+            local_url = _local_icon_url(dom)
+            # Remote fallback chain if local 404s somehow (rare — but robust)
+            fallback = override_url or f"https://www.google.com/s2/favicons?domain={dom}&sz=128"
+            onerror = (
+                f"if(!this.dataset.tried){{this.dataset.tried='1';this.src='{fallback}';}}"
+                f"else{{this.style.display='none';this.parentNode.classList.add('nuzu-thumb-letter');"
+                f"this.parentNode.textContent='{letter}';}}"
+            )
+            return (
+                f'<span class="{cls}" data-src-name="{safe_name}" aria-hidden="true">'
+                f'<img src="{local_url}" alt="" loading="lazy" decoding="async" '
+                f'referrerpolicy="no-referrer" onerror="{onerror}">'
+                f'</span>'
+            )
+    # No local cache hit — use override URL if we have one
     if override_url:
         return (
             f'<span class="{cls}" data-src-name="{safe_name}" aria-hidden="true">'
@@ -405,10 +525,8 @@ def get_source_icon_html(source_name, size_class=''):
             f"onerror=\"this.style.display='none';this.parentNode.classList.add('nuzu-thumb-letter');this.parentNode.textContent='{letter}';\">"
             f'</span>'
         )
-    dom = get_source_domain(source_name)
     if dom:
-        url = 'https://www.google.com/s2/favicons?domain=' + dom + '&sz=128'
-        # Inline onerror swaps to a letter avatar if the favicon request fails
+        url = f'https://www.google.com/s2/favicons?domain={dom}&sz=128'
         return (
             f'<span class="{cls}" data-src-name="{safe_name}" aria-hidden="true">'
             f'<img src="{url}" alt="" loading="lazy" decoding="async" '
@@ -2265,18 +2383,115 @@ def normalize_title(title):
         title = title.rsplit(" - ", 1)[0]
     return title.strip().lower()
 
+def _resolve_entry_source(entry, fallback_name):
+    """
+    Determine the TRUE publisher of a Google News RSS entry.
+    Google News aggregates from many publishers, and its RSS entries include
+    a <source> element naming the actual outlet. feedparser exposes this as
+    entry.source.title (and sometimes entry.source.href).
+    If that's missing, fall back to parsing the " - Publisher" suffix that
+    Google News appends to every headline. Final fallback is the feed name
+    we queried with (fallback_name).
+    """
+    try:
+        src_obj = entry.get('source')
+        if src_obj:
+            # feedparser can return FeedParserDict or plain dict
+            title = None
+            if hasattr(src_obj, 'get'):
+                title = src_obj.get('title') or src_obj.get('value')
+            elif hasattr(src_obj, 'title'):
+                title = src_obj.title
+            if title and isinstance(title, str) and len(title.strip()) >= 2:
+                return title.strip()
+    except Exception:
+        pass
+    # Fallback: parse " - Publisher" suffix from title (max 5 words)
+    raw_title = entry.get('title', '') or ''
+    if ' - ' in raw_title:
+        suffix = raw_title.rsplit(' - ', 1)[1].strip()
+        if 0 < len(suffix.split()) <= 5:
+            return suffix
+    return fallback_name
+
+# Circuit-breaker state loaded at module level. Tracks consecutive failures
+# per feed URL so repeatedly-broken feeds get skipped rather than wasting
+# time on every run.
+_feed_health = {}
+try:
+    import json as _jsonfh
+    if os.path.exists(FEED_HEALTH_FILE):
+        with open(FEED_HEALTH_FILE, 'r', encoding='utf-8') as _fhf:
+            _feed_health = _jsonfh.load(_fhf)
+            if not isinstance(_feed_health, dict):
+                _feed_health = {}
+except Exception:
+    _feed_health = {}
+
+# Load yesterday's top clusters per section (if file exists). Used by
+# section_block to render "Biggest Stories — Yesterday" in empty sidebar
+# space when Recent Headlines is shorter than Breaking.
+_YESTERDAY_TOP = {}
+try:
+    import json as _jsonytl
+    if os.path.exists(YESTERDAY_FILE):
+        with open(YESTERDAY_FILE, 'r', encoding='utf-8') as _ytlf:
+            _state = _jsonytl.load(_ytlf)
+            if isinstance(_state, dict):
+                _YESTERDAY_TOP = _state.get("yesterday_top_by_section", {}) or {}
+                print(f"Loaded yesterday's top stories for {len(_YESTERDAY_TOP)} sections")
+except Exception as _e_ytl:
+    print(f"Note: could not load yesterday_top.json ({_e_ytl})")
+    _YESTERDAY_TOP = {}
+
+_CIRCUIT_BREAKER_THRESHOLD = 5   # skip a feed after 5 consecutive failures
+_CIRCUIT_BREAKER_COOLDOWN  = 3600  # retry a skipped feed after 1 hour
+
+def _should_skip_feed(url):
+    """Circuit breaker: skip a feed if it's failed too many times recently."""
+    state = _feed_health.get(url)
+    if not state:
+        return False
+    fails = state.get('fails', 0)
+    last_fail = state.get('last_fail', 0)
+    if fails >= _CIRCUIT_BREAKER_THRESHOLD:
+        # Stay skipped for 1 hour after the Nth failure, then retry once
+        if (time.time() - last_fail) < _CIRCUIT_BREAKER_COOLDOWN:
+            return True
+    return False
+
+def _record_feed_success(url):
+    if url in _feed_health:
+        _feed_health[url] = {'fails': 0, 'last_fail': 0}
+
+def _record_feed_failure(url):
+    state = _feed_health.get(url) or {'fails': 0, 'last_fail': 0}
+    state['fails'] = state.get('fails', 0) + 1
+    state['last_fail'] = int(time.time())
+    _feed_health[url] = state
+
 def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
     results = []
     seen_local = set()
     count = 0
+    if _should_skip_feed(url):
+        print(f"  {source_name} - SKIPPED (circuit-breaker tripped)")
+        return results
+    last_err = None
+    # Exponential backoff: 1s, 3s, 9s
     for attempt in range(3):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
             with urllib.request.urlopen(req, timeout=15) as response:
                 feed = feedparser.parse(response.read().decode('utf-8', errors='ignore'))
             if feed.bozo:
+                last_err = f"bozo={feed.get('bozo_exception', 'parse error')}"
                 break
             print(f"  {source_name} - {len(feed.entries)} entries")
+            if len(feed.entries) == 0:
+                # Zero-entry warning — Google News may have rate-limited or
+                # changed format. Don't mark as failure (valid RSS, just empty).
+                print(f"  WARNING: {source_name} returned zero entries")
             for entry in feed.entries:
                 if count >= 5:
                     break
@@ -2303,13 +2518,23 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                 if title_matches_keywords(title_lower, pattern):
                     ts_struct = entry.get('published_parsed') or entry.get('updated_parsed')
                     ts = calendar.timegm(ts_struct) if ts_struct else time.time()
-                    results.append((ts, raw_title, source_name, link))
+                    # Use TRUE publisher from entry.source rather than the
+                    # feed label — prevents every Google News result being
+                    # attributed to the query term (e.g. "Deutsche Welle"
+                    # when the article is actually from Reuters via DW feed).
+                    true_source = _resolve_entry_source(entry, source_name)
+                    results.append((ts, raw_title, true_source, link))
                     seen_local.add(norm_title)
                     count += 1
-            break
+            _record_feed_success(url)
+            return results
         except Exception as e:
+            last_err = str(e)
             if attempt < 2:
-                time.sleep(1)
+                time.sleep([1, 3, 9][attempt])
+    _record_feed_failure(url)
+    if last_err:
+        print(f"  {source_name} - fetch FAILED: {last_err[:120]}")
     return results
 
 def fetch_section(sources, keywords, pattern, blocklist, section_name="",
@@ -2459,7 +2684,17 @@ CLUSTER_EXCLUDED_SOURCES = {
 def _is_cluster_excluded(source_name):
     return any(excl in source_name.lower() for excl in CLUSTER_EXCLUDED_SOURCES)
 
-def cluster_items(items, min_shared=3):
+def cluster_items(items, min_shared=4):
+    """
+    Group items into clusters of the same story. Requires:
+      - At least min_shared (default 4) shared meaningful tokens between titles
+      - Lead timestamps within 24 hours of each other
+    Raising min_shared from 3→4 splits "related-but-distinct" stories into
+    their own clusters (e.g. "Israel strikes Iran" and "Iran retaliates on
+    Israel" share words but are separate events).
+    """
+    CLUSTER_TIME_WINDOW = 24 * 3600  # 24h — prevents Monday & Wednesday
+                                     # stories about the same topic merging
     used = [False] * len(items)
     clusters = []
     token_cache = [headline_tokens(it[1]) for it in items]
@@ -2481,6 +2716,10 @@ def cluster_items(items, min_shared=3):
             if _is_cluster_excluded(source_j):
                 continue
             if source_j.lower() in sources_in_cluster:
+                continue
+            # Time proximity: candidate's lead timestamp must be within
+            # CLUSTER_TIME_WINDOW of seed's timestamp
+            if abs(seed_ts - ts_j) > CLUSTER_TIME_WINDOW:
                 continue
             shared = len(token_cache[i] & token_cache[j])
             if shared >= min_shared:
@@ -2554,12 +2793,25 @@ def render_clusters(clusters, show_trust=True):
             )
             _trust_display = trust_bar_html if show_trust else ''
             _thumb_html = get_source_icon_html(lead_source, 'nuzu-thumb-md')
+            # "Updated" badge: a newer source has joined this story since the
+            # lead was published. Signals a developing/active cluster.
+            ONE_HOUR = 3600
+            cluster_newest_ts = max(it[0] for it in cluster)
+            updated_badge = ''
+            if (cluster_newest_ts != lead_ts
+                and (now - cluster_newest_ts) <= ONE_HOUR
+                and (now - lead_ts) > ONE_HOUR):
+                updated_badge = (
+                    '<span class="cluster-updated-badge" '
+                    'title="A new source joined this story in the last hour">'
+                    'UPDATED</span> '
+                )
             out += (
                 f'<div id="{cluster_id}-anchor" class="cluster cluster-with-thumb" data-ts="{int(lead_ts)}">'
                 f'{_thumb_html}'
                 f'<div class="cluster-body">'
                 f'<div class="cluster-header">'
-                f'{hot_dot}'
+                f'{hot_dot}{updated_badge}'
                 f'<span class="cluster-badge">{n_sources} sources</span>'
                 f'<span class="cluster-src-pills">{src_pills}</span>'
                 f'<button class="cluster-toggle-btn" data-target="{cluster_id}" aria-label="Expand story coverage" title="Show/hide all coverage">&#9654; Show all coverage</button>'
@@ -2870,6 +3122,15 @@ if not hot_items:
     hot_items = sorted(_all_breaking, key=lambda x: x[0], reverse=True)[:20]
 show_breaking_banner = len(hot_items) > 0
 
+# Warm the source-icon cache. Downloads any missing publisher favicons into
+# icons/sources/ so the generated HTML points at local PNGs (fast, no
+# third-party dependency at render time). Already-cached icons are skipped.
+print("Warming favicon cache...")
+try:
+    prewarm_source_icons()
+except Exception as _e_fav:
+    print(f"WARNING: favicon prewarm failed: {_e_fav}")
+
 html_parts = []
 html_parts.append(f"""<!DOCTYPE html>
 <html lang="en">
@@ -2877,12 +3138,30 @@ html_parts.append(f"""<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NUZU News &mdash; Real News in Real Time</title>
+    <link rel="canonical" href="{SITE_BASE_URL}">
     <link rel="manifest" href="manifest.json">
     <link rel="alternate" type="application/rss+xml" title="NUZU News RSS Feed" href="feed.xml">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%230D1B4B'/><text x='32' y='46' font-family='Arial,sans-serif' font-size='24' font-weight='900' fill='%23FFFFFF' text-anchor='middle'>NZ</text></svg>">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta name="description" content="NUZU News: Real News in Real Time. Breaking headlines from 200+ trusted sources across US, World, Middle East, Tech, Business, Sports and Culture.">
+    <meta name="description" content="{SITE_DESCRIPTION}">
     <meta name="theme-color" content="#0D1B4B">
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack, iMessage preview) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{SITE_NAME}">
+    <meta property="og:title" content="{SITE_NAME} — {SITE_TAGLINE}">
+    <meta property="og:description" content="{SITE_DESCRIPTION}">
+    <meta property="og:url" content="{SITE_BASE_URL}">
+    <meta property="og:image" content="{SITE_BASE_URL}icons/icon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{SITE_NAME} — {SITE_TAGLINE}">
+    <meta name="twitter:description" content="{SITE_DESCRIPTION}">
+    <meta name="twitter:image" content="{SITE_BASE_URL}icons/icon-512.png">
+
     <script>if("serviceWorker"in navigator){{navigator.serviceWorker.register("/sw.js").catch(function(){{}});}}</script>
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -3393,6 +3672,68 @@ html_parts.append(f"""<!DOCTYPE html>
         box-shadow: 0 1px 5px rgba(217,119,6,0.30);
         text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }}
+    /* "UPDATED" badge — appears when a fresh source has joined an older cluster */
+    .cluster-updated-badge {{
+        background: linear-gradient(135deg, #14532D 0%, #22C55E 100%);
+        color: #F0FDF4;
+        font-size: 0.68em; padding: 2px 8px; border-radius: 10px;
+        font-weight: 800; letter-spacing: 0.08em; flex-shrink: 0;
+        border: 1px solid rgba(34,197,94,0.55);
+        box-shadow: 0 1px 5px rgba(34,197,94,0.30);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        animation: nuzu-updated-pulse 2.5s ease-in-out infinite;
+    }}
+    @keyframes nuzu-updated-pulse {{
+        0%, 100% {{ box-shadow: 0 1px 5px rgba(34,197,94,0.30); }}
+        50%      {{ box-shadow: 0 1px 10px rgba(34,197,94,0.65); }}
+    }}
+    body.light-mode .cluster-updated-badge {{
+        background: linear-gradient(135deg, #166534 0%, #16A34A 100%);
+        color: #fff; border-color: rgba(21,128,61,0.5);
+    }}
+    /* "Biggest Stories — Yesterday" block inside Recent columns */
+    .yesterday-top-wrap {{
+        margin-top: 14px; padding-top: 10px;
+        border-top: 1px dashed var(--nuzu-border);
+    }}
+    .yesterday-top-label {{
+        font-size: 0.72em; font-weight: 700;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: var(--nuzu-muted); margin-bottom: 8px;
+        display: flex; align-items: center; gap: 6px;
+    }}
+    .yesterday-top-label .yt-dot {{
+        display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    }}
+    .yesterday-top-item {{
+        display: flex; align-items: flex-start; gap: 10px;
+        padding: 6px 0;
+        border-bottom: 1px solid rgba(40,55,80,0.25);
+    }}
+    .yesterday-top-item:last-child {{ border-bottom: none; }}
+    .yesterday-top-item .yt-body {{
+        flex: 1; min-width: 0; font-size: 0.88em; line-height: 1.45;
+    }}
+    .yesterday-top-item .yt-badge {{
+        display: inline-block;
+        background: rgba(30,79,216,0.18);
+        color: var(--nuzu-light); font-size: 0.72em;
+        padding: 1px 7px; border-radius: 8px; margin-right: 6px;
+        border: 1px solid rgba(30,79,216,0.35);
+        font-weight: 600; letter-spacing: 0.04em;
+    }}
+    .yesterday-top-item .yt-title {{ color: var(--nuzu-text); }}
+    .yesterday-top-item .yt-source {{
+        color: var(--nuzu-muted); font-size: 0.85em; margin-left: 4px;
+    }}
+    body.light-mode .yesterday-top-wrap {{ border-top-color: #d8dae1; }}
+    body.light-mode .yesterday-top-item {{ border-bottom-color: #eceef2; }}
+    body.light-mode .yesterday-top-item .yt-title {{ color: #1F2937; }}
+    body.light-mode .yesterday-top-item .yt-source {{ color: #6B7280; }}
+    body.light-mode .yesterday-top-item .yt-badge {{
+        background: rgba(30,79,216,0.10); color: #1E4FD8;
+        border-color: rgba(30,79,216,0.22);
+    }}
     .cluster-lead {{ margin-bottom: 6px; }}
     .cluster-items-wrap {{ transition: none; }}
     .cluster-items-wrap.collapsed {{ display: none; }}
@@ -3431,10 +3772,18 @@ html_parts.append(f"""<!DOCTYPE html>
     .link:hover {{ color: #fff; background: rgba(30,79,216,0.22); border-color: #1E4FD8; }}
     .bookmark-btn {{
         background: none; border: none; cursor: pointer;
-        color: var(--nuzu-dim); font-size: 0.85em; padding: 0 4px;
+        color: var(--nuzu-dim); font-size: 0.85em;
+        padding: 6px 8px; min-width: 32px; min-height: 32px;
         transition: color 0.15s; vertical-align: middle;
+        display: inline-flex; align-items: center; justify-content: center;
     }}
     .bookmark-btn:hover, .bookmark-btn.saved {{ color: #f0c040; }}
+    @media (max-width: 900px) {{
+        .bookmark-btn {{
+            padding: 10px 12px; min-width: 44px; min-height: 44px;
+            font-size: 1.05em;
+        }}
+    }}
 
     /* - Saved Articles Panel - */
     .saved-articles-panel {{
@@ -3905,17 +4254,25 @@ html_parts.append(f"""<!DOCTYPE html>
     /* - Share Button - */
     .share-btn {{
         background: none; border: none; cursor: pointer;
-        color: var(--nuzu-dim); font-size: 0.85em; padding: 0 4px;
+        color: var(--nuzu-dim); font-size: 0.85em;
+        padding: 6px 8px; min-width: 32px; min-height: 32px;
         transition: color 0.15s; vertical-align: middle;
         display: none;
+        align-items: center; justify-content: center;
     }}
     .share-btn:hover {{ color: var(--nuzu-light); }}
     @supports (display: grid) {{
-        .share-btn {{ display: inline; }}
+        .share-btn {{ display: inline-flex; }}
     }}
     /* Only show natively if Web Share API is available -
        JS will add class 'share-api-available' to body */
     body:not(.share-api-available) .share-btn {{ display: none !important; }}
+    @media (max-width: 900px) {{
+        .share-btn {{
+            padding: 10px 12px; min-width: 44px; min-height: 44px;
+            font-size: 1.05em;
+        }}
+    }}
 
     /* - Mobile Bottom Navigation Bar - */
     .nuzu-bottom-nav {{
@@ -5086,6 +5443,52 @@ ts_html += '''<!-- VIDEO BANNER desktop only -->
 html_parts.append(ts_html)
 
 # ====================== SECTION BLOCKS ======================
+def render_yesterday_top(sid, section_color_hex):
+    """
+    Render a compact 'Biggest Stories — Yesterday' block for a section.
+    Placed below Recent headlines in the Recent column. When the JS
+    height-equalizer gives the Recent column extra space (because it has
+    fewer items than Breaking), this block fills that gap. When Recent
+    already overflows, this gets clipped along with the overflow.
+    """
+    sec_items = _YESTERDAY_TOP.get(sid, []) or []
+    if not sec_items:
+        return ''
+    # Only show stories with at least 2 sources (i.e. actual clusters)
+    filtered = [it for it in sec_items if (it.get("n_sources", 0) or 0) >= 2][:5]
+    if not filtered:
+        return ''
+    html = (
+        '<div class="yesterday-top-wrap" aria-label="Biggest stories from yesterday">\n'
+        '<div class="yesterday-top-label">'
+        f'<span class="yt-dot" style="background:{section_color_hex};opacity:0.6"></span>'
+        'BIGGEST STORIES &mdash; YESTERDAY'
+        '</div>\n'
+    )
+    for item in filtered:
+        title = (item.get("title") or "").replace('<','&lt;').replace('>','&gt;')
+        if title:
+            title = title[0].upper() + title[1:]
+        title = strip_source_from_title(title)
+        link   = item.get("link") or "#"
+        source = item.get("source") or ""
+        n_src  = item.get("n_sources", 0) or 0
+        thumb = get_source_icon_html(source, 'nuzu-thumb-sm')
+        html += (
+            f'<div class="yesterday-top-item">'
+            f'{thumb}'
+            f'<div class="yt-body">'
+            f'<span class="yt-badge">{n_src} sources</span>'
+            f'<span class="yt-title">{title}</span>'
+            f'<span class="yt-source">&mdash; {source}</span>'
+            f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer" '
+            f'aria-label="Read article">Read ↗</a>'
+            f'</div>'
+            f'</div>\n'
+        )
+    html += '</div>\n'
+    return html
+
 def section_block(section_id, color_class, breaking_items, recent_items,
                   breaking_title, recent_title, breaking_threshold=12*3600):
     _sid = section_id.replace("section-", "")
@@ -5188,7 +5591,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         f'<div class="section-col-label scl-daily">'
         f'<span class="scl-dot" style="background:{_hex};opacity:0.5"></span>'
         f'{_r_label}</div>\n'
-        f'<div class="section-col-inner">{r_summary}{r_content}</div>\n'
+        f'<div class="section-col-inner">{r_summary}{r_content}{render_yesterday_top(_sid, _hex)}</div>\n'
         f'</div>\n'
         f'</div>\n'
         f'</div>\n'
@@ -5879,6 +6282,17 @@ document.addEventListener('DOMContentLoaded', function() {{
     if (e.key === 'j' || e.key === 'J') {{ e.preventDefault(); refreshHl(); kbIdx = Math.min(kbIdx+1, allHl.length-1); setKbFocus(kbIdx); return; }}
     if (e.key === 'k' || e.key === 'K') {{ e.preventDefault(); refreshHl(); kbIdx = Math.max(kbIdx-1, 0); setKbFocus(kbIdx); return; }}
     if (e.key === 'Enter' && kbIdx >= 0 && allHl[kbIdx]) {{ var lnk = allHl[kbIdx].querySelector('a.link'); if (lnk) window.open(lnk.href,'_blank','noopener'); return; }}
+    if ((e.key === 's' || e.key === 'S') && kbIdx >= 0 && allHl[kbIdx]) {{
+      e.preventDefault();
+      var btn = allHl[kbIdx].querySelector('.bookmark-btn');
+      if (btn) btn.click();
+      return;
+    }}
+    if (e.key === '?' && !e.shiftKey === false) {{
+      e.preventDefault();
+      alert('NUZU keyboard shortcuts:\\n\\n  J / K   — next / previous headline\\n  Enter   — open focused article\\n  S       — save/bookmark focused article\\n  /       — focus search\\n  1-8     — jump to section\\n  Esc     — clear focus');
+      return;
+    }}
     if (e.key === 'Escape') {{ allHl.forEach(function(el) {{ el.style.outline=''; }}); kbIdx=-1; }}
   }});
 }})();
@@ -6791,6 +7205,27 @@ html = "".join(html_parts)
 html = html.encode("utf-8", errors="replace").decode("utf-8")
 print(f"HTML generated: {len(html):,} characters")
 
+# ------ EMPTY-SITE GUARD ------
+# If the build produced suspiciously few stories, DO NOT overwrite the
+# existing live index.html. This prevents a single bad run (feed outage,
+# Google News throttling, network flake) from replacing the live site with
+# a blank page. The existing page keeps serving until the next good run.
+MINIMUM_STORIES_FLOOR = 20
+_total_stories = len(all_items_flat)
+if _total_stories < MINIMUM_STORIES_FLOOR:
+    print(f"ABORT: only {_total_stories} stories (floor={MINIMUM_STORIES_FLOOR}). "
+          "Keeping existing index.html. No files will be overwritten.")
+    # Still save feed health so circuit breakers get tracked across runs
+    try:
+        import json as _jsonfh2
+        with open(FEED_HEALTH_FILE, 'w', encoding='utf-8') as _fhf2:
+            _jsonfh2.dump(_feed_health, _fhf2, indent=2)
+    except Exception:
+        pass
+    import sys as _sysexit
+    _sysexit.exit(0)
+# ------ END GUARD ------
+
 try:
     with open(INDEX_HTML, "w", encoding="utf-8", errors="replace") as f:
         f.write(html)
@@ -6806,7 +7241,7 @@ try:
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
     ET.SubElement(channel, "title").text = "NUZU News"
-    ET.SubElement(channel, "link").text = "https://theseanmitchell.github.io/"
+    ET.SubElement(channel, "link").text = SITE_BASE_URL
     ET.SubElement(channel, "description").text = "NUZU: Real News in Real Time. Breaking headlines from 200+ trusted sources."
     ET.SubElement(channel, "language").text = "en-us"
     ET.SubElement(channel, "lastBuildDate").text = datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S +0000")
@@ -6853,7 +7288,7 @@ try:
     feed_doc = {
         "version":       "1.1",
         "title":         "NUZU News",
-        "home_page_url": "https://theseanmitchell.github.io/",
+        "home_page_url": SITE_BASE_URL,
         "description":   "NUZU: Real News in Real Time",
         "updated":       datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "items":         feed_items,
@@ -7114,3 +7549,80 @@ html = "".join(html_parts)
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 print("✅ index.html generated")
+
+# ====================== PERSIST RUN STATE ======================
+# Save circuit-breaker / feed-health state so next hourly run can skip
+# repeatedly-failing feeds.
+try:
+    import json as _jsonfh3
+    with open(FEED_HEALTH_FILE, 'w', encoding='utf-8') as _fhf3:
+        _jsonfh3.dump(_feed_health, _fhf3, indent=2)
+    print(f"✅ feed_health.json saved ({len(_feed_health)} feed records)")
+except Exception as _e_fh:
+    print(f"WARNING: feed_health.json not saved: {_e_fh}")
+
+# Rotate yesterday_top.json: if today's saved date != current UTC date,
+# the previous today becomes yesterday. Then refresh today's tracked top
+# clusters per section (keeping the max across hourly runs within a day).
+try:
+    import json as _jsonyt
+    _today_utc = datetime.utcnow().strftime("%Y-%m-%d")
+    _yt_state = {
+        "today_date": _today_utc,
+        "today_top_by_section": {},
+        "yesterday_top_by_section": {},
+    }
+    if os.path.exists(YESTERDAY_FILE):
+        try:
+            with open(YESTERDAY_FILE, 'r', encoding='utf-8') as _ytf:
+                _prev = _jsonyt.load(_ytf)
+            if isinstance(_prev, dict):
+                prev_date = _prev.get("today_date", "")
+                if prev_date == _today_utc:
+                    # Same day — keep accumulating today's tops
+                    _yt_state["today_top_by_section"] = _prev.get("today_top_by_section", {}) or {}
+                    _yt_state["yesterday_top_by_section"] = _prev.get("yesterday_top_by_section", {}) or {}
+                else:
+                    # New day — promote yesterday
+                    _yt_state["yesterday_top_by_section"] = _prev.get("today_top_by_section", {}) or {}
+                    _yt_state["today_top_by_section"] = {}
+        except Exception:
+            pass
+
+    # For each section, derive the current run's top clusters and merge them
+    # into today_top_by_section, keeping the 5 most-sourced per section.
+    for _yt_sid in ["us", "mideast", "world", "tech", "business", "sports", "culture"]:
+        _sec_cls = SECTION_CLUSTERS.get(_yt_sid, {}).get("combined", [])
+        if not _sec_cls:
+            continue
+        _scored_yt = []
+        for _cl in _sec_cls:
+            if len(_cl) < 2:
+                continue
+            _cl_sorted = sorted(_cl, key=lambda x: x[0], reverse=True)
+            _lead = _cl_sorted[0]
+            _scored_yt.append({
+                "title": _lead[1],
+                "link": _lead[3],
+                "source": get_friendly_source(_lead[2]),
+                "n_sources": len(_cl_sorted),
+                "lead_ts": int(_lead[0]),
+            })
+        if not _scored_yt:
+            continue
+        existing = _yt_state["today_top_by_section"].get(_yt_sid, []) or []
+        # Merge by link (unique), keeping the version with more sources.
+        merged = {item["link"]: item for item in existing}
+        for item in _scored_yt:
+            prev_item = merged.get(item["link"])
+            if (prev_item is None) or (item["n_sources"] > prev_item.get("n_sources", 0)):
+                merged[item["link"]] = item
+        # Keep top 5 per section by source count
+        top5 = sorted(merged.values(), key=lambda x: (x["n_sources"], x["lead_ts"]), reverse=True)[:5]
+        _yt_state["today_top_by_section"][_yt_sid] = top5
+
+    with open(YESTERDAY_FILE, 'w', encoding='utf-8') as _ytout:
+        _jsonyt.dump(_yt_state, _ytout, indent=2)
+    print(f"✅ yesterday_top.json saved for date {_today_utc}")
+except Exception as _e_yt:
+    print(f"WARNING: yesterday_top.json not saved: {_e_yt}")

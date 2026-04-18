@@ -140,9 +140,13 @@
   browse with third-party cookies blocked.</p>
 
   <h2>Source Favicon Images</h2>
-  <p>Small publisher icons shown next to story clusters are fetched from
-  Google&#39;s public favicon service (<code>www.google.com/s2/favicons</code>).
-  Your browser makes these requests directly; we do not proxy or log them.</p>
+  <p>Small publisher icons shown next to story clusters are self-hosted on
+  this site (at <code>/icons/sources/</code>). They are fetched once during
+  our hourly build from the publisher&#39;s public favicon and cached
+  locally, so your browser does not make any third-party requests when
+  those icons load. A small number of high-resolution logos (e.g. the BBC)
+  are sourced from the publicly-available Wikimedia Commons during that
+  same build step.</p>
 
   <h2>Children</h2>
   <p>NUZU News is a general news service not directed at children under 13.

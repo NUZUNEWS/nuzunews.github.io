@@ -4,32 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NUZU News — Page Not Found</title>
+<meta name="description" content="The page you're looking for doesn't exist. Head back to NUZU News.">
+<link rel="canonical" href="https://nuzunews.github.io/">
+<!-- Auto-redirect to home after 4 seconds so users aren't stranded -->
+<meta http-equiv="refresh" content="4;url=/">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0D1B4B;color:#fff;font-family:Arial,sans-serif;
+body{background:#020912;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
      display:flex;flex-direction:column;align-items:center;
      justify-content:center;min-height:100vh;padding:20px;text-align:center}
 .logo{font-size:4em;font-weight:900;letter-spacing:0.05em;
       background:linear-gradient(135deg,#fff 60%,#7EB3FF);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;
       margin-bottom:8px}
 .tagline{color:#7EB3FF;font-size:0.85em;margin-bottom:40px;letter-spacing:0.08em;text-transform:uppercase}
 .code{font-size:6em;font-weight:900;color:#1E3A7A;margin-bottom:16px;line-height:1}
 h1{font-size:1.4em;margin-bottom:12px}
-p{color:#8899CC;max-width:400px;line-height:1.7;margin-bottom:32px;font-size:0.95em}
+p{color:#8899CC;max-width:420px;line-height:1.7;margin-bottom:24px;font-size:0.95em}
+.redirect-note{color:#4A6A99;font-size:0.82em;margin-bottom:32px}
 .home-btn{background:#1E4FD8;color:#fff;text-decoration:none;
           padding:14px 32px;border-radius:6px;font-size:1em;
           font-weight:bold;letter-spacing:0.04em;display:inline-block;
+          min-height:44px;min-width:44px;
           transition:background 0.2s}
 .home-btn:hover{background:#2563EB}
+.home-btn:focus{outline:2px solid #7EB3FF;outline-offset:3px}
+.section-links{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:480px}
+.section-links a{color:#7EB3FF;text-decoration:none;font-size:0.85em;
+                 padding:6px 12px;border:1px solid #1E3A7A;border-radius:14px}
+.section-links a:hover{background:#1E3A7A;color:#fff}
 </style>
 </head>
 <body>
+<main>
 <div class="logo">NUZU</div>
 <div class="tagline">Real News in Real Time</div>
 <div class="code">404</div>
 <h1>Story not found</h1>
-<p>The page you're looking for has moved, been updated, or no longer exists. Head back to the latest headlines.</p>
-<a href="/TheMitchellPost/" class="home-btn">↩ Back to NUZU</a>
+<p>The page you're looking for has moved, been updated, or no longer exists. You'll be redirected to the latest headlines automatically.</p>
+<div class="redirect-note">Redirecting in 4 seconds&hellip;</div>
+<a href="/" class="home-btn">&#8629; Back to NUZU News now</a>
+<nav class="section-links" aria-label="Jump to a section">
+  <a href="/#section-us">US</a>
+  <a href="/#section-mideast">Middle East</a>
+  <a href="/#section-world">World</a>
+  <a href="/#section-tech">Tech</a>
+  <a href="/#section-business">Business</a>
+  <a href="/#section-sports">Sports</a>
+  <a href="/#section-culture">Culture</a>
+</nav>
+</main>
 </body>
 </html>
