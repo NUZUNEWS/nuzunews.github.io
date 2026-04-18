@@ -4895,11 +4895,19 @@ html_parts.append(f"""<!DOCTYPE html>
         border-radius: 3px;
     }}
 
-    /* Safe-area padding so PWA on iOS doesn't hide content under notch/home bar */
+    /* Safe-area padding so PWA on iOS doesn't hide content under notch/home bar.
+       IMPORTANT: must ADD the notch inset on top of the existing nav-clearance
+       (48px desktop / 72px mobile two-row nav) — not replace it, or the sticky
+       nav will crop the hero wordmark. */
     @supports (padding: env(safe-area-inset-top)) {{
         body {{
-            padding-top: env(safe-area-inset-top);
+            padding-top: calc(48px + env(safe-area-inset-top));
             padding-bottom: env(safe-area-inset-bottom);
+        }}
+        @media (max-width: 900px) {{
+            body {{
+                padding-top: calc(72px + env(safe-area-inset-top));
+            }}
         }}
     }}
 
