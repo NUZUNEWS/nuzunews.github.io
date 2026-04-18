@@ -3535,6 +3535,38 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .mro-jump {{ color: var(--nuzu-dim); font-size: 0.78em; margin-left: 6px; cursor: pointer; }}
 
+    /* - Corner live video embeds (US Stocks left, World Weather right) - */
+    .corner-vid-wrap {{
+        position: relative; width: 100%;
+        max-width: 280px;
+        aspect-ratio: 16/9;
+        margin: 0 0 12px 0; border-radius: 6px; overflow: hidden;
+        background: #000; border: 1px solid var(--nuzu-border);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }}
+    .corner-vid-frame {{
+        position: absolute; inset: 0;
+        width: 100%; height: 100%; border: 0; display: block;
+    }}
+    .corner-vid-label {{
+        position: absolute; bottom: 6px; left: 6px;
+        background: rgba(0,0,0,0.72); color: #fff;
+        font-size: 0.66em; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; padding: 3px 9px; border-radius: 10px;
+        backdrop-filter: blur(4px); pointer-events: none;
+        border: 1px solid rgba(255,255,255,0.12);
+    }}
+    /* Right-column corner video pushes to right edge to anchor visually */
+    .ts-divider-left .corner-vid-wrap {{ margin-left: auto; }}
+    /* Mobile: hide corner videos — we have the section-level mobile videos */
+    @media (max-width: 900px) {{
+        .corner-vid-wrap {{ display: none; }}
+    }}
+    body.light-mode .corner-vid-wrap {{
+        border-color: #d8dae1;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }}
+
     /* - Search Bar - */
     .search-bar-wrap {{
         max-width: 1400px; margin: 0 auto 4px auto; padding: 12px 20px;
@@ -4915,9 +4947,27 @@ html_parts.append(f"""<!DOCTYPE html>
         font-size: 0.66em; font-weight: 700; text-transform: uppercase;
         letter-spacing: 0.06em; color: var(--nuzu-light); white-space: nowrap;
     }}
+    /* Mobile-only label wrapper for the light/dark toggle, mirrors
+       mobile-vid-toggle-wrap so the Theme label aligns visually with Video */
+    .mobile-light-toggle-wrap {{
+        display: flex; align-items: center; gap: 5px;
+        padding: 0 6px; border-radius: 6px; flex-shrink: 0;
+    }}
+    .mobile-light-label {{
+        display: none;
+        font-size: 0.66em; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.06em; color: var(--nuzu-light); white-space: nowrap;
+    }}
     @media (max-width: 900px) {{
         .mobile-vid-toggle-wrap {{ display: flex; }}
+        .mobile-light-toggle-wrap {{
+            height: 26px;
+            background: rgba(30,79,216,0.12);
+            border: 1px solid rgba(30,79,216,0.25);
+        }}
+        .mobile-light-label {{ display: inline; }}
     }}
+    body.light-mode .mobile-light-label {{ color: #1E4FD8; }}
 
     /* ── Mobile section video wraps ── */
     .mobile-section-video-wrap {{
@@ -5130,11 +5180,14 @@ html_parts.append(f"""
           <span class="toggle-slider"></span>
         </label>
       </div>
-      <span class="light-toggle-label">Light</span>
-      <label class="toggle-switch" title="Toggle light/dark mode">
-        <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
-        <span class="toggle-slider"></span>
-      </label>
+      <div class="mobile-light-toggle-wrap">
+        <span class="mobile-light-label">Theme</span>
+        <span class="light-toggle-label">Light</span>
+        <label class="toggle-switch" title="Toggle light/dark mode">
+          <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
     </div>
     <div class="video-toggle-wrap">
       <span class="video-toggle-label">Live Video</span>
@@ -5355,8 +5408,26 @@ for count, word in trending_topics:
 ts_html = f'''<div class="top-stories-strip">
   <p class="top-stories-title">&#9650; Most Reported On</p>
   <div class="top-stories-2col">
-    <div class="ts-col">{col1_html}</div>
-    <div class="ts-col ts-divider-left">{col2_html}</div>
+    <div class="ts-col">
+      <div class="corner-vid-wrap" aria-hidden="false">
+        <iframe class="corner-vid-frame"
+          src="https://www.youtube.com/embed/4-qm6xO0GUc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1"
+          title="US Stocks live feed"
+          allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
+        <span class="corner-vid-label">US Stocks</span>
+      </div>
+      {col1_html}
+    </div>
+    <div class="ts-col ts-divider-left">
+      <div class="corner-vid-wrap" aria-hidden="false">
+        <iframe class="corner-vid-frame"
+          src="https://www.youtube.com/embed/HfgIFGbdGJ0?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1"
+          title="World Weather live feed"
+          allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
+        <span class="corner-vid-label">World Weather</span>
+      </div>
+      {col2_html}
+    </div>
   </div>
 </div>\n'''
 ts_html += '''
@@ -5546,15 +5617,14 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     else:
         _b_label = 'BREAKING &#8212; Last 12 Hours'
         _r_label = 'RECENT &#8212; Up to 36 Hours'
-    # Mobile section video wrap (hidden on desktop via CSS)
+    # Mobile section video wrap (hidden on desktop via CSS).
+    # Tech, Sports and Culture intentionally have no mobile video feed per
+    # editorial decision — a blank area is preferable to unprofessional content.
     _vid_map = {
         'section-us':       ('iipR5yUp36o',  'U.S. Live'),
-        'section-world':    ('fO9e9jnhYK8',  'World Live'),
+        'section-world':    ('Ap-UM1O9RBU',  'World Live'),
         'section-mideast':  ('gCNeDWCI0vo',  'Middle East Live'),
         'section-business': ('iEpJwprxDdk',  'Bloomberg Live'),
-        'section-sports':   ('7NPsqFA14eQ',  'Sports Live'),
-        'section-tech':     ('vytmBNhc9ig',  'Tech Live'),
-        'section-culture':  ('Ap-UM1O9RBU',  'Culture Live'),
     }
     _ve = _vid_map.get(section_id)
     _msv = ''
@@ -5709,19 +5779,8 @@ if _comic_html:
     html_parts.append('<hr class="top-divider">\n')
     html_parts.append(_comic_html)
 
-# - Bottom live stream video -
-html_parts.append("""
-<hr class="top-divider">
-<div class="bottom-livestream-wrap">
-  <div class="bottom-livestream-label">
-    <span class="bls-dot"></span> NUZU Live
-  </div>
-  <div class="bottom-livestream-frame">
-    <iframe src="https://www.youtube.com/embed/DeqZlwpasVE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1"
-            allow="autoplay;encrypted-media" allowfullscreen></iframe>
-  </div>
-</div>
-""")
+# - Bottom live stream video: REMOVED for launch (was Mickey Mouse cartoons,
+#   replaced by the per-section live video feeds and top corner videos).
 
 # ====================== FOOTER ======================
 _now_utc = datetime.utcnow()
