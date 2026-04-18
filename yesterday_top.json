@@ -20,7 +20,7 @@
         "title": "White House and Anthropic hold 'productive' meeting amid fears over Mythos model - BBC",
         "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1rTWNaaDlVRVRKRF9fRnZIX2FaLU1SZ2NLRDNDdzBVdUQwZ29uNlgzVDBDc29SbU4zMDFPc1R4NXc2dTRRdGF3RlNWZ05aNWphaFpUaEFUSm9zdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "BBC",
-        "n_sources": 4,
+        "n_sources": 5,
         "lead_ts": 1776472626
       },
       {
@@ -47,6 +47,13 @@
         "lead_ts": 1776488480
       },
       {
+        "title": "Live Updates: Latest from Israel, Iran, and the Middle East - The Jerusalem Post",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9mMjFtOUlvbnNiZXByeDlROFk2OVJKOTFDSUI4cDhoZ29kZ0pvWGRaMkk0MWppSDhXeFdlTGhzWl8xVWcyYk5vcWRZdjFyM1RGeEJEZmF2bHg1UDBoTnpQVzRwakM2aDJqYy0tUWFxblFYZVBmcGUyT0NsNkVQa2M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Jerusalem Post",
+        "n_sources": 9,
+        "lead_ts": 1776495605
+      },
+      {
         "title": "Hopes for Peace Deal Rise After Iran Says Strait Is Open - The New York Times",
         "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9NS1k2OS1zTVRBYnBxdmVBWENnMlE4cE5NTEdxeHQ5Ry11aHJ1QXlvMDFFV3hvblB5MTJvdDQxZm9NT19jdm91aW9yTlFKQk1iVklnVm03LTdhamQ4RmZTUDRzMjRfUENhaG53SFpzMms?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "NYT",
@@ -66,13 +73,6 @@
         "source": "FT",
         "n_sources": 6,
         "lead_ts": 1776485143
-      },
-      {
-        "title": "Live Updates: Latest from Israel, Iran, and the Middle East - The Jerusalem Post",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBrdG5qZU9mS0NRZnVTWm5EWnQ5aW1IQXFVaEJJdHV5VXF1U0VzSmVLSDF4bkVLTkJqSnlaWEx4TmtpaVV6UlNTX050ZE12M3RCLWxxaDZUbFJCN0x6bl9UUEVVVGcwbm9NbHUyRVBoeV95SV9xbEkyY01mb0JKWGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Jerusalem Post",
-        "n_sources": 6,
-        "lead_ts": 1776484805
       }
     ],
     "world": [
@@ -106,10 +106,10 @@
       },
       {
         "title": "\u2018Collectivism, alternatives\u2019: Top diplomats debate South Asia's integration at Antalya Diplomacy Forum - Anadolu Ajans\u0131",
-        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPekpQRVR0a1k5MjNqRGhQS3NSRDV6S25xRkVwYWlKeU9XWnNrMUlSMFJBbmNxUnFkOWtMeFN1ejRfWVJaQTV5djIyakFmVkh4dGptVzdLT3VVdFRUY24ybFJNbEFBbTA2VEpYVjRVWmZmNjVhZVhSVkI4b1VFUTJ3UllyeFFKdk83NWdzbHBiRHFKWXd0N0NxRS1YSEMwOFNkYmd0VnVyQVFLemxOUXFqTDAtMGNTMmJNMHh2c2pwdThjSl96NHlrdzlZX29HWUJXUHFtYkVDUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPSVZNNFExaFBxSnN6TmpxSUpOWVdjbmxnUTRFTnBSZEFVV19iSXAxNXNZOHdwWUpwcEJBVVV5MnVlVE0xUmZTOUhyS2s0QkhUUldtd3pEZnAzYmdWY05ieTB5TGc4RVRxczVKdmFJYUNHUkxNMS1UbElDZmFfYzhGalY3bDlQM2d4LVJvODdXYmcxdlRqU05HZHJ4LVFSVXVhemtzZjdSUGhUMFFoN1g2d0hJNGFEVDJMWF85YU5tTU9XU2FHQ053SkZBTjRmd0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Anadolu Ajans\u0131",
         "n_sources": 3,
-        "lead_ts": 1776452275
+        "lead_ts": 1776452394
       }
     ],
     "tech": [
@@ -117,7 +117,7 @@
         "title": "Anthropic CEO visits White House amid hacking fears over new AI model - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZk9iMkZSZEx1YWxvRXFzRm9vYWV4RWRaYlJFWjBYSFF2MHhITy10a0ZfbDNrTnptZDY4UTR6UmJZT2NSanpFSGZsMTJKRUdaRmZyOTVrTTF0Z2lKRXItVXpMNHlaak11aVlZbklIcVkwcWppdWs1T0lyakwxU3VTOFU1b1huWXd1?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
-        "n_sources": 3,
+        "n_sources": 4,
         "lead_ts": 1776491710
       },
       {
@@ -158,6 +158,13 @@
         "lead_ts": 1776482580
       },
       {
+        "title": "Wall Street sets another record after US stocks tick higher - AP News",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPX296UDBvTWgzLUJsUUcwQVU3V1NHd1R6d0p2Ukx6cEpIeHhpYjVDVHQ4LXVVa2MzYk1XWHVtaFUtQy1ad3U0RnJqVkRVLWJ3OUI1Sm5ya25kaWJsRENZNU5oU1U1TVlYd3MxLUdxdHVHd2V2TVNrd201RzdiVTVPM0xydWIwZU1oNk1fRXlLa2UwRTJXcFA0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 6,
+        "lead_ts": 1776497414
+      },
+      {
         "title": "Federal Court Temporarily Freezes Nexstar\u2019s Merger With Tegna - The New York Times",
         "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNU0VmakgwcHhVY0xBaFlxTXBYR1JZNi1LMWk5TkZNUGV3QV9wMVBnY0NfaldMR2FXWUZYWHR6RTgtR0VZaW81RV93ckJGa0RaTjJybmNCZFJ5cVZLSjRYeWZyR2F0dG1sbDlZWDdfclhtc1g4NU1PbHo1Z3ZCakwzamFkbjdkR2NLU3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "NYT",
@@ -177,13 +184,6 @@
         "source": "Business Insider",
         "n_sources": 3,
         "lead_ts": 1776456260
-      },
-      {
-        "title": "How to Start a Side Hustle Archives - entrepreneur.com",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5nUDFkYlJLRGlDWDFGc21EWDFIZFM3QXYyc3pEbjNxTWdlTHlDSFdSaEszbkxZclhWN1N2ZjlaU20wTXVEcnhqVWpHV1BSSFVqSWlxTS1GWUNTQ0UzUWJwdGozNW1zb3JVNkxsLXdJNFlLR0ZqS2JVZlhCLWF2Tk0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "entrepreneur.com",
-        "n_sources": 2,
-        "lead_ts": 1776477744
       }
     ],
     "sports": [
@@ -202,6 +202,13 @@
         "lead_ts": 1776472025
       },
       {
+        "title": "$150 train tickets and closed stations; FIFA and New Jersey's World Cup feud - USA Today",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNMXhrbkN6a2J2TXVNUklENElueXc3V3B3NWppSENPT0d2dXFZNzdPeHhOMGFlT3djMk9VNF9aWmFnT0pjQ0VVMWo4X2l5N0NZZS15RTRJS0c0SS1qaDJrY2FXTU00WWhUMFZyc1JmOXdhWTRxV1hVYU1BSFF5NjdJdUxMT1FHT2dMWkd6QUcxMERIb25hazh5TnBnUDFhRF9fOHc5dERCUUhpVjRndUF5WlFZaFItVGRmNVhkWGRSVVhQS0RQVFBiNDZ1NU5qNktuS05hMTcyYTA2Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "USA Today",
+        "n_sources": 5,
+        "lead_ts": 1776473160
+      },
+      {
         "title": "How to watch today's Chelsea vs Manchester United Premier League game: Live stream, TV channel, and start time - Goal.com",
         "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxObUFuaXBZWGlYMDFVbHF1dU8xV0s2UnR5QWpRTUE3NjAwNERHYkRYbWJxNE03cmtTMzlzc2JHSVJxM2J4YlNGOWVJTThWTF84aDdFNUhheFF2aE5SRHZRQVNpajQwSlNOZmZiM0I3bERCdVVrUTU3V0dSSUVQd3FLNkNFeUpTQ012Q1FxVGxCOUtNQkFkelJkbW9WOEZqZkRRRHYtNGZJZlY1c0pJbWRGRDhwX0ZLLXdiTU9KTGFLZGZISGNWTTdEZmtyQl9VR2pXZkhNdm5nNlROcXJURWhkMEtCQWFNOXc2WnFsc1JQbVY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Goal",
@@ -214,13 +221,6 @@
         "source": "SI",
         "n_sources": 4,
         "lead_ts": 1776485118
-      },
-      {
-        "title": "USWNT beats Japan 3-0, displaying dominance after Tuesday\u2019s loss - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBYbkE3Zk5KT2szMFdZdlZlc05vSHRvM0hMQ2RCRFBudmxmNjNTQ2hYLTNLUnJDb0ROcUtkWkFrY1V0QnRSU0R1UzAzZGhUWVlXeEhPTWxHdjZNUTN2MGxZWVllSFFYeWZiSFpLMjQ4LURYTl9za3lDWjB3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 3,
-        "lead_ts": 1776487565
       }
     ],
     "culture": [
@@ -239,6 +239,13 @@
         "lead_ts": 1776458115
       },
       {
+        "title": "Madonna, Sabrina Carpenter Make Coachella History With Stunning 'Vogue' and 'Like a Prayer' Duets - Rolling Stone",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNOGtfUUFrMnQxLTV6dks5aDh6Q3dIX2xEVDR2ZzNBOUF2d25EZXBOeG1RVmI5V2poVV9oV0t3RGlNTllaTnhGdlIybTdoYV9wLUpqVmE5X3RFb1VjVGxNOGZyWDdlX0I3b2lwMXNZVFM0RmM2WXljLVN2OUlYWDY0VXlEc29PZ2RWdWRPazlySGpDUkNHLTItcXROS0NZelE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Rolling Stone",
+        "n_sources": 4,
+        "lead_ts": 1776495458
+      },
+      {
         "title": "Celeb Pregnancy Announcements of 2026: Natalie Portman and More Stars Expecting Babies This Year - Us Weekly",
         "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOVnlGMjAzcHRHT0VKQkliZnNwdlBZaExkOUEwcTk3S1JNTDhNQ2ZiTTRpWVE2NTg1VUZZWHd0a1lDVzZ6U01NYzBtMkJ3MXRmemo3WWtieXVaV3g2M0xFcm9MV1kyRGMyUVVsdW5iZkI0aVltaG9BM3pkQmdEQ3E1Z01IYW85aS1HRGd4dk5kejlmR3h4MWVGdEpyVWhNaEZfRkpIZGpab3BQNmlIV0VjMWxoWEZzcmxy?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "US Weekly",
@@ -251,13 +258,6 @@
         "source": "HOLA",
         "n_sources": 4,
         "lead_ts": 1776461063
-      },
-      {
-        "title": "Madonna, Sabrina Carpenter Make Coachella History With Stunning 'Vogue' and 'Like a Prayer' Duets - Rolling Stone",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNOGtfUUFrMnQxLTV6dks5aDh6Q3dIX2xEVDR2ZzNBOUF2d25EZXBOeG1RVmI5V2poVV9oV0t3RGlNTllaTnhGdlIybTdoYV9wLUpqVmE5X3RFb1VjVGxNOGZyWDdlX0I3b2lwMXNZVFM0RmM2WXljLVN2OUlYWDY0VXlEc29PZ2RWdWRPazlySGpDUkNHLTItcXROS0NZelE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Rolling Stone",
-        "n_sources": 3,
-        "lead_ts": 1776495458
       }
     ]
   },
