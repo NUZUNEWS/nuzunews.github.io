@@ -39,6 +39,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Core outputs
           git add \
             horoscopes.json \
             comics.rss \
@@ -48,7 +49,11 @@ jobs:
             _headers \
             sw.js \
             manifest.json \
-            || true
+            2>/dev/null || true
+          # Persisted state
+          git add yesterday_top.json feed_health.json 2>/dev/null || true
+          # Self-hosted publisher favicons
+          git add icons/sources/ 2>/dev/null || true
           git commit -m "Daily update $(date -u '+%Y-%m-%d %H:%M UTC')" \
             || echo "Nothing to commit — site is up to date"
           git push
