@@ -3449,13 +3449,46 @@ html_parts.append(f"""<!DOCTYPE html>
         background: radial-gradient(ellipse 70% 90% at 50% 0%, rgba(30,79,216,0.15) 0%, transparent 70%);
         pointer-events: none;
     }}
+    /* Three-column layout keeps NUZU wordmark centered while the
+       World Weather video occupies the right side. */
+    .nuzu-hero-inner {{
+        max-width: 1400px; margin: 0 auto;
+        display: flex; align-items: center; justify-content: center;
+        gap: 16px; position: relative; z-index: 1;
+    }}
+    .nuzu-hero-spacer {{
+        flex: 0 0 200px;       /* matches hero-vid-wrap width so text stays centered */
+        height: 1px;
+    }}
+    .nuzu-hero-text {{
+        flex: 1; min-width: 0;
+        display: flex; flex-direction: column; align-items: center;
+    }}
+    .hero-vid-wrap {{
+        flex: 0 0 200px;
+        position: relative;
+        width: 200px; aspect-ratio: 16/9;
+        border-radius: 6px; overflow: hidden;
+        background: #000; border: 1px solid var(--nuzu-border);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }}
+    .hero-vid-frame {{
+        position: absolute; inset: 0;
+        width: 100%; height: 100%; border: 0; display: block;
+    }}
+    .hero-vid-label {{
+        position: absolute; bottom: 5px; left: 5px;
+        background: rgba(0,0,0,0.72); color: #fff;
+        font-size: 0.58em; font-weight: 700; letter-spacing: 0.08em;
+        text-transform: uppercase; padding: 2px 7px; border-radius: 8px;
+        pointer-events: none; border: 1px solid rgba(255,255,255,0.12);
+    }}
     .nuzu-hero-wordmark {{
         font-size: 5em; font-weight: 900; letter-spacing: 0.15em;
         font-family: 'Playfair Display', Georgia, serif;
         background: linear-gradient(135deg, #ffffff 0%, #b8d4ff 55%, #7EB3FF 100%);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         line-height: 1; position: relative;
-        filter: drop-shadow(0 0 40px rgba(126,179,255,0.25));
     }}
     .nuzu-hero-date {{
         color: var(--nuzu-dim); font-size: 0.7em; letter-spacing: 0.08em;
@@ -3469,10 +3502,19 @@ html_parts.append(f"""<!DOCTYPE html>
         border-top: 1px solid var(--nuzu-border); padding-top: 10px;
         display: inline-block; padding-left: 24px; padding-right: 24px;
     }}
+    /* Mobile: collapse to centered-only — hide video + spacer */
     @media (max-width: 900px) {{
         .nuzu-hero {{ padding: 16px 16px 12px; }}
+        .nuzu-hero-inner {{ gap: 0; }}
+        .nuzu-hero-spacer {{ display: none; }}
+        .hero-vid-wrap {{ display: none; }}
         .nuzu-hero-wordmark {{ font-size: 3em; letter-spacing: 0.12em; }}
         .nuzu-hero-date {{ display: none; }}
+    }}
+    /* Medium screens: shrink the video gracefully */
+    @media (max-width: 1100px) and (min-width: 901px) {{
+        .nuzu-hero-spacer {{ flex: 0 0 160px; }}
+        .hero-vid-wrap {{ flex: 0 0 160px; width: 160px; }}
     }}
 
     /* - Video Banner - */
@@ -3534,38 +3576,6 @@ html_parts.append(f"""<!DOCTYPE html>
         border-left: 1px solid var(--nuzu-border); padding-left: 24px; padding-right: 0;
     }}
     .mro-jump {{ color: var(--nuzu-dim); font-size: 0.78em; margin-left: 6px; cursor: pointer; }}
-
-    /* - Corner live video embeds (US Stocks left, World Weather right) - */
-    .corner-vid-wrap {{
-        position: relative; width: 100%;
-        max-width: 280px;
-        aspect-ratio: 16/9;
-        margin: 0 0 12px 0; border-radius: 6px; overflow: hidden;
-        background: #000; border: 1px solid var(--nuzu-border);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }}
-    .corner-vid-frame {{
-        position: absolute; inset: 0;
-        width: 100%; height: 100%; border: 0; display: block;
-    }}
-    .corner-vid-label {{
-        position: absolute; bottom: 6px; left: 6px;
-        background: rgba(0,0,0,0.72); color: #fff;
-        font-size: 0.66em; font-weight: 700; letter-spacing: 0.08em;
-        text-transform: uppercase; padding: 3px 9px; border-radius: 10px;
-        backdrop-filter: blur(4px); pointer-events: none;
-        border: 1px solid rgba(255,255,255,0.12);
-    }}
-    /* Right-column corner video pushes to right edge to anchor visually */
-    .ts-divider-left .corner-vid-wrap {{ margin-left: auto; }}
-    /* Mobile: hide corner videos — we have the section-level mobile videos */
-    @media (max-width: 900px) {{
-        .corner-vid-wrap {{ display: none; }}
-    }}
-    body.light-mode .corner-vid-wrap {{
-        border-color: #d8dae1;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-    }}
 
     /* - Search Bar - */
     .search-bar-wrap {{
@@ -4947,25 +4957,17 @@ html_parts.append(f"""<!DOCTYPE html>
         font-size: 0.66em; font-weight: 700; text-transform: uppercase;
         letter-spacing: 0.06em; color: var(--nuzu-light); white-space: nowrap;
     }}
-    /* Mobile-only label wrapper for the light/dark toggle, mirrors
-       mobile-vid-toggle-wrap so the Theme label aligns visually with Video */
-    .mobile-light-toggle-wrap {{
-        display: flex; align-items: center; gap: 5px;
-        padding: 0 6px; border-radius: 6px; flex-shrink: 0;
-    }}
+    /* Mobile-only "Theme" label — sits inline next to the light/dark toggle.
+       Desktop shows "Light" (light-toggle-label), mobile shows "Theme". */
     .mobile-light-label {{
         display: none;
         font-size: 0.66em; font-weight: 700; text-transform: uppercase;
         letter-spacing: 0.06em; color: var(--nuzu-light); white-space: nowrap;
+        flex-shrink: 0;
     }}
     @media (max-width: 900px) {{
         .mobile-vid-toggle-wrap {{ display: flex; }}
-        .mobile-light-toggle-wrap {{
-            height: 26px;
-            background: rgba(30,79,216,0.12);
-            border: 1px solid rgba(30,79,216,0.25);
-        }}
-        .mobile-light-label {{ display: inline; }}
+        .mobile-light-label {{ display: inline-block; }}
     }}
     body.light-mode .mobile-light-label {{ color: #1E4FD8; }}
 
@@ -5180,14 +5182,12 @@ html_parts.append(f"""
           <span class="toggle-slider"></span>
         </label>
       </div>
-      <div class="mobile-light-toggle-wrap">
-        <span class="mobile-light-label">Theme</span>
-        <span class="light-toggle-label">Light</span>
-        <label class="toggle-switch" title="Toggle light/dark mode">
-          <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
-          <span class="toggle-slider"></span>
-        </label>
-      </div>
+      <span class="light-toggle-label">Light</span>
+      <span class="mobile-light-label">Theme</span>
+      <label class="toggle-switch" title="Toggle light/dark mode">
+        <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
+        <span class="toggle-slider"></span>
+      </label>
     </div>
     <div class="video-toggle-wrap">
       <span class="video-toggle-label">Live Video</span>
@@ -5251,8 +5251,20 @@ if show_breaking_banner:
 # - Hero masthead -
 html_parts.append("""
 <div class="nuzu-hero" role="banner">
-  <div class="nuzu-hero-wordmark">NUZU</div>
-  <div class="nuzu-hero-tagline">Real News in Real Time</div>
+  <div class="nuzu-hero-inner">
+    <div class="nuzu-hero-spacer" aria-hidden="true"></div>
+    <div class="nuzu-hero-text">
+      <div class="nuzu-hero-wordmark">NUZU</div>
+      <div class="nuzu-hero-tagline">Real News in Real Time</div>
+    </div>
+    <div class="hero-vid-wrap" aria-hidden="false">
+      <iframe class="hero-vid-frame"
+        src="https://www.youtube.com/embed/HfgIFGbdGJ0?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1"
+        title="World Weather live feed"
+        allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
+      <span class="hero-vid-label">World Weather</span>
+    </div>
+  </div>
 </div>
 """)
 
@@ -5408,26 +5420,8 @@ for count, word in trending_topics:
 ts_html = f'''<div class="top-stories-strip">
   <p class="top-stories-title">&#9650; Most Reported On</p>
   <div class="top-stories-2col">
-    <div class="ts-col">
-      <div class="corner-vid-wrap" aria-hidden="false">
-        <iframe class="corner-vid-frame"
-          src="https://www.youtube.com/embed/4-qm6xO0GUc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1"
-          title="US Stocks live feed"
-          allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
-        <span class="corner-vid-label">US Stocks</span>
-      </div>
-      {col1_html}
-    </div>
-    <div class="ts-col ts-divider-left">
-      <div class="corner-vid-wrap" aria-hidden="false">
-        <iframe class="corner-vid-frame"
-          src="https://www.youtube.com/embed/HfgIFGbdGJ0?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1"
-          title="World Weather live feed"
-          allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
-        <span class="corner-vid-label">World Weather</span>
-      </div>
-      {col2_html}
-    </div>
+    <div class="ts-col">{col1_html}</div>
+    <div class="ts-col ts-divider-left">{col2_html}</div>
   </div>
 </div>\n'''
 ts_html += '''
