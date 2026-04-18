@@ -3449,40 +3449,6 @@ html_parts.append(f"""<!DOCTYPE html>
         background: radial-gradient(ellipse 70% 90% at 50% 0%, rgba(30,79,216,0.15) 0%, transparent 70%);
         pointer-events: none;
     }}
-    /* Three-column layout keeps NUZU wordmark centered while the
-       World Weather video occupies the right side. */
-    .nuzu-hero-inner {{
-        max-width: 1400px; margin: 0 auto;
-        display: flex; align-items: center; justify-content: center;
-        gap: 16px; position: relative; z-index: 1;
-    }}
-    .nuzu-hero-spacer {{
-        flex: 0 0 200px;       /* matches hero-vid-wrap width so text stays centered */
-        height: 1px;
-    }}
-    .nuzu-hero-text {{
-        flex: 1; min-width: 0;
-        display: flex; flex-direction: column; align-items: center;
-    }}
-    .hero-vid-wrap {{
-        flex: 0 0 200px;
-        position: relative;
-        width: 200px; aspect-ratio: 16/9;
-        border-radius: 6px; overflow: hidden;
-        background: #000; border: 1px solid var(--nuzu-border);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }}
-    .hero-vid-frame {{
-        position: absolute; inset: 0;
-        width: 100%; height: 100%; border: 0; display: block;
-    }}
-    .hero-vid-label {{
-        position: absolute; bottom: 5px; left: 5px;
-        background: rgba(0,0,0,0.72); color: #fff;
-        font-size: 0.58em; font-weight: 700; letter-spacing: 0.08em;
-        text-transform: uppercase; padding: 2px 7px; border-radius: 8px;
-        pointer-events: none; border: 1px solid rgba(255,255,255,0.12);
-    }}
     .nuzu-hero-wordmark {{
         font-size: 5em; font-weight: 900; letter-spacing: 0.15em;
         font-family: 'Playfair Display', Georgia, serif;
@@ -3502,19 +3468,10 @@ html_parts.append(f"""<!DOCTYPE html>
         border-top: 1px solid var(--nuzu-border); padding-top: 10px;
         display: inline-block; padding-left: 24px; padding-right: 24px;
     }}
-    /* Mobile: collapse to centered-only — hide video + spacer */
     @media (max-width: 900px) {{
         .nuzu-hero {{ padding: 16px 16px 12px; }}
-        .nuzu-hero-inner {{ gap: 0; }}
-        .nuzu-hero-spacer {{ display: none; }}
-        .hero-vid-wrap {{ display: none; }}
         .nuzu-hero-wordmark {{ font-size: 3em; letter-spacing: 0.12em; }}
         .nuzu-hero-date {{ display: none; }}
-    }}
-    /* Medium screens: shrink the video gracefully */
-    @media (max-width: 1100px) and (min-width: 901px) {{
-        .nuzu-hero-spacer {{ flex: 0 0 160px; }}
-        .hero-vid-wrap {{ flex: 0 0 160px; width: 160px; }}
     }}
 
     /* - Video Banner - */
@@ -5259,20 +5216,8 @@ if show_breaking_banner:
 # - Hero masthead -
 html_parts.append("""
 <div class="nuzu-hero" role="banner">
-  <div class="nuzu-hero-inner">
-    <div class="nuzu-hero-spacer" aria-hidden="true"></div>
-    <div class="nuzu-hero-text">
-      <div class="nuzu-hero-wordmark">NUZU</div>
-      <div class="nuzu-hero-tagline">Real News in Real Time</div>
-    </div>
-    <div class="hero-vid-wrap" aria-hidden="false">
-      <iframe class="hero-vid-frame"
-        src="https://www.youtube.com/embed/HfgIFGbdGJ0?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1"
-        title="World Weather live feed"
-        allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe>
-      <span class="hero-vid-label">World Weather</span>
-    </div>
-  </div>
+  <div class="nuzu-hero-wordmark">NUZU</div>
+  <div class="nuzu-hero-tagline">Real News in Real Time</div>
 </div>
 """)
 
