@@ -168,8 +168,13 @@ def get_friendly_source(raw_name):
     for junk in JUNK_LEAD_SOURCES:
         if junk in rl:
             return raw_name.split(" - ")[-1].strip() if " - " in raw_name else raw_name
+    # Exact match first (handles most cases cleanly and is fastest)
+    if raw_name in SOURCE_MAP:
+        return SOURCE_MAP[raw_name]
+    # Word-boundary match to prevent false positives like "Elle" matching
+    # inside "Deutsche Welle" (the 'elle' in 'welle') or "AP" inside "Apex"
     for key in SOURCE_MAP:
-        if key.lower() in rl:
+        if re.search(r'\b' + re.escape(key.lower()) + r'\b', rl):
             return SOURCE_MAP[key]
     return raw_name.split(" - ")[-1].strip() if " - " in raw_name else raw_name
 
@@ -358,9 +363,25 @@ def get_source_domain(source_name):
             return dom
     for key, dom in SOURCE_DOMAIN_MAP.items():
         kl = key.lower()
-        if len(kl) >= 4 and (kl in fl or kl in sl):
-            return dom
+        if len(kl) >= 4:
+            pat = r'\b' + re.escape(kl) + r'\b'
+            if re.search(pat, fl) or re.search(pat, sl):
+                return dom
     return ''
+
+# Some publishers have favicons that don't read well at small sizes. BBC's
+# official favicon is the iconic three-box logo, but at 32-40px the "B B C"
+# letters inside the boxes become illegible — it just looks like three black
+# rectangles. For these we point at a higher-resolution logo on Wikimedia
+# Commons (stable, free, no-auth CDN). Keys must match friendly names from
+# SOURCE_MAP. onerror still falls back to the letter avatar if the override
+# URL fails.
+SOURCE_ICON_OVERRIDES = {
+    "BBC":         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BBC_Logo_2021.svg/256px-BBC_Logo_2021.svg.png",
+    "BBC Sport":   "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BBC_Logo_2021.svg/256px-BBC_Logo_2021.svg.png",
+    "BBC Culture": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BBC_Logo_2021.svg/256px-BBC_Logo_2021.svg.png",
+    "BBC Tech":    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BBC_Logo_2021.svg/256px-BBC_Logo_2021.svg.png",
+}
 
 def get_source_icon_html(source_name, size_class=''):
     """
@@ -372,12 +393,22 @@ def get_source_icon_html(source_name, size_class=''):
         source_name = ''
     friendly = get_friendly_source(source_name) if source_name else ''
     safe_name = (friendly or source_name or '?').replace('"', "'").replace('<','').replace('>','')
-    dom = get_source_domain(source_name)
     cls = ('nuzu-thumb ' + size_class).strip()
+    letter = (friendly[:1] or '?').upper().replace('"', "'")
+    # Publishers whose Google favicon reads poorly get a higher-quality override
+    override_url = SOURCE_ICON_OVERRIDES.get(friendly)
+    if override_url:
+        return (
+            f'<span class="{cls}" data-src-name="{safe_name}" aria-hidden="true">'
+            f'<img src="{override_url}" alt="" loading="lazy" decoding="async" '
+            f'referrerpolicy="no-referrer" '
+            f"onerror=\"this.style.display='none';this.parentNode.classList.add('nuzu-thumb-letter');this.parentNode.textContent='{letter}';\">"
+            f'</span>'
+        )
+    dom = get_source_domain(source_name)
     if dom:
         url = 'https://www.google.com/s2/favicons?domain=' + dom + '&sz=128'
         # Inline onerror swaps to a letter avatar if the favicon request fails
-        letter = (friendly[:1] or '?').upper().replace('"', "'")
         return (
             f'<span class="{cls}" data-src-name="{safe_name}" aria-hidden="true">'
             f'<img src="{url}" alt="" loading="lazy" decoding="async" '
@@ -385,7 +416,6 @@ def get_source_icon_html(source_name, size_class=''):
             f"onerror=\"this.style.display='none';this.parentNode.classList.add('nuzu-thumb-letter');this.parentNode.textContent='{letter}';\">"
             f'</span>'
         )
-    letter = (friendly[:1] or '?').upper()
     return f'<span class="{cls} nuzu-thumb-letter" title="{safe_name}" aria-hidden="true">{letter}</span>'
 
 def strip_source_from_title(title):
@@ -1949,11 +1979,25 @@ JUNK_SOURCE_SUFFIXES = [
     " - al jazeera"," - al jazeera"," - bbc sport"," - bbc sport",
 ]
 
+# Phrases that mark an item as a daily/section aggregation rather than a
+# real story (regardless of separator used, so catches " | ", " - ", " — " etc.)
+JUNK_TITLE_PHRASES = [
+    "print edition",      # "Print Edition | Wall Street Journal"
+    "today's paper",      # "Today's Paper - The New York Times"
+    "todays paper",
+    "front page |",       # "Front Page | ..."
+    "daily digest |",
+    "daily briefing |",
+]
+
 def _is_junk_title(raw_title):
     tl = raw_title.lower().strip()
     word_count = len(raw_title.split())
     for suffix in JUNK_SOURCE_SUFFIXES:
         if tl.endswith(suffix) and word_count <= 8:
+            return True
+    for phrase in JUNK_TITLE_PHRASES:
+        if phrase in tl:
             return True
     return False
 
@@ -2475,7 +2519,7 @@ def render_clusters(clusters, show_trust=True):
                 f' {trust_pip}<span class="src-label">\u2014 {friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
-                f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗2 Read</a>'
+                f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">Read ↗</a>'
                 f'</div>\n'
             )
         else:
@@ -2529,7 +2573,7 @@ def render_clusters(clusters, show_trust=True):
                 f' <span class="src-label">\u2014 {lead_friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
-                f' <a class="link" href="{lead_link}" target="_blank" rel="noopener noreferrer">↗2 Read</a>'
+                f' <a class="link" href="{lead_link}" target="_blank" rel="noopener noreferrer">Read ↗</a>'
                 f'</div>\n'
                 f'<div id="{cluster_id}" class="cluster-items-wrap collapsed">\n'
                 f'<div class="cluster-sources-line">{sources_str}</div>\n'
@@ -2549,7 +2593,7 @@ def render_clusters(clusters, show_trust=True):
                     f' <span class="ts-label">{ts_str}</span>'
                     f' <span class="src-label">\u2014 {friendly}</span>'
                     f' <button class="share-btn" data-link="{link}" data-title="{safe_dt}" aria-label="Share article" title="Share">&#8679;</button>'
-                    f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">↗2 Read</a>'
+                    f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">Read ↗</a>'
                     f'</div>\n'
                 )
             # Close: cluster-items-wrap, cluster-body, cluster
