@@ -5906,18 +5906,34 @@ document.addEventListener('DOMContentLoaded', function() {{
     }});
   }}
 
-  // Bottom nav scroll spy
+  // Bottom nav scroll spy — sort by actual DOM Y-position, not list order
   var bnavItems = document.querySelectorAll('.nuzu-bottom-nav-item[data-section]');
-  var sections  = Array.from(bnavItems).map(function(item) {{
-    return document.getElementById(item.getAttribute('data-section'));
-  }});
+  var bnavItemArr = Array.from(bnavItems);
+  function buildBnavOrder() {{
+    var arr = [];
+    bnavItemArr.forEach(function(item) {{
+      var el = document.getElementById(item.getAttribute('data-section'));
+      if (el) {{
+        var top = el.offsetTop;
+        arr.push({{item: item, top: top, bottom: top + el.offsetHeight}});
+      }}
+    }});
+    arr.sort(function(a, b) {{ return a.top - b.top; }});
+    return arr;
+  }}
+  var bnavOrder = buildBnavOrder();
+  window.addEventListener('resize', function() {{ bnavOrder = buildBnavOrder(); }}, {{passive:true}});
 
   function bnavScrollSpy() {{
     var scrollY = window.pageYOffset + 120;
     var active  = null;
-    for (var i = sections.length - 1; i >= 0; i--) {{
-      if (sections[i] && sections[i].offsetTop <= scrollY) {{
-        active = bnavItems[i]; break;
+    for (var i = 0; i < bnavOrder.length; i++) {{
+      var s = bnavOrder[i];
+      if (s.top <= scrollY && scrollY < s.bottom) {{ active = s.item; break; }}
+    }}
+    if (!active) {{
+      for (var j = bnavOrder.length - 1; j >= 0; j--) {{
+        if (bnavOrder[j].top <= scrollY) {{ active = bnavOrder[j].item; break; }}
       }}
     }}
     bnavItems.forEach(function(item) {{ item.classList.remove('active'); }});
@@ -6477,12 +6493,39 @@ document.addEventListener('load', function(e){{
   ];
   var navLinks = {{}};
   sections.forEach(function(s) {{ navLinks[s.cls] = document.querySelector('.sticky-nav a.' + s.cls); }});
+  // Build a list of {{cls, top, bottom}} sorted by actual DOM Y-position.
+  // The previous implementation assumed DOM order == nav order, but sections
+  // are reordered by MRO popularity — so clicking "World" would land on the
+  // World section but the spy would then light up whichever section in the
+  // HARDCODED order had the closest offsetTop, which was often wrong.
+  function getSpyOrder() {{
+    var arr = [];
+    sections.forEach(function(s) {{
+      var el = document.getElementById(s.id);
+      if (el) {{
+        var top = el.offsetTop;
+        arr.push({{cls: s.cls, top: top, bottom: top + el.offsetHeight}});
+      }}
+    }});
+    arr.sort(function(a, b) {{ return a.top - b.top; }});
+    return arr;
+  }}
+  var spyOrder = getSpyOrder();
+  // Rebuild on resize (heights shift when columns reflow)
+  window.addEventListener('resize', function() {{ spyOrder = getSpyOrder(); }}, {{passive:true}});
   function onScroll() {{
     var scrollY = window.pageYOffset + 80;
     var active = null;
-    for (var i = sections.length - 1; i >= 0; i--) {{
-      var el = document.getElementById(sections[i].id);
-      if (el && el.offsetTop <= scrollY) {{ active = sections[i].cls; break; }}
+    // Find the section we're actually INSIDE (top <= scrollY < bottom).
+    // Fall back to the last section above scrollY if none contain it.
+    for (var i = 0; i < spyOrder.length; i++) {{
+      var s = spyOrder[i];
+      if (s.top <= scrollY && scrollY < s.bottom) {{ active = s.cls; break; }}
+    }}
+    if (!active) {{
+      for (var j = spyOrder.length - 1; j >= 0; j--) {{
+        if (spyOrder[j].top <= scrollY) {{ active = spyOrder[j].cls; break; }}
+      }}
     }}
     sections.forEach(function(s) {{
       var link = navLinks[s.cls]; if (!link) return;
