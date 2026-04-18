@@ -5912,40 +5912,41 @@ document.addEventListener('DOMContentLoaded', function() {{
     }});
   }}
 
-  // Bottom nav scroll spy — sort by actual DOM Y-position, not list order
+  // Bottom nav scroll spy — live getBoundingClientRect() on every scroll.
+  // Same reason as the main sticky-nav spy: any cache of offsetTop goes stale
+  // as iframes/images load and as users change font size or collapse clusters,
+  // which causes the wrong tab to light up by one or two positions once MRO
+  // has reordered the section DOM. getBoundingClientRect() is always live.
   var bnavItems = document.querySelectorAll('.nuzu-bottom-nav-item[data-section]');
   var bnavItemArr = Array.from(bnavItems);
-  function buildBnavOrder() {{
-    var arr = [];
-    bnavItemArr.forEach(function(item) {{
-      var el = document.getElementById(item.getAttribute('data-section'));
-      if (el) {{
-        var top = el.offsetTop;
-        arr.push({{item: item, top: top, bottom: top + el.offsetHeight}});
-      }}
-    }});
-    arr.sort(function(a, b) {{ return a.top - b.top; }});
-    return arr;
-  }}
-  var bnavOrder = buildBnavOrder();
-  window.addEventListener('resize', function() {{ bnavOrder = buildBnavOrder(); }}, {{passive:true}});
 
+  var bnavTicking = false;
   function bnavScrollSpy() {{
-    var scrollY = window.pageYOffset + 120;
-    var active  = null;
-    for (var i = 0; i < bnavOrder.length; i++) {{
-      var s = bnavOrder[i];
-      if (s.top <= scrollY && scrollY < s.bottom) {{ active = s.item; break; }}
-    }}
-    if (!active) {{
-      for (var j = bnavOrder.length - 1; j >= 0; j--) {{
-        if (bnavOrder[j].top <= scrollY) {{ active = bnavOrder[j].item; break; }}
+    if (bnavTicking) return;
+    bnavTicking = true;
+    requestAnimationFrame(function() {{
+      bnavTicking = false;
+      // Bottom nav only shows on mobile, where the top sticky nav is 72px.
+      var activationLine = 72 + 50;
+      var positioned = [];
+      bnavItemArr.forEach(function(item) {{
+        var el = document.getElementById(item.getAttribute('data-section'));
+        if (!el) return;
+        var rect = el.getBoundingClientRect();
+        positioned.push({{item: item, top: rect.top, bottom: rect.bottom}});
+      }});
+      positioned.sort(function(a, b) {{ return a.top - b.top; }});
+      var active = null;
+      for (var i = positioned.length - 1; i >= 0; i--) {{
+        if (positioned[i].top <= activationLine) {{ active = positioned[i].item; break; }}
       }}
-    }}
-    bnavItems.forEach(function(item) {{ item.classList.remove('active'); }});
-    if (active) active.classList.add('active');
+      if (!active && positioned.length) active = positioned[0].item;
+      bnavItems.forEach(function(item) {{ item.classList.remove('active'); }});
+      if (active) active.classList.add('active');
+    }});
   }}
   window.addEventListener('scroll', bnavScrollSpy, {{ passive: true }});
+  window.addEventListener('resize', bnavScrollSpy, {{ passive: true }});
   bnavScrollSpy();
 
   // Bottom nav tap: smooth scroll + collapse check
@@ -6499,47 +6500,49 @@ document.addEventListener('load', function(e){{
   ];
   var navLinks = {{}};
   sections.forEach(function(s) {{ navLinks[s.cls] = document.querySelector('.sticky-nav a.' + s.cls); }});
-  // Build a list of {{cls, top, bottom}} sorted by actual DOM Y-position.
-  // The previous implementation assumed DOM order == nav order, but sections
-  // are reordered by MRO popularity — so clicking "World" would land on the
-  // World section but the spy would then light up whichever section in the
-  // HARDCODED order had the closest offsetTop, which was often wrong.
-  function getSpyOrder() {{
-    var arr = [];
-    sections.forEach(function(s) {{
-      var el = document.getElementById(s.id);
-      if (el) {{
-        var top = el.offsetTop;
-        arr.push({{cls: s.cls, top: top, bottom: top + el.offsetHeight}});
-      }}
-    }});
-    arr.sort(function(a, b) {{ return a.top - b.top; }});
-    return arr;
-  }}
-  var spyOrder = getSpyOrder();
-  // Rebuild on resize (heights shift when columns reflow)
-  window.addEventListener('resize', function() {{ spyOrder = getSpyOrder(); }}, {{passive:true}});
+  // Compute positions LIVE on every scroll using getBoundingClientRect().
+  // Previous implementations cached el.offsetTop at load (and on resize), but:
+  //   1. offsetTop is relative to offsetParent — not the viewport — which can
+  //      produce ordering bugs when sections live inside different wrappers.
+  //   2. Section heights shift AFTER the snapshot whenever YouTube iframes
+  //      load, lazy images fill in, users tap A+/A- font size, or clusters
+  //      collapse/expand — none of which fire a resize event. A cache that
+  //      goes stale causes exactly the "one-tab-off / two-tabs-off" drift
+  //      seen when MRO sorts sections by popularity.
+  // getBoundingClientRect() is always live and viewport-relative, so the
+  // correct tab highlights no matter how sections are ordered in the DOM.
+  var ticking = false;
   function onScroll() {{
-    var scrollY = window.pageYOffset + 80;
-    var active = null;
-    // Find the section we're actually INSIDE (top <= scrollY < bottom).
-    // Fall back to the last section above scrollY if none contain it.
-    for (var i = 0; i < spyOrder.length; i++) {{
-      var s = spyOrder[i];
-      if (s.top <= scrollY && scrollY < s.bottom) {{ active = s.cls; break; }}
-    }}
-    if (!active) {{
-      for (var j = spyOrder.length - 1; j >= 0; j--) {{
-        if (spyOrder[j].top <= scrollY) {{ active = spyOrder[j].cls; break; }}
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function() {{
+      ticking = false;
+      var navHeight = (window.innerWidth <= 900 ? 72 : 48);
+      var activationLine = navHeight + 40;
+      var positioned = [];
+      sections.forEach(function(s) {{
+        var el = document.getElementById(s.id);
+        if (!el) return;
+        var rect = el.getBoundingClientRect();
+        positioned.push({{cls: s.cls, top: rect.top, bottom: rect.bottom}});
+      }});
+      positioned.sort(function(a, b) {{ return a.top - b.top; }});
+      // Active = the last section whose top has scrolled past the activation
+      // line. If we're above every section, highlight the topmost one.
+      var active = null;
+      for (var i = positioned.length - 1; i >= 0; i--) {{
+        if (positioned[i].top <= activationLine) {{ active = positioned[i].cls; break; }}
       }}
-    }}
-    sections.forEach(function(s) {{
-      var link = navLinks[s.cls]; if (!link) return;
-      if (s.cls === active) link.classList.add('nav-active');
-      else link.classList.remove('nav-active');
+      if (!active && positioned.length) active = positioned[0].cls;
+      sections.forEach(function(s) {{
+        var link = navLinks[s.cls]; if (!link) return;
+        if (s.cls === active) link.classList.add('nav-active');
+        else link.classList.remove('nav-active');
+      }});
     }});
   }}
   window.addEventListener('scroll', onScroll, {{passive:true}});
+  window.addEventListener('resize', onScroll, {{passive:true}});
   onScroll();
 }})();
 
