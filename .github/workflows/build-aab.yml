@@ -23,19 +23,26 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        packages: 'tools platform-tools build-tools;34.0.0 build-tools;33.0.2 platforms;android-34 platforms;android-33'
+
     - name: Install Bubblewrap
       run: npm install -g @bubblewrap/cli
 
     - name: Pre-configure Bubblewrap (skip all prompts)
       run: |
         mkdir -p ~/.bubblewrap
-        ANDROID_SDK_PATH="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
-        printf '{"jdkPath":"%s","androidSdkPath":"%s"}' "$JAVA_HOME" "$ANDROID_SDK_PATH" > ~/.bubblewrap/config.json
+        printf '{"jdkPath":"%s","androidSdkPath":"%s"}' "$JAVA_HOME" "$ANDROID_HOME" > ~/.bubblewrap/config.json
         echo "Bubblewrap config:"
         cat ~/.bubblewrap/config.json
         echo ""
         echo "JAVA_HOME: $JAVA_HOME"
         echo "ANDROID_HOME: $ANDROID_HOME"
+        echo ""
+        echo "Android SDK contents:"
+        ls -la $ANDROID_HOME || echo "ANDROID_HOME not found"
 
     - name: Decode keystore
       env:
