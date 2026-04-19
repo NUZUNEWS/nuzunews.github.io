@@ -3374,17 +3374,15 @@ html_parts.append(f"""<!DOCTYPE html>
         .nav-updated-ago {{ font-size: 0.58em; margin-right: 2px; }}
         .font-size-btn {{ font-size: 0.63em; padding: 2px 5px; flex-shrink: 0; }}
         .wr-nav-wrap {{
-            height: 36px; margin-left: 0; padding: 0 6px;
-            border-left: 1px solid var(--nuzu-border);
-            flex-shrink: 0;
+            display: none !important;
         }}
-        .wr-fullscreen-btn {{ font-size: 0.65em; padding: 3px 7px; white-space: nowrap; }}
+        .wr-fullscreen-btn {{ display: none !important; }}
         /* Hide video banner on mobile — iframes never load there */
         .banner {{ display: none !important; }}
         /* Tighter hero on mobile */
-        .nuzu-hero {{ padding: 8px 16px 6px !important; }}
-        .nuzu-hero-wordmark {{ font-size: 2.6em; }}
-        .nuzu-hero-tagline {{ margin-top: 5px; padding-top: 7px; font-size: 0.68em; }}
+        .nuzu-hero {{ padding: 4px 12px 2px !important; }}
+        .nuzu-hero-wordmark {{ font-size: 2.4em; }}
+        .nuzu-hero-tagline {{ margin-top: 2px; padding-top: 2px; font-size: 0.6em; letter-spacing: 0.14em; }}
         /* Eliminate wasted gap between search bar and first section */
         .search-bar-wrap {{ margin-bottom: 0; }}
     }}
@@ -3438,7 +3436,7 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* - Hero Masthead - */
     .nuzu-hero {{
-        text-align: center; padding: 6px 20px 4px;
+        text-align: center; padding: 4px 20px 2px;
         background: linear-gradient(180deg, #000000 0%, #07101E 100%);
         border-bottom: 1px solid var(--nuzu-border);
         position: relative; overflow: hidden;
@@ -3450,11 +3448,11 @@ html_parts.append(f"""<!DOCTYPE html>
         pointer-events: none;
     }}
     .nuzu-hero-wordmark {{
-        font-size: 5em; font-weight: 900; letter-spacing: 0.15em;
+        font-size: 4.2em; font-weight: 900; letter-spacing: 0.15em;
         font-family: 'Playfair Display', Georgia, serif;
         background: linear-gradient(135deg, #ffffff 0%, #b8d4ff 55%, #7EB3FF 100%);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        line-height: 1; position: relative;
+        line-height: 0.95; position: relative;
     }}
     .nuzu-hero-date {{
         color: var(--nuzu-dim); font-size: 0.7em; letter-spacing: 0.08em;
@@ -3462,22 +3460,23 @@ html_parts.append(f"""<!DOCTYPE html>
         font-family: 'Inter', Arial, sans-serif;
     }}
     .nuzu-hero-tagline {{
-        color: var(--nuzu-muted); font-size: 0.72em; letter-spacing: 0.2em;
-        text-transform: uppercase; margin-top: 8px;
+        color: var(--nuzu-muted); font-size: 0.68em; letter-spacing: 0.18em;
+        text-transform: uppercase; margin-top: 4px;
         font-family: 'Inter', Arial, sans-serif;
-        border-top: 1px solid var(--nuzu-border); padding-top: 10px;
+        padding-top: 4px;
         display: inline-block; padding-left: 24px; padding-right: 24px;
     }}
     /* ── Newspaper-style masthead sub-bar (Vol. / Issue / Date) ── */
     .nuzu-masthead-bar {{
         display: flex; justify-content: space-between; align-items: center;
-        max-width: 920px; margin: 14px auto 4px auto;
-        padding: 9px 22px;
+        max-width: 920px; margin: 6px auto 0 auto;
+        padding: 4px 18px;
         border-top: 1px solid var(--nuzu-border);
         border-bottom: 1px solid var(--nuzu-border);
         font-family: 'Playfair Display', Georgia, serif;
-        font-size: 0.82em; letter-spacing: 0.04em;
+        font-size: 0.78em; letter-spacing: 0.04em;
         color: var(--nuzu-muted); gap: 12px;
+        position: relative;
     }}
     .nuzu-masthead-bar .mb-left,
     .nuzu-masthead-bar .mb-right {{
@@ -3487,7 +3486,8 @@ html_parts.append(f"""<!DOCTYPE html>
         flex: 1 1 auto; text-align: center;
         text-transform: uppercase; font-style: normal;
         font-weight: 700; letter-spacing: 0.12em;
-        color: var(--nuzu-text); font-size: 0.94em;
+        color: var(--nuzu-text); font-size: 0.92em;
+        white-space: nowrap;
     }}
     body.light-mode .nuzu-masthead-bar {{
         border-top-color: #c7cbd6 !important;
@@ -3495,24 +3495,25 @@ html_parts.append(f"""<!DOCTYPE html>
         color: #6a7387 !important;
     }}
     body.light-mode .nuzu-masthead-bar .mb-center {{ color: #1a2030 !important; }}
+    /* Mobile: stay flat and wide like desktop, just smaller text */
     @media (max-width: 700px) {{
         .nuzu-masthead-bar {{
-            font-size: 0.68em; padding: 6px 12px; gap: 8px;
+            font-size: 0.62em; padding: 3px 10px; gap: 8px;
             letter-spacing: 0.02em;
         }}
-        .nuzu-masthead-bar .mb-center {{ letter-spacing: 0.06em; font-size: 0.9em; }}
+        .nuzu-masthead-bar .mb-center {{ letter-spacing: 0.05em; font-size: 0.95em; }}
     }}
     @media (max-width: 460px) {{
         .nuzu-masthead-bar {{
-            flex-direction: column; gap: 4px;
-            font-size: 0.72em; padding: 8px 10px;
+            font-size: 0.58em; padding: 3px 8px; gap: 6px;
         }}
-        .nuzu-masthead-bar .mb-center {{ order: -1; font-size: 1em; }}
+        .nuzu-masthead-bar .mb-center {{ letter-spacing: 0.04em; }}
     }}
     @media (max-width: 900px) {{
-        .nuzu-hero {{ padding: 16px 16px 12px; }}
-        .nuzu-hero-wordmark {{ font-size: 3em; letter-spacing: 0.12em; }}
+        .nuzu-hero {{ padding: 6px 14px 4px; }}
+        .nuzu-hero-wordmark {{ font-size: 2.4em; letter-spacing: 0.12em; }}
         .nuzu-hero-date {{ display: none; }}
+        .nuzu-hero-tagline {{ margin-top: 3px; padding-top: 3px; font-size: 0.6em; letter-spacing: 0.14em; }}
     }}
 
     /* - Video Banner - */
@@ -5164,7 +5165,7 @@ html_parts.append("""
 html_parts.append(f"""
 <nav class="sticky-nav" role="navigation" aria-label="NUZU main navigation">
   <div class="sticky-nav-tabs">
-    <a href="/" class="site-name" aria-label="NUZU News home">NUZU</a>
+    <a href="/" class="site-name" aria-label="NUZU News home" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){{event.preventDefault();window.scrollTo({{top:0,left:0,behavior:'smooth'}});if(location.hash){{history.replaceState(null,'',location.pathname+location.search);}}}}">NUZU</a>
     <a href="#section-us"       class="nav-link nav-us"       role="menuitem">US</a>
     <a href="#section-mideast"  class="nav-link nav-mideast"  role="menuitem">Mid East</a>
     <a href="#section-world"    class="nav-link nav-world"    role="menuitem">World</a>
