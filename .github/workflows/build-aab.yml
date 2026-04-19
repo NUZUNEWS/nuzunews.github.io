@@ -37,12 +37,6 @@ jobs:
         printf '{"jdkPath":"%s","androidSdkPath":"%s"}' "$JAVA_HOME" "$ANDROID_HOME" > ~/.bubblewrap/config.json
         echo "Bubblewrap config:"
         cat ~/.bubblewrap/config.json
-        echo ""
-        echo "JAVA_HOME: $JAVA_HOME"
-        echo "ANDROID_HOME: $ANDROID_HOME"
-        echo ""
-        echo "Android SDK contents:"
-        ls -la $ANDROID_HOME || echo "ANDROID_HOME not found"
 
     - name: Decode keystore
       env:
@@ -56,15 +50,25 @@ jobs:
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       run: |
-        printf "%s\n%s\n" "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" | bubblewrap build --skipPwaValidation
+        # Send 3 answers: "Y" to regenerate project, keystore password, key password
+        printf "Y\n%s\n%s\n" "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" | bubblewrap build --skipPwaValidation
 
     - name: Find AAB files
       if: always()
-      run: find . -name "*.aab" -type f || echo "No AAB files found"
+      run: |
+        echo "Searching for AAB files..."
+        find . -name "*.aab" -type f 2>/dev/null || echo "No AAB files found"
+        echo ""
+        echo "Searching for APK files..."
+        find . -name "*.apk" -type f 2>/dev/null || echo "No APK files found"
 
     - name: Upload AAB artifact
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: app-bundle
-        path: "**/*.aab"
+        path: |
+          **/*.aab
+          **/*.apk
         retention-days: 30
+        if-no-files-found: warn
