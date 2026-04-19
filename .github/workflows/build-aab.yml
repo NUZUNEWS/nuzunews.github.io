@@ -20,6 +20,12 @@ jobs:
     - name: Install Bubblewrap
       run: npm install -g @bubblewrap/cli
     
+    - name: Install Java JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    
     - name: Decode keystore
       env:
         KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
@@ -27,21 +33,20 @@ jobs:
         echo "$KEYSTORE_BASE64" | base64 -d > android.keystore
         ls -lh android.keystore
     
-    - name: Initialize Bubblewrap (if needed)
-      continue-on-error: true
+    - name: Initialize Bubblewrap (non-interactive)
       run: |
         if [ ! -f bubblewrap.json ]; then
-          bubblewrap init --manifest manifest.json
+          echo "No" | bubblewrap init --manifest manifest.json
         fi
     
-    - name: Build AAB with Bubblewrap
+    - name: Build AAB with Bubblewrap (non-interactive)
       env:
         KEYSTORE_PATH: ./android.keystore
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       run: |
-        bubblewrap build \
+        echo "No" | bubblewrap build \
           --manifest manifest.json \
           --keystore "$KEYSTORE_PATH" \
           --keystorePassword "$KEYSTORE_PASSWORD" \
