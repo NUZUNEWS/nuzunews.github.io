@@ -81,23 +81,28 @@ jobs:
           echo "Updated icon URLs:"
           grep -i "icon" twa-manifest.json
 
-      - name: Fix missing fields in twa-manifest.json
+      - name: Fix missing/invalid fields in twa-manifest.json
         run: |
-          # splashScreenFadeOutDuration being null/empty causes build.gradle
-          # to generate invalid syntax:  splashScreenFadeOutDuration: ,
-          # Set it to 300ms (standard default) if it is missing or null.
-          python3 -c "
+          python3 << 'PYEOF'
           import json
           with open('twa-manifest.json') as f:
               m = json.load(f)
+
+          # Fix 1: splashScreenFadeOutDuration being null generates invalid build.gradle syntax
           if not m.get('splashScreenFadeOutDuration'):
               m['splashScreenFadeOutDuration'] = 300
               print('Set splashScreenFadeOutDuration to 300')
-          else:
-              print('splashScreenFadeOutDuration already set:', m['splashScreenFadeOutDuration'])
+
+          # Fix 2: androidbrowserhelper 2.6.2 requires minSdkVersion >= 21
+          if m.get('minSdkVersion', 0) < 21:
+              print('Bumping minSdkVersion from', m.get('minSdkVersion'), 'to 21')
+              m['minSdkVersion'] = 21
+
           with open('twa-manifest.json', 'w') as f:
               json.dump(m, f, indent=2)
-          "
+
+          print('twa-manifest.json updated successfully')
+          PYEOF
 
       - name: Regenerate Android project from twa-manifest.json
         run: |
