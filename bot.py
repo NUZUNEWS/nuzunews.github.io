@@ -3503,11 +3503,23 @@ html_parts.append(f"""<!DOCTYPE html>
         .nuzu-masthead-bar .mb-center {{ letter-spacing: 0.06em; font-size: 0.9em; }}
     }}
     @media (max-width: 460px) {{
+        /* Keep VOL / DATE / (C) on a single horizontal row on mobile
+           so the masthead doesn't eat up 3 rows of vertical space. */
         .nuzu-masthead-bar {{
-            flex-direction: column; gap: 4px;
-            font-size: 0.72em; padding: 8px 10px;
+            flex-direction: row; flex-wrap: nowrap;
+            gap: 6px; font-size: 0.6em;
+            padding: 5px 10px; margin: 8px auto 2px auto;
+            letter-spacing: 0.01em;
         }}
-        .nuzu-masthead-bar .mb-center {{ order: -1; font-size: 1em; }}
+        .nuzu-masthead-bar .mb-left,
+        .nuzu-masthead-bar .mb-right {{
+            flex: 0 0 auto; font-size: 1em; white-space: nowrap;
+        }}
+        .nuzu-masthead-bar .mb-center {{
+            flex: 1 1 auto; order: 0;
+            text-align: center; font-size: 1em;
+            letter-spacing: 0.05em; white-space: nowrap;
+        }}
     }}
     @media (max-width: 900px) {{
         .nuzu-hero {{ padding: 16px 16px 12px; }}
