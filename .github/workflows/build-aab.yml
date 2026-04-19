@@ -40,8 +40,7 @@ jobs:
         run: |
           echo "$KEYSTORE_BASE64" | base64 -d > android.keystore
           if [ ! -s android.keystore ]; then
-            echo "##[error]android.keystore is 0 bytes — KEYSTORE_BASE64 secret is missing or empty!"
-            echo "##[error]Go to: GitHub repo Settings → Secrets and variables → Actions → KEYSTORE_BASE64"
+            echo "##[error]android.keystore is 0 bytes — ANDROID_KEYSTORE_BASE64 secret is missing or empty!"
             exit 1
           fi
           echo "Keystore OK: $(ls -lh android.keystore)"
@@ -88,12 +87,10 @@ jobs:
 
       - name: Build Android App Bundle (AAB)
         run: |
-          bubblewrap build \
-            --skipPwaValidation \
-            --signingKeyPath android.keystore \
-            --signingKeyAlias "${{ secrets.KEY_ALIAS }}" \
-            --signingKeyPassword "${{ secrets.KEY_PASSWORD }}" \
-            --signingKeystorePassword "${{ secrets.KEYSTORE_PASSWORD }}"
+          printf '%s\n%s\n' "$KEYSTORE_PASS" "$KEY_PASS" | bubblewrap build --skipPwaValidation
+        env:
+          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASS: ${{ secrets.KEY_PASSWORD }}
 
       - name: Stop HTTP server
         if: always()
