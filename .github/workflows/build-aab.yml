@@ -31,7 +31,7 @@ jobs:
     - name: Install Bubblewrap
       run: npm install -g @bubblewrap/cli
 
-    - name: Pre-configure Bubblewrap (skip all prompts)
+    - name: Pre-configure Bubblewrap (skip JDK/SDK prompts)
       run: |
         mkdir -p ~/.bubblewrap
         printf '{"jdkPath":"%s","androidSdkPath":"%s"}' "$JAVA_HOME" "$ANDROID_HOME" > ~/.bubblewrap/config.json
@@ -45,13 +45,19 @@ jobs:
         echo "$KEYSTORE_BASE64" | base64 -d > android.keystore
         ls -lh android.keystore
 
+    - name: Regenerate Android project from twa-manifest.json
+      run: |
+        # bubblewrap update regenerates the Android project
+        # Pipe many empty lines to accept all default values for any prompts (like versionName)
+        printf '\n\n\n\n\n\n\n\n' | bubblewrap update
+
     - name: Build AAB
       env:
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       run: |
-        # Send 3 answers: "Y" to regenerate project, keystore password, key password
-        printf "Y\n%s\n%s\n" "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" | bubblewrap build --skipPwaValidation
+        # After update, project exists with checksum, so build only prompts for passwords
+        printf "%s\n%s\n" "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" | bubblewrap build --skipPwaValidation
 
     - name: Find AAB files
       if: always()
