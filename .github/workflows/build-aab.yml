@@ -1,0 +1,72 @@
+name: Build Android App Bundle
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install Bubblewrap
+      run: npm install -g @bubblewrap/cli
+    
+    - name: Decode keystore
+      env:
+        KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      run: |
+        echo "$KEYSTORE_BASE64" | base64 -d > android.keystore
+        ls -lh android.keystore
+    
+    - name: Initialize Bubblewrap (if needed)
+      continue-on-error: true
+      run: |
+        if [ ! -f bubblewrap.json ]; then
+          bubblewrap init --manifest manifest.json
+        fi
+    
+    - name: Build AAB with Bubblewrap
+      env:
+        KEYSTORE_PATH: ./android.keystore
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      run: |
+        bubblewrap build \
+          --manifest manifest.json \
+          --keystore "$KEYSTORE_PATH" \
+          --keystorePassword "$KEYSTORE_PASSWORD" \
+          --keyAlias "$KEY_ALIAS" \
+          --keyPassword "$KEY_PASSWORD" \
+          --skipPwaValidation
+    
+    - name: Find and upload AAB artifact
+      if: success()
+      run: |
+        find . -name "*.aab" -type f
+        mkdir -p artifacts
+        find . -name "*.aab" -type f -exec cp {} artifacts/ \;
+    
+    - name: Upload AAB to artifacts
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-bundle
+        path: artifacts/*.aab
+        retention-days: 30
+    
+    - name: Build failed - check password
+      if: failure()
+      run: |
+        echo "Build failed - likely keystore password issue"
+        echo "Try the next password from: IlaJane19, IlaJane19!, ThugLife007, ThugLife007!"
+        exit 1
