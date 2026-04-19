@@ -87,20 +87,14 @@ jobs:
           import json
           with open('twa-manifest.json') as f:
               m = json.load(f)
-
-          # Fix 1: splashScreenFadeOutDuration being null generates invalid build.gradle syntax
           if not m.get('splashScreenFadeOutDuration'):
               m['splashScreenFadeOutDuration'] = 300
               print('Set splashScreenFadeOutDuration to 300')
-
-          # Fix 2: androidbrowserhelper 2.6.2 requires minSdkVersion >= 21
           if m.get('minSdkVersion', 0) < 21:
               print('Bumping minSdkVersion from', m.get('minSdkVersion'), 'to 21')
               m['minSdkVersion'] = 21
-
           with open('twa-manifest.json', 'w') as f:
               json.dump(m, f, indent=2)
-
           print('twa-manifest.json updated successfully')
           PYEOF
 
@@ -113,17 +107,20 @@ jobs:
 
       - name: Build Android App Bundle (AAB)
         run: |
-          expect << EXPECT_SCRIPT
-            set timeout 300
-            spawn bubblewrap build --skipPwaValidation
-            expect "Password for the Key Store:"
-            send "$env(KEYSTORE_PASS)\r"
-            expect "Password for the Key:"
-            send "$env(KEY_PASS)\r"
-            expect eof
-            catch wait result
-            exit [lindex \$result 3]
-          EXPECT_SCRIPT
+          # Write the expect script to a file using a QUOTED heredoc so bash
+          # does not expand $env(VAR) — TCL reads those from the environment directly.
+          cat > /tmp/build.exp << 'EXPEOF'
+          set timeout 300
+          spawn bubblewrap build --skipPwaValidation
+          expect "Password for the Key Store:"
+          send "$env(KEYSTORE_PASS)\r"
+          expect "Password for the Key:"
+          send "$env(KEY_PASS)\r"
+          expect eof
+          catch wait result
+          exit [lindex $result 3]
+          EXPEOF
+          expect /tmp/build.exp
         env:
           KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_PASS: ${{ secrets.KEY_PASSWORD }}
