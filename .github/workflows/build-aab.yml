@@ -47,16 +47,16 @@ jobs:
 
     - name: Regenerate Android project from twa-manifest.json
       run: |
-        # bubblewrap update regenerates the Android project
-        # Pipe many empty lines to accept all default values for any prompts (like versionName)
-        printf '\n\n\n\n\n\n\n\n' | bubblewrap update
+        # Provide "2.1" as the new versionName (must be non-empty)
+        # versionCode will be auto-incremented by Bubblewrap
+        printf '2.1\n' | bubblewrap update
 
     - name: Build AAB
       env:
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       run: |
-        # After update, project exists with checksum, so build only prompts for passwords
+        # Project already regenerated with checksum; only passwords needed
         printf "%s\n%s\n" "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" | bubblewrap build --skipPwaValidation
 
     - name: Find AAB files
