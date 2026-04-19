@@ -46,7 +46,7 @@ jobs:
           fi
           echo "Keystore OK: $(ls -lh android.keystore)"
         env:
-          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
 
       - name: Verify icon files exist
         run: |
