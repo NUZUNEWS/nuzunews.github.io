@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility Statement &mdash; NUZU News</title>
+<meta name="description" content="NUZU News is committed to accessibility. Details of our conformance goals, features, known issues, and how to report accessibility problems.">
+<link rel="canonical" href="https://nuzunews.github.io/accessibility.html">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%230D1B4B'/><text x='32' y='46' font-family='Arial,sans-serif' font-size='24' font-weight='900' fill='%23FFFFFF' text-anchor='middle'>NZ</text></svg>">
+<style>
+  :root {
+    --nuzu-dark:#070F2B; --nuzu-navy:#0D1B4B; --nuzu-card:#0A1535;
+    --nuzu-border:#1A2A4A; --nuzu-blue:#1E4FD8; --nuzu-blue-l:#4A7FD8;
+    --nuzu-white:#E8EDFA; --nuzu-text:#C5CDE0; --nuzu-muted:#8892AA;
+    --nuzu-dim:#5B6580; --nuzu-light:#8FB3FF;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin:0; background:var(--nuzu-dark); color:var(--nuzu-text);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height:1.7; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  header {
+    background:var(--nuzu-navy); border-bottom:2px solid var(--nuzu-blue);
+    padding:18px 24px; display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand { font-family:'Playfair Display', Georgia, serif; font-weight:900;
+    font-size:1.7em; color:var(--nuzu-white); letter-spacing:0.08em; text-decoration:none; }
+  .brand-tag { color:var(--nuzu-light); font-size:0.72em; letter-spacing:0.12em;
+    text-transform:uppercase; margin-left:10px; }
+  nav a { color:var(--nuzu-muted); text-decoration:none; margin-left:18px;
+    font-size:0.88em; font-weight:600; transition:color 0.15s; }
+  nav a:hover { color:var(--nuzu-white); }
+  main { max-width:820px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { color:var(--nuzu-white); font-family:'Playfair Display', Georgia, serif;
+    font-weight:900; font-size:2.2em; line-height:1.2; margin:0 0 8px; letter-spacing:-0.01em; }
+  .subtitle { color:var(--nuzu-dim); font-size:0.88em; text-transform:uppercase;
+    letter-spacing:0.12em; margin-bottom:32px; font-weight:700; }
+  h2 { color:var(--nuzu-white); font-family:'Playfair Display', Georgia, serif;
+    font-size:1.4em; margin:40px 0 10px; }
+  p { margin:0 0 14px; }
+  a { color:var(--nuzu-light); }
+  a:hover { color:var(--nuzu-white); }
+  ul { padding-left:22px; margin:10px 0 18px; }
+  li { margin-bottom:8px; }
+  .card {
+    background:var(--nuzu-card); border:1px solid var(--nuzu-border);
+    border-left:4px solid var(--nuzu-blue); border-radius:6px;
+    padding:20px 24px; margin:24px 0;
+  }
+  .card strong { color:var(--nuzu-white); }
+  kbd {
+    background:var(--nuzu-card); border:1px solid var(--nuzu-border);
+    border-bottom-width:2px; padding:2px 7px; border-radius:4px;
+    font-size:0.85em; color:var(--nuzu-white); font-family:'SFMono-Regular', Consolas, Menlo, monospace;
+  }
+  footer {
+    border-top:1px solid var(--nuzu-border); margin-top:60px;
+    padding:24px; text-align:center; color:var(--nuzu-dim); font-size:0.85em;
+  }
+  footer a { color:var(--nuzu-muted); margin:0 10px; text-decoration:none; }
+  footer a:hover { color:var(--nuzu-white); }
+  @media (max-width:640px) {
+    header { padding:14px 16px; }
+    .brand-tag { display:none; }
+    nav a { margin-left:12px; font-size:0.82em; }
+    h1 { font-size:1.7em; }
+    main { padding:28px 18px 60px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div><a href="/" class="brand">NUZU</a><span class="brand-tag">News</span></div>
+  <nav>
+    <a href="/">Home</a>
+    <a href="about.html">About</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Accessibility Statement</h1>
+  <div class="subtitle">Last updated: April 2026</div>
+
+  <div class="card">
+    <strong>The short version:</strong> NUZU News is designed to be usable
+    by as many people as possible, including users of screen readers,
+    keyboard navigation, high-contrast displays, and large-text settings.
+    If something on the site isn&#39;t working for you, please tell us and
+    we will fix it.
+  </div>
+
+  <h2>Our commitment</h2>
+  <p>We aim for substantial conformance with the Web Content Accessibility
+  Guidelines (WCAG) 2.1, Level AA. Because NUZU is actively being
+  developed, this is a target we work toward continuously rather than a
+  fixed certification. The commitment is simple: if a barrier is reported
+  or found, it goes to the top of the fix list.</p>
+
+  <h2>Built-in accessibility features</h2>
+  <ul>
+    <li><strong>Semantic HTML.</strong> Pages use proper headings, landmark
+    elements (<code>header</code>, <code>nav</code>, <code>main</code>,
+    <code>footer</code>), and ARIA labels where appropriate so screen
+    readers can navigate efficiently.</li>
+    <li><strong>Keyboard navigation.</strong> Every interactive element
+    &mdash; section tabs, saved-article panel, search bar, video player
+    cells, footer links &mdash; is reachable with <kbd>Tab</kbd> and
+    activatable with <kbd>Enter</kbd> or <kbd>Space</kbd>.</li>
+    <li><strong>Font-size control.</strong> A &quot;Large text&quot; mode
+    is available in the top navigation. It increases body text without
+    breaking layout.</li>
+    <li><strong>Light and dark themes.</strong> Both themes are designed to
+    meet AA contrast ratios for body text. You can switch themes at any
+    time from the top navigation.</li>
+    <li><strong>Reduced-motion support.</strong> Non-essential animation
+    is kept subtle, and the site respects the operating-system
+    <em>prefers-reduced-motion</em> setting.</li>
+    <li><strong>Focus visibility.</strong> Interactive elements have a
+    visible focus outline so keyboard users can always see where they are.</li>
+    <li><strong>Image alt text.</strong> Publisher favicons, brand marks,
+    and the PayPal QR on the donation page all carry descriptive
+    <code>alt</code> text or are marked decorative where appropriate.</li>
+    <li><strong>Plain-text links.</strong> Every headline is a real HTML
+    anchor with the publisher&#39;s name &mdash; no click-bait redirects,
+    no JavaScript-only click handlers.</li>
+  </ul>
+
+  <h2>Known limitations</h2>
+  <p>We are candid about the work still to do:</p>
+  <ul>
+    <li>Embedded third-party video players (YouTube) inherit the
+    accessibility characteristics of YouTube&#39;s own embed, which we do
+    not control.</li>
+    <li>Some of our source reliability indicators rely on color
+    (green / amber / red dots). We pair each dot with text labels and
+    trust percentages so color is never the only cue &mdash; but if you
+    spot a place where it is, please report it.</li>
+    <li>Automated testing catches most issues, but complex layouts on very
+    small screens can occasionally present ordering issues to screen
+    readers. Reports are welcome.</li>
+  </ul>
+
+  <h2>Compatibility</h2>
+  <p>NUZU is tested on current versions of Chrome, Firefox, Safari, and
+  Edge on desktop, and on iOS Safari and Android Chrome on mobile. The
+  site is built as a Progressive Web App, so it installs to the home
+  screen on iOS and Android and works with the platform&#39;s built-in
+  assistive technologies (VoiceOver on Apple devices, TalkBack on
+  Android).</p>
+
+  <h2>Reporting an accessibility issue</h2>
+  <p>If you run into a barrier using NUZU, please write to us. Include:</p>
+  <ul>
+    <li>The URL of the page where you experienced the issue.</li>
+    <li>What you were trying to do.</li>
+    <li>What happened instead (or did not happen).</li>
+    <li>The device, browser, and any assistive technology you were using.</li>
+  </ul>
+  <p>We aim to acknowledge reports within 48 hours and prioritize fixes
+  that restore access to core functionality.</p>
+
+  <p>Contact:
+  <a href="mailto:NUZU-NEWS@protonmail.com?subject=Accessibility%20Feedback">NUZU-NEWS@protonmail.com</a>.</p>
+
+  <h2>Formal accessibility policies</h2>
+  <p>NUZU News intends to comply with the accessibility requirements of
+  the jurisdictions where we operate, including but not limited to the
+  Americans with Disabilities Act (ADA) and Section 508 of the
+  Rehabilitation Act in the United States, and the European Accessibility
+  Act for users in the EU/EEA. Because we are small and actively building,
+  we treat every feedback message as a formal request worth addressing.</p>
+</main>
+
+<footer>
+  <div>
+    <a href="/">Home</a>&middot;
+    <a href="about.html">About</a>&middot;
+    <a href="terms.html">Terms</a>&middot;
+    <a href="privacy.html">Privacy</a>&middot;
+    <a href="donate.html">Support</a>&middot;
+    <a href="mailto:NUZU-NEWS@protonmail.com">Contact</a>
+  </div>
+  <div style="margin-top:10px;">&copy; 2026 NUZU News. All rights reserved.</div>
+</footer>
+</body>
+</html>

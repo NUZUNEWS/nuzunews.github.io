@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NUZU News &mdash; Privacy Policy</title>
 <meta name="description" content="How NUZU News handles user data. We collect nothing, require no account, and store preferences only in your own browser.">
+<link rel="canonical" href="https://nuzunews.github.io/privacy.html">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%230D1B4B'/><text x='32' y='46' font-family='Arial,sans-serif' font-size='24' font-weight='900' fill='%23FFFFFF' text-anchor='middle'>NZ</text></svg>">
 <style>
@@ -40,7 +41,7 @@
     font-size:0.88em; font-weight:600; transition:color 0.15s;
   }
   nav a:hover { color:var(--nuzu-white); }
-  main { max-width:780px; margin:0 auto; padding:40px 24px 80px; }
+  main { max-width:820px; margin:0 auto; padding:40px 24px 80px; }
   h1 {
     color:var(--nuzu-white); font-family:'Playfair Display', Georgia, serif;
     font-weight:900; font-size:2.2em; line-height:1.2; margin:0 0 8px;
@@ -52,7 +53,7 @@
   }
   h2 {
     color:var(--nuzu-white); font-family:'Playfair Display', Georgia, serif;
-    font-size:1.35em; margin:36px 0 10px;
+    font-size:1.4em; margin:40px 0 10px; scroll-margin-top:20px;
   }
   p { margin:0 0 14px; }
   a { color:var(--nuzu-light); }
@@ -69,6 +70,18 @@
   .card strong { color:var(--nuzu-white); }
   ul { padding-left:22px; margin:10px 0 18px; }
   li { margin-bottom:6px; }
+  .toc {
+    background:var(--nuzu-card); border:1px solid var(--nuzu-border);
+    border-radius:6px; padding:16px 22px; margin:0 0 32px;
+  }
+  .toc-title {
+    color:var(--nuzu-muted); font-size:0.72em; text-transform:uppercase;
+    letter-spacing:0.12em; font-weight:700; margin-bottom:10px;
+  }
+  .toc-list { list-style:none; padding:0; margin:0;
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:6px 18px; }
+  .toc-list li { margin:0; }
+  .toc-list a { font-size:0.92em; }
   footer {
     border-top:1px solid var(--nuzu-border); margin-top:60px;
     padding:24px; text-align:center; color:var(--nuzu-dim); font-size:0.85em;
@@ -107,12 +120,30 @@
     in your own browser and never leave your device.
   </div>
 
-  <h2>Data We Collect</h2>
+  <nav class="toc" aria-label="On this page">
+    <div class="toc-title">On this page</div>
+    <ul class="toc-list">
+      <li><a href="#data-we-collect">Data We Collect</a></li>
+      <li><a href="#local-storage">Local Storage</a></li>
+      <li><a href="#cookies">Cookie Policy</a></li>
+      <li><a href="#third-party">Third-Party Links</a></li>
+      <li><a href="#embedded">Embedded Media</a></li>
+      <li><a href="#icons">Source Favicons</a></li>
+      <li><a href="#do-not-sell">Do Not Sell My Info</a></li>
+      <li><a href="#ca-notice">California Notice</a></li>
+      <li><a href="#eu-notice">EU/EEA Notice</a></li>
+      <li><a href="#children">Children</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="data-we-collect">Data We Collect</h2>
   <p>None. NUZU News does not require any account, login, or registration.
   We do not set tracking cookies, run analytics scripts, or embed third-party
   tracking pixels on our pages.</p>
 
-  <h2>Local Storage (on your device)</h2>
+  <h2 id="local-storage">Local Storage (on your device)</h2>
   <p>NUZU uses your browser&#39;s <code>localStorage</code> to remember a few
   personal preferences directly on your device:</p>
   <ul>
@@ -126,20 +157,32 @@
   never transmitted to NUZU, to any server, or to any third party. Clearing
   your browser data removes it entirely.</p>
 
-  <h2>Third-Party Links</h2>
+  <h2 id="cookies">Cookie Policy</h2>
+  <p>NUZU News does not set any cookies of its own &mdash; not for analytics,
+  not for advertising, not for &quot;essential&quot; purposes. We use
+  <code>localStorage</code> (described above) to remember your preferences,
+  but <code>localStorage</code> is not a cookie: it stays on your device and
+  is never transmitted anywhere.</p>
+  <p>The only cookies that can appear while you use NUZU come from
+  third-party embeds you choose to interact with (for example, clicking play
+  on an embedded YouTube video player, which is covered in the
+  <a href="#embedded">Embedded Media</a> section). You can block third-party
+  cookies in your browser settings without breaking any NUZU functionality.</p>
+
+  <h2 id="third-party">Third-Party Links</h2>
   <p>Every headline on NUZU links directly to its original publisher.
   Once you click through, you are on that publisher&#39;s site and subject
   to their privacy policy &mdash; not ours. We do not control their tracking,
   their cookies, or their advertising.</p>
 
-  <h2>Embedded Media</h2>
+  <h2 id="embedded">Embedded Media</h2>
   <p>Our homepage can embed live news video players from YouTube. When a
   YouTube player loads, YouTube may set its own cookies according to
   <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google&#39;s privacy policy</a>.
   If you&#39;d prefer to avoid this, you can close the video panel or
   browse with third-party cookies blocked.</p>
 
-  <h2>Source Favicon Images</h2>
+  <h2 id="icons">Source Favicon Images</h2>
   <p>Small publisher icons shown next to story clusters are self-hosted on
   this site (at <code>/icons/sources/</code>). They are fetched once during
   our hourly build from the publisher&#39;s public favicon and cached
@@ -148,17 +191,73 @@
   are sourced from the publicly-available Wikimedia Commons during that
   same build step.</p>
 
-  <h2>Children</h2>
+  <h2 id="do-not-sell">Do Not Sell My Personal Information</h2>
+  <div class="card">
+    <strong>We have no personal information to sell.</strong> NUZU News does
+    not collect, store, or transmit any personal data about its readers. We
+    have no database of users, no advertising partners, no data brokers, and
+    no revenue stream that depends on selling or sharing information about
+    you.
+  </div>
+  <p>Because there is nothing to sell or share, the opt-out rights created by
+  the California Consumer Privacy Act (CCPA/CPRA) and similar state laws
+  don&#39;t have anything to act on. That said, if you have a specific
+  concern, write to us and we&#39;ll answer it:
+  <a href="mailto:NUZU-NEWS@protonmail.com?subject=Do%20Not%20Sell%20Request">NUZU-NEWS@protonmail.com</a>.</p>
+
+  <h2 id="ca-notice">California Notice of Collection</h2>
+  <p>Under the California Consumer Privacy Act (CCPA) and California Privacy
+  Rights Act (CPRA), operators of online services must disclose the
+  categories of personal information they collect and the purpose of that
+  collection.</p>
+  <p>For NUZU News, that disclosure is:</p>
+  <ul>
+    <li><strong>Categories of personal information collected:</strong> None.</li>
+    <li><strong>Categories of sources:</strong> Not applicable.</li>
+    <li><strong>Business or commercial purposes:</strong> Not applicable.</li>
+    <li><strong>Categories of third parties with whom information is shared:</strong> None.</li>
+    <li><strong>Sale or sharing of personal information:</strong> None. See
+    <a href="#do-not-sell">Do Not Sell</a> above.</li>
+  </ul>
+  <p>California residents may contact us with any CCPA/CPRA-related question
+  at <a href="mailto:NUZU-NEWS@protonmail.com?subject=California%20Privacy%20Inquiry">NUZU-NEWS@protonmail.com</a>.</p>
+
+  <h2 id="eu-notice">EU/EEA and UK Regulatory Notice</h2>
+  <p>If you are accessing NUZU from the European Union, the European Economic
+  Area, the United Kingdom, or Switzerland, the following applies under the
+  General Data Protection Regulation (GDPR) and the UK GDPR:</p>
+  <ul>
+    <li><strong>Controller:</strong> NUZU News, reachable at
+    <a href="mailto:NUZU-NEWS@protonmail.com">NUZU-NEWS@protonmail.com</a>.</li>
+    <li><strong>Personal data processed:</strong> None. We do not collect,
+    store, or process any information that identifies you or is linked to
+    you.</li>
+    <li><strong>Legal basis for processing:</strong> Not applicable, because
+    no processing of personal data takes place.</li>
+    <li><strong>Your rights:</strong> Because we hold no personal data about
+    you, there is nothing to access, correct, port, restrict, object to,
+    delete, or withdraw consent for. If you would like written confirmation
+    of this for your own records, email us and we will provide it.</li>
+    <li><strong>Data transfers outside the EU/EEA:</strong> None initiated
+    by us. Note that our site is hosted on GitHub Pages, and clicking an
+    outbound link may transfer you to a publisher hosted outside your
+    region under that publisher&#39;s own terms.</li>
+    <li><strong>Right to lodge a complaint:</strong> EU/EEA residents may
+    complain to their national data-protection authority; UK residents may
+    complain to the Information Commissioner&#39;s Office (ICO).</li>
+  </ul>
+
+  <h2 id="children">Children</h2>
   <p>NUZU News is a general news service not directed at children under 13.
   Because we collect no personal data, we do not knowingly collect anything
   from anyone of any age.</p>
 
-  <h2>Changes to This Policy</h2>
+  <h2 id="changes">Changes to This Policy</h2>
   <p>If this policy changes in a way that affects you, we will update the
   date at the top and post the revision on this page. Because we collect
   no data, we cannot notify you individually.</p>
 
-  <h2>Contact</h2>
+  <h2 id="contact">Contact</h2>
   <p>Questions or concerns? Email
   <a href="mailto:NUZU-NEWS@protonmail.com">NUZU-NEWS@protonmail.com</a>.</p>
 </main>
@@ -168,7 +267,9 @@
     <a href="/">Home</a>&middot;
     <a href="about.html">About</a>&middot;
     <a href="terms.html">Terms</a>&middot;
-    <a href="privacy.html">Privacy</a>
+    <a href="privacy.html">Privacy</a>&middot;
+    <a href="donate.html">Support</a>&middot;
+    <a href="mailto:NUZU-NEWS@protonmail.com">Contact</a>
   </div>
   <div style="margin-top:10px;">&copy; 2026 NUZU News. All rights reserved.</div>
 </footer>

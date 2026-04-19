@@ -3468,6 +3468,47 @@ html_parts.append(f"""<!DOCTYPE html>
         border-top: 1px solid var(--nuzu-border); padding-top: 10px;
         display: inline-block; padding-left: 24px; padding-right: 24px;
     }}
+    /* ── Newspaper-style masthead sub-bar (Vol. / Issue / Date) ── */
+    .nuzu-masthead-bar {{
+        display: flex; justify-content: space-between; align-items: center;
+        max-width: 920px; margin: 14px auto 4px auto;
+        padding: 9px 22px;
+        border-top: 1px solid var(--nuzu-border);
+        border-bottom: 1px solid var(--nuzu-border);
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 0.82em; letter-spacing: 0.04em;
+        color: var(--nuzu-muted); gap: 12px;
+    }}
+    .nuzu-masthead-bar .mb-left,
+    .nuzu-masthead-bar .mb-right {{
+        flex: 0 0 auto; font-style: italic; white-space: nowrap;
+    }}
+    .nuzu-masthead-bar .mb-center {{
+        flex: 1 1 auto; text-align: center;
+        text-transform: uppercase; font-style: normal;
+        font-weight: 700; letter-spacing: 0.12em;
+        color: var(--nuzu-text); font-size: 0.94em;
+    }}
+    body.light-mode .nuzu-masthead-bar {{
+        border-top-color: #c7cbd6 !important;
+        border-bottom-color: #c7cbd6 !important;
+        color: #6a7387 !important;
+    }}
+    body.light-mode .nuzu-masthead-bar .mb-center {{ color: #1a2030 !important; }}
+    @media (max-width: 700px) {{
+        .nuzu-masthead-bar {{
+            font-size: 0.68em; padding: 6px 12px; gap: 8px;
+            letter-spacing: 0.02em;
+        }}
+        .nuzu-masthead-bar .mb-center {{ letter-spacing: 0.06em; font-size: 0.9em; }}
+    }}
+    @media (max-width: 460px) {{
+        .nuzu-masthead-bar {{
+            flex-direction: column; gap: 4px;
+            font-size: 0.72em; padding: 8px 10px;
+        }}
+        .nuzu-masthead-bar .mb-center {{ order: -1; font-size: 1em; }}
+    }}
     @media (max-width: 900px) {{
         .nuzu-hero {{ padding: 16px 16px 12px; }}
         .nuzu-hero-wordmark {{ font-size: 3em; letter-spacing: 0.12em; }}
@@ -5123,7 +5164,7 @@ html_parts.append("""
 html_parts.append(f"""
 <nav class="sticky-nav" role="navigation" aria-label="NUZU main navigation">
   <div class="sticky-nav-tabs">
-    <a href="#" class="site-name" aria-label="NUZU News home">NUZU</a>
+    <a href="/" class="site-name" aria-label="NUZU News home">NUZU</a>
     <a href="#section-us"       class="nav-link nav-us"       role="menuitem">US</a>
     <a href="#section-mideast"  class="nav-link nav-mideast"  role="menuitem">Mid East</a>
     <a href="#section-world"    class="nav-link nav-world"    role="menuitem">World</a>
@@ -5217,6 +5258,11 @@ if show_breaking_banner:
 html_parts.append("""
 <div class="nuzu-hero" role="banner">
   <div class="nuzu-hero-wordmark">NUZU</div>
+  <div class="nuzu-masthead-bar" aria-label="Masthead">
+    <span class="mb-left" id="mb-vol-issue">VOL. I &middot; NO. I</span>
+    <span class="mb-center" id="mb-date">&nbsp;</span>
+    <span class="mb-right">&copy; 2026 NUZU News</span>
+  </div>
   <div class="nuzu-hero-tagline">Real News in Real Time</div>
 </div>
 """)
@@ -6991,18 +7037,40 @@ document.addEventListener('click', function(e) {{
   }});
 }})();
 
-// - Hero live date -
+// - Hero masthead: live date, volume + issue (Roman numerals) -
 (function() {{
-  var d=new Date();
-  var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var dateStr=days[d.getDay()]+', '+months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
-  var hero=document.querySelector('.nuzu-hero');
-  if(hero) {{
-    var dateEl=document.createElement('div'); dateEl.className='nuzu-hero-date'; dateEl.textContent=dateStr;
-    var tagline=hero.querySelector('.nuzu-hero-tagline');
-    if(tagline) hero.insertBefore(dateEl,tagline);
+  function toRoman(num) {{
+    if (!isFinite(num) || num < 1) return 'I';
+    num = Math.floor(num);
+    var map = [
+      [1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],
+      [100,'C'],[90,'XC'],[50,'L'],[40,'XL'],
+      [10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']
+    ];
+    var out = '';
+    for (var i=0; i<map.length; i++) {{
+      while (num >= map[i][0]) {{ out += map[i][1]; num -= map[i][0]; }}
+    }}
+    return out;
   }}
+  var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var today = new Date();
+  var dateStr = days[today.getDay()] + ', ' + months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+
+  // Issue 1 = April 20, 2026; Volume increments every 365 issues
+  var launch = new Date(2026, 3, 20); // Month is 0-indexed: 3 = April
+  var today0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  var dayMs = 24*60*60*1000;
+  var issueNum = Math.floor((today0 - launch) / dayMs) + 1;
+  if (issueNum < 1) issueNum = 1;
+  var volumeNum = Math.floor((issueNum - 1) / 365) + 1;
+  var issueInVol = issueNum - (volumeNum - 1) * 365;
+
+  var volIssueEl = document.getElementById('mb-vol-issue');
+  var dateEl = document.getElementById('mb-date');
+  if (volIssueEl) volIssueEl.innerHTML = 'VOL. ' + toRoman(volumeNum) + ' \u00b7 NO. ' + toRoman(issueInVol);
+  if (dateEl) dateEl.textContent = dateStr;
 }})();
 
 
@@ -7092,12 +7160,12 @@ html_parts.append(f"""
     </p>
     <div class="footer-donate-wrap">
       <p class="footer-donate-label">Support independent news aggregation</p>
-      <a class="footer-donate-btn" href="https://buymeacoffee.com" target="_blank" rel="noopener">&#9829; Support NUZU</a>
+      <a class="footer-donate-btn" href="donate.html" rel="noopener">&#9829; Support NUZU</a>
     </div>
     <!-- Newsletter signup via Formspree -->
     <div>
       <p style="color:#5577AA;font-size:0.88em;margin-bottom:6px;font-weight:bold;">&#9993; Stay Informed &mdash; Join the NUZU Newsletter</p>
-      <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST"
+      <form class="newsletter-form" action="https://formspree.io/f/xjgjrrge" method="POST"
             onsubmit="var btn=this.querySelector('button');btn.textContent='Sending...';btn.disabled=true;
             fetch(this.action,{{method:'POST',body:new FormData(this),headers:{{'Accept':'application/json'}}}})
             .then(function(r){{return r.json()}})
@@ -7112,7 +7180,7 @@ html_parts.append(f"""
             return false;">
         <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
         <input type="hidden" name="_subject" value="NUZU Newsletter Signup">
-        <input type="hidden" name="_replyto" value="TheSeanMitchell@protonmail.com">
+        <input type="hidden" name="_replyto" value="NUZU-NEWS@protonmail.com">
         <button type="submit">Subscribe</button>
       </form>
       <p class="newsletter-msg" style="color:var(--nuzu-muted);"></p>
@@ -7125,14 +7193,13 @@ html_parts.append(f"""
     <div class="footer-col">
       <h3>About</h3>
       <ul>
-        <li><a href="#">About NUZU News</a></li>
-        <li><a href="about.html">About NUZU</a></li>
-        <li><a href="#">Our Mission</a></li>
-        <li><a href="#">How We Curate News</a></li>
-        <li><a href="#">Source Standards</a></li>
-        <li><a href="#">News Values &amp; Principles</a></li>
-        <li><a href="#">AI Use Disclosure</a></li>
-        <li><a href="#">Corrections Policy</a></li>
+        <li><a href="about.html">About NUZU News</a></li>
+        <li><a href="about.html#mission">Our Mission</a></li>
+        <li><a href="about.html#curation">How We Curate News</a></li>
+        <li><a href="about.html#sources">Source Standards</a></li>
+        <li><a href="about.html#values">News Values &amp; Principles</a></li>
+        <li><a href="about.html#ai-disclosure">AI Use Disclosure</a></li>
+        <li><a href="about.html#corrections">Corrections Policy</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
       </ul>
@@ -7142,23 +7209,24 @@ html_parts.append(f"""
       <ul>
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Use</a></li>
-        <li><a href="#">Cookie Policy</a></li>
-        <li><a href="#">Accessibility Statement</a></li>
-        <li><a href="#">Do Not Sell My Personal Information</a></li>
-        <li><a href="#">CA Notice of Collection</a></li>
-        <li><a href="#">EU/EEA Regulatory Notice</a></li>
-        <li><a href="#">DMCA / Copyright Complaints</a></li>
+        <li><a href="privacy.html#cookies">Cookie Policy</a></li>
+        <li><a href="accessibility.html">Accessibility Statement</a></li>
+        <li><a href="privacy.html#do-not-sell">Do Not Sell My Personal Information</a></li>
+        <li><a href="privacy.html#ca-notice">CA Notice of Collection</a></li>
+        <li><a href="privacy.html#eu-notice">EU/EEA Regulatory Notice</a></li>
+        <li><a href="dmca.html">DMCA / Copyright Complaints</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h3>Connect</h3>
       <ul>
-        <li><a href="mailto:TheSeanMitchell@protonmail.com">Contact Us</a></li>
-        <li><a href="mailto:TheSeanMitchell@protonmail.com?subject=NUZU Advertising Inquiry">Advertise With Us</a></li>
-        <li><a href="mailto:TheSeanMitchell@protonmail.com?subject=News Tip">Submit a Tip</a></li>
+        <li><a href="mailto:NUZU-NEWS@protonmail.com">Contact Us</a></li>
+        <li><a href="mailto:NUZU-NEWS@protonmail.com?subject=NUZU%20Advertising%20Inquiry">Advertise With Us</a></li>
+        <li><a href="mailto:NUZU-NEWS@protonmail.com?subject=News%20Tip">Submit a Tip</a></li>
         <li><a href="feed.xml">RSS Feed</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="mailto:TheSeanMitchell@protonmail.com?subject=Site Feedback">Site Feedback</a></li>
+        <li><a href="mailto:NUZU-NEWS@protonmail.com?subject=Careers%20-%20Resume%20Submission">Careers</a></li>
+        <li><a href="mailto:NUZU-NEWS@protonmail.com?subject=Site%20Feedback">Site Feedback</a></li>
+        <li><a href="donate.html">Support NUZU</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -7180,20 +7248,16 @@ html_parts.append(f"""
   <div class="footer-social">
     <span class="footer-social-label">Follow NUZU</span>
     <div class="footer-social-icons">
-      <a href="#" aria-label="X / Twitter" title="X / Twitter" class="social-icon">&#120143;</a>
-      <a href="#" aria-label="Facebook" title="Facebook" class="social-icon">f</a>
-      <a href="#" aria-label="Instagram" title="Instagram" class="social-icon">&#9641;</a>
-      <a href="#" aria-label="YouTube" title="YouTube" class="social-icon">&#9654;</a>
-      <a href="#" aria-label="LinkedIn" title="LinkedIn" class="social-icon">in</a>
+      <a href="https://x.com/NUZUNEWS" target="_blank" rel="noopener" aria-label="X / Twitter" title="X / Twitter" class="social-icon">&#120143;</a>
+      <a href="https://www.facebook.com/NUZUNEWS/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" class="social-icon">f</a>
     </div>
   </div>
 
   <div class="footer-stay-informed">
-    <span class="footer-si-label">Get the App</span>
+    <span class="footer-si-label">Stay Informed</span>
     <div class="footer-si-links">
-      <a href="#" class="footer-app-btn">&#8595; Android (Play Store)</a>
-      <a href="#" class="footer-app-btn">&#8595; iOS (App Store)</a>
       <a href="feed.xml" class="footer-app-btn">&#9636; RSS Feed</a>
+      <a href="donate.html" class="footer-app-btn">&#9829; Support NUZU</a>
     </div>
   </div>
 
@@ -7204,15 +7268,14 @@ html_parts.append(f"""
     <p class="footer-update">Last updated: {update_time}</p>
     <div class="footer-bottom-links">
       <a href="about.html">About</a>
-      <a href="#">Advertise</a>
-      <a href="#">Advertising Guidelines</a>
-      <a href="#">Purchase Licensing Rights</a>
-      <a href="#">Cookies</a>
+      <a href="mailto:NUZU-NEWS@protonmail.com?subject=NUZU%20Advertising%20Inquiry">Advertise</a>
+      <a href="advertising.html">Advertising Guidelines</a>
+      <a href="privacy.html#cookies">Cookies</a>
       <a href="terms.html">Terms &amp; Conditions</a>
       <a href="privacy.html">Privacy</a>
-      <a href="#">Copyright</a>
-      <a href="#">Digital Accessibility</a>
-      <a href="#">Data Disclosure and Sources</a>
+      <a href="terms.html#copyright">Copyright</a>
+      <a href="accessibility.html">Digital Accessibility</a>
+      <a href="about.html#sources">Data Disclosure and Sources</a>
     </div>
     <p class="footer-disclaimer">
       NUZU News is a news aggregation service. All article headlines link directly to original

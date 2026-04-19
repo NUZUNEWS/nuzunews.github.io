@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advertising Guidelines &mdash; NUZU News</title>
+<meta name="description" content="NUZU News advertising guidelines. What we will and won't run, disclosure rules, and how to submit an inquiry.">
+<link rel="canonical" href="https://nuzunews.github.io/advertising.html">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%230D1B4B'/><text x='32' y='46' font-family='Arial,sans-serif' font-size='24' font-weight='900' fill='%23FFFFFF' text-anchor='middle'>NZ</text></svg>">
+<style>
+  :root {
+    --nuzu-dark:#070F2B; --nuzu-navy:#0D1B4B; --nuzu-card:#0A1535;
+    --nuzu-border:#1A2A4A; --nuzu-blue:#1E4FD8; --nuzu-blue-l:#4A7FD8;
+    --nuzu-white:#E8EDFA; --nuzu-text:#C5CDE0; --nuzu-muted:#8892AA;
+    --nuzu-dim:#5B6580; --nuzu-light:#8FB3FF;
+    --ok:#22c55e; --no:#ef4444;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin:0; background:var(--nuzu-dark); color:var(--nuzu-text);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height:1.7; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  header {
+    background:var(--nuzu-navy); border-bottom:2px solid var(--nuzu-blue);
+    padding:18px 24px; display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand { font-family:'Playfair Display', Georgia, serif; font-weight:900;
+    font-size:1.7em; color:var(--nuzu-white); letter-spacing:0.08em; text-decoration:none; }
+  .brand-tag { color:var(--nuzu-light); font-size:0.72em; letter-spacing:0.12em;
+    text-transform:uppercase; margin-left:10px; }
+  nav a { color:var(--nuzu-muted); text-decoration:none; margin-left:18px;
+    font-size:0.88em; font-weight:600; transition:color 0.15s; }
+  nav a:hover { color:var(--nuzu-white); }
+  main { max-width:820px; margin:0 auto; padding:40px 24px 80px; }
+  h1 { color:var(--nuzu-white); font-family:'Playfair Display', Georgia, serif;
+    font-weight:900; font-size:2.2em; line-height:1.2; margin:0 0 8px; letter-spacing:-0.01em; }
+  .subtitle { color:var(--nuzu-dim); font-size:0.88em; text-transform:uppercase;
+    letter-spacing:0.12em; margin-bottom:32px; font-weight:700; }
+  h2 { color:var(--nuzu-white); font-family:'Playfair Display', Georgia, serif;
+    font-size:1.4em; margin:40px 0 10px; }
+  p { margin:0 0 14px; }
+  a { color:var(--nuzu-light); }
+  a:hover { color:var(--nuzu-white); }
+  ul, ol { padding-left:22px; margin:10px 0 18px; }
+  li { margin-bottom:8px; }
+  .card {
+    background:var(--nuzu-card); border:1px solid var(--nuzu-border);
+    border-left:4px solid var(--nuzu-blue); border-radius:6px;
+    padding:20px 24px; margin:24px 0;
+  }
+  .card strong { color:var(--nuzu-white); }
+  .two-col {
+    display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:22px 0;
+  }
+  .col {
+    background:var(--nuzu-card); border:1px solid var(--nuzu-border);
+    border-radius:6px; padding:18px 22px;
+  }
+  .col.will { border-left:4px solid var(--ok); }
+  .col.wont { border-left:4px solid var(--no); }
+  .col h3 {
+    color:var(--nuzu-white); font-size:1em; letter-spacing:0.03em;
+    margin:0 0 10px; display:flex; align-items:center; gap:8px;
+  }
+  .badge {
+    display:inline-block; width:22px; height:22px; border-radius:50%;
+    font-weight:900; font-size:0.85em; text-align:center; line-height:22px;
+    color:#fff; flex-shrink:0;
+  }
+  .badge.ok { background:var(--ok); }
+  .badge.no { background:var(--no); }
+  .col ul { padding-left:20px; margin:0; }
+  .col li { margin-bottom:6px; font-size:0.92em; }
+  @media (max-width:640px) { .two-col { grid-template-columns:1fr; } }
+  .contact-card {
+    background:var(--nuzu-navy); border:1px solid var(--nuzu-blue);
+    border-radius:6px; padding:22px 26px; margin:28px 0;
+  }
+  .contact-card a {
+    display:inline-block; margin-top:10px; background:var(--nuzu-blue);
+    color:#fff !important; padding:10px 22px; border-radius:6px;
+    text-decoration:none; font-weight:700; letter-spacing:0.04em;
+  }
+  .contact-card a:hover { background:var(--nuzu-blue-l); }
+  footer {
+    border-top:1px solid var(--nuzu-border); margin-top:60px;
+    padding:24px; text-align:center; color:var(--nuzu-dim); font-size:0.85em;
+  }
+  footer a { color:var(--nuzu-muted); margin:0 10px; text-decoration:none; }
+  footer a:hover { color:var(--nuzu-white); }
+  @media (max-width:640px) {
+    header { padding:14px 16px; }
+    .brand-tag { display:none; }
+    nav a { margin-left:12px; font-size:0.82em; }
+    h1 { font-size:1.7em; }
+    main { padding:28px 18px 60px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div><a href="/" class="brand">NUZU</a><span class="brand-tag">News</span></div>
+  <nav>
+    <a href="/">Home</a>
+    <a href="about.html">About</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Advertising Guidelines</h1>
+  <div class="subtitle">Last updated: April 2026</div>
+
+  <div class="card">
+    <strong>Where we stand:</strong> NUZU News runs no advertising today.
+    Our site is free, tracker-free, and behavior-ad-free by design. When
+    and if we do accept paid placements, we will follow the guidelines on
+    this page without exception. Publishing them before we run a single ad
+    is the whole point.
+  </div>
+
+  <h2>Our principles</h2>
+  <ol>
+    <li><strong>Ads never masquerade as news.</strong> Paid placement will
+    always be clearly labeled <em>&quot;Sponsored&quot;</em> or
+    <em>&quot;Advertisement&quot;</em> and visually distinguished from
+    editorial headlines. No blending, no typographic tricks, no
+    &quot;recommended for you&quot; redirects to third-party publishers.</li>
+    <li><strong>No behavioral tracking.</strong> We will not enable
+    third-party ad tech that sets cookies, fingerprints devices, or builds
+    profiles of our readers. Ads on NUZU will be context-based &mdash; if
+    any &mdash; never audience-based.</li>
+    <li><strong>No deceptive creative.</strong> No fake close buttons, no
+    simulated system alerts, no fake comments, no fake quotes from real
+    journalists, no &quot;this one weird trick&quot; patterns.</li>
+    <li><strong>No ads that contradict our editorial values.</strong>
+    Accuracy, source integrity, and reader trust come ahead of ad revenue.
+    If we ever need to pick between the two, revenue loses.</li>
+    <li><strong>Full advertiser disclosure.</strong> For any sponsored
+    placement, we will show the advertiser&#39;s real name in a form any
+    reader can look up.</li>
+  </ol>
+
+  <h2>What we will and won&#39;t accept</h2>
+  <div class="two-col">
+    <div class="col will">
+      <h3><span class="badge ok">&#10003;</span> We will consider</h3>
+      <ul>
+        <li>Advertisements from news publishers, nonprofits, and civic
+        organizations.</li>
+        <li>Books, documentaries, podcasts, and journalism-education
+        programs.</li>
+        <li>Consumer products and services with clear, truthful claims.</li>
+        <li>Recruitment ads from reputable employers.</li>
+        <li>Event, conference, and subscription promotions from
+        established outlets.</li>
+        <li>Local-business placements that serve our readers without
+        deceptive claims.</li>
+      </ul>
+    </div>
+    <div class="col wont">
+      <h3><span class="badge no">&#10005;</span> We will not accept</h3>
+      <ul>
+        <li>Political advertising, PAC spending, or campaign-funded
+        content of any kind.</li>
+        <li>Content that targets or misrepresents specific ethnic,
+        religious, or marginalized groups.</li>
+        <li>Anti-vaccine, pseudo-medical, or miracle-cure advertising.</li>
+        <li>Get-rich-quick, crypto-pump, or high-risk investment
+        promotions without licensed disclosure.</li>
+        <li>Online gambling aimed at jurisdictions where it&#39;s illegal.</li>
+        <li>Adult content, escort services, or weapons sales.</li>
+        <li>Advertising for products or services under active regulatory
+        investigation for deceptive practices.</li>
+        <li>Anything that looks, reads, or links like a news story
+        without the &quot;Sponsored&quot; label.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Editorial independence</h2>
+  <p>Advertisers never see editorial content before it publishes.
+  Advertisers cannot request story placement, suppression, or removal.
+  NUZU&#39;s source list, tier classifications, and clustering logic are
+  decided entirely by the editorial team and are not influenced by
+  advertising relationships. If we ever refuse an advertiser for editorial
+  reasons, that refusal is final.</p>
+
+  <h2>Disclosure to readers</h2>
+  <ul>
+    <li>Every sponsored placement will include the word
+    <em>&quot;Sponsored&quot;</em> or <em>&quot;Advertisement&quot;</em>
+    at the top of the unit in a size no smaller than the advertiser&#39;s
+    name.</li>
+    <li>Affiliate links, if ever used, will be disclosed in-context and
+    in a dedicated line on this page.</li>
+    <li>Advertorials (long-form paid content) will be clearly branded as
+    paid content and will never use the same typography as news headlines.</li>
+  </ul>
+
+  <h2>Fact-checking and claims</h2>
+  <p>We reserve the right to require substantiation for any factual claim
+  in creative. If the claim can&#39;t be substantiated &mdash; or if
+  substantiation depends on a source we already classify as Tier 3 for
+  reliability &mdash; the creative doesn&#39;t run.</p>
+
+  <h2>Technical requirements</h2>
+  <ul>
+    <li>Static images or plain HTML only &mdash; no third-party JavaScript,
+    ad networks, or tracking pixels.</li>
+    <li>Creative must weigh under 200 KB and must not auto-play audio or
+    video.</li>
+    <li>A single destination URL per placement, pointing to a domain that
+    resolves to the advertiser named in the deal.</li>
+  </ul>
+
+  <h2>Rates and inventory</h2>
+  <p>NUZU does not publish a public rate card at this time. Inquiries are
+  evaluated individually; pricing reflects the placement, creative spec,
+  flight length, and fit with these guidelines. First-time advertisers
+  should expect a short editorial review in addition to the commercial
+  discussion.</p>
+
+  <div class="contact-card">
+    <strong style="color:var(--nuzu-white); font-size:1.05em;">Submit an advertising inquiry</strong>
+    <p style="margin-top:8px;">Tell us about your brand, the product or
+    service you want to promote, intended flight dates, and any creative
+    you already have. We respond to every inquiry, even if the answer is
+    &quot;not a fit.&quot;</p>
+    <a href="mailto:NUZU-NEWS@protonmail.com?subject=NUZU%20Advertising%20Inquiry">Start an inquiry &rarr;</a>
+  </div>
+
+  <h2>Changes to these guidelines</h2>
+  <p>These guidelines will evolve as the site grows. Any material change
+  will be dated at the top of this page. Existing advertisers will be
+  notified in writing before any change takes effect for their placement.</p>
+</main>
+
+<footer>
+  <div>
+    <a href="/">Home</a>&middot;
+    <a href="about.html">About</a>&middot;
+    <a href="terms.html">Terms</a>&middot;
+    <a href="privacy.html">Privacy</a>&middot;
+    <a href="donate.html">Support</a>&middot;
+    <a href="mailto:NUZU-NEWS@protonmail.com">Contact</a>
+  </div>
+  <div style="margin-top:10px;">&copy; 2026 NUZU News. All rights reserved.</div>
+</footer>
+</body>
+</html>
