@@ -35,7 +35,6 @@ jobs:
       run: |
         mkdir -p ~/.bubblewrap
         printf '{"jdkPath":"%s","androidSdkPath":"%s"}' "$JAVA_HOME" "$ANDROID_HOME" > ~/.bubblewrap/config.json
-        echo "Bubblewrap config:"
         cat ~/.bubblewrap/config.json
 
     - name: Decode keystore
@@ -45,10 +44,33 @@ jobs:
         echo "$KEYSTORE_BASE64" | base64 -d > android.keystore
         ls -lh android.keystore
 
+    - name: Verify icon files exist
+      run: |
+        echo "Icon files in repo:"
+        ls -la icon*.png
+
+    - name: Start local HTTP server for icon downloads
+      run: |
+        # Start a Python HTTP server serving the repo files on localhost
+        # This ensures Bubblewrap can download the icon reliably
+        python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/http_server.log 2>&1 &
+        echo "HTTP_SERVER_PID=$!" >> $GITHUB_ENV
+        # Wait for server to start
+        sleep 3
+        # Verify the icon is accessible
+        echo "Testing local icon URL:"
+        curl -s -o /dev/null -w "HTTP %{http_code}\n" http://localhost:8000/icon512.png
+
+    - name: Update twa-manifest.json to use local icon URLs
+      run: |
+        # Replace external icon URL with localhost URL (served by our HTTP server)
+        sed -i 's|https://nuzunews.github.io/icon512.png|http://localhost:8000/icon512.png|g' twa-manifest.json
+        echo "Updated twa-manifest.json icon URLs:"
+        grep -i "icon" twa-manifest.json
+
     - name: Regenerate Android project from twa-manifest.json
       run: |
         # Provide "2.1" as the new versionName (must be non-empty)
-        # versionCode will be auto-incremented by Bubblewrap
         printf '2.1\n' | bubblewrap update
 
     - name: Build AAB
@@ -58,6 +80,13 @@ jobs:
       run: |
         # Project already regenerated with checksum; only passwords needed
         printf "%s\n%s\n" "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" | bubblewrap build --skipPwaValidation
+
+    - name: Stop HTTP server
+      if: always()
+      run: |
+        if [ ! -z "$HTTP_SERVER_PID" ]; then
+          kill $HTTP_SERVER_PID 2>/dev/null || true
+        fi
 
     - name: Find AAB files
       if: always()
