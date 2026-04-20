@@ -5176,7 +5176,7 @@ html_parts.append("""
 html_parts.append(f"""
 <nav class="sticky-nav" role="navigation" aria-label="NUZU main navigation">
   <div class="sticky-nav-tabs">
-    <a href="/" class="site-name" aria-label="NUZU News home" onclick="try{{sessionStorage.setItem('nuzu_home_click','1');}}catch(e){{}}" >NUZU</a>
+    <a href="/" class="site-name" aria-label="NUZU News home" onclick="window.scrollTo({{top:0,behavior:'smooth'}});return false;">NUZU</a>
     <a href="#section-us"       class="nav-link nav-us"       role="menuitem">US</a>
     <a href="#section-mideast"  class="nav-link nav-mideast"  role="menuitem">Mid East</a>
     <a href="#section-world"    class="nav-link nav-world"    role="menuitem">World</a>
@@ -6456,9 +6456,7 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
   try {{
     var savedScroll = localStorage.getItem(SKEY);
-    var homeClick = sessionStorage.getItem('nuzu_home_click') === '1';
-    sessionStorage.removeItem('nuzu_home_click');
-    if (savedScroll && !homeClick) window.scrollTo(0, parseInt(savedScroll, 10));
+    if (savedScroll) window.scrollTo(0, parseInt(savedScroll, 10));
   }} catch(e) {{}}
   window.addEventListener('beforeunload', function() {{
     try {{ localStorage.setItem(SKEY, Math.round(window.pageYOffset)); }} catch(e) {{}}
