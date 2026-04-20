@@ -100,7 +100,7 @@ jobs:
 
       - name: Regenerate Android project from twa-manifest.json
         run: |
-          printf '2.1\n' | bubblewrap update
+          printf '7.0\n' | bubblewrap update
 
       - name: Install expect
         run: sudo apt-get install -y expect
