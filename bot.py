@@ -3373,12 +3373,8 @@ html_parts.append(f"""<!DOCTYPE html>
         .light-toggle-label {{ display: none !important; }}
         .nav-updated-ago {{ font-size: 0.58em; margin-right: 2px; }}
         .font-size-btn {{ font-size: 0.63em; padding: 2px 5px; flex-shrink: 0; }}
-        .wr-nav-wrap {{
-            height: 36px; margin-left: 0; padding: 0 6px;
-            border-left: 1px solid var(--nuzu-border);
-            flex-shrink: 0;
-        }}
-        .wr-fullscreen-btn {{ font-size: 0.65em; padding: 3px 7px; white-space: nowrap; }}
+        .wr-nav-wrap {{ display: none !important; }}
+        .wr-fullscreen-btn {{ display: none !important; }}
         /* Hide video banner on mobile — iframes never load there */
         .banner {{ display: none !important; }}
         /* Tighter hero on mobile */
@@ -5603,7 +5599,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     _r_items = [item for cl in _r_clusters for item in cl]
     b_summary = source_summary(_b_items) if _b_items else ''
     r_summary = source_summary(_r_items) if _r_items else ''
-    _show_trust = _sid not in {'sports', 'culture', 'tech'}
+    _show_trust = _sid not in {'sports', 'culture'}
     b_content = render_clusters(_b_clusters, show_trust=_show_trust) if _b_clusters else '<p style="color:var(--nuzu-dim)">No breaking news in the last 3 hours.</p>\n'
     r_content = render_clusters(_r_clusters, show_trust=_show_trust) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
     _dot_map = {
@@ -5623,13 +5619,14 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         _b_label = 'BREAKING &#8212; Last 12 Hours'
         _r_label = 'RECENT &#8212; Up to 36 Hours'
     # Mobile section video wrap (hidden on desktop via CSS).
-    # Tech, Sports and Culture intentionally have no mobile video feed per
-    # editorial decision — a blank area is preferable to unprofessional content.
     _vid_map = {
         'section-us':       ('iipR5yUp36o',  'U.S. Live'),
         'section-world':    ('Ap-UM1O9RBU',  'World Live'),
         'section-mideast':  ('gCNeDWCI0vo',  'Middle East Live'),
         'section-business': ('iEpJwprxDdk',  'Bloomberg Live'),
+        'section-sports':   ('7NPsqFA14eQ',  'Sports Live'),
+        'section-culture':  ('HfgIFGbdGJ0',  'Culture Live'),
+        'section-tech':     ('5aS-8QCRdGE',  'Tech Live'),
     }
     _ve = _vid_map.get(section_id)
     _msv = ''
