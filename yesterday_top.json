@@ -1,6 +1,267 @@
 {
-  "today_date": "2026-04-20",
+  "today_date": "2026-04-21",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Canadian woman killed in shooting at Mexico's ancient pyramids - BBC",
+        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB4bS1kRU44Z0RPaU13VENFcVhlTTFKelhnUGNNZTZQUnZ4VnZpLU0wOVE4WWlGbGNOZFhrNjFMME9vSzVXS0ZxSTdvRkl3bUE1OVh1NXZoTkd5UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 4,
+        "lead_ts": 1776727337
+      },
+      {
+        "title": "Anthropic, Amazon Tighten Bond in $5 Billion Investment and Computing Deal - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQN0NRZVNGRFVoMmlaZU1MNnBadTVRQmZTd3YzeVNfaGowNldFb0lQaDczem93TXpmd1BrVUF3T3BIamcwbGNJbmNPVkliZUJpRmg5SnpPc0tVLUtLQjQtMEpNYVl3bXFicUFoSnhYeEk5Sll4SVMxeUROQjJfempxNEMtbGlrUHh4TXNnS252UGx3M1dYUTRFUHBYclRJNmpVV0NNcFFyRXhublQ3ZHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 4,
+        "lead_ts": 1776724260
+      },
+      {
+        "title": "Chavez-DeRemer steps down as US labor secretary amid misconduct probe - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPT0c0UEVWemwwMnJpRHlOcE1aS0Q5bGppdjBlUVFoUDQxTDB6MldDeldxTDNLMEdWMG9JOHg5aHlFdGRZaUc5RjUxdTNmM2JlQXZ2eTY0Vm5sQ0lhLTQweVMwMHhLcXprNjl0S29MMmRrZTlMRk91ZjhuOHZLNVlzQWdtaU56ajNDX2RSTHZwME5vQ3JubUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 3,
+        "lead_ts": 1776727583
+      },
+      {
+        "title": "Officials probing how Louisiana gunman who killed 8 children got the weapon - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQeGQ0YzhlRDlvMTNnNG5rY3dqQkQ4WkR3ZkMtMFBYUG9HSGFaeVhEZ2E5Vmp3c2N0cUszNWdBcUtVMFJrTFhIYjE2QlBBeURSRHhVT0NBT2VIVHdjNl9PNzhiMG1SQXlIN2xva21VU0lNLVEyM0Rwa0RTdlgyejd2UkNNV0hVdDVNMHVXTkVxdDREMHRMbmhkdjZyR1NPb3VnN3Nua2NrekFlaXM5QUY1NGVSdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 3,
+        "lead_ts": 1776721655
+      },
+      {
+        "title": "Swinney turns down Trump invitation to White House banquet - BBC",
+        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB0M0NWTXZydk5WOUx3WEdkc3ZBbTNIdG5yc0tESTlBblNiaVJrSmpzQ0Y5QnhyeUh5djIyUE40RHVyQks2OVpHZFM1YWRtQ1h2R2pkUGR0Wi1tQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 2,
+        "lead_ts": 1776721960
+      }
+    ],
+    "mideast": [
+      {
+        "title": "War in the Middle East: latest developments - cbs19news.com",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPTXpScmZpc1VES2hBaFdITUxTMHNyUl9McDlWOW9ubm5GekQ5Q0pndHNiNVF6TnNPbGpaZ2kyOUJTYmc1Wl9oc2dTZTYxS1lpNUVIalNSZU5QUTg2TEY4YkNLN1pFS1B0S0RMVGZ1TmY5NWNCNk0wSWdSLTFXVDVSREQ1WUVEa2laMk10N0hmYlRBalNLSXZpQUtybHpTeTJJNnRDNU5tamtLalRfRU16RFRoQUJFQ2JMZ1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "cbs19news.com",
+        "n_sources": 11,
+        "lead_ts": 1776730669
+      },
+      {
+        "title": "Iran talks on shaky footing after U.S. seizure of ship in Strait of Hormuz - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOOEF3c1RWVkl0UjJPZE9XU3d5eHh3YWllYndMTlhKY2xLQjRBMkN1bkVUQ2NXTWpUd2ZWUDlnajlETy01Z2pkbWhMdGFnb1BrXzlrWGd5MkRKOWxMNzVNbU53a2ljZzE0RDhIYkU3bVg4MjBnMTg4QWNldUFjYy0xbERVTVpsXzRORDYyd3FBSzlpV1hjQ19RVTVmcjB2TDJBQXNmNW9yYXRzd0dZVEhmeTZlSQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 6,
+        "lead_ts": 1776728135
+      },
+      {
+        "title": "Oil Prices Soar After US Seizes Iranian Ship - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQb2xKaFJxVmhhWnd3Y3daWnNDTmVROG1ndnU5aGM5dl95VE4zMWE3aEtLRW9nVlpycEpKaHZTemhwRmVPWDJtdWlMeC1fMDl6Q2tuR1lFeDNHT1BGaFZUU2l0LUo0TWZ6NWRrMTZqOGw1bTJZOWhvN05ZU0FWZjl1YTMyaXF1Q2ZnZENKSVAzZTVOeUxBbTdRV190VThPbDQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 4,
+        "lead_ts": 1776728348
+      },
+      {
+        "title": "How Likely Are U.S.-Iran Peace Talks in Islamabad? - Foreign Policy",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQUkwzOVNxb0J5SVdEcnNrLV9KNExqclNGcTZsSmF5Z2dhNThmWVg5R0w3b2NCT0RzOGpqUlB1Nl9yYmRLdmpIbDBUTnRrOTR5TGV2YUNTSF9hVkhZbVJ3RjV0elNJMTU1aURONk96UTRNYXJ3Ry1nNkMxMllWMGZuOVBxdWJUM1FsWEpNZ3htOWNuLXA4VHg4UE8xWDhlU3VlSER3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Foreign Policy",
+        "n_sources": 4,
+        "lead_ts": 1776715388
+      },
+      {
+        "title": "Iran does not accept negotiations with the US under threats, top negotiator says - Arab News PK",
+        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBjOWpoX01scmFyWnF6Y01TZ0hUVEI2SW91S3BPX0JCbl9udnpQMVpqZ0ZIa1I2Q3c4dGVLSDNBWWI2elNZNVJDNkNVT1JSVlRsRmhwVTFDbDBlMUps?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Arab News",
+        "n_sources": 3,
+        "lead_ts": 1776723525
+      }
+    ],
+    "world": [
+      {
+        "title": "PM Wong, Malaysia\u2019s Anwar reiterate need for diplomacy amid Middle East crisis - The Straits Times",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQTkNzcThtcl9FUkxpR0p6T09neEdtZEZQZEoxWDlMcURYVjhTSmtKWWc0dlA4VUFNeHVQLXNqUU9PR2pDc1R1cUFxSGQtelNPZ0NnZnNnNGNUSE9GajFldWNIOTh6bldteU9uV21aOUVfdm9GVHZtdlhBSGVBZWlRb284dmEwZ19TX1hUYUg0Y1phbENGeU0wWkZNM0syZ3RVNXJOSTJtUDVUOUlHaHBFZGw1bk1KUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Straits Times",
+        "n_sources": 2,
+        "lead_ts": 1776728181
+      },
+      {
+        "title": "Asia's clean power transition accelerates fall in global fossil-fuel use - Nikkei Asia",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNbGdNTFBFYjM4cVctaGVzTHNOUGc5TWlrY2hfVmN1WEdTaXNMNDdsaFlyWmZxVzlBb2VaeEhyQWZqbExJdlRnVUVQbUE3RFRLSFc1dlVLT3ZtamdFMzhMdGpHUDV2bUwwQmZaSEZHWlhEdWtkOUowS0tweUdPRXZvMXpENklOVUdNV19keTlKLTVZM2FsWWt5S01pMkFGUnlDelRVOERQYjRqMTRwUFhUNFpn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Nikkei Asia",
+        "n_sources": 2,
+        "lead_ts": 1776726060
+      },
+      {
+        "title": "Gulf worries U.S.-Iran talks may cement Tehran's 'golden' grip on Hormuz - The Japan Times",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPbTVSeWFlVHFZejJFN1lQU0FVeDdkZVFKZjY4VlBVUWh3bHBTMER1LVl3V1lTZU82U1FuNUVLcVJWcll3b25kdXBDeEtBbGdHcWZTaHRtME1BRV9fak84MlA3VzdBa0Y2eXRCU1R1RVh5aXYzWmZaVXEzTWZ6by1WQWc1aUxYektlcVVwUWlFZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Japan Times",
+        "n_sources": 2,
+        "lead_ts": 1776725640
+      },
+      {
+        "title": "Oil jumps on Hormuz tensions, stocks mostly retreat - The Straits Times",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQTVA2UE5aRFFjTXhiUTZyOV9zUEtiYWtZR3pCR01idHd3djFsV3g4YWZJUGtsSnA2a2E1ZG90UTdxeTY1cDJTV2JWQ0pVTWEtcENMdmpReVVpSlRFajJNeTVrcDExaFQtRGJGYmswSHVPVzhPV1hQT21pbVpmaXdPbGtjN3djNzg1RFdZY0taVVJ5RmhtaFZNOGN3aHNrYUpzTzdYZFlvUk9VU2Z6?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Straits Times",
+        "n_sources": 2,
+        "lead_ts": 1776723600
+      },
+      {
+        "title": "Next, an Iran nuclear deal with Chinese characteristics - Asia Times",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPLU5veUFJX3RXMWRlZ21Wd0wtaXdSZG5ncHh1TkhQc2JfbjA5S0poMndqX0lzRDM4YTd5U0VWaktuX2dDUDZtdE1MWTViX2M3QVFCV3Z3QmRKdjl1Z0hBaGZjbHVFTVlTSzRMLWJpY25SRHFkQmdScjd0Vm9kWWdnbTJfR2ZjZElIWGEyXzhR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Asia Times",
+        "n_sources": 2,
+        "lead_ts": 1776723195
+      }
+    ],
+    "tech": [
+      {
+        "title": "Your Questions About Anthropic\u2019s Mythos AI Model, Answered - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNT3d4NzFoZGN2WE8tT282djYwZnNoUVM2UXBFX28xV2dtaTRsRE5TT2lCZFczSnZfMnB2bDlBYVotS1hJTnFOc0FOYnRMNXBzYU5BaFRXRWlpaE1OQ0MzTG5CYXQtMzI5dmtWZmJNNkl0UWJhMDhnNkhaUksyRThIdEpPd0NrUGV4Q0puX2Y4SnVXTzB0Q0t4Tmp0ZmJxdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 3,
+        "lead_ts": 1776715692
+      },
+      {
+        "title": "Save $800 On the Alienware Area-51 Gaming PC With AMD Ryzen 9850X3D CPU and RTX 5090 GPU - IGN Southeast Asia",
+        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNRW9rNVpBZHlQX2FObEltVFNPQXZxTXBfMEFiVmpIdndiMm5obC16LW82V0d5SW9uTjliX2tYT01qM0NWVmlZU3RXTXJoaHRNQ2Rad2xtQnRaZ2NlZ2syNDFjb0F4UFI2S2NDaVNsYmRxVktqZ1pHZXJyLUZkN3ZGbzc0azhWand6UlQyZHFYcWFuN2VMYU1Yc2VFZmo4a1RXOF9nV1MwN05udkJQQXRvYlFtWnVKMk1FN0tGaHpzeHVKMXlJSUR3TjV3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IGN Southeast Asia",
+        "n_sources": 2,
+        "lead_ts": 1776731297
+      },
+      {
+        "title": "The Sonos Earth Day Sale Is Live for 5 Days Only, Extra Savings on Refurb Soundbars, Speakers, and Subs - IGN",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTTFlVG9HRER3T3NETkx1R1Z0UWVPdVRIU2hSSTduNWxDb0Z4YVlNbFR2eEFkMGU1ZURyWFB1bnVMTEVDeUFXQ005bE5wd0E0TnBjR245RVVidVBVMmJWc0NGaGhvNk5CeTAxS3hWOV94SUFtaW8tR0dVNnUyOE96N2NJUWhQeHVncTRaZUtCcW9Hai1ZaFZrWHo4aEtwdHBMRlczVWs1clE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IGN",
+        "n_sources": 2,
+        "lead_ts": 1776720143
+      },
+      {
+        "title": "Blue Origin rocket grounded after satellite 'mishap' - BBC",
+        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5pMFF2QlNjNTFuZ0ZoUWZaUVlYb2NidkNrQ0JVZWtwNkQwdEVCcUhzSmJsT3RvdG9LaWloTnprTGYzUjlWZW4yalJQZTJOeE1mU2pQNWJZU3RUUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 2,
+        "lead_ts": 1776714971
+      },
+      {
+        "title": "Elon Musk Ignores French Prosecutors, Widening Tech Rift With Europe - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOcEhvQXIxamlMQmxoeHd1YnVudDhJY3RxcUd2SjZXeVFIUWhwNm1EQzB2bGs5N0d1YVplbF9qa3R2ODRoNzNVQXE5T0F6S3M1dU05TXpDLXRxNURMN2VFTm1FRFZxVUdtbkszMGhkZ3NHOGNfS1BGejhXT01qQ2hVNW51UVE0dGttMmhnZmV3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 2,
+        "lead_ts": 1776711298
+      }
+    ],
+    "business": [
+      {
+        "title": "I called Tim Cook a loser in 2013. He went on to make Apple the biggest winner and prove Silicon Valley wrong. - Business Insider",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPb1lBb1k2b1dXZElLMEU5dFZzNTVab0htUFNJUXJrUk05czgtc05YS3dpeWQ1ZmxzYnVpUUpjenZRZUpHZ1prMk1ZRHVTdWdiYVhmUkRQMHNGNUh1MzUzcTlYa0pjOXdZMjRjR013WHFVU2s5TURTU3RIYVFlWlVSUkQ3cDBVYTRUU2pGOUE2cjhWX3lNQUxzaVZjNkpmbHM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Business Insider",
+        "n_sources": 5,
+        "lead_ts": 1776731093
+      },
+      {
+        "title": "With 4,000 Locations, Jersey Mike\u2019s Just Confidentially Filed for an IPO - inc.com",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAyM3lYSkI4SXlEcmJCWURGbjIxZEpCODRFV05FMk5oZGlwRVI1elpFMGdOM2NjbnRSMWhWbXoyRXpZTTRLcjNMYTNWeU5rODloM3ZhRGQ2WnpPWW1YYmU4R0ZKSkhiSmNkbS1rZGgyTHlLMmVz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "inc.com",
+        "n_sources": 3,
+        "lead_ts": 1776706387
+      },
+      {
+        "title": "Apple CEO Cook is lauded by investors as he prepares for new role - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNbTdfSzJwWGl3N1Z2cU1RMTFfTVhjZXBkVDFTcHV6bzIxOVpVbWJlRWRYLXVfQlljVEFHQWcwcXh1ZllfUmpvdkFlajdWaU5mTmVsTGs1ZGNfQVRodFdyLWZWRGxOVEFRSTMxRUY1U3lfTjMtV2pKT2FYNjNTNm16WHUydE1PMTd6Zk9uTmQ4N21NSm9HLWRnanc5Wmtya1RxajMtMEJqWm9RVzN4dTVHN1FUSXUtcFdwV2F3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 2,
+        "lead_ts": 1776725386
+      },
+      {
+        "title": "Anthropic, Amazon Tighten Bond in $5 Billion Investment and Computing Deal - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQN0NRZVNGRFVoMmlaZU1MNnBadTVRQmZTd3YzeVNfaGowNldFb0lQaDczem93TXpmd1BrVUF3T3BIamcwbGNJbmNPVkliZUJpRmg5SnpPc0tVLUtLQjQtMEpNYVl3bXFicUFoSnhYeEk5Sll4SVMxeUROQjJfempxNEMtbGlrUHh4TXNnS252UGx3M1dYUTRFUHBYclRJNmpVV0NNcFFyRXhublQ3ZHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 2,
+        "lead_ts": 1776724260
+      },
+      {
+        "title": "The $166 Billion Tariff Refund Portal Is Now Open: How Your Business Can File a Claim Today - inc.com",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNbENkLXNBZ0FGZTRIYUYtakNPUjktWHlZa0Y3TEpXeUduQWxVX1NCenp5bV85TmtraGFWWGh1YU9iQjZ3eDJXSjVpS2lGNjA4VV9IWHNBZDVYYzZROEhuUHJfUlNsazRlcVJ4dmhEQmV2NTd5X3BEYW5YMm5GZGhseDAzbkZObjdsN0dOcVdkbTB6MUdrN0ZIUkhsNkwtbzJrMk5RbmdzUHAtMzc4eUdEalFWdzVYQWk5QmpaOGdva1pkamc2djZJUlc3SF9Ldw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "inc.com",
+        "n_sources": 2,
+        "lead_ts": 1776722662
+      }
+    ],
+    "sports": [
+      {
+        "title": "Wembanyama wins NBA defensive player of the year - RFI",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNUk4wVW95dUZkV0JHeEd4SU5YV0d6WTg2SG1Rcnp6MmVxUlF2NWpSY0ZSd0xDcUJuZy0zaXB0QkxYQ3FPZHdRS2ZfVGVCTHo5eVdUaEdVWXFzVk9iWUo5UXNwZHAwVEZYRkNidnNxTjJTQXN4MkQ0NmpuM05FZDU3dUJLaE9LM2VOT2hnZUgxdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "RFI",
+        "n_sources": 7,
+        "lead_ts": 1776729240
+      },
+      {
+        "title": "Premier League Title's High Stakes - Front Office Sports",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQUUszY1BXdEpNTFFRWkJMZEVmbTBmbkJQajVXNzJzdGtKWWNydXpDci1YcmxaV1l5YWpfR0ZCNGV6blFqNHFHcFc0dWhPbmdUVG1nTkUzZkZkdFR0a1RUbjJ4TG1IUk13NnNfY0pHcHpOQW1IZG5tdjB6TnBkRmFYUA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Front Office",
+        "n_sources": 4,
+        "lead_ts": 1776724284
+      },
+      {
+        "title": "USMNT roundup: Red-hot Folarin Balogun chasing Ligue 1 history as Americans' World Cup form takes shape - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOc1lFeGpyaG5rNTFNOG1sVnRwcGVMRU5zdnhYVGluX3BKSDF2OTkxVllROFRRM3puRGhubVozc3NBMVk3Z1RGLWozMWx6SmtUcnlQVjNnbnpnZnpZWGxZdVBfUGZubWc3b2NKeU1TRDZwZ2w1VTFzZmUzVG5EUGRnQXFLR3N1QmFMcE01WnpDTkVRYXNwZll1VkxuUVlQT3pNbzdoLUlzUzFpQWF0STkyTkw1MUtmdWtSSTd2TjJEdm5ZS0VPNlJIcG5pOUhLOGdwQU5Fc3hkX29FUkZXSVFwaUdvZDdSYU9aa19TaA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 4,
+        "lead_ts": 1776719107
+      },
+      {
+        "title": "The PGA Tour Will Not Return to This Iconic Golf State in 2027 - Sports Illustrated",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE0tai1JamFDNThwaHlqc2dxV042NEFrUEQ1Wl9hRFRtQVhpdW9US1RzQnZ3djI3ckpRQ09tU0ZjTzkwWklHU1VVSlhMUWhTQk1sOGxPN2hVNUJ0VjlMd1dsLW9iMVRtQnRPUV9zejVKYjZQZ0ppY21OSmJLOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "SI",
+        "n_sources": 3,
+        "lead_ts": 1776730502
+      },
+      {
+        "title": "Victor Wembanyama wins Defensive Player of the Year, is youngest player to take honor - NBC Sports",
+        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOb2g2RFp5VV8wMFd5cGlaam1QdUFoSWJ4emlYdnVSTDJsZkdvTVRqTzBFMnJISG9fNmNCZHEwLTlFMlN2bUdaMktjTGYwbEVVaUs1QWxJbTktNmZ2ZnM5OHBhNEVBM2pDdVBlX09FZ0RTb2p2UE9DNW1lR1lyeXQ2XzZES3lmbzhLZEtDVnJlaW02U0pLWmhZT2ptQ1FaQkNaQUtLMHVyZTRwV01PdGdsYTNuZXZUeERJT3dv?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC Sports",
+        "n_sources": 3,
+        "lead_ts": 1776724793
+      }
+    ],
+    "culture": [
+      {
+        "title": "Sandra Bullock and Nicole Kidman\u2019s witches are back in the \u2018Practical Magic 2\u2019 trailer - Los Angeles Times",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUUlOb0lpWWEteW9hNTNKeHFzVjNpQm02T0FlQURwS2xSVEZTZXI3eW52SmJxamVsSi1lT1g5S2RldEQwNmZlUldXS0YxLWMzdVZ4YmJ4V2hJejQteGtYbXNyYW1rZjZ6akFrVE52eFk4MlVSbGhVQXh4SC0wMndYbGh0U0NabFl4X09tRWRZa2tSUE44TVhYVU5ucVZiR2M4dldxNEFVX29BcTFlZE1JeHF0NEU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAT",
+        "n_sources": 5,
+        "lead_ts": 1776717273
+      },
+      {
+        "title": "Director David Frankel on highlighting the many shoes featured in \u2018The Devil Wears Prada 2\u2019 as seen in the original film: \u201cIf you didn\u2019t start the shot with the shoes you could never go back down to the shoes\u201d #devilwearsprada2 - facebook.com",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNUHRnbzREaWNjWkd4LXJSblVGZXNoejhHNnducFZmUzRhNUYzRlk2WHJLTkg5TUswUkczMHI2WEtYbUhJNUpzTE84Yk00eUptemt0aVBFZDJBTlBYci1BU3ctYkdOVWFVMzB0WElZNjduT1NYUmV0eDVOTTBjeUVmSW1aa01fSDFYOHlCbWE3VWlpS2hSSGFSeWlpc3ZUdGtOTEZHQmVqcVM4T0ctX1NNa0dGcXBaSEcyMFBZbzAxOVhJc2oyUUNLZFhuN2pnMTVLRTI0Qg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "facebook.com",
+        "n_sources": 4,
+        "lead_ts": 1776731966
+      },
+      {
+        "title": "Timothee Chalamet slammed by Charlize Theron over opera and ballet remarks - artthreat.net",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNTURSQzA1THh0ZXJTNHpFYXptbFdMZVNWWFlkNjNheE1XVUl4aDZRUEViUU85d29qaVNVTnAwZlhNUUVqYjEwd0RLdzdyZ1dKVHVKY3Bva1Z6TnlsXzdZMklwZDlWSTdCVjlDYzYweFM4dG16RGtOT1kwZTRGMTNyWEwwUFptSVgxaU83NGxPMTVOV09BTWJNc3NjN2o2aGh3bm9MMmNiVW1rLU5Kcnc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "artthreat.net",
+        "n_sources": 4,
+        "lead_ts": 1776731075
+      },
+      {
+        "title": "Anne Hathaway on the most rewarding part about revisiting Andy in \u2018The Devil Wears Prada 2\u2019 #devilwearsprada2 - facebook.com",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOUGZOdUlkZWUtSG51NWVCMHR4Tlh0bFc4RVNrQ1h0Y2Zsb2c3US1sQkhSRWhKcTdfX01LV2VyTTZVZjBYMWFveHM5d0hrS0s0NFNTUGNfUVlOaVg5TG5QbkNZcVlmX3F1a2ZOamhkQkVycG5VYWJrcUtBNDBJR3VRU25LZnZMMzZ0R19Dc2Robm9UVjZWRVlDZE5EZ3JMSHdWRHllQ3ZjYkJNRXFoODZ4cFcxQlYwMW1uMkhJWUZjZ24wNGhBTjVzRC1iQmlJenNsNTNYXw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "facebook.com",
+        "n_sources": 4,
+        "lead_ts": 1776730303
+      },
+      {
+        "title": "Let Olivia Rodrigo Wear Her Babydoll in Peace - cosmopolitan.com",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPN3BibFlTMzI4RFpEdm9OeWdBYVFMUkROa0ZqSjNzYXdka3NSSjlYUjlPS0w1dFZYV0IyR3dER1VfR0s2U2F1emp2Y3JNU1lMcTk2VGNqZFo0SEQ5WFRkakNVaV90UWpPckxjZEtPYUNGZWJKRXVhWmlCQ3dTYy1jbk0wc1J2dWppQUZDRkIwUmZLY1ktRWJfUW0yMTRRQmhuaEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Cosmopolitan",
+        "n_sources": 3,
+        "lead_ts": 1776721740
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "8 children killed in Louisiana shooting, police say - The Washington Post",
@@ -258,267 +519,6 @@
         "source": "The Times",
         "n_sources": 6,
         "lead_ts": 1776670500
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "Suspect dead after 8 children killed, 2 women wounded in Louisiana shooting - NBC News",
-        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPQmlpZGpPZjlUZU96TTZ6dndTSnJhZU00MkZEX3ZUVUsyaUJyazNCWXN6SnpmalN6aVFzb0VqcGN2RFkzdUM2UTFHR25lMW04eE9oNjJFQVE4NWpjTG0tUkxucElhUEl0RGJIbTVfYmYzUmx1SkR5Uzl0cU1BRTBBU1BWMTV0b1lxSFE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NBC News",
-        "n_sources": 13,
-        "lead_ts": 1776640153
-      },
-      {
-        "title": "8 children between the ages of 1 and 14 are dead after a mass shooting in Louisiana, police say - AP News",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQTVFUbUhTMUprUW9YV1NkU3ItcWxVMnJTQ2VhanpmT0FXMnJLMk42UENzWXJFQVpIdE5VMXk3eUI0aW5FT1VRb3BUclpZVFBmd2JrOVAwd25tWUM2YWhMNDRERTJXWmtjSGtZdGhWX1VkU2RzY1ZoMW1Eanllb25vUGdDS093UUhQQWpDRTB6b2ZLdGF2aThteEVn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 13,
-        "lead_ts": 1776636180
-      },
-      {
-        "title": "Eight children killed in Louisiana mass shooting, police say - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbWNOQjRsQmRKa2Uzc0FueGR1SGZOTDNKZnUzcHQ4enRfZTBzanRRSE83QnRYcF9XaVRwMUFQT3dvZFV0RF9pbFdXclZzd0ViY1FtS2c1RFVETnFoM0taSzJkUExtbG9yUnB5Qy1oNzh0NDBMaUgzME1pRENFTXphOVJxNmRudFh2OExySDdDNDN3UzdCM1d3T29CWHAweV9ybXZKTENfRVg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 10,
-        "lead_ts": 1776632289
-      },
-      {
-        "title": "8 children between the ages of 1 and 14 are dead after a mass shooting in Louisiana, police say - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQZFd3VGpyTmotWlVCWWpQQ1dnTVBrckZfTHVIcWE2eGFzazgtdzRJbmxjWXdfS0p3c2ZrRmlFZ2F3eUxDNm9ERzN1LWtpa1RJdEVWbVE2Yl9VYnF4ZVJCMFFJb0xnQ3pCbHhpRHRpRHdxdGYwYWx3azM3VHV2VnRsVzRuNkc4OXBoWFQxdmszcXlVOFZvT2lETFhTOGY4enRZYnE2RlZWaWlDbVR4THRGTlY5cmk5Qm55ZUp3TWVRbldXLUVnemRwS2FuWm40UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 9,
-        "lead_ts": 1776626988
-      },
-      {
-        "title": "8 children killed in Louisiana shooting, police say - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9mQ0pLWDBEVzJXQnJQR0pWRmdzaFo3bWRjck1jMUpoMmdJV2ViWThqc0s0SGt4VjBJUUJ1N3B5V3hnTDdUOG0tTGtRNWZJNnZsMk9Gdkd3U1I2Rk9fUWY3Y0xJUUxHOFlBWTRwUE9OdUJjTmtWOTdr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 9,
-        "lead_ts": 1776623237
-      }
-    ],
-    "mideast": [
-      {
-        "title": "Iran, US still \u2018far\u2019 from breakthrough amid Strait of Hormuz impasse - Al Jazeera",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPUmRhQ2NKWm80RWtLd1pCcVhVX2g1Z2VHR3YwaTBHeUc0VWZ2RDdnNWhwNjBSWlVZa25ibkNNb0V0NU5XRzFwTzNQTFE1VXRUZnAtQUFERV91b214U2FEU25Wa1dJcnlmaUVLZlJ6Q1hNU2VUZzFhOEhGUGEtTk52STd1c3lkSUxacTdObkU2bkloRkt6TmRTR29PREE3Vl9OeW9PYnJ0d9IBrAFBVV95cUxPY3lSWExLamlTZGdhQ1JKeXByc1lrT2pSZF8yaTlnZlB0cFA4N2NVSlJTMDViSzFqaUtWaHNpLWYza2I1SFloVDJjUUd1YTVYWkN3SkNHeDJUNXdJU0s2bXhHWXNBbkhOeXdIeVNjMjVyc2Y0WkliZVNndFY3bGdrai1CemR6WUNYTmhQanhaYXJvWjRRYnhsM28wdExzdmZoa3NHUHhmZklXZWZN?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 18,
-        "lead_ts": 1776588823
-      },
-      {
-        "title": "Iran\u2019s IRGC says any ship approaching Strait of Hormuz will be \u2018targeted\u2019 - Al Arabiya English",
-        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNa3lsOVJCMFZ5WWJwSkYwMFBBZGVRVnZxRjh2WmozaXpkOUhGZXkxd2dLVDFkLWlpV1Vkb1FKZDNIZzF3MDJpQXRMWWFOTE5lOXllR2JtT0FrX19DVl9ZYTJYd0Y2OU9rd19PbW9CUllmdWVraE5ZajdiQ2NNVFlfSzFRa3V6TzZ5TWliR0R3aHI2dXFuc2M4RHItNWJXSjdidmZjZHNIaVUwRlVIa05hTXlub0czNWVsaEtINGYxR3dUcVVQMjlQZ0ln0gHPAUFVX3lxTE5ITXNRaHRKWjNYcms5YzAxajJ3RC1SVW1FX2JaVnJzYTU1OENwVnFHMXVtcklDSFVNWVNMSGJEN0FZM2JGbFY5UVBQRlAtZjY1bzhUanlnQW51T05UVTgzejVuRFY0dkpoVU9XOEhhWDVSUE5zU3RqU3B6Q0FEbm80WTl6NG1fSGY3ZlE2Q1JRRno2RTdLOXltYk1DYnpnZGJZWDUybUhqLWl1c1RpZ25GblZURDF1MllWSzRKRERpTzdSVTRMX3NPOUJqSm8zSQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Arabiya",
-        "n_sources": 15,
-        "lead_ts": 1776579540
-      },
-      {
-        "title": "Iran\u2019s 'nuclear option': Strait of Hormuz remains key leverage in future conflict - ynetnews",
-        "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9FYzdYZU5GTDNYZDJqXzR5MHpBRmpuNGN2YTV6U1JVZGllb3M3blBfSUUzWHFFcllkbk9wWTA3MzZHXzBuaEk0anJrSjRmMmJTTkxrVEd3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ynetnews",
-        "n_sources": 14,
-        "lead_ts": 1776596966
-      },
-      {
-        "title": "Oil prices drop 9% and Wall Street rallies to a record after Iran reopens the Strait of Hormuz - AP News",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNczhYVTVYcWpJTnJqMnF3bXdOdVpkWWxUaV94R1llVG1OU2tTTng0ckhXaHZtZEtkU2lPVmxWVW1oX2dRSUtmTHFuQTN3MXB5a1l3NW82ZWYwVmtXanl2WTRBdlltdTVRb0RYWkxfRVAwSmk4Qnpkd3k2bDFwdlRCWGcybk5lQ3R6YWtraGl0LXFhekpzN0Nn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 12,
-        "lead_ts": 1776618065
-      },
-      {
-        "title": "Iran Strait Of Hormuz Reversal Exposes Rift Between Regime Leaders And Hard-liners - i24NEWS",
-        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxONmFLaVhiV2hEazc3QlBaX0RFcWtXVTdJWElDckxKT1ZRZnJ5M0plWGh3THhmYzVqcm5FbXBmVXlORXN2dGRBRmNiTU1MNmh0cDR5clN0U2hHcG51aWtSTnZ0YjdhNm1yN3BFdzZ1aUlYYmNSV012QmU4UXloWGs0STF4bXBmZGN5cFJFZGlHN1pVV1hvZVk1Tng5QVRTRjh3dVJibDNmWldaR0Z4WUV0cC1jRE44NnV0Qlp2VXNGOWtuTzdXVlJMb1BELTdzamtQdkxMOTl5Qk82dFlDOTV1SDR6VW4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "i24 NEWS",
-        "n_sources": 12,
-        "lead_ts": 1776576240
-      }
-    ],
-    "world": [
-      {
-        "title": "India warns Iran of consequences after 2 tankers attacked in Strait of Hormuz: Officials | India News - Hindustan Times",
-        "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNVVFMNThMZDFDVHFxZ2dRSWJpVmlUdUp0NXlMbFVyUlEzcF8td3B4dmdBU3NDalhvcWszaDIwYkZoMmVwMHFEd2l2TWhKSTFwUUROeVR2V2VFVmVYbjJHeHVTSW9PaGQ3VnFJUGptOXFMYjBCOGppdV9oX201bXBHRDhTeUdSUDExbVdDdDJiTUU4Vml4NHpjSWl6Y1ZlWkdlLURxNXduSk1MdWVNZDRPd192ajdCR0F4ZTdBV0NMcVpxVXV6VENabXA1STFNZElwY200dlV5TVJ6YXJSQUV2OFlFRlZMLXNN0gHuAUFVX3lxTE9TYjJaemMxUm1meEFCYXZMR0NzaUt6ODM3RjFjSHRFTkg2LW1nRnNZZzV4X3BjcVREN2JGSWpRZnEyUTdabWd3cmVySHpWNlc2eng1OUkzVFRTRUJKUWZMN2dGSWVoZVB3VWtRX0JtQ1FvbWlkSWVsMUlQT3o0SWZfWkVEX2pVVEdpOFc5UlFmU2NySFNMbHNxdnNXbXpsM0dxSDlpOVY5NVg3TW5UNWNXV1dGRElUX1hVN2M3QVBidzIyVGRtYTF2MjIyTEE5OWlxdHdvaWVidHA4b05MRG13OU5wNXpISkRXYUtmbVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Hindustan Times",
-        "n_sources": 14,
-        "lead_ts": 1776584752
-      },
-      {
-        "title": "Energy concerns ease in major relief for India as Iran opens Strait of Hormuz | India News - Hindustan Times",
-        "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPbEJuU3lKZUtlU200OTI4YUlUUWlVQ3NKb05VMkJMSXQ1ZWh4WmVNZ3ZHMkhSMl9vaEo2X2REdENvd0hSYl9IYjJLVmtRVnV2LWlMVThRa0hQdkdGTmo2Ql84Z3RZRkhLVDhuS3NINUxJUUg5MGJ3cTliX3BjdXdJMEZKc2Z5ZkdfWkpaRldQR0xFTjZvaHkzWmxIR2lpdkZSUklPNnc1TzR2OGtvcEJRQ3kzNm0zUUZVMWpIc2xjNnl1SHZyRGFUOGYwNUc1T3NVcnc4SGVn0gHbAUFVX3lxTFBBX1lKc25VWGh2dk1qa1I2QnJwUVNDcnE3UG1JelBJeHV6NXBPTFBmbHBhR3U5UFhLdUdUMFFUM3hzdjlibHFUdFVWOHhlUV9vZnNNSG8tdGFEOVlucVZ3cU9vUjh4ZGpveUxRbzI2ZUNneXRldlhvWW9uLVF4d3E0T1Q1Z2M2STk1ZzBIbUlqdFpmNlNHX1Vqc2VTNUh2dDhkLUN4S0piRUFpSk5BZzk3ZURmNmNBQWhuUkM2NXNmU1M3VkM0Tm42V1VCSmZJeVYwamVFdDRrdGdaZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Hindustan Times",
-        "n_sources": 12,
-        "lead_ts": 1776574350
-      },
-      {
-        "title": "Strait of Hormuz blocked as gaps remain on Iran peace talks - The Straits Times",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNTWFMU090ZUM2Y2FYdEltWlBqbWJWTjdUYlExSkFSX3FDSGJJZTROZVplUDE2Q2lIbkRYSnRENUZWRXJDR0REc2tuVkhka05iZ254d0FOYTdqVFdneHNMYlFydW0xME5ZeXlrV2ZWc3NvdDJ6S1JseUQwOTk2Q25qSmRCVDUxWTdTX0RfWDN4alpoVnJoNVIxRUhnYnNTSHA1NlVaNA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Straits Times",
-        "n_sources": 11,
-        "lead_ts": 1776591278
-      },
-      {
-        "title": "India protests Iran fire on two vessels in Strait of Hormuz - DW.com",
-        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTWcyRHA4VnFCSGFVS190TURicDUwa0hXWWFod0xjSE40cG51d1lUc1VZWGNXSmF3T19NTXU3clRQSjhxNTAzR3lZRHVWN0NmUjB6VXV6RTd0bnpLeW9TRFQzTVVZWTNTT09RUHFybkRBQVRobVIwTERGYmk3TEtPaHZxY3NScXMzdWdvaWFjR2tZQlBRd1ZRSU5mWQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "DW.com",
-        "n_sources": 9,
-        "lead_ts": 1776615495
-      },
-      {
-        "title": "Iran mocks EU diplomat\u2019s call to reopen Strait of Hormuz amid tensions - Crypto Briefing",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQMHFSbGVWTGctR09ONXc0YmFDbDVVR1l4MW10TFpCM3NmNGc3RkdQVjlYOGVhQ3FwaEF4Wk56bVNIb0JOWmtNS3d2QklSQjE1UWxkRkZIQnV4SjNvN2sxWEgyZmlvWjBSTThaa1p2b1hPbTJOODlxTVZkbUhHNEJFYzd6LU1kcGJFckNHWjRsczl4RnlucVFVMVNlX29xQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Crypto Briefing",
-        "n_sources": 9,
-        "lead_ts": 1776606029
-      }
-    ],
-    "tech": [
-      {
-        "title": "Google is in talks with Marvell to build custom AI inference chips as it diversifies beyond Broadcom - The Next Web",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5SWl9GcDB2MGdialllYkdESG83OC16SXU2MjdheFZCanBxbm5hZHkwSXRKSmJ4OTdmajlmQUwyRVg5UmlnMXlkOTRhbS02dURTME5QNVg2d19mNTNxY2ZKTUd5aWRvdmxPdGRCR0dPNUZXbTFxY3lwVm5SLURXSWs?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Next Web",
-        "n_sources": 4,
-        "lead_ts": 1776611820
-      },
-      {
-        "title": "Google in talks with Marvell Technology to develop two new AI chips: Report - Business Standard",
-        "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxObVdDWGFOQ2x4MUVLMmJCLVlFV2JzQUJUc25uUS1CSVMyRU02Q0U2N3FXODRqWjItVVFtZVJWd3g1UFdxa21OSEZyTEdLQWpRc1M2Z0RDVUdjV0JJYmtpYUZfSURYT1pxeXd5bERFekFlSFpURzZCMndZbktjQmtTOU9ZZzdIdUhHZFFPcHJKM0puTkZTQ1VZWTM5N3hxVF9CckRJcTF3Y0N0N3ZOTU1kdnZWZ2JkY2lZeVh2d19zVWcwNXZnMlRRM0QwMFlBWW02QzFDa1VmdjdXeG9yVTBObWdJODZIcUNM0gHoAUFVX3lxTE5tV0NYYU5DbHgxRUsyYkItWUVXYnNBQlRzbm5RLUJJUzJFTTZDRTY3cVc4NGpaMi1VUW1lUlZ3eDVQV3FrbU5IRnJMR0tBalFzUzZnRENVR2NXQklia2lhRl9JRFhPWnF5d3lsREV6QWVIWlRHNkIyd1luS2NCa1M5T1lnN0h1SEdkUU9wckozSm5ORlNDVVlZMzk3eHFUX0JyRElxMXdjQ3Q3dk5NTWR2dlZnYmRjaVl5WHZ3X3NVZzA1dmcyVFEzRDAwWUFZbTZDMUNrVWZ2N1d4b3JVME5tZ0k4NkhxQ0w?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Business Standard",
-        "n_sources": 3,
-        "lead_ts": 1776608197
-      },
-      {
-        "title": "Anthropic CEO visits White House amid hacking fears over new AI model - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZk9iMkZSZEx1YWxvRXFzRm9vYWV4RWRaYlJFWjBYSFF2MHhITy10a0ZfbDNrTnptZDY4UTR6UmJZT2NSanpFSGZsMTJKRUdaRmZyOTVrTTF0Z2lKRXItVXpMNHlaak11aVlZbklIcVkwcWppdWs1T0lyakwxU3VTOFU1b1huWXd1?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 3,
-        "lead_ts": 1776491710
-      },
-      {
-        "title": "Blue Origin\u2019s New Glenn put a customer satellite in the wrong orbit during its third launch - TechCrunch",
-        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOa2g4Q1NsOHpPYWYtYy05dmd6WWJJNkhjVmZobk1DbWMxVWc4QlZ0MTNNUkZwRTh0bVZGUElZeEs4dFhDZGJYaDBoUDFWVklqUFdXZjd1NjljLV9NWUhtaVpLTlJXYUxWN2tQcXVvMWVxM2NZczdFcXVpcWxkVThmdUllZnc3VXlTeVNYSUlWZU8xaUk3ZkFZRlJHYUluS1ZyOXBjeHlTTWl2Q1pzM2o1WURseDJadFptcU5TTE1EWFdsdEk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TechCrunch",
-        "n_sources": 2,
-        "lead_ts": 1776625329
-      },
-      {
-        "title": "Trump wants to stop states from regulating AI. This Utah Republican isn\u2019t listening - FOX 8 News",
-        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOUHp2SldQTzJkY1JBb1lpSG5pQ2hrdGZTR1gtZ3laUzdILXFwWVdtRzJ3UW1vaU03T1FWcXNvMVZtQ3ltS3pndXVmWHFlQWRUTE14WVJHbWNfd0w2QmxtWS15SkhDdVcxRVN6SXo2ZVNwUzhzZFlSVS0xQXdsZmd5SVFiUE5jLWFKaS1pb3BoMlFOZnc0NW1HM1B4SDd6MDZOSGdVdGl0S3VaTUlRcTV5bjRVaHpVYU5ZdUd1YWpTRkRnY0xMamlZSjl0SkXSAdIBQVVfeXFMT0hSUVlrcGdzU1dWZkVSSWlfWGNTOExsNmlQNk9zSS1GX3RrSnlja2l3bHozSXZONDE0V2pXVXVET0llTTdMa3BlU1hVRVgwZW1fdlNWVkZQb2pIbU9laktPalF0RmplTkdjdkRTSkw3VU9XSmJjaHNhckNzNjhycVhDVUlDTno2Ri1jQ0psUFlqbEdlOXBYYnNKRkFqT0VUQjZWWDlMWm5wVFRqZzF0VzNUUUQycFJCNXpJRVh2UUNzSEZEX2ZIdVFXazRsbzFybWlR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX 8 News",
-        "n_sources": 2,
-        "lead_ts": 1776623512
-      }
-    ],
-    "business": [
-      {
-        "title": "Federal Court Temporarily Halts $6.2 Billion Nexstar-Tegna Merger - Barron's",
-        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOdTEtZTZuMjc0XzVPeFBLRkpBMWNKTm1SWTR6WmQwaXJPenFZSEFWQlBJbkJxd1k2a01vcnpLYVU5a3VEZzJGQmNBZzNCV3lTZUJ1TlRaVlg4N2I4X0djdXN3TjUwbGQzcWZSZ2VvSW9XQ1g4TTg1a3JXSFNtWWpqYWJzSEdYdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Barron's",
-        "n_sources": 7,
-        "lead_ts": 1776526260
-      },
-      {
-        "title": "US stock market: Wall Street at record high after Trump says 'Hormuz is open'; Dow jumps over 800 points, Nasdaq up 1.5% - MSN",
-        "link": "https://news.google.com/rss/articles/CBMiugJBVV95cUxOb3RzMWVIdURHWmZCQjJ2VU1nS0lkUWNqVXktUzJOWWczVl9IY21WTHBhRkU2ZmhhMUlLZEdaSGc1TXpuaVR1WHdfdXM1TUNfa3dSV2hYb2FCMm1XQmdCMDZ2cjUyNkFsTGxGdHhVV25hbDlJanVLVVhNRmRXQ2M0cHZIV2trc2dadEoxd2s0TmpXeVMyYVRtaGRyQ2ZjS1VyNTlDLUJaTE11SGtJRzk4cTR0cUEydDhUME1lR2x6R2o4blp4dGQ1clZnbV9mYXFqR0Z2eGw5bXF3c1NVdWpfT2UyTE1yUUlKNWdDMlhMNGtlelhxRDdhMXVwXy1XeWdKU1ZVOXN0U3kyVXlydGV3WnRFZHBRMk9oWlgwaFNGQVdfdVk5cXlFbzJ1OVhyc2EyY2lIazVKdy1lQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "MSN",
-        "n_sources": 4,
-        "lead_ts": 1776583747
-      },
-      {
-        "title": "Canada's PM says strong U.S. economic ties were a strength but are now a weakness that must be fixed - Fortune",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOaWRGaFNYTTJobHp5R1dUQ1BTYmYtdElnTTBLejhsRWNja2J4Y1Y5T2pZT3NSS29yUWdCS3I0QmdIdDZLcVpnMUNoUnFEa0FYT0pQRUhMdE52aThubDBGWXg5bEtOUzNrS09RS0Q0RE9YWGMwMEZJMnZKMk9Jc1J0SDl1ejZRNG5HcGVfN3RxbDZrQzY5VFhVTnl2VFhGYWNnM1BCWGdCM1VYVk1TYzNvTW1YSE95NXZR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Fortune",
-        "n_sources": 3,
-        "lead_ts": 1776632580
-      },
-      {
-        "title": "Tesla, Intel, Boeing, Capital One, and Many More Stocks to Watch This Week -- Barrons.com - Moomoo",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPRTBFSklTakZsQzl1dmkzLUtOdjJTaGJIQ0VURDJ2WEk1LTRDYWU5NEwxbDJBZHZTX19oYTlpc2xOQ20zS2RVZmR6T0swSFpFTjV4Rm9WQlllNzRZMGpTUzRtWjJGYjBvZkFMQ0gtWUk1bEhfMFd1ZjZIUExYUzAtZEp2c3VtaVFVa3BUbFBOS0h4WjFFUk9KTmZaa3U?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Moomoo",
-        "n_sources": 3,
-        "lead_ts": 1776621845
-      },
-      {
-        "title": "The S&P 500 and Nasdaq Composite Just Hit Record Highs -- but Wall Street's 2 Biggest Risk Factors Keep Getting Worse - The Globe and Mail",
-        "link": "https://news.google.com/rss/articles/CBMipwJBVV95cUxPYW1kVHVldUota19pRFBtYm84RUNJN1oyTU50V0NtazFjVmZrZmsxVWJrc2NBaVlVQW50QVZ2NFd2SmliLWpBTktKNk1hVkJhVFVUZHROWlZsbTduSGNhdzJlcUs3U1RvVllvUnBjVFFvWXF6VVVBd0RkUElnOVpLcW0ybXROUDJLUzNPYnFuUDVnNU9RYWkxdDZmaFFqOEVVcXN5VjhVYmVBY3UxQ2VBbV93MUwzNVhXdWsybklYLVdMQVU0YlRuN0VCUGYtODF6bThqZEZtVmJKYnh4UmN4NURHZTQ3OXg3clRyY3pYWXFNSEoxUC1CNmZReXhRTFhUakphTnVUWXRlcHZrdmY5Z2V1Y3hXZTA4R0RoeUxnWno2TExOY053?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Globe and Mail",
-        "n_sources": 3,
-        "lead_ts": 1776605484
-      }
-    ],
-    "sports": [
-      {
-        "title": "Erling Haaland: Man City have 'nothing to lose' in Arsenal clash after playing catch-up in Premier League title race all season - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxPZ2tYb0pkZmFYVHV6eGRadTI0YU1VU3NQNzZQZ2JNYVQxcW1UZUVJVk53VDZoSDlubk9DNnJ5YlBqNVo0UWYwQWxXVzd6WmdUeFUtbnpfekxBbVBZZGtXMERYZVdOUWVrUEotVURjQVBaWUptR3g4MmEyQVd5enpJbkR6RnRxREZob1VWTG94d2J3ZUIyMkRuNS1OREtHSVpYck91TWVaTTZQeWhxYXBfaWVqdFBSTWhwNUtPWG9MX2djSXFwVDcybXdGYzM4RzV0Q3hQcjlKUk9LN3c0S2ljemxfVV9wcWFJWXRSdXMtN0hqV2cydjBKdkJwRWRELWloUGdkWUhiWjZKT0k?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 12,
-        "lead_ts": 1776635110
-      },
-      {
-        "title": "Manchester City 2-1 Arsenal: Erling Haaland settles enthralling encounter as Premier League title race takes fascinating twist - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxNZTI3a3RKUG5HXzNsYll5cTlnckNjV2lZUWhMTnNfM1pEbkhJTVV4YUw2bk0wOUxIempyM3g0RXgxY3pvYWQtS2EtZl9NRFVQR2RMT1NPRVlzT282eTN6NWFrNGJKQlNqZnpxRFdGYzdvYXE3X2hxV0xYTEhpUzZHMzBsbFFqRFY0akZieHYza2E4ZVRhSmdfV2NnOWg4Y052LXNRSjVEaTVVc0x6LXNTV3A3Z242SUlhX3RCcjJBQ0tvOUVUckU3Tm5HQXVlMFBNOFF6ZXQwZlVTem5uT19KdkNiM25FR1hqM093aDFxa0ZlU0RPVHVRZUx6RjQyRi03Uno3S1U5NHFQWUZP?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 12,
-        "lead_ts": 1776633394
-      },
-      {
-        "title": "Man City 2-1 Arsenal: How do Mikel Arteta's Gunners regain momentum and initiative in the Premier League title race after disappointing defeat? - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxNcktuRnY5SjZwNlEzb0hZRjg5TWRXeDloWW8tNTgtMGk2bnV2N1k2dkR5OGExY0ROcWlGREZnelhuLUdxc2E2RWtqX1BmRlFwTXV0ZkVOQXoycTFVMmJXcnVJem1LbVQ5RnpEcXJCNk9XblJVWlE4VFFqR0dydzNnUEVTM1RXMjYzVFlEN3RnaGVfNnpOYWdCcHFIMS14bTMweG0yOVpJa3lGUURNc01pTmV4dmVCQXZDTUJ2TXA0MTVyd3ZKQ2RkMklUdlF4VC1wdmh2b1hjakFuV0Nua3EtTVpqWlp4bjA2S294U01JdWxpa1FWN0ZxUHlXR3JSMHNBWHUzcTk2QlN4TFduMkxqYnR3eGFINGRTRlZaLWdqbE0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 10,
-        "lead_ts": 1776628284
-      },
-      {
-        "title": "Man City vs Arsenal: Why Mikel Arteta must win at Etihad to finally prove he can deliver when it matters most - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNQmpHZ18wcDF2TTlkLXphalFxclNSdm44Q2pjNHhvRmFPM3U3WWo3MGZqUmVEUzczSFlTLVVwVjVjQ1M4WjFqeVVZU0J1QXVzMTk5TWd4OENia0pKZnhkTkl4X3NIek1XTTNGNExseGNBZHN3T1l1dFl0cFdwUml4bTJTbk5mODNiaFplSXhKSmFXX2hkNWhZMllObEJHWFpCTWhRTlJ4Q0VCa3F6V1lhRU5YOGdIS21GNXVJRlg3RkJFX0ppX3R1amNhNWEwRmFDX0NJOHdDbWlvXzd2MGJXd0d6MVFUbTRnemZHS3liZVh0bFpHVXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 8,
-        "lead_ts": 1776631607
-      },
-      {
-        "title": "Pep Guardiola reaction \u2014 What did Man City boss say after beating Arsenal in title six-pointer? - NBC Sports",
-        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxObzVCVjRfdTk1Y0xQVnNRLXVQWkstNzlMM2lwRTlROFBScE9JTC05SVpkYUtvQjFBLW13MFdnYWtQMEhWZjMxekNhNnZZbHBVN1k0TFgxYnFWUVFsSnJqWE9jRnU3TUl1QzAxSEpHcTN5SmdBRGtMYXBtR19XRkN3eUU3Wm1ENnVNOVVubHRrcHBwQ3YxZHhLUE1pUm9mZkRabVlTdGVLR1dNM0RTU0hxTkVrZXh4cC1kX25XZ2tnUUZraVRjMTRyVVRR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NBC Sports",
-        "n_sources": 8,
-        "lead_ts": 1776625480
-      }
-    ],
-    "culture": [
-      {
-        "title": "Madonna\u2019s \u2018I Feel So Free\u2019 Officially Released Following Surprise Coachella Appearance With Sabrina Carpenter - Yahoo",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOc0RrTnFwZTNzdE9uNFVFMWlTb1R6bXFuUERkMFN4cWxRSE9ZcEJrVzZ3S3pXMk90MzFXSkFsc3pibWF6bnY2UE96VVFoU044bHYxRVV3d3lIb0VELXdWWUo3YnRCbGdtTEZwVGtzc0pOTU5DSFBWd3B5ZVJjWllSeXpKaFdTRy0xZ1hnV2luRTlocl9RSWl1aHFyUG5yTEhySEFRUjBB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo",
-        "n_sources": 10,
-        "lead_ts": 1776524857
-      },
-      {
-        "title": "Coachella headliner Justin Bieber brought out two major guests on stage \u2014 SZA and Billie Eilish \u2014 during Weekend 2. Read more below. - Facebook",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPaWFVVkFjQXk5WWV4MmN2cmRiOWZWMWhXQ2Y2Qm1hNTh0SlptTjFKdXhQMVhFcVlqdEdhTTB3UmxHb3BwMzlBSE9HenV2bi1ya0ZzRXl6VklGRmNlUFU3SHlmV1I0M0VRa2JfLThJVEhRZFJlUW1JeEhrQUtCV1ItUTV0SVZWSExMT0JZRW9ydmlVR19IcDRsYWJnX1VKWHMxQUoxSFBtSFV0MkRsTmVNaTZnWlhtZ3RlSmxaN20tU3FLcXQ4X3BpbzkyRUhUeFVvVWdxaA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Facebook",
-        "n_sources": 9,
-        "lead_ts": 1776636014
-      },
-      {
-        "title": "How Hailey Bieber Supported Justin Bieber at Coachella Week 2 - ELLE",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNUndKLUVOeXZmc0pDZTJpVnBEb19tRmx5eFRsZGJjcjVRdlZYLU9wVDdjUVlUOUphcWVZbVJleTliSVRtWGJka3dPMVE5YlpIeS1IbHZPNTc3cTFmVVNYSGhlWjhudzA5M0FYOG9sWnUtakVtUEFsdzJQM3I1dTJ1eDM4Z3ZjQTlGdFc0SnZzTS1zanN1S3Qxd0pMdWE5WWsyWVNBM0JLWkk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Elle",
-        "n_sources": 7,
-        "lead_ts": 1776631560
-      },
-      {
-        "title": "Justin Bieber Brings Out Billie Eilish, Big Sean, and More Stars During Coachella 2026 Performance - E! News",
-        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQWjB6MWdIZzBtVG1wbHN6NXpPRUg4TDlFZVFud3ZEMk1lQkhkYlJzTWdxMmlhVFg3RGhEWlROMk16RDhpeTVNVXhpRG0ybnhQSGV6cFlROGMyOFFYRHprei1DTmRmRVdRQlVwVEc0Tm1DMEFqT2F0Nl83RF9NMGxFOEludTdfd2t5OWRLZ1JEcHRfdUpqR2pYVkszR3pKX1RYVnk4YUZLNUxQRkZ6Ym1PaFlUN0YyN3lhZWxtOVBrcGJ3M3JQTE5vUFBvcloyMXBlYVJTT1owSkI?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "E! News",
-        "n_sources": 7,
-        "lead_ts": 1776628351
-      },
-      {
-        "title": "Charlize Theron takes swipe at Timoth\u00e9e Chalamet over his \u2018reckless\u2019 ballet comments: \u2018I hope I run into him\u2019 - Page Six",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPY0dpTlNfMTV4VzJYY3BhMUFRNXNNeW5kbTEwUkVTZ0F1T3BHMnhKc0JvdmxQUGtFQ0U4THM5c0luVmExRHRVWGxNNG1IbnUtVEtkTk9OdzFYUlgyM1NqYzVueEQ0T1UzZTZyUkZJT0VidE9XLVlWT25vZ2lrUjhJM09hWVcwTEdkWGpSdXAyUVhjWnFZRzhQR0hZQ2w4cXRtZHFEZHl1YmtzOVdiOGtoVmhuZ2lwSVFVOGEtaHROZWV2b3lSWVBxWQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Page Six",
-        "n_sources": 7,
-        "lead_ts": 1776610980
       }
     ]
   }
