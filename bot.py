@@ -2837,8 +2837,8 @@ def render_clusters(clusters, show_trust=True):
                 clean_t = strip_source_from_title(title)
                 dtitle = clean_t[0].upper() + clean_t[1:] if clean_t else clean_t
                 safe_dt = dtitle.replace('"', "'")
-                trust_pip = ('<span class="src-tier-pip" style="background:' + tier_color
-                              + '" title="Source reliability"></span>')
+                trust_pip = (('<span class="src-tier-pip" style="background:' + tier_color
+                              + '" title="Source reliability"></span>') if show_trust else '')
                 out += (
                     f'<div class="cluster-item" data-link="{link}">'
                     f'{trust_pip}<span class="title">{dtitle}</span>'
@@ -5599,7 +5599,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     _r_items = [item for cl in _r_clusters for item in cl]
     b_summary = source_summary(_b_items) if _b_items else ''
     r_summary = source_summary(_r_items) if _r_items else ''
-    _show_trust = _sid not in {'sports', 'culture'}
+    _show_trust = _sid not in {'sports', 'culture', 'tech'}
     b_content = render_clusters(_b_clusters, show_trust=_show_trust) if _b_clusters else '<p style="color:var(--nuzu-dim)">No breaking news in the last 3 hours.</p>\n'
     r_content = render_clusters(_r_clusters, show_trust=_show_trust) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
     _dot_map = {
