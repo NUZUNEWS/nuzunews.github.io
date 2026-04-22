@@ -3142,7 +3142,6 @@ html_parts.append(f"""<!DOCTYPE html>
     <link rel="manifest" href="manifest.json">
     <link rel="alternate" type="application/rss+xml" title="NUZU News RSS Feed" href="feed.xml">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%230D1B4B'/><text x='32' y='46' font-family='Arial,sans-serif' font-size='24' font-weight='900' fill='%23FFFFFF' text-anchor='middle'>NZ</text></svg>">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta name="description" content="{SITE_DESCRIPTION}">
     <meta name="theme-color" content="#0D1B4B">
 
@@ -3170,6 +3169,8 @@ html_parts.append(f"""<!DOCTYPE html>
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
     /* - CSS Custom Properties (Design Tokens) - */
@@ -3190,7 +3191,9 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* - Reset & Base - */
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    html {{ scroll-behavior: smooth; }}
+    @media (prefers-reduced-motion: no-preference) {{
+        html {{ scroll-behavior: smooth; }}
+    }}
     body {{
         background: var(--nuzu-dark);
         color: var(--nuzu-text);
@@ -3417,6 +3420,7 @@ html_parts.append(f"""<!DOCTYPE html>
         display: flex; align-items: center; padding: 0 16px;
         animation: bb-slidein 0.5s cubic-bezier(0.16,1,0.3,1);
         color: #dde8f8; cursor: pointer; transition: color 0.15s;
+        will-change: transform;
     }}
     .breaking-banner .bb-text:hover {{ color: #fff; }}
     .breaking-banner .bb-counter {{ display: none !important; }}
@@ -3613,7 +3617,7 @@ html_parts.append(f"""<!DOCTYPE html>
         align-items: flex-start;
     }}
     .column {{ flex: 1; min-width: 300px; }}
-    .section-wrap {{ padding: 0 0 10px 0; }}
+    .section-wrap {{ padding: 0 0 10px 0; content-visibility: auto; contain-intrinsic-size: auto 600px; }}
     .top-divider {{
         border: 0; height: 2px;
         background: var(--nuzu-border); margin: 8px 0;
