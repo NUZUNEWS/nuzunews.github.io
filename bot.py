@@ -2436,6 +2436,11 @@ def _resolve_entry_source(entry, fallback_name):
             return suffix
     return fallback_name
 
+# Global cache: maps article URL → plain-text summary snippet (1-2 sentences)
+# populated by _fetch_one_source, consumed by render_clusters.
+# Zero API cost — raw data from the RSS <description>/<summary> field.
+_ARTICLE_SUMMARIES = {}
+
 # Circuit-breaker state loaded at module level. Tracks consecutive failures
 # per feed URL so repeatedly-broken feeds get skipped rather than wasting
 # time on every run.
@@ -2545,6 +2550,22 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                     # attributed to the query term (e.g. "Deutsche Welle"
                     # when the article is actually from Reuters via DW feed).
                     true_source = _resolve_entry_source(entry, source_name)
+                    # Extract plain-text summary (lede/blurb) from RSS field.
+                    # Trim to ~2 sentences / 200 chars; stored globally for render.
+                    _raw_sum = entry.get('summary', '') or entry.get('description', '') or ''
+                    _raw_sum = re.sub(r'<[^>]+>', ' ', _raw_sum).strip()
+                    _raw_sum = ' '.join(_raw_sum.split())
+                    # Remove any trailing source attribution that mirrors the title
+                    if ' - ' in _raw_sum:
+                        _parts = _raw_sum.rsplit(' - ', 1)
+                        if len(_parts[1].split()) <= 4:
+                            _raw_sum = _parts[0].strip()
+                    if len(_raw_sum) > 200:
+                        _cut = _raw_sum[:220].rfind('. ')
+                        _raw_sum = (_raw_sum[:_cut+1].strip() if _cut > 80
+                                    else _raw_sum[:200].strip() + '\u2026')
+                    if _raw_sum:
+                        _ARTICLE_SUMMARIES[link] = _raw_sum
                     results.append((ts, raw_title, true_source, link))
                     seen_local.add(norm_title)
                     count += 1
@@ -2780,10 +2801,13 @@ def render_clusters(clusters, show_trust=True):
                           + '" title="Source reliability"></span>') if show_trust else '')
             anchor_id = "hl-" + hashlib.md5(link.encode()).hexdigest()[:8]
             safe_title_attr = display_title.replace('"', "'")
+            _hl_sum = _ARTICLE_SUMMARIES.get(link, '')
+            _hl_sum_html = (f'<span class="hl-summary">{_hl_sum}</span>' if _hl_sum else '')
             out += (
                 f'<div id="{anchor_id}" class="headline" data-link="{link}" data-ts="{int(ts)}">'
                 f'{hot_dot}'
                 f'<span class="title">{display_title}</span>'
+                f'{_hl_sum_html}'
                 f' <span class="ts-label{ts_cls}">{time_str}</span>'
                 f' {trust_pip}<span class="src-label">\u2014 {friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
@@ -2848,9 +2872,12 @@ def render_clusters(clusters, show_trust=True):
                 f'</div>\n'
                 f'{_trust_display}'
             )
+            _cl_sum = _ARTICLE_SUMMARIES.get(lead_link, '')
+            _cl_sum_html = f'<span class="hl-summary">{_cl_sum}</span>' if _cl_sum else ''
             out += (
                 f'<div class="cluster-lead">'
                 f'<span class="title">{display_title}</span>'
+                f'{_cl_sum_html}'
                 f' <span class="ts-label{ts_cls}">{time_str}</span>'
                 f' <span class="src-label">\u2014 {lead_friendly}</span>'
                 f' <button class="bookmark-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
@@ -3192,6 +3219,8 @@ html_parts.append(f"""<!DOCTYPE html>
     <meta name="twitter:image" content="{SITE_BASE_URL}icons/icon-512.png">
 
     <script>if("serviceWorker"in navigator){{navigator.serviceWorker.register("/sw.js").catch(function(){{}});}}</script>
+    <!-- Restore font-size preference synchronously before paint to prevent flash -->
+    <script>(function(){{try{{var s=localStorage.getItem('nuzu_font_size');if(s!==null){{var sizes=[13,15,17,19,22];var idx=parseInt(s,10);if(idx>=0&&idx<sizes.length){{document.documentElement.style.fontSize=sizes[idx]+'px';document.documentElement.dataset.fontIdx=idx;}}}}}}catch(e){{}}}})();</script>
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -3730,6 +3759,32 @@ html_parts.append(f"""<!DOCTYPE html>
     .title {{ color: var(--nuzu-white); font-size: 1em; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.45; }}
     .ts-label {{ color: var(--nuzu-dim); font-size: 0.78em; margin-left: 4px; }}
     .src-label {{ color: var(--nuzu-muted); font-size: 0.85em; }}
+
+    /* Article lede/blurb shown under each headline — zero extra API cost */
+    .hl-summary {{
+        display: block;
+        color: var(--nuzu-dim);
+        font-size: 0.80em;
+        font-family: 'Inter', Arial, sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+        margin: 2px 0 4px 0;
+        font-style: italic;
+    }}
+    body.light-mode .hl-summary {{ color: #6B7280; }}
+
+    /* Breaking banner mobile marquee */
+    @keyframes bb-marquee-mobile {{
+        from {{ transform: translateX(105%); }}
+        to   {{ transform: translateX(-105%); }}
+    }}
+    @media (max-width: 900px) {{
+        .breaking-banner .bb-text {{
+            overflow: hidden;
+            text-overflow: initial;
+            white-space: nowrap;
+        }}
+    }}
 
     .new-dot {{ color: #EF4444; font-size: 0.65em; vertical-align: middle; margin-right: 3px; animation: hot-pulse 1.3s ease-in-out infinite; }}
     @keyframes hot-pulse {{ 0%,100% {{ opacity:1; transform:scale(1); }} 50% {{ opacity:0.2; transform:scale(0.55); }} }}
@@ -4367,19 +4422,23 @@ html_parts.append(f"""<!DOCTYPE html>
         justify-content: space-around;
         align-items: stretch;
         box-shadow: 0 -2px 12px rgba(0,0,0,0.4);
+        overflow-x: auto;
+        scrollbar-width: none;
     }}
+    .nuzu-bottom-nav::-webkit-scrollbar {{ display: none; }}
     @media (max-width: 900px) {{
         .nuzu-bottom-nav {{ display: flex; }}
         body {{ padding-bottom: 58px; }}
     }}
     .nuzu-bottom-nav-item {{
         display: flex; flex-direction: column; align-items: center;
-        justify-content: center; gap: 3px; flex: 1;
+        justify-content: center; gap: 2px; flex: 0 0 auto; min-width: 52px;
         color: var(--nuzu-muted); text-decoration: none;
-        font-size: 0.6em; font-weight: bold; letter-spacing: 0.05em;
+        font-size: 0.52em; font-weight: bold; letter-spacing: 0.04em;
         text-transform: uppercase; cursor: pointer; border: none;
-        background: none; padding: 0; transition: color 0.15s;
+        background: none; padding: 0 6px; transition: color 0.15s;
         -webkit-tap-highlight-color: transparent;
+        white-space: nowrap;
     }}
     .nuzu-bottom-nav-item:hover,
     .nuzu-bottom-nav-item.active {{ color: var(--nuzu-white); }}
@@ -5185,12 +5244,24 @@ html_parts.append("""
     <span>World</span>
   </a>
   <a href="#section-mideast" class="nuzu-bottom-nav-item" data-section="section-mideast" aria-label="Middle East">
-    <span class="bnav-icon">&#9888;</span>
+    <span class="bnav-icon">&#9888;&#65039;</span>
     <span>Mid East</span>
   </a>
   <a href="#section-tech" class="nuzu-bottom-nav-item" data-section="section-tech" aria-label="Tech News">
     <span class="bnav-icon">&#128187;</span>
     <span>Tech</span>
+  </a>
+  <a href="#section-business" class="nuzu-bottom-nav-item" data-section="section-business" aria-label="Business">
+    <span class="bnav-icon">&#128200;</span>
+    <span>Business</span>
+  </a>
+  <a href="#section-sports" class="nuzu-bottom-nav-item" data-section="section-sports" aria-label="Sports">
+    <span class="bnav-icon">&#127942;</span>
+    <span>Sports</span>
+  </a>
+  <a href="#section-culture" class="nuzu-bottom-nav-item" data-section="section-culture" aria-label="Culture">
+    <span class="bnav-icon">&#127916;</span>
+    <span>Culture</span>
   </a>
   <button class="nuzu-bottom-nav-item" id="bnav-saved-btn" aria-label="Saved articles">
     <div class="bnav-saved-wrap">
@@ -5502,7 +5573,14 @@ ts_html += '''
 </div>\n'''
 
 ts_html += '''<div class="search-bar-wrap">
-  <input type="text" id="news-search-input" placeholder="Search NUZU..." aria-label="Search NUZU headlines">
+  <div style="position:relative;flex:1;display:flex;align-items:center;">
+    <input type="text" id="news-search-input" placeholder="Search NUZU..." aria-label="Search NUZU headlines" style="width:100%;padding-right:34px;">
+    <button id="search-clear-btn" aria-label="Clear search" title="Clear search"
+      style="display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);
+             background:none;border:none;color:var(--nuzu-muted);font-size:1.05em;
+             cursor:pointer;padding:3px 6px;line-height:1;border-radius:3px;
+             transition:color 0.15s;">&#10005;</button>
+  </div>
   <button id="news-search-btn">Search</button>
   <span id="search-result-count" style="font-size:0.8em;color:var(--nuzu-muted);white-space:nowrap;"></span>
 </div>\n'''
@@ -5955,6 +6033,76 @@ setInterval(function() {{
   if (unmutedPlayer) {{ _muteAllExcept(unmutedPlayer); _setAudioActive(unmutedPlayer); }}
 }}, 2000);
 
+// - Soft refresh: inject new content at top without a full page wipe -
+// Fetches the new index.html, swaps sections-wrapper and MRO strip via
+// DOMParser, then re-wires MRO click handlers. Falls back to a
+// scroll-preserving location.reload() if the fetch fails.
+function _nuzu_soft_refresh() {{
+  var toast = document.getElementById('refresh-toast');
+  if (toast) {{
+    var msgEl = toast.querySelector('span');
+    if (msgEl) msgEl.textContent = 'Loading new headlines\u2026';
+  }}
+  var savedScroll = window.pageYOffset;
+  fetch(window.location.pathname + '?_nc=' + Date.now())
+    .then(function(r) {{ return r.text(); }})
+    .then(function(html) {{
+      var parser = new DOMParser();
+      var newDoc = parser.parseFromString(html, 'text/html');
+
+      // Swap the main sections wrapper (all news columns)
+      var sw = document.getElementById('sections-wrapper');
+      var newSw = newDoc.getElementById('sections-wrapper');
+      if (sw && newSw) sw.innerHTML = newSw.innerHTML;
+
+      // Swap the MRO "Most Reported On" strip
+      var mro = document.querySelector('.top-stories-strip');
+      var newMro = newDoc.querySelector('.top-stories-strip');
+      if (mro && newMro) mro.innerHTML = newMro.innerHTML;
+
+      // Re-wire MRO card click handlers (querySelectorAll-based, not delegated)
+      document.querySelectorAll('.mro-card').forEach(function(card) {{
+        card.addEventListener('click', function() {{
+          var ac = card.getAttribute('data-anchor-cluster');
+          var as = card.getAttribute('data-anchor-single');
+          var target = document.getElementById(ac) || document.getElementById(as);
+          if (!target) return;
+          var sec = target.closest('.section-columns');
+          if (sec && sec.classList.contains('collapsed')) {{
+            sec.classList.remove('collapsed');
+            var colBtn = document.querySelector('[data-target="' + sec.id + '"]');
+            if (colBtn) colBtn.innerHTML = '&#9660;';
+          }}
+          var wrap = target.querySelector('.cluster-items-wrap');
+          if (wrap && wrap.classList.contains('collapsed')) {{
+            wrap.classList.remove('collapsed');
+            var tb = target.querySelector('.cluster-toggle-btn');
+            if (tb) {{ tb.innerHTML = '&#9660; Hide coverage'; tb.classList.add('open'); }}
+          }}
+          var top = target.getBoundingClientRect().top + window.pageYOffset - 60;
+          window.scrollTo({{top: top, behavior: 'smooth'}});
+          target.style.transition = 'outline 0s';
+          target.style.outline = '2px solid #1E4FD8';
+          setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
+        }});
+      }});
+
+      // Restore scroll position — user stays exactly where they were
+      window.scrollTo(0, savedScroll);
+
+      // Hide toast
+      if (toast) toast.style.display = 'none';
+
+      // Re-run column equaliser on new content
+      if (typeof nuzu_equalColHeights === 'function') setTimeout(nuzu_equalColHeights, 200);
+    }})
+    .catch(function() {{
+      // Fallback: reload but scroll back to the same position
+      try {{ sessionStorage.setItem('nuzu_soft_scroll', savedScroll); }} catch(e) {{}}
+      location.reload();
+    }});
+}}
+
 // - Refresh toast -
 function showRefreshToast() {{
   var toast = document.getElementById('refresh-toast');
@@ -5963,8 +6111,8 @@ function showRefreshToast() {{
     toast.id = 'refresh-toast';
     toast.style.cssText = 'position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#1E4FD8;color:#fff;padding:10px 22px;border-radius:6px;font-size:0.85em;font-weight:bold;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,0.5);letter-spacing:0.04em;display:flex;align-items:center;gap:12px;cursor:pointer;';
     var msg = document.createElement('span');
-    msg.textContent = 'New headlines available \u2014 tap to refresh';
-    msg.addEventListener('click', function() {{ location.reload(); }});
+    msg.textContent = 'New headlines available \u2014 tap to update';
+    msg.addEventListener('click', _nuzu_soft_refresh);
     var closeX = document.createElement('button');
     closeX.textContent = '\u2715';
     closeX.style.cssText = 'background:none;border:none;color:#fff;font-size:1em;cursor:pointer;padding:0;opacity:0.7;flex-shrink:0;';
@@ -5976,6 +6124,14 @@ function showRefreshToast() {{
 }}
 
 document.addEventListener('DOMContentLoaded', function() {{
+
+// - Restore scroll position if coming from soft-refresh fallback -
+(function() {{
+  try {{
+    var ss = sessionStorage.getItem('nuzu_soft_scroll');
+    if (ss) {{ sessionStorage.removeItem('nuzu_soft_scroll'); window.scrollTo(0, parseInt(ss, 10)); }}
+  }} catch(e) {{}}
+}})();
 
 // - Detect Web Share API and enable share buttons -
 (function() {{
@@ -6356,8 +6512,19 @@ document.addEventListener('DOMContentLoaded', function() {{
     window.open('https://news.google.com/search?q=' + encodeURIComponent(q) + '&hl=en-US&gl=US&ceid=US:en', '_blank');
   }}
   var debounceTimer = null;
+  function toggleClearBtn() {{
+    var clearBtn = document.getElementById('search-clear-btn');
+    if (clearBtn) clearBtn.style.display = input.value.length ? 'block' : 'none';
+  }}
+  var clearBtn = document.getElementById('search-clear-btn');
+  if (clearBtn) {{
+    clearBtn.addEventListener('click', function() {{ input.value = ''; clearFilter(); toggleClearBtn(); input.focus(); }});
+    clearBtn.addEventListener('mouseenter', function() {{ clearBtn.style.color = 'var(--nuzu-white)'; }});
+    clearBtn.addEventListener('mouseleave', function() {{ clearBtn.style.color = 'var(--nuzu-muted)'; }});
+  }}
   input.addEventListener('input', function() {{
     clearTimeout(debounceTimer);
+    toggleClearBtn();
     debounceTimer = setTimeout(function() {{ liveFilter(input.value.trim()); }}, 180);
   }});
   input.addEventListener('keydown', function(e) {{
@@ -6366,7 +6533,7 @@ document.addEventListener('DOMContentLoaded', function() {{
       var matches = document.querySelectorAll('.search-match').length;
       if (matches === 0 && q) googleFallback();
     }}
-    if (e.key === 'Escape') {{ input.value = ''; clearFilter(); }}
+    if (e.key === 'Escape') {{ input.value = ''; clearFilter(); toggleClearBtn(); }}
   }});
   btn.addEventListener('click', function() {{
     var q = input.value.trim(); if (!q) return;
@@ -6434,7 +6601,14 @@ document.addEventListener('DOMContentLoaded', function() {{
     var item = items[i % items.length];
     if (!item) return;
     if (textEl) {{
-      textEl.style.animation = 'none'; void textEl.offsetWidth; textEl.style.animation = '';
+      textEl.style.animation = 'none'; void textEl.offsetWidth;
+      if (window.innerWidth <= 900) {{
+        // Mobile: scroll text across the full banner width instead of clipping
+        textEl.style.animation = 'bb-marquee-mobile 12s linear forwards';
+      }} else {{
+        // Desktop: slide-in from right
+        textEl.style.animation = '';
+      }}
       textEl.textContent = item.title;
     }}
     if (sectionPill && item.section) {{
@@ -6448,7 +6622,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     }}
   }}
   show(0);
-  if (items.length > 1) setInterval(function() {{ idx = (idx + 1) % items.length; show(idx); }}, 5000);
+  if (items.length > 1) setInterval(function() {{ idx = (idx + 1) % items.length; show(idx); }}, 9000);
 }})();
 
 // - Read-article dimming -
@@ -7011,11 +7185,18 @@ document.addEventListener('click', function(e) {{
 (function() {{
   var FSKEY='nuzu_font_size', sizes=[13,15,17,19,22], curIdx=1;
   var incBtn=document.getElementById('font-increase-btn'), decBtn=document.getElementById('font-decrease-btn');
-  function loadSize() {{ try {{ var s=localStorage.getItem(FSKEY); if(s!==null) curIdx=parseInt(s,10); }} catch(e){{}} }}
+  function loadSize() {{
+    try {{
+      // Check the data-attribute written by the early head-script first
+      var preIdx = parseInt(document.documentElement.dataset.fontIdx, 10);
+      if (!isNaN(preIdx) && preIdx >= 0 && preIdx < sizes.length) {{ curIdx = preIdx; return; }}
+      var s=localStorage.getItem(FSKEY); if(s!==null) curIdx=Math.max(0,Math.min(sizes.length-1,parseInt(s,10)));
+    }} catch(e){{}}
+  }}
   function applySize() {{
-    // FIX 5: set body font-size with !important to override clamp() CSS
     document.body.style.setProperty('font-size', sizes[curIdx]+'px', 'important');
     document.documentElement.style.fontSize = sizes[curIdx]+'px';
+    document.documentElement.dataset.fontIdx = curIdx;
     try {{ localStorage.setItem(FSKEY,curIdx); }} catch(e){{}}
     if(decBtn) {{
       decBtn.disabled = (curIdx <= 0);
