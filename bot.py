@@ -4946,28 +4946,17 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
 
     /* ═══════════════════════════════════════════════════════════════
-       PROGRESSIVE LOADING — content-visibility keeps off-screen
-       clusters/headlines from being painted on first load. Native
-       browser support, no JS required. Huge perf win on mobile.
+       PROGRESSIVE LOADING — section-level content-visibility only.
+       content-visibility:auto was previously applied to .cluster /
+       .headline / .cluster-item with fixed intrinsic-size hints
+       (180px / 64px / 44px). Those hints assumed no article summaries.
+       Adding variable-length summaries made actual element heights
+       diverge from the hints, causing layout estimation errors of
+       thousands of pixels — so scroll-to-anchor and MRO jump links
+       landed in wrong sections. Removed from individual items.
+       Section-level content-visibility on .section-wrap (with
+       "auto" intrinsic size) is preserved for paint-deferral.
        ═══════════════════════════════════════════════════════════════ */
-    .cluster {{
-        content-visibility: auto;
-        contain-intrinsic-size: 1px 180px;
-    }}
-    .headline {{
-        content-visibility: auto;
-        contain-intrinsic-size: 1px 64px;
-    }}
-    .cluster-item {{
-        content-visibility: auto;
-        contain-intrinsic-size: 1px 44px;
-    }}
-    /* First N items per column stay fully rendered so hero area is solid */
-    .section-col-inner > .cluster:nth-child(-n+3),
-    .section-col-inner > .headline:nth-child(-n+3) {{
-        content-visibility: visible;
-        contain-intrinsic-size: auto;
-    }}
 
     /* ═══════════════════════════════════════════════════════════════
        APP-LIKE POLISH
