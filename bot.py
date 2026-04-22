@@ -2379,9 +2379,31 @@ WORLD_SOURCES = [
 
 # ====================== FETCH LOGIC ======================
 def normalize_title(title):
+    """Strip source suffix and lowercase — used for exact-match dedup."""
     if " - " in title:
         title = title.rsplit(" - ", 1)[0]
     return title.strip().lower()
+
+# Common stop-words to ignore when fingerprinting headlines
+_STOP_WORDS = {
+    "a","an","the","and","or","but","in","on","at","to","for","of","with","by",
+    "from","as","is","was","are","were","be","been","have","has","had","do","does",
+    "did","will","would","could","should","may","might","its","it","this","that",
+    "says","said","after","over","into","about","up","out","than","then","new",
+    "just","more","also","amid","not","his","her","their","our","us","we","he",
+    "she","they","them","him","who","what","when","where","why","how","report",
+    "reports","sources","according",
+}
+
+def _title_fingerprint(title):
+    """
+    Return a frozenset of meaningful words (4+ chars, not stop-words) from a
+    normalized title.  Two headlines with 5+ shared fingerprint tokens are
+    treated as near-duplicates and the older one is dropped.
+    """
+    base = normalize_title(title)
+    words = re.findall(r'[a-z]{4,}', base)
+    return frozenset(w for w in words if w not in _STOP_WORDS)
 
 def _resolve_entry_source(entry, fallback_name):
     """
@@ -2493,7 +2515,7 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                 # changed format. Don't mark as failure (valid RSS, just empty).
                 print(f"  WARNING: {source_name} returned zero entries")
             for entry in feed.entries:
-                if count >= 5:
+                if count >= 8:  # raised from 5 — captures more stories on busy news days
                     break
                 raw_title = entry.title.strip()
                 norm_title = normalize_title(raw_title)
@@ -2559,13 +2581,21 @@ def fetch_section(sources, keywords, pattern, blocklist, section_name="",
             except Exception:
                 pass
     seen_title = set()
+    seen_fingerprints = []   # list of frozensets for near-duplicate detection
     matches = []
     all_results.sort(reverse=True, key=lambda x: x[0])
     for item in all_results:
         norm = normalize_title(item[1])
-        if norm not in seen_title:
-            seen_title.add(norm)
-            matches.append(item)
+        if norm in seen_title:
+            continue
+        # Near-duplicate check: skip if 5+ meaningful tokens overlap with any kept headline
+        fp = _title_fingerprint(item[1])
+        if len(fp) >= 4:  # only compare headlines with enough tokens to be meaningful
+            if any(len(fp & kept) >= 5 for kept in seen_fingerprints):
+                continue
+        seen_title.add(norm)
+        seen_fingerprints.append(fp)
+        matches.append(item)
     matches.sort(reverse=True, key=lambda x: x[0])
     return matches
 
@@ -2830,7 +2860,7 @@ def render_clusters(clusters, show_trust=True):
                 f'<div id="{cluster_id}" class="cluster-items-wrap collapsed">\n'
                 f'<div class="cluster-sources-line">{sources_str}</div>\n'
             )
-            for ts, title, source, link in cluster:
+            for ts, title, source, link in cluster[1:]:  # skip lead — already rendered in cluster-lead above
                 friendly = get_friendly_source(source)
                 tier_color = source_trust_color(source)
                 ts_str = ts_to_pdt(ts)
@@ -5420,12 +5450,20 @@ SECTION_TOPIC_COLORS = {
 }
 for count, word in trending_topics:
     color = SECTION_TOPIC_COLORS.get(word, "#1A2A4A")
+    safe_word = word.replace("'", "\\'")
     trend_tags += (
-        f'<a class="trend-tag" href="https://news.google.com/search?q={word}&hl=en-US&gl=US&ceid=US:en" '
-        f'target="_blank" rel="noopener" style="border-color:{color}">'
+        f'<button class="trend-tag" style="border-color:{color};cursor:pointer;" '
+        f'onclick="(function(){{'
+        f'var inp=document.getElementById(\'news-search-input\');'
+        f'if(!inp)return;'
+        f'inp.value=\'{safe_word}\';'
+        f'inp.dispatchEvent(new Event(\'input\'));'
+        f'inp.scrollIntoView({{behavior:\'smooth\',block:\'center\'}});'
+        f'}})()" '
+        f'title="Filter NUZU for: {word.title()}">'
         f'<span class="trend-word">{word.title()}</span>'
         f'<span class="trend-count">{count}</span>'
-        f'</a>\n'
+        f'</button>\n'
     )
 
 ts_html = f'''<div class="top-stories-strip">
@@ -6333,8 +6371,13 @@ document.addEventListener('DOMContentLoaded', function() {{
   btn.addEventListener('click', function() {{
     var q = input.value.trim(); if (!q) return;
     var matches = document.querySelectorAll('.search-match').length;
-    if (matches === 0) googleFallback();
-    else window.open('https://news.google.com/search?q=' + encodeURIComponent(q) + '&hl=en-US&gl=US&ceid=US:en', '_blank');
+    if (matches === 0) {{
+      googleFallback();
+    }} else {{
+      // Scroll to first on-page match instead of leaving the site
+      var first = document.querySelector('.search-match');
+      if (first) first.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+    }}
   }});
 }})();
 
