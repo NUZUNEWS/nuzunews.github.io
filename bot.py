@@ -5465,6 +5465,14 @@ section_css_map = {
 }
 
 def render_mro_cards(cards):
+    # Maps section label → the section's DOM id (e.g. "section-culture").
+    # Defined here (not as a module-level) so it is available when this
+    # function is called, which happens before _MRO_SECTION_ID_MAP is built.
+    _SECTION_DOM_ID = {
+        "US":"section-us","Middle East":"section-mideast","World":"section-world",
+        "Tech":"section-tech","Business":"section-business",
+        "Sports":"section-sports","Culture":"section-culture",
+    }
     h = ''
     for section_label, cluster, n_src, lead_ts2, lead_title, lead_link in cards:
         safe_title = lead_title.replace('<','&lt;').replace('>','&gt;')
@@ -5480,12 +5488,14 @@ def render_mro_cards(cards):
                 anchor_single  = f"hl-{_mhash}"
                 break
         tag_css = section_css_map.get(section_label, "")
+        section_dom_id = _SECTION_DOM_ID.get(section_label, "")
         # Lead source favicon for the MRO card
         _lead_src = cluster[0][2] if cluster else ''
         _thumb_html = get_source_icon_html(_lead_src, 'nuzu-thumb-sm')
         h += (
             f'<div class="top-story-card mro-card" '
             f'data-anchor-cluster="{anchor_cluster}" data-anchor-single="{anchor_single}" '
+            f'data-section="{section_dom_id}" '
             f'style="cursor:pointer" title="Jump to story on this page">'
             f'{_thumb_html}'
             f'<div class="mro-body">'
@@ -6054,7 +6064,19 @@ function _nuzu_soft_refresh() {{
         card.addEventListener('click', function() {{
           var ac = card.getAttribute('data-anchor-cluster');
           var as = card.getAttribute('data-anchor-single');
-          var target = document.getElementById(ac) || document.getElementById(as);
+          var sid = card.getAttribute('data-section');
+          // Scope lookup to the card's section to avoid duplicate-ID collisions
+          var target = null;
+          if (sid) {{
+            var secEl = document.getElementById(sid);
+            if (secEl) {{
+              target = secEl.querySelector('[id="' + ac + '"]') ||
+                       secEl.querySelector('[id="' + as + '"]');
+            }}
+          }}
+          if (!target) {{
+            target = document.getElementById(ac) || document.getElementById(as);
+          }}
           if (!target) return;
           var sec = target.closest('.section-columns');
           if (sec && sec.classList.contains('collapsed')) {{
@@ -6341,13 +6363,31 @@ document.addEventListener('DOMContentLoaded', function() {{
 }})();
 
 // - MRO Smooth Scroll -
+// When the same article URL appears in two sections (e.g. a streaming story
+// caught by both Tech and Culture keyword filters), both clusters get the
+// same DOM id ("cl-{hash}-anchor"). getElementById returns whichever appears
+// first in the DOM — usually the higher-ranked section — sending the user to
+// the wrong place. Fix: scope the lookup to the card's own section first,
+// then fall back to a full-page search so no click ever silently fails.
 (function() {{
   var NAV_HEIGHT = 60;
   document.querySelectorAll('.mro-card').forEach(function(card) {{
     card.addEventListener('click', function() {{
       var anchorCluster = card.getAttribute('data-anchor-cluster');
       var anchorSingle  = card.getAttribute('data-anchor-single');
-      var target = document.getElementById(anchorCluster) || document.getElementById(anchorSingle);
+      var sectionId     = card.getAttribute('data-section');
+      // Prefer scoped search so duplicate IDs across sections don't mislead
+      var target = null;
+      if (sectionId) {{
+        var secEl = document.getElementById(sectionId);
+        if (secEl) {{
+          target = secEl.querySelector('[id="' + anchorCluster + '"]') ||
+                   secEl.querySelector('[id="' + anchorSingle + '"]');
+        }}
+      }}
+      if (!target) {{
+        target = document.getElementById(anchorCluster) || document.getElementById(anchorSingle);
+      }}
       if (!target) return;
       var section = target.closest('.section-columns');
       if (section && section.classList.contains('collapsed')) {{
