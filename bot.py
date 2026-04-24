@@ -2560,6 +2560,28 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                         _parts = _raw_sum.rsplit(' - ', 1)
                         if len(_parts[1].split()) <= 4:
                             _raw_sum = _parts[0].strip()
+                    # Discard if the summary is just the headline repeated.
+                    # Compare normalized (lowercase, collapsed whitespace) versions.
+                    _sum_norm = _raw_sum.lower().strip()
+                    _title_norm = raw_title.lower().strip()
+                    if (_sum_norm == _title_norm
+                            or _sum_norm.startswith(_title_norm[:60])
+                            or _title_norm.startswith(_sum_norm[:60])):
+                        _raw_sum = ''
+                    # Fallback: try entry.content (feedparser full-body field).
+                    # Strip tags, grab first non-trivial sentence/paragraph.
+                    if not _raw_sum:
+                        _content_blocks = entry.get('content', [])
+                        if _content_blocks:
+                            _cb_val = _content_blocks[0].get('value', '') or ''
+                            _cb_text = re.sub(r'<[^>]+>', ' ', _cb_val).strip()
+                            _cb_text = ' '.join(_cb_text.split())
+                            # Take text up to the first sentence break (~200 chars)
+                            _cb_norm = _cb_text.lower().strip()
+                            if (_cb_text
+                                    and not _cb_norm.startswith(_title_norm[:60])
+                                    and not _title_norm.startswith(_cb_norm[:60])):
+                                _raw_sum = _cb_text
                     if len(_raw_sum) > 200:
                         _cut = _raw_sum[:220].rfind('. ')
                         _raw_sum = (_raw_sum[:_cut+1].strip() if _cut > 80
