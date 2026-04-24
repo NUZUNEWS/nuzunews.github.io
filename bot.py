@@ -6211,6 +6211,36 @@ document.addEventListener('DOMContentLoaded', function() {{
   }});
 }})();
 
+// - Top sticky-nav tab click: JS scroll instead of native hash anchor -
+// Native href="#section-x" links let the browser cache the scroll position
+// per URL hash. When MRO reorders sections between builds the cached position
+// is stale, sending the user to the wrong place (or nowhere on a re-click of
+// the same hash). We intercept every top-nav tab click, prevent the native
+// navigation, and compute a fresh getBoundingClientRect() position — exactly
+// the same approach the bottom nav tabs already use correctly.
+(function() {{
+  document.querySelectorAll('.sticky-nav a.nav-link[href^="#"]').forEach(function(link) {{
+    link.addEventListener('click', function(e) {{
+      var sectionId = link.getAttribute('href').replace(/^#/, '');
+      if (!sectionId) return;
+      var el = document.getElementById(sectionId);
+      if (!el) return;
+      e.preventDefault();
+      // Expand the section if it was collapsed
+      var colEl = document.getElementById(sectionId + '-cols');
+      if (colEl && colEl.classList.contains('collapsed')) {{
+        colEl.classList.remove('collapsed');
+        var colBtn = document.querySelector('[data-target="' + sectionId + '-cols"]');
+        if (colBtn) colBtn.innerHTML = '&#9660;';
+      }}
+      // Use live viewport position — never stale no matter how MRO reorders
+      var navHeight = window.innerWidth <= 900 ? 72 : 48;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - navHeight;
+      window.scrollTo({{ top: top, behavior: 'smooth' }});
+    }});
+  }});
+}})();
+
 // - Article links open in new tab -
 
 // - Bookmark / Save Feature -
