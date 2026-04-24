@@ -2554,33 +2554,32 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                     # Trim to ~2 sentences / 200 chars; stored globally for render.
                     _raw_sum = entry.get('summary', '') or entry.get('description', '') or ''
                     _raw_sum = re.sub(r'<[^>]+>', ' ', _raw_sum).strip()
+                    _raw_sum = re.sub(r'&[a-zA-Z]+;|&#\d+;', ' ', _raw_sum)
                     _raw_sum = ' '.join(_raw_sum.split())
                     # Remove any trailing source attribution that mirrors the title
                     if ' - ' in _raw_sum:
                         _parts = _raw_sum.rsplit(' - ', 1)
                         if len(_parts[1].split()) <= 4:
                             _raw_sum = _parts[0].strip()
-                    # Discard if the summary is just the headline repeated.
-                    # Compare normalized (lowercase, collapsed whitespace) versions.
-                    _sum_norm = _raw_sum.lower().strip()
-                    _title_norm = raw_title.lower().strip()
-                    if (_sum_norm == _title_norm
-                            or _sum_norm.startswith(_title_norm[:60])
-                            or _title_norm.startswith(_sum_norm[:60])):
+                    # Word-overlap check: discard if summary is essentially the title.
+                    # Immune to quote style, entity encoding, and minor punctuation diffs.
+                    def _word_overlap(a, b):
+                        wa = set(re.sub(r'[^a-z0-9 ]', '', a.lower()).split())
+                        wb = set(re.sub(r'[^a-z0-9 ]', '', b.lower()).split())
+                        if not wa or not wb:
+                            return 0.0
+                        return len(wa & wb) / max(len(wa), len(wb))
+                    if _word_overlap(_raw_sum, raw_title) >= 0.75:
                         _raw_sum = ''
-                    # Fallback: try entry.content (feedparser full-body field).
-                    # Strip tags, grab first non-trivial sentence/paragraph.
+                    # Fallback: try entry.content (Atom / full-body feeds).
                     if not _raw_sum:
                         _content_blocks = entry.get('content', [])
                         if _content_blocks:
                             _cb_val = _content_blocks[0].get('value', '') or ''
                             _cb_text = re.sub(r'<[^>]+>', ' ', _cb_val).strip()
+                            _cb_text = re.sub(r'&[a-zA-Z]+;|&#\d+;', ' ', _cb_text)
                             _cb_text = ' '.join(_cb_text.split())
-                            # Take text up to the first sentence break (~200 chars)
-                            _cb_norm = _cb_text.lower().strip()
-                            if (_cb_text
-                                    and not _cb_norm.startswith(_title_norm[:60])
-                                    and not _title_norm.startswith(_cb_norm[:60])):
+                            if _cb_text and _word_overlap(_cb_text, raw_title) < 0.75:
                                 _raw_sum = _cb_text
                     if len(_raw_sum) > 200:
                         _cut = _raw_sum[:220].rfind('. ')
@@ -6097,7 +6096,11 @@ function _nuzu_soft_refresh() {{
             }}
           }}
           if (!target) {{
-            target = document.getElementById(ac) || document.getElementById(as);
+            var _fb2 = document.getElementById(ac) || document.getElementById(as);
+            if (_fb2) {{
+              var _fbWrap2 = _fb2.closest('.section-wrap');
+              if (_fbWrap2 && _fbWrap2.id === sid) target = _fb2;
+            }}
           }}
           if (!target) return;
           var sec = target.closest('.section-columns');
@@ -6408,7 +6411,11 @@ document.addEventListener('DOMContentLoaded', function() {{
         }}
       }}
       if (!target) {{
-        target = document.getElementById(anchorCluster) || document.getElementById(anchorSingle);
+        var _fb = document.getElementById(anchorCluster) || document.getElementById(anchorSingle);
+        if (_fb) {{
+          var _fbWrap = _fb.closest('.section-wrap');
+          if (_fbWrap && _fbWrap.id === sectionId) target = _fb;
+        }}
       }}
       if (!target) return;
       var section = target.closest('.section-columns');
