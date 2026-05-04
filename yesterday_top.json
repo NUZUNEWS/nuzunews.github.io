@@ -3,11 +3,25 @@
   "today_top_by_section": {
     "us": [
       {
+        "title": "Police search for suspects in Oklahoma shooting that sent at least 13 people to hospitals - washingtonpost.com",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOYkgwc0pic21aMEhvcnh3a29rQzRrUENYRUtpOFBGYm1RUFBfRDZkSGhjbXhSZE1zeTVPbkdidXAxRksyTGxMc0l2MzBUa2hqRjhxTXlvUC1QejZuTkdQOTFfNi05WVp1bWRxVjlQMzZXTUJTNDNWWDNYWlM4eEZuRF9wbU9CQThJbDJiQ016bFFwNlhpUU9kalBvSUptdTNEYmFoeklmZGEwNlBENzhnWk83N0E3NGJEMTdjMTVmUkJlcmxiSmlQTzVoRTJGd2RLdEI1NmxGaXNpdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "washingtonpost.com",
+        "n_sources": 4,
+        "lead_ts": 1777906082
+      },
+      {
         "title": "Selma residents react to SCOTUS decision that gutted Voting Rights Act - NPR",
         "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE93d2J3UGZuWXdmNXYzVExTa0IyemlNZzZIdjgxNWRzYlROalpPcEdEcTFMemF6ekVOdmhIYURPTWFQOFd0UEU2Y0lOSS1rWUFReXo2ai1UR2tIY3Y4UVo0SWlUaHE0aHMtVThoQg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "NPR",
         "n_sources": 4,
         "lead_ts": 1777890901
+      },
+      {
+        "title": "Rudy Giuliani Is in \u2018Critical Condition\u2019 in Florida Hospital - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPM3RONTdoYkNURjZmTWxyencyVDBxbHJ0MHFIdWYwa1NEeVBFSFZlZzl4VkFZeEhuV2I3V3Z4M2t4ZjdmUmlyMTZselNIWHZ0bDY1clJuRjhhd2dIY1FEdDdGb3Q3N3p6azNjWG04Wjl1d3daaTdoU3JKekRpcmM2Yy1EbHZjRGtMSnRGNmRlTV9DR0lB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 3,
+        "lead_ts": 1777904520
       },
       {
         "title": "United Flight Hits Pole on Highway Before Landing at Newark - Bloomberg.com",
@@ -22,20 +36,6 @@
         "source": "WSJ",
         "n_sources": 3,
         "lead_ts": 1777877880
-      },
-      {
-        "title": "Oil Falls as Trump Says US to Start Guiding Ships Through Hormuz - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPQjd2N2FSWUpVZnpkMDRHTEZSOGJQZ1dSa0FBZHU3eFpzRWV1ZGtyM1paNTJTc21OWC16bGxDaTBCbVNvNWhZUzUzNTc0cV9BZDVsNGF2VzM0TGg0QkgtQUYxVXZZeGZydTFrYmlIVHc5YmFKNDJwdTVGLVBQb0dzMnpHTDlmMUszdW95aFhBWWhtYnk5MHlZV0lscXk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 3,
-        "lead_ts": 1777862340
-      },
-      {
-        "title": "Poisonous black rain falls in Russia as Ukraine strikes oil facilities - washingtonpost.com",
-        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOSU5OSXRuWTF6YVhxRl9Fbk9WSHZudUdobmlZS2t1dEt5RFFKOTVvM0FlUzBjREpQdkw0a2NvREZzQnk5ME1YVWstSndSM2dtVFFsTHFvUXpKN1oyMWhGbnNWRUdLT1hVb3dTc3dLaFAzV243NDI0OGRKR3R2bFZIWlRkNV9IUDBPaWUyTA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "washingtonpost.com",
-        "n_sources": 2,
-        "lead_ts": 1777896113
       }
     ],
     "mideast": [
@@ -68,14 +68,21 @@
         "lead_ts": 1777897200
       },
       {
-        "title": "Netanyahu: Israel preparing for fight with Iran and disarming Hamas - Middle East Monitor",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPeEtnemdvbS1QZHBlN080dWdIc0N0Y09KbTVwcUFwMF9xVVYwQXJUM2ItcHVfTEdSaTlUUlZNazg5STUzOFlKdU1ILUp0SUdmNDJOZlZiNmJkSFc5RVJNOFlMUk96a0VvN05NUUNUOHRJT1lNbXJYbU5pcFozaW1SUnYyZnVmZUZlWHhzRWEzYm9lSGVmVl9Rb25mOW51MnljQk1zMkI0MnREZU9GV0U40gG0AUFVX3lxTE12S2dpeE9uVzVlTXJjOERuVk0tcVI2TUZOWDJCVFhYU0xrVlZ0MXRCdVZNZWRocTM5VDJsR0I3aUlIbWdhTDZKdnpMUktPNHR1b1ZhMm5va09QcnJzcE1lVVpWU0w3TlpNb1Zrd2RQd09WQVZiTEtrRGUyWUpua0IzS3dlNFNQNW82SFAxazdNLTlMTnpBYXJNQ2J6Y0JiY0tuaEFPZEJNc0duRWk0a0lNRmEyOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "title": "Egypt incurs $10B in Suez Canal losses over Gaza war, president says - Middle East Monitor",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQTmNIUHNqbHJtVzdqUnI2QXJ0Q2R4SV9KaVAwQ3hjUVRqaDk2Q0QwakpObUJqZVluVnBvbXJnc0E3R3F0UjRTRnlkOFJ2WVNxSTcwdjVHS1lmWVVaQ0c3TGtXNmhZUDJLZkZsOE5oYmxPY3dkRUFlSVdBeEZlOWpoM000TXJsWXpyT0ZCcE8yTXNCOUtybUlwVVVZVk5CSWtjaDF4MkNyLVBFNkhrX1JV0gG0AUFVX3lxTE94TnJiMHV2cjdaMzl0NklGMkRyNTN0ZkhycmFseFZpaHVTMjlnOTUzZloyMU5neTFVNEt0Q2N0a0hVbUs5d3lVclFLWDZRMGVtdkJ6NUlnV2NXbEV1RGNienVUWmIxTnhXTDE4ZXR5dmkwdEsyTm5jclc1RDIzUllJcDVFQ1QwUHliNG83ZWZCbENjZWphZ1l6LVRyeEZQMzJXOHAyQk45bFJrVlo2aWFKdGJOag?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "ME Monitor",
         "n_sources": 4,
-        "lead_ts": 1777897320
+        "lead_ts": 1777906680
       }
     ],
     "world": [
+      {
+        "title": "Wall Street hesitates and oil prices climb with uncertainty about the Strait of Hormuz - AP News",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQNG0tbDF3ZDlmbU53LWpYUnlBSnNWTk90aTlxNjlzUjJrNnNTRTlDV0Jtd3daZzdfcmstWVZ0dWpNOHZzbFpyRmRaU2xfUGt0OWVrbEc1R0htUnVXaEp1a0tsSUZhdkd3cVpKd09Fa1V6TmtvRmFwNk9aY2JKWUxCdkRnTGNMai1EaGp5cnJpYm5pa28?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 4,
+        "lead_ts": 1777908180
+      },
       {
         "title": "Saudi oil prince\u2019s iron grip faces ultimate test with UAE\u2019s shock OPEC exit - The Straits Times",
         "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPLVJVaU5vUjJTODBYWFVVclZwU0kydWNjczAwXzRYa3FNSnlrM1RfeU4xbzFTOXdOZFZ2ZEdFWWNFdlBCOENwU1pPaDNmcURGZV91cDJublVUT212cnN4LU42ZGM5cXpEX3QydFJMejYwQ0ZWSWdkaEdnYnpZdU40Zi04N3JrLU1NeEc2b1J1b3NncGhQVjB4UUpjQzRlUy1JN1llU0xBTzVkdmFQaDNuWmpXR2J0QzB2RmU2VA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -103,16 +110,30 @@
         "source": "The Hindu",
         "n_sources": 3,
         "lead_ts": 1777893772
-      },
-      {
-        "title": "US evacuates 22 crew members on seized Iranian ship to Pakistan - The Straits Times",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxObkNSRHdRdEpfd0huNkk1dXZPVUl2aEpJYWtaZkVhWU4yTUpJaG14TDJWVEFnX1hJbms3bW8xNm9uV2FORUhCeHYzelhxTlpaVFJ3VzREOXgtRXFPZHpod1NXY0ljY0dQTXIta2doLWdUUnFqZlZqT0MzTVFMMi1fNlJubFB3WXpseVpib3RLclhvcDRxSGNxNWhOWU54aHZRV085ZS1xdUlmYUpTZDRB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Straits Times",
-        "n_sources": 3,
-        "lead_ts": 1777883085
       }
     ],
     "tech": [
+      {
+        "title": "Meta's AI bet, and the evolution of smart glasses - MSN",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQZkxEQmF1MXZaVnZWR0Jna1BKWE1YNW1XalQzNThJTG9vbHdfY3lSdmtaVEtWRlZYZjUzSXpQbjYxZ200MF85MnZLRUtnb19zQ0k3SjY5NEk3c1dadlFLU3FPd0tpbkZvRTRfMnpxdUt5dGJ5WEtTLWN4LU4zbzdIUHc3eE9lOE5xV1BlVE1CYlRyLUtUbi12UjAwcGRlUWNENlF5SVhaT1E3YVhVRnVSd1lPT2dJdXE4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "MSN",
+        "n_sources": 2,
+        "lead_ts": 1777900879
+      },
+      {
+        "title": "Goldman, Blackstone Partner With Anthropic on AI Services Firm - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQeFV3bDlJamg5VVM4a1d4N3Izak5WTEZOQWpyWEV1MEJGSjI5UzFrcVZaSGRXR2JhUi1XbTRPUkhaRk1JMEtQbWoyRTZOMXZpeDhULUl3aEE0ZGs1UncyS0I3Z3FhY3p2SWljU1daTlk2SDZSSmpJSFNMWkxiOHE2ZG1NOTUwYkVWSUlMaFhGTFFDZklnZTJlMmVqLTFZQkFqYkFoM1kxdUJSTUQwNWhScjVR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 2,
+        "lead_ts": 1777900091
+      },
+      {
+        "title": "Tailoring AI solutions for health care needs - MIT Technology Review",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQLUJnRDFCekFia3daeFFYb3hJcGhGcjBUVXhtaTUwZmF3UnlHWmFnVGE2TjM4blJoeURIeGpBS3pfbzJPWUxEcmJvaEIyUEN6bC03VldMM3FHUDJKUlRDUldueVJBSG5xenNQUTh0MkpXLU1IS3R5MnJ6Mkh0c0RHWjVzdHo0Q2J4cXJjQmtXbXpQa2U1ei1IT0pDWDVEUdIBowFBVV95cUxPcjZ6clZvWWJHOEtSMElGZVV1MWhVMnMtb0E1cGJEY1FhV0JYNmFiQ0J2UUs5WjlqMzI4eThtNWtFM2FkVXlWMEhMdHF1dEwxYkhwZ1E4VEY5RjNtMWVBN2Y2MTNOSXkta0YyRnVHRFVQaE52MW1wRzFrTUFJbmI5bUVSQkMzTjJpTkNJSkhyQ3dZTWJSR1c0eUdRLURKRFlaRi1n?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "MIT Tech Review",
+        "n_sources": 2,
+        "lead_ts": 1777899600
+      },
       {
         "title": "Cerebras targets $26.6 billion valuation in US IPO as AI chip demand surges - Reuters",
         "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOM3JWZ1Zhb2twMlJzUTh0M1hNTHpIQlNxNTM4elZtdmhGbGxDSGRFNlpkLWVBVmllalFIZ1VFZmQ1WHY3UUtRX3Y5SmVUVnZIQVBqWWl5WjFSYUFkb1BUQmlTUjdvU2R6V0lXeWs2YkV0Nkdwa0JtVW9ka2J6TjVQaFUzRE04UXNQZWhpTDRmbzZJUzllYUNKeXk4d3NaZGsxWGZJb3VldHVHeDNpaHBRaWR2OA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -126,30 +147,16 @@
         "source": "Las Vegas Sun",
         "n_sources": 2,
         "lead_ts": 1777885201
-      },
-      {
-        "title": "AI Beat Two Human Physicians in Harvard Emergency Room Diagnosis Test - Technology Org",
-        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQRllOeTFrQkVBVHZ4UnpyMzZLeGprajViZjdUbXp1RU5JZHlZaUlEdzlJdGlFRTRFOWF2RWdBblRYcHViakltNW1CQnp0U3Ewd2EyZlBlSk16MlhNc0RIWmY3MlVVV0VsdTBSTzJqZVpaOXVuUEM1TGVfMUN4UTNkcEJyQ1NNUnluMnVweVJFM3Z0WTBtT3NJNEZOMEJsell2b3ZDSjAtelBSdF9s?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Technology Org",
-        "n_sources": 2,
-        "lead_ts": 1777883416
-      },
-      {
-        "title": "Meta pivots to AI-powered humanoid robots after scaling back Metaverse ambitions - The Hans India",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQb0JZQjYwMHpDLWRjTW42UWNPU2pSU2c2Y05lOTE1eXlKOURmT1h4SXhCRm15XzlfQUdFeTMzS0RzaElfbXhCRTU2cGNhOWw2R0hTZXJiVjVzVDhrcDJOY2d4YzVzZjc3aEpQNmRSZWgzRjBleXdRa1JnOWJzTDRFeXk3UUZ4ejhjQVdpcjZwNE5CdE9FZm84RE50WnptanNZWkZ6OVFVbVJXY0NScTVNUUJ6SXU3QVZwcWVkMi1RWjB3LTk0VTdlbWNEREIzd0ZXenJCSdIB2gFBVV95cUxOU1ZPLTVEX3BIaTZrdnMycy0yZmhlQ2hqbHlxeDk2NTRwbEtqZ3ZybjUwZER3emszYkxUMGNMTy1nUmZvd3h3LWdvbk1QemgxZ2U3em1wZkJzU1p6OVhZRWJrbFgzdm9pUUtRbWcyV0NoeVI2YkIya1VBM3VMTm01aW5TUEZkeFBZSU4tMkVSbmF0cjZHR2pyVy1TYnh1akkxTllHQ0wtc0xJTHpTV3JJaE80TERvdWJVbHJ0bk1BZDR3WEkzMDA4NGlIYVFuYVgwc2xCWlp2RGEyQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Hans India",
-        "n_sources": 2,
-        "lead_ts": 1777881879
-      },
-      {
-        "title": "Meta acquires humanoid robotics firm Assured Robot Intelligence - The Daily Star",
-        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQV3hnQXlqdFE3VWdvNFNCT0xjYUNubk9WZERxQU1aMlZPbjk4WE5WOXpHdmd1WWlYbmtUTTRkcmJoWmlDdkprcDBmcWFpTFBycTRqaEJfTHhYTGRMS1Nrb2QtbnJab1ZlZnNuZTRMeUN5MWRUblBpMnlrTEs5UV9mUnplbGVvVkotZGhsRTZBc3dFazVZR2JrZl9yWmZkVDR1SlloaldYeF84SFNraE9Ednl4LWRRaG5Tb3VRNklfUi0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Daily Star",
-        "n_sources": 2,
-        "lead_ts": 1777881598
       }
     ],
     "business": [
+      {
+        "title": "Cerebras targets $26.6 billion valuation in US IPO as AI chip demand surges - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOM3JWZ1Zhb2twMlJzUTh0M1hNTHpIQlNxNTM4elZtdmhGbGxDSGRFNlpkLWVBVmllalFIZ1VFZmQ1WHY3UUtRX3Y5SmVUVnZIQVBqWWl5WjFSYUFkb1BUQmlTUjdvU2R6V0lXeWs2YkV0Nkdwa0JtVW9ka2J6TjVQaFUzRE04UXNQZWhpTDRmbzZJUzllYUNKeXk4d3NaZGsxWGZJb3VldHVHeDNpaHBRaWR2OA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 4,
+        "lead_ts": 1777900264
+      },
       {
         "title": "Wall Street ends higher, S&P 500, Nasdaq notch biggest gains in years - AOL.com",
         "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFBqZWJ1ckRPRFZzbDA1SUtCdVBtTEpfMkdHdWtKNFRmWndXWl9GMHJHYlBpZ2NaMl9hQWRmNnBrc2tSMmNVTS1ENDc4QlpENW9DSGhQZllwWHlvR2x0eks4RF9Wa2gtdnc1ZksyMWVlSm16dw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -158,32 +165,25 @@
         "lead_ts": 1777877545
       },
       {
+        "title": "Wall Street hesitates and oil prices climb with uncertainty about the Strait of Hormuz - AP News",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQNG0tbDF3ZDlmbU53LWpYUnlBSnNWTk90aTlxNjlzUjJrNnNTRTlDV0Jtd3daZzdfcmstWVZ0dWpNOHZzbFpyRmRaU2xfUGt0OWVrbEc1R0htUnVXaEp1a0tsSUZhdkd3cVpKd09Fa1V6TmtvRmFwNk9aY2JKWUxCdkRnTGNMai1EaGp5cnJpYm5pa28?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 3,
+        "lead_ts": 1777908180
+      },
+      {
+        "title": "If GameStop\u2019s $55 Billion Bid For eBay Succeeds, Could It Challenge Amazon? - Forbes",
+        "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNUm9XTFlXOEtWd3NkWmRBY1B4QWh5aFdrWjc3d1JpTmZPQzBseHlKVVkxU21TY1NySm5ndDdwejcySW11MXpnbE4tT0tjbEM4V2ozcWg1UUF6TkMyUnZsMFRNbURKNUR0U1NGSC1yeTBuZDJHTWlPX3cxejJwVHJ1YVFIYWZUTUpvX3VWNTJ5WnI1MjdpMDF6OG5QRHBJNlhIX0VVdzFCajFYTEhSMk4yS2NPOW1MWmlqek14dV9GRXYwNmlkT25jT1hoYnFtRktXN0ljVk8xQ28zRDROc0xUMEdZNGZMckVfdmpIeDVUdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Forbes",
+        "n_sources": 3,
+        "lead_ts": 1777905259
+      },
+      {
         "title": "Why are US stock market futures down today, and will Dow Jones, S&P 500 and Nasdaq stay in red or turn gre - The Economic Times",
         "link": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxQVWI0SU5rOC13S29waEp1NkthWnJKRVNDNTdjdGhzRDZublZWLTg5Y3NCRldTcmcyV2ZvSWxKNGgwWFN2ejBRc29kd0ZWc3p3R2FGc3FkSXl4R01GTk8yNVExZHVkWE5MS2tPNUhiNHVkckpzeDFYaEhXM2RpMnBRdGk5MkdSaDhNMGZiQ1ZvbnFQaEo1czVLTTRkV1I1Z05BU2xrVnVsWDdHV0VLNURsbnQyT1Ffemx6UExMT2I1eG1jV3U5c2ZnTzRsRjk3YWJDb3N6R0xfVzRtRGR0NmZMZ05OYktlVFpRVEdkNDBDeC0tNWIxRzdZVnNsTTFCWGhOMW9Dekk1V3VvTmNTVmgteGpmRVhiLUxvdnRVem9MT20wanl6TmcxTTlLdTNvQ0cyTXF5eWpubzluR1VUTVVRZXNOLUdmVmxUZlFNaHctRkI5Y3E4aHNKcmluY9IB2wJBVV95cUxQVWI0SU5rOC13S29waEp1NkthWnJKRVNDNTdjdGhzRDZublZWLTg5Y3NCRldTcmcyV2ZvSWxKNGgwWFN2ejBRc29kd0ZWc3p3R2FGc3FkSXl4R01GTk8yNVExZHVkWE5MS2tPNUhiNHVkckpzeDFYaEhXM2RpMnBRdGk5MkdSaDhNMGZiQ1ZvbnFQaEo1czVLTTRkV1I1Z05BU2xrVnVsWDdHV0VLNURsbnQyT1Ffemx6UExMT2I1eG1jV3U5c2ZnTzRsRjk3YWJDb3N6R0xfVzRtRGR0NmZMZ05OYktlVFpRVEdkNDBDeC0tNWIxRzdZVnNsTTFCWGhOMW9Dekk1V3VvTmNTVmgteGpmRVhiLUxvdnRVem9MT20wanl6TmcxTTlLdTNvQ0cyTXF5eWpubzluR1VUTVVRZXNOLUdmVmxUZlFNaHctRkI5Y3E4aHNKcmluYw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "The Economic Times",
         "n_sources": 3,
         "lead_ts": 1777897680
-      },
-      {
-        "title": "AI chipmaker Cerebras targets $3.5 billion raise in IPO - CNBC",
-        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5kOWU0Y1JwbGN6NjdQLU44bTB4cHYtZGtFNEZOUnQtcXJfOTlleWw3WlJhNmdLQjYtWDhHdTk1QWVUMVJmbzFCNkVOVTF2dGNac2twREpMeFZWdnEwM0JHQ29rQkJlSUNDR2JFdV8tb9IBdEFVX3lxTE5OM2p6TGRpN0lTUHF1X1ZTZzRndDJJakluNnRPQmdXOUdWRWRiREowOVl0YzJrOTB0M1Q2RU9ZSXpJb25EUUVMZmR2Q2FZVEs1Q1BVTTY3Zm82YnNCSlE4WlVlaVVObFRkYjMzWEhTNTVHSVdW?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 3,
-        "lead_ts": 1777891524
-      },
-      {
-        "title": "Novo Nordisk: A Generational Buying Opportunity Ahead Of Q1 Earnings (Preview) (NYSE:NVO) - Seeking Alpha",
-        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQajBJWm1EWmhVUXNkX3NUXzBXT2lMU29ScWVBMGs4MUNwd0F2MFJzQVI3dmRIWWJYMGRTZWQ4ZFRoWlBqYjFHbGk3MWJrZG55V0xNNjRQa2ZETHVTRFBUZXZPV2NadGJ6XzNoaXhkMGduOUpPZmNobHh2OEpDU0pjQzQ5RDdqM3Z2T1lhZU1hWW9BX2lRNk1zczBlU2RJV2ZhSUJESTM4WUQwRDVmUWdNYnhVUk42LVFxVHROVlhaQXlWUGhFWGtzQURZaw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Seeking Alpha",
-        "n_sources": 2,
-        "lead_ts": 1777897983
-      },
-      {
-        "title": "Shares of eBay take off on a $56 billion buyout bid from GameStop\u2019s Ryan Cohen - KRON4",
-        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMXdRT21yT3p6N3JSZkx0RDdCWTFQVkEzRWE2Y3lCbk5yQ1hvaTh6R3oyMUY2QnBJUm9wQVJkb081Y0VXT1U4a0ZXS1VlX1lwQU1SRkVqYVF3SlpRaTFJMm5NVUE3dkc2Q0ptLWdKaVVoRFNJOTRfMnZSdTF1RHpYWmZNZ3hQVW04YktobnBMYXQxRGkxVjk5ZEFZbml3RDhuR2JrVksta1BFRlptSkF6aE5zUXQtWWl6TWIwZGZYWlFJN2hrNTFjaEdpdk5hUdIB0wFBVV95cUxQc0hINk1tMElBS1RodEtJam40bHdRTXlWMmlVUjI1MzkyQTZpVkF3aVdES3g0QzdveGxNSDh5TUcwc1hBRzJmb2g3cUZDNnpQMVdENTlXYThpS3IxekNEV2xJd2ZhNXItQ3dLZy0wVEhpeHppTnBxbDUwM2RIT0JrRVBNQ0lTT0h1cWpBM0VJaG1ReWJsZ0p1bUowUC10U19yR0VNSWFreGV3TlpSdzBvRkpGV0hHUzhlaWc3dS0zcUQtb3FFcEdyc3k3aTY1cUhjYTBR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "KRON4",
-        "n_sources": 2,
-        "lead_ts": 1777897771
       }
     ],
     "sports": [
@@ -193,6 +193,13 @@
         "source": "SI",
         "n_sources": 7,
         "lead_ts": 1777851702
+      },
+      {
+        "title": "Fox Sports Looks for a \u2018Miracle\u2019 With Its World Cup Promo Campaign - ADWEEK",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQcTFKZktBR2lfc05qN1NORlB0RG1kZnk0WEV4dUoybEpDUHhlbGFiYmJRZWhSakhGT05QaElrNTlpY2hyQnN0WkhfeG5PVEpvUDkwd1VqZDZra0xvTDFkenBWNi04M0VfM3pld1N5Um5Xa1ZlX0dEcVUySkxSYk1tSVVpVHhVUURhakpKX0xubTBiQnYxQjVhVVBCVjMwdTVfRDRXNA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ADWEEK",
+        "n_sources": 6,
+        "lead_ts": 1777900031
       },
       {
         "title": "What were Norris' chances of winning the F1 Miami Grand Prix? - Motorsport.com",
@@ -214,13 +221,6 @@
         "source": "Guardian",
         "n_sources": 5,
         "lead_ts": 1777858200
-      },
-      {
-        "title": "Seattle to host 2026 FIFA World Cup for 1st time: 5 things to know about the Emerald City - WRAL",
-        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNblJjNnlveTJiQ2hMZTJDZWpRU1JzUlp6NU00RkltUGo1NW9qMVN5S3VEcE5hQVQ4N2lJeUVPZDJSWVItUW9uenVMdTJQMmFNQnRyUDN1d3RZZGpmOEppNi1mUzBscFM5T1RtczRqbjlJT2I0N25xRHBqd0ZNMFN3cDdZbDJRZ3VkX0JubnZIZ3ZjcHJvVlJCOHFPMDFJSDJCQUlfd1JQN3NmTnV6eVV2Y2xPWWhDbXk5d0V2QzFaZWRtQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WRAL",
-        "n_sources": 4,
-        "lead_ts": 1777897950
       }
     ],
     "culture": [
