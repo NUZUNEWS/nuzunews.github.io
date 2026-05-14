@@ -415,27 +415,93 @@ def _local_icon_url(dom):
     safe_dom = re.sub(r'[^a-z0-9.-]', '_', dom.lower())
     return f"icons/sources/{safe_dom}.png?v={BUILD_STAMP}"
 
+def _normalize_domain(dom):
+    """
+    Strip common mobile/AMP/regional prefixes so m.cnn.com → cnn.com,
+    amp.theguardian.com → theguardian.com, www.bbc.co.uk → bbc.co.uk.
+    """
+    if not dom:
+        return dom
+    dom = dom.lower().strip()
+    for prefix in ('www.', 'm.', 'amp.', 'mobile.', 'en.', 'us.'):
+        if dom.startswith(prefix) and dom.count('.') > 1:
+            dom = dom[len(prefix):]
+    return dom
+
+# Minimum byte size for a real favicon PNG. Google S2 returns a 214-byte
+# "no icon" placeholder for unknown domains — anything smaller than this
+# threshold was almost certainly that fallback and should be retried.
+_ICON_MIN_BYTES = 800
+
+def _is_icon_valid(path):
+    """Return True only if the cached file looks like a real icon (not a placeholder)."""
+    try:
+        size = os.path.getsize(path)
+        if size < _ICON_MIN_BYTES:
+            return False
+        # Quick PNG signature check
+        with open(path, 'rb') as f:
+            header = f.read(8)
+        return header[:4] in (b'\x89PNG', b'GIF8', b'\xff\xd8\xff', b'RIFF')
+    except Exception:
+        return False
+
 def _download_favicon(dom, override_url=None):
     """
-    Download a favicon for `dom` once and cache it in icons/sources/.
-    Returns True on success (or if already cached). Uses override_url if
-    provided (e.g. Wikimedia Commons for BBC), otherwise Google's s2
-    favicon service at high resolution.
-    Fails silently — renderer falls back to remote URL or letter avatar.
+    Multi-tier favicon downloader with self-healing behavior.
+
+    Tier 0: Override URL (Wikimedia, hand-curated)
+    Tier 1: Google S2 favicon service (128px)
+    Tier 2: DuckDuckGo favicon service
+    Tier 3: Direct /favicon.ico on the domain
+    Tier 4: apple-touch-icon (often highest quality)
+
+    Returns True on success (or if already validly cached). Deletes and
+    retries any previously cached file that is suspiciously small
+    (Google S2 "no icon" placeholder). Fails silently on all tiers.
     """
+    norm = _normalize_domain(dom)
     path = _local_icon_path(dom)
-    if os.path.exists(path) and os.path.getsize(path) > 200:
+
+    # If we have a valid cached file, skip download entirely
+    if os.path.exists(path) and _is_icon_valid(path):
         return True
+
+    # Delete corrupt/placeholder cache files so we retry with better providers
+    if os.path.exists(path):
+        try:
+            os.remove(path)
+        except Exception:
+            pass
+
     urls_to_try = []
     if override_url:
         urls_to_try.append(override_url)
-    urls_to_try.append(f"https://www.google.com/s2/favicons?domain={dom}&sz=128")
+    # Tier 1: Google S2 (primary, highest success rate)
+    urls_to_try.append(f"https://www.google.com/s2/favicons?domain={norm}&sz=128")
+    # Tier 2: DuckDuckGo favicon proxy
+    urls_to_try.append(f"https://icons.duckduckgo.com/ip3/{norm}.ico")
+    # Tier 3: Direct favicon.ico
+    urls_to_try.append(f"https://{norm}/favicon.ico")
+    # Tier 4: Apple touch icon (often 180px, good quality)
+    urls_to_try.append(f"https://{norm}/apple-touch-icon.png")
+
     for url in urls_to_try:
         try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 NUZU'})
-            with urllib.request.urlopen(req, timeout=10) as resp:
+            req = urllib.request.Request(
+                url,
+                headers={
+                    'User-Agent': 'Mozilla/5.0 (compatible; NUZUBot/1.0)',
+                    'Accept': 'image/png,image/x-icon,image/*',
+                }
+            )
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                # Only accept image content types
+                ct = resp.headers.get('Content-Type', '')
+                if ct and 'text/html' in ct:
+                    continue  # Got an error page, not an image
                 data = resp.read()
-            if data and len(data) > 200:
+            if data and len(data) >= _ICON_MIN_BYTES:
                 with open(path, 'wb') as f:
                     f.write(data)
                 return True
@@ -443,44 +509,110 @@ def _download_favicon(dom, override_url=None):
             continue
     return False
 
+# ── Missing-logo registry ────────────────────────────────────────────────────
+# Tracks domains that persistently fail icon resolution. Written to
+# missing_logos.json at end of each run so the workflow can commit it and
+# the next run can see the history.
+import json as _json_logos
+
+_MISSING_LOGOS_FILE = os.path.join(CURRENT_DIR, "missing_logos.json")
+
+def _load_missing_logos():
+    try:
+        with open(_MISSING_LOGOS_FILE, 'r', encoding='utf-8') as f:
+            return _json_logos.load(f)
+    except Exception:
+        return {}
+
+def _save_missing_logos(registry):
+    try:
+        with open(_MISSING_LOGOS_FILE, 'w', encoding='utf-8') as f:
+            _json_logos.dump(registry, f, indent=2, sort_keys=True)
+    except Exception:
+        pass
+
+_missing_logo_registry = _load_missing_logos()
+
 def prewarm_source_icons():
     """
-    Walk every known publisher domain and ensure its favicon is cached
-    locally under icons/sources/. Runs once at startup before HTML render.
-    Already-cached icons are skipped, so this is cheap on subsequent runs.
+    Self-healing favicon pipeline. Runs every bot.py execution:
+
+    1. Walk every known publisher domain
+    2. Delete and retry any previously cached files that are placeholder-sized
+    3. Try multi-tier download for any uncached or invalid icons
+    4. Track unresolved domains in missing_logos.json across runs
+    5. Print a health summary for monitoring
+
+    The icon database improves automatically over time as more publishers
+    add favicons and as new download tiers succeed on retry.
     """
+    global _missing_logo_registry
+
     downloaded = 0
-    skipped = 0
-    failed = 0
+    skipped    = 0
+    failed     = 0
+    recovered  = 0   # Previously missing, now resolved
     seen_domains = set()
-    # First: explicit overrides (Wikimedia-hosted BBC etc)
+    newly_failed = []
+
+    def _process(dom, override_url=None):
+        nonlocal downloaded, skipped, failed, recovered
+        if not dom or dom in seen_domains:
+            return
+        seen_domains.add(dom)
+        path = _local_icon_path(dom)
+        already_valid = os.path.exists(path) and _is_icon_valid(path)
+        if already_valid:
+            skipped += 1
+            # If it was previously missing, mark as recovered
+            if dom in _missing_logo_registry:
+                del _missing_logo_registry[dom]
+                recovered += 1
+            return
+        # Attempt download
+        if _download_favicon(dom, override_url=override_url):
+            downloaded += 1
+            if dom in _missing_logo_registry:
+                del _missing_logo_registry[dom]
+                recovered += 1
+        else:
+            failed += 1
+            newly_failed.append(dom)
+            now_str = datetime.utcnow().strftime('%Y-%m-%dT%H:%M')
+            if dom not in _missing_logo_registry:
+                _missing_logo_registry[dom] = {
+                    'retries': 1,
+                    'first_seen': now_str,
+                    'last_attempt': now_str,
+                }
+            else:
+                _missing_logo_registry[dom]['retries'] = (
+                    _missing_logo_registry[dom].get('retries', 0) + 1
+                )
+                _missing_logo_registry[dom]['last_attempt'] = now_str
+
+    # Explicit high-quality overrides first
     for friendly, url in SOURCE_ICON_OVERRIDES.items():
         dom = SOURCE_DOMAIN_MAP.get(friendly, '') or ''
-        if not dom or dom in seen_domains:
-            continue
-        seen_domains.add(dom)
-        path = _local_icon_path(dom)
-        if os.path.exists(path) and os.path.getsize(path) > 200:
-            skipped += 1
-            continue
-        if _download_favicon(dom, override_url=url):
-            downloaded += 1
-        else:
-            failed += 1
-    # Then: every domain in the map
+        _process(dom, override_url=url)
+
+    # Every domain in the map
     for dom in set(SOURCE_DOMAIN_MAP.values()):
-        if dom in seen_domains:
-            continue
-        seen_domains.add(dom)
-        path = _local_icon_path(dom)
-        if os.path.exists(path) and os.path.getsize(path) > 200:
-            skipped += 1
-            continue
-        if _download_favicon(dom):
-            downloaded += 1
-        else:
-            failed += 1
-    print(f"Favicon cache: {downloaded} downloaded, {skipped} already cached, {failed} failed")
+        _process(dom)
+
+    _save_missing_logos(_missing_logo_registry)
+
+    # ── Health summary ──────────────────────────────────────────────────────
+    persistent_failures = [
+        (d, v) for d, v in _missing_logo_registry.items()
+        if v.get('retries', 0) >= 3
+    ]
+    print(
+        f"Favicon cache: {downloaded} downloaded, {skipped} valid cached, "
+        f"{recovered} recovered, {failed} failed | "
+        f"persistent failures: {len(persistent_failures)} | "
+        f"retry queue: {len(_missing_logo_registry)}"
+    )
 
 def get_source_icon_html(source_name, size_class=''):
     """
@@ -501,7 +633,7 @@ def get_source_icon_html(source_name, size_class=''):
     if dom:
         # Prefer local cache if the file exists
         local_path = _local_icon_path(dom)
-        if os.path.exists(local_path) and os.path.getsize(local_path) > 200:
+        if _is_icon_valid(local_path):
             local_url = _local_icon_url(dom)
             # Remote fallback chain if local 404s somehow (rare — but robust)
             fallback = override_url or f"https://www.google.com/s2/favicons?domain={dom}&sz=128"
