@@ -364,6 +364,41 @@ SOURCE_DOMAIN_MAP = {
     "Defense One":"defenseone.com","War on Rocks":"warontherocks.com",
     "Gov Executive":"govexec.com","Governing":"governing.com",
     "Fed News Net":"federalnewsnetwork.com","Natl Defense":"nationaldefensemagazine.org",
+    # ── High-frequency unmapped sources seen in live feed ─────────────────
+    # Aggregators / platforms
+    "MSN":"msn.com","Yahoo":"yahoo.com","Yahoo News":"yahoo.com",
+    "Google News":"news.google.com",
+    "Facebook":"facebook.com","facebook.com":"facebook.com",
+    "IMDb":"imdb.com","IMDb News":"imdb.com",
+    "Reddit":"reddit.com","Flipboard":"flipboard.com",
+    # Finance / markets
+    "Fox Business":"foxbusiness.com","Fox Business News":"foxbusiness.com",
+    "Seeking Alpha":"seekingalpha.com","TradingView":"tradingview.com",
+    "Moomoo":"moomoo.com","Motley Fool":"fool.com","The Motley Fool":"fool.com",
+    "Inc.com":"inc.com","Inc":"inc.com","Fast Company":"fastcompany.com",
+    "CommBank":"commbank.com.au","CBA":"commbank.com.au",
+    "Barrons.com":"barrons.com","Kiplinger":"kiplinger.com",
+    # Entertainment extras
+    "ScreenRant":"screenrant.com","Screen Rant":"screenrant.com",
+    "IGN":"ign.com","GameSpot":"gamespot.com","Kotaku":"kotaku.com",
+    "Polygon":"polygon.com","PC Gamer":"pcgamer.com",
+    "Fandom":"fandom.com","CBR":"cbr.com",
+    "Giant Freakin Robot":"giantfreakinrobot.com",
+    "We Got This Covered":"wegotthiscovered.com",
+    "The Direct":"thedirect.com","Movieweb":"movieweb.com",
+    "artthreat.net":"artthreat.net","Art Threat":"artthreat.net",
+    # News aggregators / wire extras
+    "Travel Weekly":"travelweekly.com",
+    "Anadolu Agency":"aa.com.tr","Anadolu Ajansı":"aa.com.tr",
+    "NHK":"www3.nhk.or.jp","NHK News":"www3.nhk.or.jp","nhk.or.jp":"www3.nhk.or.jp",
+    "Brussels Morning Newspaper":"brusselsmorning.com",
+    "Brussels Morning":"brusselsmorning.com",
+    "Daily FT":"ft.lk","Daily FT Sri Lanka":"ft.lk",
+    "Amwaj Media":"amwaj.media","Amwaj.media":"amwaj.media",
+    "AD HOC NEWS":"adhocnews.co.uk","AdHoc News":"adhocnews.co.uk",
+    "People.com":"people.com",
+    "EW":"ew.com","Entertainment Weekly":"ew.com",
+    "WWD":"wwd.com",
 }
 
 def get_source_domain(source_name):
@@ -433,16 +468,55 @@ def _normalize_domain(dom):
 # threshold was almost certainly that fallback and should be retried.
 _ICON_MIN_BYTES = 800
 
-def _is_icon_valid(path):
-    """Return True only if the cached file looks like a real icon (not a placeholder)."""
+def _get_png_dimensions(path):
+    """
+    Read width and height from a PNG file's IHDR chunk without PIL/Pillow.
+    Returns (width, height) for PNG files, or None if the file is not PNG.
+    PNG IHDR: bytes 0-7 = signature, bytes 8-15 = chunk length+type,
+    bytes 16-19 = width, bytes 20-23 = height (big-endian uint32).
+    """
     try:
-        size = os.path.getsize(path)
-        if size < _ICON_MIN_BYTES:
+        with open(path, 'rb') as f:
+            header = f.read(24)
+        if len(header) < 24:
+            return None
+        if header[:8] != b'\x89PNG\r\n\x1a\n':
+            return None  # Not a PNG — could be JPEG/GIF/ICO saved as .png
+        w = int.from_bytes(header[16:20], 'big')
+        h = int.from_bytes(header[20:24], 'big')
+        return (w, h)
+    except Exception:
+        return None
+
+def _is_icon_valid(path):
+    """
+    Return True only if the cached file is a real icon, not Google S2's
+    'no favicon found' placeholder (which is a 1×1 grey PNG).
+
+    Checks:
+      1. File exists and has >= 100 bytes
+      2. Starts with a known image magic (PNG, GIF, JPEG, WEBP/RIFF, ICO)
+      3. For actual PNG files: width and height must both be > 1
+         (rejects Google S2's 1×1 grey placeholder)
+      4. JPEG/GIF/ICO files saved with .png extension are accepted as-is
+    """
+    try:
+        if not os.path.exists(path):
             return False
-        # Quick PNG signature check
+        size = os.path.getsize(path)
+        if size < 100:
+            return False
         with open(path, 'rb') as f:
             header = f.read(8)
-        return header[:4] in (b'\x89PNG', b'GIF8', b'\xff\xd8\xff', b'RIFF')
+        known_sigs = (b'\x89PNG', b'GIF8', b'\xff\xd8\xff', b'RIFF', b'\x00\x00\x01\x00')
+        if not any(header[:len(s)] == s for s in known_sigs):
+            return False
+        # Only apply dimension check to actual PNG files
+        if header[:4] == b'\x89PNG':
+            dims = _get_png_dimensions(path)
+            if dims is not None and dims[0] <= 1 and dims[1] <= 1:
+                return False  # Google S2 1×1 grey placeholder
+        return True
     except Exception:
         return False
 
@@ -501,10 +575,15 @@ def _download_favicon(dom, override_url=None):
                 if ct and 'text/html' in ct:
                     continue  # Got an error page, not an image
                 data = resp.read()
-            if data and len(data) >= _ICON_MIN_BYTES:
+            if data and len(data) >= 100:
                 with open(path, 'wb') as f:
                     f.write(data)
-                return True
+                # Validate immediately — reject if it's a 1×1 placeholder
+                if _is_icon_valid(path):
+                    return True
+                else:
+                    try: os.remove(path)
+                    except: pass
         except Exception:
             continue
     return False
@@ -6268,10 +6347,9 @@ function _nuzu_soft_refresh() {{
             var tb = target.querySelector('.cluster-toggle-btn');
             if (tb) {{ tb.innerHTML = '&#9660; Hide coverage'; tb.classList.add('open'); }}
           }}
-          requestAnimationFrame(function() {{ requestAnimationFrame(function() {{
-            var top = target.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
-            window.scrollTo({{top: top, behavior: 'smooth'}});
-          }}); }});
+          requestAnimationFrame(function() {{
+            target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+          }});
           target.style.transition = 'outline 0s';
           target.style.outline = '2px solid #1E4FD8';
           setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
@@ -6336,31 +6414,25 @@ window._nz_nh = function() {{
   var nav = document.querySelector('.sticky-nav');
   return nav ? (nav.getBoundingClientRect().height + 6) : (window.innerWidth <= 900 ? 74 : 54);
 }};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// _nz_scroll(el, behavior) — deterministic single source of truth for nav.
+//
+// ROOT CAUSE of 3-click bug: .section-wrap has content-visibility:auto.
+// This makes getBoundingClientRect() return WRONG positions for off-screen
+// sections because the browser skips their layout. Manual scrollTo with
+// getBoundingClientRect() therefore maps to the wrong pixel every time.
+//
+// FIX: Use el.scrollIntoView() which forces the browser to do a full layout
+// pass on the target element before scrolling — content-visibility:auto is
+// handled correctly. scroll-margin-top (set in CSS) accounts for the sticky
+// nav height so no JS offset arithmetic is needed.
+// ─────────────────────────────────────────────────────────────────────────────
 window._nz_scroll = function(el, behavior) {{
   if (!el) return;
   behavior = behavior || 'smooth';
-  // Expand section if collapsed so measurement is accurate
-  var colEl = el.id ? document.getElementById(el.id + '-cols') : null;
-  if (colEl && colEl.classList.contains('collapsed')) {{
-    colEl.classList.remove('collapsed');
-    var colBtn = document.querySelector('[data-target="' + el.id + '-cols"]');
-    if (colBtn) colBtn.innerHTML = '&#9660;';
-    // Give layout time to expand, then scroll
-    setTimeout(function() {{
-      requestAnimationFrame(function() {{
-        requestAnimationFrame(function() {{
-          var top = el.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
-          window.scrollTo({{ top: top, behavior: behavior }});
-        }});
-      }});
-    }}, 60);
-    return;
-  }}
   requestAnimationFrame(function() {{
-    requestAnimationFrame(function() {{
-      var top = el.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
-      window.scrollTo({{ top: top, behavior: behavior }});
-    }});
+    el.scrollIntoView({{ behavior: behavior, block: 'start' }});
   }});
 }};
 
@@ -6616,11 +6688,10 @@ window._nz_scroll = function(el, behavior) {{
         var toggleBtn = target.querySelector('.cluster-toggle-btn');
         if (toggleBtn) {{ toggleBtn.textContent = '\u25bc Hide coverage'; toggleBtn.classList.add('open'); }}
       }}
-      // Use canonical scroller — double-rAF ensures expand layout settles first
-      requestAnimationFrame(function() {{ requestAnimationFrame(function() {{
-        var top = target.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
-        window.scrollTo({{top: top, behavior: 'smooth'}});
-      }}); }});
+      // scrollIntoView forces layout on target (handles content-visibility:auto correctly)
+      requestAnimationFrame(function() {{
+        target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+      }});
       target.style.transition = 'outline 0s';
       target.style.outline = '2px solid #1E4FD8';
       setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
@@ -6769,7 +6840,9 @@ window._nz_scroll = function(el, behavior) {{
       }}
     }});
     if (firstMatch) {{
-      var top = firstMatch.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
+      requestAnimationFrame(function() {{
+        firstMatch.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+      }});
       window.scrollTo({{top: top, behavior: 'smooth'}});
     }}
     if (countEl) {{
