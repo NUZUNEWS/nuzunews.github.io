@@ -2,7 +2,7 @@
 // Handles offline, caching, background sync, and push notifications.
 // Bump CACHE_VERSION when shipping a new build so old cached HTML is evicted.
 
-const CACHE_VERSION = 'v6';
+const CACHE_VERSION = 'v7';
 const CACHE_NAME = 'nuzu-' + CACHE_VERSION;
 const STATIC_CACHE = 'nuzu-static-' + CACHE_VERSION;
 const OFFLINE_URL = '/offline.html';

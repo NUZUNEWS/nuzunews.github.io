@@ -3240,6 +3240,8 @@ html_parts.append(f"""<!DOCTYPE html>
     <meta name="twitter:image" content="{SITE_BASE_URL}icons/icon-512.png">
 
     <script>if("serviceWorker"in navigator){{navigator.serviceWorker.register("/sw.js").catch(function(){{}});}}</script>
+    <!-- Prevent browser scroll restoration from fighting our JS nav — must be synchronous in <head> -->
+    <script>if('scrollRestoration'in history){{history.scrollRestoration='manual';}}</script>
     <!-- Restore font-size preference synchronously before paint to prevent flash -->
     <script>(function(){{try{{var s=localStorage.getItem('nuzu_font_size');if(s!==null){{var sizes=[13,15,17,19,22];var idx=parseInt(s,10);if(idx>=0&&idx<sizes.length){{document.documentElement.style.fontSize=sizes[idx]+'px';document.documentElement.dataset.fontIdx=idx;}}}}}}catch(e){{}}}})();</script>
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
@@ -3614,10 +3616,27 @@ html_parts.append(f"""<!DOCTYPE html>
     .video-grid {{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, auto);
-        gap: 4px; padding: 6px;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 3px; padding: 3px;
+        /* Constrain height so rows never leave empty black void below last row */
+        max-height: 56vw;
+        background: #000;
     }}
-    .youtube-inset {{ border-radius: 3px; overflow: hidden; aspect-ratio: 16/9; width: 100%; }}
+    @media (max-width: 1200px) {{
+        .video-grid {{
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            max-height: 68vw;
+        }}
+    }}
+    @media (max-width: 768px) {{
+        .video-grid {{ display: none; }}
+    }}
+    .youtube-inset {{
+        border-radius: 2px; overflow: hidden;
+        aspect-ratio: 16/9; width: 100%;
+        background: #050505;
+    }}
     .youtube-inset iframe {{ width: 100%; height: 100%; border: none; display: block; }}
     .youtube-inset.audio-active {{
         outline: 3px solid var(--nuzu-blue); outline-offset: 2px; border-radius: 3px;
@@ -3697,7 +3716,9 @@ html_parts.append(f"""<!DOCTYPE html>
         align-items: flex-start;
     }}
     .column {{ flex: 1; min-width: 300px; }}
-    .section-wrap {{ padding: 0 0 10px 0; content-visibility: auto; contain-intrinsic-size: auto 600px; }}
+    .section-wrap {{ padding: 0 0 10px 0; content-visibility: auto; contain-intrinsic-size: auto 600px;
+        scroll-margin-top: 54px; }}
+    @media (max-width: 900px) {{ .section-wrap {{ scroll-margin-top: 74px; }} }}
     .top-divider {{
         border: 0; height: 2px;
         background: var(--nuzu-border); margin: 8px 0;
@@ -5305,14 +5326,14 @@ html_parts.append(f"""
       <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size" aria-label="Decrease font size">A-</button>
       <button class="font-size-btn" id="font-increase-btn" title="Increase font size" aria-label="Increase font size">A+</button>
       <div class="mobile-vid-toggle-wrap" id="mobile-vid-toggle-wrap">
-        <span class="mobile-vid-label">Video</span>
-        <label class="toggle-switch" title="Toggle video feeds on/off">
-          <input type="checkbox" id="mobile-video-toggle" aria-label="Toggle video feeds">
+        <span class="mobile-vid-label">📺 Live</span>
+        <label class="toggle-switch" title="Toggle live video feeds on/off">
+          <input type="checkbox" id="mobile-video-toggle" aria-label="Toggle live video feeds">
           <span class="toggle-slider"></span>
         </label>
       </div>
       <span class="light-toggle-label">Light</span>
-      <span class="mobile-light-label">Theme</span>
+      <span class="mobile-light-label">🌙 Appearance</span>
       <label class="toggle-switch" title="Toggle light/dark mode">
         <input type="checkbox" id="light-mode-toggle" aria-label="Toggle light mode">
         <span class="toggle-slider"></span>
@@ -5766,7 +5787,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         'section-business': ('iEpJwprxDdk',  'Bloomberg Live'),
         'section-sports':   ('7NPsqFA14eQ',  'Sports Live'),
         'section-culture':  ('HfgIFGbdGJ0',  'Culture Live'),
-        'section-tech':     ('5aS-8QCRdGE',  'Tech Live'),
+        # section-tech intentionally omitted — static embed removed per UX audit
     }
     _ve = _vid_map.get(section_id)
     _msv = ''
@@ -6115,8 +6136,10 @@ function _nuzu_soft_refresh() {{
             var tb = target.querySelector('.cluster-toggle-btn');
             if (tb) {{ tb.innerHTML = '&#9660; Hide coverage'; tb.classList.add('open'); }}
           }}
-          var top = target.getBoundingClientRect().top + window.pageYOffset - 60;
-          window.scrollTo({{top: top, behavior: 'smooth'}});
+          requestAnimationFrame(function() {{ requestAnimationFrame(function() {{
+            var top = target.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
+            window.scrollTo({{top: top, behavior: 'smooth'}});
+          }}); }});
           target.style.transition = 'outline 0s';
           target.style.outline = '2px solid #1E4FD8';
           setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
@@ -6160,6 +6183,54 @@ function showRefreshToast() {{
 }}
 
 document.addEventListener('DOMContentLoaded', function() {{
+
+// ─────────────────────────────────────────────────────────────────────────────
+// _nz_scroll(el, behavior) — THE single source of truth for all section scrolling.
+//
+// Why needed: bot.py had 7 different hardcoded pixel offsets (56,60,64,72,80).
+// Each handler measured the sticky-nav height differently or forgot to account
+// for it at all. The result: every nav click could land at a slightly wrong Y.
+//
+// How it works:
+//   1. Measures the LIVE sticky-nav height at call-time (safe after orientation
+//      changes, font-size changes, etc.)
+//   2. Uses double-rAF so any pending lazy-load / content-visibility layout
+//      paint settles before we sample getBoundingClientRect().
+//   3. Expands the section if it was collapsed before measuring height.
+//
+// All other nav handlers call this function instead of inline scrollTo().
+// ─────────────────────────────────────────────────────────────────────────────
+window._nz_nh = function() {{
+  var nav = document.querySelector('.sticky-nav');
+  return nav ? (nav.getBoundingClientRect().height + 6) : (window.innerWidth <= 900 ? 74 : 54);
+}};
+window._nz_scroll = function(el, behavior) {{
+  if (!el) return;
+  behavior = behavior || 'smooth';
+  // Expand section if collapsed so measurement is accurate
+  var colEl = el.id ? document.getElementById(el.id + '-cols') : null;
+  if (colEl && colEl.classList.contains('collapsed')) {{
+    colEl.classList.remove('collapsed');
+    var colBtn = document.querySelector('[data-target="' + el.id + '-cols"]');
+    if (colBtn) colBtn.innerHTML = '&#9660;';
+    // Give layout time to expand, then scroll
+    setTimeout(function() {{
+      requestAnimationFrame(function() {{
+        requestAnimationFrame(function() {{
+          var top = el.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
+          window.scrollTo({{ top: top, behavior: behavior }});
+        }});
+      }});
+    }}, 60);
+    return;
+  }}
+  requestAnimationFrame(function() {{
+    requestAnimationFrame(function() {{
+      var top = el.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
+      window.scrollTo({{ top: top, behavior: behavior }});
+    }});
+  }});
+}};
 
 // - Restore scroll position if coming from soft-refresh fallback -
 (function() {{
@@ -6246,14 +6317,7 @@ document.addEventListener('DOMContentLoaded', function() {{
       e.preventDefault();
       var el = document.getElementById(sectionId);
       if (!el) return;
-      var colEl = document.getElementById(sectionId + '-cols');
-      if (colEl && colEl.classList.contains('collapsed')) {{
-        colEl.classList.remove('collapsed');
-        var colBtn = document.querySelector('[data-target="' + sectionId + '-cols"]');
-        if (colBtn) colBtn.innerHTML = '&#9660;';
-      }}
-      var top = el.getBoundingClientRect().top + window.pageYOffset - 56;
-      window.scrollTo({{ top: top, behavior: 'smooth' }});
+      _nz_scroll(el, 'smooth');
     }});
   }});
 }})();
@@ -6273,17 +6337,7 @@ document.addEventListener('DOMContentLoaded', function() {{
       var el = document.getElementById(sectionId);
       if (!el) return;
       e.preventDefault();
-      // Expand the section if it was collapsed
-      var colEl = document.getElementById(sectionId + '-cols');
-      if (colEl && colEl.classList.contains('collapsed')) {{
-        colEl.classList.remove('collapsed');
-        var colBtn = document.querySelector('[data-target="' + sectionId + '-cols"]');
-        if (colBtn) colBtn.innerHTML = '&#9660;';
-      }}
-      // Use live viewport position — never stale no matter how MRO reorders
-      var navHeight = window.innerWidth <= 900 ? 72 : 48;
-      var top = el.getBoundingClientRect().top + window.pageYOffset - navHeight;
-      window.scrollTo({{ top: top, behavior: 'smooth' }});
+      _nz_scroll(el, 'smooth');
     }});
   }});
 }})();
@@ -6430,8 +6484,11 @@ document.addEventListener('DOMContentLoaded', function() {{
         var toggleBtn = target.querySelector('.cluster-toggle-btn');
         if (toggleBtn) {{ toggleBtn.textContent = '\u25bc Hide coverage'; toggleBtn.classList.add('open'); }}
       }}
-      var top = target.getBoundingClientRect().top + window.pageYOffset - NAV_HEIGHT;
-      window.scrollTo({{top: top, behavior: 'smooth'}});
+      // Use canonical scroller — double-rAF ensures expand layout settles first
+      requestAnimationFrame(function() {{ requestAnimationFrame(function() {{
+        var top = target.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
+        window.scrollTo({{top: top, behavior: 'smooth'}});
+      }}); }});
       target.style.transition = 'outline 0s';
       target.style.outline = '2px solid #1E4FD8';
       setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
@@ -6580,7 +6637,7 @@ document.addEventListener('DOMContentLoaded', function() {{
       }}
     }});
     if (firstMatch) {{
-      var top = firstMatch.getBoundingClientRect().top + window.pageYOffset - 64;
+      var top = firstMatch.getBoundingClientRect().top + window.pageYOffset - window._nz_nh();
       window.scrollTo({{top: top, behavior: 'smooth'}});
     }}
     if (countEl) {{
@@ -6646,7 +6703,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     if (idx < 0 || idx >= allHl.length) return;
     var el = allHl[idx];
     el.style.outline = '2px solid #1E4FD8'; el.style.outlineOffset = '2px'; el.style.borderRadius = '4px';
-    window.scrollTo({{ top: el.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' }});
+    window.scrollTo({{ top: el.getBoundingClientRect().top + window.pageYOffset - window._nz_nh(), behavior: 'smooth' }});
   }}
   document.addEventListener('keydown', function(e) {{
     var tag = (document.activeElement.tagName || '').toLowerCase();
@@ -6656,7 +6713,7 @@ document.addEventListener('DOMContentLoaded', function() {{
     if (num >= 1 && num <= 8) {{
       var sid = sections[num - 1];
       var el = document.getElementById(sid);
-      if (el) window.scrollTo({{top: el.getBoundingClientRect().top + window.pageYOffset - 60, behavior: 'smooth'}});
+      if (el) _nz_scroll(el, 'smooth');
       return;
     }}
     if (e.key === 'j' || e.key === 'J') {{ e.preventDefault(); refreshHl(); kbIdx = Math.min(kbIdx+1, allHl.length-1); setKbFocus(kbIdx); return; }}
@@ -6760,10 +6817,10 @@ document.addEventListener('DOMContentLoaded', function() {{
     saveCollapsed();
     setTimeout(nuzu_equalColHeights, 50);
   }});
-  try {{
-    var savedScroll = localStorage.getItem(SKEY);
-    if (savedScroll) window.scrollTo(0, parseInt(savedScroll, 10));
-  }} catch(e) {{}}
+  // REMOVED: localStorage scroll restore was here. Sections reorder every hour,
+  // so a saved pixel offset maps to a DIFFERENT section on the next load —
+  // exactly the "first click lands wrong" root cause. We now let the page load
+  // at the top (or hash-anchor if present) and let the user navigate fresh.
   window.addEventListener('beforeunload', function() {{
     try {{ localStorage.setItem(SKEY, Math.round(window.pageYOffset)); }} catch(e) {{}}
   }});
@@ -7261,10 +7318,7 @@ document.addEventListener('click', function(e) {{
   if (section) {{
     setTimeout(function() {{
       var el = document.getElementById('section-' + section);
-      if (el) {{
-        var top = el.getBoundingClientRect().top + window.pageYOffset - 60;
-        window.scrollTo({{top: top, behavior: 'smooth'}});
-      }}
+      if (el) _nz_scroll(el, 'smooth');
     }}, 600);
   }}
 }})();
@@ -7834,8 +7888,8 @@ except Exception as e:
 SW_FILE = os.path.join(CURRENT_DIR, "sw.js")
 try:
     sw_content = """// NUZU News Service Worker v2.0
-const CACHE_NAME = 'nuzu-v4';
-const STATIC_CACHE = 'nuzu-static-v4';
+const CACHE_NAME = 'nuzu-v7';
+const STATIC_CACHE = 'nuzu-static-v7';
 const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_URLS = [
