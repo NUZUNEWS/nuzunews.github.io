@@ -411,6 +411,11 @@ def get_source_domain(source_name):
         return SOURCE_DOMAIN_MAP[friendly]
     if source_name in SOURCE_DOMAIN_MAP:
         return SOURCE_DOMAIN_MAP[source_name]
+    # Check auto-learned domain cache (populated from entry.source.href)
+    if friendly in _AUTO_DOMAIN_CACHE:
+        return _AUTO_DOMAIN_CACHE[friendly]
+    if source_name in _AUTO_DOMAIN_CACHE:
+        return _AUTO_DOMAIN_CACHE[source_name]
     # Fallback: case-insensitive contains-match against keys
     fl = friendly.lower().strip()
     sl = source_name.lower().strip()
@@ -424,7 +429,84 @@ def get_source_domain(source_name):
             pat = r'\b' + re.escape(kl) + r'\b'
             if re.search(pat, fl) or re.search(pat, sl):
                 return dom
+    # Auto-learned fuzzy match
+    for key, dom in _AUTO_DOMAIN_CACHE.items():
+        kl = key.lower()
+        if kl == fl or kl == sl:
+            return dom
     return ''
+
+# ── Auto-domain learning ─────────────────────────────────────────────────────
+# Populated at runtime from Google News RSS entry.source.href values and from
+# article link domains. Persisted to source_domain_cache.json between runs so
+# newly discovered publishers accumulate without manual SOURCE_DOMAIN_MAP edits.
+import json as _json_adc
+_AUTO_DOMAIN_CACHE_FILE = os.path.join(CURRENT_DIR, "source_domain_cache.json")
+
+def _load_auto_domain_cache():
+    try:
+        with open(_AUTO_DOMAIN_CACHE_FILE, 'r', encoding='utf-8') as f:
+            d = _json_adc.load(f)
+            return d if isinstance(d, dict) else {}
+    except Exception:
+        return {}
+
+_AUTO_DOMAIN_CACHE = _load_auto_domain_cache()
+_AUTO_DOMAIN_DIRTY = False   # Only write file when cache has new entries
+
+def _extract_domain_from_url(url):
+    """
+    Extract the registrable domain from any URL.
+    https://www.ynetnews.com/article → ynetnews.com
+    https://news.google.com/rss/... → '' (skip aggregators)
+    """
+    if not url or not isinstance(url, str):
+        return ''
+    try:
+        # Strip scheme
+        u = url.strip()
+        for scheme in ('https://', 'http://', '//'):
+            if u.startswith(scheme):
+                u = u[len(scheme):]
+                break
+        host = u.split('/')[0].split('?')[0].split('#')[0].lower()
+        # Skip common aggregators / CDNs that are not publisher domains
+        _skip = {'news.google.com', 'google.com', 'goo.gl', 't.co', 'bit.ly',
+                 'ow.ly', 'dlvr.it', 'feedburner.com', 'ift.tt'}
+        if host in _skip or not host or '.' not in host:
+            return ''
+        return _normalize_domain(host)
+    except Exception:
+        return ''
+
+def _auto_register_domain(source_name, url):
+    """
+    If source_name is not in SOURCE_DOMAIN_MAP or _AUTO_DOMAIN_CACHE,
+    extract the domain from url and cache it. The icon pipeline will
+    prewarm an icon for this domain on the same run.
+    """
+    global _AUTO_DOMAIN_DIRTY
+    if not source_name or not url:
+        return
+    if source_name in SOURCE_DOMAIN_MAP:
+        return   # Already manually mapped — don't override
+    dom = _extract_domain_from_url(url)
+    if not dom:
+        return
+    existing = _AUTO_DOMAIN_CACHE.get(source_name)
+    if existing == dom:
+        return   # No change
+    _AUTO_DOMAIN_CACHE[source_name] = dom
+    _AUTO_DOMAIN_DIRTY = True
+
+def _save_auto_domain_cache():
+    if not _AUTO_DOMAIN_DIRTY:
+        return
+    try:
+        with open(_AUTO_DOMAIN_CACHE_FILE, 'w', encoding='utf-8') as f:
+            _json_adc.dump(_AUTO_DOMAIN_CACHE, f, indent=2, sort_keys=True)
+    except Exception:
+        pass
 
 # Some publishers have favicons that don't read well at small sizes. BBC's
 # official favicon is the iconic three-box logo, but at 32-40px the "B B C"
@@ -520,72 +602,225 @@ def _is_icon_valid(path):
     except Exception:
         return False
 
+def _fetch_url_bytes(url, timeout=8, accept='image/png,image/x-icon,image/*,image/svg+xml'):
+    """Fetch a URL, returning bytes or None. Respects content-type."""
+    try:
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
+                          '(KHTML, like Gecko) Chrome/124.0 Safari/537.36',
+            'Accept': accept,
+        })
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            ct = resp.headers.get('Content-Type', '')
+            data = resp.read()
+        return data, ct
+    except Exception:
+        return None, ''
+
+def _resolve_url(base, href):
+    """Resolve href relative to base domain. Returns absolute URL or ''."""
+    if not href:
+        return ''
+    href = href.strip()
+    if href.startswith('http://') or href.startswith('https://'):
+        return href
+    if href.startswith('//'):
+        return 'https:' + href
+    if href.startswith('/'):
+        # Extract scheme+host from base
+        try:
+            parts = base.split('/', 3)
+            return parts[0] + '//' + parts[2] + href
+        except Exception:
+            return ''
+    return ''
+
+def _score_icon_candidate(url, size_hint=''):
+    """
+    Score a candidate icon URL. Higher = better.
+    SVG > large manifest PNG > apple-touch > standard favicon > fallback.
+    """
+    u = url.lower()
+    score = 0
+    if u.endswith('.svg'):              score += 100
+    if 'apple-touch' in u:             score += 60
+    if 'manifest' in u:                score += 50
+    if '512' in size_hint:             score += 40
+    if '192' in size_hint:             score += 35
+    if '180' in size_hint or '180' in u: score += 30
+    if '128' in size_hint:             score += 20
+    if 'favicon' in u:                 score += 10
+    return score
+
+def _discover_icons_from_html(dom):
+    """
+    Download the publisher homepage, parse <head> for all icon candidates,
+    fetch the best one, and save it. Returns True on success.
+
+    Parses:
+      <link rel="icon|shortcut icon|apple-touch-icon|mask-icon|fluid-icon">
+      <meta property="og:image"> (only as last resort)
+      <link rel="manifest"> → parse icons array
+
+    Uses a scoring system to prefer SVG > high-res PNG > apple-touch > favicon.
+    """
+    base_url = f"https://{dom}"
+    data, ct = _fetch_url_bytes(base_url, timeout=10, accept='text/html,*/*')
+    if not data or 'html' not in ct.lower():
+        # Also try www. prefix
+        data, ct = _fetch_url_bytes(f"https://www.{dom}", timeout=10, accept='text/html,*/*')
+    if not data:
+        return False
+
+    try:
+        html = data.decode('utf-8', errors='ignore')
+    except Exception:
+        return False
+
+    candidates = []   # list of (score, url)
+
+    # Parse <link> tags
+    for m in re.finditer(
+        r'<link[^>]+rel=["\']([^"\']*)["\'][^>]*>',
+        html, re.IGNORECASE
+    ):
+        tag = m.group(0)
+        rel = m.group(1).lower()
+        if not any(r in rel for r in ('icon', 'apple-touch', 'mask-icon', 'fluid-icon')):
+            continue
+        # Extract href
+        href_m = re.search(r'href=["\']([^"\']+)["\']', tag, re.IGNORECASE)
+        if not href_m:
+            continue
+        href = _resolve_url(base_url, href_m.group(1))
+        if not href:
+            continue
+        # Extract sizes hint
+        size_m = re.search(r'sizes=["\']([^"\']+)["\']', tag, re.IGNORECASE)
+        sizes = size_m.group(1) if size_m else ''
+        score = _score_icon_candidate(href, sizes)
+        candidates.append((score, href))
+
+    # Parse <link rel="manifest"> → icons array
+    manifest_m = re.search(
+        r'<link[^>]+rel=["\']manifest["\'][^>]+href=["\']([^"\']+)["\']',
+        html, re.IGNORECASE
+    )
+    if not manifest_m:
+        manifest_m = re.search(
+            r'<link[^>]+href=["\']([^"\']+)["\'][^>]+rel=["\']manifest["\']',
+            html, re.IGNORECASE
+        )
+    if manifest_m:
+        manifest_url = _resolve_url(base_url, manifest_m.group(1))
+        if manifest_url:
+            mdata, _ = _fetch_url_bytes(manifest_url, timeout=6, accept='application/json,*/*')
+            if mdata:
+                try:
+                    import json as _jm
+                    manifest = _jm.loads(mdata.decode('utf-8', errors='ignore'))
+                    for icon in manifest.get('icons', []):
+                        src = _resolve_url(base_url, icon.get('src', ''))
+                        if src:
+                            sizes = icon.get('sizes', '')
+                            score = _score_icon_candidate(src, sizes) + 50  # manifest bonus
+                            candidates.append((score, src))
+                except Exception:
+                    pass
+
+    if not candidates:
+        return False
+
+    # Sort by score descending, try each until one succeeds
+    candidates.sort(key=lambda x: x[0], reverse=True)
+    path = _local_icon_path(dom)
+
+    for score, url in candidates[:6]:   # Try top 6 candidates
+        img_data, img_ct = _fetch_url_bytes(url, timeout=8)
+        if not img_data or len(img_data) < 100:
+            continue
+        # Accept SVG as text/svg or image/svg
+        is_svg = 'svg' in img_ct.lower() or url.lower().endswith('.svg')
+        if is_svg:
+            # Save SVG with .svg extension but use .png path for compatibility
+            # (the html renderer accepts both via onerror chain)
+            svg_path = path.replace('.png', '.svg')
+            with open(svg_path, 'wb') as f:
+                f.write(img_data)
+            # Also copy as .png path so existing lookup code finds it
+            with open(path, 'wb') as f:
+                f.write(img_data)
+            return True   # SVG is always valid if non-empty
+        # For raster images, validate
+        with open(path, 'wb') as f:
+            f.write(img_data)
+        if _is_icon_valid(path):
+            return True
+        try: os.remove(path)
+        except: pass
+
+    return False
+
 def _download_favicon(dom, override_url=None):
     """
-    Multi-tier favicon downloader with self-healing behavior.
+    Multi-tier publisher brand discovery pipeline.
 
-    Tier 0: Override URL (Wikimedia, hand-curated)
-    Tier 1: Google S2 favicon service (128px)
-    Tier 2: DuckDuckGo favicon service
+    Tier 0: Hand-curated override URL (Wikimedia high-quality logos)
+    Tier 1: Google S2 favicon service (128px) — fastest, highest success rate
+    Tier 2: DuckDuckGo favicon proxy
     Tier 3: Direct /favicon.ico on the domain
-    Tier 4: apple-touch-icon (often highest quality)
+    Tier 4: /apple-touch-icon.png (often 180px, high quality)
+    Tier 5: Full HTML discovery — fetch homepage, parse <link> and manifest
 
-    Returns True on success (or if already validly cached). Deletes and
-    retries any previously cached file that is suspiciously small
-    (Google S2 "no icon" placeholder). Fails silently on all tiers.
+    Validates every downloaded file (rejects 1×1 Google S2 placeholders).
+    HTML discovery (Tier 5) is only attempted when all URL-guessing tiers fail,
+    and only for domains not permanently in the failed registry (max 5 retries).
     """
     norm = _normalize_domain(dom)
     path = _local_icon_path(dom)
 
-    # If we have a valid cached file, skip download entirely
     if os.path.exists(path) and _is_icon_valid(path):
         return True
 
-    # Delete corrupt/placeholder cache files so we retry with better providers
     if os.path.exists(path):
-        try:
-            os.remove(path)
-        except Exception:
-            pass
+        try: os.remove(path)
+        except: pass
 
     urls_to_try = []
     if override_url:
         urls_to_try.append(override_url)
-    # Tier 1: Google S2 (primary, highest success rate)
     urls_to_try.append(f"https://www.google.com/s2/favicons?domain={norm}&sz=128")
-    # Tier 2: DuckDuckGo favicon proxy
     urls_to_try.append(f"https://icons.duckduckgo.com/ip3/{norm}.ico")
-    # Tier 3: Direct favicon.ico
     urls_to_try.append(f"https://{norm}/favicon.ico")
-    # Tier 4: Apple touch icon (often 180px, good quality)
     urls_to_try.append(f"https://{norm}/apple-touch-icon.png")
 
     for url in urls_to_try:
         try:
-            req = urllib.request.Request(
-                url,
-                headers={
-                    'User-Agent': 'Mozilla/5.0 (compatible; NUZUBot/1.0)',
-                    'Accept': 'image/png,image/x-icon,image/*',
-                }
-            )
+            req = urllib.request.Request(url, headers={
+                'User-Agent': 'Mozilla/5.0 (compatible; NUZUBot/1.0)',
+                'Accept': 'image/png,image/x-icon,image/svg+xml,image/*',
+            })
             with urllib.request.urlopen(req, timeout=8) as resp:
-                # Only accept image content types
                 ct = resp.headers.get('Content-Type', '')
                 if ct and 'text/html' in ct:
-                    continue  # Got an error page, not an image
+                    continue
                 data = resp.read()
             if data and len(data) >= 100:
                 with open(path, 'wb') as f:
                     f.write(data)
-                # Validate immediately — reject if it's a 1×1 placeholder
                 if _is_icon_valid(path):
                     return True
-                else:
-                    try: os.remove(path)
-                    except: pass
+                try: os.remove(path)
+                except: pass
         except Exception:
             continue
+
+    # Tier 5: Full HTML + manifest discovery (slowest but most complete)
+    retries = _missing_logo_registry.get(dom, {}).get('retries', 0)
+    if retries < 5:   # Don't hammer permanently-dead domains
+        if _discover_icons_from_html(norm):
+            return True
+
     return False
 
 # ── Missing-logo registry ────────────────────────────────────────────────────
@@ -630,12 +865,13 @@ def prewarm_source_icons():
     downloaded = 0
     skipped    = 0
     failed     = 0
-    recovered  = 0   # Previously missing, now resolved
+    recovered  = 0
+    html_discovered = 0
     seen_domains = set()
     newly_failed = []
 
     def _process(dom, override_url=None):
-        nonlocal downloaded, skipped, failed, recovered
+        nonlocal downloaded, skipped, failed, recovered, html_discovered
         if not dom or dom in seen_domains:
             return
         seen_domains.add(dom)
@@ -643,17 +879,22 @@ def prewarm_source_icons():
         already_valid = os.path.exists(path) and _is_icon_valid(path)
         if already_valid:
             skipped += 1
-            # If it was previously missing, mark as recovered
             if dom in _missing_logo_registry:
                 del _missing_logo_registry[dom]
                 recovered += 1
             return
-        # Attempt download
+        # Track whether Tier 5 (HTML discovery) was what succeeded
+        before_html = not os.path.exists(path)
         if _download_favicon(dom, override_url=override_url):
             downloaded += 1
             if dom in _missing_logo_registry:
                 del _missing_logo_registry[dom]
                 recovered += 1
+            # If nothing existed before and HTML tier ran, count it
+            if before_html:
+                retries = _missing_logo_registry.get(dom, {}).get('retries', 0)
+                # HTML discovery kicks in after URL tiers fail — heuristic
+                html_discovered += 0   # only countable post-hoc; kept for future
         else:
             failed += 1
             newly_failed.append(dom)
@@ -675,20 +916,28 @@ def prewarm_source_icons():
         dom = SOURCE_DOMAIN_MAP.get(friendly, '') or ''
         _process(dom, override_url=url)
 
-    # Every domain in the map
+    # Every domain in the static map
     for dom in set(SOURCE_DOMAIN_MAP.values()):
         _process(dom)
 
-    _save_missing_logos(_missing_logo_registry)
+    # Every domain auto-learned from RSS entry.source.href
+    for dom in set(_AUTO_DOMAIN_CACHE.values()):
+        _process(dom)
 
-    # ── Health summary ──────────────────────────────────────────────────────
+    _save_missing_logos(_missing_logo_registry)
+    _save_auto_domain_cache()
+
     persistent_failures = [
         (d, v) for d, v in _missing_logo_registry.items()
         if v.get('retries', 0) >= 3
     ]
+    total_domains = len(seen_domains)
+    resolved = skipped + downloaded
     print(
-        f"Favicon cache: {downloaded} downloaded, {skipped} valid cached, "
-        f"{recovered} recovered, {failed} failed | "
+        f"Brand pipeline: {total_domains} sources | "
+        f"{resolved} resolved ({skipped} cached, {downloaded} downloaded) | "
+        f"{recovered} recovered | {failed} failed | "
+        f"auto-learned: {len(_AUTO_DOMAIN_CACHE)} domains | "
         f"persistent failures: {len(persistent_failures)} | "
         f"retry queue: {len(_missing_logo_registry)}"
     )
@@ -2625,18 +2874,27 @@ def _resolve_entry_source(entry, fallback_name):
     If that's missing, fall back to parsing the " - Publisher" suffix that
     Google News appends to every headline. Final fallback is the feed name
     we queried with (fallback_name).
+
+    Returns (source_name, source_href) where source_href may be '' if unknown.
+    The href is the publisher's canonical homepage URL — useful for auto-learning
+    the domain without guessing.
     """
+    source_href = ''
     try:
         src_obj = entry.get('source')
         if src_obj:
-            # feedparser can return FeedParserDict or plain dict
             title = None
+            href  = None
             if hasattr(src_obj, 'get'):
                 title = src_obj.get('title') or src_obj.get('value')
+                href  = src_obj.get('href')  or src_obj.get('url') or ''
             elif hasattr(src_obj, 'title'):
                 title = src_obj.title
+                href  = getattr(src_obj, 'href', '') or ''
+            if href and isinstance(href, str):
+                source_href = href.strip()
             if title and isinstance(title, str) and len(title.strip()) >= 2:
-                return title.strip()
+                return title.strip(), source_href
     except Exception:
         pass
     # Fallback: parse " - Publisher" suffix from title (max 5 words)
@@ -2644,8 +2902,8 @@ def _resolve_entry_source(entry, fallback_name):
     if ' - ' in raw_title:
         suffix = raw_title.rsplit(' - ', 1)[1].strip()
         if 0 < len(suffix.split()) <= 5:
-            return suffix
-    return fallback_name
+            return suffix, source_href
+    return fallback_name, source_href
 
 # Global cache: maps article URL → plain-text summary snippet (1-2 sentences)
 # populated by _fetch_one_source, consumed by render_clusters.
@@ -2760,7 +3018,17 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                     # feed label — prevents every Google News result being
                     # attributed to the query term (e.g. "Deutsche Welle"
                     # when the article is actually from Reuters via DW feed).
-                    true_source = _resolve_entry_source(entry, source_name)
+                    true_source, _src_href = _resolve_entry_source(entry, source_name)
+                    # ── Auto-domain learning ──────────────────────────────────
+                    # Google News entries carry entry.source.href — the publisher's
+                    # canonical homepage URL. When SOURCE_DOMAIN_MAP has no mapping
+                    # for this source name, extract the domain from the href and
+                    # register it so the icon pipeline can fetch a real logo.
+                    if _src_href and not get_source_domain(true_source):
+                        _auto_register_domain(true_source, _src_href)
+                    elif not get_source_domain(true_source) and raw_link and raw_link.startswith('http'):
+                        # Secondary fallback: extract domain from the article URL
+                        _auto_register_domain(true_source, raw_link)
                     # Extract plain-text summary (lede/blurb) from RSS field.
                     # Trim to ~2 sentences / 200 chars; stored globally for render.
                     _raw_sum = entry.get('summary', '') or entry.get('description', '') or ''
