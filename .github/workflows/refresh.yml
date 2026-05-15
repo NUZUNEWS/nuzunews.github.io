@@ -1,0 +1,72 @@
+name: refresh
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # Every 5 minutes — most aggressive safe free-tier cadence
+  workflow_dispatch:
+
+# Cancel any in-progress run when a newer one starts.
+# Prevents overlapping deploys and queue pileups on GitHub Actions.
+concurrency:
+  group: nuzu-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Cache pip packages — saves ~15s on every run
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: nuzu-pip-feedparser-requests
+          restore-keys: nuzu-pip-
+
+      - name: Install dependencies
+        run: pip install --quiet feedparser requests
+
+      - name: Capture pre-run hash of index.html
+        id: pre_hash
+        run: |
+          if [ -f index.html ]; then
+            echo "hash=$(sha256sum index.html | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          else
+            echo "hash=none" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run main bot (builds index.html)
+        run: python bot.py
+
+      - name: Capture post-run hash of index.html
+        id: post_hash
+        run: |
+          if [ -f index.html ]; then
+            echo "hash=$(sha256sum index.html | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          else
+            echo "hash=none" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push updated files
+        if: steps.pre_hash.outputs.hash != steps.post_hash.outputs.hash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html feed.xml feed.json _headers || true
+          git add yesterday_top.json feed_health.json missing_logos.json source_domain_cache.json 2>/dev/null || true
+          git add icons/sources/ 2>/dev/null || true
+          git commit -m "Auto-refresh $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
+          git push
+
+      - name: Skip deploy (content unchanged)
+        if: steps.pre_hash.outputs.hash == steps.post_hash.outputs.hash
+        run: echo "Content hash unchanged — skipping deploy to conserve action minutes."
