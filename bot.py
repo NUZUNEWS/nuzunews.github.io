@@ -4088,37 +4088,42 @@ html_parts.append(f"""<!DOCTYPE html>
         .nuzu-hero-date {{ display: none; }}
     }}
 
-    /* - Video Banner - */
+    /* - Inline Video Banner (desktop only) - */
     .banner {{
-        background: #000; width: 100%; overflow: hidden;
+        background: #0a0a0a; width: 100%; overflow: hidden;
     }}
     .video-grid {{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(2, 1fr);
         gap: 3px; padding: 3px;
-        /* Constrain height so rows never leave empty black void below last row */
-        max-height: 56vw;
-        background: #000;
+        background: #0a0a0a;
+        height: calc(100vh - 56px);
     }}
     @media (max-width: 1200px) {{
         .video-grid {{
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(3, 1fr);
-            max-height: 68vw;
         }}
     }}
     @media (max-width: 768px) {{
         .video-grid {{ display: none; }}
     }}
     .youtube-inset {{
-        border-radius: 2px; overflow: hidden;
-        aspect-ratio: 16/9; width: 100%;
+        position: relative;
+        overflow: hidden;
         background: #050505;
+        border-radius: 2px;
     }}
-    .youtube-inset iframe {{ width: 100%; height: 100%; border: none; display: block; }}
+    /* JS applies exact overscan via inline style — these are safe fallback defaults */
+    .youtube-inset iframe {{
+        position: absolute;
+        top: -6%; left: -6%;
+        width: 112%; height: 112%;
+        border: none; display: block;
+    }}
     .youtube-inset.audio-active {{
-        outline: 3px solid var(--nuzu-blue); outline-offset: 2px; border-radius: 3px;
+        outline: 3px solid var(--nuzu-blue); outline-offset: -2px; border-radius: 3px;
     }}
 
     /* - Top Stories / MRO Strip - */
@@ -4785,14 +4790,12 @@ html_parts.append(f"""<!DOCTYPE html>
         padding: 1px 5px; font-size: 0.85em; font-family: monospace;
     }}
 
-    /* - Waiting Room Grid: 5 cols × 2 rows = 10 feeds - */
+    /* - Waiting Room Grid: JS-packed viewport fill, overflow-cropped tiles - */
     #wr-grid {{
         flex: 1;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, 1fr);
         gap: 3px;
-        background: #000;
+        background: #0a0a0a;
         padding: 3px;
         overflow: hidden;
     }}
@@ -4807,7 +4810,12 @@ html_parts.append(f"""<!DOCTYPE html>
     .wr-cell:hover {{ outline: 2px solid var(--nuzu-blue); outline-offset: -2px; }}
     .wr-cell.wr-audio-active {{ outline: 3px solid var(--nuzu-blue); outline-offset: -3px; }}
     .wr-cell iframe {{
-        width: 100%; height: 100%; border: none; display: block;
+        /* JS applies exact overscan via inline style after measuring real cell size.
+           These are safe fallback defaults only — JS will override them. */
+        position: absolute;
+        border: none; display: block;
+        top: -6%; left: -6%;
+        width: 112%; height: 112%;
         pointer-events: all;
     }}
     .wr-cell-num {{
@@ -4815,7 +4823,7 @@ html_parts.append(f"""<!DOCTYPE html>
         background: rgba(0,0,0,0.65); color: rgba(255,255,255,0.7);
         font-size: 0.62em; padding: 2px 7px; border-radius: 10px;
         font-weight: bold; letter-spacing: 0.06em;
-        pointer-events: none; user-select: none;
+        pointer-events: none; user-select: none; z-index: 1;
     }}
 
     /* - Mobile: Most Reported On full-width makeover - */
@@ -7033,6 +7041,32 @@ window._nz_scroll = function(el, behavior) {{
     _loadMSV();
   }}
   if (!vtoggle) return;
+  // ── Banner overscan: same math as WR cells, applied to .youtube-inset ───────
+  // Called after iframes are injected so cells have real clientWidth/clientHeight.
+  function _applyBannerOverscan() {{
+    var VIDEO_AR = 16 / 9;
+    var insets = banner ? banner.querySelectorAll('.youtube-inset') : [];
+    insets.forEach(function(inset) {{
+      var iframe = inset.querySelector('iframe');
+      if (!iframe) return;
+      var cw = inset.clientWidth, ch = inset.clientHeight;
+      if (cw < 1 || ch < 1) return;
+      var pct, offset;
+      if ((cw / ch) < VIDEO_AR) {{
+        pct = Math.ceil((ch * VIDEO_AR / cw) * 100) + 2;
+      }} else {{
+        pct = Math.ceil((cw / (ch * VIDEO_AR)) * 100) + 2;
+      }}
+      offset = -Math.round((pct - 100) / 2);
+      iframe.style.position = 'absolute';
+      iframe.style.width  = pct + '%';
+      iframe.style.height = pct + '%';
+      iframe.style.top    = offset + '%';
+      iframe.style.left   = offset + '%';
+      iframe.style.border = 'none';
+    }});
+  }}
+
   function setVideoMode(on) {{
     if (banner) {{
       if (on) {{
@@ -7044,10 +7078,13 @@ window._nz_scroll = function(el, behavior) {{
           iframe.src = MAIN_FEED_SRCS[i] || MAIN_FEED_SRCS[0];
           iframe.setAttribute('allow', 'autoplay;encrypted-media');
           iframe.setAttribute('allowfullscreen', '');
-          iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;';
           if (!existing) inset.appendChild(iframe);
         }});
         banner.style.display = '';
+        // Apply overscan after browser has laid out the inset cells
+        requestAnimationFrame(function() {{
+          requestAnimationFrame(function() {{ _applyBannerOverscan(); }});
+        }});
       }} else {{
         banner.querySelectorAll('.youtube-inset iframe').forEach(function(iframe) {{
           iframe.src = 'about:blank';
@@ -7063,6 +7100,12 @@ window._nz_scroll = function(el, behavior) {{
   try {{ savedV = localStorage.getItem(VKEY); }} catch(e) {{}}
   if (savedV === '0') setVideoMode(false);
   vtoggle.addEventListener('change', function() {{ setVideoMode(!vtoggle.checked); }});
+  // Reapply overscan after font/zoom/resize changes the banner cell dimensions
+  window.addEventListener('resize', function() {{
+    if (banner && banner.style.display !== 'none') {{
+      requestAnimationFrame(function() {{ _applyBannerOverscan(); }});
+    }}
+  }});
   // Wire mobile video toggle to same setVideoMode
   var mobileVToggle = document.getElementById('mobile-video-toggle');
   if (mobileVToggle) {{
@@ -7554,10 +7597,113 @@ document.addEventListener('load', function(e){{
       iframe.src = MAIN_FEED_SRCS[i] || MAIN_FEED_SRCS[0];
       iframe.setAttribute('allow', 'autoplay;encrypted-media');
       iframe.setAttribute('allowfullscreen', '');
-      iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;';
+      // No inline style — CSS handles overscan positioning
       inset.appendChild(iframe);
     }});
   }}
+  // ── packWRGrid(): compute optimal layout AND apply exact iframe overscan ─────
+  //
+  // WHY STATIC CSS OVERSCAN FAILED:
+  // A 5×2 grid on 1440×856px gives cells of 286×426px (AR=0.67).
+  // YouTube renders 16:9 video inside the iframe, padding with black bars.
+  // The video fills the cell width (286px), so rendered height = 286/1.778 = 161px.
+  // That leaves (426-161)/2 = 132px of black bar above AND below.
+  // To push those bars off screen we need iframe height = cell_h + 2×132 = 690px.
+  // As a percentage: 690/426 = 162%. Our 112% only covered 12px — useless.
+  //
+  // The required overscan factor is: max(cellAR/videoAR, videoAR/cellAR)
+  // which varies from ~141% (4×3) to ~265% (5×2) to ~319% (6×2).
+  // It must be calculated FROM REAL CELL DIMENSIONS after the grid is laid out.
+  //
+  // HOW IT NOW WORKS:
+  // 1. Set grid-template-columns/rows to chosen layout
+  // 2. Force a reflow (offsetWidth read)
+  // 3. Measure each cell's real clientWidth × clientHeight
+  // 4. Calculate exact overscan percentage needed to push black bars off-screen
+  // 5. Apply as position:absolute inline style on every iframe
+  //
+  var VIDEO_AR = 16 / 9;   // YouTube's native content aspect ratio
+
+  function _applyOverscanToCell(cell) {{
+    var iframe = cell.querySelector('iframe');
+    if (!iframe) return;
+    var cw = cell.clientWidth;
+    var ch = cell.clientHeight;
+    if (cw < 1 || ch < 1) return;
+    var cellAR = cw / ch;
+
+    var pct, offset;
+    if (cellAR < VIDEO_AR) {{
+      // Cell is TALLER than 16:9 → black bars top and bottom
+      // Iframe must be sized so its rendered height fills the cell height.
+      // rendered_h = iframe_w / VIDEO_AR
+      // We set iframe width = cell width, so rendered_h = cw / VIDEO_AR
+      // We need rendered_h >= ch, so scale = ch / (cw / VIDEO_AR) = ch*VIDEO_AR/cw
+      pct    = Math.ceil((ch * VIDEO_AR / cw) * 100) + 2; // +2% safety margin
+      offset = -Math.round((pct - 100) / 2);
+      iframe.style.width  = pct + '%';
+      iframe.style.height = pct + '%';
+      iframe.style.top    = offset + '%';
+      iframe.style.left   = offset + '%';
+    }} else {{
+      // Cell is WIDER than 16:9 → black bars left and right (less common)
+      pct    = Math.ceil((cw / (ch * VIDEO_AR)) * 100) + 2;
+      offset = -Math.round((pct - 100) / 2);
+      iframe.style.width  = pct + '%';
+      iframe.style.height = pct + '%';
+      iframe.style.top    = offset + '%';
+      iframe.style.left   = offset + '%';
+    }}
+  }}
+
+  function packWRGrid() {{
+    var n = WR_FEEDS.length;
+    var W = overlay.clientWidth  || window.innerWidth;
+    var H = (overlay.clientHeight || window.innerHeight) - 44; // minus header
+    if (W < 1 || H < 1) return;
+    var GAP = 3;
+    var bestCols = 5, bestRows = 2, bestScore = -1;
+
+    for (var cols = 2; cols <= 8; cols++) {{
+      var rows = Math.ceil(n / cols);
+      var cellW = (W - GAP * (cols - 1) - 6) / cols;
+      var cellH = (H - GAP * (rows - 1) - 6) / rows;
+      if (cellW < 1 || cellH < 1) continue;
+      var cellAR = cellW / cellH;
+      // Required overscan (lower = better — less crop needed)
+      var overscan = cellAR < VIDEO_AR
+        ? (cellH * VIDEO_AR / cellW)
+        : (cellW / (cellH * VIDEO_AR));
+      var fillRatio  = n / (cols * rows);          // How many cells are used
+      var score = fillRatio * 10 - (overscan - 1) * 3;   // Maximise fill, minimise crop
+      if (score > bestScore) {{ bestScore = score; bestCols = cols; bestRows = rows; }}
+    }}
+
+    grid.style.gridTemplateColumns = 'repeat(' + bestCols + ', 1fr)';
+    grid.style.gridTemplateRows    = 'repeat(' + bestRows + ', 1fr)';
+
+    // Force reflow so clientWidth/clientHeight on cells are real measured values
+    void grid.offsetWidth;
+
+    // Apply exact overscan to every iframe
+    grid.querySelectorAll('.wr-cell').forEach(function(cell) {{
+      _applyOverscanToCell(cell);
+    }});
+
+    if (window._nuzu_wr_debug) {{
+      var sample = grid.querySelector('.wr-cell');
+      if (sample) {{
+        var cw = sample.clientWidth, ch = sample.clientHeight;
+        var pct = ch > 0 ? Math.ceil((ch * VIDEO_AR / cw) * 100) : 0;
+        console.log('[WR] layout=' + bestCols + 'x' + bestRows +
+          ' cell=' + cw + 'x' + ch + 'px' +
+          ' AR=' + (cw/ch).toFixed(3) +
+          ' overscan=' + pct + '%' +
+          ' fill=' + n + '/' + (bestCols*bestRows));
+      }}
+    }}
+  }}
+
   function _buildWRGrid() {{
     grid.innerHTML = '';
     WR_FEEDS.forEach(function(feed) {{
@@ -7571,6 +7717,12 @@ document.addEventListener('load', function(e){{
       cell.appendChild(iframe); cell.appendChild(lbl);
       grid.appendChild(cell);
     }});
+    // Two-pass: rAF → rAF ensures grid layout is flushed before we measure cells
+    requestAnimationFrame(function() {{
+      requestAnimationFrame(function() {{
+        packWRGrid();
+      }});
+    }});
   }}
   function _destroyWRGrid() {{
     grid.querySelectorAll('iframe').forEach(function(iframe) {{ iframe.src = 'about:blank'; }});
@@ -7582,12 +7734,26 @@ document.addEventListener('load', function(e){{
     overlay.classList.add('wr-open');
     document.body.style.overflow = 'hidden';
     _overlayIsFullscreen = false;
+    if (!openWR._resizeHandler) {{
+      openWR._resizeHandler = function() {{
+        if (_wrIsOpen) {{
+          requestAnimationFrame(function() {{ packWRGrid(); }});
+        }}
+      }};
+      window.addEventListener('resize', openWR._resizeHandler);
+    }}
     try {{
       var fsReq = overlay.requestFullscreen
         ? overlay.requestFullscreen()
         : (overlay.webkitRequestFullscreen ? (overlay.webkitRequestFullscreen(), Promise.resolve()) : Promise.reject());
       if (fsReq && typeof fsReq.then === 'function') {{
-        fsReq.then(function() {{ _overlayIsFullscreen = true; }}).catch(function() {{}});
+        fsReq.then(function() {{
+          _overlayIsFullscreen = true;
+          // Fullscreen changes viewport — repack with new dimensions
+          requestAnimationFrame(function() {{
+            requestAnimationFrame(function() {{ packWRGrid(); }});
+          }});
+        }}).catch(function() {{}});
       }}
     }} catch(e) {{}}
   }}
