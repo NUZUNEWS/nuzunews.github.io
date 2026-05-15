@@ -4800,12 +4800,12 @@ html_parts.append(f"""<!DOCTYPE html>
     .wr-cell:hover {{ outline: 2px solid var(--nuzu-blue); outline-offset: -2px; }}
     .wr-cell.wr-audio-active {{ outline: 3px solid var(--nuzu-blue); outline-offset: -3px; }}
     .wr-cell iframe {{
-        /* JS applies exact overscan via inline style after measuring real cell size.
-           These are safe fallback defaults only — JS will override them. */
+        /* JS applies exact bottom-anchored overscan — these are fallback defaults only */
         position: absolute;
-        border: none; display: block;
-        top: -6%; left: -6%;
+        bottom: 0; top: auto;
+        left: -6%;
         width: 112%; height: 112%;
+        border: none; display: block;
         pointer-events: all;
     }}
     .wr-cell-num {{
@@ -7587,33 +7587,39 @@ document.addEventListener('load', function(e){{
     if (cw < 1 || ch < 1) return;
     var cellAR = cw / ch;
 
-    var rawPct;
+    // BOTTOM-ANCHOR STRATEGY:
+    // Problem: YouTube controls live at the very bottom of the iframe.
+    // Any bottom-clipping hides the volume knob and progress bar.
+    // Solution: anchor iframe to the BOTTOM of the cell. Overscan only
+    // goes UPWARD — top black bar pushed off screen, bottom always visible.
+    //
+    // For a cell TALLER than 16:9 (most common at 5×2 layout):
+    //   YouTube renders video at full cell width, height = cw/1.778.
+    //   Black bar top = (ch - cw/1.778) / 2, same at bottom.
+    //   We need iframe height = ch + top_bar = ch + (ch - cw/1.778)/2
+    //   = (ch + ch - cw/1.778) / 2... simplified: ch * VIDEO_AR / cw * 100%
+    //   But we anchor BOTTOM=0, so this extension goes upward only.
+    //   Bottom of iframe = bottom of cell → controls always reachable.
+    //
+    // Cap: 220% — at extreme aspect ratios some top bar may remain. Acceptable.
+
+    var pct;
     if (cellAR < VIDEO_AR) {{
-      // Cell taller than 16:9 → black bars top and bottom
-      rawPct = (ch * VIDEO_AR / cw) * 100;
+      // Cell taller than 16:9: extend upward to push top black bar off screen
+      pct = Math.min(Math.ceil((ch * VIDEO_AR / cw) * 100) + 2, 220);
     }} else {{
-      // Cell wider than 16:9 → black bars left and right
-      rawPct = (cw / (ch * VIDEO_AR)) * 100;
+      // Cell wider than 16:9: extend sideways. Still anchor bottom.
+      pct = Math.min(Math.ceil((cw / (ch * VIDEO_AR)) * 100) + 2, 180);
     }}
 
-    // CAP at 160% — beyond this YouTube's own UI controls go off-screen.
-    // Some minor black bars at extreme layouts are acceptable; losing the
-    // volume/fullscreen controls is not.
-    var pct = Math.min(Math.ceil(rawPct) + 1, 160);
-
-    // Bias crop: put 60% of the overhang on top, 40% on bottom.
-    // YouTube's controls are anchored to the BOTTOM of the iframe.
-    // By cropping more from the top than the bottom, controls stay
-    // near the lower edge of the cell where they remain accessible.
-    var overhang = pct - 100;
-    var topOffset  = -Math.round(overhang * 0.60);
-    var leftOffset = -Math.round(overhang * 0.50);
+    var leftOffset = -Math.round((pct - 100) / 2);
 
     iframe.style.position = 'absolute';
-    iframe.style.width    = pct + '%';
-    iframe.style.height   = pct + '%';
-    iframe.style.top      = topOffset + '%';
+    iframe.style.bottom   = '0';       // ANCHOR to bottom → controls always visible
+    iframe.style.top      = 'auto';    // override any previous top value
     iframe.style.left     = leftOffset + '%';
+    iframe.style.width    = pct + '%';
+    iframe.style.height   = pct + '%'; // extends UPWARD from bottom
     iframe.style.border   = 'none';
     iframe.style.display  = 'block';
   }}

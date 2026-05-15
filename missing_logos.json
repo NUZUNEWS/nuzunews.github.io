@@ -1,32 +1,207 @@
 {
+  "aa.com.tr": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
   "adhocnews.co.uk": {
     "first_seen": "2026-05-14T08:25",
-    "last_attempt": "2026-05-15T06:44",
+    "last_attempt": "2026-05-15T07:00",
     "retries": 6
   },
   "afp.com": {
     "first_seen": "2026-05-14T08:25",
-    "last_attempt": "2026-05-15T06:44",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "amwaj.media": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "artthreat.net": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "brusselsmorning.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "cbr.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "commbank.com.au": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "dazeddigital.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
     "retries": 6
   },
   "electronicintifada.net": {
     "first_seen": "2026-05-14T08:25",
-    "last_attempt": "2026-05-15T06:44",
+    "last_attempt": "2026-05-15T07:00",
     "retries": 6
   },
-  "feeds.texastribune.org": {
-    "first_seen": "2026-05-15T06:44",
-    "last_attempt": "2026-05-15T06:44",
-    "retries": 1
+  "facebook.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "fandom.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "fastcompany.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "flipboard.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "fool.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "foxbusiness.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "ft.lk": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "gamespot.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "giantfreakinrobot.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "hurriyetdailynews.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "ign.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "imdb.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "inc.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "kotaku.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "moomoo.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "movieweb.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "msn.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
   },
   "nationaldefensemagazine.org": {
     "first_seen": "2026-05-14T08:25",
-    "last_attempt": "2026-05-15T06:44",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "news.google.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
     "retries": 6
   },
   "nhk.or.jp": {
     "first_seen": "2026-05-14T08:25",
     "last_attempt": "2026-05-14T08:25",
     "retries": 0
+  },
+  "pcgamer.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "polygon.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "reddit.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "seekingalpha.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "theartnewspaper.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "thediplomat.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "thedirect.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "tradingview.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "travelweekly.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "wegotthiscovered.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
+  },
+  "yahoo.com": {
+    "first_seen": "2026-05-14T08:25",
+    "last_attempt": "2026-05-15T07:00",
+    "retries": 6
   }
 }
