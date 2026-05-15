@@ -4090,40 +4090,30 @@ html_parts.append(f"""<!DOCTYPE html>
 
     /* - Inline Video Banner (desktop only) - */
     .banner {{
-        background: #0a0a0a; width: 100%; overflow: hidden;
+        background: #000; width: 100%; overflow: hidden;
     }}
     .video-grid {{
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap: 3px; padding: 3px;
-        background: #0a0a0a;
-        height: calc(100vh - 56px);
+        grid-template-rows: repeat(2, auto);
+        gap: 4px; padding: 6px;
     }}
     @media (max-width: 1200px) {{
         .video-grid {{
             grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(3, 1fr);
         }}
     }}
     @media (max-width: 768px) {{
         .video-grid {{ display: none; }}
     }}
     .youtube-inset {{
-        position: relative;
-        overflow: hidden;
-        background: #050505;
-        border-radius: 2px;
+        border-radius: 3px; overflow: hidden;
+        aspect-ratio: 16/9; width: 100%;
+        background: #000;
     }}
-    /* JS applies exact overscan via inline style — these are safe fallback defaults */
-    .youtube-inset iframe {{
-        position: absolute;
-        top: -6%; left: -6%;
-        width: 112%; height: 112%;
-        border: none; display: block;
-    }}
+    .youtube-inset iframe {{ width: 100%; height: 100%; border: none; display: block; }}
     .youtube-inset.audio-active {{
-        outline: 3px solid var(--nuzu-blue); outline-offset: -2px; border-radius: 3px;
+        outline: 3px solid var(--nuzu-blue); outline-offset: 2px; border-radius: 3px;
     }}
 
     /* - Top Stories / MRO Strip - */
@@ -7041,32 +7031,6 @@ window._nz_scroll = function(el, behavior) {{
     _loadMSV();
   }}
   if (!vtoggle) return;
-  // ── Banner overscan: same math as WR cells, applied to .youtube-inset ───────
-  // Called after iframes are injected so cells have real clientWidth/clientHeight.
-  function _applyBannerOverscan() {{
-    var VIDEO_AR = 16 / 9;
-    var insets = banner ? banner.querySelectorAll('.youtube-inset') : [];
-    insets.forEach(function(inset) {{
-      var iframe = inset.querySelector('iframe');
-      if (!iframe) return;
-      var cw = inset.clientWidth, ch = inset.clientHeight;
-      if (cw < 1 || ch < 1) return;
-      var pct, offset;
-      if ((cw / ch) < VIDEO_AR) {{
-        pct = Math.ceil((ch * VIDEO_AR / cw) * 100) + 2;
-      }} else {{
-        pct = Math.ceil((cw / (ch * VIDEO_AR)) * 100) + 2;
-      }}
-      offset = -Math.round((pct - 100) / 2);
-      iframe.style.position = 'absolute';
-      iframe.style.width  = pct + '%';
-      iframe.style.height = pct + '%';
-      iframe.style.top    = offset + '%';
-      iframe.style.left   = offset + '%';
-      iframe.style.border = 'none';
-    }});
-  }}
-
   function setVideoMode(on) {{
     if (banner) {{
       if (on) {{
@@ -7078,13 +7042,10 @@ window._nz_scroll = function(el, behavior) {{
           iframe.src = MAIN_FEED_SRCS[i] || MAIN_FEED_SRCS[0];
           iframe.setAttribute('allow', 'autoplay;encrypted-media');
           iframe.setAttribute('allowfullscreen', '');
+          iframe.style.cssText = 'width:100%;height:100%;border:none;display:block;';
           if (!existing) inset.appendChild(iframe);
         }});
         banner.style.display = '';
-        // Apply overscan after browser has laid out the inset cells
-        requestAnimationFrame(function() {{
-          requestAnimationFrame(function() {{ _applyBannerOverscan(); }});
-        }});
       }} else {{
         banner.querySelectorAll('.youtube-inset iframe').forEach(function(iframe) {{
           iframe.src = 'about:blank';
@@ -7100,12 +7061,6 @@ window._nz_scroll = function(el, behavior) {{
   try {{ savedV = localStorage.getItem(VKEY); }} catch(e) {{}}
   if (savedV === '0') setVideoMode(false);
   vtoggle.addEventListener('change', function() {{ setVideoMode(!vtoggle.checked); }});
-  // Reapply overscan after font/zoom/resize changes the banner cell dimensions
-  window.addEventListener('resize', function() {{
-    if (banner && banner.style.display !== 'none') {{
-      requestAnimationFrame(function() {{ _applyBannerOverscan(); }});
-    }}
-  }});
   // Wire mobile video toggle to same setVideoMode
   var mobileVToggle = document.getElementById('mobile-video-toggle');
   if (mobileVToggle) {{
@@ -7632,28 +7587,35 @@ document.addEventListener('load', function(e){{
     if (cw < 1 || ch < 1) return;
     var cellAR = cw / ch;
 
-    var pct, offset;
+    var rawPct;
     if (cellAR < VIDEO_AR) {{
-      // Cell is TALLER than 16:9 → black bars top and bottom
-      // Iframe must be sized so its rendered height fills the cell height.
-      // rendered_h = iframe_w / VIDEO_AR
-      // We set iframe width = cell width, so rendered_h = cw / VIDEO_AR
-      // We need rendered_h >= ch, so scale = ch / (cw / VIDEO_AR) = ch*VIDEO_AR/cw
-      pct    = Math.ceil((ch * VIDEO_AR / cw) * 100) + 2; // +2% safety margin
-      offset = -Math.round((pct - 100) / 2);
-      iframe.style.width  = pct + '%';
-      iframe.style.height = pct + '%';
-      iframe.style.top    = offset + '%';
-      iframe.style.left   = offset + '%';
+      // Cell taller than 16:9 → black bars top and bottom
+      rawPct = (ch * VIDEO_AR / cw) * 100;
     }} else {{
-      // Cell is WIDER than 16:9 → black bars left and right (less common)
-      pct    = Math.ceil((cw / (ch * VIDEO_AR)) * 100) + 2;
-      offset = -Math.round((pct - 100) / 2);
-      iframe.style.width  = pct + '%';
-      iframe.style.height = pct + '%';
-      iframe.style.top    = offset + '%';
-      iframe.style.left   = offset + '%';
+      // Cell wider than 16:9 → black bars left and right
+      rawPct = (cw / (ch * VIDEO_AR)) * 100;
     }}
+
+    // CAP at 160% — beyond this YouTube's own UI controls go off-screen.
+    // Some minor black bars at extreme layouts are acceptable; losing the
+    // volume/fullscreen controls is not.
+    var pct = Math.min(Math.ceil(rawPct) + 1, 160);
+
+    // Bias crop: put 60% of the overhang on top, 40% on bottom.
+    // YouTube's controls are anchored to the BOTTOM of the iframe.
+    // By cropping more from the top than the bottom, controls stay
+    // near the lower edge of the cell where they remain accessible.
+    var overhang = pct - 100;
+    var topOffset  = -Math.round(overhang * 0.60);
+    var leftOffset = -Math.round(overhang * 0.50);
+
+    iframe.style.position = 'absolute';
+    iframe.style.width    = pct + '%';
+    iframe.style.height   = pct + '%';
+    iframe.style.top      = topOffset + '%';
+    iframe.style.left     = leftOffset + '%';
+    iframe.style.border   = 'none';
+    iframe.style.display  = 'block';
   }}
 
   function packWRGrid() {{
