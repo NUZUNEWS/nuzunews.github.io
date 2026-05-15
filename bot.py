@@ -4808,7 +4808,7 @@ html_parts.append(f"""<!DOCTYPE html>
         pointer-events: all;
     }}
     .wr-cell-num {{
-        position: absolute; bottom: 6px; left: 8px;
+        position: absolute; top: 6px; left: 8px;
         background: rgba(0,0,0,0.65); color: rgba(255,255,255,0.7);
         font-size: 0.62em; padding: 2px 7px; border-radius: 10px;
         font-weight: bold; letter-spacing: 0.06em;
@@ -7615,7 +7615,7 @@ document.addEventListener('load', function(e){{
     }} else {{
       scale = cw / (ch * VIDEO_AR);   // wider cell: scale to fill width
     }}
-    scale = Math.min(scale, 1.5);    // cap: controls remain comfortably sized
+    scale = Math.min(scale, 1.05);    // near-zero crop: controls fully accessible
 
     // Reset any previous position-based overscan styles
     iframe.style.position   = 'relative';
