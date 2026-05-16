@@ -1,261 +1,52 @@
-name: NUZU — Production Install
+name: NUZU Production Install
 
-# ─────────────────────────────────────────────────────────────────────────────
-# This workflow runs ONCE when you push the production hardening files.
-# It patches bot.py automatically and commits the result back to main.
+# Runs automatically when you push nuzu-bundle.js to main.
+# Also available as a manual trigger from the Actions tab.
 #
-# YOU DO NOT NEED TO RUN ANYTHING LOCALLY.
-# Just drag the files in, push, and this does the rest.
+# What it does:
+#   1. Runs bot_patch.py which patches bot.py (adds bundle script tag + XSS fixes)
+#   2. Commits the result back to the repo
 #
-# SAFE TO RE-RUN: already-applied patches are detected and skipped.
-# TO UNDO: revert the "Apply NUZU production hardening" commit.
-# ─────────────────────────────────────────────────────────────────────────────
+# Safe to re-run - already-applied patches are detected and skipped.
+# To undo - revert the "Apply NUZU production hardening" commit.
 
 on:
   push:
     branches: [main]
     paths:
-      # Only trigger when the bundle file itself is pushed (i.e. first install)
-      - 'nuzu-bundle.js'
+      - nuzu-bundle.js
   workflow_dispatch:
-    # Also available as a manual trigger from the Actions tab
 
 jobs:
   install:
-    name: Apply Production Hardening to bot.py
+    name: Patch bot.py
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed to commit bot.py back to the repo
+      contents: write
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check if already patched
-        id: check
+      - name: Run patcher
+        run: python3 bot_patch.py
+
+      - name: Commit result
         run: |
-          if grep -q 'nuzu-bundle.js' bot.py; then
-            echo "already_patched=true" >> $GITHUB_OUTPUT
-            echo "✅ bot.py is already patched — nothing to do."
-          else
-            echo "already_patched=false" >> $GITHUB_OUTPUT
-            echo "🔧 bot.py needs patching — proceeding."
-          fi
-
-      - name: Patch bot.py
-        if: steps.check.outputs.already_patched == 'false'
-        run: |
-          python3 << 'PATCHSCRIPT'
-          import sys
-
-          src = open('bot.py', encoding='utf-8').read()
-          original = src
-          applied = []
-          failed  = []
-
-          def insert_after(name, needle, insertion):
-              global src
-              if insertion.strip() in src:
-                  print(f'  ~ Already applied: {name}')
-                  return
-              idx = src.find(needle)
-              if idx == -1:
-                  failed.append(name)
-                  print(f'  ✗ FAILED (anchor not found): {name}')
-                  return
-              end = idx + len(needle)
-              src = src[:end] + insertion + src[end:]
-              applied.append(name)
-              print(f'  ✓ Applied: {name}')
-
-          def replace_first(name, old, new):
-              global src
-              if new.strip() in src:
-                  print(f'  ~ Already applied: {name}')
-                  return
-              if old not in src:
-                  failed.append(name)
-                  print(f'  ✗ FAILED (text not found): {name}')
-                  return
-              src = src.replace(old, new, 1)
-              applied.append(name)
-              print(f'  ✓ Applied: {name}')
-
-          def insert_before(name, needle, insertion):
-              global src
-              if insertion.strip() in src:
-                  print(f'  ~ Already applied: {name}')
-                  return
-              idx = src.find(needle)
-              if idx == -1:
-                  failed.append(name)
-                  print(f'  ✗ FAILED (anchor not found): {name}')
-                  return
-              src = src[:idx] + insertion + src[idx:]
-              applied.append(name)
-              print(f'  ✓ Applied: {name}')
-
-          print('\nApplying patches to bot.py...\n')
-
-          # PATCH 0 — Import sanitizer helpers
-          insert_after(
-              'Import bot_sanitizer',
-              'socket.setdefaulttimeout(20)',
-              '''
-
-# ── NUZU production hardening: sanitize feed content before HTML insertion ──
-try:
-    from bot_sanitizer import (
-        sanitize_title, sanitize_attr, sanitize_url,
-        sanitize_source_name, sanitize_summary, validate_feed_entry,
-    )
-except ImportError:
-    import html as _h
-    def sanitize_title(s, max_len=300):    return _h.escape(str(s or ''), quote=True)[:max_len]
-    def sanitize_attr(s, max_len=300):     return _h.escape(str(s or ''), quote=True).replace("'", "&#39;")[:max_len]
-    def sanitize_url(s):                   return s if str(s).startswith(('http://', 'https://', '/')) else '#'
-    def sanitize_source_name(s):           return _h.escape(str(s or ''), quote=True)[:80]
-    def sanitize_summary(s, max_len=400):  return _h.escape(str(s or ''), quote=True)[:max_len]
-    def validate_feed_entry(e, src):       return True, ''
-'''
-          )
-
-          # PATCH 1 — Add nuzu-bundle.js script tag before </body>
-          insert_before(
-              'nuzu-bundle.js script tag',
-              '</body>',
-              '    <script src="/nuzu-bundle.js?v={BUILD_STAMP}"></script>\n'
-          )
-
-          # PATCH 2 — Sanitize single-source headline title
-          replace_first(
-              'Sanitize single-source display_title',
-              "            display_title = clean_title[0].upper() + clean_title[1:] if clean_title else clean_title",
-              "            display_title = clean_title[0].upper() + clean_title[1:] if clean_title else clean_title\n"
-              "            display_title = sanitize_title(display_title)  # NUZU hardening"
-          )
-
-          # PATCH 3 — Sanitize single-source safe_title_attr + summary
-          replace_first(
-              'Sanitize single-source safe_title_attr + summary',
-              "            safe_title_attr = display_title.replace('\"', \"'\")\n"
-              "            _hl_sum = _ARTICLE_SUMMARIES.get(link, '')\n"
-              "            _hl_sum_html = (f'<span class=\"hl-summary\">{_hl_sum}</span>' if _hl_sum else '')",
-              "            safe_title_attr = sanitize_attr(display_title)  # NUZU hardening\n"
-              "            _hl_sum_raw = _ARTICLE_SUMMARIES.get(link, '')\n"
-              "            _hl_sum = sanitize_summary(_hl_sum_raw)  # NUZU hardening\n"
-              "            _hl_sum_html = (f'<span class=\"hl-summary\">{_hl_sum}</span>' if _hl_sum else '')"
-          )
-
-          # PATCH 4 — Sanitize cluster headline title
-          replace_first(
-              'Sanitize cluster display_title',
-              "            display_title = clean_lead[0].upper() + clean_lead[1:] if clean_lead else clean_lead",
-              "            display_title = clean_lead[0].upper() + clean_lead[1:] if clean_lead else clean_lead\n"
-              "            display_title = sanitize_title(display_title)  # NUZU hardening"
-          )
-
-          # PATCH 5 — Sanitize cluster safe_title_attr
-          replace_first(
-              'Sanitize cluster safe_title_attr',
-              "            safe_title_attr = display_title.replace('\"', \"'\")\n"
-              "            trust_pct",
-              "            safe_title_attr = sanitize_attr(display_title)  # NUZU hardening\n"
-              "            trust_pct"
-          )
-
-          # PATCH 6 — Sanitize cluster source pills
-          replace_first(
-              'Sanitize cluster-src-pills',
-              "                '<span class=\"cluster-src-pill\">' + s + '</span>' for s in top3_srcs",
-              "                '<span class=\"cluster-src-pill\">' + sanitize_source_name(s) + '</span>' for s in top3_srcs  # NUZU"
-          )
-
-          # PATCH 7 — Sanitize cluster summary
-          replace_first(
-              'Sanitize cluster summary',
-              "            _cl_sum = _ARTICLE_SUMMARIES.get(lead_link, '')\n"
-              "            _cl_sum_html = f'<span class=\"hl-summary\">{_cl_sum}</span>' if _cl_sum else ''",
-              "            _cl_sum_raw = _ARTICLE_SUMMARIES.get(lead_link, '')\n"
-              "            _cl_sum = sanitize_summary(_cl_sum_raw)  # NUZU hardening\n"
-              "            _cl_sum_html = f'<span class=\"hl-summary\">{_cl_sum}</span>' if _cl_sum else ''"
-          )
-
-          print(f'\nResult: {len(applied)} applied, {len(failed)} failed.\n')
-
-          if failed:
-              print('ERROR: Some patches failed. bot.py was NOT modified.')
-              sys.exit(1)
-
-          if src == original:
-              print('No changes needed — bot.py already up to date.')
-          else:
-              open('bot.py', 'w', encoding='utf-8').write(src)
-              print('bot.py written successfully.')
-          PATCHSCRIPT
-
-      - name: Verify patch results
-        if: steps.check.outputs.already_patched == 'false'
-        run: |
-          python3 << 'VERIFY'
-          src = open('bot.py').read()
-          checks = {
-              'sanitizer import':        'from bot_sanitizer import',
-              'nuzu-bundle.js tag':      'nuzu-bundle.js',
-              'sanitize_title in use':   'display_title = sanitize_title(',
-              'sanitize_attr in use':    'sanitize_attr(display_title)',
-              'sanitize source pills':   'sanitize_source_name(s)',
-              'sanitize summary':        'sanitize_summary(',
-          }
-          ok = True
-          for name, needle in checks.items():
-              if needle in src:
-                  print(f'✅  {name}')
-              else:
-                  print(f'❌  {name}  ← NOT FOUND')
-                  ok = False
-          if not ok:
-              raise SystemExit('Verification failed')
-          print('\nAll checks passed.')
-          VERIFY
-
-      - name: Commit patched bot.py
-        if: steps.check.outputs.already_patched == 'false'
-        run: |
-          git config user.name  "NUZU Install Bot"
+          git config user.name "NUZU Install Bot"
           git config user.email "actions@github.com"
           git add bot.py
-          # Only commit if there's actually a change
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "Nothing to commit - already patched."
           else
-            git commit -m "Apply NUZU production hardening to bot.py
-
-- Added bot_sanitizer import (XSS prevention for RSS feed content)
-- Sanitize display_title, safe_title_attr, summaries, source pills
-- Added nuzu-bundle.js script tag (perf + a11y + onboarding + security)
-
-Applied by .github/workflows/nuzu-install.yml"
+            git commit -m "Apply NUZU production hardening to bot.py"
             git push
-            echo "✅ bot.py committed and pushed."
           fi
 
-      - name: Summary
+      - name: Write job summary
         run: |
-          echo "## NUZU Production Hardening" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.check.outputs.already_patched }}" = "true" ]; then
-            echo "✅ **Already installed** — bot.py was already patched, nothing changed." >> $GITHUB_STEP_SUMMARY
-          else
-            echo "✅ **Install complete.** bot.py has been patched and committed." >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "### What was installed" >> $GITHUB_STEP_SUMMARY
-            echo "- XSS sanitization on all RSS feed content (8 patches)" >> $GITHUB_STEP_SUMMARY
-            echo "- \`nuzu-bundle.js\` script tag added to HTML template" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "### Active on next bot run" >> $GITHUB_STEP_SUMMARY
-            echo "The new \`index.html\` with all hardening will be generated on the next scheduled bot run." >> $GITHUB_STEP_SUMMARY
-            echo "The service worker update will notify open browser tabs automatically." >> $GITHUB_STEP_SUMMARY
-          fi
+          echo "## NUZU Production Install" >> $GITHUB_STEP_SUMMARY
+          echo "Patch complete. bot.py has been updated." >> $GITHUB_STEP_SUMMARY
+          echo "The next scheduled bot run will generate a hardened index.html." >> $GITHUB_STEP_SUMMARY
