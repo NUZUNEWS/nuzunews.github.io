@@ -12,6 +12,20 @@ import threading
 import socket
 socket.setdefaulttimeout(20)
 
+# ── NUZU sanitizer: prevents XSS via compromised RSS feeds ──
+try:
+    from bot_sanitizer import sanitize_title, sanitize_attr, sanitize_url, sanitize_source_name, sanitize_summary, validate_feed_entry
+except ImportError:
+    # Fallback no-ops if bot_sanitizer.py is not present
+    import html as _html
+    def sanitize_title(s, max_len=300): return _html.escape(str(s or ""), quote=True)[:max_len]
+    def sanitize_attr(s, max_len=300):  return _html.escape(str(s or ""), quote=True).replace("'","&#39;")[:max_len]
+    def sanitize_url(s):                return s if str(s).startswith(("http://","https://","/")) else "#"
+    def sanitize_source_name(s):        return _html.escape(str(s or ""), quote=True)[:80]
+    def sanitize_summary(s, max_len=400): return _html.escape(str(s or ""), quote=True)[:max_len]
+    def validate_feed_entry(e, src):    return True, ""
+
+
 print("Starting NUZU bot...")
 CURRENT_DIR = os.getcwd()
 print(f"Saving files to current directory: {CURRENT_DIR}")
@@ -3293,6 +3307,7 @@ def render_clusters(clusters, show_trust=True):
             time_str = ts_to_pdt(ts)
             clean_title = strip_source_from_title(title)
             display_title = clean_title[0].upper() + clean_title[1:] if clean_title else clean_title
+            display_title = sanitize_title(display_title)  # NUZU: XSS guard
             is_hot = (now - ts) <= THIRTY_MIN
             hot_dot = '<span class="new-dot" title="Published in the last 30 minutes">&#9679;</span> ' if is_hot else ''
             ts_cls = ' ts-hot' if is_hot else ''
@@ -3300,8 +3315,9 @@ def render_clusters(clusters, show_trust=True):
             trust_pip = (('<span class="src-tier-pip" style="background:' + tier_color
                           + '" title="Source reliability"></span>') if show_trust else '')
             anchor_id = "hl-" + hashlib.md5(link.encode()).hexdigest()[:8]
-            safe_title_attr = display_title.replace('"', "'")
-            _hl_sum = _ARTICLE_SUMMARIES.get(link, '')
+            safe_title_attr = sanitize_attr(display_title)  # NUZU: XSS guard (replaces .replace)
+            _hl_sum_raw = _ARTICLE_SUMMARIES.get(link, '')
+            _hl_sum = sanitize_summary(_hl_sum_raw)  # NUZU: sanitize summary
             _hl_sum_html = (f'<span class="hl-summary">{_hl_sum}</span>' if _hl_sum else '')
             out += (
                 f'<div id="{anchor_id}" class="headline" data-link="{link}" data-ts="{int(ts)}">'
@@ -3320,6 +3336,7 @@ def render_clusters(clusters, show_trust=True):
             lead_ts, lead_title, lead_source, lead_link = cluster[0]
             clean_lead = strip_source_from_title(lead_title)
             display_title = clean_lead[0].upper() + clean_lead[1:] if clean_lead else clean_lead
+            display_title = sanitize_title(display_title)  # NUZU: XSS guard
             time_str = ts_to_pdt(lead_ts)
             is_hot = (now - lead_ts) <= THIRTY_MIN
             hot_dot = '<span class="new-dot" title="Published in the last 30 minutes">&#9679;</span> ' if is_hot else ''
@@ -3329,7 +3346,7 @@ def render_clusters(clusters, show_trust=True):
             sources_str = ", ".join(sources_list)
             lead_friendly = get_friendly_source(lead_source)
             cluster_id = "cl-" + hashlib.md5(lead_link.encode()).hexdigest()[:8]
-            safe_title_attr = display_title.replace('"', "'")
+            safe_title_attr = sanitize_attr(display_title)  # NUZU: XSS guard
             trust_pct = cluster_trust_pct(cluster)
             trust_bar_color = "#22c55e" if trust_pct >= 80 else "#f59e0b" if trust_pct >= 50 else "#ef4444"
             trust_bar_html = (
@@ -3343,7 +3360,7 @@ def render_clusters(clusters, show_trust=True):
             )
             top3_srcs = sources_list[:3]
             src_pills = ''.join(
-                '<span class="cluster-src-pill">' + s + '</span>' for s in top3_srcs
+                '<span class="cluster-src-pill">' + sanitize_source_name(s) + '</span>' for s in top3_srcs  # NUZU
             )
             _trust_display = trust_bar_html if show_trust else ''
             _thumb_html = get_source_icon_html(lead_source, 'nuzu-thumb-md')
@@ -3372,7 +3389,8 @@ def render_clusters(clusters, show_trust=True):
                 f'</div>\n'
                 f'{_trust_display}'
             )
-            _cl_sum = _ARTICLE_SUMMARIES.get(lead_link, '')
+            _cl_sum_raw = _ARTICLE_SUMMARIES.get(lead_link, '')
+            _cl_sum = sanitize_summary(_cl_sum_raw)  # NUZU: XSS guard
             _cl_sum_html = f'<span class="hl-summary">{_cl_sum}</span>' if _cl_sum else ''
             out += (
                 f'<div class="cluster-lead">'
@@ -8287,6 +8305,7 @@ html_parts.append(f"""
     </div>
   </div>
 </footer>
+    <script src="/nuzu-bundle.js?v={BUILD_STAMP}"></script>
 </body>
 </html>
 """)
