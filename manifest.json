@@ -1,26 +1,151 @@
 {
   "name": "NUZU News",
   "short_name": "NUZU",
-  "description": "Real News in Real Time — breaking headlines from 200+ trusted sources.",
+  "description": "Real News in Real Time — breaking headlines from 200+ trusted sources across US, World, Middle East, Tech, Business, Sports & Culture. Updated every 5 minutes.",
   "start_url": "/",
   "scope": "/",
+  "id": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
   "orientation": "any",
   "theme_color": "#0D1B4B",
   "background_color": "#070F2B",
   "lang": "en",
-  "categories": ["news"],
   "dir": "ltr",
+  "categories": ["news"],
+  "prefer_related_applications": false,
+
   "icons": [
-    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
-    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+    {
+      "src": "icons/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
+
   "shortcuts": [
-    {"name": "US News", "short_name": "US", "url": "/?section=us", "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
-    {"name": "World News", "short_name": "World", "url": "/?section=world", "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]},
-    {"name": "Saved Articles", "short_name": "Saved", "url": "/?panel=saved", "icons": [{"src": "icons/icon-96.png", "sizes": "96x96"}]}
+    {
+      "name": "US News",
+      "short_name": "US",
+      "description": "Latest US politics and domestic news",
+      "url": "/?section=us",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "World News",
+      "short_name": "World",
+      "description": "International news and global affairs",
+      "url": "/?section=world",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Middle East",
+      "short_name": "Mid East",
+      "description": "Middle East and regional news",
+      "url": "/?section=mideast",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Tech News",
+      "short_name": "Tech",
+      "description": "Technology, AI, and science news",
+      "url": "/?section=tech",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
+    },
+    {
+      "name": "Saved Articles",
+      "short_name": "Saved",
+      "description": "Your bookmarked articles",
+      "url": "/?panel=saved",
+      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png" }]
+    }
   ],
-  "id": "/",
-  "display_override": ["standalone", "minimal-ui", "browser"],
-  "prefer_related_applications": false
+
+  "screenshots": [
+    {
+      "src": "screenshots/desktop-home.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "NUZU News desktop — dense multi-section news terminal"
+    },
+    {
+      "src": "screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "NUZU News mobile — fast, readable headlines on the go"
+    }
+  ],
+
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+
+  "related_applications": [],
+
+  "edge_side_panel": {
+    "preferred_width": 480
+  }
 }

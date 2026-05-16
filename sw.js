@@ -1,187 +1,259 @@
-// NUZU News Service Worker v3.0
-// Handles offline, caching, background sync, and push notifications.
-// Bump CACHE_VERSION when shipping a new build so old cached HTML is evicted.
+// ═══════════════════════════════════════════════════════════════════════════
+// NUZU News — Service Worker v4.0
+// Production-hardened: versioned caches, stale-while-revalidate,
+// update-available notification, background refresh, clean eviction.
+//
+// BUMP CACHE_VERSION on every deploy so stale assets are evicted immediately.
+// bot.py should write this file via its SW_FILE path with the version injected.
+// ═══════════════════════════════════════════════════════════════════════════
 
-const CACHE_VERSION = 'v7';
-const CACHE_NAME = 'nuzu-' + CACHE_VERSION;
-const STATIC_CACHE = 'nuzu-static-' + CACHE_VERSION;
+const CACHE_VERSION = 'v8';           // ← bump on every deploy
+const CACHE_STATIC  = 'nuzu-static-' + CACHE_VERSION;
+const CACHE_PAGES   = 'nuzu-pages-'  + CACHE_VERSION;
+const CACHE_ICONS   = 'nuzu-icons-'  + CACHE_VERSION;
+const ALL_CACHES    = [CACHE_STATIC, CACHE_PAGES, CACHE_ICONS];
+
 const OFFLINE_URL = '/offline.html';
 
-const PRECACHE_URLS = [
+/* Assets precached on install — the "app shell" */
+const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/offline.html',
   '/manifest.json',
+  '/onboarding.js',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];
 
-// Install — precache shell assets and skip waiting so new versions activate fast
+/* Feeds that should always be fresh (network-first, 5s timeout) */
+const FRESH_PATHS = ['/feed.json', '/feed.xml', '/version.json'];
+
+/* Static assets that can be served from cache indefinitely */
+const STATIC_EXTS = /\.(png|jpg|jpeg|webp|gif|svg|ico|woff2?|ttf|otf)$/i;
+
+/* ───────────────────────────────────────────────────────────────────────────
+   INSTALL — precache the shell, then activate immediately
+─────────────────────────────────────────────────────────────────────────── */
 self.addEventListener('install', event => {
-  self.skipWaiting();
+  self.skipWaiting(); // new SW takes over without waiting for old tabs to close
   event.waitUntil(
-    caches.open(STATIC_CACHE).then(cache => {
-      return cache.addAll(PRECACHE_URLS).catch(err => {
+    caches.open(CACHE_STATIC).then(cache =>
+      cache.addAll(PRECACHE_ASSETS).catch(err => {
+        // Partial failures are acceptable — don't block install
         console.warn('[NUZU SW] Precache partial failure:', err);
-      });
-    })
+      })
+    )
   );
 });
 
-// Activate — delete every cache that doesn't match the current version
+/* ───────────────────────────────────────────────────────────────────────────
+   ACTIVATE — evict ALL old caches, claim all open clients, notify UI
+─────────────────────────────────────────────────────────────────────────── */
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
+    caches.keys()
+      .then(keys => Promise.all(
         keys
-          .filter(k => k !== CACHE_NAME && k !== STATIC_CACHE)
-          .map(k => caches.delete(k))
-      )
-    ).then(() => self.clients.claim())
+          .filter(k => !ALL_CACHES.includes(k))
+          .map(k => {
+            console.log('[NUZU SW] Evicting old cache:', k);
+            return caches.delete(k);
+          })
+      ))
+      .then(() => self.clients.claim())
+      .then(() => {
+        // Tell all open tabs: new version is active
+        return self.clients.matchAll({ type: 'window' }).then(clients => {
+          clients.forEach(client =>
+            client.postMessage({ type: 'NUZU_SW_UPDATED', version: CACHE_VERSION })
+          );
+        });
+      })
   );
 });
 
-// Fetch — network-first for HTML, cache-first for assets
+/* ───────────────────────────────────────────────────────────────────────────
+   FETCH — strategy per resource type
+─────────────────────────────────────────────────────────────────────────── */
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
 
   const url = new URL(event.request.url);
 
-  // Skip cross-origin except YouTube (for video embeds)
-  if (url.origin !== location.origin &&
-      !url.hostname.includes('youtube.com') &&
-      !url.hostname.includes('ytimg.com')) {
+  // Only handle same-origin + YouTube (video embeds)
+  const isSameOrigin = url.origin === self.location.origin;
+  const isYouTube    = url.hostname.includes('youtube.com') ||
+                       url.hostname.includes('ytimg.com');
+  if (!isSameOrigin && !isYouTube) return;
+
+  // ── Strategy 1: Feed data — network-first, 5s timeout, cache fallback ──
+  if (FRESH_PATHS.some(p => url.pathname === p || url.pathname.startsWith(p + '?'))) {
+    event.respondWith(networkFirstWithTimeout(event.request, CACHE_PAGES, 5000));
     return;
   }
 
-  // For HTML pages: network-first, fall back to cache, then offline page
+  // ── Strategy 2: HTML pages — network-first, cache on success ──
   if (event.request.headers.get('accept')?.includes('text/html')) {
-    event.respondWith(
-      fetch(event.request, { cache: 'no-cache' })
-        .then(response => {
-          if (response.ok) {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
-          }
-          return response;
-        })
-        .catch(() =>
-          caches.match(event.request)
-            .then(cached => cached || caches.match(OFFLINE_URL))
-        )
-    );
+    event.respondWith(networkFirstHtml(event.request));
     return;
   }
 
-  // For feed.json: network-first with short timeout
-  if (url.pathname.endsWith('feed.json')) {
-    event.respondWith(
-      Promise.race([
-        fetch(event.request, { cache: 'no-cache' }),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 5000))
-      ])
-        .then(response => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
-          return response;
-        })
-        .catch(() => caches.match(event.request))
-    );
-    return;
-  }
-
-  // For favicons in /icons/sources/: cache-first but revalidate in background
+  // ── Strategy 3: Source favicons (/icons/sources/) — stale-while-revalidate ──
   if (url.pathname.startsWith('/icons/sources/')) {
-    event.respondWith(
-      caches.match(event.request).then(cached => {
-        const fetchPromise = fetch(event.request).then(response => {
-          if (response.ok) {
-            const clone = response.clone();
-            caches.open(STATIC_CACHE).then(c => c.put(event.request, clone));
-          }
-          return response;
-        }).catch(() => cached);
-        return cached || fetchPromise;
-      })
-    );
+    event.respondWith(staleWhileRevalidate(event.request, CACHE_ICONS));
     return;
   }
 
-  // For other static assets (icons, images): cache-first
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(response => {
-        if (response.ok) {
-          const clone = response.clone();
-          caches.open(STATIC_CACHE).then(c => c.put(event.request, clone));
-        }
-        return response;
-      }).catch(() => cached || new Response('', { status: 404 }));
-    })
-  );
+  // ── Strategy 4: Static binary assets — cache-first (long TTL) ──
+  if (STATIC_EXTS.test(url.pathname) || url.pathname.startsWith('/icons/')) {
+    event.respondWith(cacheFirstStatic(event.request, CACHE_STATIC));
+    return;
+  }
+
+  // ── Strategy 5: JS/CSS — stale-while-revalidate ──
+  if (/\.(js|css)$/i.test(url.pathname)) {
+    event.respondWith(staleWhileRevalidate(event.request, CACHE_STATIC));
+    return;
+  }
+
+  // ── Default: network-only for everything else (YouTube iframes, etc.) ──
 });
 
-// Push notifications
+/* ───────────────────────────────────────────────────────────────────────────
+   CACHE STRATEGIES
+─────────────────────────────────────────────────────────────────────────── */
+
+/** Network-first with timeout; fall back to cache; final fallback: offline page. */
+async function networkFirstWithTimeout(request, cacheName, ms) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  try {
+    const response = await fetch(request, { signal: controller.signal, cache: 'no-cache' });
+    clearTimeout(timer);
+    if (response.ok) {
+      const clone = response.clone();
+      caches.open(cacheName).then(c => c.put(request, clone));
+    }
+    return response;
+  } catch (_) {
+    clearTimeout(timer);
+    const cached = await caches.match(request);
+    return cached || new Response('{}', { status: 503, headers: { 'Content-Type': 'application/json' } });
+  }
+}
+
+/** Network-first for HTML; falls back to cached HTML, then offline page. */
+async function networkFirstHtml(request) {
+  try {
+    const response = await fetch(request, { cache: 'no-cache' });
+    if (response.ok) {
+      const clone = response.clone();
+      caches.open(CACHE_PAGES).then(c => c.put(request, clone));
+    }
+    return response;
+  } catch (_) {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    const offline = await caches.match(OFFLINE_URL);
+    return offline || new Response('<h1>Offline</h1>', {
+      status: 503,
+      headers: { 'Content-Type': 'text/html' }
+    });
+  }
+}
+
+/** Cache-first for static assets; network fallback; cache on success. */
+async function cacheFirstStatic(request, cacheName) {
+  const cached = await caches.match(request);
+  if (cached) return cached;
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      const clone = response.clone();
+      caches.open(cacheName).then(c => c.put(request, clone));
+    }
+    return response;
+  } catch (_) {
+    return new Response('', { status: 404 });
+  }
+}
+
+/** Serve from cache immediately; update cache in background. */
+async function staleWhileRevalidate(request, cacheName) {
+  const cached = await caches.match(request);
+  const fetchPromise = fetch(request).then(response => {
+    if (response.ok) {
+      const clone = response.clone();
+      caches.open(cacheName).then(c => c.put(request, clone));
+    }
+    return response;
+  }).catch(() => cached);
+  return cached || fetchPromise;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   PUSH NOTIFICATIONS
+─────────────────────────────────────────────────────────────────────────── */
 self.addEventListener('push', event => {
   let data = { title: 'NUZU Breaking News', body: 'New headlines available', url: '/' };
-  try {
-    if (event.data) data = { ...data, ...event.data.json() };
-  } catch (e) {}
+  try { if (event.data) data = { ...data, ...event.data.json() }; } catch (_) {}
 
   event.waitUntil(
     self.registration.showNotification(data.title, {
-      body: data.body,
-      icon: '/icons/icon-192.png',
-      badge: '/icons/icon-96.png',
-      tag: 'nuzu-breaking',
-      renotify: true,
+      body:              data.body,
+      icon:              '/icons/icon-192.png',
+      badge:             '/icons/icon-96.png',
+      tag:               'nuzu-breaking',
+      renotify:          true,
       requireInteraction: false,
-      data: { url: data.url },
+      data:              { url: data.url },
       actions: [
-        { action: 'open', title: 'Read Now' },
-        { action: 'dismiss', title: 'Dismiss' }
+        { action: 'open',    title: 'Read Now' },
+        { action: 'dismiss', title: 'Dismiss'  }
       ]
     })
   );
 });
 
-// Notification click
 self.addEventListener('notificationclick', event => {
   event.notification.close();
   if (event.action === 'dismiss') return;
 
   const url = event.notification.data?.url || '/';
   event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true })
-      .then(clientList => {
-        for (const client of clientList) {
-          if (client.url.includes('/') && 'focus' in client) {
-            return client.focus();
-          }
-        }
-        if (clients.openWindow) return clients.openWindow(url);
-      })
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
+      for (const client of clientList) {
+        if ('focus' in client) return client.focus();
+      }
+      if (clients.openWindow) return clients.openWindow(url);
+    })
   );
 });
 
-// Background sync — refresh headlines
+/* ───────────────────────────────────────────────────────────────────────────
+   BACKGROUND SYNC — periodic headline refresh
+─────────────────────────────────────────────────────────────────────────── */
 self.addEventListener('periodicsync', event => {
-  if (event.tag === 'nuzu-headlines-refresh') {
-    event.waitUntil(
-      fetch('/feed.json?sw=1&_=' + Date.now())
-        .then(r => r.json())
-        .then(data => {
-          return self.clients.matchAll({ type: 'window' }).then(clients => {
-            clients.forEach(client => client.postMessage({ type: 'NUZU_UPDATE', updated: data.updated }));
-          });
-        })
-        .catch(() => {})
-    );
-  }
+  if (event.tag !== 'nuzu-headlines-refresh') return;
+  event.waitUntil(
+    fetch('/feed.json?sw=1&_=' + Date.now(), { cache: 'no-cache' })
+      .then(r => r.json())
+      .then(data => self.clients.matchAll({ type: 'window' }).then(clients => {
+        clients.forEach(c => c.postMessage({ type: 'NUZU_UPDATE', updated: data.updated }));
+      }))
+      .catch(() => {})
+  );
 });
 
-// Message from page — skip waiting
+/* ───────────────────────────────────────────────────────────────────────────
+   MESSAGES FROM PAGE
+─────────────────────────────────────────────────────────────────────────── */
 self.addEventListener('message', event => {
   if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
+
+  // Respond to version check
+  if (event.data?.type === 'GET_VERSION') {
+    event.source?.postMessage({ type: 'SW_VERSION', version: CACHE_VERSION });
+  }
 });
