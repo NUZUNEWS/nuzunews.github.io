@@ -837,7 +837,13 @@
         --nuzu-white:   #000000;
     }
     body.light-mode .sticky-nav { background: #EBF0FA !important; border-bottom-color: var(--nuzu-blue) !important; }
-    body.light-mode .sticky-nav .site-name { -webkit-text-fill-color: transparent; }
+    /* Light-mode nav logo: invert to dark gradient so NUZU is readable on #EBF0FA */
+    body.light-mode .sticky-nav .site-name {
+      background: linear-gradient(135deg, #0D1B4B 60%, #1E4FD8) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
     body.light-mode .breaking-banner { background: var(--nuzu-blue) !important; }
     body.light-mode .nuzu-hero {
         background: linear-gradient(180deg, #E0E8F8 0%, #F5F8FF 100%) !important;
@@ -2016,6 +2022,24 @@
         margin-top: 12px; background: none; border: none;
         color: #4A6A99; font-size: 0.78em; cursor: pointer;
         text-decoration: underline; font-family: 'Inter',Arial,sans-serif;
+    }
+
+    /* ── Mobile Readability Polish ──────────────────────────────────────────
+       Subtle improvements to scanning comfort on small screens.
+       Preserves dense "news terminal" identity — NOT a card UI redesign.
+    ────────────────────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+        /* Slightly larger headline text for scan comfort */
+        .headline .title { font-size: 0.9em; line-height: 1.45; }
+        /* Slightly more breathing room between headlines */
+        .headline { padding-top: 9px; padding-bottom: 9px; }
+        /* Cluster lead title */
+        .cluster-lead .title { font-size: 0.9em; line-height: 1.45; }
+        /* Source label stays compact but readable */
+        .src-label { font-size: 0.75em; }
+        .ts-label  { font-size: 0.73em; }
+        /* Slightly cleaner section-col-card padding */
+        .section-col-card { padding: 10px 12px; }
     }
     </style>
 </head>
@@ -3874,11 +3898,26 @@ window._nz_nh = function() {
 // pass on the target element before scrolling — content-visibility:auto is
 // handled correctly. scroll-margin-top (set in CSS) accounts for the sticky
 // nav height so no JS offset arithmetic is needed.
+//
+// EDGE CASE — "US tab appears broken": The first section (section-us) may
+// already be near the top of the viewport. scrollIntoView correctly determines
+// no movement is needed and does nothing — which the user perceives as broken.
+// Fix: When the target is ALREADY in the correct position (within 10px of
+// where scrollIntoView would land it), we still issue a small window.scrollTo()
+// to guarantee movement, ensuring the user sees the page respond.
 // ─────────────────────────────────────────────────────────────────────────────
 window._nz_scroll = function(el, behavior) {
   if (!el) return;
   behavior = behavior || 'smooth';
   requestAnimationFrame(function() {
+    var navH = window._nz_nh ? window._nz_nh() : 60;
+    var rect = el.getBoundingClientRect();
+    var targetScrollY = window.scrollY + rect.top - navH;
+    // If element is already within 10px of target position, force a tiny scroll
+    // first so the browser registers movement (avoids "nothing happened" perception)
+    if (Math.abs(rect.top - navH) < 10 && window.scrollY > 0) {
+      window.scrollTo({ top: Math.max(0, targetScrollY - 2), behavior: 'instant' });
+    }
     el.scrollIntoView({ behavior: behavior, block: 'start' });
   });
 };
@@ -3980,14 +4019,27 @@ window._nz_scroll = function(el, behavior) {
 // the same hash). We intercept every top-nav tab click, prevent the native
 // navigation, and compute a fresh getBoundingClientRect() position — exactly
 // the same approach the bottom nav tabs already use correctly.
+//
+// REGRESSION FIX — US tab appeared non-responsive:
+// The passive-listener patcher in nuzu-bundle.js forces touchend/touchstart
+// to passive=true during DOMContentLoaded. On touch devices this can suppress
+// visual feedback. We now:
+//   1. Call e.stopPropagation() to prevent event bubbling to other handlers
+//   2. Immediately apply nav-active class on click (no waiting for scroll spy)
+//   3. Improved _nz_scroll handles already-visible sections (see above)
 (function() {
+  var allNavLinks = document.querySelectorAll('.sticky-nav a.nav-link');
   document.querySelectorAll('.sticky-nav a.nav-link[href^="#"]').forEach(function(link) {
     link.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
       var sectionId = link.getAttribute('href').replace(/^#/, '');
       if (!sectionId) return;
       var el = document.getElementById(sectionId);
       if (!el) return;
-      e.preventDefault();
+      // Immediate visual feedback — don't wait for scroll spy
+      allNavLinks.forEach(function(l) { l.classList.remove('nav-active'); });
+      link.classList.add('nav-active');
       _nz_scroll(el, 'smooth');
     });
   });
@@ -5247,8 +5299,89 @@ document.addEventListener('click', function(e) {
 
 
 // ── First-launch onboarding interest picker ──
+// After dismiss: selected sections stay expanded; unselected sections start
+// pre-collapsed. On mobile, daily/yesterday sub-columns default collapsed for
+// ALL users (reduces first-use overwhelm — still fully expandable).
 (function() {
-  try { if (localStorage.getItem('nuzu_onboarded_v1')) return; } catch(e) { return; }
+  // Map onboarding interest IDs to section-columns IDs
+  var SECTION_COLS_MAP = {
+    'us':       'section-us-cols',
+    'mideast':  'section-mideast-cols',
+    'world':    'section-world-cols',
+    'tech':     'section-tech-cols',
+    'business': 'section-business-cols',
+    'sports':   'section-sports-cols',
+    'culture':  'section-culture-cols'
+  };
+  var ALL_IDS = Object.keys(SECTION_COLS_MAP);
+
+  // Apply interest-based collapse preferences when opening for the first time
+  function applyInterestCollapse(selectedIds) {
+    // Only applies on first load (before user has manually changed collapse state)
+    try {
+      var existingCollapsed = localStorage.getItem('nuzu_collapsed');
+      // If user has already set collapse preferences, respect them
+      if (existingCollapsed) return;
+    } catch(e) {}
+
+    if (!selectedIds || selectedIds.length === 0) return; // skip = show all
+
+    var toCollapse = ALL_IDS.filter(function(id) {
+      return selectedIds.indexOf(id) === -1;
+    });
+    if (!toCollapse.length) return;
+
+    var collapseSet = [];
+    toCollapse.forEach(function(id) {
+      var colsId = SECTION_COLS_MAP[id];
+      var colsEl = document.getElementById(colsId);
+      var btn = document.querySelector('.section-collapse-btn[data-target="' + colsId + '"]');
+      if (colsEl) {
+        colsEl.classList.add('collapsed');
+        collapseSet.push(colsId);
+      }
+      if (btn) btn.innerHTML = '&#9654;';
+    });
+    try { localStorage.setItem('nuzu_collapsed', JSON.stringify(collapseSet)); } catch(e) {}
+  }
+
+  // Mobile default: collapse daily/yesterday sub-columns to reduce overwhelm.
+  // This only applies if no saved mobile-collapse preference exists yet.
+  function applyMobileDefaultCollapse() {
+    if (window.innerWidth > 900) return; // desktop: no change
+    try {
+      if (localStorage.getItem('nuzu_mobile_cols_init')) return; // already set
+      localStorage.setItem('nuzu_mobile_cols_init', '1');
+    } catch(e) {}
+    // On mobile, collapse section-columns (the daily/yesterday sub-panels).
+    // User can always expand manually. Sections themselves remain visible.
+    var colsEls = document.querySelectorAll('.section-columns:not(.collapsed)');
+    var additionalCollapsed = [];
+    colsEls.forEach(function(el) {
+      if (!el.id) return;
+      el.classList.add('collapsed');
+      additionalCollapsed.push(el.id);
+      var btn = document.querySelector('.section-collapse-btn[data-target="' + el.id + '"]');
+      if (btn) btn.innerHTML = '&#9654;';
+    });
+    if (additionalCollapsed.length) {
+      try {
+        var existing = [];
+        try { existing = JSON.parse(localStorage.getItem('nuzu_collapsed') || '[]'); } catch(e2) {}
+        var merged = existing.concat(additionalCollapsed.filter(function(id) {
+          return existing.indexOf(id) === -1;
+        }));
+        localStorage.setItem('nuzu_collapsed', JSON.stringify(merged));
+      } catch(e) {}
+    }
+  }
+
+  // Show onboarding if first visit
+  try { if (localStorage.getItem('nuzu_onboarded_v1')) {
+    applyMobileDefaultCollapse(); // existing users: still apply mobile default
+    return;
+  }} catch(e) { return; }
+
   var defs = [
     {id:'us',       icon:'🇺🇸', label:'US Politics'},
     {id:'mideast',  icon:'🌍',            label:'Middle East'},
@@ -5276,11 +5409,16 @@ document.addEventListener('click', function(e) {
       else         { sel[id] = 1;    btn.classList.add('selected'); }
     });
   });
-  function dismiss(order) {
+  function dismiss(selectedIds) {
     try {
-      localStorage.setItem('nuzu_interest_order', JSON.stringify(order));
+      localStorage.setItem('nuzu_interest_order', JSON.stringify(selectedIds));
       localStorage.setItem('nuzu_onboarded_v1','1');
     } catch(e) {}
+    // Apply interest-based section collapse (only if user picked something)
+    if (selectedIds && selectedIds.length > 0 && selectedIds.length < ALL_IDS.length) {
+      applyInterestCollapse(selectedIds);
+    }
+    applyMobileDefaultCollapse();
     ov.style.transition='opacity 0.35s'; ov.style.opacity='0';
     setTimeout(function(){ if(ov.parentNode) ov.parentNode.removeChild(ov); },380);
   }
@@ -5290,7 +5428,7 @@ document.addEventListener('click', function(e) {
     dismiss(order);
   });
   document.getElementById('ob-skip').addEventListener('click',function() {
-    dismiss(defs.map(function(d){return d.id;}));
+    dismiss(defs.map(function(d){return d.id;})); // skip = all selected
   });
 })();
 

@@ -6,7 +6,7 @@
  * bot_patch.py adds one <script> tag to bot.py that loads this file.
  * That's the entire front-end install.
  *
- * Version: 3.0.0
+ * Version: 3.1.0 — Balancing fix (alignItems measurement), nuzu_equalColHeights restored
  */
 (function (w, d) {
   'use strict';
@@ -224,47 +224,80 @@
     });
   })();
 
-  /* ResizeObserver equal-col-heights fix (replaces 4× setTimeout + img-load reflows) */
+  /* ResizeObserver equal-col-heights fix — CORRECTED MEASUREMENT
+   *
+   * ROOT CAUSE OF REGRESSION: The previous version measured bCard height while
+   * the container still had align-items:stretch active. With stretch, resetting
+   * both card heights makes them BOTH expand to the taller of the two — so the
+   * measured "bCard natural height" was actually max(bCard,rCard), which caused
+   * rCard to be set to the wrong (too tall) value, breaking the balance.
+   *
+   * FIX: Temporarily set alignItems='flex-start' before measuring so bCard sits
+   * at its true natural height. This mirrors the original nuzu_equalColHeights
+   * implementation exactly. We also REPLACE nuzu_equalColHeights with this fixed
+   * version (instead of a no-op) so all inline-script callers get the correct
+   * implementation too.
+   */
   (function fixEqualCols() {
-    if (!w.ResizeObserver) return;
-    var pending = new Set(), raf = null;
-    function run() {
-      raf = null;
+    /* Core balance function — correct measurement via alignItems:flex-start */
+    function doBalance() {
       if (w.innerWidth <= 900) return;
-      var measures = [];
-      pending.forEach(function(c) {
+      d.querySelectorAll('.container.equal-cols').forEach(function(c) {
         var cols = c.querySelectorAll(':scope > .column');
         if (cols.length < 2) return;
-        var b = cols[0].querySelector('.section-col-card'), r = cols[1] && cols[1].querySelector('.section-col-card');
-        if (!b||!r) return;
+        var b = cols[0].querySelector('.section-col-card');
+        var r = cols[1] && cols[1].querySelector('.section-col-card');
+        if (!b || !r) return;
         var wrap = c.closest('.section-columns');
         if (wrap && wrap.classList.contains('collapsed')) return;
-        b.style.height = b.style.maxHeight = b.style.overflow = '';
-        r.style.height = r.style.maxHeight = r.style.overflow = '';
-        measures.push({b:b,r:r});
-      });
-      pending.clear();
-      if (!measures.length) return;
-      requestAnimationFrame(function() {
-        var hs = measures.map(function(m){return Math.round(m.b.getBoundingClientRect().height);});
-        measures.forEach(function(m,i){
-          if(hs[i]<50) return;
-          m.r.style.height = m.r.style.maxHeight = hs[i]+'px';
-          m.r.style.overflow = 'hidden';
-        });
+
+        /* Reset both cards so we measure natural heights */
+        b.style.height = b.style.maxHeight = b.style.minHeight = b.style.overflow = '';
+        r.style.height = r.style.maxHeight = r.style.minHeight = r.style.overflow = '';
+
+        /* Key fix: switch to flex-start so b sits at its OWN natural height,
+           not stretched to match r. Force a reflow so the layout is committed. */
+        var prevAlign = c.style.alignItems;
+        c.style.alignItems = 'flex-start';
+        void c.offsetHeight; /* synchronous reflow */
+
+        var bH = Math.round(b.getBoundingClientRect().height);
+
+        /* Restore align-items before writing styles (prevents visible flash) */
+        c.style.alignItems = prevAlign;
+
+        if (bH < 50) return; /* not yet painted — ResizeObserver will re-fire */
+
+        /* Clip rCard to exactly bCard's natural height */
+        r.style.height = r.style.maxHeight = bH + 'px';
+        r.style.overflow = 'hidden';
       });
     }
-    function queue(c){pending.add(c);if(!raf)raf=requestAnimationFrame(run);}
+
+    if (!w.ResizeObserver) {
+      /* Fallback: just expose the fixed function; index.html setTimeouts handle timing */
+      setTimeout(function(){ w.nuzu_equalColHeights = doBalance; }, 0);
+      return;
+    }
+
+    /* ResizeObserver triggers doBalance on container size changes */
+    var pending = new Set(), raf = null;
+    function runBatch() { raf = null; if (pending.size) { pending.clear(); doBalance(); } }
+    function queue(c) { pending.add(c); if (!raf) raf = requestAnimationFrame(runBatch); }
+
     function attach() {
-      var ro = new ResizeObserver(function(es){es.forEach(function(e){queue(e.target);});});
-      d.querySelectorAll('.container.equal-cols').forEach(function(c){ro.observe(c);queue(c);});
-      /* Disable old function after it's had a chance to be defined */
-      setTimeout(function(){
-        try{Object.defineProperty(w,'nuzu_equalColHeights',{value:function(){},writable:false,configurable:true});}
-        catch(_){w.nuzu_equalColHeights=function(){};}
-      },0);
+      var ro = new ResizeObserver(function(es) {
+        es.forEach(function(e) { queue(e.target); });
+      });
+      d.querySelectorAll('.container.equal-cols').forEach(function(c) {
+        ro.observe(c); queue(c);
+      });
+      /* Replace nuzu_equalColHeights with the FIXED version (not a no-op).
+         setTimeout(0) ensures this runs after the inline script defines it. */
+      setTimeout(function() { w.nuzu_equalColHeights = doBalance; }, 0);
     }
-    d.readyState==='loading' ? d.addEventListener('DOMContentLoaded',attach) : attach();
+
+    d.readyState === 'loading' ? d.addEventListener('DOMContentLoaded', attach) : attach();
   })();
 
   /* Compositor hints for sticky elements (non-low-end only) */
