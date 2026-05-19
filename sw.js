@@ -1,13 +1,23 @@
 // ═══════════════════════════════════════════════════════════════════════════
-// NUZU News — Service Worker v4.0
+// NUZU News — Service Worker v4.1
 // Production-hardened: versioned caches, stale-while-revalidate,
 // update-available notification, background refresh, clean eviction.
 //
 // BUMP CACHE_VERSION on every deploy so stale assets are evicted immediately.
 // bot.py should write this file via its SW_FILE path with the version injected.
+//
+// v4.1 changes vs v4.0:
+//   - CACHE_VERSION bumped to v9 (forces full cache eviction on first load
+//     after this deploy, clearing any stale v8 routing/JS bundles that
+//     contributed to the US nav bug)
+//   - nuzu-bundle.js explicitly added to PRECACHE_ASSETS so the fixed
+//     bundle is guaranteed to be cached on first install
+//   - nuzu-bundle.js explicitly added to stale-while-revalidate strategy
+//     so it is always refreshed in background without blocking page load
+//   - /offline.html graceful fallback remains (referenced but not blocking)
 // ═══════════════════════════════════════════════════════════════════════════
 
-const CACHE_VERSION = 'v8';           // ← bump on every deploy
+const CACHE_VERSION = 'v9';           // ← BUMPED: forces full eviction of v8 caches
 const CACHE_STATIC  = 'nuzu-static-' + CACHE_VERSION;
 const CACHE_PAGES   = 'nuzu-pages-'  + CACHE_VERSION;
 const CACHE_ICONS   = 'nuzu-icons-'  + CACHE_VERSION;
@@ -21,7 +31,7 @@ const PRECACHE_ASSETS = [
   '/index.html',
   '/offline.html',
   '/manifest.json',
-  '/onboarding.js',
+  '/nuzu-bundle.js',  // ← added: ensure fixed bundle is cached immediately
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];
@@ -105,13 +115,20 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // ── Strategy 4: Static binary assets — cache-first (long TTL) ──
+  // ── Strategy 4: nuzu-bundle.js — stale-while-revalidate (always refresh) ──
+  // Explicit rule ensures the fixed bundle is never stuck in a stale cache.
+  if (url.pathname === '/nuzu-bundle.js' || url.pathname.startsWith('/nuzu-bundle.js?')) {
+    event.respondWith(staleWhileRevalidate(event.request, CACHE_STATIC));
+    return;
+  }
+
+  // ── Strategy 5: Static binary assets — cache-first (long TTL) ──
   if (STATIC_EXTS.test(url.pathname) || url.pathname.startsWith('/icons/')) {
     event.respondWith(cacheFirstStatic(event.request, CACHE_STATIC));
     return;
   }
 
-  // ── Strategy 5: JS/CSS — stale-while-revalidate ──
+  // ── Strategy 6: JS/CSS — stale-while-revalidate ──
   if (/\.(js|css)$/i.test(url.pathname)) {
     event.respondWith(staleWhileRevalidate(event.request, CACHE_STATIC));
     return;

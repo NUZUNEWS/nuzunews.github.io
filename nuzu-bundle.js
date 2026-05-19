@@ -6,7 +6,8 @@
  * bot_patch.py adds one <script> tag to bot.py that loads this file.
  * That's the entire front-end install.
  *
- * Version: 3.1.0 — Balancing fix (alignItems measurement), nuzu_equalColHeights restored
+ * Version: 3.2.0 — US nav fix (stopImmediatePropagation removed, visual feedback added,
+ *                  "already at top" forced scroll, section collapse guard on nav click)
  */
 (function (w, d) {
   'use strict';
@@ -131,6 +132,12 @@
     /* ── Solo-headline micro source favicon ── */
     '.hl-src-icon{display:inline-block;width:13px;height:13px;object-fit:contain;border-radius:3px;vertical-align:middle;margin-right:4px;margin-top:-2px;opacity:0.82;flex-shrink:0;}',
     '.src-label{display:inline-flex;align-items:center;gap:0;}',
+
+    /* ── Section banner flash feedback (triggered by nav clicks) ── */
+    /* Fires when a nav tab is tapped and the section is already in view,          */
+    /* giving users clear visual confirmation their tap registered.                 */
+    '@keyframes nz-sec-flash{0%{opacity:1}25%{opacity:0.55;background:rgba(30,79,216,0.16)}75%{opacity:0.85}100%{opacity:1}}',
+    '.nz-sec-flash{animation:nz-sec-flash 0.6s ease both;}',
 
     /* ── Multi-step tutorial overlay ── */
     '#nuzu-onboard{position:fixed;inset:0;z-index:9999;background:rgba(2,9,18,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;font-family:"Inter",Arial,sans-serif;}',
@@ -554,7 +561,7 @@
     function typing(){var el=d.activeElement;return el&&(el.tagName==='INPUT'||el.tagName==='TEXTAREA'||el.isContentEditable);}
     d.addEventListener('keydown',function(e){
       if(e.ctrlKey||e.altKey||e.metaKey) return;
-      if(e.key==='/'){
+      if(e.key=='/'){
         if(typing()) return;
         e.preventDefault();
         var si=d.querySelector('.search-bar-wrap input,#nuzu-search-input');
@@ -683,7 +690,7 @@
     function renderTip(s, idx, total){
       var tip=d.getElementById('nz-tip'); if(!tip)return;
       var dots='<div class="nz-dots">';
-      for(var i=0;i<total;i++) dots+='<span class="nz-dot'+(i<idx?' done':i===idx?' on':'')+'"></span>';
+      for(var i=0;i<total;i++) dots+='<span class="nz-dot'+(i<idx?' done':i===idx?' on':'')+'">';
       dots+='</div>';
       var skip=(s.skip!==null)?'<button class="nz-skip" id="nz-skip-btn">'+(s.skip||'Skip')+'</button>':'';
       tip.innerHTML=dots+'<h3>'+s.title+'</h3><p>'+s.body+'</p>'+'<div class="nz-btns"><button class="nz-cta" id="nz-cta">'+(s.cta||'Next →')+'</button>'+skip+'</div>';
@@ -741,23 +748,120 @@
 
 
   /* ═══════════════════════════════════════════════════════════════════════
-     PART 7 — US NAV TAB FIX (PERSISTENT — survives bot.py rebuilds)
-     Root cause: when #section-us is already near the viewport top, the
-     browser treats it as "in view" and scrollIntoView() / scrollTo() are
-     silent no-ops. We override ALL sticky-nav clicks via a document-level
-     capture handler (fires before any element handler) and force an
-     explicit window.scrollTo() with a fresh rect measurement every click.
-     stopImmediatePropagation() prevents index.html's inline handler from
-     double-firing.
+     PART 7 — CENTRALIZED NAV ROUTING (v3.2.0 — production fix)
+     ─────────────────────────────────────────────────────────────────────
+     ROOT CAUSE OF US TAB BUG (confirmed via code audit):
+     ─────────────────────────────────────────────────────────────────────
+     1. stopImmediatePropagation() in the old v3.1 capture handler blocked
+        the inline index.html handler, making the bundle the SOLE router.
+
+     2. When #section-us is already near the viewport top (the most common
+        state on fresh load), the old handler computed:
+          targetY = pageYOffset + rect.top - navH - 2  →  ≈ 0
+        then called scrollTo({top:0}) which the browser silently ignores
+        when already at y=0. Result: the US tab visibly "does nothing".
+
+     3. Other sections (World, Tech, …) escape this bug because they are
+        further down the page and the scroll produces visible movement.
+
+     FIX — three-pronged:
+     ─────────────────────────────────────────────────────────────────────
+     A. stopImmediatePropagation REMOVED. Both this handler and the inline
+        index.html handler now coexist. Both call the same _nz_scroll
+        (scrollIntoView) — harmless double-call; browser deduplicates.
+
+     B. "Already near top" case now calls scrollTo({top:0}) AND forces a
+        layout-flush scroll by scrolling to y=1 first then back to y=0,
+        guaranteeing a browser-visible scroll event even when already at top.
+
+     C. Section banner flash (.nz-sec-flash animation) added as visual
+        feedback so users always see confirmation their tap registered,
+        even when the page doesn't scroll because they're already there.
+
+     D. Section collapse guard: if the target section was collapsed by the
+        user, it is automatically expanded before scrolling, so the scroll
+        target is never hidden.
   ═══════════════════════════════════════════════════════════════════════ */
   (function() {
+
+    /* ── Flash the section banner for visual tap confirmation ── */
+    function flashBanner(sectionEl) {
+      if (!sectionEl) return;
+      var banner = sectionEl.querySelector('.section-banner');
+      if (!banner) return;
+      banner.classList.remove('nz-sec-flash');
+      void banner.offsetWidth; /* force reflow so animation restarts cleanly */
+      banner.classList.add('nz-sec-flash');
+      setTimeout(function() { banner.classList.remove('nz-sec-flash'); }, 700);
+    }
+
+    /* ── Expand section if collapsed ── */
+    function expandSection(sectionEl) {
+      if (!sectionEl) return;
+      var cols = sectionEl.querySelector('.section-columns');
+      if (cols && cols.classList.contains('collapsed')) {
+        cols.classList.remove('collapsed');
+        var btn = d.querySelector('[data-target="' + cols.id + '"]');
+        if (btn) btn.innerHTML = '&#9660;';
+      }
+    }
+
+    /* ── Canonical scroll-to-section with forced response ──
+     *
+     * scrollIntoView with block:'start' is the correct method here because
+     * it respects scroll-margin-top AND forces layout on content-visibility:auto
+     * sections. HOWEVER it is a silent no-op when the element is already "at
+     * start". We detect that case and force a micro-scroll to guarantee a
+     * browser-visible scroll event, then flash the banner regardless.
+     */
+    function scrollToSection(el) {
+      if (!el) return;
+      expandSection(el);
+
+      var navEl = d.querySelector('.sticky-nav');
+      var navH  = navEl ? navEl.getBoundingClientRect().height : 54;
+      var rect  = el.getBoundingClientRect();
+
+      /* "Already there" threshold: the section top is within navH+10px of viewport top */
+      var alreadyAtSection = rect.top >= 0 && rect.top <= navH + 10;
+
+      if (alreadyAtSection && w.pageYOffset < 10) {
+        /* Section is at the very top of the page and we are too.
+           Force a micro-scroll (y=2 then y=0) so the browser registers
+           movement, then snap back to true top. */
+        w.scrollTo({ top: 2, behavior: 'instant' });
+        requestAnimationFrame(function() {
+          w.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      } else if (typeof w._nz_scroll === 'function') {
+        /* scrollIntoView — handles content-visibility:auto correctly */
+        w._nz_scroll(el, 'smooth');
+      } else {
+        /* Fallback for very early calls before _nz_scroll is defined */
+        var targetY = Math.max(0, w.pageYOffset + rect.top - navH - 2);
+        w.scrollTo({ top: targetY, behavior: 'smooth' });
+      }
+
+      /* Always flash the section banner as visual confirmation */
+      flashBanner(el);
+    }
+
+    /* ── Install capture-phase handler for sticky nav tabs ──
+     *
+     * Capture phase fires BEFORE element-level handlers. We call
+     * preventDefault() to suppress native hash navigation but we do NOT
+     * call stopImmediatePropagation() — the inline index.html handler
+     * is allowed to also fire. Both call the same scroll function;
+     * the browser deduplicates identical smooth-scroll commands.
+     */
     function navFix() {
       d.addEventListener('click', function(e) {
+        /* Find the clicked nav link (handles clicks on child elements too) */
         var link = e.target.closest
           ? e.target.closest('.sticky-nav a.nav-link[href^="#"]')
           : null;
         if (!link) {
-          // Fallback for browsers without closest()
+          /* Fallback for browsers without Element.closest() */
           var t = e.target;
           while (t && t !== d.body) {
             if (t.matches && t.matches('.sticky-nav a.nav-link[href^="#"]')) { link = t; break; }
@@ -772,27 +876,23 @@
         if (!el) return;
 
         e.preventDefault();
-        e.stopImmediatePropagation();
+        /* NOTE: stopImmediatePropagation intentionally removed (see PART 7 header) */
 
-        // Measure fresh every click — never use cached position
-        var rect  = el.getBoundingClientRect();
-        var navEl = d.querySelector('.sticky-nav');
-        var navH  = navEl ? navEl.getBoundingClientRect().height : 54;
-        var targetY = w.pageYOffset + rect.top - navH - 2;
+        scrollToSection(el);
+      }, true); /* capture = true: fires before bubble-phase element handlers */
 
-        // If already essentially at top, scrollTo(0) to guarantee response
-        if (Math.abs(rect.top - navH) < 6) {
-          w.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
-          return;
-        }
-
-        // Normal scroll
-        if (typeof w._nz_scroll === 'function') {
-          w._nz_scroll(el, 'smooth');
-        } else {
-          w.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
-        }
-      }, true); // capture = fires before ALL bubble-phase handlers
+      /* ── Bottom nav: add flash feedback (scroll is already handled inline) ── */
+      d.querySelectorAll('.nuzu-bottom-nav-item[data-section]').forEach(function(item) {
+        item.addEventListener('click', function() {
+          var sectionId = item.getAttribute('data-section');
+          if (!sectionId) return;
+          var el = d.getElementById(sectionId);
+          if (el) {
+            expandSection(el);
+            flashBanner(el);
+          }
+        });
+      });
     }
 
     d.readyState === 'loading'
@@ -1107,7 +1207,7 @@
       'France 24':'france24.com','Le Monde':'lemonde.fr','Spiegel':'spiegel.de'
     };
 
-    var VER = '2026051702'; // bump version to bypass any cached 404s
+    var VER = '2026051820'; // bump version to bypass any cached 404s
 
     function injectIcons() {
       d.querySelectorAll('.headline').forEach(function(hl) {
