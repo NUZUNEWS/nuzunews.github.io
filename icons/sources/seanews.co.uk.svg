@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <meta name="keywords" content="Forum, Article, Maritime, Ports, Environment, Featured, People, Opinion, Safety, Technology, Careers, About, Contact, Directory, SeaNews" />
+
+    <!-- RSS Feed Autodiscovery -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="SeaNews RSS Feed"
+      href="/rss"
+    />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="SeaNews Atom Feed"
+      href="/atom"
+    />
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2CY3Z0ZR4G"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      // Explicitly disable the default page view to prevent duplication 
+      // and allow the React app to manage state internally for engagement time.
+      gtag("config", "G-2CY3Z0ZR4G", { send_page_view: false });
+    </script>
+    <script type="module" crossorigin src="/assets/index-DNS92HKz.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CbnwAvO8.css">
+  
+    <title>SeaNews</title>
+    <meta name="description" content="SeaNews is a comprehensive digital magazine covering the latest developments in the maritime industry, from shipping and ports to technology and environmenta..." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://seanews.co.uk/vite.svg" />
+    <meta property="og:title" content="SeaNews" />
+    <meta property="og:description" content="SeaNews is a comprehensive digital magazine covering the latest developments in the maritime industry, from shipping and ports to technology and environmental regulations." />
+    <meta property="og:image" content="https://seanews.co.uk/uploads/1751734409110-seanews-logo.png" />
+    <meta property="og:site_name" content="SeaNews" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://seanews.co.uk/vite.svg" />
+    <meta property="twitter:title" content="SeaNews" />
+    <meta property="twitter:description" content="SeaNews is a comprehensive digital magazine covering the latest developments in the maritime industry, from shipping and ports to technology and environmental regulations." />
+    <meta property="twitter:image" content="https://seanews.co.uk/uploads/1751734409110-seanews-logo.png" />
+    
+    <!-- Additional SEO tags -->
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="revisit-after" content="1 hour" />
+    <meta name="frequency" content="hourly" />
+    <link rel="canonical" href="https://seanews.co.uk/vite.svg" />
+    
+    <!-- Google Analytics GA4 -->
+
+
+
+</head>
+  <body>
+    <div id="root"></div>
+  <!-- 100% privacy-first analytics (Simple Analytics) -->
+  <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  </body>
+</html>
