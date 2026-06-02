@@ -3297,33 +3297,7 @@ def cluster_items(items, min_shared=4):
 # ====================== RENDER ======================
 THIRTY_MIN = 1800
 
-# --- NUZU FIX 1: globally-unique DOM id allocator -------------------------
-# The same story legitimately appears in several sections, so an id minted
-# from the article URL alone (cl-<md5>, hl-<md5>) was emitted multiple times.
-# getElementById only ever returns the FIRST match -> "Go to story" landed on
-# the wrong copy. alloc_dom_id() guarantees uniqueness while staying perfectly
-# idempotent per (section, base, source-url), so the MRO "Go to story" card and
-# the feed element it points at always resolve to the SAME id.
-_USED_DOM_IDS = set()
-_DOM_ID_BY_KEY = {}   # (ctx, base, src) -> final_id
-
-def alloc_dom_id(base, ctx="", src=None):
-    key = (ctx, base, src)
-    hit = _DOM_ID_BY_KEY.get(key)
-    if hit is not None:
-        return hit
-    candidate = (base + "-" + ctx) if ctx else base
-    final = candidate
-    n = 2
-    while final in _USED_DOM_IDS:
-        final = candidate + "-" + str(n)
-        n += 1
-    _USED_DOM_IDS.add(final)
-    _DOM_ID_BY_KEY[key] = final
-    return final
-# --------------------------------------------------------------------------
-
-def render_clusters(clusters, show_trust=True, ctx=""):
+def render_clusters(clusters, show_trust=True):
     now = time.time()
     out = ""
     for cluster in clusters:
@@ -3340,7 +3314,7 @@ def render_clusters(clusters, show_trust=True, ctx=""):
             tier_color = source_trust_color(source)
             trust_pip = (('<span class="src-tier-pip" style="background:' + tier_color
                           + '" title="Source reliability"></span>') if show_trust else '')
-            anchor_id = alloc_dom_id("hl-" + hashlib.md5(link.encode()).hexdigest()[:8], ctx, src=link)
+            anchor_id = "hl-" + hashlib.md5(link.encode()).hexdigest()[:8]
             safe_title_attr = sanitize_attr(display_title)  # NUZU: XSS guard (replaces .replace)
             _hl_sum_raw = _ARTICLE_SUMMARIES.get(link, '')
             _hl_sum = sanitize_summary(_hl_sum_raw)  # NUZU: sanitize summary
@@ -3371,7 +3345,7 @@ def render_clusters(clusters, show_trust=True, ctx=""):
             n_sources = len(sources_list)
             sources_str = ", ".join(sources_list)
             lead_friendly = get_friendly_source(lead_source)
-            cluster_id = alloc_dom_id("cl-" + hashlib.md5(lead_link.encode()).hexdigest()[:8], ctx, src=lead_link)
+            cluster_id = "cl-" + hashlib.md5(lead_link.encode()).hexdigest()[:8]
             safe_title_attr = sanitize_attr(display_title)  # NUZU: XSS guard
             trust_pct = cluster_trust_pct(cluster)
             trust_bar_color = "#22c55e" if trust_pct >= 80 else "#f59e0b" if trust_pct >= 50 else "#ef4444"
@@ -6039,19 +6013,18 @@ def render_mro_cards(cards):
     for section_label, cluster, n_src, lead_ts2, lead_title, lead_link in cards:
         safe_title = lead_title.replace('<','&lt;').replace('>','&gt;')
         safe_title = safe_title[0].upper() + safe_title[1:] if safe_title else safe_title
+        link_hash = hashlib.md5(lead_link.encode()).hexdigest()[:8]
+        anchor_cluster = f"cl-{link_hash}-anchor"
+        anchor_single  = f"hl-{link_hash}"
+        for _member in cluster:
+            _mhash = hashlib.md5(_member[3].encode()).hexdigest()[:8]
+            if _mhash in _page_anchor_index:
+                _ptype = _page_anchor_index[_mhash]
+                anchor_cluster = f"cl-{_mhash}-anchor"
+                anchor_single  = f"hl-{_mhash}"
+                break
         tag_css = section_css_map.get(section_label, "")
         section_dom_id = _SECTION_DOM_ID.get(section_label, "")
-        # NUZU FIX 1: the card's cluster is pre-sorted exactly like the column
-        # (newest article = lead), so md5(lead_link) is precisely the hash the
-        # column will render. Allocate the unique per-section id from the SAME
-        # (ctx, base, src) the feed uses, so the card and its target element
-        # always share one id. This is what kills the duplicate-id
-        # mis-navigation; the old md5-only ids repeated across sections and
-        # getElementById returned whichever copy appeared first.
-        _card_sid = section_dom_id.replace("section-", "")
-        link_hash = hashlib.md5(lead_link.encode()).hexdigest()[:8]
-        anchor_cluster = alloc_dom_id("cl-" + link_hash, _card_sid, src=lead_link) + "-anchor"
-        anchor_single  = alloc_dom_id("hl-" + link_hash, _card_sid, src=lead_link)
         # Lead source favicon for the MRO card
         _lead_src = cluster[0][2] if cluster else ''
         _thumb_html = get_source_icon_html(_lead_src, 'nuzu-thumb-sm')
@@ -6282,8 +6255,8 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     b_summary = source_summary(_b_items) if _b_items else ''
     r_summary = source_summary(_r_items) if _r_items else ''
     _show_trust = _sid not in {'sports', 'culture', 'tech'}
-    b_content = render_clusters(_b_clusters, show_trust=_show_trust, ctx=_sid) if _b_clusters else '<p style="color:var(--nuzu-dim)">No breaking news in the last 3 hours.</p>\n'
-    r_content = render_clusters(_r_clusters, show_trust=_show_trust, ctx=_sid) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
+    b_content = render_clusters(_b_clusters, show_trust=_show_trust) if _b_clusters else '<p style="color:var(--nuzu-dim)">No breaking news in the last 3 hours.</p>\n'
+    r_content = render_clusters(_r_clusters, show_trust=_show_trust) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
     _dot_map = {
         'us-color':       '#C0392B',
         'mideast-color':  '#D35400',
@@ -6608,17 +6581,6 @@ function _nuzu_soft_refresh() {{
     if (msgEl) msgEl.textContent = 'Loading new headlines\u2026';
   }}
   var savedScroll = window.pageYOffset;
-  // NUZU FIX 2: remember the topmost on-screen story so we can re-anchor to it
-  // after the live feed swap reorders content. Restoring the raw pixel offset
-  // (below) silently landed users on a DIFFERENT story once the order changed.
-  var _keepId = null, _keepOffset = 0;
-  (function() {{
-    var _els = document.querySelectorAll('#sections-wrapper .cluster, #sections-wrapper .headline');
-    for (var _i = 0; _i < _els.length; _i++) {{
-      var _r = _els[_i].getBoundingClientRect();
-      if (_r.bottom > 0 && _els[_i].id) {{ _keepId = _els[_i].id; _keepOffset = _r.top; break; }}
-    }}
-  }})();
   fetch(window.location.pathname + '?_nc=' + Date.now())
     .then(function(r) {{ return r.text(); }})
     .then(function(html) {{
@@ -6670,24 +6632,17 @@ function _nuzu_soft_refresh() {{
             var tb = target.querySelector('.cluster-toggle-btn');
             if (tb) {{ tb.innerHTML = '&#9660; Hide coverage'; tb.classList.add('open'); }}
           }}
-          window._nz_scroll(target, 'smooth');
+          requestAnimationFrame(function() {{
+            target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+          }});
           target.style.transition = 'outline 0s';
           target.style.outline = '2px solid #1E4FD8';
           setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
         }});
       }});
 
-      // NUZU FIX 2: re-anchor to the SAME story element rather than the raw
-      // pixel offset, which no longer points at that story after the reorder.
-      var _keepEl = _keepId ? document.getElementById(_keepId) : null;
-      if (_keepEl) {{
-        var _newTop = _keepEl.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo(0, Math.max(0, _newTop - _keepOffset));
-      }} else if (savedScroll < 200) {{
-        window.scrollTo(0, savedScroll);
-      }} else {{
-        window.scrollTo(0, 0);
-      }}
+      // Restore scroll position — user stays exactly where they were
+      window.scrollTo(0, savedScroll);
 
       // Hide toast
       if (toast) toast.style.display = 'none';
@@ -6697,10 +6652,7 @@ function _nuzu_soft_refresh() {{
     }})
     .catch(function() {{
       // Fallback: reload but scroll back to the same position
-      try {{
-        if (_keepId) sessionStorage.setItem('nuzu_soft_anchor', _keepId);
-        sessionStorage.setItem('nuzu_soft_scroll', savedScroll);
-      }} catch(e) {{}}
+      try {{ sessionStorage.setItem('nuzu_soft_scroll', savedScroll); }} catch(e) {{}}
       location.reload();
     }});
 }}
@@ -6764,30 +6716,16 @@ window._nz_nh = function() {{
 window._nz_scroll = function(el, behavior) {{
   if (!el) return;
   behavior = behavior || 'smooth';
-  var _go = function(b) {{
-    return function() {{ el.scrollIntoView({{ behavior: b, block: 'start' }}); }};
-  }};
-  requestAnimationFrame(_go(behavior));
-  // NUZU FIX 3: lazy-loaded images and content-visibility:auto change the
-  // target's position AFTER the first scroll, leaving the user short of the
-  // story ("where it would have been"). Re-align once layout has settled.
-  setTimeout(_go('auto'), 350);
-  setTimeout(_go('auto'), 900);
+  requestAnimationFrame(function() {{
+    el.scrollIntoView({{ behavior: behavior, block: 'start' }});
+  }});
 }};
 
 // - Restore scroll position if coming from soft-refresh fallback -
 (function() {{
   try {{
-    var sa = sessionStorage.getItem('nuzu_soft_anchor');
     var ss = sessionStorage.getItem('nuzu_soft_scroll');
-    sessionStorage.removeItem('nuzu_soft_anchor');
-    sessionStorage.removeItem('nuzu_soft_scroll');
-    var saEl = sa ? document.getElementById(sa) : null;
-    if (saEl) {{
-      saEl.scrollIntoView({{ block: 'start' }});
-    }} else if (ss) {{
-      window.scrollTo(0, parseInt(ss, 10));
-    }}
+    if (ss) {{ sessionStorage.removeItem('nuzu_soft_scroll'); window.scrollTo(0, parseInt(ss, 10)); }}
   }} catch(e) {{}}
 }})();
 
@@ -6994,10 +6932,11 @@ window._nz_scroll = function(el, behavior) {{
 
 // - MRO Smooth Scroll -
 // When the same article URL appears in two sections (e.g. a streaming story
-// caught by both Tech and Culture keyword filters), FIX 1 now gives each copy a
-// globally-unique id (cl-HASH-SID-anchor), so getElementById no longer collides
-// across sections. The section-scoped lookup below still runs first as
-// belt-and-suspenders, with a full-page fallback so a click never silently fails.
+// caught by both Tech and Culture keyword filters), both clusters get the
+// same DOM id ("cl-{hash}-anchor"). getElementById returns whichever appears
+// first in the DOM — usually the higher-ranked section — sending the user to
+// the wrong place. Fix: scope the lookup to the card's own section first,
+// then fall back to a full-page search so no click ever silently fails.
 (function() {{
   var NAV_HEIGHT = 60;
   document.querySelectorAll('.mro-card').forEach(function(card) {{
@@ -7034,8 +6973,10 @@ window._nz_scroll = function(el, behavior) {{
         var toggleBtn = target.querySelector('.cluster-toggle-btn');
         if (toggleBtn) {{ toggleBtn.textContent = '\u25bc Hide coverage'; toggleBtn.classList.add('open'); }}
       }}
-      // Route through _nz_scroll so content-visibility + lazy-image settle is handled
-      window._nz_scroll(target, 'smooth');
+      // scrollIntoView forces layout on target (handles content-visibility:auto correctly)
+      requestAnimationFrame(function() {{
+        target.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+      }});
       target.style.transition = 'outline 0s';
       target.style.outline = '2px solid #1E4FD8';
       setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
