@@ -17,7 +17,7 @@
 //   - /offline.html graceful fallback remains (referenced but not blocking)
 // ═══════════════════════════════════════════════════════════════════════════
 
-const CACHE_VERSION = 'v10';          // ← BUMPED: evicts v9 caches so the nav fix reaches installed clients
+const CACHE_VERSION = 'v11';          // <- bumped: ships the US-tab fix (bundle change) to installed clients
 const CACHE_STATIC  = 'nuzu-static-' + CACHE_VERSION;
 const CACHE_PAGES   = 'nuzu-pages-'  + CACHE_VERSION;
 const CACHE_ICONS   = 'nuzu-icons-'  + CACHE_VERSION;

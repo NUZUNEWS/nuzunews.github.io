@@ -452,10 +452,22 @@
     var a = d.createElement('a');
     a.id='nz-skip'; a.href='#nz-main'; a.textContent='Skip to main content';
     function ensureTarget() {
-      if (!d.getElementById('nz-main')) {
-        var el = d.querySelector('main,.section-wrap[id],#section-us');
-        if (el) { el.id='nz-main'; el.setAttribute('tabindex','-1'); }
-      }
+      if (d.getElementById('nz-main')) return;
+      /* Pick the main-content landmark for the skip link. CRITICAL: never
+         overwrite an element that ALREADY has an id. The previous version did
+         el.id='nz-main' on the first .section-wrap — which is #section-us —
+         renaming it. After that, getElementById('section-us') returned null,
+         so EVERY "jump to US" tab, bottom-nav item and "Go to story" card hit
+         `if(!el)return;` and silently died. (US is reliably the first/most-
+         reported section, so it always took the hit.) */
+      var el = d.querySelector('main')
+            || d.getElementById('sections-wrapper')
+            || d.querySelector('.section-wrap[id]')
+            || d.querySelector('.section-wrap');
+      if (!el) return;
+      el.setAttribute('tabindex','-1');
+      if (el.id) { a.setAttribute('href', '#' + el.id); }  /* point at existing id; do NOT clobber */
+      else { el.id = 'nz-main'; }
     }
     d.readyState==='loading'
       ? d.addEventListener('DOMContentLoaded',function(){d.body.insertBefore(a,d.body.firstChild);ensureTarget();})

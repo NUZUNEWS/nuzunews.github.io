@@ -6155,7 +6155,7 @@ ts_html += '''<!-- VIDEO BANNER desktop only -->
       <span class="feed-country-label">United States</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/Ap-UM1O9RBU?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">France</span>
     </div>
     <div class="youtube-inset">
@@ -6303,7 +6303,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     # Mobile section video wrap (hidden on desktop via CSS).
     _vid_map = {
         'section-us':       ('iipR5yUp36o',  'U.S. Live'),
-        'section-world':    ('Ap-UM1O9RBU',  'World Live'),
+        'section-world':    ('HvZt-nh9sGg',  'World Live'),
         'section-mideast':  ('gCNeDWCI0vo',  'Middle East Live'),
         'section-business': ('iEpJwprxDdk',  'Bloomberg Live'),
         'section-sports':   ('7NPsqFA14eQ',  'Sports Live'),
@@ -6476,7 +6476,7 @@ html_parts.append(f"""
 // - NUZU Feed URLs (hardcoded for reliable restore) -
 var MAIN_FEED_SRCS = [
   'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/Ap-UM1O9RBU?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
+  'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/QliL4CGc7iY?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
@@ -6488,7 +6488,7 @@ var MAIN_FEED_SRCS = [
 ];
 var WR_FEEDS = [
   {{src:'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'United States'}},
-  {{src:'https://www.youtube.com/embed/Ap-UM1O9RBU?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'France'}},
+  {{src:'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'France'}},
   {{src:'https://www.youtube.com/embed/QliL4CGc7iY?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'England'}},
   {{src:'https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Europe'}},
   {{src:'https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Australia'}},
@@ -6519,7 +6519,7 @@ var _stallTimers = {{}};
 var _backupIdx = 0;
 var BACKUP_FEEDS = [
   'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/Ap-UM1O9RBU?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
+  'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1'
 ];
 
