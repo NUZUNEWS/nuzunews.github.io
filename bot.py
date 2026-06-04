@@ -4021,13 +4021,17 @@ html_parts.append(f"""<!DOCTYPE html>
         50% {{ opacity: 0.25; transform: scale(0.5); }}
     }}
     .breaking-banner .bb-text {{
-        flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        display: flex; align-items: center; padding: 0 16px;
-        animation: bb-slidein 0.5s cubic-bezier(0.16,1,0.3,1);
+        flex: 1; min-width: 0; align-self: stretch;
+        position: relative; overflow: hidden;
         color: #dde8f8; cursor: pointer; transition: color 0.15s;
+    }}
+    .breaking-banner .bb-text:hover, .breaking-banner .bb-text:hover .bb-scroll {{ color: #fff; }}
+    .breaking-banner .bb-scroll {{
+        position: absolute; top: 0; left: 0; height: 100%;
+        display: flex; align-items: center;
+        white-space: nowrap; padding-left: 100%;
         will-change: transform;
     }}
-    .breaking-banner .bb-text:hover {{ color: #fff; }}
     .breaking-banner .bb-counter {{ display: none !important; }}
     .bb-section-pill {{
         font-size: 0.66em; font-weight: 700; letter-spacing: 0.08em;
@@ -4333,10 +4337,14 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     body.light-mode .hl-summary {{ color: #6B7280; }}
 
-    /* Breaking banner mobile marquee */
-    @keyframes bb-marquee-mobile {{
-        from {{ transform: translateX(105%); }}
-        to   {{ transform: translateX(-105%); }}
+    /* Breaking banner marquee (desktop + mobile, single source of truth).
+       The headline lives in an absolutely-positioned .bb-scroll that starts one
+       full viewport-width to the right (padding-left:100%) and translates left by
+       its own width, so it scrolls right-to-left through the clipping .bb-text
+       viewport and is clipped at the BREAKING label edge. */
+    @keyframes bb-marquee {{
+        from {{ transform: translateX(0); }}
+        to   {{ transform: translateX(-100%); }}
     }}
     @media (max-width: 900px) {{
         .breaking-banner .bb-text {{
@@ -4572,7 +4580,12 @@ html_parts.append(f"""<!DOCTYPE html>
         --nuzu-white:   #000000;
     }}
     body.light-mode .sticky-nav {{ background: #EBF0FA !important; border-bottom-color: var(--nuzu-blue) !important; }}
-    body.light-mode .sticky-nav .site-name {{ -webkit-text-fill-color: transparent; }}
+    body.light-mode .sticky-nav .site-name {{
+        background: linear-gradient(135deg, #0D1B4B 0%, #1E4FD8 60%, #4A7FD8 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+    }}
     body.light-mode .breaking-banner {{ background: var(--nuzu-blue) !important; }}
     body.light-mode .nuzu-hero {{
         background: linear-gradient(180deg, #E0E8F8 0%, #F5F8FF 100%) !important;
@@ -5913,7 +5926,7 @@ if show_breaking_banner:
         f'<div class="breaking-banner" id="breaking-banner" role="alert" aria-live="polite">'
         f'<span class="bb-label"><span class="bb-pulse-dot"></span>BREAKING</span>'
         f'<span class="bb-section-pill" id="bb-section-pill" style="display:none"></span>'
-        f'<span class="bb-text" id="bb-text"></span>'
+        f'<span class="bb-text" id="bb-text"><span class="bb-scroll" id="bb-scroll"></span></span>'
         f'</div>'
         f'<script>window._bbItems={banner_json};window._bbUpdateTs={int(time.time())};</script>\n'
     )
@@ -7288,22 +7301,23 @@ window._nz_scroll = function(el, behavior) {{
   var items = window._bbItems || [];
   var banner = document.getElementById('breaking-banner');
   if (!items.length || !banner) return;
-  var textEl      = document.getElementById('bb-text');
+  var scrollEl    = document.getElementById('bb-scroll');
   var sectionPill = document.getElementById('bb-section-pill');
   var idx = 0;
+  var multi = items.length > 1;
   function show(i) {{
     var item = items[i % items.length];
     if (!item) return;
-    if (textEl) {{
-      textEl.style.animation = 'none'; void textEl.offsetWidth;
-      if (window.innerWidth <= 900) {{
-        // Mobile: scroll text across the full banner width instead of clipping
-        textEl.style.animation = 'bb-marquee-mobile 12s linear forwards';
-      }} else {{
-        // Desktop: slide-in from right
-        textEl.style.animation = '';
-      }}
-      textEl.textContent = item.title;
+    if (scrollEl) {{
+      // One marquee for desktop AND mobile: the headline scrolls inside the
+      // clipping .bb-text viewport, so it never runs under the BREAKING label.
+      // Constant ~90px/s speed regardless of headline length.
+      scrollEl.style.animation = 'none';
+      scrollEl.textContent = item.title;
+      void scrollEl.offsetWidth;                       // reflow so the animation restarts cleanly
+      var dist = scrollEl.scrollWidth || 1200;         // viewport + text width, px
+      var dur  = Math.max(8, Math.min(24, dist / 90));
+      scrollEl.style.animation = 'bb-marquee ' + dur.toFixed(1) + 's linear ' + (multi ? 'forwards' : 'infinite');
     }}
     if (sectionPill && item.section) {{
       sectionPill.textContent = item.section;
@@ -7316,7 +7330,13 @@ window._nz_scroll = function(el, behavior) {{
     }}
   }}
   show(0);
-  if (items.length > 1) setInterval(function() {{ idx = (idx + 1) % items.length; show(idx); }}, 9000);
+  // Advance only when the current headline finishes scrolling, so the text
+  // never swaps mid-scroll.
+  if (multi && scrollEl) {{
+    scrollEl.addEventListener('animationend', function(e) {{
+      if (e.animationName === 'bb-marquee') {{ idx = (idx + 1) % items.length; show(idx); }}
+    }});
+  }}
 }})();
 
 // - Read-article dimming -
