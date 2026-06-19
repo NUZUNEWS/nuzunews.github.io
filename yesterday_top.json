@@ -3,11 +3,25 @@
   "today_top_by_section": {
     "us": [
       {
+        "title": "U.S. Launches Trade Probe Into Germany Over Drug Pricing - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNbUdrWG85WjExRXVwRV9ZRmYzeHc5UVdMekZOTUhrWUJNZ1dkWnB1Wms3XzJaQ0VWR285d2NSRVoxY3lCa3JEWV9EaWNEbHVwWkRyaDFJZGdOT1F4bU9jT1RUbDhmbGZnSG00dEVDaE0tazM3Uk16empwOXJXVUd5MXlCNElOTXBSZjZQSzVxV3lBV0dpMG91RmwxRGkxZnM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 4,
+        "lead_ts": 1781869920
+      },
+      {
         "title": "Government can\u2019t restrict gun ownership over marijuana use, Supreme Court rules - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPSXNOX1gtVjNMS1EzeF81TTF2eFg3SGd3Zk4ybjdqaDg4by1kdVo4UXZGSm1VTFg4aWs3Qmo3U2h0czhQcmUwOWZiRy1rY1VJbGhhYlQyUUVTd2prQm90ZU5FMERmVkpHYkdFUkJzYUZLMzNVVkdEX2N1a1QyZDRST3JUZ0pPRmluM1RmaWlxYmRVcVZnS29HRERPTGZpNlpvNTBqdlNtM1NKcFRfZGdEZm1ZTFp0VDFLS1ppdDhORVR1d0JJWjFlNkdfREpXUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
         "n_sources": 4,
         "lead_ts": 1781824731
+      },
+      {
+        "title": "Hegseth appears out of step in criticisms of NATO allies - PBS",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxORGw2ZDZNVS1hQWlSTVZ0U2ZxQTBxaXo0c3RHRFh0NGJvaGFzei1oV2c5dnJHTk05Vms3TkRfR0Z4a21LSXFlTE9haHV4MllMRjk2S0pwM0p6Vk9YLWM5MWVzUm1pQXZwLU9WZVBzcWxhSHprbjcwdDFxWVBvU3d2M3dBSnRoaVBoMmZKOFBXMGdpQnJNMnk3T2x3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "PBS",
+        "n_sources": 3,
+        "lead_ts": 1781878628
       },
       {
         "title": "U.S. moves toward troop reductions in Europe as Hegseth scolds NATO allies - The Washington Post",
@@ -22,20 +36,6 @@
         "source": "Chi Tribune",
         "n_sources": 3,
         "lead_ts": 1781835980
-      },
-      {
-        "title": "Ukraine pummels Russian capital with what may be largest drone strike yet on Moscow - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNMkRRV0ZCU2ppTzgzbENXaWVjOGZJcTNuS3IwOWFHbkZuanpPaGpTa2hqbDNRTnZoeW8ydzJGcW5IcHlGdEprcnQwREo1dktQR2MwXzhIR3NDbXY5S0pHeFhKVHpZYjFQUmQ1dFh3RUwyN05sSUczWmFYRDRNUEEwcUtrbmdFVnpaRktGaGpmbGVYVl9zdmJTS05SR2hpRWJWMFpVVVdRT04yZGdpcUVNY1FpNTg4Z3BHc3hN?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 3,
-        "lead_ts": 1781825083
-      },
-      {
-        "title": "UFC White House event draws 17 million total viewers on Paramount+ - MMA Junkie",
-        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOZzZBUUNtZkR5akVOanFHb0VTSldNS0NIQzh0cV9HNXhteE94Q1JKd1R5VGVlWVZ0T20tOURIVGljS2xHRkxvQVkxTDNRN3hZNVR4Rk5YZ0pXM3ZsbFJUdEZzNWszT2UtVmU3cmRhcl9Td3JoSVB2Z1RoVHBHd3FERktya0IyWXh6QzNqbU1PZmROWGlBTzBDZGt3aHhsSkQxcXgxYXJfX2g1RldQcURqdzQ5UWtIN1FwRGVkY0NKMDdwYXBQTnN5RU90ZXFpUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "MMA Junkie",
-        "n_sources": 3,
-        "lead_ts": 1781823420
       }
     ],
     "mideast": [
@@ -45,6 +45,13 @@
         "source": "WaPo",
         "n_sources": 10,
         "lead_ts": 1781875952
+      },
+      {
+        "title": "Israel and Hezbollah agree to a ceasefire after intensified fighting threatens U.S.-Iran talks - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQZUlabWgwdElDRVdLdjVrdWdtbmZIYzh4V3NTT3BGTFpiWnFJU2w0NnF1RU1ha3lRUnlXY0xlSDlHUElSTTBnY3UzNXVERC1Hd3Q4RkQtQ1F1cl9OS0tLaW9LRzM2M0hibnlKWlA3SlZmcGZFYlloR3NESmNrMTdpaDBVRzRqT2paREplcV9wX194Wk1yb0hQSG8zdE9YeXR6cGM3Z0djS2tUOGNpVDR0aQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 9,
+        "lead_ts": 1781883839
       },
       {
         "title": "Live Updates: Latest from Israel, Iran, and Middle East - The Jerusalem Post",
@@ -66,13 +73,6 @@
         "source": "Jerusalem Post",
         "n_sources": 8,
         "lead_ts": 1781845205
-      },
-      {
-        "title": "First steps in peace deal demand far more from U.S. than Iran - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOenJZUTUxQTdNTjZVX2hUa1NIYnY5N0NYRUI5ZU1xUW0wcW94R09KOG9VYURCQ2FGUVpHal9HcE9kTkR3OGktdC1wZl9VUUlwUVVYZmtZeE9rYU9kWVFodkx5UktVeW1DbkZwMW92dGpsdjVUbl9JZ0FTckY3T0xhNDVHcm1kaUVWT0xGU09TOTVIT3dCUXVMNjZINUpZQlk5enc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 8,
-        "lead_ts": 1781824210
       }
     ],
     "world": [
@@ -105,11 +105,11 @@
         "lead_ts": 1781852520
       },
       {
-        "title": "Iran\u2013US peace talks postponed - politico.eu",
-        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBYdUk4SENQOXgzZHlHU2x5UjFDdGdqcjBtMjNlRVJ0QU1qWDlZSTh6ZmtoU3pyYm5zVnBpRXRtb2lId2k1ZWVXY3dZWUU1cmQzZDEyY042UDhrSlNycXBzdGU2QnZlbmQzUTdXZ2dB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Politico",
+        "title": "EU leaders squabble over outreach to Moscow as Ukraine war rages on - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOYTdicThDRExuc0wySDlVdmNlNzd2ZUJyTUNUN3R2NlFOMm83VXIxdEFxa0xiUHduNVNWd2NDSnNhYnQyU05lclRteGdCZ3BwUV9hcHRZS0RHX3FvUlVxZmlQRFVaazFhRXNFVi1RZDZmSDVkS1FiVEFZMlR4RkYyeE9KWGx1SUF6b1JlMlltb2Y4MW9WeDV1LUhvOEhCeHZINTlRYkNzYTBxUkdjb0MzR1lkeVN1MWxLbXFhLVhDc0xtdlZGSXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
         "n_sources": 3,
-        "lead_ts": 1781857723
+        "lead_ts": 1781885311
       }
     ],
     "tech": [
@@ -121,6 +121,13 @@
         "lead_ts": 1781847060
       },
       {
+        "title": "Anthropic updates Claude Design with code sync, brand controls - Let's Data Science",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOR295UXQxMmJWWThDX1k0ZHhfSmd0ZmZoWEY4Y0lISWpOWnhNdUhHaFQ0cHVsb0E1LXJJdE9fOVJONm0zYjlFZzkxdjVYRU1PUkZBaU5jZmc2bGxxOFNBelFJVGtKTHl1UFNCdk5wNkdfVnlBWVMxalYydXZLNkJGNFRTcjFFaXlZS0I0SVpUSTh3RUIxaHRFWHdjVm9EaUdXV2NMOQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Let's Data Science",
+        "n_sources": 2,
+        "lead_ts": 1781876100
+      },
+      {
         "title": "Amazon is investigating three employees who spoke out against building more AI data centers - Engadget",
         "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQbE9wbEhfNGgxTlpkQlVzZHRvSVpDTzdFc0QwMjB2SWZDZ2JQTjNNWkowWi1JMDF0TFdpNV9WTWx3RWtfZzBTbUQtVlEzYS1sOWFtb0tKQl9KRXM0MjRTeEFxRkw1UnBTZm5MaWNfOFR1eUhYSDdXNUtzeHBiMlBWVHh3QWJPWm9NYVdHdXNQa1NpVXRGdzZuVVNIX2E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Engadget",
@@ -128,28 +135,42 @@
         "lead_ts": 1781870713
       },
       {
+        "title": "Researchers find ChatGPT can be tricked into producing prohibited content via simple prompts - Mezha",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOb0p1d0hQU01xR1lZNlR6UW1IQ2NLdVFaaGt5alhTc3JCd1hfNmZUeDBQbzItUFJoR3NacFpFbGhTZ0JnZ19fUk1SNE8zQTY1UF9kVUlNOUQza2FiblBHNEI4bjlmZEJGSzYyZVF2ckU5TUZiNWpvQkdvUEhaSXZfb203T3VpeXPSAYwBQVVfeXFMTmFKZHhtYlY3R0gyMUtWZFh2U2dmS0s5T2NsenRyVWhodXBTSVNjWUo0MWRQYWN6RzhKTW92dm9rdzlKUjI2b3dRWGtDdTB5OHNYQ2NZa2RKSHJuMUZmWFlOSjlRU3FRM25PeHhOWmFtdE43ekRxNDZRV0VjSDhIdERiQU5qckhZUHcxNFc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Mezha",
+        "n_sources": 2,
+        "lead_ts": 1781870280
+      },
+      {
         "title": "Exclusive: Conservatives plan nationwide protest against AI data centers - Axios",
         "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE11ZXRSdjFMZVNPb1pmZlFBLTk1cDQ0NGdELWhlZTFtNjVSbFFFX1ViRWkxc2NHVFc1UndtNmpMUGx6VVBIWTh3TDVURDIwN3N6S1dtRWZGOFdxeDc4WkdvbWNPUG5zWl9BaDRiTlJNOFJJTXVfVlU1RXlR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Axios",
         "n_sources": 2,
         "lead_ts": 1781825220
-      },
-      {
-        "title": "Federal Energy Regulator Seeks to Limit Conflicts Over Data Centers - The New York Times",
-        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPYjVGZl9jSTZaTnk5UnBwN29rSFVKUGZEdjNiaExrLVlmLWlVN01Mc1BjWWVNcFhvRlNhMFlwSlNLaGk5bXlWdTdlTkZueVpPYno1QXBHMUNvbkJwak1EUk11N0Frdko4eFJxRjIzdEpscW12QjVkdFlmZVd6clFjY0RfUXk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 2,
-        "lead_ts": 1781822637
-      },
-      {
-        "title": "AI data centers are consuming huge amounts of power but this could change - TechRadar",
-        "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOOXJwSWpPd3VfWkhCS21XSlhRdUl0SjdlZUtvVGJfNXgzOWZmRk5pRmRKcXRKRlRIZUx6QzhWWWNoOGM4bU5VSkQwX1o0cS1JYjJSa0NLdEJaTEYtNjhhZmlFYzlid210cUdUSjZZeEIxeUR4TUNWSjFYcDE5U1AyeUh4YUdRX2YwSXotVTFqdDZVSFg4OVFPaGEwSndRSnZXRkFLLWhBT2RHeElGU21aWlVaTEtDalJfVkk4RlNiWmpodmFHeHZJQjNjclhoLURQQkllY1EwcDU3ck1wRFd0Ti1RNXYyakhLcXZsb2Y3YnVaQ3BlSHhVdzlIUWJQZXlkRHBBVA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TechRadar",
-        "n_sources": 2,
-        "lead_ts": 1781822100
       }
     ],
     "business": [
+      {
+        "title": "Bitcoin taps $63K on Juneteenth as July Fed rate-hike odds near 40% - TradingView",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNZDlvODIwUHhYbndZUlFiMFhwZC1VYXpKVlVQd01rOGVwWWxSdHZfT2hfeEI1V2V5djBUZjlNd2F4cDJINXhjR0Jlb2VMQ0pROWg4X1NJdUxPMGFmc0l3d21xNm5JdmdQb1JmdjByTXRaWExVUXNyczdRaUoyWWRpMHRicWttRlE4TGxrUDc3ZlZxcEx5LTZQNVNsYWx0VmlDakVtVEhhc3MyVDlfR2JrTEZQSVNUVXRfNUV0S1ZkR1psVjB1eUZxcg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TradingView",
+        "n_sources": 4,
+        "lead_ts": 1781879500
+      },
+      {
+        "title": "Amazon Will Make Billions on Prime Day. For Small Businesses, the Math Doesn't Always Add Up - inc.com",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPZHdScEhnaXdlQXA0UmdVUWRNZVFIT3prYzZaRVNJRTZnMk5udDhDaDY1Q1laWkkxdk1DOTNubEVZZWotelNsdGl1R3FMTktQRmkwZ2FZWFVoT2prQ0NIRmNKTnQ5QndIN1AyTThBSi1yNkY0UWVDOE5obXFvdnFLam44WV93UFVBUkFpUk5CN2NXVHMtTG5FemhZSUNDcy1wY0pxX20xNmtEVjBn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "inc.com",
+        "n_sources": 2,
+        "lead_ts": 1781885313
+      },
+      {
+        "title": "Making the Leap from Corporate Leader to PE-Backed CEO - Harvard Business Review",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQMHhuXzU1RmJUZ1cwZGpRZ3ROYTVEZzZnbTNCTC1QT2JvZ0hsa2xQMDFWUmd1MlZRbC1US0g1YXA2bVpqYTFSOUZ3UVRIVUZBTXJEZk9XVmNCRTRZMnBqX1VtbjF3ZERZRFgyVnd1WTgxQ1N3bkxPWExhS0RySGt5eFFIbmg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Harvard Business Review",
+        "n_sources": 2,
+        "lead_ts": 1781875266
+      },
       {
         "title": "Billionaire Mukesh Ambani\u2019s Jio Platforms Files Much-Anticipated Mega IPO - Forbes",
         "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQQnhSM0tYRHhNR3Fjem1CalkwOUlIaEw4S0w3M1VudmRiQVU5RVMxSjVrZHJjX1RxQWlReVAxbTJoeXJtY1I0dzBHY0ljVXpBbU5ZcE9SWk5TbkxwQlhJRVFnMktERmJyQkItX2x1SGdFaExpUGtpY25ER1d4YTRoeGlDTTFVU2FkU2RaTkg3cGNrelFQWENkb2pyLWJud005QWJuMktSSmlFSXQtRmFFM1M5TjE5S2d2YS1ubTZUa0d2Tzk0OEJn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -163,27 +184,6 @@
         "source": "Forbes",
         "n_sources": 2,
         "lead_ts": 1781870239
-      },
-      {
-        "title": "Bitcoin falls below $63,000 as risk assets sell off and the week's bounce fades - CoinDesk",
-        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOLV9adXdnOS1ReGVkOGJ4WVFrejh3b0lHUi1mWWpqRUp4dmNIdlhmZU9tV1RvN0RXcUFJbEVtTGhkSUhmS0tOX09BUm5ZbXRiV3VSRGpBMWRHbWFDdE9sVXFFUG8zVFFFbXhXTWFtTlgwOXB2M3kxRk1NLS1FMjl3ZjY1NktxYmtxdmV5LUdISHZ3dG5DeDFncFhROC11clFCNzUyNHBGd2loZzlYVUJmaFd1cUJ2MTFwQUZ4NlNSWFloakU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CoinDesk",
-        "n_sources": 2,
-        "lead_ts": 1781844584
-      },
-      {
-        "title": "Stocks rise on Wall Street, erasing much of their loss from a day earlier - WXXV News 25",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNYXFoN2o0R1BtQzBaVzJBYjFUN3M0LVlIVHo4SHpHQllaZGlSeEFqT3FRM1BOMW5RcDdKRmljX3dIaHdmM2M1eWw0SncxYThLSU5Uc3doa0dndGpXQWZpLVVsd1VKS0t4MjRkNDhGc3AwZF8wZ2NiRGZQMU1TWkZRbDltTXh3S1VMcHBrWVZBZnR4T3RtM0VFNjhkQlI?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WXXV News 25",
-        "n_sources": 2,
-        "lead_ts": 1781838094
-      },
-      {
-        "title": "Stocks rise on Wall Street, erasing much of their loss from a day earlier - Pittsburgh Post-Gazette",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNNmNrdm5GTzd6NkM2dGJYbExKRWI4UmJvTEQ0TzJxU04xa3JfVDVOdktfTDBYRDMxVFZVcjBjem1YbmtZUl9xTktjQkpVakNFZXktLTE1blhzZXB6ZU1oVGxiaHRPdmJxNE5EcXllQU5RU1dIeXY5cGVFR1pBRkw4dzlGU3Z6T3NtTE5vNGxITWY1VXFNZE5Pd1ppXzNRczdBQ1B0MXRJRzlJTmM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Pittsburgh Post-Gazette",
-        "n_sources": 2,
-        "lead_ts": 1781821822
       }
     ],
     "sports": [
@@ -202,6 +202,13 @@
         "lead_ts": 1781874002
       },
       {
+        "title": "The Rest Is Football Netflix Guide: How to stream every daily World Cup episode - Goal.com",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNOHFHVlhZVThsOXJlWUwxekxZdlppWWxxdXNVcXEwVTJfOXFfcjVudkpwU25lU1lwZFIzY290SnhUN0NiY1g0SFBvMjllcU5hS1BoMml3NXFqSmFQbVFNaUt5ZGVLN1Fua2tMOWt1TlJiWXVicXFsMWdEYnFKNkUwZHJxQ2I3TnprVkl6SXVzRQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Goal",
+        "n_sources": 10,
+        "lead_ts": 1781885062
+      },
+      {
         "title": "South Africa Performs Ronaldo Celebration After World Cup Equalizer vs. Czechia - Yahoo Sports",
         "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOTnZPY3JDMGhRLWh5RE1VdEpJNnB3RUgxTVNpSG5HSDExdVFSb1A1YmJmM3ZuUjU2Slg2NElEWVRkR2YwYmdqQXFXbHFFX0Y5UFRVbVNaOFAzWWwzeWk4RmktZzJhdUNuWjV2UldpT1M1STJDLXdUYUVLZU9WV3JvR3R2ZGI3NkxDNGNLT0ZXNHhuQnU2?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
@@ -214,13 +221,6 @@
         "source": "Yahoo Sports",
         "n_sources": 9,
         "lead_ts": 1781861265
-      },
-      {
-        "title": "World Cup Roundup: Host Nations Mexico And Canada Enjoy Home Cooking - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQY3RoWXEzY25ub1RSbVR5NHJQZncwSm5nTmRvTlNwRWYwUzJVeXRIWTlfbktmQWdVNjZCdWVUcWd2QVI2M3JCZ09kcm5LbGJ1d25oWUxqTlgxaktySXhueWVoWTNFYTVSME83RE5XRU0zOUpia2E1ZndRQVRoVVV6UmhGZEhQaFlaZVprXzNGXzBWRm9DTWVYZ3c5WUhvbUdpN19kQUFvd9IBpwFBVV95cUxOVjlua3FsUU5oSzVfR3owU1pzTkpOUlN2V0ZCQmF0OEZjY28zRGlGTXd6am5jaFNFZVVoeDRJUW9uQmZXNkJHVlBHZWJmcWhPcnVSUmFYNFB6SnFmQm5mSnNkd0tVcENDV3E5SDlENG5fNkx1OXlsR203bHhOSGdzZEZHWWw5eW9oRVdDZkx3RlhzRVJPSWhhUnhkMTBPaXlLM0hWMlJUQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 8,
-        "lead_ts": 1781844763
       }
     ],
     "culture": [
@@ -232,6 +232,13 @@
         "lead_ts": 1781866950
       },
       {
+        "title": "Jelly Roll breaks silence on Bunnie Xo divorce mid-concert: 'I wasn't going to talk about it tonight' - Entertainment Weekly",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPZzFPV1JhMjFhY2tKYkU5RDVwQkZwQ0ZzaGxtMTNnSWk4cUw0ZzhjbG1FcWZMZXBzdW1xRjY4V0NmS3hBQ1NpMV9aN1kwTGFnRERvRHNrZlNJTDBENE5BN2dmRk5kR2hLS25qSi01UncwVjZnY0lybmE5eF9VY2hJSFFjUHhrN0NFQkE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "EW",
+        "n_sources": 4,
+        "lead_ts": 1781877560
+      },
+      {
         "title": "Jelly Roll Breaks Silence on Bunnie XO Split, Says \u2018Nobody Cheated\u2019 - TMZ",
         "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBpVlBsUmhibTdLOE5BSWRWY3ZpRHRFV0xJcC1GQWdjSC10bHhPODBYMVZISmpjLS1qckJ5MVlsRVdfUlcwbjlld2xTZzlnejZYeE5xR2dGdlI2OXlZc2tjTUZ4VDc1SEdvOU90b1BMU0NXdmlhd09jdFRnLVc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "TMZ",
@@ -239,25 +246,18 @@
         "lead_ts": 1781841881
       },
       {
+        "title": "Dwayne Johnson Rocked A Skirt At The 2026 Met Gala, And His Reason Why Was Absolutely Perfect - AOL.com",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQU3JwdU5zN1ZEcnBzUGZnTDRZMDQ5T19oeWk1ZV8ybHEwUzI0akdObTZSWHdCSHFCSEZHUnJWNUd6R2JtYXJDY3NXUV9SNW8tM2R4d0M2UEw5VWwtNXhUVm1ybnhfVmwtTzJSSnRJRzVBOW5fQUlreXpScUttczdLSkx5LXo?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AOL.com",
+        "n_sources": 3,
+        "lead_ts": 1781876927
+      },
+      {
         "title": "Joan Cusack and Jessie Take the Lead in \u2018Toy Story 5\u2019 - The New York Times",
         "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNM1hzWXA2eWZaVksyQUh2TTVVaHIweERTdkVmMVYzWjFhR3RxNVdBYzdWeDhZSHZxMTRubmEtOFFjMlVYeXJtMG1QOTVOT1hvRzNPc1RlbnJOc2tId01JUmF5cWhqWnNtWmJOT085Tk1aVE5wYnJ6cU9mN0taaEhwVQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "NYT",
         "n_sources": 3,
         "lead_ts": 1781859607
-      },
-      {
-        "title": "Charli XCX stays away from social media for her mental health - Female First",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOQmh6TXVKUlo3VEJmWmlIc09tV3pyRlRTUDlJbXk0M2g0R3R5NWdLZDJ2Xy0zcHZzcFlZZ0tBdmxpOThUaWN3cFkybGZISUdWZ29fMTZTcUd0NE8xYXQ3bUtzQURQTEFROFV4QkdiR25XSnJrcDczSWV2Zmt6cmh5SzR3RFREQjlMak84M2IwYTdjUDROQ2d6THdpRXZjR3h4RkE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Female First",
-        "n_sources": 3,
-        "lead_ts": 1781856015
-      },
-      {
-        "title": "Tom Holland Keeps His Cool on Spider-Man\u2019s Future in \u2018Avengers: Doomsday\u2019 and \u2018Secret Wars,\u2019 But Fans Aren\u2019t Buying It - IMDb",
-        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE43VENNUnQxQVJuSUlHT3AydE9XZmtWaHphaUhQaUxBU19VVlhjeVNzejlNZmo4SkRuaWhwZWRLYWZxNXlLS1Buck01ckpvYmJPQm1LQlRtd2NGV2tLMnRSVm1nT01HWm8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IMDb",
-        "n_sources": 3,
-        "lead_ts": 1781852903
       }
     ]
   },
