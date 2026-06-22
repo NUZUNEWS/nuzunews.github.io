@@ -6,8 +6,15 @@
         "title": "Federal judge rejects DOJ subpoenas issued to Gov. Walz, Minneapolis mayor - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxORG55c3FVeGJyLVVRQjcxUEJsU0o5eno5SGFZcWhXWU1GMnpkRWFTSmtpc2xSQjc3dXREZ2ExQzZ3ZEt5LTBjM2hvU0J4MlhueWlING5kVGJTbHJfaUtzQnhNRHpUMDZjYm1haFFQc3ZnWGpEYkt2cU5fa19mb1hDOTRpYTdRSUdNc1p2SEwzd01Eek1wRGh3YWpzUHJhc0ZzazZLNHU2N0tJV29UWUxBT01LMG1aNWl3OV8zU2dqdFdnalc5Z0RTejhn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
+        "n_sources": 5,
+        "lead_ts": 1782163732
+      },
+      {
+        "title": "Judge blocks Trump's use of revamped immigration database for voter checks - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPUVZoZVRsVUg2WDNZY3h5TEFuVl9zVW1DMlZoMFQxRkxncE9WM3lwYjgzZFRsY3l3RWZIdkFaQkdnUy03RlJfWVhMOGlKVHI3UjR5VmtvM0wxNTNPSHNuRFJYR251RzJtLXhaaDhjeFh1SC02R2tYZ2JlVllMUS1KVlA4UnVzVFdoTFp3Q2tFY3FsSUdWNWNLNms4MkMzbzZmT1BsVVhXS0kxTjlE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
         "n_sources": 4,
-        "lead_ts": 1782156974
+        "lead_ts": 1782161818
       },
       {
         "title": "Boyle Heights fire expected to burn for days amid air quality warnings, schools relocating activities - Los Angeles Times",
@@ -29,13 +36,6 @@
         "source": "CBS News",
         "n_sources": 3,
         "lead_ts": 1782143708
-      },
-      {
-        "title": "Supreme Court agrees to hear case on the ability to sue federal officials - SCOTUSblog",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNbVpsaVRjRFVTem5NbG5ITHdPMFo5b3dURk1xV1Baa0FzSEpmRHBGd1M2TE1jRXlMaHVEQ1BuZ2dBVGVpYmllRjZONnVjRXhSdHR0emZBWmNBSjRNRVdtLTlVQnBUSU13TEZsbVF1TTFvYVRYSFVwVllSTk5ZaUcyeVdrVklJeXhObmw3VHNtejNYMnRBWWo5NUNnZnZHVmRrS05iUE1nYXFZa29JOFZF?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "SCOTUSblog",
-        "n_sources": 3,
-        "lead_ts": 1782143317
       }
     ],
     "mideast": [
@@ -114,6 +114,13 @@
     ],
     "tech": [
       {
+        "title": "Google DeepMind Partners With Hollywood Indie Darling A24 to Develop AI Filmmaking Tools - CNET",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNM0xMQVhIa3FuT09ZV3ZfalVrcDViQVNrLWNjSUVsS2pNbC1LSW1JV3FLYk5lLTJVRDBmNVg3UzRCLWxQZVhrZUxxN2FfeURLUW44aXh4dWdlRk1iOFpqWHpEYzF0eXBpTU5ELVlfaUU4NVNRa2h2VE1relVmdFpBVlhiU3BIUTI4MUFIdDVvMU5CNVY4UW5EYWVmTlB6WUU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNET",
+        "n_sources": 3,
+        "lead_ts": 1782161940
+      },
+      {
         "title": "As AI grows, new technology would boost energy efficiency at data centers - Binghamton University",
         "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPMjBteVRSNlNtX2JOa0JNUXg0S29rSkE1Y0h6THRXYTFESnBPdWZ5QVlvNnp5X1ZNSGZVX28zN0ZOV3dpUEFhU1poOVBxUll5dHF4am9zMTZIVDJacGxxRGpwb0V1TXZGQ0Y5d1VIY0FaTkN6dHQzaktHWk9FclJsSVBuSTA2ZG9Ha01majQtRnZiejk2eWRNbjdHeGo0c2c3U2c5QUFR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Binghamton University",
@@ -128,25 +135,18 @@
         "lead_ts": 1782056640
       },
       {
-        "title": "Google invests in A24 to build AI movie tools - The Verge",
-        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNOVRsd1h2akFHa3ByaHpTTVRmM095R2ZveGtPVmQyS2hWSHh6VHdlYk83N2RpV0NXRXJsLWVUYUNaQkVTRzF2Y3JLZEpxNXNNckNueVJQYndHN3VxcW1pWHNsSUtQRi1MbE9MYVdkQ2IwdHZMY1NQNFRIZUwxdkZGUjNCX3o4MHFmTDZxVkNfZlg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Verge",
-        "n_sources": 2,
-        "lead_ts": 1782148693
-      },
-      {
-        "title": "SpaceX inks compute deal with Reflection AI, an open source AI lab - TechCrunch",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNc1U1QjlzSmgtcUNMdUo3cG9pdkFaSHlzNnVIVG1ZcUMxb2prVlJteFctSzZwYjRwZXhXSkFBcVlPc1pVNk94bC1xdlVkYzRzR01oNXdhdGdrdDRpQ1JreVVqeVJmMUYtT2hnbWtsMkMwRGs3eENwTjNUU3RycUhkMEFhNDVoQmRsLXpTSjY5aHN6ZlltcHNmTEc1YW9WejdaWUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "title": "AI chipmaker Groq confirms $650M raise, re-staffs after Nvidia\u2019s $20B not-acqui-hire deal - TechCrunch",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOUmVlVXk2am9Xc2FBV25HT3A2ZXRaUHR5MUd0a2ZFMTJGR1QwYm1VaVRYeHJIODBQUVVTRGV6R1AweXdCa0MtdWhOR3ByaFhtTjd1OExBZFdIajlQM3JnSndEZDExZEY1QVpFX0N4NXU3aXJ5RWFaNlRmWWRUWTRMUVRweDNWWVB0UVE2RzNWNGhmc2lrOXg5LU9EVGh1LUNEYktqakpEZTF4bmlDa0paR0txVE1xN0R3VlNNTQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "TechCrunch",
         "n_sources": 2,
-        "lead_ts": 1782147089
+        "lead_ts": 1782159238
       },
       {
-        "title": "Power for energy-guzzling AI data centers is getting fast-tracked thanks to federal regulators - Fast Company",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQX3p6ellfS0dQQjVNdzlEOHQ0MkhLSXMwRE4zR2NJWWdXZVdfR09OSTd5eXJCbFJwaFJXOXpwOVVoUm5XbTZRTmt4OWxON3BIaW9ZSVRVYXAxSmNNbFdhNEJzcUtFNHd0cWxhaVNEb05YRXY3aHM0aHJHb0ZidHhQYlVNYVVTREl1akxjQ2s5UTl5V2I1eE1QOWZ4VklEaFdxZ0xsY21uT3lkbmRCUURwQ25aaTRtQWlKcHJtZWFn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Fast Company",
+        "title": "Forget Mars, SpaceX Is Becoming a Data Center Company - Gizmodo",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQV1JlcGtVRzhLU0NvQnNwM3ljZGdsNEJaRTFyM3MycWpVWUJZNE83VnlhdjJlb1lvSVF0STNzM1cyT2JEandXT3dRSkphVzhXcEVTc0QwdGd5bjYwN2plSWFjZEtDTlFsbDRhaDItaUFZTHZzQm82b3o1UXdRa2lxWnpZay1qRGFSU1NB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Gizmodo",
         "n_sources": 2,
-        "lead_ts": 1782146705
+        "lead_ts": 1782158149
       }
     ],
     "business": [
@@ -156,6 +156,13 @@
         "source": "CBS News",
         "n_sources": 4,
         "lead_ts": 1782143708
+      },
+      {
+        "title": "Amazon Prime Day arrives earlier this year. Here's why Wall Street is watching closely - CNBC",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQX2hwN05Bd19hS0I3RjhjYzhnUkU2Ml9Ic3lZZFZnVEJ2bklJUFhQX0Z2OGEzbzhOWkllNjRDRWwyb0czcC0wNC0zQm9tSU11bEk4U2I4NFJtYWg0UWVJVmRqS3I1QmZqUVkxWTJ2RmZiTzFLYjBSWkdhMnpHRlRrY2oyZFFzQzI5OUJ0ZlBEZnRuY3pJWXk0MEhjWnk5X0REdEVaa09mMk5qZUZGWWM5WTVFZTlkeWRxVU1KaWNR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNBC",
+        "n_sources": 3,
+        "lead_ts": 1782158869
       },
       {
         "title": "SpaceX turns to bond market to raise capital, reports $100.8 billion cash - Reuters",
@@ -177,13 +184,6 @@
         "source": "CoinDesk",
         "n_sources": 3,
         "lead_ts": 1782104501
-      },
-      {
-        "title": "\u2018Toy Story 5\u2019 Becomes Biggest Film Opening Of 2026 And Breaks Franchise Record - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVXJVQlNxWER0dVV5bXJ3R2toSURWQUlTZWhpLWFmMURJTGw4Yk9QYUxTc2taLVhkb3VRaUpscTNIT0laNkV4eC1uc3M2cEJGMjA0TUZjRzhzVGRuakh3Z0NTS2tFeGprUzNSV2VtaXpqaUVEVTE2UzZMekV1N3JoY2hRWmlMMUhTV3FGOVMwZER5TjFVMXNWaUVJTkFVeWJ2azhUWG9Vb0taSGZncENXNm94QmhSMThSYTQ4dHptNUR2TGktYzk5NQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 3,
-        "lead_ts": 1782063326
       }
     ],
     "sports": [
@@ -193,6 +193,13 @@
         "source": "FOX Sports",
         "n_sources": 11,
         "lead_ts": 1782156433
+      },
+      {
+        "title": "Folarin Balogun Talks to Zlatan, Alexi Lalas & Thierry Henry About His First FIFA World Cup\u2122 - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBvQ0tja1Q2Qkw1aFdjSzVlMlNNQ1RpWG1MWTJfYm5WaHVTNnlxU21BMVM4c1N4akhRQ2xmNDFZdGtfQzF4WTlYa0l1Umd4X29WQVRkc1BtY2RXeVhNR0U3N2tn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 9,
+        "lead_ts": 1782162645
       },
       {
         "title": "Argentina vs Austria, World Cup 2026: Live Match Thread - Yahoo Sports",
@@ -214,13 +221,6 @@
         "source": "Guardian",
         "n_sources": 9,
         "lead_ts": 1782087000
-      },
-      {
-        "title": "Surman gets World Cup goal but New Zealand falls to Egypt 3-1 - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPbzNFZFhqUF9JZ3BqcmFhZXc4NzJmb1NhRkllNm1kS3dtRjBsUTdYRmZ3RGVVcTdvU2RZWk9rejdGc3hqaVVZQ0QzdG1XRERQbVdKQ1hXUjEzU2ZJcnI2emVsdXp2YTIxU0hBZHFBckUtZTlmOGZteDJDV0FWQjVycA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 8,
-        "lead_ts": 1782104700
       }
     ],
     "culture": [
