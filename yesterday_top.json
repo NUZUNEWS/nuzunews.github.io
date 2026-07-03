@@ -1,6 +1,218 @@
 {
-  "today_date": "2026-07-02",
+  "today_date": "2026-07-03",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Supreme Court declines former Fox News reporter\u2019s request to stay contempt order - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOVzEycjg0ZzhTc212M0Z4MVl1ZjdtaEZYREdjazg0eENkOFRmTWhtMEExSFgyb0NKcjRIRVFqclBYdGpEVUJYam43TDRtNm81M29ldGdsMDlRLUZUdXdGY3h3Q1k2Y0syWnJscXVacXQ5LXFtcVA4Sjl5NU9HYnlTU2dGUWNUa21Eb0hSN1AtcXVYZF94Y0VXd0M4SGRsbnI0ZEY2ZXhDUmVnN2lTcEhuY1g3MFpwNHFTTk9wanQ5dDdKU3lZRkJiRQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 4,
+        "lead_ts": 1783041020
+      },
+      {
+        "title": "L.A. County man admits he sent Nancy Guthrie\u2019s family fake ransom notes - Los Angeles Times",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOQmw5eXNhU0NJY2ZnbnFIcGU2MUtNYk5Yei1aLVNxa0dLdUh5dklDYUIwTXgzbXJ4VkJ1UUpENXQ3TGZlN0dlaDI0eTFNNkotLVF2UXFwUVFKeWVaRnFLWXNKelRKR2J6c1ZGM0FUZFBIR3BIeEVUS3hWQjhna19Hc3BHclZtOHlSODN5dEJYQlNQWlE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAT",
+        "n_sources": 2,
+        "lead_ts": 1783032797
+      },
+      {
+        "title": "OpenAI considers giving US government 5% stake - Semafor",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOdTdnUUVLbVptc3FtQ2xQZG1OSmlXdmhvXzZHUWxiSGF2WVB0Z2hHMUtvcTR6N053WUN3QkprQkNGXzdmVENfRGNQcGN2MEJwZjhzUUhnZFRibmplbm43SDFlUEQ2SXgyZFF1UjNkMkxKMC1VUjBaNmRzYWRmWk1BeHI0VHFrQjllV0o1SEdGMS1jUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Semafor",
+        "n_sources": 2,
+        "lead_ts": 1782990600
+      }
+    ],
+    "mideast": [
+      {
+        "title": "Iran warns oil tankers: Use approved Hormuz routes or face force - Inquirer.net",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxObS13OGVzaExLZXVoNFNWalZnRC1OZkMwUGNPRWFLQ285cl9LdVFUSjFqdlhSaDF6aFlCMmhZTlR1Mi1CZmQ1d081a1o2Yzl5N2VOYUZ3TjlWanBnbC1Yak93SFNhZnlIREJoWmpjS2ZqeGJJSDZpbmZCcFlOMUkyczB5cG91QnkyekxWc1dDWThoaTNDeUFuTldHN3hzdU9XWXAzamFCZ9IBrAFBVV95cUxPMzhRMEhWV1dvcTFTazk0SFZZclBHdUdMRVpZandXSENZS2VjN01GRGJJanNlS2hDeTdsSzV6M2RiQmdjaW83U2RoU2RuUG8zMVREWHRhYXVOZmhIdkxMbnViTnNmSTREeFZlWTJzVmdPRWI4T1F1b2Z1dXhxdmVKUnlEajR1VG1CcVdNd1lJWHVocFYzODlNdWdBYk96akN2RHVRZC02d3R0d2Fw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Inquirer.net",
+        "n_sources": 4,
+        "lead_ts": 1783036020
+      },
+      {
+        "title": "Iran envoy: US military bases in the Gulf caused \u2018nothing but insecurity\u2019 - Middle East Eye",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPc0g5X0diUEhELXZkbzBpamRFRm96bVNSbU5kUkhlbERIcDQ3dDhzM0tDOGx5a2ctdVF1WEdDZWZTcnVPalZ1VzdGSDVIbGJsZVVXV2tDN2dmeUhWdDZzM1hsME5Sc0pSTEZTaUI5b1owYy05Yk5qUDBtVVNrajhHRlgyZkRzVkM2MThxNXdxREpKV015ZDMyWkNzRzRVNkJVLXRYbi1mM1JrZENnVGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ME Eye",
+        "n_sources": 4,
+        "lead_ts": 1783031100
+      },
+      {
+        "title": "Israeli drone attack wounds people in southern Gaza - Middle East Eye",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxON1pTZm1mdDN6bVp0cGdjdngzdWp1S3F6VHNjWS00UE9PeTlrQjllLWItallKak1KWlhMSXJRU05wUWVTc1lqbk1HbVZscGowY2FkbWNSeFdVMXpqTlBfeVdJMjlYdHd4UUctTEoxSEVQYlZTNUwzVU1Zak1SYTVRZUFrOXBJMmhPYnI4cW9PeENFNC1GSURCUU85cDdZWFVPNHpmTl81S1k?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ME Eye",
+        "n_sources": 4,
+        "lead_ts": 1783022220
+      },
+      {
+        "title": "U.S. warned Iran about Israel\u2019s aims to assassinate leaders - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQdkJrVU5TVlZZZFNCQ1dTTzFMeGtXcTR4T0pKMkFQc2NzSko0SXJ0RVQwNDk4VXBTMm1iR1lZdG4tRG9JM0l6ekpobjNnSzRieG4zdExZNDNWVFVzTkFrc0J3eXFRQk1xQjB5aTVYQnNXZmMtTjhqSGlkS2t5aVhiVXRDb05nNk4wMEdWeUpadXByT3BEMlZfc0h4MndPZ2lzb3djR0x4dW13V3I3aFVOejlBbkM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 2,
+        "lead_ts": 1783041075
+      },
+      {
+        "title": "Explosion at cafe in Damascus, Syria, kills 9 people, injures at least 20 - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOTlZCcjNkaXh1UTUwenhTaEJPOVE4Z1JRcm10R3NYUGJLck5WSHhjdVdjQmRpMTZSd3BYcjZYbXUwYXFTUWFMbWtIRElBSG9zQWs4MVV6eWVkZklBMV9nOUh2alF6ZFkwYkVtaV9HbVF0YnBkNGFETDhQazNGanctX00wT0tORXBqUVZFNENQRmlFakdXR2Q0MFZrdnIwUFZINjBvYmxR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 2,
+        "lead_ts": 1783039640
+      }
+    ],
+    "world": [
+      {
+        "title": "Russia Struggles To Recruit For Ukraine War And Now Resorts To Forcing Men Into Service - Eurasia Review",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOM2ZUXzdHZmZwUGI1OHM2TFRQeHRwRzJBOXZieXc3S2tkNTFHZG1HalVtNEhCVUZLZ1l4R21DWTlnQW54c210MXUzWHJ2U3pscFhKcXcyc1N3SGg1WmNoLXR6RXlyQ1N2SjhyeUJISFNaRjJBZFJrck55LUw0c3RHTWRBX2p6cGpOcVE3NE5YZ0laMlBLTktVbzI2aDVQYWQ4SlowQVBVUzhmamhjLVNXSUNIaDN4dm1NRDhIUkt5ZS1keU1rZEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Eurasia Review",
+        "n_sources": 2,
+        "lead_ts": 1783040151
+      },
+      {
+        "title": "US Seeks To Ease Europe Troop Drawdown Concerns At NATO Summit In Ankara - Eurasia Review",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQa3hFNE1ldmVaV2ltMW9BbHJ6WGZBQTFubzFKeGJ0Q0Rxc05qYzB2OWtWeHZndTNxU1NzQUNTUE1hOFVSSVRleWVaeVdQRGVnVHpfWVBsbFE1MXZPbWZmWW42SkEyV3c3WFFlQ1I2a1loM3JTWGFjMzM5WVFhaGNJam5xRDBJcDZOamRUZkMwcHYxdTBrWmFkV0l2YWhvejZWY195RmRyYnYtS0hRdUVGbzBR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Eurasia Review",
+        "n_sources": 2,
+        "lead_ts": 1783039365
+      },
+      {
+        "title": "China's 'ethnic unity' law- a new tool to silence dissent? | DW News - Modern Ghana",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE14N3g0VEV2N2w5azNOQUF2b2RiU004VVUzbFQyendGaG1Pc1Y1VkMtd0dXeF9nVTM3bXlhLXJfU2dYM2llNEZGa3R4UmtOX1o5eDRLeURRUE53MXNnSFHSAVxBVV95cUxONC1ISUlGb0ZNN3ZCWDU5ZmZzT3lnWjRka0ltS2ozdFFFM0g2QjNLZ1RpVDBvTWpqS0lZMVp2eXBNUUZaT2xUM1RlZjR3TnNnNXlOc0k4YjBXanJicg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Modern Ghana",
+        "n_sources": 2,
+        "lead_ts": 1783038282
+      },
+      {
+        "title": "Why Japan\u2019s Takaichi is eyeing an \u2018easy win\u2019 in India as domestic support drops - South China Morning Post",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQaEZHVzFBdV9QVndkUkJWTnQ5R2dmU0Y0NUxvQTZNVzFLa1ZUQUZrN3JqMGtrWTJnYW5xUUdBWFJHel9Ta2REdzdlMFJKRFFZZlR1NjV2UUFwU0RVRzl6SWNrRkNmckRRLWFUR2pBdmtvYVdRcTZwb3JFZlBnTnNhZkNzaTZuU1loYVJOakxDR3ZRWUlOV2RCTEVHNUhKUXpadk1hM0dsX3d6TERuU0FV0gGvAUFVX3lxTFBWUURldnA3eXV2dV94THh4Wk0zelJYS1R4RjV0NDE1V0pZZFhqTVd6ZV9NRXBfM3hYNkJlazRQcGllT1V2NkV0OHM3bTlLcjM1YWtNMVJRZEZJbnZOVGhpWWlJZ2pBQXNXZlpTd2FTZ2E3ZDdwbEF2VDUzQnJiWW82X1UtMHNQNUhZZzNEdTVIM2ZaZ2NlU2VSbXNTRW96RVA5VHhWUjByVlpCNzlwMDg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "SCMP",
+        "n_sources": 2,
+        "lead_ts": 1783036806
+      },
+      {
+        "title": "Asia Minute: Why South Korea\u2019s biggest baseball fans are young women - Hawaii Public Radio",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWXA3YzVwN1VUanBTYWEyZmJIbTBJT0NVaHhveTJFWXN1VW1maTNMNkJJUExac3ZWaVhISHplaXYxX1FZNXk3VTR6NkNPVXhQNVdmM3VGVE50S0RGTF9GeFVCTTQwRTFaM1VrTmhyWkVpTDVxRUUzRHFUOUZGZm5rMDFPSDhzcjNIcEIwNERvVjNSQzdxdE4ySU9GUVY3bjF1QTZ3YTd0czZTRXFPYk5LYUpWd2V5TUNpTmprRHZLMUY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Hawaii Public Radio",
+        "n_sources": 2,
+        "lead_ts": 1783036080
+      }
+    ],
+    "tech": [
+      {
+        "title": "Government-Backed AI? OpenAI Reportedly in Talks Over US Equity Stake - cnet.com",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQcHFGNkZJelUyTWRneTgtOFdnNmpxanlEcmZUQkVSbDdpT3F1QXNCNnhSSW5JN19vb2dDZkYzQ0NOMGtwank4dEJJTFhVWW16NEZXVm1hZFFPcTRGM0hCQ1MtNjFHdmotQ3pPSk93eTFZSHFHOUNOWk5RWXdLbm5saWlGLTI3X1djTzFhR3hHdUdzMVBNQUpJ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNET",
+        "n_sources": 3,
+        "lead_ts": 1783029600
+      },
+      {
+        "title": "Meta has a new app called Pocket that is absolutely nothing like the old Pocket - The Verge",
+        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBrUXc1VzE0QmpkVHRvSWdkM0JzclotZURsYm45bWxGS3JQXzQtUXQ1dWV6bXo5U2Q2a1pobk9YdXFaQW1FMWh2cC1BTXFKdjBNeFB4dE5qLUMwVUh5YXE5bHc4T2plZVZ1M0pzUkdB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Verge",
+        "n_sources": 2,
+        "lead_ts": 1783026546
+      }
+    ],
+    "business": [
+      {
+        "title": "The Dow hits a record as most of Wall Street rises, but slumping AI stocks keep indexes mixed - AP News",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQd054NTR5cGRhMk1DMi1qN1FNYmlBNXJILWFLTkE4ZXZBNnVmQml2WTdkRjZnQTAyeUJKSGJaUVhydVk5cW5VQmVyQktFZXVMLV95TFhUZG9mYVRwM0o2QzQxQlZGVVJrU05BQTVqUmpIVXduNGNVZjRvcUh5QzB1alVXMXdSUHU0bV9nMHZ3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 6,
+        "lead_ts": 1783026600
+      },
+      {
+        "title": "As Other Sandwich Chains Struggle, Jersey Mike\u2019s Makes a Major IPO Move - inc.com",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFAwQ195bkFiTmtVU1FIdF81WmlYbU95RTlXblEzUWhlSU5WQ2VWcXVLcEs2MklSeHZ1dXRCaXRXV0RJN19BYUpQa3JNc2ZHQkp5Ulk3YVdwU2U3U1dia1pGVUtFNWNfOURCbnNLWERIVTBRR1VBalk3Yg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "inc.com",
+        "n_sources": 3,
+        "lead_ts": 1783022163
+      },
+      {
+        "title": "Is the stock market open tomorrow, or will it close early for the Fourth of July? - MarketWatch",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPTEQ5X2xvQUl3U2xLSjZ5TXVNMThweE04UW5YbEZwMDQ1UnFQelJpaXVkUnVDT0NZdTRXbm1LX0dTUFExcFRJSmRUa1NybHZhS1VnQjF3bDJSYTNXZU5hdndaeE1uUGIzZjdkV3FKdWFyaEctMWpsUXNaSFp1Y0pvUExyMjZkYU5DZXpKOWNXT2MtVWtURmVONDRDamllYXNMbmoyZV9nbC0tTVhrTVdBT2cyQjFFVTN2dkIxTVBuakI?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "MarketWatch",
+        "n_sources": 2,
+        "lead_ts": 1782993960
+      }
+    ],
+    "sports": [
+      {
+        "title": "Portugal vs Croatia Highlights \ud83c\udf0e\ud83c\udfc6 2026 FIFA World Cup\u2122 | Round of 32 - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1iWWp1c1lFTjA4SjlEZ05rRnJNaHVrN3RMcTBxUWFDUG5zWUlVeUg4Q2RHVk1MZ2Q2WERnVkNTb0t1VDBsNUkxRHppUExsSVA4RkNLSUo5ZkJSZnQ0T1RscTlB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 14,
+        "lead_ts": 1783041149
+      },
+      {
+        "title": "A moment of relief as Ronaldo scores his first-ever Knockout Stage goal in the FIFA World Cup - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBWTF80RFhrcDU3b3BWQnhKR01tYlNfVThoaW5jSmZ6TTZWemoyWm9qcUlVRzJIV0FvQnl2YmZHU0hLX2IyMWZJN3pQQUNaYXNIWm9GUk5abVNvR1hQazk2Y3JSbk8yOW1vQmRzU2V3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 8,
+        "lead_ts": 1783039603
+      },
+      {
+        "title": "Mission impossible? England take the World Cup high road against Mexico - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQRGpOaG9tUlN6UzBFbHZtUC04OXA2RkpNZHljUGRleGRpNGVabXlQaG9ZQWtGa0o3cFQyZWFOT0tuazJaRXM2WjN1TGhENHo2ZUFCakRyZGtJMWdYeXBJdHZuY3RxdjlkXzhIckJmNVh0STJGVXdVS2pWY19zR0lzRTJyNktUOWZ3QWZKdk5n?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 7,
+        "lead_ts": 1783037100
+      },
+      {
+        "title": "The USMNT are on the rise: Re-ranking the 48 World Cup teams after day 21 - The Athletic - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPdEVvWWlYZURjWm91RmNiUkpZUUtPWnV2aXhQMENGQzhaOGFIcDFzbmNfaWRINWNMd2oyTGhKSTJfWVFhT2NwdkVfZWVwVUN4NHVZSC1Gb3JIQy1XWFZFaDd4T3RkRm4ycGgwbnZ2aDU5cHdUdFBQU3lJWEMwd2VvZ0tUVkhtQ00?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 6,
+        "lead_ts": 1783040160
+      },
+      {
+        "title": "Spain ease past Austria with 3-0 World Cup win - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1XUGk5MjgzLVRoUmZsV0U2VU1MeDdvaHNtc1daYUNpNHo4NWMzM2laenNsRkNmY0lQMUpsRXJvbnpEYk9BaGF6c3ljWGpfSlVtU1RESDljTnQwSktESHhDRGZKaTYtUUpSN3RBMnNWOUxoSGRKZkt3NmZGYXVrTnM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 6,
+        "lead_ts": 1783035202
+      }
+    ],
+    "culture": [
+      {
+        "title": "Taylor Swift\u2019s Wedding Dress Is Still a Mystery \u2014 But We Have Some Very Strong Theories - People.com",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE4xQWhxUl9nbV9vRHgwNThRckhQTi1DQ21nYkczMllSbTAyQVNzMUtvc2hKc0ZiNzB2UHRJb09rRFZWVklkM0p1ZmRnZ3ozR1lkUHdlakJCME9DSlptVzN1NnU5aEJ6c2hIcHpxU0ExRXZHekNE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "People.com",
+        "n_sources": 13,
+        "lead_ts": 1783041052
+      },
+      {
+        "title": "Millie Bobby Brown Details Relationship with \u201cDear Friend\u201d Tom Cruise - AOL.com",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPZ1NkOEtQTWp5Ymp2c3dESmpxWjB1WDFJN0tWNS1iZmV0OTFzQnJ0SDljZnRfQ1FOanNmX21hVng2dGktbXcyTkx5dUlOZk5oRmtIbGVpc0ZBaWtReVVQWXY3Uk1jdFRIdzZRYnJrdjYzQ2FyTkFROGVDTGdSR3RlREJld2FPRzBPVUo4bEI2ZWIzZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AOL.com",
+        "n_sources": 3,
+        "lead_ts": 1783035797
+      },
+      {
+        "title": "Taylor Swift's wedding: Why we're obsessed with it and other celebrity nuptials - Newsday",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPdHZCc1JjRGVYeWtodDlyUV9kOV8zUFdtVnpYYnZXOHM5TlJoRGFzZVNmNmVqbzh5alcyajRKU2tUaG5WdDMxNkp5dTlfZFBpYUlVZjM4WmxHVzNwVjVFVnpnX2V6Ulhhb0tMWG5uY1JxVGhaQWZZdVdWb0VFU3BWdHJfYjZ1S2RnN0NkelNPblZ1X1VueXRV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Newsday",
+        "n_sources": 3,
+        "lead_ts": 1783031290
+      },
+      {
+        "title": "Health-enhancing art - UC Irvine News",
+        "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFAzd1I4RllYVUliUDJDQUtIUkdLV2ZqMDVlcXc3MWFGMWJ6WkZhOXpSTmRsWTRwV1hzaUdjcndVbEF5ZlhXSEdIVEtPRmtRSUhmWFRIa2k0bHdpb214RzRBWUhLOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "UC Irvine News",
+        "n_sources": 2,
+        "lead_ts": 1783041218
+      },
+      {
+        "title": "8 Best New Movies and Shows to Stream This Weekend on Netflix, Apple and More - IMDb",
+        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBnSWtvV0JjVXZfVDVIblp3OURGd003czVxUm5rbXlOZVhDdW9XU2gwRV9FeTRxdjc2akoxME02LThlbDVOc2txMS1PSkZLaVB6OEFZZHV6SnJ2V2ltcVlVSmNvYTdacUpPT1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IMDb",
+        "n_sources": 2,
+        "lead_ts": 1783036517
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "U.S. Supreme Court Rejects Trump Order Restricting Birthright Citizenship, Alito Warns National Security Threat - NewsCord",
@@ -258,267 +470,6 @@
         "source": "Vanity Fair",
         "n_sources": 9,
         "lead_ts": 1783013956
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "5 takeaways from Supreme Court rulings on Trump\u2019s power, elections, LGBTQ+ issues - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPSHItMC1DdVdaYjQzTU5WMUNiRnc3RXgxQ3JJTWVfUll0UXhod3JlUWxoa1NlQkpmZDFNaGgtcTdrTGpCYVc2VDFrUXF6VFFDM2tNWi1vY3NqWXlqbXZtRVpnOHJIMk9WamRMNEg1Z2hTZ3h6MHQ2UlZjdnFuM01QbUx4ak9uVXBEcWpRSTZqbzVtbWtuU3BnMkpFYVVZcEhBVjRYazJ2WW1ucGtVTmtuQTBraF8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 9,
-        "lead_ts": 1782871302
-      },
-      {
-        "title": "US Supreme Court upholds birthright citizenship in blow to Trump - BBC",
-        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5OZWVlZmdjREpFQS1sN3h5SkR5QWVob2JFX1VMM1NZOW1QWmZTWlFYNE5iZGFBdUFVT1ZHWDFLejFqalZpUXVVcTFlZVJGcDdEX1RfdzNPOVN0Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 7,
-        "lead_ts": 1782883946
-      },
-      {
-        "title": "Bar pregnant foreigners from entering U.S.? Trump allies considering all options after Supreme Court defeat. - Politico",
-        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOX1d2TzNqc3JjR3Yzdkk1S2xhY2hDc2l0UEp1MUs3cXpqallpMUE4eFlvNjJqTFNvZUhqc3JvLXNrSGxpQzd5aW1TdXNjWXJJSXNDRjRQdWFwNFl3aGVNd1lmSHBkelpnMXd5eXB5ajc3S2lQV05HOENOTlBkOTl1dENzRFZGU0E3YnB0RmlPRHAtLVkxY25Jd2FUX3h2RHZKMXpwQlVRUWxHMThVaDJPLU1xMi1FYko3M0pzU3JuSW80Rk5QNmNEMF85NVlrYmxPdHh0dXhkQ2VCVkF6c2JSWE96V0c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Politico",
-        "n_sources": 6,
-        "lead_ts": 1782930702
-      },
-      {
-        "title": "Trump overstates Supreme Court trans sports ruling - PolitiFact",
-        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTVVKc1A1YmNZUW9iSF9oZFJSckZmME9pb191QkpOQnV4dXdnZmdnV1BUVFlZZG4yMmJFVVZmVG1tbUQySHkxQ3Zxd0U3dW4zTWNYVUhaa0lWQnNqZ0ljdTgxcVBibjFsSVJjVFI2bWZXWEpmVHZTNXRoSW1yV3Y5Y3Y3dVY0aXl5TXdQQS1FUlc1NlVVTGRkV1NzT3oyZVBmV3oyTVV4Sk4xeGxaVTYxUGJB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "PolitiFact",
-        "n_sources": 6,
-        "lead_ts": 1782925040
-      },
-      {
-        "title": "Supreme Court ruling sets up next trans sports fight - Axios",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5mTVJPVHZUbnU3N1pINktVZ3VNSjJOQzhCdzF1N0ZEMXE2Qy1GeW05b3RWRzk4c09rdXpJcGl0MDR4X1M4NGYzU1MzclBTVlpMbEZfYUNwX1BjR19sZzd1MHN4bWZlajYwLUVnTG9Gc1ZKV3ZKQUZ1WmdfdmI?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Axios",
-        "n_sources": 6,
-        "lead_ts": 1782896597
-      }
-    ],
-    "mideast": [
-      {
-        "title": "Talks in Qatar after US-Iran deal: What we know - France 24",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQNWgwZS10QUt1dXFiV2dJR214NXRGR21KUDJmUlp5aDdLUFFoRk1BSGthdmhMa0JRZHluakI0OTVkbEc4VGlqUC1SR0ltSzdBQjRvdllhaVRWOEp0aVV6bUpoWC05T2Z1RjdHTl80R0lBclhFQ3c5aFV4RlRlM2ZkQ3BMeFBQSHVSVzFZaW5sUl8xNmF2WHE2Qw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "France 24",
-        "n_sources": 7,
-        "lead_ts": 1782866951
-      },
-      {
-        "title": "US, Iran talks conclude in Doha, focused on Strait of Hormuz - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNR2I3cUEydmhlWVB5bmFRM1JuTXZVRHdDVFV6MTFjWHc0V3NFeDBCNFR0ZEJ0U2NjR213NWJwYlQwb0pNQjZmbU1tdlJjRlF2ZUZKZjBBRmpteTM1SUthZV9ESXZpaVRvSVhUaUYxb1lFenoxLUU2MklQd0I1OC1XR1NGSVo4b29CdVZ5ZzQ0QXp4MFdlMnoyRS1Rak0tTVNvYVU1RVhtb29hdENLeldfakJsMHNNaWNkQ0Uw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 6,
-        "lead_ts": 1782944160
-      },
-      {
-        "title": "US-Iran Doha talks end without breakthrough, focus on Strait of Hormuz - France 24",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPSVkteUlJemIxVjFDVjk0emlxZ0NOZUNJZjBtdXNNZVVqMzBMcDFDVGdjMTktVUhDbGdUWHdhV1M2UXFUM1dZUjA4ME1qWHV5QUlaenJmX3kyMDBmUktEZm1hWUlwVXBJR09CaVJ3Mk5qeGl0bmZKUVdJVkhwYkxTNUVVT3ZsMHdGVTJKajlBb0RubkM1MlozLVJpNkk0LWdkVDUzeWlQQlN2d29YVHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "France 24",
-        "n_sources": 6,
-        "lead_ts": 1782941620
-      },
-      {
-        "title": "Lebanon and Syria join US-led Middle East military talks - Arab News PK",
-        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE52MHkyVjZ3Vld4ZERORzVValZiTVkzTlhrYmsyUVJWNFF1M1dYMHE2NV8tb3BjVGRwbHZoeDlMQThBTUVRVmczRmJpaWJ1b2RSTWFWWXMzZnZ1OE1a?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Arab News",
-        "n_sources": 6,
-        "lead_ts": 1782933270
-      },
-      {
-        "title": "Iran Wants Every Ship in the Strait of Hormuz to Pay It \"Protection Money\" \u2014 and Experts Say the World's Most Important Oil Route May Never Be the Same - 19FortyFive",
-        "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxQa2hHUlVOajI5aWRrNmo2VWdKUlAyaE9KMVkzWUlJRUlqMXUwdGMydE5zUW9ldS02LXVVaGxYMDlmUFpVN1lJRXdyb3BfMU54UDJOeExhUDNocVNWa1F6a21FbXZvYXdXdVVnd3Iwd3MyWkxQOHJxNF9zU2lvNTJiSHA3bXZvNWtST2cyT3Zia2diM3hoZ1k1U2NpLXNFLUxHbWNiWDFSdVZjWWNJYkE0ejZDSF9oalQwYmVaN2hWNGctQnMyNlJTVHhRN3dDem95ZXZqNW9WY3cxVFZTdUM5NEFPVTZxUmlBd0pHR2hWb0k3SlNwcWNXOERrelJRcDFOaUJQMUdOZUxIUHNHdW8zdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "19FortyFive",
-        "n_sources": 6,
-        "lead_ts": 1782930670
-      }
-    ],
-    "world": [
-      {
-        "title": "US, Iran talks conclude in Doha, focused on Strait of Hormuz - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNR2I3cUEydmhlWVB5bmFRM1JuTXZVRHdDVFV6MTFjWHc0V3NFeDBCNFR0ZEJ0U2NjR213NWJwYlQwb0pNQjZmbU1tdlJjRlF2ZUZKZjBBRmpteTM1SUthZV9ESXZpaVRvSVhUaUYxb1lFenoxLUU2MklQd0I1OC1XR1NGSVo4b29CdVZ5ZzQ0QXp4MFdlMnoyRS1Rak0tTVNvYVU1RVhtb29hdENLeldfakJsMHNNaWNkQ0Uw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 3,
-        "lead_ts": 1782944160
-      },
-      {
-        "title": "Kane to the rescue with late double as England edge past DR Congo into last 16 - The Guardian",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPcVZza0lfUV9rZHNUNUVBektib1piQ2E0ank5RFI3MUVSSHluV1FMTDl1ZEU1VXJ5TzRJYzZ3SVFlSm01NE54ZVIyVkRaYzQ2ZUNUN3JDYVREUV9pQllBaU9sRV81VHBxcTE0MWpVcmIyQlo4UG9vYW03V3JvTm1SLWQzclc3ZVdmVXJqbXpiV2tDUmVPTF9VMU1jRWJBUjJEV2FN?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 3,
-        "lead_ts": 1782939300
-      },
-      {
-        "title": "What to Watch at the NATO Summit in Ankara - Center for European Policy Analysis (CEPA)",
-        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE0waHJNS0NLRDYwRlhxN2MxdmEzMWJNcm1tcllkVEtySXJDM2UybW1tYkVuMlVoX09YNk16bWlzNnVBYUhBcGJsZWh4NHhwaGs1dzNFTmNyRHdacXNuamNHUi1GdDVyeURMX1dkdnV3UGVldlJVVS13?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Center for European Policy Analysis (CEPA)",
-        "n_sources": 3,
-        "lead_ts": 1782895663
-      },
-      {
-        "title": "EU set for China trade \u2018conflict\u2019 without autumn deal, EPP boss says - Euronews.com",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQdEtlaTJmRkwxRi1FWV9tMHl2OW9RdGwwMWJPUHJEeWc0bXE0dDdUdk9aQXNmV3dRTTc2Y2R6QjE5Ymc4bk5qMm93SGhXeVJSelpERUNISU9KY1JwalFxLXBaUUdJdjV1b0k3X0RQU1h5VHpUUmNmVUJvSGtyNXQ4UEowNnRmRmQ4YnFnRmJYa1p6VXlnb0RQbWI3alQzeEF0a0k3ZkRBdmxpZmFoZl9idzRXZkJDV1dPY013RWc4d3RleE55SXhJX04zdEU1cktRd0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Euronews",
-        "n_sources": 3,
-        "lead_ts": 1782895535
-      },
-      {
-        "title": "Australia Sparks Global Outrage With Sweeping Visa Fee Hikes Affecting Travellers Worldwide - Travel And Tour World",
-        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9OV01KTVRfaTlmS1ZZOHF6THpBd2ZZUXZuNjJUUDNyQXZYaWJ4dnJWUkxqeC14WnE5eHBjSnRHUTdQbXlLUmtJVkFYQVFWZ2RfeERkS3Z2ZllvQ05aOVZ5QmJnUU80a2ozbWFSRHJB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Travel And Tour World",
-        "n_sources": 3,
-        "lead_ts": 1782869841
-      }
-    ],
-    "tech": [
-      {
-        "title": "US lifts restrictions on Anthropic\u2019s powerful AI models Fable and Mythos - Al Jazeera",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQLTUxSFpEb0JIQV9vZ05iM1BjMTFoWXVfZmdMbUpfUVhRdkU2ek9mUDY5azY0eFZLSVJFZ0ZUeUFxSjhwS1AxU3ZwaTliaVhWa2FZUHNJLW1Fam9SNnVIU3l3c2NGNjRISS02dS05UE9sWWRUblF4NmdSVGRCRkMtakNybVpfMlN1S0ZIV2tRd2h4bWNmOFZFZXQwR0pOVGdDVUp4M0ljblZLYWtTU3NYWjF5YnrSAboBQVVfeXFMT1FnbUw0Q2UyWndFWnp1VkYwVk5fUUpjWWN1SmNjNUtXVldwVWZqU3NzMFlwZUp0NnVxWnNfZThzS1V6U3lqVGZHZUo5RDJuMnNINUp6a3U0LVhINkVXYk1kenUtMnl1R0lMNmZRWkVJR0hiNlJlMFpyUUdlaE1faDFhTGFQbFNHUDRBSlphVmZfRFJTY1hINDRLUFJHWkNPWFpWVTNoSTlLTmxIXzFEZ0xTSk9wRzZvWGNR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 7,
-        "lead_ts": 1782884143
-      },
-      {
-        "title": "Meta Limits the Usage of an AI Glasses Feature, Even if You Pay for a $20 Subscription - CNET",
-        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVHJCSWdKaUYxUFlvOVpkV3QzanhoN3poQzd2NDZzUThqRWlDS3hTZTZOLW14M1FXT2YxU21FeGNDQjFwU1B2eC1SZ1NIY25BM1Ixb09fWVhoOVU4VUJEQlBaN2pBZVlRcDVfRWtIQ2RtQXd3OU8yeEZxcGk1ejNKN3pMRXppWG8yNXp1aTFOZWR4UzBVWUZKNlR6OWdySVRPWEt2ZDBJM1FYeU1vMzQ5R2gwcWE1SXczLTM4d19fRDBzM2M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNET",
-        "n_sources": 4,
-        "lead_ts": 1782938940
-      },
-      {
-        "title": "Elon Musk denies a report about SpaceX\u2019s AI phone prototype - The Verge",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5PU3dLbTZuOTJ3bEw0cjJJc0dpYzU4YWhobFo3LUZZYVpvaGw5SklWcDZhQlFudFctb0tWck9pUDdVUjNLMFJWSTVWQ3RhZG01ZTRfQXBoTDVtY280WmQtZGpXQWlRaUNTNkltSDI3RGlDRmtjd3dxSFVETEc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Verge",
-        "n_sources": 4,
-        "lead_ts": 1782936621
-      },
-      {
-        "title": "Restrictions Lifted for Anthropic\u2019s Fable 5 and Mythos 5 \u2013 DTH - Daily Tech News Show",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQOE5VeWVvTkxCSjJZUTRtWHJkWGlpYVd2WE5QUnV1RUtDZkhDNHlkMHdyVWpGd3NhV1U5QkJadFRTVWJURlBYSmdQZ2xaSGpSVDlVX2labGNaMldyTTJJWTFLYnBKQ2JQRnpweHYtN2lGOWFwVjB3OU9qbFFFZllkcUNwTXBDaUxCUWR3bHBqNkZKQkdWSW1MSEZ6M1lTb2hac0Nz0gGoAUFVX3lxTFB6Y01LWEp6QnRMZUJxbHlwVXUzclljWWJCZy1hMW9peVY1a1djdEZidFVhYjZxVTNTQTg2bmxDekhueFQyY2xzbXl6MGV6ajhtdnZHdlhnVGZHdTlZaGlabnV5WHdHZkNsdVVGclB6SkVmcUFRaHhaOHgwcXpMWWVJRWxwYkFjTnNJakx5SkJWN1ozUWRWVkpmU09PblpyQXhKWTY5SE10MQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Daily Tech News Show",
-        "n_sources": 4,
-        "lead_ts": 1782926418
-      },
-      {
-        "title": "Anthropic debuts AI-driven pharma R&D tool, Claude Science - Pharmaceutical Technology",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPWGVhaElNeldSR3pPSllJSDZTOEJ5eWRJRmZvVUptckV0OWw2ekV1Q2dFVFEwRE9iblBNTFdsSVEyUkRVenZNdUtGZnlqemY1Vm14eHFFd0VpQjdVMHhCMjRRZlFsWmc1cldoZ3FuOUNaeG5XMm5OVW10ckFlZXE4ZGVubnk3ajJnb3kxNjZJaFUzNnhiY0hLVUJ3Z0doMkc3N3RoTWxOVQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Pharmaceutical Technology",
-        "n_sources": 4,
-        "lead_ts": 1782919350
-      }
-    ],
-    "business": [
-      {
-        "title": "AOL's owner, Bending Spoons, hits Wall Street with $1.7 billion IPO - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPMnZzME9FZkc3VEZLNTRRcUNnV3djcEVqSTFuenFzM1hSMmYxeFBySmRtMV90ZlpQV2V3cjA2TVM3emtuRUl3QUJnaVh0dVpQVTR5dUZJVHhuZjFqT1FTNVA0encwOHNnUmtlZ09mNU1rS2pyZDdrSXR0VnlTYXNMOGlFTE43U2RBMHFuenJ4cGhtRU5wRkZSeU5ZZGJVdFVLUEF2bXgybDFOUWJra1NXVm92alYwSGJnQUVCRGRnWnAtVWJuY0I4c3pPejc3VFA0TGltaA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 6,
-        "lead_ts": 1782936473
-      },
-      {
-        "title": "French shipping company CMA CGM Group to buy FedEx' logistics arm for $1.4B - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMjBqRUhUZTRmVnZXM29EbGoyTFF2cVROeGUwUl9RRC1uZzZLWjZBM1FhZkhCWjZwVkxYUGM5MTM5MEU4SDBkeHl4SGY2QlBTbzZTd1VRS3RMYmVvazNWcmV1UFZMRm9zY21lQlRGejNIdjJHS3NLZlM3NDNueEdOUUZxRGprdU9yZUttZzh6WWR2SHBuVFpKX1NzNi1kMHZjUlE3Qlk2R0R6ZVhkRmFFSE1CNUx0Wmpaem1Sa040WlVrSk9JN1BVeEd6YkZIQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 4,
-        "lead_ts": 1782924520
-      },
-      {
-        "title": "US stocks today: Wall Street under pressure as Nvidia, AMD and Micron lead AI stock sell-off - The Times of India",
-        "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxQZm9SM0tlcGFmUGlINWxpdk5FbHdBWjB6djZVTjBnVmpXOFZUYkFNRDNKcXRiUmZ6SjhPNkVwZXhLWUg3dUVIREVBSVpUcThuNXNnRkV3Tk52UWExV2pwWjN2ZU9GN3NhTExMcEdRWjNkSEpCclB2RkNQbG1fdDhYLVpycEtZMzhtY3Zra1hOYkVJZmo0ZV9ycDkwQXZUWmlMVFlBSUVYOVZrZ2pTbHZYWWZibUgyYlhOQmRFTjE0ZWUyU09kMVVySUJUOTljMl91RDlJLV9sME5kM2EtZDljUlpGOHllX1VhTTdHMmNEZXowenN0THJHbVdHbEk1VVZLVnl6cWQtWGljZzRzSjNvMlN30gGXAkFVX3lxTE9sOFFjVHBMQzk0ZG05YVdYNDhxdEdOMlVHWDlxUmkxZy1FeFd2SUVXSXZaOG5hMUpscGR3bXRQT3o3NldSbEFDZTJLQ2l0Vkh1Wm9PNWV6dFdjQzExMExpdFpFa0ZDU3VpRFhsMmFrWG9HT1NCSl9JeEp3ZUN0Zk1ReldiTk90MHY2RUNjeERCTWVjY05fekVpemwyNlJaMk1hN0g5czVQbXBlQUZlcWxGXzFGYnYwdnpYOG5CTm5tbEhISmgwMFRFYWd2M1R1UDVvbjRSUnFxVWdmV3RTUUZhd3hRZmlBbmZjeWNIZUVGZ0ZiREdKM3RRVldHejF5R3V1SDhJYjliVnd3Q1g1a0ljc0RnRUJDWQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Times",
-        "n_sources": 4,
-        "lead_ts": 1782919920
-      },
-      {
-        "title": "US Wall Street ends choppy session lower as tech shares drop - The Business Times",
-        "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQQjBWTWNKdmFRYTUxM2VrYkFaSHdJWC1vWUY4dGlaTzNrTFV4blZHMTFTY1N6UnB2YnVydE5lOWRvWk52SjVsZXFNVUczdUl3VG9FNklxODBTSVczNnBOM2lRT0J3V245QkNhcG8tM19ST0hHNGcxeVJ6d1J0TFd0Q1l3Z2k1ZEhQNHJhS3BfOGxiWW10ZzkyTHFYLS1ncmV4eXRGdVNKUTl6OEZmZVBQSHZmTmoyR3BvUENIbUxtTWJ0LXFuX1c3VjRqUWhXd0p1?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Business Times",
-        "n_sources": 3,
-        "lead_ts": 1782943020
-      },
-      {
-        "title": "Most US stocks rise, but drops for tech pull Wall Street lower - AP News",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQUmtHdlhTdzV1djdaejdFQkVKTjd2LUNONUZ1OEJTZWNpcl8tOTVtOEhILV9SME1QSDVRTGpiYXd4QkhHaWJQUGpKYlV1REF3VWNwNV8zR2c5ZVhhTW1GalFqbXZocm94NjhLWWNWUGktd0xGSXNfVGpYajN5amYzRlVVYnpkLTcxdUFoWkhUNkQwajByYTNoMWZ6RjVBdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 3,
-        "lead_ts": 1782940260
-      }
-    ],
-    "sports": [
-      {
-        "title": "Is Mexico Finally a Top 10 Team? Alexi Lalas Updates His FIFA World Cup\u2122 Rankings - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1aVmpzZ1YxWmpDSzFYczh5MWgwYndJdklIallDNnBDa2VPQ2xLSHN0eWhhYlc4NnpZeC1TZWJRV2FPUXlDOVA1cHJrT2k1WjFpaVNOdDhVajdRZGFMbkhfU2hB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 13,
-        "lead_ts": 1782935195
-      },
-      {
-        "title": "England's Harry Kane To The Rescue \u2b50\ufe0f Scores Late Equalizer vs DR Congo | 2026 FIFA World Cup - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5FNzFGUkZEWC1HUHB5ZlpmVTNOUUdEdGtpcTUtdGhBaWNmMkVlWloyQ004ZmFzMndnQm5RT2lXbFRjVEhmclhzUS00TVRyUVI3UENUclBvSXRhQnlFOW5hVWZR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 12,
-        "lead_ts": 1782927973
-      },
-      {
-        "title": "Mexico's historic consistency at this FIFA World Cup speaks volumes about team culture \ud83c\uddf2\ud83c\uddfd - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBRR0hFaUp5UXlzNzRjT1N5RUd5azNFc2tUa0c2WE94N3IzUUZnZGtQSEk5YWtrdlBTX0t1RzJYWXBsNTNkMEpES1RRUkc0RkE4R3FnQS1xYm93WHRta0hWOVk0RGhCb0NMZ0ZfMjFR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 12,
-        "lead_ts": 1782920982
-      },
-      {
-        "title": "@Zlatan reflects on Sweden's 2026 FIFA World Cup campaign \ud83c\uddf8\ud83c\uddea - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBXUDdWLVFFYW1KVW9aQ1hvZVZJaC0zaWdQXzcwLWFkX0JiQmpQMDZhbVBjU2xoZnc1SWRxUEdfdWFiamVlcVhOcmZRaUFMNmlJOGJPdlpVZ2xpQWRmcWpqd0NaRUlCS3JHQnBTbVZ3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 12,
-        "lead_ts": 1782870847
-      },
-      {
-        "title": "Mexico breaks curse, defeats Ecuador to make World Cup round of 16 - USA Today",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQZm9Tbk1rY2h6c0NEZFFTSDBwRmRmZl9OcEh1ZHZsVEpmSWh4WWw3aUZ4SkE2SW1RWE1NTnFXVnBDRUUxUWtLRnV3OUxZR0RVNUFSbHNUVkVHZkl5VFdHMDl0LUNLSS16SGFpZEpoX3dsY0laVnVQbWlHLU9yTVVRMVh6MWlZcENCQjFSSkd6cC05ZEZTdVlqR0l0WHBmNG50TXA5Mkc5RnBlQzFtSkxFLUdoeHZiSEhSQ2x5Y19ORWFqMThzdUtfU2xXS3RNUFM0RkZyYg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "USA Today",
-        "n_sources": 11,
-        "lead_ts": 1782886740
-      }
-    ],
-    "culture": [
-      {
-        "title": "Taylor Swift's wedding: Why we're obsessed with this and other celebrity nuptials - Newsday",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPdHZCc1JjRGVYeWtodDlyUV9kOV8zUFdtVnpYYnZXOHM5TlJoRGFzZVNmNmVqbzh5alcyajRKU2tUaG5WdDMxNkp5dTlfZFBpYUlVZjM4WmxHVzNwVjVFVnpnX2V6Ulhhb0tMWG5uY1JxVGhaQWZZdVdWb0VFU3BWdHJfYjZ1S2RnN0NkelNPblZ1X1VueXRV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Newsday",
-        "n_sources": 8,
-        "lead_ts": 1782941288
-      },
-      {
-        "title": "Taylor Swift Wedding Setup Starting to Feel Like Amusement Park - TMZ",
-        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPRW9ROTE3aDhSU2h0RGE3ekNFWENlS2ZZQmVVWmZ0dzBCRXdRY3JIcTRWYXlVSENLUFBTOF9aQ2ZJQU0wb1BrT1lYcmliZmF6Z3ZlazdzNUliMS1pOEloaHNjaGlLOVlJN1BUdHk5ajBqNVUtQVRYSk1nNTd5dHpCalJlbzZlZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TMZ",
-        "n_sources": 8,
-        "lead_ts": 1782931146
-      },
-      {
-        "title": "Who\u2019s Catering Taylor Swift\u2019s Wedding Celebration? - Vanity Fair",
-        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPcE9fQVZKSUc0THhyQmV3eHJGSElnWm5DSUxaNkNiMWJDaE9UZTYzcXNwbG1FcXNHLVM5eVhaQkFHNlVyYmxLaTdwbTVQMFdWZ1hTSG9YV2I2LUFJNTRmMnpQUXhKaVQzMWFMQ3lybEdyZmk0akF2LXNadExLZXlPRmRlbTJodnM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Vanity Fair",
-        "n_sources": 8,
-        "lead_ts": 1782928677
-      },
-      {
-        "title": "Taylor Swift Invitee Says Wedding Ceremony Not at MSG - TMZ",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNaEw0YXFmT3JKV1U4RDFPZjlsaUk5aGotcmo2dlQwY05YYS1LT1hLXzJOUDQyRjZ3VWtSRXFFUEEyN1RsclJ3dDVpVjJPbFJWeDF5RWRxd2ZxNnd3VFVORlkzekcyQUV5WVhGVG5LczZqdTZod3VFVFkwZC10UHNpN3NjbzBYeHJX?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TMZ",
-        "n_sources": 7,
-        "lead_ts": 1782943432
-      },
-      {
-        "title": "Taylor Swift\u2019s Super Top-Secret Wedding Is Getting Kinda Ridiculous - The Hollywood Reporter",
-        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxON05weFRnSERMeE02WENYSVphRzVBQ3FnYWRLd0NCRzF0bTN1X3o4cFNRdW9XbEJydHI1Rm43R3pHcDM3cGVHSFZ4YzhtUjJOTTdLODJtYldwVzdXbWRtLWxnNV93TmdlRENuMEZsckFDSjVqaVpaWUtqV1d6aGE4TjhreXRNR2gwbzJSTEhMSERhOWgxQ2c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "THR",
-        "n_sources": 6,
-        "lead_ts": 1782919728
       }
     ]
   }
