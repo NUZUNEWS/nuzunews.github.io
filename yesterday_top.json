@@ -77,6 +77,13 @@
     ],
     "world": [
       {
+        "title": "China\u2019s Moonshot AI Unveils Kimi Model, Threatening America\u2019s Lead - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5UYkVrd05BamRNRHcyZ19xN1FyaklNdVBYUXlFcTQ4dGhjYWdrb0Z1LWxhdnV0VWVmOU9rNnVjQUpIZHQ5SmdCZDd2MDVNQk5rR2NSM2x4QkVhNVp2SVhJcF9jZGdmQjlJTnhTdmlOdGotbzZ0X3pFMTVwVQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 4,
+        "lead_ts": 1784318696
+      },
+      {
         "title": "Has Ukraine\u2019s Zelenskyy created a rival by sacking his defence minister? - Al Jazeera",
         "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNd2EzaHVFeU5qRUEzSDBIN1QzdC14ZlVST0NtZzNTOUp3WDg2TlFkeEZwVHRYbUtUbmVWQWIyYmVSaHpKYkt2cWVZSHZ5bjhuclo3S3dzdkRpcTBDMDN1MVhfMXRzTlBudlVaekUtYmFnRDdTMTlYeUVMNXVBTTRVWWF4WVd3WG9NYkZJQWp4MXBDTkdCSHE5R2puZE44T05uUkhyQUlpYnNxMTRlNFFMU9IBtgFBVV95cUxPTHRJelp3ZnBaQlp5RG9KNlRyYW1oOTZkVGpaSGluVDdGb1Q0b3R5TnpZWm5uaTJ4NUY4clJUSkJ1VXM0X0IzdVVfVGtLSUdQMl9VMlpKamVXWmd0WWtURWd3QmgweC1HQ0JiT0RUem9lejFXNWRQcTR2bXF0djhpNklvMkpTQlk2SHhKcWR1UnVIN29YOFJ0UXhjelMyc2NsLUhNcmttR0hhRHlPd0hRek04MXp1Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Al Jazeera",
@@ -103,16 +110,23 @@
         "source": "Straits Times",
         "n_sources": 3,
         "lead_ts": 1784269254
-      },
-      {
-        "title": "Oil prices jump following the latest fighting in the Middle East, while AI stocks sink - AOL.com",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5DcUpYQTZCQk1EeXJ2MGZySDdvNUdXZUVJdWJLdGVJNmU3bWxwNHdEZHJJSjBtX0RTampwSjZOWWFBX1lqTklGRURsemhQbWg0RDBKMFM4LS1qX3dPWGxEWnZfQk04SkJVWS1nTGpVd0VVWkpLVTRBTS1CZlQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AOL.com",
-        "n_sources": 3,
-        "lead_ts": 1784235093
       }
     ],
     "tech": [
+      {
+        "title": "China\u2019s Moonshot AI Unveils Kimi Model, Threatening America\u2019s Lead - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5UYkVrd05BamRNRHcyZ19xN1FyaklNdVBYUXlFcTQ4dGhjYWdrb0Z1LWxhdnV0VWVmOU9rNnVjQUpIZHQ5SmdCZDd2MDVNQk5rR2NSM2x4QkVhNVp2SVhJcF9jZGdmQjlJTnhTdmlOdGotbzZ0X3pFMTVwVQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 4,
+        "lead_ts": 1784318696
+      },
+      {
+        "title": "Meta, Anthropic in talks for potential $10 billion compute lease deal, source says - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNS2NqN2VtZFNDLWpDUGxnTXlpZmdWRmI3QlJyeTZSS2cwOEdyVEVGY0NGd3F4UGdqYkVoTjVaUWR0bzJVcW8yY0N1dG1zUnl0UUVDa2dKYVhKU2F5OWJPTWFfSGdZWlRfMjZZdEVxUTRiVDE1LXhMSjR0a0FOMFItVHA3V3FTYlVjU0Mzcy12VG9JbVlORGF2bXBFa1BIUjBNaHR6ZnBn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 3,
+        "lead_ts": 1784321882
+      },
       {
         "title": "China\u2019s Xi Jinping Wants AI to Be Open to the World\u2014and Out of America\u2019s Control - Gizmodo",
         "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNcVRKZy1NclA3RllzYmZLMW9YUXhGdjZxMW9GOEdZbUc3ZmYxYmhNTVBOamIzcTZscXBGT19jU0tCTGdKckV5T1Y3TUltWXZoT3J2QXlWejlQUks0eDdWX0EzMk14MjFpQVRUMHl3RGUtd3E1bk9oU1BYWFJCc1dycjg5dVJCeXd2WXFDbzVFbHBCTG5nOW84ZFlZOFlXcEttVXRKSURYZlpSTDRUZXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -133,20 +147,6 @@
         "source": "WeRSM",
         "n_sources": 3,
         "lead_ts": 1784300204
-      },
-      {
-        "title": "China\u2019s Powerful New Moonshot AI Model Closes Gap With US Rivals - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPWmpiSkRuZWF2alRmVDB6RXpnWHdyaG1USU1wV3JiZDJSVVZmQldlOThRZzBBRzhvbExKbmc4SldOVk9BdThzRnlNQmxiU0Y2eUVYRi0tV0ZUdE9nbnVLb1UtOE9veTZPTWZ1amxKdHU1a0d4TDFBTHJ2Y2EzMkw4c183bzhVUGNTR1Y1YlFyYzdQZjZRbXJHamh3R3ZvbjdjaC1mYzNLM0dwUDJQUG9lVnB6RV9EQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 3,
-        "lead_ts": 1784276445
-      },
-      {
-        "title": "HCL Tech rises after expanding AI-led partnership with Guardian - Business Standard",
-        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPdTFNRWhpMnI1amlJanRoZE05NU9GQXh6dUNIRHBMUTBsZ2JjVUVJb1BqOGVkOEpSSEJtTHpfSlA5TlBOdEhpOG1pV0dfVzBneTNNRnhscmZERFFuZmlSZmJnd1puTDJWUnJ0eVp5SV8wMU9YNFZuVjNjMW9VQTZzRVZySzlWRDhGQWJOU1R1cUcwQ0QtcHZZSktwSGFzbjZveXI2cVRyV2V1aV9CRVpNeHpqd3JLekp5djlzVXlhSGl0aDEzRWQwWjhsb0s5dDlpQnc4SWdrM0RRN2l4RGfSAeMBQVVfeXFMTXIxVDNHd0hhWlprZ0ota29ZV0J2NElHa0pIVUhabHlXRG1kLVlUODRmYzRBNXVZWk1sRlR2V0hMVVlPdVM4bVZnbEk4T1M4b0NHWlU5VndkMnlJcU5GLV9nTEp2dTBqdm9mXzk4X1g5THF0ajhiUEZYVlQ4WjNxMXB4SFpJdmUtYkdBSXhXSEUzTmFPM0xLMGRaX2VPTHdHbnRUSEVrVmgyc1BwOTlHVHAxT3YxMDFmQ0lsY25kSEJVa2xFQXVGNVFGenlfWEJieEZXbWliTW1xLW1KdzlBYW9zb3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Business Standard",
-        "n_sources": 3,
-        "lead_ts": 1784267170
       }
     ],
     "business": [
@@ -202,6 +202,13 @@
         "lead_ts": 1784317405
       },
       {
+        "title": "mauriceedu talks about the recognition the USMNT has gained at this FIFA World Cup and what lies ahead - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1fSi1rVVBsWmRJNXNrWXZCekJmdER1QTBlbW5TMUI2UWxpRW14cjloWlBNU05uSzZ0bUM5d21xdkNIdFp0dXlzQTFyZjJ6bk5xNkxYdjdmRUNGWXFrYTY2b0JSeFpicjRpLU5iQkJR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 16,
+        "lead_ts": 1784323345
+      },
+      {
         "title": "'Chaos v calm' - Sutton's World Cup final and third-place predictions - BBC",
         "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5OblBuZUgzQkhQek03ZFM1OUZ3U3FPd2JpY2xsV1FVUm9BRnFwdThqc2lkLWVlRkNyNTQ2eEhmbjJhcDl5Q2xkc0dtX092NXhIcGtfUUsxNE8xdkEyUUdLQ1QtQTdUSTA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "BBC",
@@ -214,13 +221,6 @@
         "source": "Front Office",
         "n_sources": 15,
         "lead_ts": 1784309850
-      },
-      {
-        "title": "Spain PM Sanchez to attend World Cup final: govt - Yahoo Sports UK",
-        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSmNLQjducmJDSW1DVTJrd29CQXNFVmo3SDBJZDB2RDhqbmNrUnBNank2NGYxT2UzRXFQQ3FSc3F4SnJGUWl1eEZDejJSN1VfQkhYaUM5VG9RUmJFb2EwSV9NV3FJS3Y0NnB3ejFJR0pKMjFQblRlOExZNWFhUkMwQXpicw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports UK",
-        "n_sources": 15,
-        "lead_ts": 1784277100
       }
     ],
     "culture": [
