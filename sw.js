@@ -4,7 +4,9 @@
 // update-available notification, background refresh, clean eviction.
 //
 // BUMP CACHE_VERSION on every deploy so stale assets are evicted immediately.
-// bot.py should write this file via its SW_FILE path with the version injected.
+// NOTE: This sw.js is HAND-MAINTAINED and committed directly. bot.py does NOT
+// generate it (its internal sw_content template is dead/unused). To ship a new
+// version to installed clients, bump CACHE_VERSION on the line below and commit.
 //
 // v4.1 changes vs v4.0:
 //   - CACHE_VERSION bumped to v9 (forces full cache eviction on first load
@@ -17,7 +19,7 @@
 //   - /offline.html graceful fallback remains (referenced but not blocking)
 // ═══════════════════════════════════════════════════════════════════════════
 
-const CACHE_VERSION = 'v11';          // <- bumped: ships the US-tab fix (bundle change) to installed clients
+const CACHE_VERSION = 'v12';          // <- bumped for NUZU 2.0: ships video-feed swaps, trending-terms engine, keyword expansion & visual refresh to installed clients
 const CACHE_STATIC  = 'nuzu-static-' + CACHE_VERSION;
 const CACHE_PAGES   = 'nuzu-pages-'  + CACHE_VERSION;
 const CACHE_ICONS   = 'nuzu-icons-'  + CACHE_VERSION;

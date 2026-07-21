@@ -3137,7 +3137,201 @@ def fetch_section(sources, keywords, pattern, blocklist, section_name="",
 # ====================== FETCH ALL ======================
 print("Fetching all sections in parallel...")
 
-_SECTION_CONFIGS = [
+# ══════════════════════ TRENDING PHRASE ENGINE (NUZU 2.0) ══════════════════════
+# Self-cleaning, FAIL-SAFE relevance booster. Harvests what the trusted US press
+# is leading with RIGHT NOW (Google News curated topic feeds + AP/Reuters wire),
+# extracts cross-validated entity phrases, decays stale ones over days, and folds
+# the live set back into each section's search queries + keyword matcher. Nobody
+# ever has to hand-edit keyword lists to keep pace with the news cycle again.
+#
+# HARD RULE: every entry point is wrapped so ANY failure (network, parse, disk)
+# leaves the static source/keyword config byte-for-byte unchanged. Pure upside —
+# it can never break a build. See MASTER_DIRECTIVE.md for the tuning knobs.
+import json as _json
+import urllib.parse as _urlparse
+from collections import Counter as _Counter
+
+TRENDING_TERMS_FILE   = os.path.join(CURRENT_DIR, "trending_terms.json")
+TREND_REFRESH_SECONDS = 15 * 60          # re-harvest at most this often (throttle)
+TREND_MIN_FREQ        = 2                # phrase must appear in >=2 headlines
+TREND_MAX_AGE_SECONDS = 3 * 24 * 3600    # forget a phrase unseen for 3 days
+TREND_SCORE_CAP       = 12               # popularity score ceiling
+TREND_PER_SECTION     = 8                # top-N phrases kept per section
+TREND_QUERY_TERMS     = 6                # phrases folded into each trending feed
+
+# Google News curated feeds map cleanly onto NUZU's sections. "*" = AP/Reuters
+# wire, attributed to whichever section's keyword pattern the phrase matches.
+TRENDING_SEED_FEEDS = [
+    ("us",       "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en"),
+    ("world",    "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"),
+    ("business", "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en"),
+    ("tech",     "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en"),
+    ("culture",  "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en"),
+    ("sports",   "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en"),
+    ("mideast",  "https://news.google.com/rss/search?q=middle+east+OR+iran+OR+israel+OR+gaza+when:1d&hl=en-US&gl=US&ceid=US:en"),
+    ("*",        "https://news.google.com/rss/search?q=when:1d%20(site:apnews.com%20OR%20site:reuters.com)&hl=en-US&gl=US&ceid=US:en"),
+]
+
+_TREND_STOP = {
+    "the","a","an","and","or","of","for","in","on","to","at","by","with","from","as","is","are","be","was","were",
+    "new","says","say","said","report","reports","update","updates","live","video","watch","photos","photo","reveals",
+    "breaking","news","latest","first","how","why","what","when","where","who","top","best","amid","will","can",
+    "after","before","over","under","into","out","up","down","off","week","day","today","year","years","time",
+    "us","u.s.","usa","america","american","world","biz","opinion","analysis","exclusive","review","special","full",
+    "monday","tuesday","wednesday","thursday","friday","saturday","sunday","this","that","these","those","his","her",
+    "january","february","march","april","may","june","july","august","september","october","november","december",
+    "mr","ms","mrs","dr","st","inc","llc","ltd","co","corp","reuters","ap","bloomberg","cnn","bbc","cnbc","npr","fox",
+    "getty","associated","press","times","post","journal","herald","guardian","axios","politico","forbes","cbs","abc",
+    "here","there","more","most","other","another","could","would","should","may","might","two","three","one","five",
+    "nbc","wsj","nyt","list","poll","quiz","recap","explainer","factbox","live","watch","full","opinion","editorial",
+}
+_TREND_CONNECTORS = {"of","the","and","for","in","on","de","von","al","el","da","du","le","la","&","vs","v","to","with"}
+_TREND_CAP_RUN  = re.compile(r"\b([A-Z][A-Za-z0-9.&'\u2019\-]*(?:\s+(?:of|the|and|for|in|on|de|von|al|el|da|du|le|la|&)?\s*[A-Z][A-Za-z0-9.&'\u2019\-]*){1,3})\b")
+_TREND_DISTINCT = re.compile(r"\b([A-Z]{2,6}|[A-Z][a-z]+[A-Z][A-Za-z]+|[A-Za-z]*\d[A-Za-z0-9\-]*|[A-Z][a-z]{3,}\d+)\b")
+
+def _trend_norm(p):
+    return re.sub(r"\s+", " ", p).strip().lower()
+
+def _trend_clean_words(raw):
+    words = raw.split()
+    while words and words[-1].lower() in _TREND_CONNECTORS: words.pop()
+    while words and words[0].lower() in _TREND_CONNECTORS: words.pop(0)
+    return words
+
+def _extract_trending(titles):
+    c = _Counter()
+    for t in titles:
+        try:
+            import html as _th_html
+            t = _th_html.unescape(t or "")
+            t = re.sub(r"\s+[-\u2013\u2014]\s+[^-\u2013\u2014]{2,40}$", "", t).strip()
+            seen_here = set()
+            def _emit(phrase):
+                phrase = _trend_norm(phrase)
+                toks = phrase.split()
+                if not toks: return
+                if all(w in _TREND_STOP for w in toks): return
+                if len(phrase) < 4 or len(phrase) > 48: return
+                if phrase in seen_here: return
+                seen_here.add(phrase); c[phrase] += 1
+            for m in _TREND_CAP_RUN.finditer(t):
+                words = _trend_clean_words(m.group(1))
+                if len(words) >= 2:
+                    _emit(" ".join(words))
+                    _emit(" ".join(words[:2]))
+                    if len(words) >= 3: _emit(" ".join(words[-2:]))
+                    chunk = []
+                    for w in words:
+                        if w.lower() in _TREND_CONNECTORS:
+                            if len(chunk) >= 2: _emit(" ".join(chunk))
+                            chunk = []
+                        else: chunk.append(w)
+                    if len(chunk) >= 2: _emit(" ".join(chunk))
+            for m in _TREND_DISTINCT.finditer(t):
+                tok = m.group(1)
+                if tok.lower() in _TREND_STOP: continue
+                if len(tok) < 3 and not tok.isupper(): continue
+                _emit(tok)
+        except Exception:
+            continue
+    return c
+
+def _trend_fetch_titles(url):
+    try:
+        d = feedparser.parse(url)
+        return [(e.get("title") or "") for e in getattr(d, "entries", [])[:40]]
+    except Exception:
+        return []
+
+def _load_trending_state():
+    try:
+        with open(TRENDING_TERMS_FILE, "r", encoding="utf-8") as f:
+            s = _json.load(f)
+        if isinstance(s, dict) and "sections" in s: return s
+    except Exception:
+        pass
+    return {"_harvested_at": 0, "sections": {}}
+
+def _save_trending_state(state):
+    try:
+        with open(TRENDING_TERMS_FILE, "w", encoding="utf-8") as f:
+            _json.dump(state, f, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    except Exception:
+        pass
+
+def _top_from_state(state):
+    out = {}
+    for sec, phrases in state.get("sections", {}).items():
+        try:
+            ranked = sorted(phrases.items(), key=lambda kv: (-kv[1][0], kv[0]))
+            out[sec] = [p for p, _v in ranked[:TREND_PER_SECTION]]
+        except Exception:
+            out[sec] = []
+    return out
+
+def harvest_trending_phrases(section_patterns=None, _now=None, _fetcher=None):
+    """Return {section: [phrase, ...]} of currently-trending entity phrases.
+    NEVER raises; on any failure returns {} and the caller keeps static config."""
+    try:
+        now = _now if _now is not None else time.time()
+        fetch = _fetcher if _fetcher is not None else _trend_fetch_titles
+        state = _load_trending_state()
+        if now - state.get("_harvested_at", 0) < TREND_REFRESH_SECONDS and state.get("sections"):
+            return _top_from_state(state)   # throttle: reuse recent harvest
+        results = {}
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            futs = {ex.submit(fetch, url): sec for sec, url in TRENDING_SEED_FEEDS}
+            for fut in as_completed(futs):
+                sec = futs[fut]
+                try: results[sec] = fut.result()
+                except Exception: results[sec] = []
+        sec_counters = {}
+        for sec, _url in TRENDING_SEED_FEEDS:
+            counts = _extract_trending(results.get(sec, []))
+            keep = {p: n for p, n in counts.items() if n >= TREND_MIN_FREQ}
+            if sec == "*":
+                if section_patterns:
+                    for p, n in keep.items():
+                        for s2, pat in section_patterns.items():
+                            try:
+                                if pat.search(p): sec_counters.setdefault(s2, _Counter())[p] += n
+                            except Exception: pass
+            else:
+                sec_counters.setdefault(sec, _Counter()).update(keep)
+        secs = state.setdefault("sections", {})
+        for sec in (set(sec_counters.keys()) | set(secs.keys())):
+            cur = secs.setdefault(sec, {})
+            fresh = sec_counters.get(sec, _Counter())
+            for p, n in fresh.items():
+                if p in cur:
+                    cur[p][0] = min(TREND_SCORE_CAP, cur[p][0] + n); cur[p][1] = now
+                else:
+                    cur[p] = [min(TREND_SCORE_CAP, n), now]
+            for p in list(cur.keys()):
+                if p not in fresh:
+                    cur[p][0] -= 1
+                    if cur[p][0] <= 0 or (now - cur[p][1]) > TREND_MAX_AGE_SECONDS:
+                        del cur[p]
+        state["_harvested_at"] = now
+        _save_trending_state(state)
+        print("  Trending engine: harvested " + str(sum(len(v) for v in secs.values())) + " live phrases across " + str(len(secs)) + " sections")
+        return _top_from_state(state)
+    except Exception as _te:
+        print("  Trending engine skipped (non-fatal): " + str(_te))
+        return {}
+
+def _build_trending_feed(phrases):
+    try:
+        terms = [p for p in phrases if p][:TREND_QUERY_TERMS]
+        if not terms: return None
+        q = " OR ".join('"' + p + '"' for p in terms) + " when:1d"
+        return ("Trending", "https://news.google.com/rss/search?q=" + _urlparse.quote(q) + "&hl=en-US&gl=US&ceid=US:en")
+    except Exception:
+        return None
+# ════════════════════ END TRENDING PHRASE ENGINE (NUZU 2.0) ════════════════════
+
+
+_SECTION_CONFIGS_STATIC = [
     ("mideast",  MIDDLE_EAST_SOURCES, ME_KEYWORDS,       ME_PATTERN,       ME_BLOCKLIST,       ME_BLOCK_PAT),
     ("us",       US_POLITICS_SOURCES, US_KEYWORDS,       US_PATTERN,       US_BLOCKLIST,       US_BLOCK_PAT),
     ("sports",   SPORTS_SOURCES,      SPORTS_KEYWORDS,   SPORTS_PATTERN,   SPORTS_BLOCKLIST,   SPORTS_BLOCK_PAT),
@@ -3146,6 +3340,35 @@ _SECTION_CONFIGS = [
     ("world",    WORLD_SOURCES,       WORLD_KEYWORDS,    WORLD_PATTERN,    WORLD_BLOCKLIST,    WORLD_BLOCK_PAT),
     ("business", BUSINESS_SOURCES,    BUSINESS_KEYWORDS, BUSINESS_PATTERN, BUSINESS_BLOCKLIST, BUSINESS_BLOCK_PAT),
 ]
+
+# --- Fold LIVE trending phrases into every section (fail-safe: static on any error) ---
+# Adds one "Trending" Google News feed per section built from that section's current
+# top entity phrases, and teaches the section's keyword matcher those multi-word
+# phrases so trending stories cluster into the right place. If the trending engine
+# returned nothing, each section falls through to its exact original static config.
+_STATIC_PATTERNS = { _n: _p for _n, _s, _k, _p, _b, _bp in _SECTION_CONFIGS_STATIC }
+try:
+    _TRENDING = harvest_trending_phrases(section_patterns=_STATIC_PATTERNS)
+except Exception:
+    _TRENDING = {}
+
+_SECTION_CONFIGS = []
+for _n, _src, _kw, _pat, _bl, _bpat in _SECTION_CONFIGS_STATIC:
+    try:
+        _phr = _TRENDING.get(_n, []) or []
+        _src2 = list(_src)
+        _tf = _build_trending_feed(_phr)
+        if _tf:
+            _src2.append(_tf)
+        _multi = set(p for p in _phr if (" " in p) and (2 <= len(p) <= 40))
+        if _multi:
+            _kw2 = set(_kw) | _multi
+            _pat2 = make_keyword_pattern(_kw2)
+        else:
+            _kw2, _pat2 = _kw, _pat
+        _SECTION_CONFIGS.append((_n, _src2, _kw2, _pat2, _bl, _bpat))
+    except Exception:
+        _SECTION_CONFIGS.append((_n, _src, _kw, _pat, _bl, _bpat))
 
 _section_results = {}
 with ThreadPoolExecutor(max_workers=7) as _sec_executor:
@@ -5765,6 +5988,75 @@ html_parts.append(f"""<!DOCTYPE html>
         color: #4A6A99; font-size: 0.78em; cursor: pointer;
         text-decoration: underline; font-family: 'Inter',Arial,sans-serif;
     }}
+
+    /* ══════════════════════ NUZU 2.0 — VISUAL REFRESH LAYER ══════════════════════
+       Additive polish ONLY. Reuses existing :root variables (no new colors, no
+       layout/nav/scroll changes). fully reversible — delete from this banner down to
+       the matching END banner and the site returns to its prior look. Sharpens type,
+       tightens vertical rhythm, crisps borders & video labels, and adds subtle depth,
+       on desktop AND mobile. See MASTER_DIRECTIVE.md, Phase 3, for how to extend it.
+       DO NOT add rules here that touch .sticky-nav height, scroll-margin-top, or
+       content-visibility — those are load-bearing for the scroll-position fix. */
+
+    /* — Crisper text rendering everywhere (big readability win on a dark theme) — */
+    body {{
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }}
+
+    /* — Headlines: a touch more breathing room + a calm accent bar on hover — */
+    .headline {{
+        padding: 9px 12px 11px 12px;
+        transition: background 0.16s ease, box-shadow 0.16s ease;
+    }}
+    .headline:hover {{ box-shadow: inset 2px 0 0 var(--nuzu-blue); }}
+    .title {{ letter-spacing: -0.006em; }}
+    .hl-summary {{ line-height: 1.55; }}
+
+    /* — Cluster cards: rounded + a hair of depth to lift them off the page — */
+    .cluster {{
+        border-radius: 5px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.28);
+    }}
+
+    /* — Cleaner single-pixel section dividers — */
+    .top-divider {{ height: 1px; opacity: 0.9; }}
+
+    /* — Video feeds: crisper corners + more legible country labels — */
+    .youtube-inset {{ border-radius: 4px; }}
+    .feed-country-label {{
+        background: rgba(0,0,0,0.62);
+        color: rgba(255,255,255,0.94);
+        letter-spacing: 0.11em;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }}
+    #wr-grid .wr-cell-num {{ letter-spacing: 0.07em; }}
+
+    /* — Accessible, on-brand keyboard focus rings — */
+    a:focus-visible, button:focus-visible, [tabindex]:focus-visible {{
+        outline: 2px solid var(--nuzu-blue);
+        outline-offset: 2px;
+        border-radius: 3px;
+    }}
+
+    /* — Subtle themed scrollbar (desktop only) — */
+    @media (min-width: 901px) {{
+        * {{ scrollbar-width: thin; scrollbar-color: var(--nuzu-dim) transparent; }}
+        *::-webkit-scrollbar {{ width: 10px; height: 10px; }}
+        *::-webkit-scrollbar-thumb {{ background: var(--nuzu-border); border-radius: 6px; }}
+        *::-webkit-scrollbar-thumb:hover {{ background: var(--nuzu-dim); }}
+    }}
+
+    /* — Mobile refinements (desktop AND mobile improved equally) — */
+    @media (max-width: 900px) {{
+        .headline {{ padding: 8px 11px 10px 11px; }}
+        .title {{ line-height: 1.4; }}
+        .hl-summary {{ line-height: 1.5; }}
+        .cluster {{ box-shadow: 0 1px 2px rgba(0,0,0,0.22); }}
+    }}
+    /* ════════════════════ END NUZU 2.0 — VISUAL REFRESH LAYER ════════════════════ */
     </style>
 </head>
 <body>
@@ -6172,8 +6464,8 @@ ts_html += '''<!-- VIDEO BANNER desktop only -->
       <span class="feed-country-label">France</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/QliL4CGc7iY?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">England</span>
+      <iframe data-src="https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <span class="feed-country-label">Bloomberg Business</span>
     </div>
     <div class="youtube-inset">
       <iframe data-src="https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
@@ -6192,8 +6484,8 @@ ts_html += '''<!-- VIDEO BANNER desktop only -->
       <span class="feed-country-label">China</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/fO9e9jnhYK8?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">Earth</span>
+      <iframe data-src="https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <span class="feed-country-label">United States</span>
     </div>
     <div class="youtube-inset">
       <iframe data-src="https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
@@ -6318,7 +6610,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         'section-us':       ('iipR5yUp36o',  'U.S. Live'),
         'section-world':    ('HvZt-nh9sGg',  'World Live'),
         'section-mideast':  ('gCNeDWCI0vo',  'Middle East Live'),
-        'section-business': ('iEpJwprxDdk',  'Bloomberg Live'),
+        'section-business': ('QB5BNdBFujE',  'Bloomberg Live'),
         'section-sports':   ('7NPsqFA14eQ',  'Sports Live'),
         'section-culture':  ('HfgIFGbdGJ0',  'Culture Live'),
         # section-tech intentionally omitted — static embed removed per UX audit
@@ -6490,19 +6782,19 @@ html_parts.append(f"""
 var MAIN_FEED_SRCS = [
   'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/QliL4CGc7iY?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
+  'https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/fO9e9jnhYK8?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
+  'https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
   'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1'
 ];
 var WR_FEEDS = [
   {{src:'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'United States'}},
   {{src:'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'France'}},
-  {{src:'https://www.youtube.com/embed/QliL4CGc7iY?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'England'}},
+  {{src:'https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'United States'}},
   {{src:'https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Europe'}},
   {{src:'https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Australia'}},
   {{src:'https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'India'}},
@@ -6510,7 +6802,7 @@ var WR_FEEDS = [
   {{src:'https://www.youtube.com/embed/fO9e9jnhYK8?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Earth'}},
   {{src:'https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Germany'}},
   {{src:'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Middle East'}},
-  {{src:'https://www.youtube.com/embed/iEpJwprxDdk?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Business'}},
+  {{src:'https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Business'}},
   {{src:'https://www.youtube.com/embed/KQp-e_XQnDE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Finance'}}
 ];
 
