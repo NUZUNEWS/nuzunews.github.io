@@ -31,14 +31,21 @@
         "lead_ts": 1784634161
       },
       {
-        "title": "Trump Administration Pauses $1 Billion in Medicaid Payments to California and Minnesota - News of the United States - NOTUS",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOdjV3M2lfRF80eGt6MlVmTFdIVFNTbTF0bGVkSUJ5UEFlaEk1SDBJOFZnX3ZSdHl3VzhjRXMwMnJ0RW94T0JGRmdrUFB5bWZadzNMNHp5YUNOY0w4TmFWRHVNTWV0VmxORjVzYlVYdE9pZ3U4aGtPcEhxWllZZW5ySVlqWFdHdzhVZFRTM01lVlhEc0NKMXdnTEtPdVdzcUVZ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Notus",
+        "title": "Trump administration says it's deferring $1B in Medicaid payments to California and Minnesota - STAT",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQMUtVQ2JvdWpYMjFCOExQZ3lYSXUzQjJvZnk2VFBycnc2WFkwRk5iMzNqOFdxckx2RmF3VURZZzVfMko4RjdEUXhtZHprUVpRUHhVNUdFbnNOczI4T1VSREVwSjR6VEZjc0RHUkt0VmsxcEJDeTY0V0NpVUd6cktBa3c3aHBLdTJ3dS1ZSU1fMmtIeG5FNmd6VEdn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "STAT",
         "n_sources": 3,
-        "lead_ts": 1784657799
+        "lead_ts": 1784664766
       }
     ],
     "mideast": [
+      {
+        "title": "Live Updates: Latest from Israel, Iran, and Middle East - The Jerusalem Post",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBqOVFNZGFhcUFwX1FrOVN4emZ4em8yMi1ZVHdFMHhqb2N6dkY2QWlvajlPZHczZWV6Q0pwLVgyejNHSzgwUTZQandxVDVTWVpINmdVZG5uN0NtRHh6LWpxcE5CbGFWR1hmOVJzTTJIRUgyek5hSXZpcHhrNlZJRmc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Jerusalem Post",
+        "n_sources": 9,
+        "lead_ts": 1784669104
+      },
       {
         "title": "After Hormuz, are Iran-backed Houthis closing another vital strait? - \u0627\u06cc\u0631\u0627\u0646 \u0627\u06cc\u0646\u062a\u0631\u0646\u0634\u0646\u0627\u0644",
         "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9YNG5mWlJiNFZzV0VmQ2syUFEzN3NFZWZDQmNhaEdYTDFfT1JxVkxQZ0ZSWUJGRThmbDAwUjUyU3ZOQ01wdEtkMDNYek5Xd2NYT1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -66,13 +73,6 @@
         "source": "WaPo",
         "n_sources": 5,
         "lead_ts": 1784660110
-      },
-      {
-        "title": "Live Updates: War returns to Iran with Israel, US strikes - Dawn",
-        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE4wWU1XcTJjVkhydDJ6REhTa1RGZHp5eHJhYXVpQlRoNndhUjBOamFNWlRERkdMYk53LWc4LVhDbktnSXZ3RkJyWmtEMEgycjRFNmJN?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Dawn",
-        "n_sources": 5,
-        "lead_ts": 1784639770
       }
     ],
     "world": [
@@ -114,6 +114,13 @@
     ],
     "tech": [
       {
+        "title": "OpenAI says AI models went rogue during testing, triggering 'unprecedented' breach at startup - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQT3oyVDNzekNWY3BJUUZLVGNsb3Z3VUhXc3pfSmtEZG96bzk2RFQ4MTZBWDdQVHlyZTlDOWhEN1o3dzVuekVuWUh2cWFPMy1SU0sxWnl3WkVSbFpKTzBqOU54WjlwM0Jfd185OWsxT1BLbGpHcmlaNHdCalhub0x2cVVBai11dVhPdEVsZERZWHo3anRQMi0yUGZEN0VVOEZHcEJuZ1pxMHp2U2dkSWNhYmhOOXR0aGJjVXVTdHE3MGw1aEgw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 4,
+        "lead_ts": 1784669503
+      },
+      {
         "title": "Meta\u2019s Horizon Plus subscription now includes the Xbox Game Pass starter edition. - The Verge",
         "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOcHRQcDc5YVUxMTdndm12dG1wNmp4VFpRRzEzcUJtTnJxOC16TGJQYk9sbHFkUkRxcm9MaHVxQTJNQTZvVk9saHRwNTU1cDAyZklrWnFiWFpMMTBYOUhVdU1xd3lBN041UUxUS3pQX0dibmVxNkZocWFYdmd5NWRsdVVGMHVoLUtJZWxlSmVjcUtmVUZ2MUFZMXBid0JPZGwzOFpicVkyNk9rS0t1QzhQcVJRUDhYeEk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Verge",
@@ -140,16 +147,16 @@
         "source": "NewsCord",
         "n_sources": 3,
         "lead_ts": 1784601010
-      },
-      {
-        "title": "Adobe Crams Multiple AI Tools Into Its Experimental Camera App - Engadget",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQcGdQUEl5elE5cElxQ2ZCMlVubEwySmRtcnFjbmduNTBCUGJzM3ZDbi1nTWtWM1AteEdTNGZoem94MkpTNkUxX3F5eXpOd0RSNGoyN05Hb2FXanB2ckRhbmcxc21ET3NINDNPdkpadWtzYUpEWjUzTjR1dFI2NXRxVjVaUWk2UUpqNDdmZ1FkODd1ekNOa0Vub3RRS1k?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Engadget",
-        "n_sources": 3,
-        "lead_ts": 1784570695
       }
     ],
     "business": [
+      {
+        "title": "ASX set to advance, tech stocks push Wall Street higher; Google\u2019s new AI offerings - SMH.com.au",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQeHpsVnJVYkpJVTFBWjRCZlZzT1piSnQyQU1jTk1LaUIyRzBBeUtnM3lmb2UyZDM3MTNTX0Y1S19yZVM1Rk1QNVkwd1dPU251NGRoS1FuQmFzUmdOM3I1S0NwaUpyYjJhZE5TOVlHci11b09jT255RU1hVUF2UTV3TGZEUzlSay1oOEZtOXZpc25FTUVFaEZ4WHRKaHZBMDFiN2pySXZnTEdjRm9kTmh4T3FnYlRyb2g3b0RrM0V5YkVrTGpTTGUyeFhJTzNDX2RoMFdxSTN0cHY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "SMH.com.au",
+        "n_sources": 5,
+        "lead_ts": 1784666424
+      },
       {
         "title": "AI stocks lead Wall Street higher, even as Brent oil's price tops $91 - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNRTNacDRiVGd4cVh4THlGWGN4UjRyWTN2N3ptY2s2NXRNaHdRMDRFZ3BHYlotRHU3ODBpWExxYnpOZlkwelVyZ1g5b2l6NG1xbjE5dnZKLUhvb0tsMzFPcmIxZkZLZ1pOVUJmVUFKVWsteTJVSzNqem90OC1SOWxWNF9iM3pGWHA4T3JRb0ZISDJfa01NdU9LQ3IwQkotai1RRHF5Y2FrMDBjYzhpQzNIeWFjTEJ1Ymhhd0VTQ3NXaUJycHVHNWlKQW13?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -177,13 +184,6 @@
         "source": "77 WABC",
         "n_sources": 4,
         "lead_ts": 1784657867
-      },
-      {
-        "title": "Wall Street futures gain as chip stocks extend recovery - Free Malaysia Today",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOVW8zWnFvV2pnMml3bzg1aThBQ1ZnRkZTR1VYLUN0UU16RVFjQUI2aUtIOXNGdzFOUjVjNDAwcloxMTU1dmdrdENLRmhEN2lUWmU2dVo0dk1HcFpwTTJBZVVieHhrRGxuZEczaXh0SUlaeV9MajRLZkFtSzVNQWdjb1d3ekxhRXl0YkJOQUN5ZDRKUzdraDE3WlhOMENScWdMWk9CdlNJSWRzblhvT2tuZmpETDlVVk9wX1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Free Malaysia Today",
-        "n_sources": 4,
-        "lead_ts": 1784637613
       }
     ],
     "sports": [
@@ -225,11 +225,25 @@
     ],
     "culture": [
       {
+        "title": "Ryan Reynolds Confirms There Will Be Another Deadpool Movie - IMDb",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5vUVZUOVRrZW1DUGRaYmFKbldFTEtadVl6SjAzLVRwWnJacmI4aW5iMzdVZF84cDMzM0p1MjZ4NXc3ZU53VmJtVlhkeVFQc3BRdFdEQ2pwbTI5SmhBaEJkaG5YdE9HQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IMDb",
+        "n_sources": 4,
+        "lead_ts": 1784667926
+      },
+      {
         "title": "Zendaya, Tom Holland and Destin Daniel Cretton were in Mexico City last night for a #SpiderManBrandNewDay fan event \ud83d\udd77\ufe0f (Photos: Getty) - facebook.com",
         "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQazdKN1BxT2pfaWZmM2NxLW9MTU4tMTVDQ0dCelRUcnQ0WXU1MkpYQk44b1ZVQ3FGdzJDcUc0NTkyZl9pNjRMcEpaSzlLU1RVa1JvcWc2VTFXYmRLTEcwY3Z0cEcwV28xVmFta0dLcUVRVS1LdkZnZVZpUEctckFlbHlTdWtPTUJSMVZCZnRtVmNmOWVCbXFERUt5Y2dYMlNKRmd1dDAtMURJalNwV0hhVS1fRG9UbzdqX3BiRjdBWFMxTXVpWGtHeTZUemNsTkdnMEZKQg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "facebook.com",
         "n_sources": 4,
         "lead_ts": 1784653655
+      },
+      {
+        "title": "All of Zendaya's 'Spider-Man' Press Tour Looks Over the Past 10 Years - Teen Vogue",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNeUg5VDZFYXFtUXBoRGFva1Bpc0lrUThYV3FDQzhDOElxVmR5UmpnbWo2cmdld2xjbkpDMi11UHAxNURnZG9ZdUkzUG1rdGphZWwyMFVsbW1OTlF0YUl3X2gwcHhyUHNONXZaZ3ZlSFk5WDRkbUpNODVETXRxbG5zdmNxdkJIY09DZmdsSGR2bjE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Teen Vogue",
+        "n_sources": 4,
+        "lead_ts": 1784646905
       },
       {
         "title": "Zendaya\u2019s \u2018Spider-Man: Brand New Day\u2019 press tour looks are black, white and red all over - Page Six",
@@ -244,20 +258,6 @@
         "source": "Mamamia",
         "n_sources": 4,
         "lead_ts": 1784608544
-      },
-      {
-        "title": "Zendaya Pivots to Thigh-high Boots as She Returns to \u2018Spider-Man: Brand New Day\u2019 Press - wwd.com",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOQzN4aDZJcTdVRkZmWmNmbFYxUDFXdF9lOVY1OERxZ2FCUlVxelJSYzBpbU41ZEpTTUtJT3ZCUWZ1UHk1ek44WHE2bXhYclZ0UVlfYm85X0xkemFqM1puS3hBQ0Y4QmtVNEMtOVVQWjMwbWsycGhINXRJU2l3ZjBPRlRJd1F3RlR2WVJuNk5xVTZyQVg3NDNHaElwZEMtUFl0dGJ5SkMzSE0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "wwd.com",
-        "n_sources": 4,
-        "lead_ts": 1784580829
-      },
-      {
-        "title": "Did Ryan Reynolds Just Confirm 'Deadpool 4'? - Inverse",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE42OWZsck9Iak1DRnZuaTlpWWM5RkNuNGtDUWIwNXlEcVVZRy1VZ1lFUzZobEpLYTdwQUItbEJEanUxcTlDbmo1a0pLTHlhWC1yN3RxdThQbW1wNmxVNkdrM3NFVjVmdTYxbUFnUjlPTGh5ZzVkbTZoUFdGVXU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Inverse",
-        "n_sources": 3,
-        "lead_ts": 1784665106
       }
     ]
   },
