@@ -2,7 +2,13 @@ name: refresh
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # Every 5 minutes — most aggressive safe free-tier cadence
+    # Every 5 minutes. This is GitHub Actions' HARD MINIMUM interval — you cannot
+    # schedule any faster (cron '*/1' etc. is silently clamped to ~5 min). This is
+    # already 3x more frequent than a 15-minute cadence. On a PUBLIC repo (this one)
+    # Actions minutes are free & unlimited, so this is the fastest, most aggressive
+    # refresh possible. Note: under heavy GitHub load, scheduled runs can be delayed
+    # or skipped by GitHub itself — that is outside our control and normal.
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 # Cancel any in-progress run when a newer one starts.
@@ -63,6 +69,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html feed.xml feed.json _headers || true
           git add yesterday_top.json feed_health.json missing_logos.json source_domain_cache.json 2>/dev/null || true
+          git add trending_terms.json 2>/dev/null || true
           git add icons/sources/ 2>/dev/null || true
           git commit -m "Auto-refresh $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
           git push
