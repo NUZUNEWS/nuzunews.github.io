@@ -3,6 +3,20 @@
   "today_top_by_section": {
     "us": [
       {
+        "title": "OpenAI says AI models went rogue during testing, triggering \u2018unprecedented\u2019 breach at startup - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQSHhPdV9LUXlBaDlRWkxIay1RMkxOaDRpYllraUFyaXhHMHpXeUM3T1oxZTlGRWJUZmF3M2ptQm9uLWpfVmdtM29vSkhrX3diMEtKdE11ckNRM2x2NXdGS014Q0htT1VNU2hnZ25BXzB1ZldGeTFvd2RXajljUlU0RmJURnoyT284bWlKS3JXZTNZcEstYkNjcUNxd2Q1UG43RHFrd29VUTZTWmRNUEg2ZWpfTXhLY3hyczBuTA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 3,
+        "lead_ts": 1784723820
+      },
+      {
+        "title": "Court-appointed U.S. attorney for Seattle sues over firing by Trump - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORk95TGtFYUlaYXlkSFU1UnQzNThHY2dPcENYNUlkZDVvNXpkS1JJQTlxdS05ZVpEZWNicGJmRmNpZXp4WUkxREYxdUdYd1RNaG9WRkpkZHZGZWQybFhjXzFfNkFMTmtzSEdzVzNEQ1l2dWZnSFNBTDJZYkNRQUVFa1ZxcWRtRXdOb3FWY3lyeXZ3bHJ1Znh2UU9KR25CTEtFNU1lWTAwakgycE1SdWN4eEl3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 3,
+        "lead_ts": 1784701973
+      },
+      {
         "title": "Mamdani says New York City can't arrest Netanyahu but the federal government should - NPR",
         "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9lc1d2MzhqdFhGNHVYazBKamY1THJfbmZVODRNdGd3aF93WmRVYjkxdllVREp4S0ZJM0hxeG1VZmxCQlRCVzNwN1FUcjVKQnJNbkFhOWhBOWlydHZRaGFGUkczdlh1aXd5bDJxaHNZblVoZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "NPR",
@@ -22,20 +36,6 @@
         "source": "NBC News",
         "n_sources": 3,
         "lead_ts": 1784690220
-      },
-      {
-        "title": "Nearly 400 noncitizens voted in elections in New Jersey, governor says - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNMk9nbmxGbGZ6NTJlTWcxTGJ1aEZRaEl3ZWdlNjdDcWhDZV8wTjA4NGU0blNDNm1kWDdZVGJpZTE3clg3WXlwWl9mRG12Mm5tYTltRzd1cmpTX0RSc0dBSlJ6R3U1TGlCRjNpamwtQm1XUERPRUpvTk9kbmhNdGJPSTBaNlZhLWM0ckw2d01aSHZjSHJ1SzhyRzV6dXJkMHdLemtObHRQUUpBSGNNQ3VVR3FaU1B3QQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 3,
-        "lead_ts": 1784689526
-      },
-      {
-        "title": "Carney says he and Trump will intensify trade negotiations after US imposes 50% tariffs - AP News",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPamlLODdLbWZCMXo4WjYxRXg0b0pQdlV2Q1ZLOHM2MFVPanRjb1BvSTdMVHpDVHZRYVJyX1FaeWRZVXNDMkRySUw5MzducnE3R3NHQ1lpRzFFd2p5OVRiT2h0Y0w5bENaMHBtY0xmTlJTWHRQaEV6UnFwcVRXOWdzeTZVRUhNVTVzQkNvVmtZajBIMTQwaWt1bWwtZVc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 3,
-        "lead_ts": 1784679780
       }
     ],
     "mideast": [
@@ -45,6 +45,13 @@
         "source": "WaPo",
         "n_sources": 10,
         "lead_ts": 1784681048
+      },
+      {
+        "title": "Yemen\u2019s Houthis just declared a Red Sea blockade on Saudi ships, effectively handing Iran a second front against the United States and its allies. - facebook.com",
+        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNZnd1M1VsUlpKVjF5OFBWWGxaellELWhCUXQxUXJtX1hVU3dVaGVDYmtzMTFvWkhvQlExOGRyUFhGWVFuYlRCR0JWNDhxdUxsOS03eS1KcFpGMnhYR1NfRzVKY0JQbmU5ajA3WDd2THdOSUtIY2szcTZwTlNmc0J5QXlIQkllU2dJODdPLWcxUEo5SGZadzEteFZXVl90WFFhd2Jsa241N1UxMjNYNUttckpsaEptdUVVd3lyNGxyeGNncS1YSDlFcFlncjJ5Z0tHcVdld3NVRGJqV0hNYlRPdkx3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "facebook.com",
+        "n_sources": 8,
+        "lead_ts": 1784725228
       },
       {
         "title": "Hegseth Estimates Cost of Iran War Has Reached $37.5 Billion - The New York Times",
@@ -61,18 +68,11 @@
         "lead_ts": 1784706960
       },
       {
-        "title": "Ships bound for Saudi Arabia turn around in sign of new Red Sea blockade - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPX2VwaGxuMFpoUGRXejlXTnJsNXQ2aWt3S0xNMmw5VjJXVS1EVFhDTWNxLVdaN2h5Uzg5WEJ0a1l2T0lWLWFkTXBZeE94Z2JhMWVlU3lhWjRGbUxSNk5LUVRGLTdWcC1LUVplVldLWjh3ZnlKWjdaa0ZqSUVhb3VXQ1JDU3U5bTZLODJaV3Jvd2JhT3FZcnl2NEUzTHAyYU0yWDZjT0pPdGVwS2pLTVNxVQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "title": "Bulgarian Parliament approves US use of air base to support Middle East operations - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQSTkyV0ZLdGkzNHdydWtWSV9RbG9CUHc1TWhJdkFHNXpEX2dpajBJYktUckNnc3FYMDRoYVl3TXNEbDE4cEdua0dJNUU3SFZ3Zl9RUWMyekNoUUs5VU9nUjlkZ0pXcnlHYzVoT3htVFk0YUdVcFVMXzZRODFEbUN0VHBKb3N2b1VvS012d3Nzckc4OHFmbUJMeXc3aENldFM3dzZKeGw1SGlvamlWcmFzUkk0NUtxM1kyY3ZSUUpjVWEyZFlkNFRDT2dpVm1UMF81VmxPNnNObjh5ajVWSElQNg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
         "n_sources": 5,
-        "lead_ts": 1784678488
-      },
-      {
-        "title": "Iran's demands over the Strait of Hormuz would set a dangerous precedent, Rubio tells Asian leaders - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQWEp2Wmlkek1CVXhMSEpZQ3lqdGtZZ1MxN3VnQVpIcERCUk9EanFUTzkyT0h1WTRzZWhyQ1hfZjdUUGRBTlB6TC1YVWR4cHpSc29LZUpicGNkRjU1ZzI3bTVCdlh3eFRvU0N6QUQ3TVJucDNSREJDMENqd1NRM1RfT3VZeHpYU1M3RUZNT1ZDSGViX09EbVktZVhGa3pOR3ZEOVJKNk1wT3ZJMkNfYlR6TWZVTmJHMkM4U2R5UzU3amlBcVFiSklEWVFmS2Q?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 4,
-        "lead_ts": 1784709538
+        "lead_ts": 1784725208
       }
     ],
     "world": [
@@ -114,6 +114,13 @@
     ],
     "tech": [
       {
+        "title": "OpenAI says AI models went rogue during testing, triggering \u2018unprecedented\u2019 breach at startup - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQSHhPdV9LUXlBaDlRWkxIay1RMkxOaDRpYllraUFyaXhHMHpXeUM3T1oxZTlGRWJUZmF3M2ptQm9uLWpfVmdtM29vSkhrX3diMEtKdE11ckNRM2x2NXdGS014Q0htT1VNU2hnZ25BXzB1ZldGeTFvd2RXajljUlU0RmJURnoyT284bWlKS3JXZTNZcEstYkNjcUNxd2Q1UG43RHFrd29VUTZTWmRNUEg2ZWpfTXhLY3hyczBuTA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 5,
+        "lead_ts": 1784723820
+      },
+      {
         "title": "OpenAI Admits Its Models Hacked Hugging Face On Their Own - Engadget",
         "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOWXEzd3RDYlhhVFN1ZC1peHg2cVFwUlJ4cXFtR0N6RTg2YXJZRlJGTEJNazFrQnZvQkVJX2ViYzc3elZQMlN4R004VGdtT0FiSzZaU0lwTC1sUzhaWklZdHBFU05pYnc0c0pTdnU0RU1wdlFGNnNEWTJtSVFKWHZ3OFlXV1dhdlhJcVlyc0RDbnA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Engadget",
@@ -135,18 +142,11 @@
         "lead_ts": 1784664488
       },
       {
-        "title": "OpenAI says its models went rogue and hacked startup in \u2018unprecedented incident\u2019 - The Guardian",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOSnlKVXR0aTVRX0FzM2J3UHBCRUlKbGxfU0JDSFVlMEtzQzFEMndhQ19CUjdhVEtNY1l6b2J2RUpibkZvT0FTNGhQRUZ2V0JVNzU3cUtWMlZHdlFDMTFlUlN4cEFldXhFeXRIUW9oMTJuUjVLTENHVnRWbWFwOXlsTVA3UkpZQVpka3ZQOG9HWld1VGZDWWQ0TDdTeTM1anNHcWNEUWNtMkI0cUkyYUc2ZWczQWVXWG00eG15WnNqbUhWTW5XOEJRbA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
+        "title": "Samsung Galaxy Z Fold 8 Hands-On: Shorter and Wider Is Actually Better - Gizmodo",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPOExuQXJWcmRaZVUtemhvVXp0LWF4aDkta3dPSFQyQ3hoRHJWbG1SRDM0WVB0MHVDUDgwM240T0xRaTFlemtnTGJBRzM5NDZReWJuaXFUdnZkYVdkWmxOWlRvRTFjQ0txWS1kaXlUSkRSRHJBY193cEYxUDk3Ulh6eFJISEVVUHVsX2t4ZV9qQzVVbTBoZU5CLQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Gizmodo",
         "n_sources": 4,
-        "lead_ts": 1784709480
-      },
-      {
-        "title": "How to watch the Samsung Galaxy Unpacked livestream: New foldables are coming - Mashable",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNbVhKamlrWGZNZzFrcVNrUVgwc3N6QmRFU2Vzb3d3eTFKcGg0X0VhRDZFNUotRnpReVZoc0Frd2V3emVjcERKUlhkX1JiZmxPbGxQVmp2SnlZOV9SeXFMXy0zMmxmRENHNzdOYmIyVkpFMGZLV1NlWldSWnFJYzdUVDQ1TExVaHprRkZz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Mashable",
-        "n_sources": 3,
-        "lead_ts": 1784710800
+        "lead_ts": 1784725200
       }
     ],
     "business": [
@@ -209,18 +209,18 @@
         "lead_ts": 1784701868
       },
       {
+        "title": "Transfer news: The players who could move before Deadline Day now the World Cup is over - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQNXVnLTFaZXFzWmcxS1ZzcXd1cWVjUVh6WG9BQm5IUl9ZblJPZ2RDQ3JtSFMyeG84VEs2Y1hEZVRqaElLQndocHdJRDE4NUlIRFo4b0RTY1FNQ1ZTeEpjVzNaUFN6T2JxN3h3OTBGenY5VkJ4U0JjamMxOWV5VGw5NWJsY21vbExKcGlHeUtvLXF1VzdFN1dMREhuWXdaU3Q2T2RTcDIwV3c3QThHYVhYSkVyVHZ0Um8tM2d3NWdVMVVVUlhseWsyOG5oMlVjMEtTXzBvLUp5MU4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 8,
+        "lead_ts": 1784725311
+      },
+      {
         "title": "Ferran Torres\u2019s future at Barcelona increasingly uncertain after World Cup heroics - Yahoo Sports",
         "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOMlZYZFhiNklXelp1Rk9IZG8zVW1vbHdWTEVfc25zaWRfU29neDluVEFfSXo3YjhMdE9yb3MyN3Z0R0FtMTAzN3UwNHQ1M3ZhZng0dnFwdmVjWXdkcUl1WUREU3hHNDdLbE4za3kxTjhmQ2lhZTFvWDJDWUZJbmZxSHpaZGY0dmYyV0pJaTVmeWxCa2VYMFJJ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
         "n_sources": 7,
         "lead_ts": 1784708424
-      },
-      {
-        "title": "Week Three in the Esports World Cup gets underway with PUBG: BATTLEGROUNDS and Teamfight Tactics - TNT Sports",
-        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOblNQeE9NOWNpbXoweGI5bW9CS0dOcGttN3p5dDMxNHVSa3hrOHhxYXBuWmJHZHc4NFNYYnRaWUx5TjNCOUlJc204eXRTRTY4WlgtcVdITWU5YlZ1bGhLd1FyTFdUNjJyYTRhVHl5LVAwZ0ttbnRENTBNcWlQaDhudTZEZk02NUlwTGluVnBDaDlFOUpNS25VUlU1cG1DRWFWcmJ4bjdHYVZyY1VhV3ZkQ19uUGFUMjJlVjFZSXo3dlgtQm03cHVXOTlYVjNlV3pFRE9jSnAzMm1vTUEtOUhJSmdtOU9aMkt2UEtITw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TNT Sports",
-        "n_sources": 7,
-        "lead_ts": 1784703000
       }
     ],
     "culture": [
@@ -246,18 +246,18 @@
         "lead_ts": 1784678440
       },
       {
+        "title": "22 Of Selena Gomez\u2019s Most Memorable Red-Carpet Looks in Honour of Her Birthday - Vogue Arabia",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQOUhkTGRYLVBwLTR0NS05Q2VrWHhvb1J4SDdwYXlqWk55b0pocF9kVFkyaVV1cXpQdnZLWnRBLXhqYU52MDFVU0tCNU4zOElyOTdxWkZzS09vOEc2UTVCYzhhaFAzbmszZEJjeU9PQkVlV0hOYzNka1owalFhbGxBVFlEYktBd3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Vogue",
+        "n_sources": 3,
+        "lead_ts": 1784723986
+      },
+      {
         "title": "11 Best Red Carpet Looks From 'The Odyssey' Movie Premieres Ft. Zendaya, Anne Hathaway, Mia Goth & More - FZINE Singapore",
         "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPQWxrOXgwUzU2cmFHYlQ5cGs1R3B1RWdPME1YMkRramNwXzhObTl3WENDUk1JUUVnbWZYU3gtWEo2WFdpWFRaOUxVZjBkTzloVm9DdVlIaThnRHA2ZXdoa3lyTkkyOHFLZmQzMDlSNHFVMjh0bEpJVjhWbV9ycWlWRzI4a2g?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "FZINE Singapore",
         "n_sources": 3,
         "lead_ts": 1784712269
-      },
-      {
-        "title": "\u2018Spider-Man: Brand New Day\u2019: Why is Sadie Sink\u2019s character under wraps? Director says, \u2018Some people wanna - The Times of India",
-        "link": "https://news.google.com/rss/articles/CBMitwJBVV95cUxQY2RnTGNUTzJkcGthQlRkTWU4ckU2LU9Wc09IdHRTRExRbGVrLWZMa3lsd0RxMUZYZm5rbGFjV3d2aVFscHhpT1lWaENYU2dtQ3dOS2N0UEdiakE1SDZHdnoxOVI3VWc1WjVzT1BTVTVIeS1MUWJFVEk1Q1BTV2NJbWF4WjNWZC1FNDZkdEtyRDBIWGRMWnFnekJRQkg5OFkyVFZyUlFmMi1DSXdySVRoYm5TSEhOMk5NMjR2YjBsWjJYWlRuN1VQLWZLMXRkSXF6R3ZjTkdxVEVjVGJ3WEswY3I3RU1LNm9xQnZNdEhGb0o5SXFTUUc2c1k2VWhobzNWZ3lfNlJUY2Z5OG5nRHl1a0d4TDVNa3JXXzBDcWRaeGZvOXhGUWk2amFjdDU0emhKN1BZa2NjY9IBvAJBVV95cUxNUEd1OS1GX0ExZzN2d0FOSnZ2NzlhQjNkRDVraHZPdG84b0xVcjRKWUxXazNZX1NUemdxYlJhb1BJTmhZY3dDMmZ0S0hvOTJfYmhiem93NVFhYmRCcVZ6aHhsM2o0ZlpCaFREUnRuWlY0dFdSc1RWOFZHT3VDZGRGTG42RVRYRUM4TExJNllvQ1hiX1Y3UDR0alJZczF4WGx2ZHA0dkJfdHBaZnkzM01mT3plTEI2NktCemY4MGtCc1pDdThjc2hFM1hjQkdsZEE1WEtjTGRSSXhTOWVIcGFITzQxTERfLUEtb0huWEZXd0xwZ0xOOXJ1WlBUaXhqTTZ0YjByV3pZTnhSaGV4VFB0OGpOSnQzSWttXy1DUVM2UXFCRHA3OUV0MjYxSGVtYnd0bGhHOTVqX293WkRQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Times",
-        "n_sources": 3,
-        "lead_ts": 1784694720
       }
     ]
   },
