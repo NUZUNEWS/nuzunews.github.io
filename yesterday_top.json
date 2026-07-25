@@ -13,8 +13,8 @@
         "title": "Column | The second-weirdest White House correspondents\u2019 dinner I\u2019ve ever attended - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOTmF5d053N2xjNWkxdFNrbHFXUFlvcEJhaXFqdHVCS1JHYzE1NXBnWWRIYWtBeUhKN25TekYtSURrMVRhSkoxM0JqVm1CZngyVmNjOUJPSnlrMF9UR3pBSWpDWGgxbkdCZXRObDZmbU10NXNMUWVsSG9IVlE3RGJsUWdhWTY4NS1JdkNzSmRwUEFhRVFLSG9SSnNJM3I0NG1yQXB6WE1pVUV4OFpUanFpWG1xaXBXbVk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
-        "n_sources": 5,
-        "lead_ts": 1784993551
+        "n_sources": 6,
+        "lead_ts": 1784999701
       },
       {
         "title": "Dem panel taps South Carolina to hold first 2028 presidential primary - Axios",
@@ -40,18 +40,18 @@
     ],
     "mideast": [
       {
+        "title": "Houthis claim attack on Saudi oil refinery as Iran war widens to Red Sea - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOOVpNZ2psN29sT085Yy0tT0xweWpLcTBRbUxaVlRGS1hJVFRHc3R0QjdlSWEybjlnNmtKYXM4WjQxaG9neGFqZkNrUEthVHJsQ2VEM0VEX2hJc2tIcHNZT0tEV3JQRUtrbk9YT0dGOGo0T0VVbUVkOVZaS29hWHRBcUw0QkJ4VjlSc2h6czhXWGRkT2xiMkJJUlBkcENSX0VjQndrSjJlT25vS2FFSVA4WE5B?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 11,
+        "lead_ts": 1784999131
+      },
+      {
         "title": "Saudi military strikes Houthi targets in Yemen after the Iran-backed militia attacked Red Sea shipping - CNBC",
         "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPczRiQmJ3SUp1TUJNbnNVa2I4ME5TeWFON3BtaGVySWFXdExrUkI5RnB6VDJIWGpZdmVOcUZCcDY4ZVY4eDktT3JVQXhqNklPUjFYdUhyQXRTV1R3NG1SSVEycHpJeFJaYWNaNElqb3JsUXVEY2xTOXVzV1dkV184T21zU09Ca2NZV0ZSSm1PclNmQWxXVnJj0gGcAUFVX3lxTE9BNXJWRGsyeE1Ta1FqT3RqdklsQWo1TFZrSTExWDBGaDluY0NFdzZJZFEwSHp3VWFtNmFaV19xVmJ1YkM0REhmVDhGcmFwQkVMYzd0UVRxQVZFOGNjWHFFczNhelNheUpqT3RpVVBYbzJMRGNuR1ZsRzZ6SkVpTkRib2VlbGhBeG5hbGhmdEYtUkQ4OUc5LTJoRGJVUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "CNBC",
         "n_sources": 10,
         "lead_ts": 1784974978
-      },
-      {
-        "title": "Houthis claim attack on Saudi oil refinery as Iran war widens to Red Sea - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOOVpNZ2psN29sT085Yy0tT0xweWpLcTBRbUxaVlRGS1hJVFRHc3R0QjdlSWEybjlnNmtKYXM4WjQxaG9neGFqZkNrUEthVHJsQ2VEM0VEX2hJc2tIcHNZT0tEV3JQRUtrbk9YT0dGOGo0T0VVbUVkOVZaS29hWHRBcUw0QkJ4VjlSc2h6czhXWGRkT2xiMkJJUlBkcENSX0VjQndrSjJlT25vS2FFSVA4WE5B?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 9,
-        "lead_ts": 1784993731
       },
       {
         "title": "IDF says Palestinian man stole an Israeli's gun during confrontation in West Bank; searching for suspect - The Times of Israel",
@@ -76,6 +76,13 @@
       }
     ],
     "world": [
+      {
+        "title": "Devastating wildfires send 267,000 fleeing in France and Spain - Inquirer.net",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQVXdCaHRNNU03V3dUaTNwWWZGamNHT21WYWxZZjd3Qjcxa1NhMV84a3BfbzJUdjFjSHpvVTJYbXlRRFRycnNxcmtrZzhFRXNQbzJYUnQzSURjQW9QdExvMzROc1BiRDNNWTdKWTJvaU1vR2JPNmV4VTFZdXVGR096YXBvRmtWWEVSc09FVjJpQ3d0UTVGTWtiOVZDQ0htZ3JYV01tcNIBqgFBVV95cUxOSEZ5amlKbUtyYk4xNGNFWExfallYSHJHWTEzdnRmSmpOM0xLNW1XVS10VXdQcFRTcGlzZ1FyemxBTEh0WENuckI3eW5pbzZpRmhRa3YzbVJfcUZSdnEwOWtGU285V3FUUk5uQ3VmdHBIZ1ZkOUJ4TnJCcGUyVXJSSlJvYUpDNWo4R2xQYTU3MjBxYjJCcmVCLWJHc1pHZHlCQjl4V294ZVA0QQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Inquirer.net",
+        "n_sources": 5,
+        "lead_ts": 1785000180
+      },
       {
         "title": "\u2018We have done it\u2019: Joy as \u2018Cockroach\u2019 protests push India minister out - Al Jazeera",
         "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPc0pRV2VfUGNRVThXOTItdW54anBiMFpXSnlkLVFVTFEtUC1wX2RvTU1paG82VVlIN212bFU3aENmdVY2MENubUE0dXBpSGplTm9YMXBzbW02NEp2TDVxS1JLZWdzeVlEdi1Va0QyNW5ySmEzaGNEb1JCR1N0RXQyZUYxUFFPQUwtTklIaFJOOVp6LUJjanAxSXg2eXdYazdSckNyY1NYbmtRTnB6V0tr0gG0AUFVX3lxTE5jbVJzREEwX3J1RnFTOS1oWndORkE0VW5iV0tXRTh1MFFFdXkxQVJlSTEzZ1hKSXUtOE84Zmh6LWdReG5vaFR3bDBCOVlfS29OWWRGOW1vZVhpWTh4elJURDhHcEJJZjBLdGkwUVZHM1ctTm8tNGNFWm9nT1NJd0dHN3hOYmZKR0ItZkRXbi1EMERxYmpOV0c3SDVoOGUwSWRBU1dXZ21ldjM4a0N5WDUxMGRHWg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -103,13 +110,6 @@
         "source": "AP",
         "n_sources": 4,
         "lead_ts": 1784980680
-      },
-      {
-        "title": "More than 250,000 people flee wildfires in France and Spain - The Guardian",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNbDkyaWlHTXNpUGtveG0xd3pMSHc4cFczNHJKcE9BNFdrR3I2NjRDcXZSTnVpQ1hUX3VvU1hLVnQ0VmQ1VEowNmFubDk5MVhRdmR6LWVMalRXdUZDcUhvX29SMWRINzV4NTl5N2c3bUR1dGpaYjg4cWlDWUlLSGowVk1QdWt0TkxIT3daT2J0UGdlYjZXbDZzTEZ3RmtMZXZ4V0RYSU1KMVAxd1k?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 3,
-        "lead_ts": 1784994720
       }
     ],
     "tech": [
@@ -128,6 +128,13 @@
         "lead_ts": 1784985546
       },
       {
+        "title": "Risky bet: The winners and losers from the OpenAI-Hugging Face hacking mess - thenationalnews.com",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQeWpVZTB1RFM0N2dYOW52cEtzMEN3UEtHdHBDYkxfTndOLUdqN1BWMXNNc3VIOWNPdzd4NFlhTTFPQzBVLXpBMEk4WThZQXRHalBNRFRKY05rby0tQjVZaHcydl9JSWxTLXN6VmlLZWdYUEU4RWpLNzNwNloxMmNoM1B0VW15Qjc1eHRib2cxRGVlVGs2RWp4WnhlcFh3MjdTNGZxMkgyWWRfazc0Slp4Y3MtRHh0RFRLQzF0bU5IUWh2ZEUzN3I0MU9SUTk0b2JyOGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "thenationalnews.com",
+        "n_sources": 3,
+        "lead_ts": 1784978477
+      },
+      {
         "title": "OpenAI's Rogue Agent Went On A Hacking Spree That Lasted Days, Reuters Says - Engadget",
         "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQZ3dheGFSdFkteWhIa3hhS1FpVlVQSVpXcV9VLXJqZHZQY19CaTJhNF91VGphR1U3VlBMMnFiN2dQTXAyRGo0TldWV1JHMDFhdl8zcHg3MzBLTE9Ya1dnanNVQjVlYUVNZktFVWdpR3BLZDRJUlBtZW03UUk2NlVDZkpNam5fQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Engadget",
@@ -140,13 +147,6 @@
         "source": "Yahoo Finance UK",
         "n_sources": 3,
         "lead_ts": 1784976142
-      },
-      {
-        "title": "Is ChatGPT down? Users report login issues as OpenAI confirms outage - The Economic Times",
-        "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxON3R3LWt6RDUwb0dmRFNQdmZEM1A4Q0ZwYmtEZk5OS1pTVGRRSDJETjdJck0tZk5EMW93UllKRGwxd2FyelU5cEF3TXBEbnNCakFhRUlQMHlzVXFSNVpyOHBTWVVzcjB2QlpMMVN1eG1wSmhpN0s4RmhNa1lacUljTk1uXzN0U1hpOWtFMHo3dWEtRDhZQnVCbE96UWJHaC1nczd2cWMtVXNxYzZ1R1dKeUVIUDdEZFFNZzFXUnZCdmI3cFFkUUtVREV6SWVnVTNqQ0JBOUkyd2RXak5reXJNNS1JaFVZUdIB6wFBVV95cUxONEUzSVBiSUVocTNiX0VJRkRQSFdlU2Rlc2k0Z25zbjV2YlYtQnN4RnI4ZE1oa3FIWE10aExKaEI5VFN5dVEtSy1NMTZQSV9lZkZYOUUzWnJKUWVCSWVIWWJJQ0VibWttOHF0dG1mSWpXYlRtdDlidFJnQk9PZUVLWjZjVi1OYWZiblZnX0xzXzlqdHo1S3E1VHpmME84bUo5a1lhRHA3T2FQWFZvb0luZzM2YkFpQnlHYXZHcDQwOUN4Y21ZT2g1LS1rR2FRX1h1bUg0c283dVRFaVIyZmRDdk9tREg5SDl1ZzIw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Economic Times",
-        "n_sources": 3,
-        "lead_ts": 1784973481
       }
     ],
     "business": [
@@ -246,18 +246,18 @@
         "lead_ts": 1784932869
       },
       {
+        "title": "LeBron James taking tougher, more meaningful path by choosing 76ers - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQbmZsczRQRWVSYVZFZ2dLSEZWZGZsbl82R3Y0dmVqcTVFUUNyMFJRZWNnSXY5MGpvY00yNTlZemhZY3B3Sk9TR0xRYVpqcG5LSDBRNXprMU4tazZvNXdCcGdWYzl2aFVySFpIUV9za2NGMXpQYTFYeGxYbElOc3l2bE4zSUtTTEpocE9waWs5SjduckRfYzU0dW1JZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 4,
+        "lead_ts": 1784993134
+      },
+      {
         "title": "Husband and wife #TomHolland and #Zendaya pull up together at the premiere of the new Spider-Man movie looking dapper as ever \ud83d\ude0d! (\ud83d\udcf8: @gettyimages) \u270d\ud83c\udffe: #TSRStaffST - instagram.com",
         "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9nX0xEZzBCSmd1TWJMclNCVnREcTkyU2FVTkFKTnV4MWpUZDNoUEtPUUN5aGdIc0FHaEs0QmJJV3JqM0IwSTZPdXZSZEhRX2VNeHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "instagram.com",
         "n_sources": 4,
         "lead_ts": 1784958225
-      },
-      {
-        "title": "Three Non-Spider-Man Tom Holland Movies To Watch Before Brand New Day - IMDb",
-        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9BOWg3aFYtb2ZBOHBBTGNsQU1RSmNsOThPbTZXT1BON1ZGekxtaGtFYllfM2pOSUVsWHJxd2xrUGdXaWRxX2M2alluTDdvMWFIYkdXOTBXR2c2UE95N2tZejdOUjIweVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IMDb",
-        "n_sources": 4,
-        "lead_ts": 1784922269
       }
     ]
   },
