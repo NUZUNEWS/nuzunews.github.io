@@ -10,6 +10,20 @@
         "lead_ts": 1785038450
       },
       {
+        "title": "Seattle police are searching for two men who parachuted from the Space Needle - AP News",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNUjBsNHdpT21aT3Eyb3RtYTR5b0hKaWtrVlM0WEg2NmNXbmFwYmt0czRPUUNrcXNuYkhtWklHemtmYjNKNFdEQm1vQjFqWUFSaVVJOURodVB1bTBERUw4VjdoZEJHSHJBbzFiZnk1djg0N2pMbzJ3TUlYTDVnVmZxOG9EQUhpdkdhd1NWQlVISlJUYnFV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 3,
+        "lead_ts": 1785029520
+      },
+      {
+        "title": "Oregon fire looms near town as fourth firefighter dies weeks after Colorado blaze - AP News",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNYlpoV2d0cFRIeUdhMWF5NGhFY1RZTEd3TVU5a2h5dlUtNlVWNzRfSFVMVEJLSE9nS2Rvb05ITjI1N3VOeWVWQnNwSnBMOTk2dnNnSVM0NWhVUVQwN0I3MERyNUxHT2hva1ZsTGZnbTI5ZFRuWkdfM3duelBLd0tQS1RSbUZYQkYzSm1xNU4zWjM4YklKdmtjT2NBR18xVlhwaXNJ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 3,
+        "lead_ts": 1785022320
+      },
+      {
         "title": "Democrats pick new Senate candidate in Maine in aftermath of Platner debacle - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPTy04a0JFWDFTVFVMdy1PMzBMNEJhcHowWlkyUFJIWGJUM25pT3dMRDVTdm00LTlfOHAzMTZNUW1iZE9FZU5jc1Y1bmJ0a3Fkb0UxckRDbEVieTZ5eE1MVS1Qd2N4WXIzU3p1ZS1zWXI4QkJRTjJRUTZ3YVpFODZPeWlQZEdBcW9falpNVTVHaXZCb2g3S0Z1SUpNbUlJLXlHR1dFWjc5YUp0T3NRdU1MM25aTmtjR3dDY09V?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
@@ -22,20 +36,6 @@
         "source": "CBS News",
         "n_sources": 3,
         "lead_ts": 1785016102
-      },
-      {
-        "title": "Trump jabs RFK Jr, Biden, CNN\u2019s Collins in White House Correspondents\u2019 Association dinner speech - The Hill",
-        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQMU1OUVBwV3FVN1VWLTVHRE1ZNXhwTjJ2Tm5KOUR0dDk1bUxCa3lBUEpXSTJLdUdvcHk2TlotRHh5eFE2ZkJDdGJNckFFU01DZVBIeDE1NFlBcWNzYkF3ZHN6VFY4R2VkUHNYczBDWXVOMlFEYUVlWEFVMmt0bmJIc093X1pvd2NFc1liX3UtT3ZDYnhScnFVVFdGSFBSdjg2OFlEZjFrazh5d2ZRQzIyNVQydFRodndLR3JRZUlnaFp2clRGZDJfX2dpZFJkQXh6cFJwTHlndXFISXBzR0xj?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Hill",
-        "n_sources": 3,
-        "lead_ts": 1785010320
-      },
-      {
-        "title": "Russia says Ukraine killed 11 in tourist camp; Ukraine strikes Russian refinery - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNeXJ5QTJWbFFBczNEWDVtSVNpcFV4ZFlRbkZZb1lpVkx4UkViZGdRSW0tTlN1SkRvS2dRY1kzSnV1VmhuQ0VKUy05WmtBaWlIZ0tTYnpWanZ6ZVFXb0VKOUd2Ukl1bENYYXJJWUY3V080eUJzVElZUWhsZU83ZVdJQ09XYW5pbGpxVFFiT2FITW9NblFjOHVKTjhHQ0xMLWRrblAwVi1EbXhSWmpFZkxzMFNEM2dKMDVSU1JnNEtPRWhsZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 3,
-        "lead_ts": 1784990033
       }
     ],
     "mideast": [
@@ -91,34 +91,48 @@
         "lead_ts": 1785023577
       },
       {
+        "title": "Devastating wildfires send 267,000 fleeing in France and Spain - Inquirer.net",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQVXdCaHRNNU03V3dUaTNwWWZGamNHT21WYWxZZjd3Qjcxa1NhMV84a3BfbzJUdjFjSHpvVTJYbXlRRFRycnNxcmtrZzhFRXNQbzJYUnQzSURjQW9QdExvMzROc1BiRDNNWTdKWTJvaU1vR2JPNmV4VTFZdXVGR096YXBvRmtWWEVSc09FVjJpQ3d0UTVGTWtiOVZDQ0htZ3JYV01tcNIBqgFBVV95cUxOSEZ5amlKbUtyYk4xNGNFWExfallYSHJHWTEzdnRmSmpOM0xLNW1XVS10VXdQcFRTcGlzZ1FyemxBTEh0WENuckI3eW5pbzZpRmhRa3YzbVJfcUZSdnEwOWtGU285V3FUUk5uQ3VmdHBIZ1ZkOUJ4TnJCcGUyVXJSSlJvYUpDNWo4R2xQYTU3MjBxYjJCcmVCLWJHc1pHZHlCQjl4V294ZVA0QQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Inquirer.net",
+        "n_sources": 5,
+        "lead_ts": 1785000180
+      },
+      {
+        "title": "Gen Z 'flips the script' to 'rare defeat for Modi': How global media kept tabs on the CJP protest | India News - Hindustan Times",
+        "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxPNjJqVnlwZktFSkFUN3psb2JZaGJIWG9jQzctUkpLNi1BUi1xNVE3Q1pXbzVObmUzNTFSaEFVdmItT2hRMWhMOWswTnlQV3JoVW14NTZhRWJGblJnaW9uLTJsdGF5VDV2cDlrRGNIT3FpSG9xRG5BZUY4TDlYaV9OSGJoLUY0VmZVRmdaakdaSG5mMnEwZTU3NHBzN01rLWhVaEF5Ynh1aXkyczhjU1VmSm94RHU0WGUxXzZFbTJEd2ZvYVRfTXNXQ0pNc0RreS10ZEdUTXQ4cGs5RzctY2tQUFNHQUlfZ25qalpJa2gyLW1FVDBRbFhlaVVnRjJwa2lIc0Nubmhn0gGLAkFVX3lxTE9Cb1BoN2JMRk1Nc0ZZRVA0ZTlLcmo0QkR2QmlRNldoOTFvdUE5Z2FSdU9mQnc3ZDhReHBJZjZnY1VzU1BFbVBvbEZCQVNtVXlxSUcxaVk3TUtkUEtRR21MOGpRTENGVnZuaXkzYWZacjU3MWIzWU5MaE1tUzQtTTIzQm16V1M1VFdabk9rMjQ0ZHRPYmxkcjZZVzlSNjNnV2xIWThQVC1iVXNnMEJYZ1hzVnlGRGVxWFZ2UnNJS0RXbjU3Ym5GY2VQU2dMUi1zVUppdUdvTXBnOE9VNm1xVFJ0TjU0cU9XMWZYM3hYbWpsQ2lLekRtSTMwNllvOXNmazc5dWgxN3ZGam8tMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Hindustan Times",
+        "n_sources": 4,
+        "lead_ts": 1785040009
+      },
+      {
         "title": "Iran war spreads to Red Sea and Caspian, but Gulf quiet as U.S. forgoes strikes - The Japan Times",
         "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNQkxyTHJGNU45YmNPLXJDQjYybWIydThFWkNMVGpHcC1HY2hPdHoydUk0MFlpNkhLekp5ZEhsZk52V0ZUeXlqa3U1OXVfdkRzOVB3bXI0S2lsaVBBbXJHVmktV0s4S2dfZEZkV0haSnEwSjdsMWVNTmc2UmM1ZGoteUExYVVENnlC?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Japan Times",
         "n_sources": 4,
         "lead_ts": 1785037500
-      },
-      {
-        "title": "Egypt Urges Halt to Escalation as US Strikes Iran and CENTCOM Disables Gulf of Oman Tanker - NewsCord",
-        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOcVdocTBzcDI1WU1NSUZseXlvLUtoWWRWcEFQSVZBc3ExZGNvbGpDbGNUNVVLT0pWZGRONWNEUU1selRwSWI5TXdVcWZPWUx3XzIzNkxteGlNYmVNNlIxanZkOGZkeXZnUm5tcTNteEhEbmZjcnJGZFpWUlI2UjkxYzJFUzFTeER2WmtMTTBnRmVndGFUTWxENmFwWkxCVXZqV0tzeW0zd0E2QnpGUldGUFRxY3NQN0R2R19oTkNCRGtkaEVvLVVMelVBUndXcU5OUFkyVVRnTUlGMDB2emVnTlBoTVFnRF9WMkE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsCord",
-        "n_sources": 3,
-        "lead_ts": 1785022808
-      },
-      {
-        "title": "What\u2019s behind the Israeli crackdown in the occupied West Bank? - Al Jazeera",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPWEY5TkRJNHlCX2IxdllKOThtSGo2S1JiUVdpWU1neHJsa0l0OVFaRmh6a3RpVGVQY1lZY1RLUlFMMEUtRHBDUnVxVnFJZ0NxTEtvNVBmWmRFZWVmZEtkNHdCdG1wVlNsanJVT1hZQjRiaGNLN2Uxbi11bEpkVlJaUEs0WmlYanRESUREbjZPY3R2aHU5cEppcXlmckJfZ1V6SWFldU9WeWNPS240SndRa2VjNmJTUdIBuwFBVV95cUxPb0ZLeERMRmpUTzlpQnpRUnZlQ3RXc29PRC13LXJEaldOX1hFWWN6Y0xrU1FHQXYxaVdreEZnVUp1UlVrbk1RVGZJWmZjX3NVWWFwTmdxVW01ZVVPdFQyMGpIQTVQVUsyN0t1RXFiLUFYc3dFczJEVXNWNVV0eW5vNUdibDl4eU02VmUtLWZ1SjJ6OEhNUy0yVGk1dlZNS1dXcUcyUDBoSkJISEsySFVPelVGd2E5eThVZmtB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 3,
-        "lead_ts": 1785022293
       }
     ],
     "tech": [
+      {
+        "title": "OpenAI rogue agent spent days hacking Hugging Face before staff noticed - Tech My Money",
+        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOT2M1QzY3b2Y0Q2NqUERIVmt3SFdDZ0RiM05ZTWtGRzJlY2xXMG1XYXh5dXlobC1TQm5YeHh2akFyUS14aHYyMVU5b29SZ09BOWJ1dnNlLWNrSlByWmFkdlFMMmdGZkJ3SUxJWGNtcWJQQURWQnRjWlZxaVg3dWlsaFBrX2FLWU9hSEhKdG9UTVVsMi0tRkJ4Snd5VjdZbTFsMHVSemxaaUhZRU3SAasBQVVfeXFMTk9jNUM2N29mNENjalBESFZrd0hXQ2dEYjNOWU1rRkcyZWNsVzBtV2F4eXV5aGwtU0JuWHh4dmpBclEteGh2MjFVOW9vUmdPQTlidXZzZS1ja0pQclphZHZRTDJnRmZCd0lMSVhjbXFiUEFEVkJ0Y1pWcWlYN3VpbGhQa19hS1lPYUhISnRvVE1VbDItLUZCeEp3eVY3WW0xbDB1UnpsWmlIWUVN?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Tech My Money",
+        "n_sources": 5,
+        "lead_ts": 1785017386
+      },
       {
         "title": "Risky bet: The winners and losers from the OpenAI-Hugging Face hacking mess - thenationalnews.com",
         "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQeWpVZTB1RFM0N2dYOW52cEtzMEN3UEtHdHBDYkxfTndOLUdqN1BWMXNNc3VIOWNPdzd4NFlhTTFPQzBVLXpBMEk4WThZQXRHalBNRFRKY05rby0tQjVZaHcydl9JSWxTLXN6VmlLZWdYUEU4RWpLNzNwNloxMmNoM1B0VW15Qjc1eHRib2cxRGVlVGs2RWp4WnhlcFh3MjdTNGZxMkgyWWRfazc0Slp4Y3MtRHh0RFRLQzF0bU5IUWh2ZEUzN3I0MU9SUTk0b2JyOGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "thenationalnews.com",
         "n_sources": 3,
         "lead_ts": 1785002308
+      },
+      {
+        "title": "Kimi K3, the Chinese AI that has put Silicon Valley on alert - EL PA\u00cdS English",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOVlhNQ1NiUVI1eGN0bXF5S01TTm1tQlJWYjZsUWFZRkxxY0xJdVFTRlhNSzBJa01tT2I3TmE1TGtjX3dqbGJRRHZJOFlqbGJTOWdnMFJlMFVqYV9FVmFtWU5jUmVlT0lrc0Y5b25nTWlJZEwzRTNOMUpxb2pMR3F4NlVzZWp2UXlDZlBEMWxnelpsQWdQSDFXNGtJQXVzWlVZTmswQl9MQ2ZjaEpEYlpNd0xiWdIBxwFBVV95cUxOQW5CUzROYzFIVlEtblVsdzQ1Sm0teWhvdnU4M1F0SHkzeFRmdW51YU11TEZCS3VlVVpEUUl4by1mbVhYZzRkOHdpY2R6N0k3cEhaUHUxdkl1c3l2cDFFOXpQbUdBV25rUkhyR2dZMkRSUmtVN0dDbzhZeFF5V3VSNTNMbHlpSDJ3WlhNTEtET3RlRDJlZWJJaWh5enpiOXF2NGFxWlJrbXlhaWlvM0x4V2pLMEF6MWdLMi1aS25iQXJUOG9iMGFN?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "EL PA\u00cdS English",
+        "n_sources": 2,
+        "lead_ts": 1785038400
       },
       {
         "title": "Roku raises streaming hardware prices by up to $50 - \ub514\uc9c0\ud138\ud22c\ub370\uc774",
@@ -133,23 +147,16 @@
         "source": "Fox Business",
         "n_sources": 2,
         "lead_ts": 1785014760
-      },
-      {
-        "title": "Guillermo del Toro Is Converting \u2018Pan\u2019s Labyrinth\u2019 to 3D Without AI - Gizmodo",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOaTk1WUJIMmxBYUJMelc2bm95RXpRcEIxcHVhaW1IUUhLMnVlUDBJSEI5blBZT3VyNmhzWUZmM2h1bjhJcnBPODB4ZGw2NXVSN3AzRXNBX1JhUmRlM2pBa0JMM01xSU9ZMmp1R2liMzJwQU5YVWVIZUlKZUJ2WXVjdV9sN3RlMU1xVHNr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Gizmodo",
-        "n_sources": 2,
-        "lead_ts": 1785008147
-      },
-      {
-        "title": "SpaceX eyes tower catch for next Starship after auspicious end to 13th flight - Ars Technica",
-        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQUzE3eHhwWnhJb3dmcWkwWVdsUElYLVVZUjM0cE9CaUdvalBQSFFjZWdzdURVNi16YWdWNjhlVVUzRVMybGppMDYtY2VUcGwxZU0zVFJiSFVXVzVuUEp5aGU3clZCd2VHRlZzajdITEV2dzdLa3FaZ05JMWhGVThnYXZsSEpsN0E2a3pNUE53UnNBSnVxVzBIWlNGa3p1SEtnMWRxeEZIMW1OZHpjMk52T01nencwbUU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Ars Technica",
-        "n_sources": 2,
-        "lead_ts": 1785001642
       }
     ],
     "business": [
+      {
+        "title": "TKRFF.PK - | Stock Price & Latest News - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5XRm83Vk54VmtSQ09tdXl3MmxWQ0RLd0pxcW5zZlY0bVY2UW41NUdGd2hPSkE2VWxVaml3QTV0LVhHbm9GQXpQaEtlR3JZelNvaUtTTWVGVzBWM0FzM2poZ2NrVzRLT0pwSzM0N0Z3OHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 3,
+        "lead_ts": 1785034203
+      },
       {
         "title": "TCLCF.PK - | Stock Price & Latest News - Reuters",
         "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE02ZU12alViLURCUHhtSG1vY2wxOW51cktLdkVfS1FjZ1psUzRPR3lNWkFWdmV5cHdrX211bjYyMkpIWEJpWXp4NUtrVWhHeldlVGljNmJmeTBwMjFDd0ZYUDJnSGhaWkp6bGdBMGRNQW8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -158,32 +165,25 @@
         "lead_ts": 1785017186
       },
       {
-        "title": "International Business: US stocks face test from Fed Reserve\u2019s decision - Gulf Daily News (Bahrain)",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPVVFmYkh3RE95VkdpNGxOTjZTVFdnaXk4NkhiMHU5akhSNm9za3hxQTdtTU1WdkpEOTBRN2g0N1hEYTFkX0lzZXR3UVpoaWdVWk8zNTRKUWdwdnhQNlNuQ01uLU8yb3pDX1BBejZidmxSWDZUX1ZVTWM2U2lGeUNHOURJX1E2VVBfZllyTV90V0RHNm9LampiZWFqTHFhUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Gulf Daily News (Bahrain)",
+        "title": "Hugging Face CEO Urges OpenAI to Release Rogue AI Logs, Commit $100 Million in Compute After Breach - Benzinga",
+        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOUVNCeVlvZXdVVGp2NFRYamt0UzEyRDFRUWdsaGk5eC1SY3ZLaHd1dV8xOFFBbS02V0p4dmlQX05aX0NkOGFxVmV0YmQwVkZGZWJMSDRYbVRMSDN6NmRwOUJwSnVQc2dtN05sakI4Q285RmEta3ViNDJ2X1UtdFYzbkZiUHdhV2VtZ05CbHFTbUdlZGhQN29OVTFteHpHSXhZaE8yeGN0a2xHNEt5c2NZT19oR0gyNlJmT1A4cGFrajg5R01yc1V2amo5MmVwOWo1WnYxendtMndwaFVDWEs4SEd4MmQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Benzinga",
         "n_sources": 2,
-        "lead_ts": 1785030586
+        "lead_ts": 1785044348
       },
       {
-        "title": "The Wall Street Journal's News Archive for July 26, 2026 - WSJ.com - WSJ",
-        "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE10V1FsU1pfUThTWFhZeENqVEV1cUJpWFQyT3RKRVVXTGdfaU5iSFFfM3psTDJ4UmxXcWZMVUNJVVRHV2l4TlpfdU1ZZXQ5dXZrX2pQZzdn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WSJ",
+        "title": "US Federal Reserve expected to hold rates steady as inflation swirls - The Economic Times",
+        "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNckVvODk2a3d4TVJsTXBVZzhkSE5Mb1lXcWRJZ3FSU1p2S2dpbGVOSEtpdFE5UHZMdjd3NGlWYkRhVC1JNkNJNG5kdjZsdHNnMmVwcE1pNHNteVAzVnRVZUh3UVd3WHFsZ3RqSTMtZW1LWFhCOFVIc2x1VTBnVnRGSmpqM3dzd0hXWmZWZ1gyblZ0NFVBdU9KWURpQk8yUVo1bXUxd09FZjZzVzFDVlcwaVZWMy0tbUdod3ZydEM5OFJDbkhfYW9lSmhMbXNrbFZ1SGc0SkVXR1lSNlk2b3pBanBSb9IB4wFBVV95cUxNckVvODk2a3d4TVJsTXBVZzhkSE5Mb1lXcWRJZ3FSU1p2S2dpbGVOSEtpdFE5UHZMdjd3NGlWYkRhVC1JNkNJNG5kdjZsdHNnMmVwcE1pNHNteVAzVnRVZUh3UVd3WHFsZ3RqSTMtZW1LWFhCOFVIc2x1VTBnVnRGSmpqM3dzd0hXWmZWZ1gyblZ0NFVBdU9KWURpQk8yUVo1bXUxd09FZjZzVzFDVlcwaVZWMy0tbUdod3ZydEM5OFJDbkhfYW9lSmhMbXNrbFZ1SGc0SkVXR1lSNlk2b3pBanBSbw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The Economic Times",
         "n_sources": 2,
-        "lead_ts": 1785030224
+        "lead_ts": 1785039000
       },
       {
-        "title": "OpenAI Power Deal and Dividend Move Could Be A Game Changer For Southern (SO) - simplywall.st",
-        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQUnhKMkF3TkQ4ZFZJWWlVMjdrVUEybjloT0c5RGUyWDhBdmQxZ3dXY3QyRzRTZzJ2aC14WHlSVmY4bEU3OTAyTmRQVEhOSDhqSk0tbEJwUEVSbTRyRURReDBvOGIzUEhRcEFtQWpMRExfYUJhM2gyaEFmZmdUSy1CLXlfLTFydURlNmZOWUVlUzQtVW5od0JtUFpQeXFWaGVLN1hnSVVVbk8yYTVScmpBOWxJd0ZINlN5VHRvY1lDajRhanFvTXfSAcYBQVVfeXFMUFJ4SjJBd05EOGRWSVlpVTI3a1VBMm45aE9HOURlMlg4QXZkMWd3V2N0Mkc0U2cydmgteFh5UlZmOGxFNzkwMk5kUFRITkg4akpNLWxCcFBFUm00ckVEUXgwbzhiM1BIUXBBbUFqTERMX2FCYTNoMmhBZmZnVEstQi15Xy0xcnVEZTZmTllFZVM0LVVuaHdCbVBaUHlxVmhlSzdYZ0lVVW5PMmE1UnJqQTlsSXdGSDZTeVR0b2NZQ2o0YWpxb013?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "simplywall.st",
+        "title": "NVIDIA $NVIDIA (NVDA.US)$ CEO JENSEN HUANG SAYS OPENAI AND ANTHROPIC COULD BECOME THE MOST SUCCESSFUL IPOS IN HISTORY - Moomoo",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPNDYwSkdXQzVsNldlTzIwbS0wOG43MkF1OW9hMUFEZjVQdkEzcFZPZUNKSnRBajM2Zkp5XzlSTGVHOVBMYXRPWDlkNDFZdWU0REowRUZLYll1b0U2MWZjcXJhbFBXMFl6NTEwSDduLTdJMEdZSExEaVFnUHZqVUZaQWxiVzNFVl9KSVBxMjRBOU9IRWJKemY2QjZyMWs4Y3FtWkl3cW1RRXh0b2Fs?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Moomoo",
         "n_sources": 2,
-        "lead_ts": 1785026190
-      },
-      {
-        "title": "S&P 500: Wall Street Benchmark Ekes Out a Record Close at 7,411.98 as Chip Stocks Weigh - BBN Times",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOQmJYMFpSbzliSmV5X3BZSDRXcUNOWU1YUUZfUExBTUVYR2FfV3hoYWpiQ1RPeFZmbFRoZTlTUGRGMHNNOXl0QUZrVWNiWi1vbHN6TWpqNE9YaE5RVHNMZDdUZVpnbUdicjdqTElvOXpKa2R1UFMtd0IxMDJ4VnMxaFlBcXEyd201UDJOSTRtaVdqSmlVeEhvTkx5VnE4UEF0V0NfX1h2dExFU2pqdmRxOWRkOGRpTDVlRUxkanN3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBN Times",
-        "n_sources": 2,
-        "lead_ts": 1785019544
+        "lead_ts": 1785038619
       }
     ],
     "sports": [
@@ -202,28 +202,49 @@
         "lead_ts": 1785022152
       },
       {
+        "title": "Jeff Teague thinks a LeBron James title in Philly would be bigger than New York's win - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPdVIzX3FQVkRlZ3Z0TFAxeFhwZ3ZBSHhRTW4xNXhQU2hHZUZOeUxfVUVIc0s3QjU2enJOZ1I2bDN4OThPWW9ZQk1kc3dUVVcwTFVPazZaX1o2V1A3LWJjdVo4bXNPSF8yTG8tOHRXV0NodUNubGotU20tMnBiYVA0eUNJOFRhejQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 7,
+        "lead_ts": 1785039600
+      },
+      {
+        "title": "Rich Paul Explains How LeBron James Changes Everything for 76ers - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNTnBjdGx3NWdGZGVIS19iektSdkZwWjhRYmcya2x5MElSTEMteGx1SnhGRmNjelNUVUctekVXREhMWnJVRWRvaHFTUnUtb0QtZUFVNXM5RkxLMTFoYnFEUlh2bTNlVEVjTGU3ODJFbTJmTXpCdXpLcURGR3VfVjhLSGkzenBsSk0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 7,
+        "lead_ts": 1785037500
+      },
+      {
         "title": "76ers get contract update on LeBron James' former 2020 championship teammate - Yahoo Sports",
         "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQSGZ6M0VfTUhNMnB2NWR4RFcyYnRwTmJrbklnSzVLZ1VqcEtSNlQwVDAwYUhaQmNRMzlMb2V0ckxyVl9SZnh6UUhfdTY3WGpzYTZBQjFXWEdWMndvQmpwS3hkY1U4bGpRU0J5VlpXTWREeHd3d0FXMGxuaFQyYWl2RGo0bl9PY0Q3Wkdj?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
         "n_sources": 5,
         "lead_ts": 1785017680
-      },
-      {
-        "title": "THE DAY I PLAYED IN A WORLD CUP! - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5PWFAyUUw2MjRqTy1JMmdFZlVvcmVCaUZXMTFiVkExa3dmS3JjNkxrQkMwcXdTVE1BWEp0SFJBa09YS1YybkpzUEJJQmYxSV9QR0xGZWxYcm9tSmhHempfZWhySVdSU1Blb3lJQzRERlphV3pOS2dyaA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 4,
-        "lead_ts": 1785016800
-      },
-      {
-        "title": "What Should Warriors Do After Missing on LeBron James? Three Potential Paths Forward for Golden State - Sports Illustrated",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOdE4tRk1QMm4xQ2tsVHk0WmhOYmt0WEJKc0h5ZUhhbTBBRm1ocnJRQkg3ekVfd2lzQ2o5YndlQkVGLTcyaVhmeVlzcU9HaW5PVlRWN1FtcTlJejRGV2wwZWh1ekR5dnNiWXBDbmp5YTVOa29NQVVHUnBkVWVSZi12eHNWOHhqOFhOWWltYWtDYmJmR1pkT29ubW9raG9pdGY0TFd4VzE4Qzk1SktCRXlGZ0tlUTg5dw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "SI",
-        "n_sources": 4,
-        "lead_ts": 1785014501
       }
     ],
     "culture": [
+      {
+        "title": "Chris Evans received \u2018a dozen\u2019 Captain America pitches before returning for Avengers: Doomsday (exclusive) - Entertainment Weekly",
+        "link": "https://news.google.com/rss/articles/CBMizgJBVV95cUxOMm1yY3FiMEFQYWdNbHAzSmp0Z05NVGVHcFlzWW1MR21Xa3RvWVlSUFJxcFg4bXFMcnlNOHgwT1lOR09GaEFVMVlpSjVzYnJkZlFLS0ItVzhFUEhPT21BbVR6RHdYWWFYSG9CVGRyUGlsZW9NVXE4c0pQMzJuVDJUTXBBajVFNU1TY2t4V0VNR19EbVdOSXpWQ0RBWlptUHpZYWFNalB6RWRsdzlDeWlVOW40NmdwVmsyM0tvWmdkQ0xuOHFxbnhhZ1dJYXl6bXZXXzc3SlUyc01aWFFWWENCRWxNZ1VTMm4yd19YYzZ2SnpHbTRXWjJWOFUwMzRRSnJuVFVNM2dha1ZFbXNvZnAwTXJXWmF0OS1kd19vUDhPRDQwUWJYUkpMRGxTS0RISDdWb3ZBR3YzbFVCVlg1VUpndE5Idi1oZUtaX3ZYdE9B?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "EW",
+        "n_sources": 3,
+        "lead_ts": 1785042782
+      },
+      {
+        "title": "12 Terrifying and Weird Beauty Trends from Times Gone by - AOL.com",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOT2tuTDNlNDFhMWpFdEhmbmRuUXpvRkZrbUdTS24ySGdYTWhZWENlMHNwS2o3S1BPOEY5RUNuajNNWjNxNkxoU2xpWTF0RXlkai1qTXpTT2RuMG9udml1SVNwYWt5NkZIcjEwRjFzc1YxLWZtbWxWWVlzUlFHeEZ6bGdQcw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AOL.com",
+        "n_sources": 2,
+        "lead_ts": 1785038603
+      },
+      {
+        "title": "\u2018Black Panther 3\u2019: David Jonsson to Play T\u2019Challa\u2019s Son as December 2028 Release Date Set - IMDb",
+        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE14cnZrbGQ1VVZzQUV3UDgycXpxSUVXdTRRT1NqTjVHa3VUODRWVEFfX0tpek9kX1QxdkhSdEdjRlVaSURrR2diazVWclJJWXhFWThKUVpJLXhSVGkxZkE5RjZRSE1BZ09HSlE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IMDb",
+        "n_sources": 2,
+        "lead_ts": 1785035061
+      },
       {
         "title": "After Alan Ritchson shared his candid thoughts on the Epstein files, the Trump administration has issued a response. Read more below. - facebook.com",
         "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNRFB1dE11R2FwSFdYSVdMcHJWUG9VNHVCcGZiY3FBR2F0a1pTOUVRNkZKUUlOemh5X28yY1NpMGZDbV9ZTzI4SFF6SDNEZUFJc3hFUWxlZ1dIOC1QdF8zWDh4LU82WXpNZWJlVWJremUybExMUGxFT1dzSWJ6R2hWeFVRbUozNC1adWVCV0Z6dVVqMFpFZnJuNHhqWWViSXlEWXhJajRoMzh3WG5pdHJKR2phTGNpMm5sUDQ1UkJsSVdYb0doS3dqWGZlaHdTbWplV2FnRnR3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -237,27 +258,6 @@
         "source": "IMDb",
         "n_sources": 2,
         "lead_ts": 1785023511
-      },
-      {
-        "title": "Pamela Anderson Has \u201cNo Plans\u201d To Reprise \u2018Baywatch\u2019 Role: \u201cI\u2019ve Already Done That\u201d - Deadline",
-        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQM2ZwQjB5U0FwZ1VGZjFzT1dYZU95bmxtNDdiNTdTQ2ZuUE5jdnI1ZEk2VU9iMW9kdW85Q3RqUjgwYjYwX0ZHaUJlLVZ2SWh4VUVhdFpxdWdlLUUzWjQ3cXhpRHo0cmo0UTR5VFRPTmJVUTB1UlI2Tkw4TDR2a25GVFhPQ1E1azVzTDFOSUJDRDk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Deadline",
-        "n_sources": 2,
-        "lead_ts": 1785013500
-      },
-      {
-        "title": "Where Jennifer Lopez Stands on Dating as She Celebrates Her 57th Birthday - Yahoo",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxON2Q3ZFpYSS1XdzRGZW96d2pXQmFzM1NqZGFxRHprU0ZOWW01OVpnUjFNMnhsZk1MdEN1Yk9PR2hWU2k0WXB6ZzZmZXRpMmdWY1N0ZGx5LVZYbU1qZnoybFlpUllUZlRwSDhEZXpLU2Y5YURndG1ydDhHa2V3LVpXYmkzREY5OGljcDZ6dDhGSU10eXVWWEVsZEViLXpscUpSdEJQTVF1TQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo",
-        "n_sources": 2,
-        "lead_ts": 1785009543
-      },
-      {
-        "title": "Charli XCX drops \u2018Music, Fashion, Film,\u2019 her sharpest pivot yet - Northeast Times",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPdU1ONmlRbHBPSTU1bS11S2dibTBUZTNOLTBfZTlYU3F2Tl90dDJDOVFUbTlBZkdLdXIyUzlsVERGeUJ1THRjYnltQXQ3TVhzOW9PX2FzNzI1aC1VQzV5RlNBb3c4YVhTX2NoMmZLN2hpTV9FeVg1Q2dnR1RHTGdzeUltaUdrbDdOOERfTmktajRwWkNaYVBEa0NOZ0Nldw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Northeast Times",
-        "n_sources": 2,
-        "lead_ts": 1785006000
       }
     ]
   },
