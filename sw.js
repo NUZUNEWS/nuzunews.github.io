@@ -19,7 +19,7 @@
 //   - /offline.html graceful fallback remains (referenced but not blocking)
 // ═══════════════════════════════════════════════════════════════════════════
 
-const CACHE_VERSION = 'v14';          // NUZU 2.1.1 - surrogate crash fix + click-to-solo audio (v13 never shipped: build was failing)
+const CACHE_VERSION = 'v15';          // NUZU 2.1.2 - STOP video rotation (dormant stall-swap disabled); audio solo retained
 const CACHE_STATIC  = 'nuzu-static-' + CACHE_VERSION;
 const CACHE_PAGES   = 'nuzu-pages-'  + CACHE_VERSION;
 const CACHE_ICONS   = 'nuzu-icons-'  + CACHE_VERSION;

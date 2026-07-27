@@ -6928,8 +6928,24 @@ function _swapToBackup(player, idx) {{
     if (iframe) {{ iframe.src = _getBackupSrc(); }}
   }} catch(e) {{}}
 }}
+/* ═══════════════ NUZU: NO AUTO-ROTATION (deliberate) ═══════════════
+   NUZU's tiles are 24/7 live news channels. They must SIT THERE. They do not
+   rotate, shuffle or cycle — that is Party Portal's behaviour, not NUZU's.
+
+   History worth knowing: the timer-driven swap below is old NUZU code that lay
+   DORMANT for a long time because the main-grid iframes had no enablejsapi=1,
+   so YT.Player could never talk to them and the timers never armed. Adding
+   enablejsapi=1 (required to fix the audio) woke it up, and tiles began
+   swapping to backup feeds roughly once a minute. It is now switched OFF.
+
+   NZ_AUTO_SWAP=false  -> a tile only ever changes on a genuine hard error
+                          (video removed / private / embedding disabled), which
+                          is the one case where leaving it alone shows a dead box.
+   Pausing a stream, buffering, or a slow start NEVER swaps anything. */
+var NZ_AUTO_SWAP = false;
 function _startStallTimer(player, idx) {{
   _clearStallTimer(idx);
+  if (!NZ_AUTO_SWAP) return;              /* <- no timer-driven rotation on NUZU */
   _stallTimers[idx] = setTimeout(function() {{ _swapToBackup(player, idx); }}, 30000);
 }}
 
@@ -6946,9 +6962,19 @@ function onYouTubeIframeAPIReady() {{
           onStateChange: function(e) {{
             var state = e.data;
             if (state === YT.PlayerState.PLAYING) {{ _clearStallTimer(idx); }}
-            else if (state === YT.PlayerState.ENDED || state === YT.PlayerState.PAUSED || state === -1) {{ _startStallTimer(e.target, idx); }}
+            /* PAUSED / UNSTARTED are NOT faults - do nothing. ENDED is only
+               meaningful for a non-live video, and even then we leave the tile
+               alone unless NZ_AUTO_SWAP has been deliberately turned on. */
+            else if (state === YT.PlayerState.ENDED) {{ _startStallTimer(e.target, idx); }}
           }},
-          onError: function(e) {{ _clearStallTimer(idx); _swapToBackup(e.target, idx); }}
+          onError: function(e) {{
+            _clearStallTimer(idx);
+            var code = e && e.data;
+            /* 2 bad id | 5 html5 | 100 removed/private | 101,150 embed disabled */
+            if (code === 2 || code === 5 || code === 100 || code === 101 || code === 150) {{
+              _swapToBackup(e.target, idx);   /* genuinely dead -> replace, don't show a dead box */
+            }}
+          }}
         }}
       }});
       players.push(p);
