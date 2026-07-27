@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
-  "build": "2026-07-21",
-  "notes": "NUZU 2.0 — live trending-phrase relevance engine (self-updating keyword databank), refreshed video wall (Bloomberg Business + US live streams), single-audio playback, and a sharpened visual layer across desktop and mobile. Service worker v12."
+  "version": "2.1.0",
+  "build": "2026-07-26",
+  "notes": "NUZU 2.1 — Audio fix: Party Portal-style click-to-solo. Every embed now carries enablejsapi=1 and a speaker button mutes all other streams, so only one video plays audio at a time across the main video wall, Waiting Room and mobile. Service worker v13."
 }

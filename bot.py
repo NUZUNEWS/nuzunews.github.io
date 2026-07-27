@@ -5563,6 +5563,22 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .youtube-inset:hover .feed-country-label {{ opacity: 0.35; }}
     @media (max-width: 900px) {{ .feed-country-label {{ display: none !important; }} }}
+
+    /* Click-to-solo audio button (Party Portal-style, one stream unmuted at a time) */
+    .youtube-inset .nz-audio-btn {{
+        position: absolute; top: 7px; right: 7px; z-index: 3;
+        min-width: 30px; height: 24px; padding: 0 7px;
+        display: flex; align-items: center; justify-content: center;
+        background: rgba(0,0,0,0.60); color: #fff;
+        border: 1px solid rgba(255,255,255,0.18); border-radius: 20px;
+        font-size: 12px; line-height: 1; cursor: pointer; opacity: 0.55;
+        backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+        transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+    }}
+    .youtube-inset:hover .nz-audio-btn {{ opacity: 1; }}
+    .youtube-inset .nz-audio-btn:hover {{ background: rgba(30,79,216,0.85); border-color: var(--nuzu-blue); }}
+    .youtube-inset .nz-audio-btn.nz-on {{ background: var(--nuzu-blue); border-color: var(--nuzu-blue); opacity: 1; box-shadow: 0 0 10px rgba(30,79,216,0.55); }}
+    @media (max-width: 900px) {{ .youtube-inset .nz-audio-btn {{ opacity: 1; }} }}
  
     /* Waiting-room cell number now repurposed as country name - styled wider */
     #wr-grid .wr-cell-num {{
@@ -6456,43 +6472,43 @@ ts_html += '''<!-- VIDEO BANNER desktop only -->
 <div class="banner">
   <div class="video-grid">
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">United States</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">France</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">Bloomberg Business</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">Europe</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">Australia</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">India</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">China</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">United States</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">Germany</span>
     </div>
     <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+      <iframe data-src="https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
       <span class="feed-country-label">Middle East</span>
     </div>
   </div>
@@ -6622,7 +6638,7 @@ def section_block(section_id, color_class, breaking_items, recent_items,
         _msv = (
             '<div class="mobile-section-video-wrap" data-msv-section="' + section_id + '">'
             '<iframe data-msv-src="https://www.youtube.com/embed/' + _eid
-            + '?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1"'
+            + '?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"'
             ' allow="autoplay;encrypted-media" allowfullscreen></iframe>'
             '<span class="msv-label">' + _lbl + '</span></div>\n'
         )
@@ -6780,16 +6796,16 @@ html_parts.append(f"""
 <script>
 // - NUZU Feed URLs (hardcoded for reliable restore) -
 var MAIN_FEED_SRCS = [
-  'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1'
+  'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1'
 ];
 var WR_FEEDS = [
   {{src:'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'United States'}},
@@ -6823,9 +6839,9 @@ if (!IS_MOBILE) {{
 var _stallTimers = {{}};
 var _backupIdx = 0;
 var BACKUP_FEEDS = [
-  'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1',
-  'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1'
+  'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
+  'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1'
 ];
 
 function _setAudioActive(activePlayer) {{
@@ -6842,6 +6858,37 @@ function _setAudioActive(activePlayer) {{
       }}
     }} catch(e) {{}}
   }}
+}}
+
+/* ═══════════════════ AUDIO: Party Portal-style click-to-solo ═══════════════════
+   Exactly one (or zero) stream is unmuted at a time. Clicking a tile's speaker
+   button mutes EVERY player, then unmutes just that one. It is driven by the click
+   (not by trying to *detect* an unmute via play-state polling) — which is why this
+   works where NUZU's old detect-and-mute approach never did. Requires enablejsapi=1
+   on every embed (now set). Stall-detection / backup-swap below is unchanged. */
+var _activePlayer = null;
+function _syncAudioButtons() {{
+  document.querySelectorAll('.youtube-inset').forEach(function(inset) {{
+    var b = inset.querySelector('.nz-audio-btn'); if (!b) return;
+    var on = inset.classList.contains('audio-active');
+    b.classList.toggle('nz-on', on);
+    b.innerHTML = on ? '\uD83D\uDD0A' : '\uD83D\uDD07';
+    b.setAttribute('title', on ? 'Mute' : 'Unmute');
+  }});
+}}
+function _soloPlayer(player) {{
+  players.forEach(function(p) {{ try {{ p.mute(); }} catch(e) {{}} }});
+  if (!player || player === _activePlayer) {{ _activePlayer = null; _setAudioActive(null); _syncAudioButtons(); return; }}
+  try {{ player.unMute(); player.setVolume(100); }} catch(e) {{}}
+  _activePlayer = player; _setAudioActive(player); _syncAudioButtons();
+}}
+function _attachAudioButton(inset, player) {{
+  if (!inset || inset.querySelector('.nz-audio-btn')) return;
+  var b = document.createElement('button');
+  b.className = 'nz-audio-btn'; b.type = 'button';
+  b.innerHTML = '\uD83D\uDD07'; b.setAttribute('title', 'Unmute'); b.setAttribute('aria-label', 'Unmute this stream');
+  b.addEventListener('click', function(ev) {{ ev.stopPropagation(); ev.preventDefault(); _soloPlayer(player); }});
+  inset.appendChild(b);
 }}
 function _muteAllExcept(activePlayer) {{
   players.forEach(function(p) {{ if (p !== activePlayer) {{ try {{ p.mute(); }} catch(e) {{}} }} }});
@@ -6866,24 +6913,14 @@ function onYouTubeIframeAPIReady() {{
     document.querySelectorAll('.youtube-inset iframe').forEach(function(iframe, idx) {{
       var p = new YT.Player(iframe, {{
         events: {{
-          onReady: function(e) {{ e.target.mute(); _startStallTimer(e.target, idx); }},
+          onReady: function(e) {{
+            e.target.mute(); _startStallTimer(e.target, idx);
+            try {{ var ifr = e.target.getIframe(); if (ifr && ifr.parentElement) _attachAudioButton(ifr.parentElement, e.target); }} catch(err) {{}}
+          }},
           onStateChange: function(e) {{
             var state = e.data;
-            if (state === YT.PlayerState.PLAYING) {{
-              _clearStallTimer(idx);
-              try {{
-                if (!e.target.isMuted()) {{ _muteAllExcept(e.target); _setAudioActive(e.target); }}
-              }} catch(err) {{}}
-            }} else if (state === YT.PlayerState.ENDED || state === YT.PlayerState.PAUSED || state === -1) {{
-              _startStallTimer(e.target, idx);
-              try {{
-                var ifrEl = e.target.getIframe ? e.target.getIframe() : null;
-                if (ifrEl && ifrEl.parentElement && ifrEl.parentElement.classList.contains('audio-active')) {{
-                  ifrEl.parentElement.classList.remove('audio-active');
-                  ifrEl.parentElement.style.outline = '';
-                }}
-              }} catch(err) {{}}
-            }}
+            if (state === YT.PlayerState.PLAYING) {{ _clearStallTimer(idx); }}
+            else if (state === YT.PlayerState.ENDED || state === YT.PlayerState.PAUSED || state === -1) {{ _startStallTimer(e.target, idx); }}
           }},
           onError: function(e) {{ _clearStallTimer(idx); _swapToBackup(e.target, idx); }}
         }}
@@ -6893,13 +6930,18 @@ function onYouTubeIframeAPIReady() {{
   }}, 1500);
 }}
 
+/* Safety enforcer: if the viewer used YouTube's native unmute on more than one tile,
+   keep only the active one audible. Reliable now that enablejsapi=1 is set. */
 setInterval(function() {{
   if (IS_MOBILE || !players.length) return;
-  var unmutedPlayer = null;
-  players.forEach(function(p) {{
-    try {{ if (!p.isMuted || p.isMuted()) return; if (p.getPlayerState() === YT.PlayerState.PLAYING) unmutedPlayer = p; }} catch(e) {{}}
-  }});
-  if (unmutedPlayer) {{ _muteAllExcept(unmutedPlayer); _setAudioActive(unmutedPlayer); }}
+  try {{
+    var unmuted = players.filter(function(p) {{ try {{ return p.isMuted && !p.isMuted(); }} catch(e) {{ return false; }} }});
+    if (unmuted.length > 1) {{
+      var keep = (_activePlayer && unmuted.indexOf(_activePlayer) >= 0) ? _activePlayer : unmuted[0];
+      players.forEach(function(p) {{ if (p !== keep) {{ try {{ p.mute(); }} catch(e) {{}} }} }});
+      _activePlayer = keep; _setAudioActive(keep); _syncAudioButtons();
+    }}
+  }} catch(e) {{}}
 }}, 2000);
 
 // - Soft refresh: inject new content at top without a full page wipe -
@@ -8078,6 +8120,18 @@ document.addEventListener('load', function(e){{
       iframe.setAttribute('frameborder', '0');
       var lbl = document.createElement('div'); lbl.className = 'wr-cell-num'; lbl.textContent = feed.label;
       cell.appendChild(iframe); cell.appendChild(lbl);
+      // Party Portal-style click-to-solo: mute every cell, then unmute this one.
+      cell.addEventListener('click', function() {{
+        var already = cell.classList.contains('wr-audio-active');
+        grid.querySelectorAll('iframe').forEach(function(f) {{ try {{ f.contentWindow.postMessage(JSON.stringify({{event:'command',func:'mute',args:[]}}), '*'); }} catch(e) {{}} }});
+        grid.querySelectorAll('.wr-cell').forEach(function(c) {{ c.classList.remove('wr-audio-active'); c.style.outline = ''; }});
+        if (already) return;
+        try {{
+          iframe.contentWindow.postMessage(JSON.stringify({{event:'command',func:'unMute',args:[]}}), '*');
+          iframe.contentWindow.postMessage(JSON.stringify({{event:'command',func:'setVolume',args:[100]}}), '*');
+        }} catch(e) {{}}
+        cell.classList.add('wr-audio-active');
+      }});
       grid.appendChild(cell);
     }});
     // Two-pass: rAF → rAF ensures grid layout is flushed before we measure cells
