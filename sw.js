@@ -19,7 +19,7 @@
 //   - /offline.html graceful fallback remains (referenced but not blocking)
 // ═══════════════════════════════════════════════════════════════════════════
 
-const CACHE_VERSION = 'v13';          // <- NUZU 2.1: click-to-solo audio (one stream unmuted at a time) across main grid, Waiting Room & mobile
+const CACHE_VERSION = 'v14';          // NUZU 2.1.1 - surrogate crash fix + click-to-solo audio (v13 never shipped: build was failing)
 const CACHE_STATIC  = 'nuzu-static-' + CACHE_VERSION;
 const CACHE_PAGES   = 'nuzu-pages-'  + CACHE_VERSION;
 const CACHE_ICONS   = 'nuzu-icons-'  + CACHE_VERSION;

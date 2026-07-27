@@ -27,6 +27,32 @@ except ImportError:
 
 
 print("Starting NUZU bot...")
+# ══════════════════ SURROGATE GUARD (build-safety net) ══════════════════
+# The entire page is assembled as a Python f-string. That means a JS escape like
+# '\uD83D\uDD07' written WITHOUT doubling the backslash is consumed by *Python*,
+# producing a LONE SURROGATE code point. Lone surrogates cannot be encoded as
+# UTF-8, so f.write(html) dies with:
+#     UnicodeEncodeError: 'utf-8' codec can't encode characters ... surrogates not allowed
+# That aborts the GitHub Action, which means index.html is never committed and the
+# live site silently stops updating — the failure looks like "nothing changed".
+#
+# RULES FOR ANYONE EDITING THIS FILE:
+#   * Emoji in generated JS/HTML -> use an HTML entity ('&#128266;') or a literal
+#     emoji character. Do NOT use \uXXXX escapes for anything above U+FFFF.
+#   * If you truly need a JS-side escape, DOUBLE the backslash: '\\uD83D\\uDD0A'.
+# nz_safe_text() below is the last line of defence: it strips any lone surrogate
+# that slips through so a bad edit degrades one glyph instead of killing the build.
+def nz_safe_text(text, _label="output"):
+    try:
+        text.encode("utf-8")
+        return text
+    except UnicodeEncodeError:
+        cleaned = "".join(ch for ch in text if not (0xD800 <= ord(ch) <= 0xDFFF))
+        removed = len(text) - len(cleaned)
+        print("  [surrogate-guard] stripped %d invalid surrogate char(s) from %s "
+              "- check for un-doubled \\uXXXX escapes in the page template" % (removed, _label))
+        return cleaned
+
 CURRENT_DIR = os.getcwd()
 print(f"Saving files to current directory: {CURRENT_DIR}")
 INDEX_HTML   = os.path.join(CURRENT_DIR, "index.html")
@@ -6872,7 +6898,7 @@ function _syncAudioButtons() {{
     var b = inset.querySelector('.nz-audio-btn'); if (!b) return;
     var on = inset.classList.contains('audio-active');
     b.classList.toggle('nz-on', on);
-    b.innerHTML = on ? '\uD83D\uDD0A' : '\uD83D\uDD07';
+    b.innerHTML = on ? '&#128266;' : '&#128263;';   /* speaker-on / speaker-muted (HTML entities: safe inside the Python f-string) */
     b.setAttribute('title', on ? 'Mute' : 'Unmute');
   }});
 }}
@@ -6886,7 +6912,7 @@ function _attachAudioButton(inset, player) {{
   if (!inset || inset.querySelector('.nz-audio-btn')) return;
   var b = document.createElement('button');
   b.className = 'nz-audio-btn'; b.type = 'button';
-  b.innerHTML = '\uD83D\uDD07'; b.setAttribute('title', 'Unmute'); b.setAttribute('aria-label', 'Unmute this stream');
+  b.innerHTML = '&#128263;'; b.setAttribute('title', 'Unmute'); b.setAttribute('aria-label', 'Unmute this stream');
   b.addEventListener('click', function(ev) {{ ev.stopPropagation(); ev.preventDefault(); _soloPlayer(player); }});
   inset.appendChild(b);
 }}
@@ -8738,7 +8764,7 @@ html_parts.append(f"""
 # ====================== WRITE OUTPUT FILES ======================
 html = "".join(html_parts)
 with open(INDEX_HTML, "w", encoding="utf-8", errors="replace") as f:
-    f.write(html)
+    f.write(nz_safe_text(html, "index.html"))
 print(f"✅ index.html written ({len(html):,} characters)")
 
 print("✅ NUZU bot finished successfully.")
@@ -8779,7 +8805,7 @@ if _total_stories < MINIMUM_STORIES_FLOOR:
 
 try:
     with open(INDEX_HTML, "w", encoding="utf-8", errors="replace") as f:
-        f.write(html)
+        f.write(nz_safe_text(html, "index.html"))
     print(f"SUCCESS: index.html saved to {INDEX_HTML}")
 except Exception as e:
     print(f"ERROR saving index.html: {str(e)}")
@@ -8880,7 +8906,7 @@ try:
   Cache-Control: public, max-age=86400
 """
     with open(HEADERS_FILE, "w") as hf:
-        hf.write(headers_content)
+        hf.write(nz_safe_text(headers_content, "_headers"))
     print("SUCCESS: _headers written")
 except Exception as e:
     print(f"WARNING: _headers not written: {{str(e)}}")
@@ -9085,7 +9111,7 @@ self.addEventListener('message', event => {
     # Final HTML write (safe fallback)
     html = "".join(html_parts)
     with open(INDEX_HTML, "w", encoding="utf-8", errors="replace") as f:
-        f.write(html)
+        f.write(nz_safe_text(html, "index.html"))
 
     print("✅ index.html generated successfully")
     print(f"   Size: {len(html):,} characters")
@@ -9098,7 +9124,7 @@ print("\nNUZU bot finished successfully.")
 print("Files saved to current directory.")
 html = "".join(html_parts)
 with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html)
+    f.write(nz_safe_text(html, "index.html"))
 print("✅ index.html generated")
 
 # ====================== PERSIST RUN STATE ======================

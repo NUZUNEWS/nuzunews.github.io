@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.1.1",
   "build": "2026-07-26",
-  "notes": "NUZU 2.1 — Audio fix: Party Portal-style click-to-solo. Every embed now carries enablejsapi=1 and a speaker button mutes all other streams, so only one video plays audio at a time across the main video wall, Waiting Room and mobile. Service worker v13."
+  "notes": "NUZU 2.1.1 — Fixes the UnicodeEncodeError that was aborting every GitHub Action run (lone surrogates from un-doubled \\uXXXX escapes in the page f-string). That crash is why the 2.1 audio fix never reached the live site. Adds a permanent surrogate guard at every write site. Click-to-solo audio now active across the main video wall, Waiting Room and mobile. Service worker v14."
 }
