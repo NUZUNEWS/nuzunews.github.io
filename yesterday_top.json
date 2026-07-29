@@ -3,11 +3,25 @@
   "today_top_by_section": {
     "us": [
       {
+        "title": "South Carolina set to honor Sen. Lindsey Graham\u2019s decades of service - WRDW",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPU2xTOVhfTUtULUJ5cmt5TFdwN3V6eVdTejVORnpteVpJZmRZY1EzOVhZVWtnNExQajZGLUZoYUtydElQd2JVY3V0cGRlYWtKMzFuWEpfY0x0cFZSb2ozZURhVmh1TUx6Y0prdjFlMjlLZzZaUE9Fc3lVMDVQMEZjNldNQkwyNzJpU01GMUd1RzlaMVc0MWQycw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WRDW",
+        "n_sources": 4,
+        "lead_ts": 1785324600
+      },
+      {
         "title": "Trump Eulogizes Lindsey Graham as Senate Giant and \u2018American Original\u2019 - WSJ",
         "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWnVSRmRFdXJ0UG1pcjc4cXpMS3M3NWVUYTFhU2gxOEk2LXFncDE2aW5xbklNMzYwbnh4OXJNMkZEOHhQMkpsLUI3LVpFZlJqQ2FNd3NSNkFrWU9YRkdGWHdFa0FPdjhQR2g3UlFEMGJNQ2pnZGtkMlB3OEt2MVk2T2RuY0YzVTBFclVzaWRxWEdoMjJiV1J0ajZlOWIzOExHUXk1MEk1Y2xBeWtidjFTU3JZaGZUc2lC?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WSJ",
         "n_sources": 4,
         "lead_ts": 1785273840
+      },
+      {
+        "title": "US markets mixed ahead of Fed decision and oil prices jump as Middle East violence flares - AP News",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNVVhqMlRBNU0taHdVcUdHUUE3eDFsZEFQbTZ6dElnTEtMOGVSb1ktYlhpbmJHMm9NY2xRc1lQRWRXcGZ2N0NUNm9FSWV1ZkQ2MjAtaE5WWkwxeHFDMmxxX3I4MHNDNmduRnZ4ODNzNUtSZ2hyZEh3NVBtMmthTHA5UDRzcTBXOWJYNS0yVHlUM0loVXE5VThkeg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 3,
+        "lead_ts": 1785327000
       },
       {
         "title": "Law Professor James Sample Weighs in on Eighth Amendment Case Before the Supreme Court - Hofstra University News",
@@ -22,20 +36,6 @@
         "source": "WaPo",
         "n_sources": 3,
         "lead_ts": 1785305640
-      },
-      {
-        "title": "Zelenskyy has a 'good meeting' with Trump at the White House as he seeks more cooperation with US - AP News",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPMU5TRHpCaF9Hc1F1eFc0TFVZZGprSGhQTmtnTTRGS01XUkR1aGluZlNRbjctNG5rMUdVYkVxc0g0c1BwOVd0T0M3SDZzUXVFd1loLUxtRk1hcms1bnhmTk1GRmcyQk9kbHJycTJKM0ZNOGJ0b2FTUnZTTUdWNm0yNEFQRno3NUppMEl3RlZrYW83bGlnZXB2aWh1aE9POWo4Q0tjOWJkT2xTejd0Umw3aA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 3,
-        "lead_ts": 1785294120
-      },
-      {
-        "title": "Remarks: Donald Trump Deliveres a Eulogy for Lindsey Graham - July 28, 2026 - Roll Call",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQcXBwbnZ2Y0VxdFNtMjdyZGg5ZGxUVUlvOGhCX053bGdXWWpXRXVWemc1Wm1tNHNFaVdXa1RIbDdyM2Z3ZzBuWnI2bmF0aG1ldjh2TkxKT3BVbTVNQnpXZEFCOGZVSEdaenVfYU1UVWUyc1hMclRlU1hNcldZM0FkaHlZN1R1dFlId1ZnOHBtcHdSVzYtc0pVNnhsb3pvZms0Rzh3TGdR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Roll Call",
-        "n_sources": 3,
-        "lead_ts": 1785288814
       }
     ],
     "mideast": [
@@ -61,18 +61,18 @@
         "lead_ts": 1785285883
       },
       {
-        "title": "At Least 10 Killed in US-Saudi Strikes in Iraq: PMF Sources - The Defense Post",
-        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1pZ3Jra29lemdVb09jQVZkckFVdHBScGNfYW5HTkMxTWI0X2x5TVVob3J6V1hQaUJvVndCMmxVeE1LdXJFMmxqaDFwdWhNcmdUVVAta0laVzFjTWxWay1pT2YzaVZReFlFZkx2VC1ib250MjktMy1vZU9Hc9IBgAFBVV95cUxOSjFtNFFpZC02c2I0SFRyQkstR21tYjRpQkh5akhGYVRLUGtLdVFCX3E2NnhDTnc4SUl3SzMxMGpuV0pPVWtvd1lTa19sMVRpejBSaXBTOWVnNGRpQUxKUllGQzIxWlRUT09YblNQM083WjhoNm9JRDd2UEN6aTRZUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Defense Post",
+        "title": "Jordan intercepts Iranian missiles as US and Saudi Arabia launch strikes against militias in Iraq - Voice of Alexandria",
+        "link": "https://news.google.com/rss/articles/CBMinAJBVV95cUxOM3BvbWx1bEFOTEFhUmw5ZGZEaF9vS2VVRnRhd1hGYWQ0UzFOX3YxSS1FOUhFX2l0YmI5S1V5YUEwYThDdWp5VDk4Rzh6aVlJRFItaXRLSlJWSGJORG8ySnhBdDRDUXJtNmNBamZMbWtTRGNEZVNnX0NXcnEya0JxdWlTczdoVVgxMDhORE9tYnZpTHZMeVNPSGkzMlltdG5Ld2QxTEJwc0NNUXdoZk5CUTIybW9WUWtYNjhfSS12dVZGbjBBelA1cmlTbkVpVDl1ckR1NHJ1bFdiQ0hUMkJxcHhON0F3d3h3bGMyQVhkZG1tV3luMUctOWF1UjNLRUlkMER0OXlPd0I4RlAyUFBSY2JsQmNaQUlrVTBJOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Voice of Alexandria",
         "n_sources": 4,
-        "lead_ts": 1785309097
+        "lead_ts": 1785326400
       },
       {
-        "title": "Oil rises as US-Iran tension escalates after Iraq strikes, missile attack - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPd0ctWlZRN0hINkdrNUJmWWxpV0ZGNGw2Y2taRk1DbFBpdzd5bFdXQmJEcW9VRExnRFBtTWlTTHBRTU5tcDN2azF6VmtxdDN6WlVncmJxSVJhYjM4Wlctb3NEcnEzSWt4djdPSWJJX3ItYmpaN0UyZ09pbV85YjlRMkQ4RTV2RDE2c2NhYlRTdEVEUUFoWEVLMVBqUzhhX2xtVlJLUFp0RWFZTFpCSGJwMTRydUQ3NUx6ejJyYWFCdzBMVWpOYWZqbzF3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
+        "title": "\u2018The war caused this\u2019: Miscarriages soar in Gaza amid Israeli bombing and siege - Middle East Eye",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPOFF3c2VkTWd3UXR3WHhucEVrLTBZdUVyaWZHSzBJT1FZQ1FXR3BzOWwwYzVydXA4cHRkaF93NzRabml3N0RiTFNmZ3lsaHM4Mkdub0FDLU5HX0JxbDB4SFN1eldGVFFqdFFGSDV1cWtiUTVUbUlyaVc3a0FUNDI3aU93eE82Unh2VUM2akZwYVRMYUttbUpKQ1A4aGI3cUF6?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ME Eye",
         "n_sources": 4,
-        "lead_ts": 1785307996
+        "lead_ts": 1785325544
       }
     ],
     "world": [
@@ -82,6 +82,13 @@
         "source": "AP",
         "n_sources": 5,
         "lead_ts": 1785279900
+      },
+      {
+        "title": "US markets mixed ahead of Fed decision and oil prices jump as Middle East violence flares - AP News",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNVVhqMlRBNU0taHdVcUdHUUE3eDFsZEFQbTZ6dElnTEtMOGVSb1ktYlhpbmJHMm9NY2xRc1lQRWRXcGZ2N0NUNm9FSWV1ZkQ2MjAtaE5WWkwxeHFDMmxxX3I4MHNDNmduRnZ4ODNzNUtSZ2hyZEh3NVBtMmthTHA5UDRzcTBXOWJYNS0yVHlUM0loVXE5VThkeg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 3,
+        "lead_ts": 1785327000
       },
       {
         "title": "Iran and Oman swap proposals to manage Strait of Hormuz: What we know - Al Jazeera",
@@ -103,13 +110,6 @@
         "source": "Inquirer.net",
         "n_sources": 3,
         "lead_ts": 1785286980
-      },
-      {
-        "title": "Yemen\u2019s Houthis say they fired missiles at Saudi oil tanker in Red Sea - The Japan Times",
-        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQc3BNbFU5TmJLcnA5dEtDYVpqdllCa1laTmZYMTJYOEx2LXl5dDRMUjNQbDgxT1dEVEltT2lFOWxzQ1ZrdXY2OGNYa05ZZEF4UGdMclB1ZVh3U0FVbF85MTlITFNUdl8tX1c5U1N6VTl6cVJ1aGdlNTRFazBkS1d4N0Q4cXg5Z3RDNkh1NzdCQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Japan Times",
-        "n_sources": 3,
-        "lead_ts": 1785286740
       }
     ],
     "tech": [
@@ -165,6 +165,13 @@
         "lead_ts": 1785277201
       },
       {
+        "title": "S&P 500, Nasdaq futures edge higher ahead of Fed decision; chip stocks wobble - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPYTBjTkgxdmttOW1mOFd3NHRiOHNOdEhqMG12bzU1WWVOcm1pTGNuazF6OGU2VkJya1dZd3lKSXRmZ0V3NFJ6eXJGbGk1SzgtQ2E1NzI0YmJQZk9uZ1lmWTZqNHpEY3lrYVZtYlNIYXllOWNYUDdxT1owV3FnX1ZUNHdyMGN4VlM0QVZpbV9PYzkzT1ktVXZLRWx6dmMtNnRIMnVIUzBfakZmMl9kS25ldGQxbw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 3,
+        "lead_ts": 1785325080
+      },
+      {
         "title": "Forget the logo, Cracker Barrel's new CEO should start with the menu - Business Insider",
         "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQT21menQ5TVc2Q0ctOVpjVkxfeHl0bm5FMi1WLWVBTVpoZF9wVUZabnNjcTUtTkJMTGlyZXJmSjd4ZUUwaTVsQ0x2VENPNnA0WS1lS3FNbFRpeVhIOENUOFJiaHcyemxJRDNNRjRDQUF3TUgxZTNYS1ltVVpWcWY5bUIxUjlqLWxxRjRmXzJfUEZnUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Business Insider",
@@ -172,21 +179,21 @@
         "lead_ts": 1785317425
       },
       {
-        "title": "Wall Street Overwhelmingly Bets on a Hold Ahead of Fed Rate Decision; Is the AI Stock Plunge a Buying Opportunity? - finance.biggo.com",
-        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE00R0xGSmxnb1NrVjVnZnBtaG1OXzNtUzdSakdINE56bF9hQXNTbklRc1lyakVrM0J2M2RpbmRTNm9Yb1VzZURzd20wZE5OdThyZ3o5M3M0SElxaVhCaVBSc0gtRG9DQ2FiYmZRdkdOZVlEZzF5d2c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "finance.biggo.com",
+        "title": "Trump\u2019s Tariffs Are Sending Some Companies Back to China - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNYVNoRmhoZG5NMHVjRERYWWp4bGNHTUdfUnl2aVdLTFpMbXplOHdqQ3BRUjR0X1FRc0tjMUt4amU4RVdldUdUU3ZBN1dobkxQVGdla2l5SzVxVFpZR0N0RjY1cUlTdDhWbUJGeWprTGR4S0dOUzdOWFU5MThVblZ6QjJsekVMVFhPYTJ3OHJMNlR4N054R2trN2NNbUoyVDY3eDNJV3RpVVV6cGFlLWV1RDJ3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
         "n_sources": 3,
-        "lead_ts": 1785314100
-      },
-      {
-        "title": "What investors should expect from critical Q2 earnings for Meta, Microsoft, and Amazon - Business Insider",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQektqVWYwX3RscWh1RlRzVW44UDhZTUFSS3hwcFFpbWhxYXhGYW9HWFUtZVF4Z0pDbUNmbzFPUmlXaGxTSmwtbWIweWl4RzR6VFY3VVlHZ3ZEb3YwMnR2aEpzQ25BRWMtUlJ0RGJKTmxMYVNtdFpuV1pfTU5oaWJ2QWp1NU9vRzZpbGpJdC1MZlp5VzVpM3p1SHJvQmVjc1VqU2lNdU5IaUJpcWhJZlpSalV0aUM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Business Insider",
-        "n_sources": 2,
-        "lead_ts": 1785318797
+        "lead_ts": 1785315722
       }
     ],
     "sports": [
+      {
+        "title": "Bengals training camp Day 1 news and discussion - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOWUFhSW1JWnh0ZEtyVDFDUkF2ZnliOVROZm9vNXBNbU1ZVWlyQ1dmc0l0WVc2ekptMXRCenNfOFlDeUhhYmxsZU9vNjNVcllkRkQyWEVYeVZRaTFhSmFfcmdDYlJ3TkdJdFJqT1M4UERkYndLdFFHNi15RVNHTVEzNU13?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 8,
+        "lead_ts": 1785323100
+      },
       {
         "title": "News, notes, and a Jadarian Price highlight from Day 4 of Seahawks training camp 2026 - Yahoo Sports",
         "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPS3Jnc2VlUjRuSHpnY2pnWTdDTzJ4emgtNGhpRF9JSHRheTJuNDVFbjBMNFFvRHhIRDU4bS1tWjhFNkhJbno1NDE0Mkh5T2hxVnY3UVdLS3E2cUlQbDdfZlpnaDVwMTNpRk1VR1pYZmZRaVVGWXd6aWtXQzBFZFlRbGR0VE1zM3FwT1FiLQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -195,32 +202,25 @@
         "lead_ts": 1785295380
       },
       {
+        "title": "FIFA plans to sell a stake in the World Cup: How much for and why is Gianni Infantino doing it? - The Athletic - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPa1RhbHlfT0p5dC02bndJTVltOENGOVNKV3VXOC0tbkhEOEY2SEx5OGs1d3JnTDNOaVI5MXJqRUdkaUtXZ1JPSXlzWWdyX0RRVnFUUE9PNU1QZEoyRjloX05EYnlEWE5GdlNjSG40b0JRNFN0MFd6Q0RNX0tnR2FtUWNpdGxiMUM0RWJmdE5sUjhUZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 7,
+        "lead_ts": 1785326460
+      },
+      {
+        "title": "Falcons make flurry of roster moves as training camp begins - Atlanta Falcons",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNTjFTa2gwY3FBeGFxRzZCNGpJQmdkZmZqTzlPNnp5cEw5R053LW5CUExtXzhpOGJtRlNodHBmcEtEQ3MzUlA3Sktvajd0bS1ONXgwd3BaYW0zYWtaNE9lVm41ZEVxcWpJMUtqdDdiOHdaLWplNzVhRTRDQ29hXzc4SkVvbXMxSFVGLVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Atlanta Falcons",
+        "n_sources": 6,
+        "lead_ts": 1785326577
+      },
+      {
         "title": "Uefa World Cup boycott may be raised over Fifa's private investment plan - BBC",
         "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9rN3YtUUdpcjhOT1E1OEJpdHNjZjdyZ0tiY2RsTVZqdXNvSHo4ZnRrd2VaYWRiZzNTNDRSTUFxNFEyMXpia0xVejFhYVI1Y0Jnb1ZGdkFJbjJuS29oams5bUpUa0JpTmdJTFE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "BBC",
         "n_sources": 6,
         "lead_ts": 1785309397
-      },
-      {
-        "title": "FIFA plans to sell a stake in the World Cup: How much for and why is Gianni Infantino doing it? - The Athletic - The New York Times",
-        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPa1RhbHlfT0p5dC02bndJTVltOENGOVNKV3VXOC0tbkhEOEY2SEx5OGs1d3JnTDNOaVI5MXJqRUdkaUtXZ1JPSXlzWWdyX0RRVnFUUE9PNU1QZEoyRjloX05EYnlEWE5GdlNjSG40b0JRNFN0MFd6Q0RNX0tnR2FtUWNpdGxiMUM0RWJmdE5sUjhUZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 5,
-        "lead_ts": 1785315660
-      },
-      {
-        "title": "Dallas Cowboys, Jerry Jones Highlight Positive Outlook Ahead Of Training Camp - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOX3FDcFJmSWZLd01ieDF1Ukw3XzIzcE9FaW15eVNESHN4LXBRdWJyTUgxMk9WRmVTMmVqWnhiM1BpQ2FFQi1YZi1oYVdNa3NDYUhyNVVoeWliZW9Va0pTRVRVVFk2bGVZOGdBTE5Hc3pfU0RoeGhvdC1oZUN6Q3VBQWxiUGxhZUZLalZUSXk5ano2UXYtXzg5aEpiSDNaeDl2YkYwenZjTHlxR1hOeEpCN9IBsAFBVV95cUxOUWNzWmx1X2htanFaSmFnRGNzbFp3WHBzT2hXRXpvdkcyZUtla3dWaEcyMVlnMGNPX1A5dzJRWjhFdTVlaEphczhlMG5aZS1MQ0ZaQmUyaEljbm9yQldGb1BOUXVxUV9LT1NDbFIxZEZ4ODlpS0N0MHowbmJzWlRlWlpaak12NEZQOTJaZlo5clRFcHlXU2xHNDMxMWlaMXl6SG9ybnZlT2M0cGN5c0VJcw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 5,
-        "lead_ts": 1785303006
-      },
-      {
-        "title": "Notre Dame, Ohio State announce lucrative jersey patch sponsorship deals on the same day - AP News",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPOF9qMEVRWENueTdoeDNVbmJRVVY0X0c2aVpMT0ppVS1EeUhGY3FncWRzQTlWNWhDS05LU3hYZUdMa3hQSTg3a1BWSDNMRG5SUGJnTTBSOGlNbHNMN0hxR0FhdGhGcTBtVHh4QnpqNno3WnI2cC1IRWFSNnpDVTh2SFdqN3FUVGhr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 5,
-        "lead_ts": 1785296451
       }
     ],
     "culture": [
