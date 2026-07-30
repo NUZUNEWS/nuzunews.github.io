@@ -40,18 +40,18 @@
     ],
     "mideast": [
       {
+        "title": "Iran Conflict Escalates Across the Middle East - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPRzZLT0NyTHFpbWtpVjdkdWJpUk85b050eVV1ZjFlaEVuRGVRaWg2d21UY2p6RzY0OW94Tll5UnNPWW5IdFFBd3IybjJ5RHp6aF80aFNkd2tucmFrZzF5SlJXN1VFQ3ZrdVVpVm1NTnE4OU13MUljOUxOTnk3UW1NWlg0eFNpa1Z3T2pwYzNDSXVpaGJoS3BzUFFDd053aDRiSHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 10,
+        "lead_ts": 1785423804
+      },
+      {
         "title": "U.S.-Saudi strikes against Iran and Middle East tension - Foundation for Defense of Democracies",
         "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNOWZSM0dLRW1WRGdBYmJuQmNMUUdUN2pzUUxnQVdPa3pxa1diNmM4T0VuZlhza1lxd0wxWDJSeUoxSkN6TXhFNDNJMFpQdXJIVG9XX0lpLXFZTjJ3dGdMOTd0cUVVVG9PaUhDUHRBN0Iwb1ZLdG5fZE5YeGs1WGw4UFBGdklQaUhFNXZNMkFMVXd0QzZyc3hqSjh2TVR5YW8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Foundation for Defense of Democracies",
         "n_sources": 10,
         "lead_ts": 1785382163
-      },
-      {
-        "title": "Iran Conflict Escalates Across the Middle East - Bloomberg",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPRzZLT0NyTHFpbWtpVjdkdWJpUk85b050eVV1ZjFlaEVuRGVRaWg2d21UY2p6RzY0OW94Tll5UnNPWW5IdFFBd3IybjJ5RHp6aF80aFNkd2tucmFrZzF5SlJXN1VFQ3ZrdVVpVm1NTnE4OU13MUljOUxOTnk3UW1NWlg0eFNpa1Z3T2pwYzNDSXVpaGJoS3BzUFFDd053aDRiSHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 9,
-        "lead_ts": 1785415897
       },
       {
         "title": "US and Iran exchange attacks as tensions escalate in the Middle East - Gulf Coast News and Weather",
@@ -76,6 +76,13 @@
       }
     ],
     "world": [
+      {
+        "title": "The France and Spain wildfires\u2019 path of destruction in maps, satellite images and photos - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOYW96cVJPVlMxZTNmUFVMYjZXZ1d4ZUdsV3otbG1yMjd0dUhJbndwcklVZUN0VDRsaWpfZk9vcXNPOGFtR05Qbk1jLVZnOTFMcy1LRU5UWlNOSkNtU1RWTXFyQjZZSzJTMTk5ZGxvQ3NyVTJ0TTd0WnF0dWpaSkZXYl9LZTJqZFJMMElnQk5oMnZfZkZFUnZ3Tm51MmM3MWZkY3VnU29ZRmR1YVFPZWk2S09WYlI?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 4,
+        "lead_ts": 1785422580
+      },
       {
         "title": "Iran Conflict Escalates Across the Middle East - Bloomberg",
         "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPRzZLT0NyTHFpbWtpVjdkdWJpUk85b050eVV1ZjFlaEVuRGVRaWg2d21UY2p6RzY0OW94Tll5UnNPWW5IdFFBd3IybjJ5RHp6aF80aFNkd2tucmFrZzF5SlJXN1VFQ3ZrdVVpVm1NTnE4OU13MUljOUxOTnk3UW1NWlg0eFNpa1Z3T2pwYzNDSXVpaGJoS3BzUFFDd053aDRiSHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -103,13 +110,6 @@
         "source": "Japan Times",
         "n_sources": 3,
         "lead_ts": 1785386249
-      },
-      {
-        "title": "France, Spain make progress on wildfires as two die in Greece - The Japan Times",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxORklHSWF5UjZYR0wteWc0SWctV0RUTmtoWTJVSTByZVpCZmk0SHEzRk5VREhTRExBZkNhRjl2MTE2LXNqN1NiVHAtYjV5SnVfbVZoUi1kdkJSM3VJaGsxVWd4WGRqVmFBZjBHUGJQSFFQcWlpc1hMNkZ6eWlNblhLeTZOWTA4dXFp?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Japan Times",
-        "n_sources": 3,
-        "lead_ts": 1785367680
       }
     ],
     "tech": [
@@ -135,21 +135,28 @@
         "lead_ts": 1785355200
       },
       {
-        "title": "EU lays out $11.4 billion for 7 AI gigafactories as it aims to catch up with US and China - ABC News - Breaking News, Latest News and Videos",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPemVhZmp0YzBzeHNGaktiRUloV0FkWndVbFlZSVhQa0R5LUN0WEI2SGVac2NoVE9FUzVCY29Da0stY3pKMHE0TVk3YmxYNG1semt6T3RnRnN2c252R1FBcmdRV1ZTYnpBbzNSRFBzeEVJWVk5cDlNbEw2QktqNFdKbEgxUl8yYTI1TW9ob0R6WEg3WERyY0RkZjFR0gGfAUFVX3lxTE51SzljZVhuLVZLQU5mTFlsb1JtZEphemVWeWZOU2RaUXRmM1RkbGZXZ1FZd2Y4VTRfeGoycG5SRzZPMnc5QzI1cHZwQ2xTVEwtMTduWlpzb2RjWFFsVjNuT1Y3b3FNVXlyN3YtNXFpRzVObHFLM25wS2JjaE13SnRjRjFpRkZZbnNJNGdqYzZYT241dlRUR3FQNDhGMlNmOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ABC News",
+        "title": "Scale AI taps former Google Cloud executive as CEO - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQamZzYk1JSEFFX2U2RmtXcjVkdUNndE5VaUNLSjJHejZ5TlhsZkVuUmt1cUpMejNTWW8tWUZHRTJkSjVJLVVoYnRCOUpHLWl4dXNvb3NYd0E1WGZBaEloUUFEY3R1R3EyMjhHSElKTUVjRDJPNUpzNDdRLVZfTFpvTHV0eVVVTHFmTURuanhQeTZGMWE0RE55UXFn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
         "n_sources": 2,
-        "lead_ts": 1785412849
+        "lead_ts": 1785423957
       },
       {
-        "title": "Elon Musk\u2019s xAI Sues Minnesota Days Before State Ban on AI Nudification Apps - petapixel.com",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOQ1NuREIzaFdVc0F1QU1EaExZeklaLVJHWVZWdms3QmlIYTdreXBJa1ZuY3dsY0JnSWlvNTQ5Q29YZG8zRm1YSjlKREhJbkEwNjUxNkpBZmJGU1VXdVVjV3VDaUJGSmhXRXpudWE5LUd0d3dFV0F5Z1JDTkx6UVVSb0p3R2hjSVFSdUs3MHJueUlmZFJqS3hBUURHdFYyTmNfT1E3UHZoMlhJV2d1U1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "PetaPixel",
+        "title": "CNET Readers Are Convinced Apple Has a Foldable iPhone Coming. But What About Smart Glasses? - cnet.com",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUmlId0ZuU1R5ZmstbGQ3ZmFZRTlEM1piYmZqU1pqMVQ3SHNxNTl0bnhOMUUzR0tSbUVpZFlkUGltNXEtNW9fbXI2RFQ0Y2hCamtNMFFUQUtFcnN3V2dMLTFYSDZOcGpxMHFWM1hpTGUtUUpLRDVFOEFNWUJiaFM2MlJuWjNsZUN5LXk5V3ZmZW5DNDZIVU05R016WHljdE01YmVkcDF6c214MnF1b2FEeTd1cWdZRU9P?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNET",
         "n_sources": 2,
-        "lead_ts": 1785405125
+        "lead_ts": 1785421840
       }
     ],
     "business": [
+      {
+        "title": "Economy slowed in second quarter, while inflation improved - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOWVBNd0szWnhELWJ5cVJNRVdxejFlV0xYY09nc09VMTBranNZcnB5TjJNUUIwS1dqQ3RCd081ZEstMTJqbXM3S21vcW1LWU5iVVFZeFdvSUtkVlYxVEFrUi1XZHFSei14RFVraV9iUjFTRnNmQUlzMTNESGlRTEE5NDk4dFN3ZjgtVEtjSlI4c0pzZEo5MzJFWjF1RFl4MXFJbEdRc0taRFhtUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 6,
+        "lead_ts": 1785421036
+      },
       {
         "title": "Wall Street closes down sharply after Fed holds rates unchanged - Reuters",
         "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPYTBjTkgxdmttOW1mOFd3NHRiOHNOdEhqMG12bzU1WWVOcm1pTGNuazF6OGU2VkJya1dZd3lKSXRmZ0V3NFJ6eXJGbGk1SzgtQ2E1NzI0YmJQZk9uZ1lmWTZqNHpEY3lrYVZtYlNIYXllOWNYUDdxT1owV3FnX1ZUNHdyMGN4VlM0QVZpbV9PYzkzT1ktVXZLRWx6dmMtNnRIMnVIUzBfakZmMl9kS25ldGQxbw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -163,13 +170,6 @@
         "source": "Yahoo Finance",
         "n_sources": 4,
         "lead_ts": 1785373380
-      },
-      {
-        "title": "Economy slowed in second quarter, while inflation improved - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOWVBNd0szWnhELWJ5cVJNRVdxejFlV0xYY09nc09VMTBranNZcnB5TjJNUUIwS1dqQ3RCd081ZEstMTJqbXM3S21vcW1LWU5iVVFZeFdvSUtkVlYxVEFrUi1XZHFSei14RFVraV9iUjFTRnNmQUlzMTNESGlRTEE5NDk4dFN3ZjgtVEtjSlI4c0pzZEo5MzJFWjF1RFl4MXFJbEdRc0taRFhtUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 3,
-        "lead_ts": 1785415795
       },
       {
         "title": "Here Are Wednesday\u2019s Top Wall Street Analyst Research Calls: Bloom Energy, Dave, Fiverr, Humana, Las Vegas Sands, Lemonade, Procter & Gamble, SK hynix, Wix.com, and More - 24/7 Wall St.",
@@ -216,14 +216,21 @@
         "lead_ts": 1785360433
       },
       {
-        "title": "Yankees, Cubs and the Most Desperate Teams at 2026 MLB Trade Deadline - bleacherreport.com",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQMnZ4QlhQTHlkR0hNMVVmVnpGSXdRUmIxNENTNFJsczFKR2MtWVg4Z3NZOWE5cjNuclU3Q2lDMmo0ZlRSRkFJcmNjNjIzcGU2X0ZUZnd0cHpOQktYbldIaDBiS0p0VnN0MFRFS1o5N2ZlOHVoakZVMl9Yd2F3TFdYMlViLWF2YThPMUhYMVFIZS1LM25lcU40ZndQanR4M3JMV01hTkFqd3M4Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "bleacherreport.com",
+        "title": "Patriots training camp: Live updates from Day 5 practice - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTTI0RU91cmZFQzRHWUE4U1dOVFYwSnZubmRITEt1M0ViNXV3TWV5dHZyclUycmFEdm9udEhRYVNQZFZSR0hFdDBIdE5fZE5TQ2ZaNHAyZTZGVmcyNkFhb0g3bC1wYl9lbDRHemtBY1ZCUEpJbnI2aTljckJPNVM5dFY4YUM5dFZDWXRsSg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
         "n_sources": 5,
-        "lead_ts": 1785409793
+        "lead_ts": 1785419890
       }
     ],
     "culture": [
+      {
+        "title": "\u2018Spider-Man: Brand New Day\u2019 Ties An MCU Rotten Tomatoes Review Score Record - Forbes",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOa1MtWEZJRVRQY2FHU0FMclBEVlVNRGM4WUNPV3JYTjZoYlRXSl9IYmZBekdxcFBnSHRhUW5MS1ZpbXotaWJRTlBlaW01alVnUzktZnZibHR6LUI0TzNOVVcwTHlvaDhkdGl5N0xKaktEQ0t6N1ZmMWlRazlibVB4c3llU0tOWFJqOEc0TDNfUWZMSVFtSk5PWG1VRjJreXROb2FOWVY2dmEzSkNFbU1IX1NGTl9YY0xPQlJiQTlwOUg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Forbes",
+        "n_sources": 10,
+        "lead_ts": 1785416608
+      },
       {
         "title": "Say Goodbye to Spider-Man on Netflix as \u2018Brand New Day\u2019 Swings Into Theaters - Collider",
         "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNQ3ZCUjh6YW1Fc0pwTHd4a1JGM2c2ZmtvejMyV0dsNUItZ3JyWndaX3dqaFdHT0NTYkZoQ0xJOERfczVGaDVSSnBqazhHUHRwekNRTlNDWW9zYklxUHAxYkFiZnNOZjBodE40eldwVk4xT0pVWEthYTZtdlltRENtZThn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -246,18 +253,11 @@
         "lead_ts": 1785409073
       },
       {
-        "title": "BTS Group Refuses to Participate in the \"Grammy\" After Organizers Introduced the Category of Asian Pop Music - open.kg",
-        "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNdlp3SWg3MGozU1RReVMyLUlNR24zVVhMWms0RGhnYXA3SDh0NEZBNW1oQVdxSUhoT2E3U2hoaXFUN2VQMnN6QzdYaHJ0dlBxRlotNEVsTTRWUTA5cHZlaUc2QThyUXNidm5RaVE1bVpXbEZQWW0wdXJrbTdGeERSOWtNTXFzdkFrODRIU1RfdllVaHV5VHB3OU9mTWF2WUw3UEh0MS1tOUh4WnJZU2xod1RkMFJ6MGdkbnhfOUtLWTdKTlg2N1YwLW5FcFZ4Ty03azBzenNyaVowNk9kekhZa3R5RzhqbGFxalV6amI3eHc1U0NIVXFv?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "open.kg",
+        "title": "Zendaya and Tom Holland's decade-long Spider-Man romance in pictures - BBC",
+        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1pcEswSHFMNzV2c1l6NUstU2E2ODV0RHc2U2RKTFN2WnlaRXIyUkNVbVdHQ2U4WUxhcHYwdkN3NW81a1pqTGpNNVNNZ0xvVVU1TWJTU2pUNzBZLWJ3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
         "n_sources": 6,
-        "lead_ts": 1785386578
-      },
-      {
-        "title": "Zendaya dazzles with husband Tom Holland at London Spiderman premiere - London Evening Standard",
-        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNQXhMdHFIc1ZieXJRRW9zM3R0ejdkRE9RV254UU50WVpaeTNKeml3RVljdnVsZjdxZzZBbkd0XzkxN2ZGSnJtVll3Q0lmdU8zR2x4YzhqemhpUzFHWDdBV0I0Q1VkTFhZVlNDWGVJRW05amprTW50cXdNcXVXYWlDcmJYdWJ1Yi1iZ3pyb3Z2QnNjVlh6NE9MSFA5WV9uVWlKRHNzYU53UzFNSjdt?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "London Evening Standard",
-        "n_sources": 6,
-        "lead_ts": 1785381461
+        "lead_ts": 1785409073
       }
     ]
   },
