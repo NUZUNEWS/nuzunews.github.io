@@ -1,6 +1,260 @@
 {
-  "today_date": "2026-08-01",
+  "today_date": "2026-08-02",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Water systems in 7 states hit by cyberattacks: FBI - NewsNation",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOZXFQdzU1TGRZRENsMkJkSW8zN3VNTUxaaUxuSjA1VnY0d2xBMWxRQktJWVhvbl95NWllTlZPTE90OTNMU3dJYm8xYnZ0Njhtck5yZU1mUTB2ZXFhQXdibmp1QkhvWjlHTi1zQ3dYUU9aY1M1Yk83MTFBcV95bnZobGJtWUQ0Zkhwak96Y3hxejdlc3EyU2NWN9IBngFBVV95cUxOWE5uOTZ4dWhFWGNZZ0EtZ05HTldMMm5KV1RFZ3JJQ1lzdV9iV05LQWRUaU5XNlFVcmxuYXo5RjZYaXU5dkJLNXJQdEpyRnFrNGliVzVzTW0wczRaNlVfUmtfZUVyRkVmZFNPZ3ZOQ2pFalN1cjl2djJzMmoxdmRLY2xmWHF5OFRaQTJXS1hvcThjOWZaZ05WVHl5YjB2Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NewsNation",
+        "n_sources": 3,
+        "lead_ts": 1785629824
+      },
+      {
+        "title": "Cincinnati woman charged in bomb threats made after Nolan Wells death - Cincinnati Enquirer",
+        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOOGFpTHJqUGJidkdkN0Fod1h0eXJ4ZklZdjFLRW82a19NYU8zVy1DVEZrNWRVQW1laldjV3NlZnJ6Z1V5dUFJb3NkLXpUdDlZRlg1M2dxRmpMY1k2VjNuVlJaRnJqWkxGSHJ0alZpdDhicTdtN09rSS1Qd1dLcWt0dlhlc0FWYUtmNEZtbW9MampjczRjazlNTWJWV2xsZUpnaW52SHgyU2duR1dCaWF2aFlnNmhLcHVqZFMzaldCQzB1cTBDdGR3anptTTR1TDZicWlj?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Cincinnati Enquirer",
+        "n_sources": 3,
+        "lead_ts": 1785627960
+      },
+      {
+        "title": "Shooting at In-N-Out Burger restaurant in Idaho leaves multiple people dead, police say - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQbWVLLXMyVE4zcFRpR0Vndzk4ZTBrUWY1X1MtUV9KOHN1S251NWRDbHpLNl9Ham4xNGhLRU9XRUg5YnU4ZkpKc0psc2dPWWp1QUlSaHZfQVFzLThRbkdsSnZUaXlyNGlYVEZxWThNX2IybjU4LWN3SFp1LWhLT1IyVzdvSlhRNU40N3ByZDZoUFFXQmJSc1pDbHpSbzM3cGFzbFJ1NjRlTFNnSkpWNDlpLVBFeWxZR0MtWTZiM1JHNi1ocW1JMFRYemlNMHk1UVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 2,
+        "lead_ts": 1785632580
+      },
+      {
+        "title": "Colorado declares town abandoned after local government collapses - NewsNation",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOQ1lsRkZfdXRiZTRWQ0ZSbGRDV3VfUlNRSkUzSzRGUFI4M3VtRFlQVmJCbmZQX2wtMmJIVmEzRWQtcDFRM0paNlhjU3BWS00zZG9qQ0t4bllyLUpuUzNTclI4TVhzQVUzTW5PYXd2Vk5lZnBQNUkwQWZtRThIdklmR0pDZHZXMjhubUJ3WkZCNE9PYmtSWGlyWjR0SdIBoAFBVV95cUxOVkRlTkVGVFpIbDdHTVJjTmJ0OHBrUldWT0xNbnFLczloZWFhUllRUlBIUUNTU3RmRlZmanBqaFNLQ1ZUWHJlLVhDTExiamVDVVVhTXVUVmVWSFBPdkdOenBUc21vSjZvMVZlLUhYSmVlY1Y0LWVELW1sbTRWcnhJUVFlYjRQWWNkVFZJRUY2TUtncjFTZUJzeXdIV0w3T29j?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NewsNation",
+        "n_sources": 2,
+        "lead_ts": 1785631423
+      },
+      {
+        "title": "Nolan Wells family attorney says boat distress call from day he disappeared to be reviewed - KFOR.com",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPMzNCcjlWNmpVRGVJVGp4elJnQXVqWXhNSFNjWGd5ay1MQTE0SGFNNXVoZ3BONDVrZUhZay1iMmFRZWtmQWdtWXNwaXh6QkRweDJFa1ZvdFR1RGxTWmxFOVVMUlNJVnBqOVFBRGNQb0xQV2hYZGNseXBIdHdVbFBHYlM3U2pCbzNOUnc4M0hNQ3NkanNOU3ZHcTg1ZUhhRW9oYWNHTVlReGlEcWs2Y3lfaEpJQdIBuAFBVV95cUxON2VtWjk3cXFxNzlFeXJPaU51cXhOR29lak84eGVDQkhGOGo4Tml6dTFCUElsS3R6UGIzZm45Z3h0T3N4aFd0NlF5NUZvei1OckpiZjFRS1dLa0tGYU5EeVk0TkJncE5aQ2UzdHc1SXR2Nmt2b0FnZzZ1ZXF3RkVncXdUVWdleG1kOGhQZHN6Y2ZTT2JudU1mdl9FeWJLQmRucURaczZyQ0trWFVPQXVYUGtDakVDYk5W?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "KFOR.com",
+        "n_sources": 2,
+        "lead_ts": 1785630224
+      }
+    ],
+    "mideast": [
+      {
+        "title": "Live Updates: Latest from Israel, Iran, and Middle East - The Jerusalem Post",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAtdkx1cHBkVk54UzdoRllmdW5tLU53YzN4dDJRQ0RZcFBHcHhUeDMxbVNvelBRdmpkLTFLYU5UQTVLQVRfaHVGb0tfUHRnNUhxQlRsNFpsMThDQTI1T0VFa2VRMEZka3ZzSDhtenJqSHM5VGo0Rk1zbjJhaDdUM0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Jerusalem Post",
+        "n_sources": 7,
+        "lead_ts": 1785627420
+      },
+      {
+        "title": "US urges its citizens in Middle East to be ready to leave in case of escalation in region - bbc.com",
+        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90NlpYdG53SS1QYWJ0VVdDejlVam9NOTlTbEhTSnFGZkNKaGpiQjcxUVNXREZ3cVZ2eDdqM3ZWV21nQ3AwMmNCbjhsZ21YYmZKcUxMZzZYaG1PQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 4,
+        "lead_ts": 1785619226
+      },
+      {
+        "title": "Kuwait Shoots Down Iranian Drones as Pentagon Warns of Naval Shortfall - The Eastern Herald",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVWVUd3hrMTNOS1BjNi1rSmtQT1lxTnhibmlHcHhPQ3RQeFBmLTllcmNnY2FGQy1MRXBtNkZDTUZoZjJmTFdTbDN0RE5EWnhscl9DOGZ5dGdxMzZ6WXVheTBFekxrQ1lOS1pMLTJnMXpHeWVzYXl3WHVrdmk0Y05FQTJYMEFyY3Mz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The Eastern Herald",
+        "n_sources": 3,
+        "lead_ts": 1785627712
+      },
+      {
+        "title": "Israeli Airstrike Destroys Al-Aqsa Martyrs Hospital Medicines Warehouse in Deir al-Balah, Gaza: how 13 outlets split - NewsCord",
+        "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPb1JkVXhVeGlJNEhRcTlNUDJ0NVV4bUM1Z3ZSMjFlRFlLa1ZGMzVUTUl2ZTYwY0ZYb1JKeUI5QjJYS1Y2ekJpZ0d4cWUyaUVNSFYwaDZGQ2JkVDVDN3g0RGE4eXNoWmJtZ3g5S09LMFVic25UM3F0bzkwLXRSUl85elZPRmVhNVNhY0VKRTJhcGk0eTlPM2NzMU8zckxTNGptekpXaVFyaEtrcXIzQ3Q1NndWa3d2RExlS05mczR6OGJ1bXR1QW5qYUR5cXlXa1k3TGZZdnFfRGRfdTJKUlBhRnZrZFlLVHRo?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NewsCord",
+        "n_sources": 3,
+        "lead_ts": 1785624533
+      },
+      {
+        "title": "The long shadow of 1973: Why \u201cenergy memory\u201d is reshaping global diplomacy - Middle East Monitor",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQZDBBLTYwRkxqQ2VXeVBWSnhFNDBoWEFtQTRzcDJ6cHdjWXhId0lrbnp3UTR0M3Q1V0hkd3VDVUVNOWpPTGJiQ2M0OWFrRXY4aTRYZGI1VDI0R0YwOWphSHNkMXhjQlNSUEk2LVA0RWxSSERUWXZYUnlsLWgyel9EM2QtLWF5dGlWelRfb0g0UHhtdDh0aDFvVTJtbzg5UFItNzY5NjNUTE5KczF6MFNRX3pkRVNxQdIBuwFBVV95cUxNWDdiVVJmVWx3SHh2VXhxaUFOVUxtSEt3di1DaG1oajVDMUUwUWRLd2w5bDkxdmVBN2xfa3J3UTdLUTkyd3F1ZUJGRGRMc3E2ZVRuWVdhdzJOQ2c5NXJtYXNzZFR1d2NhVUhEaGFURlpEdndDUHVPelpLNEVWc25sZ1Z3MG5INUozOThab01VbVl4Wi1xV3ZZQjViQ1NsaUlVdXZrZHktazZmZkpfUVpYSUgya3QtdnlGdjFB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ME Monitor",
+        "n_sources": 3,
+        "lead_ts": 1785584700
+      }
+    ],
+    "world": [
+      {
+        "title": "EU Holds Emergency Talks Tuesday After 60,000 Migrants Enter Ceuta From Morocco: how 20 outlets framed it - NewsCord",
+        "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNWjBZMHlTMkVmN3NocGUxanNHdmVoUWdkLTFNYWpwOVFMVjlBN01nTTRQMHhtcHVIZ1ItYzRXNkhHX19kX1pFa1NzTzE5MTMxbVdaTEJ2bnFjdk9BbXpkR2pHTHBMNENsQXZaVUpxMnRUUlA0R0tNeUtzODZONm0xX1NHNXNJem9HWnFjdXFmZkJGMElsN0ZWQlNkZklsQjh2YWQybmdoLURCZURsSDhIMUU4eXBjdmFsOE9JUUZTbGd2c0t6VndHUHlnRmd1QkNXa0gzN0lnenhyTW1tLW80cFpEelVhNzg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NewsCord",
+        "n_sources": 5,
+        "lead_ts": 1785626347
+      },
+      {
+        "title": "Moscow restaurant bombing kills three people as device carried by woman explodes - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPLXJLMDZZaGVmTXk5RHJTcTlhMlY2cVh3U2tFdE1jMlJOZzZ4QXZ2MVlkRHhXdzNJaU5yTkxjcFlRRlZBUk8tZnY1ekFvMHJjM0l1d19OaXloS1V4OE9Gb2tOTUlaaXBocXpicFB1ZU82ZXhnSnRtSEVNSDZrOF9JSEtHNUR1Zm5oaHRKNzRxZUxIVnBpdThiVURvUl8xODhmTW1SenVsV3FXa0FYWmdFeWdkSE4xV1hQd01GQ0M3Yy1Gd0Nr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 3,
+        "lead_ts": 1785630120
+      },
+      {
+        "title": "Spanish PM Rebukes \u2018Selfish\u2019 EU Allies Over Ceuta Backlash - Eurasia Review",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcHFIWHBJTkZURjFLZHdsS0U3YzY1Q2RjNmNldWJzT2MwZlh4eldKbWdrT0N3aC1HS0pKOHdYVEwxdTVHWTZuWHJ5THVuUGdzZjZNbmh0SEhuanh5eUo2MGhpRGJlWEVsNnIyYkd4a0xabF9MTWRMaG85eFRsSjFEMGQxN04wUTV3OG5Xc2wtbkxvY2Nhb2ZMdjBIN1U?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Eurasia Review",
+        "n_sources": 2,
+        "lead_ts": 1785632220
+      },
+      {
+        "title": "Socialist Spanish PM blasts Meloni over restored border controls after Ceuta surge, demands emergency meeting - WFIN",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQVklyMDM4VVR0UW14RXZ3ZExrOWFGQ3hDMDhMRnJOdFNESmVBRXRsbHJIb2tLU3lmWDZjX1E3b0M4X1JydlRDTmJ0N2FILUV2QjVCV2x3ZEl4YVBZSTlXUTQ1bTdLOGFHUlRSZTFIQjRBWWZicWxWd3ZCbnh6WGZxWGlVQ1JwRFZJWHJMVWlZUERjMVpZamQ2S0txcWUwbXpfd3c2aF85WFExLXFmSXZySFZMNXhWc0ZoaFl4cUJvdDFOUWIwa0pyMGNBekJnWFZJeU1Ca3psRjg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WFIN",
+        "n_sources": 2,
+        "lead_ts": 1785621676
+      },
+      {
+        "title": "World in Brief: FIFA scraps investment plan; Spain returns migrants from Ceuta - The Economist",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSDkxZUtXTk5ub1QyX0FNVTgwVGJvbXFqSlNPS0lXWGF4dk5PbWlNOTJ1Ym0tLUxjOHZ4blNBbU13emtjYUJtNmtDQWliQ2hSOEFLU2NuVjJ0QTZoYjV1S1F5YmNoRnk4dWtrdVFBb3lwM0xwdjdPdUNHWUFSaU1pZlJ5M1k3U2dkamVmcWNRUEJWNHJOOUtr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Economist",
+        "n_sources": 2,
+        "lead_ts": 1785619837
+      }
+    ],
+    "tech": [
+      {
+        "title": "YouTuber Hank Green says his AI usage is \u2018not healthy\u2019 - techcrunch.com",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPbmt4Vm03MWFaSjhsX0hyS0liZ1d2TUV4VUdmME1tVkZEb3ZtOEVEZzVlV0wxRWNRMWFEZHBvNkpaS3hvN09Ydm5fQkszdldVUmF0VVpnTEFOVk1vdjh3RDllLXQ0b3JjUWg4OVZfRFkwazdVUlY2VW54MHFEbG1McHFYdFFBRkZzeGlaVzVUc3U?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TechCrunch",
+        "n_sources": 2,
+        "lead_ts": 1785613545
+      },
+      {
+        "title": "Google Rolls Back Google Earth Image Generation Tool Over Deepfake Worries \u2013 DTH - Daily Tech News Show",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOOVBFYWtjb3Y1TDY4RXd5OWpXamJaTnN0QjhMVEs0V2J6R293Yjc3V0tGZVc3b29BeVpjbm9JWllGMU91QWQxMmZQaFkyMWRDbHdNMG9zbVVoTk1JYm1oSE15bklVZno1X0YtZ0ZsY2VkenlvTHdsNEtNT2pOLTIwY0daMXRqZEhfS3piSmlCckZ3eHVRaE15ZG9ITEtOOG1yT1o3UnlmR1ZZdm5YRUtjZ3QyekhOVm44d2x0MjF5M1prd9IBwgFBVV95cUxOOVBFYWtjb3Y1TDY4RXd5OWpXamJaTnN0QjhMVEs0V2J6R293Yjc3V0tGZVc3b29BeVpjbm9JWllGMU91QWQxMmZQaFkyMWRDbHdNMG9zbVVoTk1JYm1oSE15bklVZno1X0YtZ0ZsY2VkenlvTHdsNEtNT2pOLTIwY0daMXRqZEhfS3piSmlCckZ3eHVRaE15ZG9ITEtOOG1yT1o3UnlmR1ZZdm5YRUtjZ3QyekhOVm44d2x0MjF5M1prdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Daily Tech News Show",
+        "n_sources": 2,
+        "lead_ts": 1785599042
+      },
+      {
+        "title": "SpaceX Agrees to Remove Temporary Gas Turbines at Colossus Data Center By 2027 - Gizmodo",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPWk4zN0MxSFNSckd5ZmxhQUFka0Z6N0xrR0NKakRSMUlwYzlnMGNTUm9MNjVNRUVxd2VpUjVKWWZockJIZF9DRFh6cEl2dlRncGIwa1NsdWJoWUEyVGFrUGZUTVBoNmNtcTJ5SzJIM04yc0NHaDZDYTM0U1h0U3F6elVRbWozOTVTSDdKNm5KeGt2dGQwTjd2SEx3N3JNb1FVN3hHN2ZUdVpDLWN1eHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Gizmodo",
+        "n_sources": 2,
+        "lead_ts": 1785592537
+      },
+      {
+        "title": "Wall Street Thinks It Knows How Tech Giants Will Make AI Pay - wsj.com",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOZzdxMHNMWnZqYktyTy1jVEhaRGh5ZjBwdjR5ZWcySjNMS0I5SVU0QU15WUdiNEhXMmxveV9WSWg0endtTjVKRE1JQkF6R3h6RWZ1LVJXWFdpT0pDRGNjVWlPdW9qYlVLNldkM2hJWUFtRjJiQnpNeXM4MU52YzlMRWk1VGFsamNkRnZFUUhZQlBKRlF2b3BKZVBRZXM0Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "wsj.com",
+        "n_sources": 2,
+        "lead_ts": 1785576600
+      }
+    ],
+    "business": [
+      {
+        "title": "Trending stocks this week as Big Tech earnings, Fed decision sway markets - Seeking Alpha",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQSTFFOERXNDlnWWplOVVJRHhrWWE0NTVWanVsR2tZcGlBZnpzX1VLd2ZuamxTRFFrblUzYUN6WmJ1RF85WldZSVYwZ1VyOXJYVUNVU2tkdU05NzUxU01TdUxuV0pUUWpsQmY1aDFONGE0US12UlFYYTNCRjZSTG5rUXFsamJwVkpnZnpIVnlDSW9SR3lhbEtvS3c5ek45U09tZnBaQk1NenlPbnNQTTdF?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Seeking Alpha",
+        "n_sources": 2,
+        "lead_ts": 1785606334
+      },
+      {
+        "title": "Trump promised 'rocket fuel.' The economy got a 'big yawn' housing bill and higher debt than defense costs instead - Fortune",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9peV9rX1JOOWV5NVQ2TXM4d1VXS3JYRHc4aDRKN29IWG1GbW91NnE0allpQlA0cHFCNG1mSDFqd1BvZkdFQnRMT3NuRVdRaHpfVTNxRDNvdks0X0V0OGlhRVU1cDU0SWRXY3RQSjdYTlEzOEtlLTBWbHlqVVpnRFk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Fortune",
+        "n_sources": 2,
+        "lead_ts": 1785587880
+      },
+      {
+        "title": "10 Ways To Automate Your Small Business\u2019 Marketing, And Which Tools To Use - Forbes",
+        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOZkczUWhkbmNNYXY5eGxncWo1SmRBT2ZuOHNXVmRIMXEtdF9GTlo0M0FrNG5aZ1JBTTAxTk9CdGtTMGJSRlBnLTRid0dOSjlHZTNSQk9GcFNuTHVjYWVKU29jRVNwajVvMk0xeF9XXzlrR05CaFg3UzhxSzFvWEJGeGdzb1hHOWJjeVpZc3hlV0NxbzZYcnpjMzBZWnpsMVFKdjRveDlUY2kwLWc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Forbes",
+        "n_sources": 2,
+        "lead_ts": 1785580200
+      },
+      {
+        "title": "Wall Street Thinks It Knows How Tech Giants Will Make AI Pay - wsj.com",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOZzdxMHNMWnZqYktyTy1jVEhaRGh5ZjBwdjR5ZWcySjNMS0I5SVU0QU15WUdiNEhXMmxveV9WSWg0endtTjVKRE1JQkF6R3h6RWZ1LVJXWFdpT0pDRGNjVWlPdW9qYlVLNldkM2hJWUFtRjJiQnpNeXM4MU52YzlMRWk1VGFsamNkRnZFUUhZQlBKRlF2b3BKZVBRZXM0Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "wsj.com",
+        "n_sources": 2,
+        "lead_ts": 1785576600
+      },
+      {
+        "title": "Equities, ETF and Funds prices, indices and stock quotes - Financial Times",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOWWlNalpqSFRFc2FsZUl1VWRiamJvRmF2NEN3VDJsSW51TlplSURyUDFOZkkxd2cwSmRvRm1Tc3ZlYUNubjB0MV95X21QZ09lcWhiTnRYb2FtWWx2Tk1MRWthRmpNeTZwQmkyNl9sSFZvOHFKLWhjMzcwdHBMdkZNM0dsY3dVcGx3YURRcnBFbF9wWW1tQ0NTYmFOaw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FT",
+        "n_sources": 2,
+        "lead_ts": 1785567381
+      }
+    ],
+    "sports": [
+      {
+        "title": "Gianni Infantino \u2018has lost Uefa\u2019s confidence\u2019 after Fifa chief scraps World Cup sell-off plan - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNeEwyVHhSN1FCaTBmbHlpU3FWWld0MlJKVXBIOFdlNDFNQXlrWW5PbEpycWF6X2Zha2tlMGNjQ0hkQ1lSZzZMcXJEemY5eC1RWUlURVNZSUhkQ3dUbzc2eDNXR3AtRTB0Y2RBS3ctUTAtMHRIb0xtdUstMTlUVnVvS19IaTRNVVh1bDlkWGhELWI5LVZIYXdfVDNDUXFlTUxZVmJJUVNSRXp1M0g1WHhKdm5LLTNvUXFtdkRaV0FfSHFMUG1HY1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 8,
+        "lead_ts": 1785623580
+      },
+      {
+        "title": "Dodgers vs. Red Sox game chat - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE16b2JkaW1QUjJ4M3o3XzBzcEJDVmZwcElRMXozMnFpVjZxM2RVYnhXTGtJdkdLd3lzYmRYN1JZYkpkQ1U3dVRmM2lwMHpRMUhRYjJ4ZU5OeHlmWDVoYnZVbmNnMzNMT0g5Y2lEN1U0MnNRbFhDTTlYeUlINEg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 4,
+        "lead_ts": 1785632040
+      },
+      {
+        "title": "Main Card Results | UFC Belgrade - UFC.com",
+        "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5MNjhPYnVtUmhILXZBTlNFbmRyUmM1dTI1end0OFpxdUVHMUw2Z1FnX3B2amVWaWdBMmI2TlhYNlQwSGlwc2tXVkM5dk9xaUQyUjlKbTE2dVM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "UFC.com",
+        "n_sources": 4,
+        "lead_ts": 1785613949
+      },
+      {
+        "title": "Franklin Arias is one of MLB\u2019s top prospects. Could the Red Sox be compelled to trade him? - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNSG9jT01qSmpKZTVTcjRCMEFnWnZ0TURfajlFb0FFS084VjFBVkZidVNkZk5UXzdXMkgteTVtNjJJdmNXb0U2dVJZLWlubnFSeFg5cTRVUXdmc04yNmJHU201T1FjZFMyM2JpZFE1SFNCa282ZER2czA1emw5SGZlN3lwY1ZEZkliT21WOUc2V05EWVdrcVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 3,
+        "lead_ts": 1785626661
+      },
+      {
+        "title": "UFC Fight Night: Medi\u0107 vs Rodriguez | UFC Belgrade - UFC.com",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5GVUFzQmI3UzlkdWltSlBJbUxHVXlRLWlQQ3pXenFKWjNGOEx0SFRBVkhQWHZEcXVUZVotUFVSc0hRbjJDSmJzNW1oTHhWZzJuQ094dk5ud2VNcnZfN04tY292RG9CTTA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "UFC.com",
+        "n_sources": 3,
+        "lead_ts": 1785625749
+      }
+    ],
+    "culture": [
+      {
+        "title": "Spider-Man: Brand New Day\u2019s Controversial Ending Is Already Splitting Marvel Fans - ScreenRant",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNQ3daTkpycWEtRlNwY2tERW9heVR6VENMUGczVFRmSGx3UDZqTjBXMXVhTU5uS0lQWkVBTllOSlhrNDJJTjhfRzQzUnhBRV9maUdheDNHR2wzRWVvZHRyQzZqQUJ4TEtHVmR5Umx5WXh4Y2w1Y0ZZajN4b0VTek9iNlA3a0RFMi1IbDRvZXQyTGJjdkczV3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ScreenRant",
+        "n_sources": 10,
+        "lead_ts": 1785622804
+      },
+      {
+        "title": "Tom Holland Seemingly Hints Peter Parker's Spider-Man Replacement Is Coming - ScreenRant",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9QRTN3ekllUm9GY3RoMnkyV1prUUZHVlJydURrV0RzYnJHX0s0SVBLOVMtWWpjZjBiN1hud2NFN0p6dFM3TEladldqOWJFVUdZbjlfbVozeG1WSDFJaDQ2di1TYWxUNnBLX0FIRHJMOFktY1dWR1pjZDFlSVlLUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ScreenRant",
+        "n_sources": 6,
+        "lead_ts": 1785628092
+      },
+      {
+        "title": "WWE SummerSlam 2026 Results As Randy Orton Returns, Shafts Cody Rhodes - Forbes",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaE0zLWc3RHdFbHFNeFNyMC1aWHdaR2VfMWpjMTVtWVlmZ2QwZFp4Si1fVlNXU0xEcjB3bWw5NFhjZ0wxSTRPNl85RWVDbTdVdzBHMmxDeHJDRUlNOTBiaXFvS1k4Q0VZeHBFbnp4eV9hZEJuZlZTRWVJYUQ4R3NfX3VnRnEyME1QRUFLTzJDMkdka0VDNG5Pb1JrWkV3ZkdxUkk0Y3NFMXJqaG01RkNPQlhsendLb3VyZjRUaDhNTHp2SDBOQmc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Forbes",
+        "n_sources": 3,
+        "lead_ts": 1785630779
+      },
+      {
+        "title": "2 killed, at least 21 wounded in Moscow restaurant bombing, Russian officials say - Los Angeles Times",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNeEE4b0xzaDc4TlRkaTByT3JIOUxuQTJRRUxFTy1sMjh4M29LQW55d2JsaFhlNHRMSDV3d3NlcmJaWk9qT0RhVGlMT2d6bDBGZGdNUzdQd0ZPcjhSeTVIY1lHajhyX2VySW5zY2N2MVVQa0JrLTQtbmpmU2Z2eExYTk5rUnhjNDZDQzNWMi1VWVlGNmk3LUJDNXdpakFvZGVkV1pSMg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAT",
+        "n_sources": 3,
+        "lead_ts": 1785630082
+      },
+      {
+        "title": "Jon Bernthal Teases The Punisher\u2019s MCU Future After Spider-Man: Brand New Day - ScreenRant",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOYmszRmxyUXFzWW1KcmNXUTFfU0JOdUtJNzFBc1h2akEybW51NWxCazh5RnZCR3p5WDZXaHNyT3hVR21lSHVFcWcxRU1nN1FHRUpudklFUHdkek8wVTlCeHdiYm8xWEFHdVdqVkl4am01MHY1ZGw5R3pVV2RNUWhEdGh2RmdiemNrUzFSMUI5eGFRWWFUZXN2Sm5fSU4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ScreenRant",
+        "n_sources": 3,
+        "lead_ts": 1785609535
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "A new Colorado River plan requires water cuts for three states. Deeper cuts are still possible. - The Washington Post",
@@ -258,267 +512,6 @@
         "source": "Collider",
         "n_sources": 11,
         "lead_ts": 1785596134
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "Nolan Wells' family releases update in investigation - USA Today",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPaVFjUndOdmhrckRrVm5UTklsWEpPS3MxSGx6XzBmTEFmamZjbU92R3BjT0t5M2phbU9pelJMZkVNd1I4MDFMMnFHb1hqSGlGZVlhYWc5MTRMU19JQjFiUktiRWN0eXRRQW5XTEtpZExtUTZmUklOMHRBNVN5QnBWaThMNTVOaWxIeU9feGpWQmpoMGJzY0dudFRsemktRDA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "USA Today",
-        "n_sources": 4,
-        "lead_ts": 1785523020
-      },
-      {
-        "title": "A new Colorado River plan requires water cuts for three states. Deeper cuts are still possible. - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPN2ZraFBCbkNRdTZQWDJ0QjZydWkyQTZnTDduYnZUVzdJODc5ZU1QVjh0X2pvZE4xR3B5RGJfUnRKakJjc3lDQXQtTFNTeTdNR2FTLVRmWll0NkNGMFFZTHFqcVNWYW54ZnZjTFdZWUpCUDB2dEtNQWRrdHRNOVR6eDdfLUhQR2paNEJ5aWE0NkNSb3hKLThrR0YzOFZwdFgyTnFnZjNwRTVHWUIzdVFjNk5kdVFIcGxScG8wUFFNN1dWd2Ft?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 3,
-        "lead_ts": 1785536586
-      },
-      {
-        "title": "Fed Dissenters Say Rate Hikes Needed to Tame High Inflation - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNckNBLXJydTFaa0s0azMxT0tMTTJDaTFCV0FTNHFJLTZjU0wybHpGUTBzUjhZQllYZ25NRkpKYW5ROE0wZFZhUTJpSy0zdENyWnhDckRueEwwVE51c0xVakdyOGJsTTJjUDhhQk1CamtNNkNBM2hycmlndm4teG9mMEVCX2ZySFFZbDlKQmZkRVVVajJERlZVMkRDWmRlLXBocUs1MllhLXBTcjBBTzZlaTRwZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 3,
-        "lead_ts": 1785515639
-      },
-      {
-        "title": "Amazon Reports Fifth Straight Quarter of Cloud Sales Growth - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOcWRYZGJicTNSejFMQXZLTnBzS21ENDVSZDc4T2FHdDZUUk11X2c3cURqYnV6ekNRVmZKbXFPQkVoa2hlUGt3VDFCdUNOYjYwQnZkS3E2azFybTNrdWlieGlpbWhnQllCdUlUMnFCY05qdUoyRkotYWFqTDlhRllDaTFtWVZmREpPdXJ4QWxOcDUwaXhINHBzaC1rMEZ5R0d5Z0lHNnRVTWxIeUFOS1ZF?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 3,
-        "lead_ts": 1785504937
-      },
-      {
-        "title": "Trump administration drops Reflecting Pool case, blaming damage on \u2018botched\u2019 installation - NBC News",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPS3ZydER1VF92QXhjc3RkNnNVdVlPNnB5eWZoTEpZWDBZRm93SVNDZ2cwV1ZQajhfOVA0YXpnZW9MQjl3LVVPRmpvVlJlQ3haSGV2TERsMy11UVBacGhFVnpVWTNWZmw5em9uTFBudEd0TmZIdmZsTjBJeHFQZ0xxREdESjduUFZ6d3E1WEllUGdaWXpkX3FUZHJBWTY4R0ZaZm5jd2hlLTh6eDBDcC1TWlBsZmdINnY3cGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NBC News",
-        "n_sources": 2,
-        "lead_ts": 1785540242
-      }
-    ],
-    "mideast": [
-      {
-        "title": "Hamas says a deal has been reached in Gaza, and other developments in the Middle East - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQMVZDUHpKWDdyVUdVNjRRZEJRWmV2STJjQlZ0TXg3NVFPSUJfV1pIOHJsdG1RZFViRm5qczQ3LThIU3VnMGZSTGVRT25xM21QZk5nMVhnb0dpbzZGMnlueHBqbzdIQ3I3dVcteDhkWkJkenJKMnJTaF9HRlFseXAyQWE5QWNPd1htaHQxaDlNT0tienJQTTY2akl2eXpyWWlxSjF6RzJhY1hPVWd0QTVmUDROaFhYVk5wSl9QNS1rRGlnNVRIeGowaExZM3luMGJhWG9mSDRfT2VzLXFYa0IxVw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 9,
-        "lead_ts": 1785515452
-      },
-      {
-        "title": "Middle East war escalates as Iran strikes US base in Kuwai - IOL",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNZGtBaHVGOWNtaHBZZTJyQVd5QVIzQ2FOaGNUR0g3dUtfaHBfSUpoNlNSUURiRGNGSzNuRzNpRUJYQ2RlN3ExTDR0LW9qMDM1dHJQcDZhRFA0S2N6bERYaENDQVJYRnh6SGpnM3ZadFlCM0F0dFpFdmZ6RjBFLWhzTnEwcGN2cDJLbjAtODJwREdGRXpSeDQ4S0N3Q2VIOUU4R0o4Rg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IOL",
-        "n_sources": 9,
-        "lead_ts": 1785478055
-      },
-      {
-        "title": "Israeli politicians spar over Gaza plan, focus on IDF withdrawal, Hamas weapons - The Jerusalem Post",
-        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBnelpIbFlHcVppTVU3LXM2MWgwZF9ZQTFKXzhLbnlZUXNIODc5SFlNVWp2TUVQdlQ3TXZrZS1qbWhVaS1kRjU4Y1EyZUFkZzVLYTcxRFJyMmZrVGwya0MyYVNjTGdJZ0xDdHhnZXBGT1dhNGFvYjZyQXFmZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Jerusalem Post",
-        "n_sources": 8,
-        "lead_ts": 1785536595
-      },
-      {
-        "title": "Middle East: Germany welcomes Hamas disarmament plan - DW.com",
-        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNWU4tYTFFLTNHT05sQUVFcndEVENpVWpMMk1kQmwxaEtZd3NyYm1Wa01jazJtMlVoMmNFanNnNkxMVkZvQ0pZckNzbmE0a0tzajRaWDBMWUI2TzkxMXhhaW5rMXNXVkViVUpCeFBJZjN4X1lIM2pKQUUxQlhDQU9aRTdqVnhnenNqOWQwakNlSnVlRGZyN2ZvVDc5eVZDaGREbThQRTRxZlhUeEZSRllhSGdsRWt1djd6RW5WMg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "DW.com",
-        "n_sources": 7,
-        "lead_ts": 1785506890
-      },
-      {
-        "title": "Live Updates: Latest from Israel, Iran, and Middle East - The Jerusalem Post",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE02OTZwa0liUUtYVGxkaEF3dlR1bWowSlB3WUlCem02TUl4X1NmWVBBS0ZFTzJWb1dNM0t2NmhKQXB4UjlKbC1lSGc5QzlVOFBDanFqc3IwanJHRnlaYXo4TC05UDI3V05mV0lQcGhEOGFLNHpfTFVlc1RxTmN2M00?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Jerusalem Post",
-        "n_sources": 7,
-        "lead_ts": 1785499205
-      }
-    ],
-    "world": [
-      {
-        "title": "Spain says migrants are returning from Ceuta after 57 die in border rush - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNa1ZzcUQ2cjlBUVYyaXhhaTJHRWQwWkE5UzU4ZUhuaUdmSkpmLURVdmNRS0xjd09pYzJ6MEIzNW1TaDZaMDJ1U09yX1dFS1pZR0szaFhvRVc2ZHk2MFZqLUExRURpY09PdEFUOTZTcWQ5Z29OUXBrQTNnUjNXRjF3V1RoWVZIUTJ6NDJ0Q19ENUQyNnoxREZjYTJrbjFUbmZPMFkyUFlBb1RyaXlLSHdRVWsyY0trYjVZ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 4,
-        "lead_ts": 1785530475
-      },
-      {
-        "title": "Japan yen-buying intervention Thursday may have totaled up to $44bn - Nikkei Asia",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQbUJzNjl4UVdzNVVlVE9DVXctLUdQb0pWaHdoTGI5VE1XckNrdUNHQW9neGJ2T1RCVTdrUk13dDJ1VlZHRUJ0R3VVTDJqeUlFdEt1QU5SUkZ3TEZVd0ljZXNrSHhrS0J2VEpmWFBOS24tRjhGOFcxeXpNaXJ1TXZfWkdGMzdteWZUUUdPaTNvZEk3VERWUmdTcVV1d0dPa3JJZkY1d2Z6c3BaeGs?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Nikkei Asia",
-        "n_sources": 4,
-        "lead_ts": 1785495000
-      },
-      {
-        "title": "Saudi Arabia Forms New Military Alliance After Red Sea Attacks - Democracy Now!",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNZjhwNFlPU3NTZ08zZzFfUzJIWmZFUnhvTTlHVFFIbDBIenAxTldNaGVVRWVHdWoxa3FNUHRoR0k3Y01QVmZsT3dDTHNSa1pHRkt5WDBlZjZpcDdLVzlGekJCRXRNV2JlOTdWRzhVWjNHeTFLOFBMRlhWT1RyT2JrSjF0Vm1WQWpBUUlGdTYyQmY4aFp2TllJYXNCU1lKNFJyQWJLbmJnRWFqeHhzTmN1Yg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Democracy Now!",
-        "n_sources": 3,
-        "lead_ts": 1785508287
-      },
-      {
-        "title": "Spain deploys military as migrants pour into Ceuta from Morocco - nhk.or.jp",
-        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9jUEhNdXBhTDRlQ1hHR0tBN21NbHVvY1gtSV93a1BsMkFSb3NlZ3FZM1NSdzZtYVIyTXM3QnljQ0JKc2R2cVR3OVVaOHhWYlZtSHRRaGN3ckI5OVYyOV9Dbml3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "nhk.or.jp",
-        "n_sources": 3,
-        "lead_ts": 1785499809
-      },
-      {
-        "title": "Iran claims Kuwait air base strike as conflict spreads to Egypt, Saudi Arabia - NewsNation",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPdi1rUTJ5ekh0QkdwN0VLQllsdGU3QXltRW5PMjJUUUFBXy12TWF6MjlMMGRBcFNPWEw3dVE3WFM3STV4Q0dhZEV3V1ZKUnZ3akJvOWs1cDdXNHFjcHRrOXBYYWhOOE9FYnd2RExRaUhkUHpSWlV2a2pGMHJ2ajlod0c1WUNkY2JTbjFGUW1R0gGTAUFVX3lxTE4zRzFZUDBodG5Ja0dHTC1zUXdnckRnTUZwcVZaOEpSbVIzVFJMZEhLYkozOVBxdTNlYk5VbTdhT0Z5NE5TeTgxVjZ2ckpkQ04ycTZEOFMweWY3dFdBLVdEVWJZd0s0bHJQbFRUNmdGUldDTnI5eW1jd0ZNWjhXY0NIWlZxUnZCVFdsMzk0QjBwNGVsMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsNation",
-        "n_sources": 3,
-        "lead_ts": 1785497533
-      }
-    ],
-    "tech": [
-      {
-        "title": "Anthropic says its AI models hacked 3 organizations during testing - WMTW",
-        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNWkFxT0FybXVBUmNHc1R3T1VmNmhBbHZ5YVRrc01HUkVnLXU1LV9JUEY0OHdWa1kwRUdMSVN3STd6TGNnZWFwN1hzOTBuWlQ2UW9NaFh2UXkyRDFsU3ppMk9IdHg3YlFNWVBjU2pmamhnTHpvMm9mclAwWmVVSGE4VmZuS05aQWNCaFkwbXBNUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WMTW",
-        "n_sources": 5,
-        "lead_ts": 1785492420
-      },
-      {
-        "title": "Google Pulls Nano Banana 2 AI Image Feature From Google Earth After Deepfake Concerns: how 21 outlets framed it - NewsCord",
-        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNjVHUnd5R3lSZlIxYTI4cVo3NkotYWRFX29QS2tMS1NwSURCOGNuUjh4NjJKdDlwQ2hLYWhhOU9zd0VISk9sMVVrWk5xR1RsaFlvbEx6SG9ablRROXdJOENRX0xSNGxCMzZ6VEd1VEVjRkR2d2dFNFZSNlYyNFMxNGFCdk5PODN4NGlYTUV0Mng1OWlfem81cTBkd3VMTVQ3WXU3U3dqYjk0RjdsQ2dOdzRMcGlUeUp0OFJfUzhSNjlSOVNvQXM3alZaOW11QUhibDROZm13RlQwSGhRbmNVRDNDMGs5SjVtWUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsCord",
-        "n_sources": 4,
-        "lead_ts": 1785540104
-      },
-      {
-        "title": "Google Earth AI tool sparks misinformation fears over fake satellite imagery - The News International",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQZDFwWFZ4OGF5ZkpVdmVTWC1WaDhqaFJfR2MxZmFfeHM1bXRUdjRXa2xPdHh3c3YwZzZMNEltZTJHbUtuTmZCTG5taEcwZm9GTmxHS3hlWDlTY1VzcWxadjhza0lSVkE2cDR5WXNRMkFXTHVxYk5CN0FadmtNeXRaeGVobDVNNkU5YXVIcHAxbVBWVWIxUVFOeG5VcXlRVkNpaWRFWnVHdHRKTFZtWEd1cnh4NTRfaEtfTnc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The News International",
-        "n_sources": 4,
-        "lead_ts": 1785527760
-      },
-      {
-        "title": "Anthropic says its AI models hacked 3 organizations during testing - ABC7 Bay Area",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNZWF0VDg2WjNvdEY0U2tVZjRwd2VMYUhwZXZpelh2aXJjcjRvYjJNRUotLV9qQ0w3QmRXS1RfcloxQWszajJ3cjdCSHZiTUpTZkhRRE0zUGQ1OVJkekhVYy1nUFREek80NllLaUVCOVdmeU1YV1VjS3RwZDlmZzlENG5NUnlCN0N0OUZOc1MwMlU5N0I4aXZyVjFFN1ozY0HSAaQBQVVfeXFMUFdzRWp4Zzd4aURhbWZDN3NhV0FkN0UxSUpRY0ZNd1dQRXpCak1INlB4dXhpdHljMDZtZ1ZMeGtudlBzSnpHV3VOUkJsU3RxWjQxdGNJVGdPZzdrRUJPbElnTjYyTTJnaXUyN1lpRW1pR0NxR1BpMjc1djR3YmpxYXBOcTVlNXlRTGRmaDBVcEFmeGlKMmRzUUc1cWhuUEx0N3AzejQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ABC7 Bay Area",
-        "n_sources": 4,
-        "lead_ts": 1785497570
-      },
-      {
-        "title": "Anthropic Claude AI Reportedly Escaped Testing Environment During Internal Security Evaluation - chshyd.in",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYnE3OUtnakkzeWt3bzVTcldMZzZ1cF9iUjN5czVmWkRtS0VSM1AwNG1oOFRNWC1oSXp0c1dUNTRtem11d3I5VFFxU0hZUkdZQnE3NHhMWjc2TnJCTWdBNzVuaXF2bjhBaFZ3Mzd3TTNGZFVVN19WN0FINk5uZEctR3JadE9VRWFPd1RGVGc1NGlVR05nUEZzRHdUX0ZlQ0oxaVVBeUExZE9HdTJQMHFRV05CeWxaVVl4Z1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "chshyd.in",
-        "n_sources": 4,
-        "lead_ts": 1785483043
-      }
-    ],
-    "business": [
-      {
-        "title": "Wall Street's wild July is ending with more swings as Amazon leaps, Apple sinks and oil prices rise - AP News",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPYXVQbFd2b2dBZFVoT3ZiRndKdVVic0xJWVFBWF9hN0FYaUk2ZkhlVkctWWtibi1GNVgxdE5Ec0FzNkpwNnlsZXNla1d5cXgzbFVIZ2pnMFdvMW93QlhXOW9CbkRhd2J2Vl9jaVV1THY2RzFzbUtvSGhNanA5NE5OQXJTN1BNVlEzXzVQQ00zQk54U0NIdlpj?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 7,
-        "lead_ts": 1785525240
-      },
-      {
-        "title": "AAPL Stock Slides Nearly 10% \u2014 Apple\u2019s Earnings Divide Wall Street, But Retail Sees A Buying Opportunity - Stocktwits",
-        "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNa1VpQUtobElmVUZBaENva0FaZEVhRjlRQXNwR1M4bmF6U1E5UWVRTDhHVkNseFdXTTdRQnZnU180QXZtaElCYkc5RnVMMy1RRW1jQm1vZmVOc2hibFZ0N21tczBUWkFCeEtzaVEtQmRTdzQzWXFRbERreWoyQ3FDaVMtdk91SGRoblJLR2FjZTJ2OXFSaGtxX3FrRHV5cFJBZW9VaGNQOFBrbmt3VWFPRFMwa0FoY2ROYVREcVlDQUpmOG1YSmdOaFEwRm83YlczTXlhZWZhelZaN3FGcEdRdjNKY3BIRWQ1ZWd3ejVYV3hleGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Stocktwits",
-        "n_sources": 6,
-        "lead_ts": 1785519960
-      },
-      {
-        "title": "Rivian Releases Second Quarter 2026 Financial Results - Rivian",
-        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNSk5oMWRlNE5qd2NzUk1QT0pBeGh6MUw3WjRtRkpndU5NdU9nZENMSUNyaFhEUzB2Y2F3VFNkYkVOXzlONUtBYjFCWTItUWpvTjFjM1pMN2toZEJINldITDB4NUJVSkRpMjlLNGFmTTlCR1Q4QlJtSzM4dTVlYmdHMDNhSDMwd0RDV0YxOVJySXBIR1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Rivian",
-        "n_sources": 6,
-        "lead_ts": 1785451310
-      },
-      {
-        "title": "Wall Street ends higher as Amazon soothes AI jitters - Virginia Business",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPWDhTNkwzd3BtdUllNkVma3ZVem1QWW1zdVR3Wkc0bjVBUnp0WjVRNTE4TjQ4cjVNSnIzYjlGMHdua01jakUxa24zQml4UFJTTWRWc1gwanpDN2NuaC15cmw2QTNBNEY5NEN4UTdLSHU2LUMxNEJSYjlURG05bkFPVktVNS0tVjRL?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Virginia Business",
-        "n_sources": 5,
-        "lead_ts": 1785532408
-      },
-      {
-        "title": "US stocks swing as Wall Street's wild July keeps swerving and inflation worries keep squeezing - Henry Herald",
-        "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxQcG5mYXBTbzJrajNwYUlRUnR2NG9YblFCX3dVb0ZHUFhWNHlIZHRnV3Q2bThKNThiTkUyUUNOMlBfNTQ5My1lOWlnUmZDSmNJMmVGbnFtZjdiYjBsV1dxUTJxazVhX1JBTXp1UG9INjJYNllaUmJrQkpDNnNUTGdlbEdBc256azNVbDZ4eGNINnNHYXEyV0l1V19OMl9PWElpWjI3R3VyVzRNcnMyMWdod3FjaVBkM0I1Y2NxWF94OFVfUmF2R195U3BSelQzeERzUDRBV19qalNMSGdITUV0NXAybXp1dm5NLTlWUmF1OVBfanRFRWoyX2FXMElQcWs4OEF6US0yd2k3Y2R2TmkwU2V3Wl85VkZL?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Henry Herald",
-        "n_sources": 5,
-        "lead_ts": 1785508487
-      }
-    ],
-    "sports": [
-      {
-        "title": "'Nobody is selling football!' - FIFA responds to controversy and offers explanation after Gianni Infantino's World Cup plan sparks outrage - Goal.com",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOeVNKMW1hSkFIVWlqR3BPT2tLVl9tODgyYUh6X3hCUUVQRkwwTjhjY3NucVpycTRGZms0UExLbG5ReW90ZTBKS0RqbE1TdUt0RmJVcjJXM3B4aDV5MGh1eGZ2X3gzbXlHTFg5azVuRXBsVWdBdndhdEdKM2xwb1JnX21udU03VjFQQ2NsZTRIZFBKUjBoaXVoRzRqX2ItaEt2QTNfa0Q4b3M1Z0x5WnU0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Goal",
-        "n_sources": 8,
-        "lead_ts": 1785493031
-      },
-      {
-        "title": "FIFPRO 'will never support' World Cup sell-off plan as players' union slams Gianni Infantino's controversial plan to 'irreversably reshape' competition - Goal.com",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNS01oTzJGcnQzbVo4TWFmREozTEJVTGZnazJlLXVqam5FcG5NbnpzdVI2RWFsN3FVVHRwY2JpdTJZbm43ZFpjYXBpMTF2UnNTZlFMWlNKVmNpSkpnTEpESzBleVNoSUFDT2xHelBqamtOX0cyMVIzYXdJR0R3VE1BeWdZNWJnUEk4YmhLS1J3eGF1OEd4TzNDaFB4bU4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Goal",
-        "n_sources": 8,
-        "lead_ts": 1785456791
-      },
-      {
-        "title": "'Nobody is selling football!' - FIFA responds to controversy and offers explanation after Gianni Infantino's World Cup plan sparks outrage - Goal.com",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQMTlUR096SWYycjliR1dma1JUNjhXY3c0Sl9IVi1oUTBVM2pyOFBCRk5pdWlSeWxzeFFQUFJqaDRTbzhUOEcyN1FZSkJFM2JKOGltZE9qQjBZOHBFVHdYUk1FV2hScWlKU05NcUVnQ19jQUUxODRhWHp0NUM0TDBPVUVEQ1RjRGlkXy16NmlPUU43WWhsUVE2MkRhU3NVa1o2RHF5T2lMbjRHMW8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Goal",
-        "n_sources": 7,
-        "lead_ts": 1785530787
-      },
-      {
-        "title": "TWENTYMAN: Training camp Day 3 observations - Detroit Lions",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObUJzRFluemdDNzBNMHl2QkVxaERteGh1ZHRZUlhDeW5HRXAzaTN3ZllpYXE4eVQzbUFKV3hpREVEdXhuNGNpd0p3endmTVlEU2F0YXA2aGJUUkU3N2p6cGgyYTJtWE4xVllhTlBjZmRGbDdlel9JNFdMdDdJOFFVYmYyNjJiVkVubVFTQ1RaRHN4bHlDcmFOTkxsY1ZqRnBvQVVrbFFjS0pQdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Detroit Lions",
-        "n_sources": 7,
-        "lead_ts": 1785517652
-      },
-      {
-        "title": "Everything you need to know from Day 3 of the Falcons\u2019 2026 training camp - thefalcoholic.com",
-        "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNbFdCTDMzam1ibWp3VndHd3FRRFFOSEppVVFXdUxQWXBDR3hSQkVGeFBhdFNxcEd5OGZJbldHVjFSOXhReml4QlRnUUwxSGx3aUExbjltcnJ6RHBBcG0tY0dQSmhWRmVPeGVYVks2aXhNVGhjekNLaUM5cUtCRHFEOVl0c3c3S3E2Rm40cm1JSHRVbDBVX2NyY3ZqYUJwdFdlcnBOSGNVdVdDdmhYREZGUlRQdS1HbG81MXlIdG5lQS0yT2hiUWRtc2ltTzBFbDlxeDJfaDFnajhDWWlwZHpCVUVaYjhNR0hQejZYTW8tYzZScDhHYkg3UA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "thefalcoholic.com",
-        "n_sources": 7,
-        "lead_ts": 1785515880
-      }
-    ],
-    "culture": [
-      {
-        "title": "Silver Screen Spotlight: \u201cSpider-Man: Brand New Day\u201d swings into theaters - WEAU",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPZWdremRFTzNvV2tNMVc2Z182VjljN2ZQNW9zcVJTVGxPRjB4b01MR3Y5N3ZuS0ZvNHkySEtid3B4N3JTNUlGMXpHRXRpR0tNdlBmTVVLQTZTSGE1N3FFZ282M0hIcUtYVlJGd3pGdm9iNk5HSmdPYjdlb3JJb3cwcGdHUzYxY1ZTY2FWbG90eW5YTWc1cUNGVDRZZ0psMUNFQ2dob9IBuAFBVV95cUxNVVhubE9KRlNtRmhkNnFjNUZvQlQ1YzI5bnIxWWZGWHpIQ05CYkcxNzhNdzFqblRQX2QwWTY2NndhdEllY0tKWEJDRUFIMnNNdmgwMGVYbHlCaXB5VTlyREMyTVF2QUVZUUxWbVNDbGJ6YjM5OEEzbjlJT3ZiZW1yVEp0MEU2S3ZHMklQcnpXTElZWmp1OUUwTUtGQVhKbEppUjloTG5zSlVQbzlheXFwUWcxN1BrWjlO?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WEAU",
-        "n_sources": 15,
-        "lead_ts": 1785495600
-      },
-      {
-        "title": "FilmWeek: \u2018Spider-Man: Brand New Day,\u2019 \u2018I Want Your Sex,\u2019 \u2018Middle Life,\u2019 and more! - LAist",
-        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQcjhZeXBQNjl6bWtYRlJfclVZRnZUN1JueE1NUEhueGhMNTUzY0JJVGVxX29UNEdHd0VHSEhIYWxwZTVzZC1IeVRIY2xuTWN4bWdzeTRKSGhEcEJkM2xhTTZnUjBCQlVSWE1WLXRkcnpPVE1pMm41RXdVRVUtYms5SVV1LXB2a2V2dkd1UFJUZkh5VlFQckJNSlh2UEVIdlRhdkRwUXdxVUJYX05vdExQN01KekJZems?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "LAist",
-        "n_sources": 14,
-        "lead_ts": 1785516180
-      },
-      {
-        "title": "A review of 'Spider-Man: Brand New Day' as Tom Holland returns to a world that no longer knows Peter Parker and must find a way to find himself again. Read more below. - facebook.com",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxONDNSZlRXQzlxY1BaWVF3c0xiRXc2OF9uZDNzeGRNVWkzbTM5N3AweFVBSS14QUtFa1lmc1VlVmFYVEpXb2pLVmV0am1vOWJaVXdyVEtxWnFfdDBCYzFLVmhUQWZsNGh0Uk05N0FmREV5cXNLcldob0d5ZkNtdTJ2SnY5RFJjZ3dxRWZCWnk1amF3UkQwaGczRU5TZHBkWm5mdTF6cFdaa0syM0twMUJhUEpicTdldk82bXBhZGRlWEZRVzhOQ29WbkpFUmU1anRkOWtEOQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "facebook.com",
-        "n_sources": 14,
-        "lead_ts": 1785504632
-      },
-      {
-        "title": "Is Spider-Man: Brand New Day a Brand New Start? - Phrasemaker",
-        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPUDNnMkZqTjc0azdyUlktTnh4RHFPVFFUbEdCX3ZQd1llb2Uxc01CUFBRWHhmQk5mZnlwNXp5VjI4R3RXdjQybEZfdWVka09uNFNILXM4c3FFcWJpdzg5eXhiSHVUOXdKQml6VnctU2hOQ3VyMW45TzZ5THZ3eWE4ekxjbFdzdHVBWlc2aw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Phrasemaker",
-        "n_sources": 12,
-        "lead_ts": 1785490916
-      },
-      {
-        "title": "\u2018Spider-Man: Brand New Day\u2019 is a dark night of the spider-soul : Pop Culture Happy Hour - NPR",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOaHQtYkZWd1pDOGk3VTFmTzZRLUxyWTNBQlNoYkdpVFBadk1JRm9RZkRQU0ZPWWh6N0xERVJVV3pUR0pjQld4V1VINVdmcHlFOHVHR0NadWRJeEtRWFY4VDZZeV90UTk2REQ4UXhyMlcxUVJDOTFiTDR1QzA5Q0x0Rzh5NXRCLWRXaldJNm9uMjhzeG9ZMEktSG05NHgycFBrTWVEaF9Vaw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NPR",
-        "n_sources": 12,
-        "lead_ts": 1785481200
       }
     ]
   }
