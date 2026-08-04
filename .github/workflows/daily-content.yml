@@ -44,6 +44,7 @@ jobs:
             horoscopes.json \
             comics.rss \
             index.html \
+            originals.html \
             feed.xml \
             feed.json \
             _headers \
@@ -54,6 +55,8 @@ jobs:
           git add yesterday_top.json feed_health.json trending_terms.json 2>/dev/null || true
           # Self-hosted publisher favicons
           git add icons/sources/ 2>/dev/null || true
+          # NUZU Originals article pages (-A so deletions are staged too)
+          git add -A originals/ 2>/dev/null || true
           git commit -m "Daily update $(date -u '+%Y-%m-%d %H:%M UTC')" \
             || echo "Nothing to commit — site is up to date"
           git push

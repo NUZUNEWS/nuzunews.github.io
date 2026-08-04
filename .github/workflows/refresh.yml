@@ -71,6 +71,11 @@ jobs:
           git add yesterday_top.json feed_health.json missing_logos.json source_domain_cache.json 2>/dev/null || true
           git add trending_terms.json 2>/dev/null || true
           git add icons/sources/ 2>/dev/null || true
+          # NUZU Originals: the in-house byline pages generated from articles/.
+          # -A is required on the originals/ folder so that pages for DELETED
+          # articles are staged as deletions, not left orphaned on the live site.
+          git add originals.html 2>/dev/null || true
+          git add -A originals/ 2>/dev/null || true
           git commit -m "Auto-refresh $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
           git push
 
