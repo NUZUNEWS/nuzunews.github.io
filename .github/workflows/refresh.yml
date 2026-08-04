@@ -77,7 +77,34 @@ jobs:
           git add originals.html 2>/dev/null || true
           git add -A originals/ 2>/dev/null || true
           git commit -m "Auto-refresh $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
-          git push
+          # Push with retry.
+          #
+          # A bare "git push" fails outright if anything landed on the branch
+          # while this run was building - which is precisely what happens when
+          # you upload an article in the middle of a refresh. The run goes red
+          # and the article sits unpublished until someone reruns it by hand.
+          #
+          # Rebasing puts our generated files on top of whatever arrived. An
+          # uploaded article only touches articles/, so it never conflicts with
+          # the files the bot regenerates.
+          PUSHED=0
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              PUSHED=1
+              break
+            fi
+            echo "Push rejected (attempt $attempt) - rebasing onto latest and retrying"
+            if ! git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}"; then
+              git rebase --abort 2>/dev/null || true
+              echo "Rebase failed - leaving the branch untouched for a human to look at"
+              break
+            fi
+            sleep 3
+          done
+          if [ "$PUSHED" != "1" ]; then
+            echo "Could not push after 5 attempts. The next scheduled run will pick this up."
+            exit 1
+          fi
 
       - name: Skip deploy (content unchanged)
         if: steps.pre_hash.outputs.hash == steps.post_hash.outputs.hash
