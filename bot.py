@@ -25,6 +25,34 @@ except ImportError:
     def sanitize_summary(s, max_len=400): return _html.escape(str(s or ""), quote=True)[:max_len]
     def validate_feed_entry(e, src):    return True, ""
 
+# ── NUZU ORIGINALS: in-house byline system (articles/ folder -> site) ──
+# Fail-safe by design: if nuzu_originals.py is missing or raises, every hook
+# below becomes a no-op and the site builds exactly as it did before. An
+# authoring mistake in an article can never take the news wire down.
+try:
+    import nuzu_originals as _NZO
+    NZO_ENABLED = True
+except Exception as _e_nzo:
+    print(f"NOTE: nuzu_originals not loaded ({_e_nzo}) - originals disabled this run")
+    NZO_ENABLED = False
+
+    class _NZOStub:
+        @staticmethod
+        def load_articles(*a, **k): return []
+        @staticmethod
+        def originals_css(*a, **k): return ""
+        @staticmethod
+        def render_featured_strip(*a, **k): return ""
+        @staticmethod
+        def render_section_originals(*a, **k): return ""
+        @staticmethod
+        def write_originals_pages(*a, **k): return []
+        @staticmethod
+        def nav_link_html(*a, **k): return ""
+        @staticmethod
+        def footer_links_html(*a, **k): return ""
+    _NZO = _NZOStub()
+
 
 print("Starting NUZU bot...")
 # ══════════════════ SURROGATE GUARD (build-safety net) ══════════════════
@@ -3981,6 +4009,19 @@ try:
 except Exception as _e_fav:
     print(f"WARNING: favicon prewarm failed: {_e_fav}")
 
+# ── NUZU ORIGINALS: load hand-written articles from articles/ ──
+# Loaded once, here, so every downstream hook (CSS, featured strip, per-section
+# cards, nav, footer, page writer) reads the same list.
+try:
+    NZO_ARTICLES = _NZO.load_articles(CURRENT_DIR)
+except Exception as _e_nzo_load:
+    print(f"WARNING: originals load failed ({_e_nzo_load}) - continuing without them")
+    NZO_ARTICLES = []
+
+NZO_CSS       = _NZO.originals_css() if NZO_ARTICLES else ""
+NZO_NAV_LINK  = _NZO.nav_link_html() if NZO_ARTICLES else ""
+NZO_FOOT_LINK = _NZO.footer_links_html() if NZO_ARTICLES else ""
+
 html_parts = []
 html_parts.append(f"""<!DOCTYPE html>
 <html lang="en">
@@ -6099,6 +6140,7 @@ html_parts.append(f"""<!DOCTYPE html>
         .cluster {{ box-shadow: 0 1px 2px rgba(0,0,0,0.22); }}
     }}
     /* ════════════════════ END NUZU 2.0 — VISUAL REFRESH LAYER ════════════════════ */
+{NZO_CSS}
     </style>
 </head>
 <body>
@@ -6183,6 +6225,7 @@ html_parts.append(f"""
     <a href="#section-business" class="nav-link nav-business" role="menuitem">Business</a>
     <a href="#section-sports"   class="nav-link nav-sports"   role="menuitem">Sports</a>
     <a href="#section-culture"  class="nav-link nav-culture"  role="menuitem">Culture</a>
+    {NZO_NAV_LINK}
   </div>
   <div class="sticky-nav-controls">
     <button class="saved-nav-btn" id="saved-nav-btn" aria-label="Saved articles">
@@ -6543,6 +6586,16 @@ ts_html += '''<!-- VIDEO BANNER desktop only -->
 
 html_parts.append(ts_html)
 
+# ── NUZU ORIGINALS: featured strip ──
+# Sits directly under the top-stories strip so in-house work is the first
+# thing a reader sees after the day's headlines, above the section wire.
+try:
+    _nzo_strip = _NZO.render_featured_strip(NZO_ARTICLES)
+    if _nzo_strip:
+        html_parts.append(_nzo_strip)
+except Exception as _e_nzo_strip:
+    print(f"  [originals] featured strip skipped: {_e_nzo_strip}")
+
 # ====================== SECTION BLOCKS ======================
 def render_yesterday_top(sid, section_color_hex):
     """
@@ -6630,6 +6683,16 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     r_summary = source_summary(_r_items) if _r_items else ''
     _show_trust = _sid not in {'sports', 'culture', 'tech'}
     b_content = render_clusters(_b_clusters, show_trust=_show_trust, ctx=_sid) if _b_clusters else '<p style="color:var(--nuzu-dim)">No breaking news in the last 3 hours.</p>\n'
+    # ── NUZU ORIGINALS ──
+    # Any in-house article filed to this section rides at the top of the
+    # breaking column, so it reads as part of the section rather than bolted on.
+    # Wrapped: a bad article must never break a news section.
+    try:
+        _nzo_sec = _NZO.render_section_originals(NZO_ARTICLES, section_id)
+        if _nzo_sec:
+            b_content = _nzo_sec + b_content
+    except Exception as _e_nzo_sec:
+        print(f"  [originals] section render skipped for {section_id}: {_e_nzo_sec}")
     r_content = render_clusters(_r_clusters, show_trust=_show_trust, ctx=_sid) if _r_clusters else '<p style="color:var(--nuzu-dim)">No additional headlines right now.</p>\n'
     _dot_map = {
         'us-color':       '#C0392B',
@@ -8726,6 +8789,7 @@ html_parts.append(f"""
         <li><a href="#section-business">Business</a></li>
         <li><a href="#section-sports">Sports</a></li>
         <li><a href="#section-culture">Culture</a></li>
+        {NZO_FOOT_LINK}
       </ul>
     </div>
   </div>
@@ -8754,6 +8818,7 @@ html_parts.append(f"""
     <p class="footer-copyright">&copy; 2026 NUZU News. All rights reserved.</p>
     <p class="footer-update">Last updated: {update_time}</p>
     <div class="footer-bottom-links">
+      <a href="originals.html" style="color:#E3C15A;font-weight:600">Original Articles</a>
       <a href="about.html">About</a>
       <a href="mailto:NUZU-NEWS@protonmail.com?subject=NUZU%20Advertising%20Inquiry">Advertise</a>
       <a href="advertising.html">Advertising Guidelines</a>
@@ -8794,6 +8859,16 @@ with open(INDEX_HTML, "w", encoding="utf-8", errors="replace") as f:
 print(f"✅ index.html written ({len(html):,} characters)")
 
 print("✅ NUZU bot finished successfully.")
+
+# ── NUZU ORIGINALS: write originals.html + originals/<slug>.html ──
+# Deliberately placed BEFORE the empty-site guard below. These pages are built
+# purely from the articles/ folder and do not depend on the news wire at all,
+# so a feed outage that aborts the news build must not also stop a freshly
+# posted article from going live.
+try:
+    _nzo_written = _NZO.write_originals_pages(NZO_ARTICLES, CURRENT_DIR)
+except Exception as _e_nzo_write:
+    print(f"WARNING: originals pages not written ({_e_nzo_write}) - site build continues")
 
 # ====================== WRITE OUTPUT FILES ======================
 all_items_flat = sorted(

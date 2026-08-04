@@ -1,0 +1,141 @@
+NUZU ORIGINALS — install
+═══════════════════════════════════════════════════════════════════
+
+No Play Store update needed. Your manifest scope is "/" and the TWA
+fullScopeUrl is the site root, so every new page opens inside the
+app. Nothing about the Android wrapper changes.
+
+
+WHAT TO COPY WHERE
+───────────────────────────────────────────────────────────────────
+
+  nuzu_originals.py    -> repo root                    (new)
+  post.html            -> repo root                    (new)
+  bot.py               -> repo root                    (replaces)
+  sw.js                -> repo root                    (replaces)
+  articles/            -> repo root, whole folder      (new)
+
+  github_workflows/refresh.yml       -> .github/workflows/refresh.yml
+  github_workflows/daily-content.yml -> .github/workflows/daily-content.yml
+
+Then commit. First build creates originals.html and originals/.
+
+
+THE WORKFLOW EDIT IS NOT OPTIONAL
+───────────────────────────────────────────────────────────────────
+
+Both workflows got two new git add lines. Without them bot.py builds
+the article pages and they are never committed, so the whole feature
+silently does nothing. If you only take one thing from this list,
+take this one.
+
+  git add originals.html
+  git add -A originals/
+
+The -A matters: it stages deletions, so removing an article file
+also removes its page from the live site.
+
+
+WHAT CHANGED IN bot.py
+───────────────────────────────────────────────────────────────────
+
+75 lines added, 0 removed. Purely additive. Full diff is in
+bot.py.changes.diff. Eight hooks:
+
+  1. import nuzu_originals, with a stub fallback
+  2. load articles + build the CSS / nav / footer fragments
+  3. {NZO_CSS}       into the stylesheet
+  4. {NZO_NAV_LINK}  into the sticky nav
+  5. featured strip  after the top-stories strip
+  6. section cards   inside section_block()
+  7. {NZO_FOOT_LINK} into the footer, twice
+  8. page writer     before the empty-site guard
+
+Every hook is wrapped. If nuzu_originals.py is missing or throws,
+all eight become no-ops and the site builds exactly as it does
+today. An article you got wrong cannot take the news wire down.
+
+The page writer sits deliberately BEFORE the empty-site guard.
+Article pages are built from the articles/ folder alone and owe
+nothing to the news feeds, so a feed outage that aborts the news
+build must not also stop a freshly posted article from going live.
+
+
+SERVICE WORKER
+───────────────────────────────────────────────────────────────────
+
+CACHE_VERSION v15 -> v16, and originals.html added to the precache
+list. The bump forces installed app clients to evict old caches and
+pick up the new pages promptly.
+
+
+POSTING
+───────────────────────────────────────────────────────────────────
+
+Open post.html — on the site, or straight off your computer, it
+works either way. Paste the article, pick the section, hit Download,
+drop the file into articles/. Live within about five minutes.
+
+Or skip the download: open the "Publish straight to the site" panel,
+paste a fine-grained GitHub token scoped to this one repo with
+Contents: Read and write, and it commits for you. The token lives in
+your browser's local storage and goes nowhere except GitHub. Don't
+do that on a shared machine.
+
+post.html is set to noindex and is not linked from anywhere on the
+site. Nobody will stumble onto it, and it grants no access on its
+own — it is only a formatter.
+
+
+SAMPLE ARTICLE
+───────────────────────────────────────────────────────────────────
+
+articles/2026-08-04-the-five-minute-newsroom.txt is a real, complete
+article that demonstrates every formatting feature. Delete it when
+you post your own, or leave it as a reference.
+
+articles/README.txt is the format guide. Files named README, notes,
+template, example or sample are skipped by the loader, so the guide
+never publishes itself.
+
+
+TWO THINGS TO CHECK ON THE LIVE SITE
+───────────────────────────────────────────────────────────────────
+
+1. HOROSCOPES AND COMICS
+
+bot.py has render_horoscope_section() and render_comic_section(),
+and .github/workflows/daily-content.yml runs generate_horoscopes.py
+and generate_comic_rss.py every night at 12:05 AM UTC.
+
+Neither horoscopes.json nor comics.rss was in your backup. So either
+they exist live and the backup missed them, or that nightly job has
+been failing. Both steps are continue-on-error: true, which means a
+failure is silent — nothing goes red, the sections just never render.
+Worth a look at the Actions log.
+
+
+2. THE EMPTY-SITE GUARD DOES NOT ACTUALLY GUARD
+
+Pre-existing, unrelated to this work, and I left it alone since you
+asked to keep changes tight. But you should know about it.
+
+bot.py writes index.html once unconditionally, then re-joins the HTML
+and checks the 20-story floor:
+
+    html = "".join(html_parts)
+    with open(INDEX_HTML, "w") as f:      <- already written here
+        f.write(...)
+    ...
+    if _total_stories < MINIMUM_STORIES_FLOOR:
+        print("Keeping existing index.html")   <- too late
+        sys.exit(0)
+
+By the time the guard fires, the bad page is already on disk. My
+test build reproduced it exactly: it printed "Keeping existing
+index.html. No files will be overwritten" having already overwritten
+it. The guard is meant to stop a feed outage replacing the live site
+with a blank page, and right now it cannot.
+
+The fix is small — move the first write below the guard, or drop it
+entirely since the second write is the real one. Say the word.
