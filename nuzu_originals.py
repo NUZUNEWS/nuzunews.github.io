@@ -181,6 +181,89 @@ def _inline(text):
     return text
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# VIDEO
+# ─────────────────────────────────────────────────────────────────────────────
+
+_YT_PATTERNS = [
+    r"(?:youtube\.com|youtube-nocookie\.com)/watch\?(?:.*&)?v=([A-Za-z0-9_-]{11})",
+    r"youtu\.be/([A-Za-z0-9_-]{11})",
+    r"(?:youtube\.com|youtube-nocookie\.com)/embed/([A-Za-z0-9_-]{11})",
+    r"(?:youtube\.com|youtube-nocookie\.com)/shorts/([A-Za-z0-9_-]{11})",
+    r"(?:youtube\.com|youtube-nocookie\.com)/live/([A-Za-z0-9_-]{11})",
+]
+
+
+def youtube_id(raw):
+    """
+    Pull an 11-character YouTube id out of whatever the author pasted.
+    Accepts full watch URLs, youtu.be short links, embed/shorts/live URLs,
+    or a bare id. Returns None if nothing usable is found.
+    """
+    raw = (raw or "").strip()
+    if not raw:
+        return None
+    for pat in _YT_PATTERNS:
+        m = re.search(pat, raw)
+        if m:
+            return m.group(1)
+    if re.fullmatch(r"[A-Za-z0-9_-]{11}", raw):
+        return raw
+    return None
+
+
+def _video_embed(vid, caption="", lazy=True):
+    """
+    Responsive 16:9 YouTube embed.
+
+    Deliberately NO enablejsapi=1 here. On this site that parameter wakes the
+    YouTube Player API and has previously activated dormant timers and state
+    listeners on the video wall. Article embeds need none of that, so they stay
+    plain and inert.
+
+    Uses youtube-nocookie.com so a reader who never presses play is not tracked.
+    """
+    cap = ('<figcaption class="nzo-figcap">%s</figcaption>' % _inline(_esc(caption))) if caption else ""
+    return (
+        '<figure class="nzo-video">'
+        '<div class="nzo-video-frame">'
+        '<iframe src="https://www.youtube-nocookie.com/embed/%s?rel=0" '
+        'title="%s" frameborder="0" %s'
+        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; '
+        'gyroscope; picture-in-picture; web-share" '
+        'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+        '</div>%s</figure>'
+        % (_esc(vid), _esc(caption or "Video"),
+           'loading="lazy" ' if lazy else "", cap)
+    )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DROP CAP
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _apply_dropcap(body_html):
+    """
+    Wrap the first character of the first paragraph in an explicit span.
+
+    The old approach leaned on ::first-letter with :first-of-type, which only
+    fires when the opening element happens to be a plain paragraph. Any article
+    that led with a heading, a pull quote or an image either lost the drop cap
+    entirely or had it land halfway down the page.
+
+    Doing it in the markup makes it deterministic: the gold capital always sits
+    on the first paragraph, whatever comes before it.
+    """
+    m = re.search(r'<p class="nzo-p">\s*(&[a-zA-Z]+;|&#\d+;|[^\s<&])', body_html)
+    if not m:
+        return body_html
+    ch = m.group(1)
+    start, end = m.start(), m.end()
+    return (body_html[:start]
+            + '<p class="nzo-p"><span class="nzo-dropcap">' + ch + '</span>'
+            + body_html[end:])
+
+
 def _render_body(raw_body):
     """Plain text -> article HTML. Blank line separates blocks."""
     blocks, out = re.split(r"\n\s*\n", (raw_body or "").strip()), []
@@ -193,6 +276,22 @@ def _render_body(raw_body):
         if re.fullmatch(r"[-*_]{3,}", block):
             out.append('<hr class="nzo-rule">')
             continue
+
+        # Video:  [video: URL]  or  [video: URL | Caption]
+        m = re.fullmatch(r"\[video:\s*([^\]|]+?)(?:\s*\|\s*(.+?))?\s*\]", block, re.I)
+        if m:
+            vid = youtube_id(m.group(1))
+            if vid:
+                out.append(_video_embed(vid, (m.group(2) or "").strip()))
+                continue
+
+        # A bare YouTube link on its own line becomes an embed. Authors paste
+        # links far more often than they remember bespoke syntax.
+        if "\n" not in block:
+            vid = youtube_id(block)
+            if vid and (block.startswith("http") or re.fullmatch(r"[A-Za-z0-9_-]{11}", block)):
+                out.append(_video_embed(vid))
+                continue
 
         lines = block.split("\n")
 
@@ -247,7 +346,7 @@ def _render_body(raw_body):
         # Default: paragraph (single newlines become spaces)
         out.append('<p class="nzo-p">%s</p>' % _inline(_esc(" ".join(lines))))
 
-    return "\n".join(out)
+    return _apply_dropcap("\n".join(out))
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -314,7 +413,20 @@ def _parse_article_file(path):
 
     tags = [t.strip() for t in (meta.get("tags") or "").split(",") if t.strip()]
 
+    # Hero media. A video wins over an image when both are given, because a
+    # lead video is the stronger visual and two heroes stacked looks cluttered.
+    hero_video = youtube_id(meta.get("video") or meta.get("youtube") or "")
+    hero_image = (meta.get("image") or meta.get("photo") or "").strip()
+    if hero_image and not re.match(r"^(https?://|/)", hero_image):
+        print("  [originals] '%s' image is not a full URL - ignoring: %s"
+              % (os.path.basename(path), hero_image[:60]))
+        hero_image = ""
+    hero_caption = (meta.get("caption") or meta.get("imagecaption") or "").strip()
+
     return {
+        "hero_video":   hero_video,
+        "hero_image":   hero_image,
+        "hero_caption": hero_caption,
         "slug":       slug,
         "title":      title,
         "subtitle":   (meta.get("subtitle") or meta.get("deck") or "").strip(),
@@ -744,11 +856,33 @@ body.light-mode .nzo-art-byline{border-top-color:#DDE2EA}
 /* — Body copy: the part that has to feel like a newspaper — */
 .nzo-body{font-size:1.075em;line-height:1.82}
 .nzo-p{margin-bottom:1.32em}
-.nzo-body > .nzo-p:first-of-type::first-letter{
-  float:left;font-family:'Playfair Display',Georgia,serif;font-size:3.3em;
-  line-height:0.82;font-weight:900;color:var(--nzo-gold-lite);
-  margin:0.06em 0.11em 0 0}
-body.light-mode .nzo-body > .nzo-p:first-of-type::first-letter{color:var(--nzo-gold-deep)}
+/* Drop cap. An explicit span, not ::first-letter, so it always lands on the
+   opening paragraph even when the article leads with a quote or an image. */
+.nzo-dropcap{float:left;font-family:'Playfair Display',Georgia,serif;
+  font-size:3.5em;line-height:0.78;font-weight:900;color:var(--nzo-gold-lite);
+  margin:0.05em 0.10em 0 0;text-shadow:0 2px 14px rgba(201,162,39,0.25)}
+body.light-mode .nzo-dropcap{color:var(--nzo-gold-deep);text-shadow:none}
+
+/* Byline. The gold is the whole point: it is how a reader tells an in-house
+   piece from the two hundred wire sources on the rest of the site. */
+.nzo-art-byline-name{font-size:1.12em;font-weight:600}
+.nzo-art-byline-name a.nzo-byline,
+a.nzo-byline,.nzo-byline{color:var(--nzo-gold-lite);font-weight:800;
+  letter-spacing:0.02em;text-decoration:none}
+body.light-mode .nzo-art-byline-name a.nzo-byline,
+body.light-mode a.nzo-byline,body.light-mode .nzo-byline{color:var(--nzo-gold-deep)}
+.nzo-art-byline-name a.nzo-byline:hover{text-decoration:underline}
+.nzo-art-byline-role{font-size:0.78em;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--nzo-gold);opacity:0.75;font-weight:700;margin-top:2px}
+
+/* Video */
+.nzo-video{margin:1.9em 0}
+.nzo-video-frame{position:relative;width:100%%;padding-top:56.25%%;
+  border-radius:7px;overflow:hidden;background:#000;
+  border:1px solid rgba(201,162,39,0.22)}
+.nzo-video-frame iframe{position:absolute;top:0;left:0;width:100%%;height:100%%;border:0}
+.nzo-hero-img img{border:1px solid rgba(201,162,39,0.22)}
+.nzo-art-head + .nzo-video,.nzo-art-head + .nzo-figure{margin-top:0;margin-bottom:2em}
 .nzo-h2{font-family:'Playfair Display',Georgia,serif;font-size:1.5em;font-weight:700;
   color:var(--nuzu-white);margin:1.7em 0 0.55em;line-height:1.3}
 .nzo-h3{font-size:1.2em;font-weight:700;color:var(--nuzu-white);margin:1.5em 0 0.5em}
@@ -964,6 +1098,17 @@ def _render_article_page(art, siblings):
 
     sub = ('<p class="nzo-art-sub">%s</p>' % _esc(art["subtitle"])) if art["subtitle"] else ""
 
+    # Lead media, directly under the byline.
+    hero = ""
+    if art.get("hero_video"):
+        hero = _video_embed(art["hero_video"], art.get("hero_caption", ""), lazy=False)
+    elif art.get("hero_image"):
+        hcap = (('<figcaption class="nzo-figcap">%s</figcaption>'
+                 % _inline(_esc(art["hero_caption"]))) if art.get("hero_caption") else "")
+        hero = ('<figure class="nzo-figure nzo-hero-img">'
+                '<img src="%s" alt="%s">%s</figure>'
+                % (_esc(art["hero_image"]), _esc(art.get("hero_caption") or art["title"]), hcap))
+
     tags = ""
     if art["tags"]:
         chips = "".join('<span class="nzo-tag">%s</span>' % _esc(t) for t in art["tags"])
@@ -1002,10 +1147,13 @@ def _render_article_page(art, siblings):
         <div class="nzo-art-avatar">%(initials)s</div>
         <div class="nzo-art-byline-txt">
           <div class="nzo-art-byline-name">By <a class="nzo-byline" href="../originals.html">%(author)s</a></div>
+          <div class="nzo-art-byline-role">NUZU Staff Writer</div>
           <div>%(datetime)s &middot; %(read)d min read</div>
         </div>
       </div>
     </header>
+
+    %(hero)s
 
     <div class="nzo-body">
 %(body)s
@@ -1028,7 +1176,7 @@ def _render_article_page(art, siblings):
        "author": _esc(art["author"]),
        "datetime": _esc(_fmt_datetime(art["published"])),
        "read": art["read_min"], "body": art["body_html"],
-       "tags": tags, "more": more}
+       "hero": hero, "tags": tags, "more": more}
 
     desc = art["summary"] or art["subtitle"] or art["title"]
     return _page_shell(
