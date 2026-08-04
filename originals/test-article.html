@@ -143,11 +143,33 @@ body.light-mode .nzo-art-byline{border-top-color:#DDE2EA}
 /* — Body copy: the part that has to feel like a newspaper — */
 .nzo-body{font-size:1.075em;line-height:1.82}
 .nzo-p{margin-bottom:1.32em}
-.nzo-body > .nzo-p:first-of-type::first-letter{
-  float:left;font-family:'Playfair Display',Georgia,serif;font-size:3.3em;
-  line-height:0.82;font-weight:900;color:var(--nzo-gold-lite);
-  margin:0.06em 0.11em 0 0}
-body.light-mode .nzo-body > .nzo-p:first-of-type::first-letter{color:var(--nzo-gold-deep)}
+/* Drop cap. An explicit span, not ::first-letter, so it always lands on the
+   opening paragraph even when the article leads with a quote or an image. */
+.nzo-dropcap{float:left;font-family:'Playfair Display',Georgia,serif;
+  font-size:3.5em;line-height:0.78;font-weight:900;color:var(--nzo-gold-lite);
+  margin:0.05em 0.10em 0 0;text-shadow:0 2px 14px rgba(201,162,39,0.25)}
+body.light-mode .nzo-dropcap{color:var(--nzo-gold-deep);text-shadow:none}
+
+/* Byline. The gold is the whole point: it is how a reader tells an in-house
+   piece from the two hundred wire sources on the rest of the site. */
+.nzo-art-byline-name{font-size:1.12em;font-weight:600}
+.nzo-art-byline-name a.nzo-byline,
+a.nzo-byline,.nzo-byline{color:var(--nzo-gold-lite);font-weight:800;
+  letter-spacing:0.02em;text-decoration:none}
+body.light-mode .nzo-art-byline-name a.nzo-byline,
+body.light-mode a.nzo-byline,body.light-mode .nzo-byline{color:var(--nzo-gold-deep)}
+.nzo-art-byline-name a.nzo-byline:hover{text-decoration:underline}
+.nzo-art-byline-role{font-size:0.78em;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--nzo-gold);opacity:0.75;font-weight:700;margin-top:2px}
+
+/* Video */
+.nzo-video{margin:1.9em 0}
+.nzo-video-frame{position:relative;width:100%;padding-top:56.25%;
+  border-radius:7px;overflow:hidden;background:#000;
+  border:1px solid rgba(201,162,39,0.22)}
+.nzo-video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.nzo-hero-img img{border:1px solid rgba(201,162,39,0.22)}
+.nzo-art-head + .nzo-video,.nzo-art-head + .nzo-figure{margin-top:0;margin-bottom:2em}
 .nzo-h2{font-family:'Playfair Display',Georgia,serif;font-size:1.5em;font-weight:700;
   color:var(--nuzu-white);margin:1.7em 0 0.55em;line-height:1.3}
 .nzo-h3{font-size:1.2em;font-weight:700;color:var(--nuzu-white);margin:1.5em 0 0.5em}
@@ -238,13 +260,16 @@ body.light-mode .nzo-foot{border-top-color:#DDE2EA}
         <div class="nzo-art-avatar">SM</div>
         <div class="nzo-art-byline-txt">
           <div class="nzo-art-byline-name">By <a class="nzo-byline" href="../originals.html">Sean Mitchell</a></div>
+          <div class="nzo-art-byline-role">NUZU Staff Writer</div>
           <div>August 4, 2026 at 1:16 PM PDT &middot; 1 min read</div>
         </div>
       </div>
     </header>
 
+    
+
     <div class="nzo-body">
-<p class="nzo-p">This is Article 1.</p>
+<p class="nzo-p"><span class="nzo-dropcap">T</span>his is Article 1.</p>
 <p class="nzo-p">This is a sample.</p>
 <p class="nzo-p">This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.This is a sample.</p>
     </div>
