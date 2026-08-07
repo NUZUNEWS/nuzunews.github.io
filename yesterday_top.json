@@ -1,6 +1,267 @@
 {
-  "today_date": "2026-08-06",
+  "today_date": "2026-08-07",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Trump tries new tack against birthright citizenship after Supreme Court snub - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOOWRQcDFYLVFFaFVTbEtOVy12Q0lxdkQ3RENlZWJSdHlfeE1PMGFOSDV5SGJWTTY3Slg0ZTZiNzhYQzZuSVlXNklOcVRzNEJtdXBKMFExRWN0dnBUaWJPNTdwNjZSRnEtMWVqZjFSdVdaRFk3RnIzY2w3NlBMR3k3Z25oamtUTGRNc1pKVm14cXZ3TlVMSG1aR0Nad1djTHFBMUwzQjduXzA2bDk1djQ2ODBPN1l1VFU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 4,
+        "lead_ts": 1786059776
+      },
+      {
+        "title": "Republican US Senator Rand Paul asks Justice Department to prosecute Fauci after contempt vote - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNaWluM1Jma0cyZUI1dkNEMVN4S3lyZlBXLThjcWgxRmt0amFlZnJBNmVpSFN2cHpONmRJMnQ5QkQxNFJJZEt3NGMwTzhGZlotaDZzWG9fLWwwQzV0RS1PR196SXNNdFNfenBTdmcwa3pxSkxxV0lOMHFKbUtuU2UxOXlNdWlrZEpleEtSM1pxM29EZDhjbnIxVVZnNm5OX1RxRlZvZ3N3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 4,
+        "lead_ts": 1786054685
+      },
+      {
+        "title": "Opinion: Todd Blanche failed Epstein survivors like me. Sen. Murkowski must vote \u2018no\u2019 on his confirmation. - Anchorage Daily News",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPWlRodTMxVklwSkI5SFgzX0psTGsyRTBCaWNUNlc1MjVQbkZaX1dud19IWjBpVWVpWkNNQW1Vb2Y4dnhOc3ZCZC0wcm5TUnIxUkhKc0dzalY1NjA0N2E0dTZZRV9PN000UkZ2N1lydkM4dWxOQ3NRdkdWM1ZmMm1vZ0xYNGpMZGMwVEJ1QTFxeWxoWDdiSlBZMWY5YlE3aXJpbHpIYXRvYTVKa2ZGdEFva0FKTWxTT2Z3Q01wbUdCY19LaE9TcDI2eXpMMmRJdVlJU3RoRnQ3M04?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Anchorage Daily News",
+        "n_sources": 2,
+        "lead_ts": 1786055795
+      },
+      {
+        "title": "Mexico assigns troops to improve security as U.S. halts avocado imports over \u2018threat\u2019 - Los Angeles Times",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQcTYwWVdqOEQxZTl4OHZPQk5vMzdMejZTYVpUbEN2SjVsTUJkMklQbDNzOFF5R3VYWWdSTGFVSHF0OERNVUV1YkJuQjVqbkotZ1gxWG9Ub1AybnRzSmh2OWtZbTF5Y1NqZzF3d3Nudi0za04zblZyWnFrV2tZMW8tOGctNHl2Q0gtV3ctZF9ySVE2bFFLQ3J4STNuWU5oek9hUFhCcGZVWldFb1RTeHVCb29ncw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAT",
+        "n_sources": 2,
+        "lead_ts": 1786051966
+      },
+      {
+        "title": "Trump\u2019s Push for More A.I. Data Centers Will Mean Major Air Pollution - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQem5tczhQSXlXWkQyRU1XaTYyUmRaUElYZzlCbmtXRGI4WVgySklmZ2ctQ0s1UWJ2N1MzTU1xX1phbVdlTDIxM2NmcDVvdWpCT0EwcXFvZDlJMjJhdDBZaUpBODg4RnlnMWc3NWZaYXJYWi10VmhiNlU4MXVadlNXZmVZcHFXY3FQb1FHdjl0QQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 2,
+        "lead_ts": 1786050480
+      }
+    ],
+    "mideast": [
+      {
+        "title": "Iran says Hormuz deal with Oman won\u2019t fully reopen strait - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSHhFb2tmTW1CZ2s3dnYxa1hnY3RqdHdxeFVCaUxUWGlkMXptaWkzVzZlWGwyN0pfREZzU1NFdmZ1dmNlVWNGcVpiajg4SlhYYnJ2d0RwYU95d1NkNzJ2TlFqVXZ4ZlM1UHpCbFJLMk90VVVoQy0ySFpQN3dtOTJNa09jS0I4MmRCUENxSmRNMWEyQVA4OHR0Q1E0N2xzUVdnQWlVRkd1a2M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 12,
+        "lead_ts": 1786057784
+      },
+      {
+        "title": "Houthi Attacks on Yemeni Military Threaten to Reignite Civil War - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQV25TaENldXRJczNVdkd0LVpQT2JIRkZOUGUxdEoyb0QwTE9wejl5ZW50V0U4ek82cFh3bHJUbUJUdnNYc243OWU4U0ZOUU9ldXJNLURULXBNcFN6MUViSW1rRTJmVm80ZnJHUWptYm5pMVNMNG5qcEJVQjVyOGNiTWZYOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 3,
+        "lead_ts": 1786059494
+      },
+      {
+        "title": "Israel Steps Up Attacks on Hezbollah, Clouding Talks With Lebanon - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPb3hoTjFJazJ3SmNBck16dlpxRmpnRWYzeGhzbFFVYnZ5Q01YZGl6VHVmUzBVNDdEX3VuNjNGYVdicFA0UHctQ3ZLeE9talo0OWttWGdCOGFaS1dFQ2NwbDJrSDVsbmRLY1VGODNER0NLVC1pVlB4MUNlSUFlQjVKVHBtNS05S3VaclE5d0VOTElmNmlBT2JQb092RWlXbTZrMEg2eVNDTnRkVG1QSThmYw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 3,
+        "lead_ts": 1786047780
+      },
+      {
+        "title": "Iraq Is Between Iran and a Hard Place - Middle East Institute",
+        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5SU2hVVUlGbm5FWGw2N3Y4MUlBRFBCMm1MY0hSaWVIMFZSTlBtTUs4MnV5WmRQeTBuSExGRDBtbHVfMTI5OHBMMGJQSUhIQ0JHZVdGV2RzRHYzaVdUaWxNMHFlcTg2N2pwenVvNkw4OTJwazA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "MEI",
+        "n_sources": 3,
+        "lead_ts": 1786047510
+      },
+      {
+        "title": "Houthi attacks in Saudi Arabia wound 11, says Riyadh-led coalition - TRT World",
+        "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5vTXFQVURqdEFDLXlXc0gzRmtxTE1sQS02Yk9iYWZaLS0yMWNJekExbzJuTXE0eDgwZVhybnJfSlVfcUctdl9DczM0SGpfMHowSmFtUnlrbE0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TRT World",
+        "n_sources": 2,
+        "lead_ts": 1786060347
+      }
+    ],
+    "world": [
+      {
+        "title": "ASEAN\u2019s e-waste economy reshapes US\u2013Japan resource diplomacy - East Asia Forum",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNeG00dkM5NTBCLU43dFg1bzFJd0VGNnNsN0xoaUtqel9Menc4dDZ3ZVY4eGY5ZzJYUG9fTkpIMEVrUDZkME0zR3BzYW04Nzc1Y3BlWVMtYUVBV2Q1RE5iTFUtRGlFRzhibmxHQnA1WTFCREk2YVhUV3RsYzdLblR0Vnd3X3J1bFNsdFAtZmN2RWdJR1haNzhhMkhCVTJkZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "East Asia Forum",
+        "n_sources": 2,
+        "lead_ts": 1786060800
+      },
+      {
+        "title": "Brent Oil Hovers around $80 on Hopes that the Strait of Hormuz Will Reopen - The Institute for Energy Research",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPZ1U5VlRSX0tPc3ZaRmhLY3FsclVBeFd6Qkd4dHBTQnl3ZVZYczdFcWVMMmFzNkM1NV9wSHFJajMwczhJeERnZml1ZUV2dFJELVR1S3cxbUNXOW5HaXR4YVFKUlp5N3AySjZidS1SYWpkcl9vaDZrRVpiUWtkMi1tNEo3czBIWE9XSTFWSzBpWjQ5Q2tia0ZoTjN4VEdMRmk2elZ4UmFuUFF3bTUzR1BPaC01cmY2TGZIZS1XNEotelFETEFlTVhjTjlMOVhkSl9LNmxKbA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The Institute for Energy Research",
+        "n_sources": 2,
+        "lead_ts": 1786057206
+      },
+      {
+        "title": "Germany's drone threat wake-up call | DW News - Modern Ghana",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1va2NtcWdsbEZvWDdjSF9rdEZ6cVRiQk5FWnlyanV3TFNrbHV2Vi1pUFpPelhHS0F6M3BsMEhmaTNpV3NEVEdEd2lYV1p4YzVSVFJpV0hzUFQ2YTkzdUHSAVxBVV95cUxNMTUwemd2c28xUTdoSDRLYklSNGlEYnI1X1pMTlhHeEdheV9TMlNicGtRdU8xQ1d1Mm5GV3JmbVVhX3NQVTgzSzA4N2M0dzBxN0VPMUhwNVdwWHFTZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Modern Ghana",
+        "n_sources": 2,
+        "lead_ts": 1786055371
+      },
+      {
+        "title": "Iran Is Staking Everything on Controlling the Strait of Hormuz - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOaDJBSWlPX25nbTdzRVlVeU5ESHE2WXdVeXVXVi1wRU9DUGdnWGZTN2xOMVhGUWlWZEZkWXZXeTMwdEFXa05qdkMxWkpJWG5BWVFTWGs4c2htNXRLVkpPTC1adGNfalBTb19UamdNSldPVlRKbDVQMEpGTTJRbkI3V0NBZEd2aEU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 2,
+        "lead_ts": 1786051949
+      },
+      {
+        "title": "Insurance and bank stocks slide amid China tax crackdown fears - ft.com",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOQzc5YzA3ZXEyVnczV29WNmtPSVlSUGdLQ2N6djBJMHZpYzV4UFVERTlSUTdUd2pVS09RWVR2dVVESlVnejVxR29DQmRlcGl6dUpjYTV0TWpRYnNseE95c25lSS1lcVN2LWRPV2hNUVV1bGUtUWZ1ZmNNaWxETDNHbHpJaTk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ft.com",
+        "n_sources": 2,
+        "lead_ts": 1786008608
+      }
+    ],
+    "tech": [
+      {
+        "title": "Meta Says Its AI Hacked a Company in Testing - Technology Org",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPeTdYcnFLRS0tY1p6SzN6RVVSTEtuc1lHX2ktalJVVVpJWEU4bnBIbFBZVE1BQkJQbFlQaTItU0VteERxV25HYzdaZnViTzNVMjlLVFBNTTBucWl4RTh2N210aFhvQVpZbndWLXVET08wSEMySndBMnlFTkpqdDdxcw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Technology Org",
+        "n_sources": 4,
+        "lead_ts": 1786056413
+      },
+      {
+        "title": "Nothing to fear: AI just created a virus that is not found in nature - The Independent",
+        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNazBaeDh6VDliQmVGLWloaTF6MUdoaWI4U184WHNPOE1GZnNiNW5nTHlzRjlVejlzUHlLa1VrLTBOT0YyWTYzU0laQ1ZSOUFkc1ZjenUzMVU3T1dlbThtRUE1Z3UyckU2dWxMNGhXSGpFcUNteTNuZjlUeXF1ZlBGNk80NVlYQ0FwRU9idg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Independent",
+        "n_sources": 2,
+        "lead_ts": 1786056360
+      },
+      {
+        "title": "OpenAI\u2019s new AI smart speaker will reportedly sell for between $300-$400 - TechCrunch",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNSWNCTVRlcElINlZvQnRKaW1sX1MyY3FITTk3d0UyN3dSb1NScnM3ay01WWxnZm85b0sxNF80LTktVjhFbk1qRUJhejVrS2V1UmxqRVhBVXpsX3NFWlUtcnBETEtYNk1SQzZrLUwyRW92ZUEwYmNnS200YnZiejVQTUJhS2dET180NmlKb2d2QURLZkpkbmJFZ0RySkFORGFJcGdTRmtuUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TechCrunch",
+        "n_sources": 2,
+        "lead_ts": 1786056233
+      },
+      {
+        "title": "BREAKING: Jimmy Rogers Will DOMINATE Big 12 With Access To New Tech, ISU's Sport Science Top Tier - 12News",
+        "link": "https://news.google.com/rss/articles/CBMisgJBVV95cUxObjlKZWhlbzhhdVdCYS1raUlEd2ZYMzdabUdXalVhRUNVVWJhLUdSazhaMEk5SVhvOGxBS2FiUnFpRzJaRzN4U3V2VHlmQWpkclpQczl6OXJHZTVjdERtYUJTVV84TUl5Wkpsb3hFY3g5ODFmUkljNXRwdXRiY1FxSVg1RFVaMVlGaS1DelJBM1lFbk1nMnlsUFlQMmVCNDc4b3RPN3lZZXVGN0h6MmdwaVNsOHdZT2ppeHVMZ2FQN2tWdlVMWUFZUFRjby14dTZLbDh5dzNyWG0ybTRNTjNaOGw3dmlKVWRicEJnMmJMMm40ZFJySUNaUVJ1dk5DanltWFozTVdyaGRVdWY3bEpqYlU5OTR2cktzYUpEN3ZfdG9jcU5Eb3NPb3NPMFpiWXBON2c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "12News",
+        "n_sources": 2,
+        "lead_ts": 1786053600
+      },
+      {
+        "title": "AMD Buys Taalas to Put Hard-Wired AI Models in Its Accelerator Roadmap - Unite.AI",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPRUI2VTZ0SXNnSWlLVkNDNUQwZ0YtYV9paDhJR3R6aVk2TW1nSmY4TExNR2FDdGlTVENaZUFtTmxqN3RndFFWT0NkQ3BNSWQwZFJYekRhTE42enRNQTE0Y29UQUFIeDdnREhFQzg5V1NiX1BYTm9sVmdvUXI2ZUxzTWRmRjJRSDY4VUxzWTdob2U3QVFLVU9j?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Unite.AI",
+        "n_sources": 2,
+        "lead_ts": 1786050721
+      }
+    ],
+    "business": [
+      {
+        "title": "World shares are mixed and Kospi falls 4.6% after tech giants decline on Wall Street - ABC News - Breaking News, Latest News and Videos",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNUkhlVWg3LWk2QVVRZTdrbjVlcTd4R3VlWjJYdGhVSDU2WWdIRGJwaVlfSkJseE1hZ1E4eERYWk8tZFBRc25Xb1ZjWHdQdWdDY1gzeHpaS2I3NkJyNDFfaVA0MThGR0RnN29ubnp2YzJmZ3FoRWk1Wk94THNWa2JFN1p5cENnMDdPZ3BqTERQckp0YVI2WG5padIBngFBVV95cUxOOU1MZUN4cGdScVdkTW1IaDJrSVRvYmNJSTlTZkJrYkN5UWlVVzZEdVhZMEpKOGppbndvZXdzVU56XzVZZWhKQmY4enJBam5PeFJmcUhGMXpjeXlTVnZfUzIxSV8wcERTMGRWaVBUeUpSdFpkM1U4dHA3d2Y4dGRHb1JxakpWb1YwbXhsZV9aSGJnNlZKVFEydXVuY1VpUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 3,
+        "lead_ts": 1786046625
+      },
+      {
+        "title": "NVDA Stock Price | NVIDIA Corp. Stock Quote (U.S.: Nasdaq) - marketwatch.com",
+        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9rTUx0am9SNU4zUG1rZG02REFwVHRBSmgyanJKb1ZFRHZNbG91b2RIN1NTUUxsTS1JX0xFWmVkTmxsQWxleG1nN1VXZnVJby13cEdlX1B2dUs4aEhr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "marketwatch.com",
+        "n_sources": 2,
+        "lead_ts": 1786057341
+      },
+      {
+        "title": "Airbnb stock soars 9% on earnings and revenue beat, strong guidance for third quarter - CNBC",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1WTXItN0NubHhVQV82dWU2VmxfWGxJRDROX2xucWd5TDdqSVV4NktPOFo3MFIwZ082S1hseXFJXzFCS1U3RVBEWWNJY3dSOFZXY282R3ZiX05LeGcxZFRfVU9OUTcxSkY2aUJEZHBOQS1KRGRJ0gF6QVVfeXFMTUJPcXQyRThmcG9Uc2E5S2RuZ1dPUWRiU3M2Z19uc19EMkF4amZNU1Z1UUNqNXpuR0U0RmRoeTNYekFQTXVRTG43dW9mcXJTX1o2MmFWSVNqSUNMSld6UDA0THRDX3JJcjk1WXNjOU9LOFBrNXVyRmJPNnc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNBC",
+        "n_sources": 2,
+        "lead_ts": 1786050361
+      },
+      {
+        "title": "Main Street Capital Q2 earnings beat, net asset value climbs (MAIN:NYSE) - Seeking Alpha",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQQnFwUm5oaTlCOEFleEs4X0M1R1c2M0R4dFhXS1JodGpmYmRmaGVlTnlUVHl2bnBVUU9BTzl6Q29UU0xXaC1HWm9pZmR1aXg2VnU1WTBnQ2trSWxDUVB3V3dxMHJTZGlEUE5NWF9wYmdlYUFveTU3azNQemdDTEJpazgzRmx3VEhGLXQ2ZENpZkM4ZFJoM0ZSN3VIMDk2Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Seeking Alpha",
+        "n_sources": 2,
+        "lead_ts": 1786048720
+      },
+      {
+        "title": "EasyJet agrees to \u00a35.7bn takeover by US private equity firm - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOUHdLQlpnSDBrbDBHZjdjYVNhZ3dyRU1jZWY2dmllZDNnM0M4ZlhnekJXOV9wWTdvZDlvUmluUTdRSGUwR05HSDJ6S1gxaV9QbkNaN1dBOG1IaC1EeEhXYzBOamQwWWtvQTh1eHZlQlRmTEJKS1ZDVzYzQkFOb1ZnRWVwTGxNcW9CdU51WGdETy1YaGtOajQ2YmJOLTVmbUtMNmFhZktjeVlxaG9RcjEtRmdQNnVNNThY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 2,
+        "lead_ts": 1786044060
+      }
+    ],
+    "sports": [
+      {
+        "title": "Red Sox' worst fears about Triston Casas may have come true after latest surgery - sports.yahoo.com",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNWTFyRzU5ZGpEd3c0M3p2NklJb1ZQTWh6UEZYV2M5dGlwWTYyWTFVNHhWZDBkOGRuajdBSEg2dXYyUHhsVG1GMTFTNmJTaGlfdkxqcGxuU3ppZFpCRFgzeHJxMmxBYUVhWnYwTFNQX2lOeFl1SkMwa3RpTHdaUk5QVklR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "sports.yahoo.com",
+        "n_sources": 4,
+        "lead_ts": 1786060037
+      },
+      {
+        "title": "Uefa maintains World Cup boycott still stands despite Fifa\u2019s backing for Infantino - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNU0dRS3VKREQ4cUlOOVh5cUd4WDlHYkVxTl9ialFPeTZSVEs0N0hXVWJMa2l6bGo5UUM0OXZaUnM3OGZKNUlvak1Jc3BhbEJXd0thUHowM01CM0hqSE1sRTF0U1NIX1pqSkxDZnJPNHdSQ2lsZ2dCeDhPMEpxSVkxRmVsWFoyclZLRGNiMDNkTTI0djBDS09QUHFBXzRMNXZtMFZV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 4,
+        "lead_ts": 1786056900
+      },
+      {
+        "title": "Arlington museum took a gamble on soccer for World Cup. It drew fewer visits than expected - Fort Worth Report",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOeEhuT3BYQ3dSTE9SbUlLQ1p6OGZ2SkZLU09Va1M0SjV2VlQ2dlI1eGFTZFRmNndtb0NJNWhKaTlGaE5nZnhJZmE4NFBmNkdJTXo5MVFvbUs1YlZuZ1pieFlLUmtnMmN5SlBrakMtZFRzdzlabDl4STBELVdqOHl3NXozeGFFMHhIbXNiSHQ5VndjZDd4ZVhjeVBwVzhlNEREUzBPUW84UUs4YmY2a2s2UFZqNVdCTHZTZlZmS3l6Y1hyMTJTUklxdg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Fort Worth Report",
+        "n_sources": 3,
+        "lead_ts": 1786043205
+      },
+      {
+        "title": "Philadelphia fighter Sean Brady \u2018never offered\u2019 a fight for \u2018underwhelming\u2019 UFC 330 card - \u2018Just unfortunate\u2019 - MMA Mania",
+        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOalBxTUN0djdQMkdsYndycmpxaWw5SXBlNXhzcVdUNk5kWnJoVkZnczJrMHU0akFsOTBDN1E2X1Q3QlNQTE54bnUzNUtJZ1pId1RRM3dyamp3Y19GRG5KZ01WX1N5d1VwUTcxVXhxZXpHTkI0UUx3dW94b0pjeG1qWW85SzV4czZJUFhFdnlCREhSX2hVT3I3Snd5MVlHVWxfRnJDdjNjTFhPaEJZYW5HUVFwU3RGcTNPa21sN1paSUs1Tl9FV0F5QVZPWlp1SjI1T2xlRDVJYUlUZ08yeVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "MMA Mania",
+        "n_sources": 2,
+        "lead_ts": 1786060800
+      },
+      {
+        "title": "Fantasy football rankings 2026: Sleepers from model that nailed De'Von Achane's elite season - cbssports.com",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNVHRiaE1zSm5HYWRGelNqQkY3U0M1NjNfbXdkMS1TejhINUxQcV9KZHFHaUdFZXFURTM4bW9WNFlDUmlpUFh4VzRtcUEzSEtfUlFicWlWUWVKZFZ1dWw1SnVqX1NldDlFNzYwVG9Ca0dHMVdoUkJvblhUYUg1Tm0tV0F0R0xTRDEwSEJ2eGZfRlplVTVCWllsOEZFNHE3Y3lndmhMdU8zT1FFNG9WSTI3bUd5aVliZGM5cG5IYmQ2YXlGSVFmakpPWFJwMnhOdU1pcTBmLQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "cbssports.com",
+        "n_sources": 2,
+        "lead_ts": 1786060317
+      }
+    ],
+    "culture": [
+      {
+        "title": "Sydney Towle, content creator who documented life with cancer, dies at 26 - Yahoo",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPLVI3Y2dKVlZDUDZ3OWtRMXpETkNfVTdBSXhWYWJ3UVQ1dUZtYm9wNW5xSDJvUXIxLWhTNnkwLWtsVmNaTmdpbXlIQi1ralZ2R215dG5EaTlObV9PZmtUakIwbE8weEZVZHBZWE04bGtvdGpZbWFPSkZQNHZ5aF91X0ZCOU9lZlY0bElvZWlqcDBCV2RYOUZSSWQwcDl2NWJOSl9raDlWUXhOWV8yQlE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo",
+        "n_sources": 5,
+        "lead_ts": 1786060504
+      },
+      {
+        "title": "EXCLUSIVE: Apple TV\u2019s \u2018Widow\u2019s Bay\u2019 is setting a milestone for the streamer as its first series to get a theatrical exposure. Apple TV has teamed with Rutgers University, the alma mater of \u2018Widow\u2019s Bay\u2019 creator Katie Dippold, for free, one-night-only fan screeni - facebook.com",
+        "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQMU9IbmgyaTJ5NS1oNGlyelhIN3VRZG9WTDNiRm1RaVhpMEhwclFjcTQyaUtkZ1hWMVNDbTVoVUhjS2F6RW1iSDdON0M3bEJaTmV4dllta2FoSVVDRWcyM091TW5abTBSdmViV3dRdUNXa0NteWtXM1hMTy1KUnZINlIyV0ctS1Bld3V1NEpYQTdhX2RCV05TeGY1a1B3d2ZTOS1SYWdjbXlQRUptck9KTWZxSmszVUZCOXY5NDdiMGdwNlFrWnhELUtNY2t4NFkxcjVuTTl3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "facebook.com",
+        "n_sources": 3,
+        "lead_ts": 1786060861
+      },
+      {
+        "title": "Robert Pattinson Is Ready for \u2018Primetime\u2019 in A24 Trailer - Vulture",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPZ2t5X0d0bVpBQWhLOW9ZSl82UmM3ZXpJMWJNRjVEeS13b3NCdHh1czdmd2F1YmEwcWluaDBiNGUyMS1lQlRfVE5MUnZ4QTA0YUNkNUI3T3B6ODhVSUpsMy04ajVYSHpYcy1KNk5IOFdhVWtPOGdxZVJGeTlRSVh4clQ5ZzNzNVhNWDdJaU1yZnhwY0lOV1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Vulture",
+        "n_sources": 3,
+        "lead_ts": 1786028591
+      },
+      {
+        "title": "Spider-Man: Brand New Day Shatters Two More Box Office Records As Week 1 Ends - screenrant.com",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOSzZqQThqd0RhTjNFM01lZDhRSHZUWFpUcE1SV0xUS3Nab3I0MXYxcjBMMTEzZU11S2RaVXFEb2N1ZW1GNVI0ZlEwR2RKVGxHVnlJS1paUEJWVVRMZVREbm1Tc0NPeVpkZGZIWXpKdk9PNjY3YzE1QjhsdE5lLUIxOUwtdC1GS0UxcE5Tb2V4X3pUczM5?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "screenrant.com",
+        "n_sources": 2,
+        "lead_ts": 1786058299
+      },
+      {
+        "title": "Vogue just gave another nod of approval to the tech world - TechCrunch",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNYXMyRzBGYTNHdFdBdFdjSnhxVTVBQm9EbnctU2toaHNKUWxhSjRZT2xjQWhfOFZoQnAwMjR5UkVQUVN2Vnk2d3VwTEk2TkROY04zN0xYSmhyelhOeFpxdzBJXzJUb3pVLUtHSjcybzNZN2luRm9WQXJrNVBSYlpSVWliWkxrSlM5WmRrei0zeHBZQlFuUVkw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TechCrunch",
+        "n_sources": 2,
+        "lead_ts": 1786051487
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "Michigan Primary Results 2026: Senate, House and Governor - AP News",
@@ -258,267 +519,6 @@
         "source": "Upper Michigan's Source",
         "n_sources": 4,
         "lead_ts": 1786030860
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "Abdul El-Sayed wins Michigan\u2019s Democratic Senate primary, notching a Midwest victory for the left - NBC News",
-        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNa2xlZERFRVZUbnhjcTNRQ2dfN0laQWNHZVdjM3JWWDBFYVdqRXZEbkpUUTRoSjA4MkF2c1NfVFB0ajl5elRleGk2XzlCX2Y4MXFjZDNmV21VRnVkVlAzcFZWcklNbkxPbUg0dF9rSTc1cjdWS1c1SnFJbmpNZ3FNNmNNaXZyQnpOZEZvWkRRODBjZzJnNkpqejBwY1IwNVYwclIyTjN5QUxmMGN5ZGN3ZXh4X1JNVDhNQlJ1bWE1ZTFRcWZzV2U4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NBC News",
-        "n_sources": 8,
-        "lead_ts": 1785909480
-      },
-      {
-        "title": "Abdul El-Sayed's Victory In Michigan Is 'Good News For Republicans': GOP Strategist - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQNTYwZDdQbzBLRHpYNElBcG5pRkVtN1JOdjhKZ3pGclNtTjdLWWdRbG1rNzk4bkxkb2lnVDhuaGRKMF9Zbll2dWdCSjIzT1dHWkgxUUdXeWE4V0xOT1pXMEY2SXBtWG81d2hmeVpwTjNrZ0VIc2d5Mm43c2NDTlZUVmZ3X2FJbW5WSDVLTllpd1NtN3VTdk9NVVRITk42SkQtOTc0NmZkREpzclZLVjg2UTRDa3g0ZFRYUTFpNU1NY3FQNnlxMjVTMw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 7,
-        "lead_ts": 1785951707
-      },
-      {
-        "title": "Abdul El-Sayed wins Michigan Senate primary in major victory for Democrats\u2019 progressive wing - AP News",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOb21OakF0VFB5eUd5WV84MmZLTDJUaTA5SjhMbjVKX3pOMGczZWE0X2tjZkplbV94TkJjejZNbmpVNkREc242Zk9MTDI0SVhid1ViUjVucFpIazNGdld1a2pHY1JvaEZfZjE3YmlVajlLU0pJV2FfMVdYbVl4cmttRGVRQk1JYXY5VVVjS2o1TzhRY3A0SkJZd0FjVC1tRmFX?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 5,
-        "lead_ts": 1785957180
-      },
-      {
-        "title": "El-Sayed and Stevens locked in close Senate primary in Michigan - Roll Call",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOLXBfMzlyMWsyNjRhTjFFYXRLeEtMalY4VlRfZ2E1WkwzMW1yeGZ6eFlldXdEWHNvVVdoSGlMOHhJQjFLc3p4aERRUUFtZ1JqSXFfX1ViNEpadW1yTDFhY0IwSC1qal92LUdZVEdZSElkYUl4VGlkNjllbEhaekxoZjg5OFloU0d1NUVkR0lGQ2RyVVUxaGdnbFVfVno?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Roll Call",
-        "n_sources": 5,
-        "lead_ts": 1785929116
-      },
-      {
-        "title": "Man charged with arson as wildfires consume parts of Spokane, Washington - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOaWRSdHFRVGZKaE1qTGNxZ3V2SmV3NDMtbkYwN0JBTzhPS3ZUeFFtMzhLODdsQXJnOExOS0YyQl9jLXJyU3psSkxVWmZtNldrVVVrWEp0c0lEY2VUak1fdndUdDVKNjZnVl9idjlpZmlTSHVzOTNYSTA2aDFNSzZ2WnhOZE94SWFwNW52dDk3XzJHaU8tU2c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 5,
-        "lead_ts": 1785893826
-      }
-    ],
-    "mideast": [
-      {
-        "title": "Iran Says Oman Deal Nears for Strait of Hormuz Route, Warns Third Parties: how 16 outlets framed it - NewsCord",
-        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPRUdaSjhyX3N0NmN0aVlMSkc1Q05WMlZTNHRrOTNNRkpNNXBLX3ZyOW42WGhKbDlLNW40M2tBTmJsZDNGQ1pzWXF6czlJUmNHSExxRU9Mb1hjcDJ6emlHOE1yTFVOMmp1Ums0ZW14NEVaR2l0S3hxSjgycjBfbWtoNkhScllfM2dYcmY3ZHNtTDAxc0M0V0g4UVR0M1NEb1VIVGg0RVo3ZC1maDdRYm5tc29XMmJOdTNtcjNCa2ZzNk1LaC11M0F1Ymw3dFppUkI3REl4Z3dLc2FtU2hVbkd3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsCord",
-        "n_sources": 10,
-        "lead_ts": 1785964437
-      },
-      {
-        "title": "US Officials Say Iran Deal Could Reopen Strait of Hormuz, Driving Oil Prices Down: 33 outlets compared - NewsCord",
-        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNSkxlVExNQ3FlU09tTGhSWEIzZXRRV3RyMk44M1I3NlRkOGdqNU5KUGoyTG5kdlFEZFhwazhONXowWC0wRTZYRk9YUHUxSEJLODlnXy1XVURoTXpJZHJoU3U0WVJESjByX1ZhcERMWHl5bktJUUlBM29ibkZpdFFpb01aaFZMMG5SMmF0a2h3Z2Z3N3J6TWJVWUU1SlZuaTlOQjlnMjR4NEpLeXY1RWlQSGZ2REZ6LWZnUllUalZRWFRQa08wY01yX2R4c0dEaHJONGN2YXQzMUp3MWhwTWZheG5yV0xGX2U0dkE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsCord",
-        "n_sources": 10,
-        "lead_ts": 1785902606
-      },
-      {
-        "title": "Iran and the US say a Strait of Hormuz deal is close, but one or both would have to back down - AP News",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQcXpENFpMQ0V4N2VNNW9aXzJoWmV5V0R5U2t1QmY1OUFuSmQwcUIxb0x2aUZIdk9WWFFVc2RZM0NHSnh4eFhiekFUdWNjWDVkMlFkdzVCSXJaQnVyNmUtazRkVk1fUHVtc2w0N19OQnNTQV9XV0FqQUF4anhhNmhybkp3TF85NTY2MXR5MW9scDNrYWswN244QTBDRXFIM0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 9,
-        "lead_ts": 1785959040
-      },
-      {
-        "title": "Iran\u2019s Foreign Ministry Says Iran-Oman Talks Near Final Agreement To Manage Strait of Hormuz Shipping - NewsCord",
-        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNbUw0YU9Ua1RKd1Q0Sm9xbmU2QzNRYXYxdFVCMlpXS1RCSWMzMElGNUxlaFAtbl9CZS1wVkFXR3hWVTN1UVFybVFJUFNMeFFwRDlEcGVuR0dLNjZxeXU2WFRDbnNfRFRRSWpQdGgxbVVhR2VLM0JnVHp4TVlLN3dWdTFGdzRFOWR3MlYyU0FLT0FNNGtMakZVeDFza3BFYjVTQS1hYjU0QjBPV3U3Zld2WEpXWE5Hb3dUNFhlbkFnbFpoaWNuQkFwa0ZoeENNS3p0aWlZVU5GS1NyTmUxaXlNV1R0aEM4T0oyZ3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsCord",
-        "n_sources": 8,
-        "lead_ts": 1785964437
-      },
-      {
-        "title": "Tensions in Lebanon and other news from across the Middle East | National News | 2news.com - KTVN",
-        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPWG1oR3RyUWhpd0tKZy1uZGNnaTdnT0FNRUxvcjNWTnU0Y0xILV9feHk0T0VnRjh4RnEteUJqTjFPdEdoQVcyUzlBcHFPd2ZxcmFRMFBPeklKVmttMFh4YkEyZm5WVF83SHFqTzNoLXVkMXdqb2hkYVdkSF82X0Q4TXRjS1hpbTBIZWgyXzNqamlTX0pDUWlvVTFkT3B6RGd2SWF1dVRuS0JxN2tGWnE0RFA5MWtuN1pIMV9kSnN5NS1HdGNwTkM3N2Z5ZjZuZnNrR3JfVmtDSUxULU9KemRN?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "KTVN",
-        "n_sources": 8,
-        "lead_ts": 1785949544
-      }
-    ],
-    "world": [
-      {
-        "title": "Iran and the US say a Strait of Hormuz deal is close - WQAD",
-        "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQbGJWbnhEZFZZZmhkYVk3UjZpMlp6UzdwV2ZDSUlwZzFKVC1PTWtlMUxrb3dTcXpYbFdkY19ETjlhQTB6Nko0OWY1WFJ1ZHZBNTg3c1dHVktFYkNJbncxNkJuVWNjRV94RTI2SGJnblNnZklWN09wcE50OXJ6U0dNQ2prSHJvVWt5Q1FHUlVNc0RLaGNWY1R1ejBOUEZxZGdOMlN5Z0U0bmhrQUsyN3cxNmg2SmRTOE1pdnUwTnk5d0VLSTVwM1hoZW5pa2ZoMXN2UVpWREx1Nm9NVkU0THNNOFBzVEFTTEZj?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WQAD",
-        "n_sources": 8,
-        "lead_ts": 1785969000
-      },
-      {
-        "title": "Iran and the US say a Strait of Hormuz deal is close, but one or both would have to back down - AP News",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQcXpENFpMQ0V4N2VNNW9aXzJoWmV5V0R5U2t1QmY1OUFuSmQwcUIxb0x2aUZIdk9WWFFVc2RZM0NHSnh4eFhiekFUdWNjWDVkMlFkdzVCSXJaQnVyNmUtazRkVk1fUHVtc2w0N19OQnNTQV9XV0FqQUF4anhhNmhybkp3TF85NTY2MXR5MW9scDNrYWswN244QTBDRXFIM0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 7,
-        "lead_ts": 1785959040
-      },
-      {
-        "title": "Iran Reaches Agreement With Oman on Strait of Hormuz Shipping Route: how 14 outlets framed it - NewsCord",
-        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQSlRVa2JFUmVMSWpVcmVHZHZlLUkycGwzYy1GLWlST3A3bWtIalRmQWJmRWxEMTRyR0VfV2Q4cGpqTmh0elg4c29yd1ZRbHFoendaU2U5ZnVhVTZ0U3BVV2MxNm45Sk9HZVJNSVAxSldJQ2RGU2N5d0pSdEEyZlhUanUzdWhKX3BILXRSSVhVNVpHOGM2bEtZbjJ1RXFDYXhlVFNielhRQnZRYTEzcHlUYmF1cjVvQTBJTkI5cDRkNTgwelJvT0dYeUFYWFB6LUNJbGNfNG5RejU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsCord",
-        "n_sources": 5,
-        "lead_ts": 1785964136
-      },
-      {
-        "title": "U.S. says Strait of Hormuz is 'free and open' as Bessent says deal with Iran is close - CNBC",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNeHFIUDlHWHh2b2NwZF9ibHQ4RE5jQ0JOeXFsdEE5MUlqT0VDQ3R1VENGSmRobExCLTlIUDBxSEtjNU0ya01tSnFob0FTWmU5aXlXZzNaeEh0Z3Awc2tkR01nbkpGaUctQlNPUElRb05uV3RLNFZQVHJINThaTDdFd3Z4Q0pLbnVfeXA1enZB0gGTAUFVX3lxTE1FTVdjeHdZdTRmcUIwdHJ1OW52U2x5Q1dlTUhDYnZFc1BfSzA5NTFCRF9ybE81Y0hmN3ZWS1ozUDFHdnEzS0F5T21LRDdmQ0ZXa0F0QlZRRHVtSzVkUDFDQTZieEpocWt6bjRzc2Y2ZUJHNVZFU1VvOXlvdjlZTTVJR08tMmxDQ3dwZFZ1NDNseW5ocw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 5,
-        "lead_ts": 1785893160
-      },
-      {
-        "title": "Iran says close to Strait of Hormuz plan with Oman, but reopening depends on US - The Straits Times",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOSHpvWDg1cG1Eamt5dFl2TnRrM2xFLWRXTXB1WER5b3JvTGNkWWhmX21VUDVnTXlfZDNXdVF2bVBiMVc3MFduUnU1cDI2RHFRWEladXZmc0hBTHJWTHgwbnNVQUhtUFgybXEyLU03SzREYVFyTWtYTWt1Zl9XbEwwNmhoM0twbG9MdmZtNi1pQTZWT2FuR0F1YURKY3d0bkVJSFBoWFljUEdWVDJZVllKRFhkSVZUQjhXSm0talRudzdkRG4ybW5rTEZSZlFfUjQ2XzE0ZA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Straits Times",
-        "n_sources": 4,
-        "lead_ts": 1785951256
-      }
-    ],
-    "tech": [
-      {
-        "title": "Meta Introduces Muse Code, Its Take On A Coding Agent - Engadget",
-        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQSUp6cnVXU3k2c0h2S2k5eHo2RXhNam12T1U3b3lDazIySU9OQUlmMzFUSXZFMVFiZzZULXQybHNvTVRvTy1ySEVOMWx6Ry1UdEpQcU1Fa0JMczBfWWhLdU43WWJsc01QR0JvTXlSTUwxbUhjaHduZ3BRMEp0QjkyamcwNEFSUUgtRlZIVlFTZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Engadget",
-        "n_sources": 6,
-        "lead_ts": 1785967072
-      },
-      {
-        "title": "Trump White House Readies AI Framework to Review Security Risks - The New York Times",
-        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOMlB1UDdKalpjUzY3Q2JFVXZtRDZLcld6aF9hOWRpZHRzcVp3QlpVVjdneFlNR3FGY2xyWVBocFluTk9KMmVsZjBLSGFPWC00aFh6WndYcmhJMGtUMk5Vdm0xRldhZzFJWUxiQlJMc1YtV0VmaGhQUkhtc2prRGNaRA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 5,
-        "lead_ts": 1785889074
-      },
-      {
-        "title": "SpaceX's first-ever earnings show higher revenues and huge spending - BBC",
-        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5wbjR2NmVoNEx2eWFOWDhUWm9CbnYxZDktb3ZpVXRPdFRSUDRqZUZtOXhLeTloSGhuQ3VLR1dqdFpUSndpcEtrT0xRSUtRczAtOTRJV3R2djBIZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 4,
-        "lead_ts": 1785902482
-      },
-      {
-        "title": "Meta launches new AI coding tool powered by Muse Spark 1.2 - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOMnJqb2s0a2s3WWxWTC1vNWdRNXc5eDBQRnNlUDBnekl4cXR6RG1hcUZ3cWlOMzFtTTNacUQ1cE01dWFpQ0NuMlpvOXJJalFmcFUyWEtaRjJlbVp1djJQWnhNdnJra2RId1B5WHhicUF6a2pVdUZ1M2tubElIbHhsVnFvX1owXzAtYzRaalpKZVkyNFRYU2ZyX3N4ai0xUHE1SkNWLTRzQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 3,
-        "lead_ts": 1785965511
-      },
-      {
-        "title": "Google shakes up AI leadership as DeepMind chief shifts role - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQaHV5Q1dFcHFPLTJhTmkyTG05amxnbm1QQkRGYnpCZ0tON1FJVnJ2d0pBQVZENUlJYm01cXBoWFhvVENnbklRLVZoNndsMVpiWGNhNnJ6cEt6VFdKUGdRQ0xPem5kaHo3Y24tTlFqWGFtZGZjS25UbFl5UUMxTWtsWkVRLWQzOTZWbTViWXJXbFdIYUU0STdDcTliOEJCUEFrR0x0cQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 3,
-        "lead_ts": 1785961561
-      }
-    ],
-    "business": [
-      {
-        "title": "SpaceX Earnings: Here\u2019s How Wall Street Reacted As Shares Fall 13% - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOTHRudW5NbGZyTmJoVEZIdUJ0Nmd6R3NGcDAyc3pCdWhQQjROaTkxZ0V5cVoxRVB6dk8ybkVocG9IOGQ5aXBVSzVzNVIxNlFCMFEwTVVXOU9MM1ByWXhKZGkteF9aWUFLRXo0UUNibHJ5VmtVM19pMUt1bWY0R1Z2WmVYWmU2dTF3bGtXaUNoMkgxV0hoU1RRd1RqR3JwS1VRRi01dTVWcFRkdXZEV3ZidGVPY1I5cUs3czJJdjUyN2g0eXpkRnc0aERERkRpNmlqakowSHZlMkh2RkhfUXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 5,
-        "lead_ts": 1785955860
-      },
-      {
-        "title": "SpaceX\u2019s stock falls as Wall Street gets spooked by the extent of AI spending - MarketWatch",
-        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOXzB2SGx5bkduN3NQbUtOZjdocENyRjJQRnpJazFrcGo5dGYwS2RWNm1UZ0FhZmEtbW1Kekx6bEFkUXIxWWlSTkdMeXVvX2poc1NyX01DTk14YUZUb1k5bjRfWlNqTll5QV9HaGRncW1kb2lBZVdIMnV4RzBwaXhlT2lXNDV4aUpIaXV4TnFyeUxTejB6YktnUnpnR2pYaDl1THVnX25mbGxNcHppa0xoSEhBUjFRQ3VsWWl3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "MarketWatch",
-        "n_sources": 4,
-        "lead_ts": 1785965160
-      },
-      {
-        "title": "What the Stock Market\u2019s Record Highs Are Hiding - Barron's",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxObm91V2hFN3lOUnR4Z3F4elpoTnRubFVqSjhBMGJvSlFvenF6bnQwR2h6U0VCQ1c4N29UOEpUSGZBU19MY0NaQTdVaVZxUzZzZ0x3VVFMa1VXdDZTTDFxNjd2SG9QYUMzNVl0Z2k1YW5ISGV1dUpYQVYzZUlrRmx4U0pjTnBfWUoxMFZqb3FB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Barron's",
-        "n_sources": 4,
-        "lead_ts": 1785950640
-      },
-      {
-        "title": "Flutter Stock Falls as CEO Steps Down as Earnings Miss Estimates - Barron's",
-        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9sNkFRRGlaV2s5NjFsTFViZEJmNHdwMlpLWDlLUGZ2cVpka1JZOHJ1N2hXQkh5SFVDam9mS2dmU1BjZGYtSjU4WUhFVjZpSnlnSGJ3VW9hbTZIMHR3bmlUU093c0FNVzBtbHpnUkZnYVpVN0FiYXdlT2lR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Barron's",
-        "n_sources": 4,
-        "lead_ts": 1785930060
-      },
-      {
-        "title": "Elon Musk delivers 'totally nuts' plans for moon robots and insists $1 trillion revenue target will hit but capex tanks SpaceX on debut earnings - Fortune",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNNF9Ka3U1Unp0Tkk1OW05TDNRRDNOSU5aYmxrUlVjcjZjVm16LXhiVV9tVHN3cnkxdWEwLVNkNWhGZEMwQlp3Y25BdUtkWW4tYlJUNElCVXl1V19XN2JyWFpYaTZHMXIzUzFBRy1RYVZHNVdaZTBuV0hRSHNjbVUwcWUzS0dMekdOcDFHcEpVUlYtNnd0UGdDTy01XzR5dzRFU20zag?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Fortune",
-        "n_sources": 4,
-        "lead_ts": 1785891000
-      }
-    ],
-    "sports": [
-      {
-        "title": "LIV Golf finds lead investor, players will become majority owners - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9KUUwxdFZzNTg0UUdCNWw1b2VhRDRQZGpLY1V5bkhrUmZlVkJhSHFnbE4xejQ2cWVPdkVBWmVESWVOd2JTYW4zV1dxOHZNZFZQZXhFS0tCTEJnbE0zMFViYUlWMzFaSVczYzYwbVBjU21ucHprR3VZYnVkTjU5OXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 7,
-        "lead_ts": 1785946201
-      },
-      {
-        "title": "3 studs from Day 7 of Chicago Bears training camp - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9kUTFyTmdZQmk4V0lyeGcyN0l5RE1Pd25sTW5QUS1LOUxpWldDVDlPWUU5elVWOUtoQnZuVThVRk93UG5Gc2gtUlpNcGg5cXVSSDhOcm5CMXloRExTaHlxOGJBSmlJM1ZPbThYTnkwSWxkVWdmRUZVNUpn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 5,
-        "lead_ts": 1785971710
-      },
-      {
-        "title": "Key takeaways from Jets training camp - NBC Sports",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOTGpycVpPZDd0YjBERkZCODczZF9hUEhzazJIcmc0RTNVTHpGeHZkZWl6cG02aDRUQVZyMUNtNjdtR1M3ZFgyYUdpSExlZ3h6eGc1clljYzU4aG5IUk9UMjhOalk3TkxDT1lUQk5pSDhSMFd2OTJObWtKMko4dG1uR193M2djQkNseW51eno0aEowQm1ldURRblZ0OFFWdEVjUV9YeHNMTjZ1blR2WU1EalJQaklnbDNlNmo4VjNTMGFPTkdfb1dwSQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NBC Sports",
-        "n_sources": 5,
-        "lead_ts": 1785951283
-      },
-      {
-        "title": "\u201cI took some time off football\u201d \u2013 Manchester City\u2019s Phil Foden lifts lid on England World Cup snub - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNbS1peTBvMnVrdXZkVTRkMkczWWotM3lScWRzU2ozQWhKRTZTUXRXUjdPbTRGc1c1eFZuc1dwcDhYRWhWY0g5NmJYYllXa2xrRnl5ZnI1RXE3MC02WlpYUjJ2RFJVc0NMZVR4U3l0VDJ3dWlkRlpDanV3cnBaT0YtNWNMTGJKdFMwa2c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 5,
-        "lead_ts": 1785951000
-      },
-      {
-        "title": "Training Camp Tracker: Latest news, notes & roster moves - Giants.com",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOR3A2bFlQaDhiSHFaaE15MlZndVlLcjJMRGFsaWhnQlcxZFlmUXc1NkhEV3VHS0pXbnFLX3JfOW5PcndjMXphTk5IYk9BMzZSdVV6YWpXRGdvRTBkWDRyRkIwN2xkdnZOWjFiN3FvdE5iUHk0ZF94WGdManA2U0paSGlLMTNoWlNobXBiVG5kX1pkZG9wT0phQw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Giants.com",
-        "n_sources": 5,
-        "lead_ts": 1785908661
-      }
-    ],
-    "culture": [
-      {
-        "title": "'Spider-Man: Brand New Day' Passes \u2018Toy Story 5\u2019 As Year\u2019s Highest-Grossing Film - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNcldGZEpZcFpkbW8xREtJNEVScnNMTDNnTHRTMnFxbC1mNVJiRjUtTzZXaFVQQ29NdS1TWGNOTFFKUTV5TmUwSkNjWS0wZE5zYkNHX3FWNnVuRXhQdHNpZHI0NkZUNmJLUHVxRzd4MTFvVEJWOEFzdWMtbFpPSkhCVDBWc1VCVVhic0hkSkVmMjY1S3BhTjY4dlZsc283Z1hKN3NURW1GRUhIRzdyZERBdmpFWE1FN0xvR2RUZnYxVVNjWnI2emI0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 11,
-        "lead_ts": 1785945754
-      },
-      {
-        "title": "\u2018Spider-Man: Brand New Day\u2019 Swings To $42M Tuesday U.S. Record, Biggest Pic Global YTD With $1.1B \u2013 Box Office - Deadline",
-        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOMmlTc0IweGxlZ1BIZVVmbHJzbUdBRk9wR3F3OGl4WnJnVk5NNGZyLWJfQkg4WnRwM1NJMzgxY1NmV3FuMndfNEV6VHhhUTMzdVN2b0g5ZTRrSEkwaG9pRG9YUnBQRDRfMnV2VnNFY2pwV1YzaVRiM28yZHQ4Mmg5QVhQN25UaWFUVE40aHRlZFJyai1kdGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Deadline",
-        "n_sources": 10,
-        "lead_ts": 1785941280
-      },
-      {
-        "title": "10 Most Popular Spider-Man: Brand New Day Fan Theories, Ranked By How Accurate They Were - ScreenRant",
-        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPSFU2aFhhbGRjSFcxR25NSlA4NkFfdlpVR3UwcjFOUWJnRE1YNXNsY2d5TmstSUNEb2JXVm9oSTRCRjZVLXlBdVRyYTBMNnBHbHpWSFJ2VlRPcUFTWFVJNDdZWVpWeXpudkZ1VjlhaEMyMmQ1OXJZZk1ueGM5cDN0Z053?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ScreenRant",
-        "n_sources": 8,
-        "lead_ts": 1785951911
-      },
-      {
-        "title": "Ted Lasso Season 4 Episode 1 Recap And Review: I\u2019m Not Convinced - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQM0hYNjZELWwybm4xNHpEc2FiRnJWbU5LLUFGMTBqRWZHNXZHbzZ0eExPVGtsTUFMZEY2bmxrMUo2OG11WEYyUHlBX2luRnNZNHljeC1mZ0Z0QmJRTWxEWlN0cDg5aHZ4c2VHZWplOVM4WVRvWWx2VlJRSElWQldObm1ONUpycVk0NnIyYlVxTzkydkNqVTZZcVlnVFpabjR4YmVrWnVkN2pMR2VGaThuRko1OTRmbjFJ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 7,
-        "lead_ts": 1785960804
-      },
-      {
-        "title": "Review: Spider-Man: Brand New Day reminds us that superhero movies can be good - Ars Technica",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNUUNWX1AxNzdfOUR6N1BRRmE4WTQyS3QweGRhQjNTcmZvU1Vkbi1Mc1ZWVC1vZmVlUmxsSDJZdXNJX0JlQXJaVWpDUktaQW05MVhGdndxTHdKeFRUZGI3RXlUa25vN1N5cm1LdmYyNFFCS2QxSFJVYlBvbmF1T29xQWVTQS1vei04SjRXVXUxY3lQYm5uaGpJT2NHTXZGYUtDdF9NSmNlc09HYjNfMkcwVTZJaDlkLV9M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Ars Technica",
-        "n_sources": 6,
-        "lead_ts": 1785954435
       }
     ]
   }
