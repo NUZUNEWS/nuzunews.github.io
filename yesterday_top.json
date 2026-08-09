@@ -1,6 +1,260 @@
 {
-  "today_date": "2026-08-08",
+  "today_date": "2026-08-09",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Trump\u2019s White House ballroom foes face \u2018very tough argument\u2019 at Supreme Court, legal experts say - Fox News",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQSUtnZUhpTHhDcWZMQmhQTTUwaUZlaklPaHdKYmxkVVg3d0s2M2RyODFUM0hLbjg5OTBXang0Mnk4dEh5d1Bxd0ZlU050N0xBbS14VUhfS1lCaWtJVDNScXVxaVNHYTFTbnl1N19wMl8tcjZRSEVHX0dndXVKcnhQSHRBRlU0Y3RFUXI2TzFnLU9SSnZ5bk1XUjJFcHI0bDRTY2lLVFExNkNma0Y5Z0ltVlJYelNYOU82Smhib1JDVGJtWDZ10gHEAUFVX3lxTFBJS2dlSGlMeENxZkxCaFBNNTBpRmVqSU9od0pibGRVWDd3SzYzZHI4MVQzSEtuODk5MFdqeDQyeTh0SHl3UHF3RmVTTnQ3TEFtLXhVSF9LWUJpa0lUM1JxdXFpU0dhMVNueXU3X3AyXy1yNlFIRUdfR2d1dUpyeFBIdEFGVTRjdEVRcjZPMWctT1JKdnluTVdSMkVwcjRsNFNjaUtUUTE2Q2ZrRjlnSW1WUlh6U1g5TzZKaGJvUkNUYm1YNnU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX News",
+        "n_sources": 4,
+        "lead_ts": 1786222213
+      },
+      {
+        "title": "Water Crisis Deepens on the Colorado River - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPbGNucWU0RFRnYWhfeC12anFRX2VSRWd6T0JjMXZFdGpMQWVnYUhJRjFXcVBCQ0hUOE9hMTlNSUZyU3p0MDY0aXdwNktEUXYzNmloOHJMUFpVN2pKaDVhT0JsMHVQbnR0NmNXdURJRk8wbVhBTlZnZVdTLXBjUXdyLUtZeklDSjFZajNiOHhjeTJwZF9kNjNYWUN3RHFDdFdz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 2,
+        "lead_ts": 1786233437
+      },
+      {
+        "title": "Child among three dead in Russian nightly strikes near Kyiv - BBC",
+        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9JRW51dTJkckJQckpncDJDdVloS0pKZ01TeVdTVnZUX1pOb2ZlVVRIdHU0Q3NVd0NGb19oZVBOcmtqa1JXb1dSVE41THhNblhpWlpwR21mWW5odw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 2,
+        "lead_ts": 1786212385
+      },
+      {
+        "title": "12-year-old girl dies after Thailand school shooting, bringing death toll to at least 8 - PBS",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOd2tRV2gxbEpaVHYwYlZpSjVmbUtTUnljeGs4ZTN5MXh0eUd0MmgxeDNTbHJ5SmItRFhNN2Q2OU1PbUdVNk9TcjY4OGNtNG9DcHRxQ1cyX3JNZ2MxbnZlU0kwNFBoUEpVSGhVUlZSYXBZR2FGZ0hHTk9wR1BnS1FNQjgzUTZkdnl6VXFmaWptbWhiNmRkVk9Kb0xNeUFxUXhQZ3dmWXJ4UFZnenV5V0VNZmliSHJqMjZBajFZVUxn0gHDAUFVX3lxTFBlOXZ0OXhnVnE4LWg3SXc5N1puNnlGeW5zNWN4Yml1ZS1FYU5LY194TjhOUzJ2Mk1jYUJ2eWFtOWwxWDFqVXcwbEZQMENraFp2ZVp4STA5QXV1a010YmFBVGV1dXd6RUpZMUJtb1pIMHdGUTUyWVZYTW1lYU1YanlyaU1hN1hLMV9WaWloOHpVMGJLaWY0NmNLSGZoVG9PYmdCMXVvVC1rWUdfNVY5RGcwNmlYcU9UaUxFcmxNbVVfMEJNNA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "PBS",
+        "n_sources": 2,
+        "lead_ts": 1786211791
+      },
+      {
+        "title": "Ukraine Drone Strike Sparks Fire at Russia\u2019s Ilsky Refinery - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPUU5vdEtaSGVOUk1HYndfSHpWNkVVcHk4eHhMOTV1WVJLano4VldfQVJBMUJpMXpHXzMwQnFpVDgyQUFxTnBMR2ZvcDNGRmxKTDVkYjY5N2w0ZFFCdmpIU0xOYXNJNGJwSGRZb1JpMVQxYmRrUXBEOUYzQktXS0R4TjEyd0h2RG50eDhiZzJGUnI4ZWxNNDNxQVJqUUVvV3lPWVlPQ29OR0JuUHE1MDlR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 2,
+        "lead_ts": 1786180067
+      }
+    ],
+    "mideast": [
+      {
+        "title": "Iran says deal with Oman is close \u2014 but its demands leave Hormuz opening uncertain - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOeHRtS1FlYUdtODNUWmRQdHFUNGhybHpCT3A2SXNUc1U3YjY1YUw0SUhFNTJpdkhEdnBGRVZXZ3lQS2lXQjF4OE9ZUVJQcVhnX2Q1YXB4MkJLektGenhtcHhYY0p5RHVhcTdEY1FQWEJqY1NFZFpXNV84NHBFaW5sTVEtb1d2TFhtajZzejJqeDBCbmlGMExJX29ZTDEza01fT01CY1hENjMxV1h1aGNyS1VpOUUycjVjVlRIMlBGbndicDg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 10,
+        "lead_ts": 1786234881
+      },
+      {
+        "title": "Iran sets conditions for reopening Strait of Hormuz - Middle East Eye",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQb2FhcHFyRGFlU0ozaGpfM1p0bEJFbTZHX1pMR3l4c1pYeW53TlM5VUozeURMN21nOTFJMzZVR0F4WTBweU1VT09PNjJYM2hnV0lFVWR4NjBKU1lpek9tWEQ5aGlCZlNrT1NhYXEtV2xWdG9LUWpDNTRrT01nb2Q1Ml85andfUFZlOXRNb0Q0c0xuV0hHR2N2SnZjbDVqRGRUYXZz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ME Eye",
+        "n_sources": 4,
+        "lead_ts": 1786221480
+      },
+      {
+        "title": "Turkey says defense pact with Saudi Arabia and Pakistan is not aimed at Iran or any other country - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQNEpld1RNWVd6b3VyOGhmb0dUOGlYSzBvQ3RRdTh1elVjXzg3QWRwWUNESC1FbXk4dTdibFN1UTVGT2ZrVlRlbXRKS255c0hMN0hMaVJuM2RrT2lsSmpJMkZxenl4NzNST0w2SWRDUzJPaHlkVmV3dkJkaXRTNkxSMFlneEotUHpPWTM2ak1NeW94T1BYNGRPYnhjMzNfUVcyN2R2bUpPVUtTbUxFTENFXzIxWFlMN054NlNMN29vOFZLZ0Q1bHlRT3JzRVZIcE1qRGFmXzEwYjdjMWZycVhSQw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 3,
+        "lead_ts": 1786236234
+      },
+      {
+        "title": "Pentagon orders arms production surge as Israeli-US war on Iran depletes missiles - Middle East Eye",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPV09UUFdFUVhFT0t5MGphbnV5WEZtZG5jXzdlb0cwaXZIRnpqbV9zSG1uSFhQeWthSFNveFdvSGwwbzNCZjhVbjE2b20zSllQYzRVR2p5ZzUwZHRyV3piTEFLMkFyVHJHTGVfWFZNRk54UmtyejlJTnlWa1pTSk5DQjBvalZRbjRHMmhEdkw0WnNvM0U0dVpoNmRNQ09VZXFDcWk4RElyZ2FtMWtINVpDczd5Uk1WelYwWlYtZnRR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ME Eye",
+        "n_sources": 3,
+        "lead_ts": 1786226640
+      },
+      {
+        "title": "Missile strike on UAE oil tanker sparks fresh Hormuz tensions as Qatar enters the fray - albawaba.com",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE41Z2Y0TnFPM3RQUTB4UDVtOWdKUlQ2ZW5naHJ2N3c2RUtiWWNIaGR4QmVsUTl5Y09yT0ZYcmNXcTNaRWJRTno0VWJUVTVtTlF6V3BZTHJ4aXl1WV9hc3liMDd4UW41RjN1Tmt6TTU4aWE0TC1RbFl1OG5wOHB1UGs?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "albawaba.com",
+        "n_sources": 3,
+        "lead_ts": 1786190100
+      }
+    ],
+    "world": [
+      {
+        "title": "Iran issues new demands over Strait of Hormuz - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQTjRyQnZ2aG5rTlFvRmplYkNqQ3Rxck5pREMzSGxnRm1oOFRSd3hic3BlUzZ3alAtZFB5RjFiSC1ibnVpNm9DQzZWVVk5c2Iwd24yeUlEQzBqWGZ6eHdMaFI4d0MtdDIxbXlzTDgzT0tsX3ZJb2Zvb3ZnLTNTbzFla1BORl9sN1pkeDEtVFE5SWhJY3BLUHFfaWhKRjh3WHBRS1FV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 5,
+        "lead_ts": 1786231474
+      },
+      {
+        "title": "Turkey says defense pact with Saudi Arabia and Pakistan is not aimed at Iran or any other country - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQNEpld1RNWVd6b3VyOGhmb0dUOGlYSzBvQ3RRdTh1elVjXzg3QWRwWUNESC1FbXk4dTdibFN1UTVGT2ZrVlRlbXRKS255c0hMN0hMaVJuM2RrT2lsSmpJMkZxenl4NzNST0w2SWRDUzJPaHlkVmV3dkJkaXRTNkxSMFlneEotUHpPWTM2ak1NeW94T1BYNGRPYnhjMzNfUVcyN2R2bUpPVUtTbUxFTENFXzIxWFlMN054NlNMN29vOFZLZ0Q1bHlRT3JzRVZIcE1qRGFmXzEwYjdjMWZycVhSQw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 2,
+        "lead_ts": 1786236234
+      },
+      {
+        "title": "Germany\u2019s gas refusal could leave Europe facing a brutal winter - Politico - RBC-Ukraine",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPZUFiYnF5aG9yWVpQek03dTEzRnpOQnQ2ZGQ2MnlXM1ZHdzhSRlMzZlZRS0QtYV95YVVIRzY2RnBEZGl4bUFVYjFaMlNsNkFsb0RMY3BBUENkWk51d2RUV19LWWZ4OF9LNnFOakxrY2l5RWs4MzZ2Sy01aDFtZlB2UXpjb1RnMVRqWkNhV0FfYmxkZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "RBC-Ukraine",
+        "n_sources": 2,
+        "lead_ts": 1786234820
+      },
+      {
+        "title": "Conflict in West Asia escalates as several countries are becoming involved; Fighting is spreading across different parts of region | Akashvani News - News On AIR",
+        "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPX05aaUJmaWJsRVQtS0pzNVY4NldIdWJpZ3ltU1hmbEVyeldMSVlHeEEyT1laZ3JkekRkNkM0a0FYbUhWQTB6RGNSWUVONUxvcndLcDlZbGY1cmwwTTdRdGRjemJoVWRjUHctY0phd1BYZjkybFRTLXl4VEphMlR5TnVyZ2xBUGVDYVhna19mSEVhOHR0WUpIYWlQZ3ViM0RFYWdHcVFQLTZHU0RzbldoQ0N0SmN3WDZlUk5WZlVBcTZDSmZ3WFpKM2VSM0J5VGVUM2x1M0p5MVN4R2RJQlZuN3FpVWJtTG1YZ3Fr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "News On AIR",
+        "n_sources": 2,
+        "lead_ts": 1786192163
+      },
+      {
+        "title": "A drone likely from Ukraine explodes in Bulgaria near a gas pipeline - AP News",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdHdjMXFHeUM1REdDNnZONnZ6WU1DM190YkFIYlUxUEt5ckJWdVNQZU1ramthb01ZSFAyYUpoNzgxN1BYZFU3ams5WmZrRVU5OUlVcGlCbVNPLXNQRkc1Vk1Cay1yYnd3ak9rM3F4RTg5UzNwZE5wa2tqVnJMNC1ncFh5aFZzTVNXRzB1VkRVUWFYUDZUdVpKczlzaVZpUXpGbFVPX01xclI?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 2,
+        "lead_ts": 1786189672
+      }
+    ],
+    "tech": [
+      {
+        "title": "OpenAI to pause some work on AI model Astra due to security concerns | AI (artificial intelligence) - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPY1dJNXVXYnpmS0U2OFQtSDhFcURicFNyMGFMVGVjdTAtQWJmc21hcUU3dGJaNnBMeVMySHVhTGZmRF9xUko1c2JJS3haRjlTaWtVV3QtelExODdVTGtfNThUb0RrS2JFN3pqWEJoUkkwSHpoSWJaemNFam1zbXFwUkJnbFRjRFZV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 4,
+        "lead_ts": 1786207860
+      },
+      {
+        "title": "How Amazon Built a Data Center in a California Town Without Anyone Noticing - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOZ3VUalQxQjZ1dEloSEFjeGgzUmdmb3dyM0JkRm9hbkxYMmpMOVAySDdaMExFaW1NV2p0TlMxMDRwaFRSWlFTSnVKMjhsS0ZjaEo2aDVKb1U1YjZZMnUwdTN3ck1CWGZUZjByanFtZV9Ba3JiWDZOOG9WYzVwSFV1WkNkcjdScmVsVU01djhIRDVtNWdvbllxSHR1UGdfcFVpSTQxNkdtQVgzODVQemVTWlVB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 3,
+        "lead_ts": 1786231918
+      },
+      {
+        "title": "OpenAI Acquires NextSlide, Folds Team Into ChatGPT - The Tech Buzz",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNY0treWpUTTVLdjFSb0dTVUxNQmV1d0hUWmVNV1h1cnhtdVMxZE0tUFMxdF9fNlhpWGVMNDZod3BaRTNiRW9jRDlmLXVBNk1OOFNkSlZXcTdtZE1XdWRrS2NRaHowNnlYaV9idDJZVm5rTnB3LW5uR2RSM3lxb2MzeWFCSDBvbzBwcXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The Tech Buzz",
+        "n_sources": 2,
+        "lead_ts": 1786219620
+      },
+      {
+        "title": "Kenya showcases young innovators at 9th National Science and Technology Exhibition - Tech Review Africa",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPUXhXMlZuYVd2RFY4OU9xeVo4VjZZMVJNQXVfdWFkbVJlLUxMeHNEMGNmM2owZnkyRUxNQ0tZeHhLV2V6MlVhNENjTTBic1VDS2FNRW9sbXBDamsxVng5WVNmM1hsVURhamdJM0NucXdpbUUyVXB2YWRWMzFhNlpmNXZ2QWNDX2NhMzdueXBPTGJnVkJwMDBGQVFNcTFTenVqd3prYVdtdGRwVnRDZ29EMFhTOFNyV3Iwd2ZZamh3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Tech Review Africa",
+        "n_sources": 2,
+        "lead_ts": 1786205510
+      },
+      {
+        "title": "One UI 9.0 could arrive early for Samsung Galaxy S25 FE users - Sammy Fans",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNdW9lVEJNMkZTVzFkSnd6X1J3X19PMG9Gc0NmME41b2RVNjVrX3lCdC1hdV9NMkJQdGM0UENkWTAyUmN5dzZ1ZlFRci1OVXZHYmFtU09PNUxfa2swUm9fSm5pTDNFMDI4Y3YxOTBQSEY2bXFzQlZLd05aQUFUYnpzMzFIY2VyZFhfWjFTaEktNVVWeWd4UnY1cVY3X3pSV2g20gGmAUFVX3lxTE1uZGloaE5Dbl8tbEhlLS0xdTFEak41d0hPTldfOGlLeUdaMGRyLWxWU0JmdW1BUE9LUjBXVDQ3bk5ySm9rcUNBVldPZS0zeGJ0b2VoWkloNFJTa2F3ZW5vTmQzeXZkRkFYbGdGazBXaUIwLWVZaEhRN09iZTVtRE1NMWxOT1NzcGZHTkRRckFGUnhTUENlUFktaFpJeFM5eFFXblkybmc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sammy Fans",
+        "n_sources": 2,
+        "lead_ts": 1786204950
+      }
+    ],
+    "business": [
+      {
+        "title": "Wall Street Faces Inflation Crucible After Record Highs: July CPI Above Forecasts Could Spark Sell-Off - finance.biggo.com",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5RZ25GQzJjS1JfM2ZMM1BuZmpLOERndWFzVHptMzlKajZJeFRSZ1c3bksteDBnSTAzNEotY3NuU2VkQ1dRa3U3SWE3WWtMYUtmTHNyQzc1T3NzUUtHaGVTdVhiNEIyNERhaFRXTG1hOVgzRVJQVHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "finance.biggo.com",
+        "n_sources": 5,
+        "lead_ts": 1786232100
+      },
+      {
+        "title": "Berkshire Hathaway's new CEO Greg Abel spends a chunk of the company's massive cashpile - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPczBPT1ItdFd3SDVGUG1LT2lnckNxZlZsX19IQm1rSTNWRXdOcG9VV0VBdnExYXE3ZG9SUlo0bnZPTUNWa0x0ejV1b24xNWQ5dUIxM0YtVktjajBFOGJTbjdnT1FuWFZQQnlDYnBSWHdBTlM3eU1LQTNVSFhBOHVHRWpCMGhvWVlHZGRuR2kzc2p1aU9fNXJnSVZXbjl0Tm5jOTcxZXJnTkJhcnoxVDFUZWpvNjlJME4wWXhhZ3JWV0tMeGVyclJaS1BjbV9wcExBLTgzbE4tR0hRQzZNWUxwV2pNMi1pdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 3,
+        "lead_ts": 1786218064
+      },
+      {
+        "title": "3446.T - | Stock Price & Latest News - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE0yaFFuMDRuenc5d1JjX1FndU9qOGhGLUVjSEM2WXJLWXBOcDkwTWRVRnBfZGR5Y0hmMGFnY1pndklHalRIN243SEhMYUhoNVptb2d0MHBzUV8yNEZVQjJmaDQ5R2pVSWxnTWJTNTA5YWVBcmRlMHhN?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 3,
+        "lead_ts": 1786217332
+      },
+      {
+        "title": "Jeff Bezos Repeated These 2 Words for 30 Years. They Built Amazon - inc.com",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPMDE5VzJVRm9SZU9YLXdtNm5tcWl0T2FqUVh0b1VldUtmYXlveGVtb2RIN1h6OUlhdmxFZlJjSlBvOEhweEw1V2QtN3RWcHctRnFiQTRFdGJnbFF0bm1kaEM5ckJBeVFmbHI4UkZNc3J0LWhod3Z0M01yaUZEYUN4d0FTa3NBS3pxbzQ1eVRYNXhmbDhRc21QZExJOG55SDNZZ1B4aWlxMV8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "inc.com",
+        "n_sources": 2,
+        "lead_ts": 1786201799
+      }
+    ],
+    "sports": [
+      {
+        "title": "5 Takeaways From The 2026 Pro Football Hall Of Fame Ceremony - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQX29xdzVNaE1EanQ3bF9hTDNQLTdGWkJlVkhIOGI5cmFBSEVJNzI1Q1c2ZHA4eDJTZU9FT3g5T0JRXzRuencwX053N3g0ZHVoVmhJV1V1RnNJcHh2amMxXy0yQkhZcnlNQzJoSUl2QWgwMUR2alItdEEyamo0dkFib1oyc3hUM09zWjFMZ0lqaXpteUgxUVhQYzhnM1Iya1lFYXFWV9IBpAFBVV95cUxOM0xGbkNJdUlNdXF6OEhsRHR3UjlMNXdBM1JrUm1jSE0wYnZVc1JLRXJnRGloNy1scV95bXA0cktTTklacWV6NTEzWEFnWE5xQlJ2T0N5aHQwZWw2YWlnNTZodElBVnozMWd2aDJHVFBmenZ4U0ZCQkFycUJWY0w5YjNnT2NLZ1dOVG9RRFBGMnZaZXFFekxORFlkYzQzQ1R6VllrWg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 8,
+        "lead_ts": 1786235452
+      },
+      {
+        "title": "Adam Vinatieri Jabs At Bill Belichick's Absence From Hall of Fame Acceptance Ceremony - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPb3E0T3FackJISmxMajltaFlueTFLOXlyU3FKZTlIN0RpVHV6Ukp6dGxSQTdsbG5qeWFBZlB2TFlhdzgwdDMyREZJLTFOTzcyY2E5Wl94TWJfMnFfbHRqX25lQ0ZaRjVnQklGTTRObmg0WVRaS2ZsblhFUVJvc2c0ZlBTNUJKdUN6OWZtR09NOTVhby10SGp2NG5aSTQzU0MzeDdnZTVwanNBM055dUVTdmJQUW3SAbQBQVVfeXFMT0dvNjNGRkJpNTJqMUFuY05yR1l1MTFNNDBOekIxb25GS29vWV9HS3I5Mkw4bkdGZzdVM0RxbDMtR255S0V4VFQwNHdCQlZZMV9PSFZhLUdrUkh6U0tIOVRwU2UyYkdyYmIyVFBXc0t5ZDkxd1B5VEhXck5FUUZKNVBDX2I1SlY5X29SVEpodV9HM0hCUUc2MnhsSkYtZWV4OHgtMldWbmhXQjI1bDgzS2N4UUVV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 6,
+        "lead_ts": 1786228214
+      },
+      {
+        "title": "WNBA quickly rescinds technical on Fever\u2019s Caitlin Clark that would have forced 1-game suspension - NBC Sports",
+        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOZzgyVkRlS0xTZnEyV056UXczSmZfeERrdHFxb1AxSThmb3dEQVNvaHNNVWFRRWlNUThZcW5xNU55d2tfLWtLcHUybGZoZHJqQ3dHaTJQRHQzYXM4MGluT3ZPa1dpZ3VuVVNNVzNoajRTbU1JQUJsUklPdjA1ejdac3lSOVItcmw5NmZoYU94ak5Vb2VDalFSclJIUHdmVnRoUV9zOVZVeEp0RTAxMVdJd2tqRU5jZHZCOTFNWE15TTlWdjVrYi1yTDlXbGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC Sports",
+        "n_sources": 4,
+        "lead_ts": 1786235572
+      },
+      {
+        "title": "Highlights: Tour de France Femmes, Stage 8 - NBC Sports",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNdHl6MzRSRGpVbDU1anowaXJHS05UdzNOajVuVGJBZE1lQzQ3MmZGWlpCUWxVaF9qZnRlOUp0aVZQSld1aFJYZlpudWVIbm1MYVo1Wk83WUN1SmpJV09fYnEtVVdCc0g1V3hseFQ1M3ZsOERZTTBqN2NGMDlJS29NS1RMbFRYME9Lc0JvbTMzaDd5TlI2UEl4TWVJV2NlSnFleVp2MTV3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC Sports",
+        "n_sources": 4,
+        "lead_ts": 1786228017
+      },
+      {
+        "title": "India Wins Third ICC Men\u2019s T20 World Cup Title; President, Vice President and PM Congratulate Winning Team - News On AIR",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQZS1JdlRJbGtPb2xGS2d1aVd6QkxsMDhId1d3eGw0bmZpSnpOTHBEREpiVTViZEpvekdLZlNiNXIzenZmb3RLbXF2ZVkwTC1kcm9Nb2J0clFLVjkyNmlNNXRjSW5oMVVtWlg4TU9vYXZYRlZBcDZoeFIyX1dIUDB6bVV0dURITHlvdUxqUHh0dFJNYmZDUmRNeUFYVzk1WHo5U3dwaXdSQUkxcU1OZGxtSW5CT1RSVDhzRHZ1VVVRczRKT05QYW9Tdg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "News On AIR",
+        "n_sources": 3,
+        "lead_ts": 1786219202
+      }
+    ],
+    "culture": [
+      {
+        "title": "Spider-Man: Brand New Day\u2019s Box Office Hits A Major MCU First - ScreenRant",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPMUNMcDdWek5ob1lLalFCNHQ2cEFVMUZRWXh2TTJ2Y041OWJPTE01RlZkRWpyTW82blc3SnhWQTlQRV9IQ3kzR28wdUpMZl9zSWRNdXpmcS1qYUFXZmU4MVhIbldrdVAyYmk3M2JPaEMtZE5SOWJpUzhZa2h3Tm5WRHg0M1ZaTU1yZ29ES3A0QWNpU1owYTU0TkZwY0o?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ScreenRant",
+        "n_sources": 6,
+        "lead_ts": 1786226111
+      },
+      {
+        "title": "Jorge Messi: Lionel Messi father die at age 68 afta long sickness - BBC",
+        "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE16VHVSMUU2WTRXZmhDamYzLWVTUnlWWnVQN2FEUEtuQTdRUUhXT1ExZkUtQ2o1VDlyMVVGVVB0R3JQWVd3bVlWdU04RWVndkJPNzNwNWw5aVkzbDJt0gFiQVVfeXFMUFdVMWtzNHZxSkd5SkFJUHJ0Y3lPaXlLeXB0UFJOX0hfdU5XWktJTG5LVGFLak80UGx3bnR1S0V4SmUza3FYTTJ2SmtqcncyT2hvVExfWmgxdkFKRDRadHZLNkE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 3,
+        "lead_ts": 1786220660
+      },
+      {
+        "title": "Bill Maher's two Ariana Grande weight jokes during his opening monologue on Friday's Real Time With Bill Maher were met with mixed audience reactions. Read more below. - facebook.com",
+        "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPQi1QSGhZbE1GQlQwZzd6RkJuVkplU3NlR3dvM1d6dnF3YWVBUXBnZ2VzU2tiY05jR21iamNRV2NjeWNOaG15UW1ZRWgtUDU1QnRGeWs4Vy12VklpWlhVdnhOYWltMUp2bDRzSjVtWUlPanBGLXRIM1VkLWZZTUdmalBSZVNWLVExcHd1UjRSTkU0QU5OS3BHMEVzd0N1VFdvTmZnMlNST09BcFdFYlctRVR6blZIaEd5d0xjR3RZcjdyNHdvNnRIZjZlc2lna3lRSGMySTln?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "facebook.com",
+        "n_sources": 2,
+        "lead_ts": 1786233638
+      },
+      {
+        "title": "Best Believe Kylie Jenner is Bejeweled as She Celebrates Her 29th Birthday - E! News",
+        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxONWpSSWRzdVByMk8xWU1xdkdXcHZrREsxNlpMRE5yRGhhSVJUbWw1X3NqeE9tY29MNTlOem5BVkZkSW9RX1FRcUN5MldtYmVvVi16czZ0YW9mWGRGeHk0djRvdTJuRGxnN0YzbzJDWVdWbENLOUFoYXo0OFRONk4xZ0ZheGRPUW5HMzBhcVA1Z0dSc3BvaFpjQzF2R3BpeWdBUTNOMEkzUF9uY1lienczUmhLT2JUa1JGaW9PWERUallPSXh5ZWZrSzkzVW1ydkQzc0U1bElDRWhNd1FvWlZpUlVR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "E! News",
+        "n_sources": 2,
+        "lead_ts": 1786233000
+      },
+      {
+        "title": "Taylor Sheridan Star's 10/10 Cyberpunk Sci-Fi Thriller Is Officially Netflix's Ultimate Hidden Gem - Collider",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQQXpHaHd3UzVvYlF2VW1mSXpqRTRPUUxnWWFoZk9wcU01Z2lwdjZ3dGxBZ3pnQVZxb0oyZlJUUXBtNU55dXZfQU00cDNUSGFnMG1tVGoySDZxTnh5b3ZfT3hJejU2MEJpdHM5OUdCY2xBZzBuX04wOXRxVEF3aU5EOWE2dlVJaEpoRzAtdjM4QnZpb01BUTdaWkNUTUc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Collider",
+        "n_sources": 2,
+        "lead_ts": 1786226414
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "Appeals court: Trump can\u2019t build White House ballroom without congressional approval - WAKA 8",
@@ -258,267 +512,6 @@
         "source": "facebook.com",
         "n_sources": 7,
         "lead_ts": 1786150298
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "Appeals court rules Trump can\u2019t build White House ballroom without congressional approval - AP News",
-        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPQ2Y1LXVndW1CYTZLREtONjNaUGhlamYtSU9GYWM1T3RsRF9fWVBSWnhOMGxVQ3Ywc0lmdzNrY05NMDN3cHc0bXhPS3Z2ejRZdVp2dzN2Q0wzYmNQUnlCakNZTHlaZ0xRU09zYnpGWVZFdmttTzNfeWZpRm5QdWExR2d5ZnRYcVdXdXZiWXRtUW0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 8,
-        "lead_ts": 1786131480
-      },
-      {
-        "title": "Trump says he\u2019ll bring ballroom fight to Supreme Court after lower court halts work - washingtonpost.com",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNMnJQMzlTYXFMWGNqU3NDU0Ftdk9PR2c3TV9ZZlpwdWhYU1RLZ010M0taQkF5UEFVZ1dpanNIWEpyZm9mV0ZPOUtXQ29FWlNHWkhpWDBSS0hGOHlpUkxqRE1icWpCTEdfU0RIN3RZekRoN3h1S09NTUxzaVNZM2VVbzAteFRaRW11ejdXRUNMempEdU5VRkpiWEdhWnVBb1MxNlZNSzRYWGlGNXdLRnc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "washingtonpost.com",
-        "n_sources": 7,
-        "lead_ts": 1786136083
-      },
-      {
-        "title": "Trump-backed Andy Ogles defeated in Tennessee GOP House primary - USA Today",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOVW4zWVpTcnNYanJjLU1UZ3hDbTZ3WEpYdFdtX21tUUtFd2cxXzd1bnJzb195OGhydmhUR1ZseEE4YmZOX2NfajNLZ0M0N2hKeUpSdEdaQW1scXIzb2xvc0hISTZnaFhHdkcybjlCUlhvRFhRWFVwUkU1eVl5MGxKYURKVlF2eGNkbHlid2Examw2Q3g2OGdkQkQtX2VDNlIxaWpqTGF4dHNBV29lajZUR1F5bFBFcFdZN2tiMFpoVEdsUk12VWhSVlZIdlR1eEs5d096Mg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "USA Today",
-        "n_sources": 5,
-        "lead_ts": 1786111920
-      },
-      {
-        "title": "Andy Ogles, a Trump-backed Republican congressman, loses primary in Tennessee - bbc.com",
-        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0xeDU2LW9GalF4dG81NElaQUx5dXpjcUZsMHN6M0hkX1JQN2I4bHY3TWtmSTNwU21WZHdSZGcyWFgzYklFazJfM3ZMLWNjZUZyVWV1cnlwbVVZQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 5,
-        "lead_ts": 1786095361
-      },
-      {
-        "title": "New trial ordered in child-killing case with Lindsay Clancy parallels - New Haven Register",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOMFhYaTYyczNGb3d4dTFnWkNDNDUzWGRIVHZEWFZWbFk4VmpXRmxJZDlKTHVCUURYb25sYmlRbVR4enpvemdTUEdKMVVpMGoyOTJOaHpOYS1ranVFS0s2LVBUM2RiV1NsdEN5cUp6T0FiLWxMNGVsOHRmODBzU2xaeTVRMTcxM2FSTTFVRHBDdGpFNVRGWnM2dGhqTmoxcG16MzdscXNn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "New Haven Register",
-        "n_sources": 5,
-        "lead_ts": 1786064273
-      }
-    ],
-    "mideast": [
-      {
-        "title": "Iran says Hormuz deal with Oman won\u2019t fully reopen strait - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSHhFb2tmTW1CZ2s3dnYxa1hnY3RqdHdxeFVCaUxUWGlkMXptaWkzVzZlWGwyN0pfREZzU1NFdmZ1dmNlVWNGcVpiajg4SlhYYnJ2d0RwYU95d1NkNzJ2TlFqVXZ4ZlM1UHpCbFJLMk90VVVoQy0ySFpQN3dtOTJNa09jS0I4MmRCUENxSmRNMWEyQVA4OHR0Q1E0N2xzUVdnQWlVRkd1a2M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 12,
-        "lead_ts": 1786057784
-      },
-      {
-        "title": "Turkey, Pakistan, Saudi Arabia sign a mutual defense deal, and other Middle East news - nashuatelegraph.com",
-        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQcHRTeE9RdVBIbndtMUxVRWtReDVQTzVaeHltMWFDckFQSG1LT0lGMnIzNTRDdk9kMC1DTVVZRGl1T2JWOU9NZDRwd2xhcUVLZ0hXV2FZZjlZZGFNdnB2TW9udGRkYVd2QmJtZmttdDJwY2VnQXN2Q1VkQVhMdk9DeG81UzQyZE5mdUY3Tzk2WDJyMnh2eGJRQkZvSUpTRzBFejRhMURoZUN6dEg5ODZiVUxXRVBiNFRVSldJWTFiV181NTNPSTduUm1KdU5OT0lsYnJJS2ZVRGdDdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "nashuatelegraph.com",
-        "n_sources": 10,
-        "lead_ts": 1786137294
-      },
-      {
-        "title": "Live Updates: Latest from Israel, Iran, and Middle East - jpost.com",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9FTWE4TWRhUjhlbHpZdUJKVERKV2p4X1E1N29XcllYRXktZHczbkgzck8tM1paa3VhalMwbXRUdWZlVHo2Z3hIbnNJbFNlaElpMnlZVzdYcFZRM3FiYlZiMGRBT0VoVTM4Y3NIb08zR094NXBsVi1TZ21iVEdjbE0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "jpost.com",
-        "n_sources": 10,
-        "lead_ts": 1786132805
-      },
-      {
-        "title": "US expects Strait of Hormuz deal soon as Iran-Oman talks advance - Ynetnews",
-        "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1EdmduUmlZNzA3Y0pMZmNDYmZicFJCVExaTXhhVEpaWERXbl80U3dPeGZPRmN1MkNGdXBCVU55cjZDYjZ2SVQ3bDVBSDZTVE9Nb1ZPc3lR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Ynetnews",
-        "n_sources": 9,
-        "lead_ts": 1786144524
-      },
-      {
-        "title": "Analysis \u2022 Hormuz deal would hand Iran an unprecedented geopolitical victory - haaretz.com",
-        "link": "https://news.google.com/rss/articles/CBMikwJBVV95cUxNR3FzU2JVYlpLQ01BMXE3aFVjeGhiMmowUzBTNE16dkF6TnUwMEpVVDJvRXZNdDB4X05mRE12THFxVllQWXV2WGV2a3NZWXFLeElMOWtidV91U3hoVUpLNnNmeE9maUlSVUZabkljZ3hiRzU0SmQ2NGNjR2VudGlHbmtJUjlLcFpVNnJRX1FGM1hMdVVGMXB2d2hjWlRhYjEzUFNfdFU4QllLemxFTVRJYk9LNWVjNEZsQ0sydGpBWjNYVFc5SmdpZXczYnVHeG1KWDVWblg1VWVfT2M3bHlOblhGNHozaVhlb0JsRmpkOS1DcGJFajNMQXliemVrQ1p3b0hSVjZWN1l0NGVXR0lwODNzOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Haaretz",
-        "n_sources": 8,
-        "lead_ts": 1786071780
-      }
-    ],
-    "world": [
-      {
-        "title": "What's holding up the Iran-Oman proposal to reopen the Strait of Hormuz - PBS",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQcXAxZlhxSXlkQ1FJdkVNcGJQVlpwZ2U0Z19fSDRTWTVaUUlHVW1qREh5b01OdVZiV3p5MFZTMkZnRGNESFYtbEpIeVY0Tnh0dlBsZjlnT0t1eG00WnFvSTZ2ZVp2ZXVuYUx1YnZQd2hWd2w4cGpnZDlmdUpKZFJjQWtvR01wY0h5b2tRWHhuWm5IaDlFb3BjOGxocktTT3MtUkl2YVNVOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "PBS",
-        "n_sources": 4,
-        "lead_ts": 1786142421
-      },
-      {
-        "title": "Saudi Arabia, Turkey, Pakistan pledge mutual defence as Middle East turmoil escalates - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNU2lUV2RTOWpHY1ZMeHh4SVNOUnV4TXZNQjZoa2ZXSmg1SnNGX2lGOEJUdy0taTQyNmJaRzNKdHdNUEQtYzhsOFROeEhHWk11LUlKTy13VmE0dlJuSHpveG1xSTBjNTZZOXJrWGNyU1NSbUpraEFHdTBjNHowdWluRUU5a0lsY3NuY1FmMDViMVJMMkN4VzVydm9aeng4eWxDV1lkVFBwWTNTVzFTaTJJcWxoUFdBTE9zZUx1U0VNYnlQTFNQd18yYg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 4,
-        "lead_ts": 1786141169
-      },
-      {
-        "title": "Catch up: Pakistan, Saudi Arabia and Turkey\u2019s defence pact; Iran\u2019s plan for Hormuz - The Economist",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQzRyZjZFazdHVm1XbmpSR2lINnRzLVN5elo4ZmdjcUlKNk1LUkMxQTdDSWFyaUtSN1U5MVlqUHR6dHNDek9aNmNLSi03cXFySHBkbFpSS1M5S1pRYktaVHpkSEFhcW8tZUZZbXhKemV0aE1hWU42QVh6MkQ0dmpPdTBzenp2UGw0X2NpSnFOMm53QU1ub2xJ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Economist",
-        "n_sources": 4,
-        "lead_ts": 1786108491
-      },
-      {
-        "title": "Iran reaches deal framework with Oman, could reopen Strait of Hormuz - 13WMAZ",
-        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQckRyU2F5dFBCR3BWV08tYzRKZ2xWdWZLVk91UUZQWm1BdWRxTXU2M0JTRFYwbXZGc0dicjJTTUkxSWpTbk8xU3RUU3JhZE5NUVZlSUdwU2lhMnhGc0d3cC1QZjF2SGpteU14U2tPVDY0bXVnVjM0YlplLWZydUNwejlOZkptdzQyVkNGdTNoRnE1R3N4Ym94aW12NUE1eVVscUNDbVJ6eGZBRU8xeXpFXzVneVVRVUQ2d0loYV8waTI1bjBSUXRCRnJVdVZfTnYtaUFUM2U3QnE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "13WMAZ",
-        "n_sources": 3,
-        "lead_ts": 1786138440
-      },
-      {
-        "title": "US official: We expect a deal soon between Iran and Oman on Strait of Hormuz - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPMkZHc1FWRXNSWG5BdjNhZ0dqOEdNUFUtUl80NTNFYkFrM2RrLVBiSXlOOFdaek5hcEhIMl84OVJLZnVDMzNodFBScmliaFdNYUpaN21uQ3V3VmQ2V1p3MGZ0QUozdTJQb09EcTJ1VERWc3E0d1Z5dkNvalFEcEVSQzRQejkwZmdybVJTVDJPbk4wMS1hWFBOaXJKaTE4MUxHNS1STUFxTzN4S0ZDSmtZOXFhdUZaa0d1?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 3,
-        "lead_ts": 1786130143
-      }
-    ],
-    "tech": [
-      {
-        "title": "OpenAI says it slowed Astra model development over security concerns - TechCrunch",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNd3B2a2NoaGtOdmJ5WEhERFMwbTZOX3p1MHplbG1ocnRsa25kaDFIRXU5SjVwVmFzRW1ZTWJWZ1dnYmljZ0pMVUZ1SE5RZXpaVy0ydnpjd2lVaHpuTUZEckZDSUI0MGF5N1dYZkItcmNiQkdiVlBPZFZwRENjNzIwYkVQdml5b0Z0c1Rzd3BTMXFWQ2t5N01qQ2w0T1N2bmN4US1Ra2pR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TechCrunch",
-        "n_sources": 5,
-        "lead_ts": 1786142904
-      },
-      {
-        "title": "New Mexico court orders Meta to pay additional $567M in child safety case - TechCrunch",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPczhYbjNRU0xvTEpTaU9fS1BTUkpLREZMMWM0bVg0SnpkUExnVjMyWVg4VUtXT2tIeEt0VDBoWUpPV0t2SkE0X194Vk5CTEVJbjQwcUtnMTBINEZ4ZDcwLXk3ZkhSZXoyOXgxLVdyVWdhVTRaMGRQY0ZkdWZkREJHVURwTm1RQzdqQ2lRRFdxbnlZclpyRF9aSW5vV2ZvOWw4bGpuZUs3TEhnY2M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TechCrunch",
-        "n_sources": 5,
-        "lead_ts": 1786102837
-      },
-      {
-        "title": "OpenAI Pauses Some Work on New Astra Model Over Cyber Concerns - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxORHp6aG5OdGNBX3MyblBfOUZwQlpKX2M1QnZoazdwWGg1VGRHMWxpaHRja2V6YXBPNVJLeEkzYmdPRTNKRGwxM3RzMUtKN1BueFNyaVVPMlJuWWdtbTI5MUNpV2lodHBGVUQ1aHhqNkVYN01PcDJEbWRFUm12M0Q2X1JaOTBTRDRJVmo1cG5sUGtUZTdCd2V6VV9LYy1uWEk5OHhHYlMzNnRZUkxoMVBpUENLOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 4,
-        "lead_ts": 1786144354
-      },
-      {
-        "title": "Details Leak on OpenAI\u2019s Doughnut-Shaped Speaker - CNET",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPUGVWU2NKOEtGeTFqM25qdy1LS2p5a2tLZVdOanZuVjNRR2kzTmNZSTk3NUphUlI1bERLenFSNEhrdFUtSTRlSUsyc1RaV1FBLWhNQ29YaDJaSlQ0ZXJJWjNzb1dLc0dMS2NaUXZlczhiWFZhZHZ6dms3TTVzMjlCSDEwRjNfcUNZZzdyZE9CaktOLUIxMkhn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNET",
-        "n_sources": 4,
-        "lead_ts": 1786125419
-      },
-      {
-        "title": "The true discovery of the century: scientists use artificial intelligence to create viruses that do not exist in nature - El Cronista",
-        "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOeWVtc3EtZmtUbUd1a1BPN3ZPdkpuUjJ5ZURONFlibnA1VUU0a0ludU1PVUdpZFBCd2N4S1kxVTdoU1VIS2NHR2lZdUthOEpJNXNYdV9tV05iLUZKV3g5T2xOVDFLQV9nY0ZmY2tqT0Z5YTdmcFU1dkRMckpJVEhHd05Lc3dva2F2bVNWVW1OSzB3dy1tTXIzVDBBZ0VZTmd5NVdfQ1BpUVZ5LVAxYmduT013cTR0WUt5Q0hMZVVrdzF0Qk1vYXpoWkhzU1JWU1RUQ19jTFFhOWlRR2hEbkNlNlZ2U2FEa1dJd1NWLTRLSFFkeFMx?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "El Cronista",
-        "n_sources": 4,
-        "lead_ts": 1786116478
-      }
-    ],
-    "business": [
-      {
-        "title": "US Stock Market Today: Wall Street Futures Fall As S&P 500 Slips 0.6% & Nasdaq Futures Drop 0.9% Amid Rising Oil Prices and Big Tech Weakness - The Sunday Guardian",
-        "link": "https://news.google.com/rss/articles/CBMijgJBVV95cUxOZnRHVzhfZ1JTaUdVeDJMU2xRV05FdTBTdUlIN0FZMmxkWWhCYUJDLXN6RDV6S3pDWnVuUVAyTWhRVWFIYW9pUjhteEFwXy1wWGFidlVSZjVNQVh1QkpmUFBVZVE0Vm53TV80cGwwTk55VHZVTlU0UE9QTEFwTktEcHl0akNnY2M3MmRpbHlPdGlFWUtUNkd4X0dWTksxN1drWW5YR3hVaGRJUUJzbV9NaVQ3WkFJZ05WOFEwU3JMQzdoMXpLVWVNQ0x4a2s1TVBqSVQzdkpFM2ljVDVVdU9nVzFSZWtWeGZVdnlLdFFJWUM2U2d5Yi1DNEZ2elBXY3EzSm9LbXJaVE9NY1BUbXfSAZMCQVVfeXFMTzFFanVRRUZPdkxDRXZ2OV81VnRGN1hpV3VMLUZuQ1RZU2djYnQ0MWpURjRCNDZKZDBaWm5Obm5oeXc4SW5aOWZGRjN1aFBMbDJvQ0pxZERrODBhdDZmQ05aZTBvSVhQYjRXQTJRc2p1NUlsWDlNZmtqalNwcEFGbWE2aVBnRXlKR0ZKVnZWZzhDQmpMSUJkOVB3anREN0NpRXRYM3ZFWkFFV04zVk5JOUxITU5YeVgydVFlQ0RTUkxEbW5tdnZrZVdJUGNQVUNYaXpWX1g1dll5UUJ6Zm5jalN6RWMxSlItNTdlVm8zNEplUE9WX1EtWUVRekRBNkFoN3FYSUN5V3AtMlRjOHlYQzdYaWs?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Sunday Guardian",
-        "n_sources": 5,
-        "lead_ts": 1786106571
-      },
-      {
-        "title": "Stock Market Today, Aug. 7: Palantir Surges on Bank of America Upbeat View After Strong Earnings - Yahoo Finance",
-        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPNjZKUEpEWUVMaHZWa2NZbzlXczBIcWgyTFF0MllsYWZmeFRQTWJST0Z1d2dZTjNiZ1F5QnozbC1STXRKbTFMdm56dFFsVThaT2pwdXJrdzh2RTN0Z2x3MGV4a3dnSEYyaFlqZUx3VjZCVmpkSjRwVDEyWGkxaHVtOTJ6WnduTWw5QU8tdGxtRHladTQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Finance",
-        "n_sources": 4,
-        "lead_ts": 1786136716
-      },
-      {
-        "title": "Stock Market Today, Aug. 7: Palantir Surges on Bank of America Upbeat View After Strong Earnings - The Motley Fool",
-        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOYmFGTEl3M0dkQWNMYTJleFB0WFNwS1pRa3kxM01WQmRvcHpramJkTktZSU9KcExpU2VkZDZTQ2F3RGpRSnBnZlk1Mlp0MWY3a0RvS19QbHg0aElfTUJCSnBBSUY4eEhKNUVKNmNXNmZod1RwclVfSTNkWjFqdFFuQXYyR1M0SDV3b0psVzdWSzRCenYxMFc2dmxna0hfTjFEWWR1MGl0a0pGMHdyMTc4c1FrcGc0U2hpM1lWNU15SHR0d25GMUNtVG96bWszT29jcTZ4MGpVMENrbGhUNWVpb25XellhSHhjeUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Motley Fool",
-        "n_sources": 3,
-        "lead_ts": 1786136997
-      },
-      {
-        "title": "Wall St Week Ahead Inflation data to test record-setting US stocks, Fed rate views - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNT2tydC12dWhpUnJJXzhSQXpxNFR2S2VQamVXcTAwMms4YWNSZnVwSnJEeEtMMi1WZW1EQkc2dzJwSEt0V0hBc3N1VUxHODRfZkhodk5teVg0NHBGS2xBNHVTczA2U1NvTE4xR1Y0dlVDVE5mOWpqbnIzczZiZ1drb3d5V3VWX0xOLUgwakItMF9jTXZzR3hhNWZjRXlnaklZcFg4MDZzOGtZd2RaZkhsT1laaXpST3NUR2JtVFlCNEo?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 3,
-        "lead_ts": 1786135269
-      },
-      {
-        "title": "Wall Street Rally: S&P 500, Dow Jones, Nasdaq, and Russell 2000 Reach New Peaks - BBN Times",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPZ25nd3I1anVZY3BIZDdnQXZiRmtDdmMxbTNiaHQ2akNnZVhjOXBvcmxIbGlqMVBYNElPYnN1RkU1ZktNMHM1Tk5NUy02T3dIOFlCUTBRNkRObFcxaUJzbk94VDJLWXR0R091cVRZZDdHRVVIcjJSNFVXc1FaS3dEd0QtbjB2NzhRSDRXVHBobzNWNl9yTjh1ZUc0OC1ySjg2WnlfMERkYWQ5aEtHVzZSZGdfUEN4dw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBN Times",
-        "n_sources": 3,
-        "lead_ts": 1786125820
-      }
-    ],
-    "sports": [
-      {
-        "title": "Beck has 'a lot to like' after Hall of Fame Game - NBC Sports",
-        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQaDlBSDJ5bWtWekFxS0Z3UHVCX1U4em9uNEczY0lGTDB3VEd6VWUxbzR6d3MwNng4RzFSQ2VQYVBzWC1tXzFIVHNDRmVIOHREVHEtN2dyaVowLTMydTFtSW5zdHpBcUVSR3cwdUJTMkFKY2dkbUFZTFNFWkFZb0JXMF8tZGpTX0NITWhnNmMxZ01BM0tHbHRLbGQzVm8wdExwVDhnSGhrTEJ6NWJjQWlFTHpkT0FrWFZYLWg3a1ptV2x3Qy1FNEt5WURGSQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NBC Sports",
-        "n_sources": 7,
-        "lead_ts": 1786126634
-      },
-      {
-        "title": "Five Biggest Takeaways from Panthers Hall of Fame Game Victory - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNVC1FcmpkN2VZdlVKQ1M3MEFOWkhRaHphSVZGNklFa0ppbEFhMGV1TGRaLTZENjhTWEhjaWllSHd1YklWbWkxMzNyZHZXX1FNbHBhZ3dYZGpZVkFSdTFMc2E2VkJvVDBfRV9VQ2RxN0pqeS14bGFWY2t6QkVvWUVNWTZxZ3ZCREcySE1aNWhn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 7,
-        "lead_ts": 1786119075
-      },
-      {
-        "title": "Former Texas A&M QB shines in Hall of Fame Game with walk\u2011off TD - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5FeDJDSFdSNkY5UHB5c2ZpRTNMRDA2R3BCWDlxZndBeVcxcW8wc0ZXYUV3OC1lZG9QY3M4OElvR1BqVFJrcUJhRGFVMFhjTFIxRHRaSnM1U1dEenN2d0FtSHJNXzhYOF95VXVMbEtRVG1MTmFNWHdycVozMGRWZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 7,
-        "lead_ts": 1786094444
-      },
-      {
-        "title": "Last Night In Baseball: Red Sox Sweep The Season Series Against The White Sox - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQbm5xbnAzWFF5cTlBTmFXNGxqdG53X0lmSTBhTzJ3VnJzeFBxQWF0bF9yTDVzbEZOT3VZMXFYQ2lXa1dVOXduSVNobFhXajRiYlNjWjVEXzBOUWVSRVBzNkpfbU11UDFEd1I1aVptWU05RUU3NVBiMzRxWndUckZoT1NTYkFVUmNSUUNxcW9GRVVvWl9JZVZzUUt1RkdoT2hOYUHSAaIBQVVfeXFMT1hCWTU4Rk5SbHlEWmJhSDZ2N1YwZXFmZGJIaVFsZUN2ZXk4cU9KMWRYdllUMnE3U2dPVU1iR1lJNDhvalZFUVd4WXBWaHJuQy1Rd2ZuUzBKVFNBb2hWYVctWV9PV21icE1idmxORHY5QktvdUQxTjZSdlk1Z1NjbUQzakhhVE5WRk5tUGZJbzRxVXFmWm1yTE5lWThzaDdpV2dB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 6,
-        "lead_ts": 1786117311
-      },
-      {
-        "title": "Giants news: Dru Phillips\u2019 injury, training camp updates - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOUGdCNC15UWZaWmM5ZXR3MXRwa2U3V0V4S2h3Vy03Z0Nmci1DSUxvaHdfTHVXVzM5TVJLNTRkb1Q3V3NtSUUwYzRGRjkwUVBxWGxsQXZjeGZJV0h4R1MyZ2JiaWlYalFLTWJMUUhtV1JIS3NhTng3ZFo5dTVZM3FIMWRSTGRzREU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 6,
-        "lead_ts": 1786096800
-      }
-    ],
-    "culture": [
-      {
-        "title": "Box Office: 'One Night Only' Tops Previews, 'Spider-Man: Brand New Day' Eyes $140M+ - Deadline",
-        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNHhQUHpLbU1mNHpSRWl3V0xyenloQzdMaXp0b254S3NNRkItTVBxUEprdlFHMWRFQXhpWVJkNmVsYzcyU2MtWElMWXVMVnNidGpVY0RYQ2JIVHFENTFPYnA1WjE2M2o1eFdPbGphYVhrRWdFc2l6b09hc2U2Mjg1RVJ4WHlvSEVEamRaUmJoOWNBWWwwRkE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Deadline",
-        "n_sources": 7,
-        "lead_ts": 1786119540
-      },
-      {
-        "title": "'Spider-Man: Brand New Day' Opens to $355M, Second-Biggest Domestic Weekend - Yahoo",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPZDVEOVB0ZXdGR3B5N1JSNGplR1NLVVBqT0lmUVR2MDQ0d1BJOUtJMXBQMDZhZUNQRjBwWWlqaG1Da1JRNWNtN2t1LThsY3FpSW9QQlFsandnMElSMUhsUFYyLXM4Y0lnWVZTZmV6OElyMVVNRzJrdzlobnFMckt2MXFqbmNrUHJILWtqUmQ5Y2xuUHBGVHo5Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo",
-        "n_sources": 6,
-        "lead_ts": 1786132657
-      },
-      {
-        "title": "Spider-Man: Brand New Day Is On Track To Become America's #1 Movie Ever, Breaking 11 Year Record - ScreenRant",
-        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd1dNQ3VrUDBWT3JNQ2JzbE5qSTFPZVl2M1FCS1F0R29jLUw1ZHhQOFNnQnYydVU4eEhSUlV5ZHk1WVNBU2lZNTJqRm5Qa193U3VKTUlSWWh3T0ExSjZUal9vdGN2MnIyRkVyb055bTRvdklJSUNwLVFHcmwybmx0eWs2ZW10TnZPb1BSZ1h6Q0J1bWc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ScreenRant",
-        "n_sources": 6,
-        "lead_ts": 1786127411
-      },
-      {
-        "title": "Inside Tom Holland and Zendaya\u2019s secret \u00a3500,000 wedding at UK estate - The Independent",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPRFFZdU1BSjVFcGhua1NhNkJpd04yblhRVElRZmRlZHVxdW5aNGY4V3BybVhQY2NHZXl5VThTeWpQV1pyOXBoNXV0T0RXUnNGLVV1S2ZXNDJsZzlZdGVZVUZpN05icFZ6N3FQdEZGUzItSkZWdm42bzZNcDhORHlSXzFDQ0pBSUhfYnp5TWdoal9ZaVJRdDIzVWE2Ylk3VHZsS1dR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Independent",
-        "n_sources": 5,
-        "lead_ts": 1786094520
-      },
-      {
-        "title": "Reel Thoughts: \u2018Spider-Man: Brand New Day\u2019 is a swinging success - The Daily Northwestern",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPQ1JmcGpFeDV3WVFkaXZibWdiZmdydDdjcFdDSjgyVGJYdGUyUnhmblZsTGU3bkZ0OUlSb1VhUXRQbnFtakdVU2VCdWdHRmRjOWd4UllzOFZlVlQ1a1Z2ZkNpa2tLMEFZWFNWLUtIZWJQUUN3ei03RWpydlRxaFlfTjh4aFhqaHZJSG1aSjhWcDFSNC1Vcnp0alpxN2U0Nk5jMzNJSEx0bzY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Daily Northwestern",
-        "n_sources": 5,
-        "lead_ts": 1786078317
       }
     ]
   }
