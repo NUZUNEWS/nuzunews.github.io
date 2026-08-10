@@ -3,11 +3,25 @@
   "today_top_by_section": {
     "us": [
       {
+        "title": "Trump order reduces US vaccine schedule, seeks to split MMR shot - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNUFVEZzFRZGZDeDBUUllvNkUwbjZXVGxDTHI0NmJsNHFBNDNrdzBGdThjZ09MRUJMUXdMVVFILThYRW9tem1SaEZkQmY4TC1ocnFGOEUxWXFGZ0dEQlpqc3F2MUdvaHRCTV95OEN2SGRLUGJkSi1hdEFLeEJuZ050Si1vVGpRS2VyZE5nSnplV2JPcVFIcURJX0VSX214T3BWNDJxVEE0cVZfWld3R3JhNnZQam1KaFZHajRybHczd01DSkFKU3AxeXZNTjgwZnJ0dldxQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 4,
+        "lead_ts": 1786397975
+      },
+      {
         "title": "Trump signs executive order to split up MMR vaccine - Axios",
         "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE55NWtEemlWQ2ZEeDhlU29CX0F0a0NGTGttQ2hKUVYteVB6NmFsc3YyeHpobzFHSG04MzJjd1dhMnhBcEpFLXhmTmdZS0JGSFlyRURIR1lSSWZyMlVvaFlFLWdVSkdrYXRQUEwzbjN5c0JlYTA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Axios",
         "n_sources": 4,
         "lead_ts": 1786397621
+      },
+      {
+        "title": "Nvidia and Wall Street partner on $500B AI financing - Axios",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNOEl2QzVIcjM2amxBQnpRUXltZzVmaHR3amJmTm5EcFZQSEowdklHREVnOGdrVlczcVVpb2RmcFJ1QVlpc3d1aFBNV3R5R3RfaHJkSUttck9rektoczdldkNfdDZSeElScEtJTG84WkxQY2lsOG5HdGNTZHVHMEJBSUpB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Axios",
+        "n_sources": 4,
+        "lead_ts": 1786394906
       },
       {
         "title": "WATCH: Trump signs executive order on childhood vaccine recommendations - PBS",
@@ -22,20 +36,6 @@
         "source": "PBS",
         "n_sources": 4,
         "lead_ts": 1786374210
-      },
-      {
-        "title": "Trump demands major changes to childhood vaccine recommendations - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOMjRtRm1FVTFOMWg4Qm0xWG5LWXg1cWtQQmt1d2I1V0NLc1FBbVNOUFpNdHhPN1YwTm9wMnNnSGpnZm9mdDZhb0NaYVdRRWF5QU1WNElWMmxiY240ZHVZZjVDWUpVb09VLWZXWm5TY3NqNlE1UVVzX2xVZHBRdlZza3QtUnVWMzlxMWlSRmFQTFNiUm4wSHJXQ0p0ZlRhWXRSdXJmT3hydm53SXVTS2RlXzJrS0w2cVJCaFA0dkV5Um1uTU0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 3,
-        "lead_ts": 1786395944
-      },
-      {
-        "title": "Nvidia partners with Wall Street giants to raise $500 billion for AI buildout - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNNC15TDEteDI0VXNtbnFkb016anJWMDJqVHRSTDlRNVNkTXFIS2NVWWlDVVVldmN1Qld0ZWIyeXowZ3d6WkFQR2YtQWN6SUU1Tzl3VFR2YmphekZzUWtCZGpsQmFWQVR4bzhEdGI1Tkxfby15cy1xVWVhWXYzQUU5WTlYWDRHc2d1azhzYXJaMHcyeGxJT0pBdU5RRXpfZG15QTJrdmRBd3hrSnlDLV9wTUdiU3U5NW5PYXBUbGJoZEdmVHBY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 3,
-        "lead_ts": 1786394437
       }
     ],
     "mideast": [
@@ -151,6 +151,13 @@
     ],
     "business": [
       {
+        "title": "Food safety crisis deepens for Taylor Farms with salmonella outbreak - Axios",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPYWxzbTNMRWZZRmV4dXFXTW5wQjdhQjh4c1NVcFhVMHA4LXNnT3FEM0hvWWQyQmQ4OFBrNHVWSjRtdzdLdE1nWlo1bnFqQWxzY1lZTWJhX2E5VXhhT1Q3TEYwc0lQamlFWmgtX1NHTXA2Ykp1bUdJMEg4OGlRMkxqbm5jQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Axios",
+        "n_sources": 5,
+        "lead_ts": 1786400390
+      },
+      {
         "title": "Taylor Farms recalls foods made with jalape\u00f1os over salmonella concerns - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQRUZzWnZRTWllV3ZkZWpJbnBjaE1SVTFHcTM1THpNaTlhbnlKdmxkNXB4SHFiRGRBbWVJMGdqX3Z0MzI4ek0tTkNJLTVEQzNvX09sUmFiOFdyNnVGa01QMzhiUklwMTJOT3Rtcl9PcUgwUElFQzJNTjg0YzNkRTBvOVhmMUFZZ1lEZndBWVlqN09YT2N5eTBTNzNXMnlWcWRkMUV6eG1KRW9ZdmdLcXQ0THlHQXdGNW51Y19vcQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
@@ -172,18 +179,11 @@
         "lead_ts": 1786373066
       },
       {
-        "title": "Wall Street ends down as expectations of Hormuz deal fade - The Standard (HK)",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOYWVqOGFaMmw3YlVoNnA2MDMwNEVRcThYcjVELXNRSmZ0X0xiazRNQWU2d1dnVVFVV2lqVjFCOFNXcWM4VjRUdE85UkRHdUNfeWtkSHV1MHoxRjZhZDAzZ196SmxWaEJtYVpzaVZHTlBoWTVUNDJBOWU0NGRLdVlmMWJRc3hxQjUyeFFxZTlxamkzRlBSMEE2MzBoS1UtWUI4SlFkUlpybDMwWmJIN0w0VA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Standard (HK)",
+        "title": "Wall Street ends down as expectations of Hormuz deal fade - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNZ1dvZ2c1V0lTdG9JSjJSTkR1eFdqSUFMZkZhLVNHWVppM2lMUEluay12RmYxaHozajVfaDZLOTlaMGk5eHpJbTNScmhEbkFwUmMtdWc2ZWh1eEtJSlRGUGJqdFhEdlp4UFJqQm1JQWNqNV9RNUhneDdnSDFzRGVvZHQ0YmpyeElzS1VwMGtmeGI2NzZja09Sd1BITm1IUHVYdDc4djlFQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
         "n_sources": 4,
-        "lead_ts": 1786396591
-      },
-      {
-        "title": "Salmonella outbreak prompts Taylor farms recall - FOX 10 Phoenix",
-        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBiTG5XNTdYNDM4VlcybWVObzNjUGlMOHROT2RHYzlfLUFUeWJ0VDk1VTdZdWwxUzFyYksxbUMwdklkOVNaWWpMamVjSS0xUFgyYzhHMm5UM0l0MlY3MTIwVlRfVnQzZ9IBa0FVX3lxTE1POVhHR2Fwa243TFlMdVBKSV9nVTUtWUZ4cGs5b0thVzdjVE16aEp1M0xadXY4am9EaHFrVnAzU19laVVsQXA3aVprVmNFTHNGSEx4dUZnSnNJQTctNnJlVm9hc1FuU0lKT2hZ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX 10 Phoenix",
-        "n_sources": 4,
-        "lead_ts": 1786389872
+        "lead_ts": 1786397247
       }
     ],
     "sports": [
@@ -191,8 +191,8 @@
         "title": "NFL Training Camp Injury Report: Tracking the latest news, updates for 2026 fantasy football - Yahoo Sports",
         "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNTUtnVUVXUzZYdFJROGFLOTVsaWFOcTdSYmtOeFJQYUxyQnFFSWZpeU50SVpfajl1TmRlekp6S1BtaC1rUDZIbnB4bmNaYzZCVk1xY01fVUtrWjFDR3l6SmZ5dHZmX1pnRzR1YWZBNGRYNUFYb3JvdjJPWlV5NTI0b0s5WUQwTXFqZW5MNDhuNmlIa19aaFBySW9SZmFRbndCVHpub0N6UUNRT3NxTjVxSzNxSlVqRU1rVmtpZjY3Nll6TVB6YkIyRUNxXzZkNmVQS0ZaUHo2b3VoT0pubU93?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
-        "n_sources": 6,
-        "lead_ts": 1786388825
+        "n_sources": 7,
+        "lead_ts": 1786396923
       },
       {
         "title": "Aaron Donald return could happen this week, plus predicting NFL players who could make 2027 Hall of Fame - cbssports.com",
