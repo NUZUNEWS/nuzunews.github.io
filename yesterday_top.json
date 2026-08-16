@@ -1,6 +1,246 @@
 {
-  "today_date": "2026-08-15",
+  "today_date": "2026-08-16",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Hurricane Lala lashes Hawaii's Big Island. Maps show its path. - CBS News",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOaXZzZWY3ME12VmE4eDhzMW40ZkN6RGZSMmo5bUhZMkU2Y0NZSjZKYXZkYl93UXl2UmZ4dUkxNUJuUmZzbFhUVnFadlJ0aHMxd3EtQnJJaVZXOEo0ODBFS0xWLU9XT28yU1ZpUGtPYlEzUlcxWFNSTmk3QVhXb2F2Q0RLQTVCSXhtZ3Zr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 6,
+        "lead_ts": 1786839960
+      },
+      {
+        "title": "Teen boy among 6 dead including suspect in Michigan shootings; girl survived - AP News",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPc1BseTdlN0tNamJob25sYURUaVRsdjVnamVPM3RqZ2ZiMEhTQmcyZzZnNkE0cUZKckszb3E0cU53WEhrTXU5N3N4ZDRjSEVPS1NrTlU3RGlzWXRGNktVX1VIQ2RPQWRxS2pVQ1VibU1VZUJZdXJIcHQ5TmtSZ3hVdHQxLVZjV0ZMQUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 3,
+        "lead_ts": 1786831980
+      },
+      {
+        "title": "Trump Asks Supreme Court to OK Ballroom as Construction Above Ground Takes Shape - East Wing Magazine",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQNEU1ZmVXN1YycEozMkhHR09YOUYtaFJPWFpqbXZwYW9zZUlWZ2prWXVmUnRMeTNqUUNIMlBmOXNRNXZLS0lRVjBFQzBrWEhKVW1DX2FRZUtQTkxoUmtzODc3dHdrVnpmaFhyZi1YaU9IeFp5QW54WVpVVTBmakZ2V1dQRWpOOWZ5eENEQl85VEZQUFpxX0V5eEt6aXpURUlQY0I0eExBZXJmM28tdHQySFJienpMZ3Z3WFhjaThGMVR3ZWJadDc3UTQtekVYTzhDYTNQQVg5bEs1Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "East Wing Magazine",
+        "n_sources": 3,
+        "lead_ts": 1786826383
+      },
+      {
+        "title": "Shocking death of former professor reverberates at Cambridge \u2014 and well beyond - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQZnA1Rk02OFFlaXRCR1NybkJuZzRXWGNYX3J6N0FwRkpTWmpnWXotN2ZPWWFxamFKRjdBX2JwaGtnbTh0azBNcFFxdWszYmg3ak11eFlhdTBBUWxKM25FT1RjM0t3aFpLZ21PWWhONmVXMm5pOFlFNi15MHNBdERydnFKb19IT193MHU2MmYtQ0xqSWNBQmVaTThUME9BbGwzMENCaDRZNjRYMHdUdDVV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 2,
+        "lead_ts": 1786840747
+      },
+      {
+        "title": "5 people injured in Virginia State University shooting - NewsNation",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNZ0owRktXMDZnTDZaX0g2ckdRWWNHclhSZ0JUNmRIYUlrN09WSG9jQ3FlT1ZTUlBnS1NiWkxmT2UzT09vWi1HaE81TmVEckVQVGlsWmhmeEJBSmsyaTRVa2J2bEtUMy1YT3FBaXVfYXROenJrSmVxcWNTZF9tN296X09rdURiOTZoRERJ0gGQAUFVX3lxTE50clZpTDZzaEFJaWlETzBQVWlpUXB0ZVpZbEhyNmtVNno3M3dZcDNQUU52ZmxXTi1ud3Z4dU1PU2dYTHF3RW8wcmp4aDR1SFU4Y3dGaXFNOF8yYnFOVERoZm1NWVNaTFNSMy1PV0tRY2Jpd3pJcWhiWUEybWFZS19sNl82NjVDVHJ1aWVzMVlfSw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NewsNation",
+        "n_sources": 2,
+        "lead_ts": 1786836725
+      }
+    ],
+    "mideast": [
+      {
+        "title": "Israeli strikes kill 11 in southern Lebanon, Hezbollah threatens to retaliate - France 24",
+        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNYjZ2dWcxdUl5NnozMzExdjQtcmU3aS1iZjdzWWMxWHlKQ0tpYXVsajlaRGcwM1AteS12dk9jZDhRZU9ILWVWN0I0M3YyZ1czcDJLRGNrb19lWDc3b29YblRONEpzMXVWSzgzcVJ0UnpLUGxZOGN5eXNwdUFXWkdjbm1OcGZrcTBuanczMktLVjlVMjlZSEVyR012NkFseE1wX2pDS05fb1VPXzFLWl9vVzRHSmk5c1c0S05GeVRHZm9WU3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "France 24",
+        "n_sources": 9,
+        "lead_ts": 1786826254
+      },
+      {
+        "title": "Conditions reportedly worsen on USS Lincoln as ship remains in Middle East after more than 260 days - WUSA9",
+        "link": "https://news.google.com/rss/articles/CBMipwJBVV95cUxORXRzS1dMVlZMTWdYaDlCa3o0Z2dRYVNicl9PRExlaG53bEl6Qlo5eXplY2JKVW1qYldFNDE4eE9HQTR4Y3FCLUpYNmdsM3ZxbXp3N0JBbUp3dlBmMUhvNGMxaERFRnZOcXpReTBYRGRuQVZWTzVmUDlmUG9GcHhTbG1zMnNSS3BvMWFWSmhmbWV0YTZHNlZyQ01xT2lfbnF0QS1tcGVOOUU4Y0x1Qm5MOXc2LUhJLVZhU0d5Qk5LVDFwaTVrTEpYMXBzZVp2b3BIdEYySzZsdzZkZjY0NmY4TUNMaTJoTW1KN3JNaFh2OVhYYkhsSzhzemNsNFRaMHpfSUt4WlRyRUsxM0tuMHBZWGxqQjcyWXpweVFsWFNFN2JQMlBGdmhF?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WUSA9",
+        "n_sources": 4,
+        "lead_ts": 1786839060
+      },
+      {
+        "title": "Head of Central Command visits USS Abraham Lincoln amid quality of life concerns - Task & Purpose",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1uMHlQZjJBMXUwNzJMeXVKVnZvT01VUnMwVGdFeHNlUVpON2NxZzZvSTU1M3V6Z0R3N1hKd1dvbHdBcjZJU0RkbUtzbTdtZmtCX0RWQ0g0ckF4YklsRDRrNE1zZjVqQWZMZEdmWE9zb1ZQZWNoZTZGLWxpNXI?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Task & Purpose",
+        "n_sources": 4,
+        "lead_ts": 1786837258
+      },
+      {
+        "title": "Tensions rise in the Middle East - CBS News",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1mUnJyR1VoRE1HbEZjZXNHallOeXdpRzg1Vkl6RC1XZzJvQ1gxR1FHN0RfQzRrekl0WW91QXFDVmt4QVhlU1E3SDEwQVNmV1VGeEhSa2hfWW5pUkltSHA1OTdEcWRVNHZCTFZKNzBaT1VsZ3RlQXBkbmJHNA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 4,
+        "lead_ts": 1786837200
+      },
+      {
+        "title": "Iran condemns Israeli attacks in Lebanon - Middle East Eye",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNUVItTVVja3drS2NhejFoZFk2UENiVzUtZFpIc1JPazUzWFVreUhPWkxQUElxTkhPemszMEZ1YmM0NmQ2LS1EQV9TM1JIQm9QS05qOTFaTFJRN293dUo0Vm02RVg0VndoTHZJdmxRaGU0OHhDZlpka3U3MHJ6NkJQMWUwTnZJYzVxWUhrRTFQZjBiMTFzSG5NREFR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ME Eye",
+        "n_sources": 4,
+        "lead_ts": 1786824960
+      }
+    ],
+    "world": [
+      {
+        "title": "Takaichi skips controversial shrine on 81st anniversary of Japan's World War II surrender - Politico",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPV0NlZGtyellYYXpBR2txcXVLOVNoWGtfbmd1RVRtbXYzU1ZqdUVrNDM2b1JBd01ZWmtnYW9XRFQyNnZyQUpLeDBkUGtIbFRVTXdaZEhtbDNoNzNKY194THdtaEctTDZaZ2dja0F1dWlIQ2VpTHhjSG1TMDVadU0yVXlXNTBrT0oxR0pJY2RNNEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Politico",
+        "n_sources": 3,
+        "lead_ts": 1786838520
+      },
+      {
+        "title": "UAE says Iran attacked vessel in Strait of Hormuz for third time this week - Washington Examiner",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQTXNsam5kOGk1ZExYZVJxbVRHZzhDdW02YkVfcURLWWktU181VTVxeF8weGYtZmRldS1PLWFSaXlBZ3g5NFZ3WHg3MzdFYkRuejhibzh2UkpORkRBZ2JqcXhBX0FnNXdXUmVDdGZrVlAzbnFCNzg2a05xeTVtV3hpNHE2aXh0X244SlozVGZrM3RZeXdGU3dZWXRPMWQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Washington Examiner",
+        "n_sources": 3,
+        "lead_ts": 1786838040
+      },
+      {
+        "title": "North Korea warns of new \u2018deterrent\u2019 ahead of U.S.-South drills - The Japan Times",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQVFBVZU15c0VoVkxZSlVSaUhpVEFYWVo4al9pOVFBbHo3X0hwQWdVeWpUVE9heHh5TzhsWGRLMUZKazBGY21meUFjNVBDRXlPNFd5TmFuSDYxWURXdFJIcy0tOTd6NGREaVJ6Y1ptak1nR1dseUVCYUNRd3VRYnN0QlNHeHVkWDBFVFZGdHVTVEpLVXVfSVFwcEtLejVNNml3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Japan Times",
+        "n_sources": 3,
+        "lead_ts": 1786787378
+      },
+      {
+        "title": "Europe\u2019s tallest statue of the Virgin Mary is inaugurated in a small Polish village - sightmagazine.com.au",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPdEEyUDRaeThRXzRaU2tXbDRxeWQ0elFNbS04cmN4eHJabkMyNFFKVmlnOXY0V3VVd2F1N280cmdzaXNCMFg0QVdWTDUzZFA1VFRzVHo5Z2V4Yjk4bUVHYlhkc3prMGlQeXR2VnpWai1lT3Q5UDVfWENremxuMW5nT2pVZUl5bHBWcXpTbzFmYXMwWlhlbnhBRkpScmVORUtfY0REbkY3QU1jdEtDVXRyQ1hWQy1oT3NU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "sightmagazine.com.au",
+        "n_sources": 2,
+        "lead_ts": 1786839350
+      },
+      {
+        "title": "At least 47 dead after 7.7-magnitude quake strikes Indonesia - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPeHJuNzAtUG1fcGFIR0NCR2pxOWIwUl9LcVpjanQ1ZlQtSGZUQVBBVzBMc1BHU0ZLUTlZNkt6QmdkNjdmaGIzUTVtR1VJN0hQMnNNSnlIbTctMEZZaklFV2twX1YzT1dMdFVwLWtOMGMyU0tzWVQwWGh1bTVxa1ZXQV96aTl1R19ZbjBJeWE0MEx6eDVxUWZOZG1qMGp1V2ZBeTZCV1YwLXMwTS1xSlNmZS1uUUFkdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 2,
+        "lead_ts": 1786837320
+      }
+    ],
+    "tech": [
+      {
+        "title": "Samsung Galaxy Z Fold 8 survives the ultimate stress test - Mashable",
+        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1lRWgwYUJORUE0NzBIV2JiLU44ek4zelo4Q1ViYXIwZ3RnX3FzOFNvRXM4SU1FTHFid1hSeG0zV3dUN1BjTU1vYk02UVJrVzBMVU1QbDZWUHdSYXVTUFVyN0V2ZHNKV1dCMmlILVNB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Mashable",
+        "n_sources": 3,
+        "lead_ts": 1786826523
+      },
+      {
+        "title": "U.S. to tell partners they must pick sides in AI race with China: Reuters - CNBC",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQTEpjRzNMbUo5T0wzaDRGZGh4UXZ1Y3ByQmtaMzdTdHVMOHo1STNFQk15Z1RUdzRPYzdfT0doOGlBRUZnYU82eWhvTEdtX3dlM1I0SFJFZzNhWFhvWlhXNWxIQ1lETmZxN0Y0TXNOQmNwVUtBZzUtUFptNDlEVWo1aUd3Q2lhYjduWnVxRXctQXBwMUZxN2kzdTItNUVxNm9tYkJ6U3dIblrSAa4BQVVfeXFMTVFSRVZGdERLQXZwamdMWmxTdTFnNUVGRmxKZlktV3RuRHlDdmpRT2xzWUxsbnVlb0JhUEw3dnlWelhTamgyUUh0TThEY2FrbVlTb0Q5OWtOTExuSzRCTGx4cEoyaU9XODNGWl9BdkxSX3owWHVfZWJyTjhUNGQwVU4xMVVnUVMwWFRiN2hwbS1CMEowZWwxOE1YQzFSdDBjSTdDX1JTUmU5bFpfM2lB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNBC",
+        "n_sources": 2,
+        "lead_ts": 1786834143
+      },
+      {
+        "title": "The latest gen Samsung Galaxy Watch 9 comes switch free $50 Amazon gift card in this special product launch deal - PC Guide",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQV2ZoQmFmMlNIazk2RmF2N3pzRlpOaTN6eXF1VXBKdFJJNGwwZUVBaU8ySWs3U1J0SmdSMzV2ZG9fQ19oMnNqY3FMbHU0TWxMRTJjQ2x2dEFuc0RNZV9TbDRkd1BYNl9zQUNZcXViUlNqbHNnSnpYckV2VU1qOGhxTUJtN3dIU2RKUHRuSVJWXzBoQmF4VHJUX2pMSHRGT1cxVHhTdkpzTHA2SDFrcUNULXJWazZXaFN1ajBtR2djdHB6MkdWd3FXeV9pejF5bTR4dkpsZ2lmUHZkQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "PC Guide",
+        "n_sources": 2,
+        "lead_ts": 1786831863
+      },
+      {
+        "title": "Free training to help local Iowa officials prep for technology outages - KMAland.com",
+        "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQR1ZoUGdmMTJNWXE1bWJkZWx6Nmt3N3VmV0tkWnJDOW5UU3FNNmpSVGFKelAwdXRGNUFsaVRCdDFaVEU3cjZtT0JSYXcwVGJENkc1WjFMcklCM0RRRjh4REFLeFBoMHRsbmE0UG5IRnVHdDUtbk9ZUkYyeW1HM2Q3RjF2ODNYU3czM2hiTU5nRlo1QzFfSDBwVmJKM0tzVF9pdFFTaVJXSVVfUGhoM2RKaEVQNmZSQ1Q0Yk0wM3hQSHB1eXdnUkVzSGRFMXp0a3hjZ1o2LXdrLUdlX2p0SDNSenZ1VQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "KMAland.com",
+        "n_sources": 2,
+        "lead_ts": 1786825800
+      },
+      {
+        "title": "SpaceX has completed the acquisition of the AI startup Cursor - UA.NEWS",
+        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPWlFEcmwtem5aRkRINm9ZbFhaX2p0b1U3WE1RMlppODhTMGZmR2RGTThCdXY2Z25xV1lROS1pcThEQmFwN3VlejlLdVI2V2UtOURpblpZYlhpSnlhMlJrbWJIVnhwaW9paVJ1ako4ZkhRVU5vM0tWSUFMZWZXamR4dktHVjAwZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "UA.NEWS",
+        "n_sources": 2,
+        "lead_ts": 1786817675
+      }
+    ],
+    "business": [
+      {
+        "title": "Wall Street Only Looked Like This in 1929 and 2000: What It Means for Bitcoin? - CryptoRank",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNOXRrNU81Y19nOXdyWjNRZ3Q1cUxvamVvVFJ0bFZnVW9jZEFHM3ZBX2ZLejVQR1M1aWFRRzVHNkMxclZKQi00WG5aUHdjMG1tY1RIZWNwVWJwZGQ4T09vWGVYR2VxSVBpRDJrdlh0NHRqX2lhNHd1UUw3YTB5Zk1QY05wYw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CryptoRank",
+        "n_sources": 2,
+        "lead_ts": 1786807732
+      },
+      {
+        "title": "Wall Street rewrote crypto's rules with $11.2 billion in checks - coindesk.com",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxObFNBZUZqYVlKTTM0UUd0eVNuQ3pLOTNMQUFlclhiTjVhSWdnZndZYXd4LXU3Y2d6TXlJRURQWjI5c2FidlpMdk40TGxlbl9udklmZGlBdkw1bmtaTmxxdkdoZTZnR1ZWN1dyeFJkRUZMOC1LRkt5YnlfMjBleENwdkkxTEJJMUNhVllkUjh6REk1TDlwWmRHcWQ1eTJFOTlNZUs5ZllwZjg1RWxERy1GVWJHREpQaFFqNTNXWA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "coindesk.com",
+        "n_sources": 2,
+        "lead_ts": 1786802400
+      }
+    ],
+    "sports": [
+      {
+        "title": "Vikings fear worst as Jamal Adams, former All-Pro safety, suffers knee injury in preseason game: 'Not good' - Fox News",
+        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNZDdnSG5XZjZfUWRpYTI2X296dDNmT3RqOG9raldCbGx2WjlmcVVXUW5teWM0OFZmbEFpWmJlVExLRzcyNDFDUlV0eW1sVE5vWHZKY3ZXaXozM0VfTFFwTzY4cjVkMjdrSFdSd2VOOGJzdEpJNTY4MmZQSUJFMlBXbzVMU21peURZaWh4X2tIc2FncWRaZGJDQ2lBcUhKbWVONjNyaEo2aVVvSHdVYnVoOWlDanhTdDhXSlhiT1FQLS1jOGhkZVHSAcsBQVVfeXFMTmFKUlpUWXdMdk53bThGNFgtSVBhRGNISlA1Tk91YmdXMjROUGZkdW50RGNrVTdVcjE2cFM3TF81c2d4SFlIczhTamVEbEd1M2IyQkhrT0pQTElyUnhNQmVXbVNXTjFVSVNsYTVhbllmM3hvWGd4dWppVzloNDhENy13OWtUYXE5d0NLQmhtdEUyMlp5cHdlZGpybVRNLXNReTdXWDhLLVhKc1VreDBnd21OZHYtQmlvYXEwaWFRdG5pVmRSVjdickdUQjA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX News",
+        "n_sources": 4,
+        "lead_ts": 1786837213
+      },
+      {
+        "title": "Indiana Fever schedule: When does Caitlin Clark play again? - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQWHlUX3JHNVMtWFFWTmNLdGQ4SkcwSk82QnlybmJieVoxMlk0QWhLZnRVTGkxQkNXS1J2SkVOajhFU1NtZGMyanIyYzZOandDb3VITWZLVVFBWU5WcTYtN3htdENORXBCNmZTMGVFMWpxWmdzY3pWSUtodkdVa1BjQ24xTTlVTGU0WWxJbw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 3,
+        "lead_ts": 1786833336
+      },
+      {
+        "title": "Sports News, Transfers, Scores | Watch Live Sport - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNRVVqcDVBVk1ueW5qZ29WdmdDS19JVnE1dlBMaEc4X2NvN20xWXF3ZTZLR28tZlRXYmt1cjR0cU1ISWozeURxbEJULWNrbFh5eWxmanNhcUdFamdlQUhrYS0yVFdTZTBXSE1FZHFubl9rSGlSRVlubnhqMEhwbFpLcVVEeHN6UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 2,
+        "lead_ts": 1786840534
+      },
+      {
+        "title": "Risky Ronald Araujo swoop is an act of pure desperation from Liverpool: GOAL grades the biggest deals of the 2026 summer transfer window | Goal.com UK - Goal.com",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOMGNNc0xlWWxRZXhoVlExZFhIbU9jRE9hdGR1b2ZSUFZzTDF1a1czUVZ4ZWE0WTU0OEM1bnJKNE9WOHVCaW40NS1ocnFkenk2d2Q5NThicFlrMDk1UE5YSjZLWmowWk9NTHVfc29zM2RqSTkyYmJpTDZBYUdWSWF2UDVEZzJ1UHp3ZGRVV0lQQjJfZ1llajJXMUZYVDktVVB4OXZB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Goal",
+        "n_sources": 2,
+        "lead_ts": 1786839176
+      },
+      {
+        "title": "Novak Djokovic suffers in Cincinnati heat as Thiago Agust\u00edn Tirante inflicts shock defeat - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPLTQ0TF93VnhJWjM4R2pKV01keWdicVdqR1plMEh4cEptTWZsekV5X0g1S0FtNmE1UTNvbGt1SjN0cW84QlhBMlI3MUFyRkxycm9NLTNqajZRMHpuYkxTeDBrWU5uQ19IZF9uN1RlbU5oeWRKQ21yZUFhcnBKbEQ5MnRYcUNlcmplRWxsTjJrVUlQTUhvZkVPUm10RFJRdXVmQVRSR3luV3NCb09uRU5yOHlSNUV5YXpTUHVWU0VCbXltNWNmbGtHNFItNVJFYXUz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 2,
+        "lead_ts": 1786838640
+      }
+    ],
+    "culture": [
+      {
+        "title": "Selena Gomez Fires Back at \"Meritless\" Wondermind Lawsuit - E! News",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNLUFCNDZLWVhjQl9oWWd1emRNcWhWNnRxMnFJTk45bWl3Ui0zZmd1UjFSTVQ2WGR1TDJ4dGhRNUFNRUxlc2U1Ri1NM2RyRU9YeGcwUF9wZkhTbXhBaVlMV1BUZnF4TFlkUUNWS09felZRQkRSSENiZEZLcEN2WnA1aW9KdWxfTHBjMDNIUkxJb2U5QVlwOXpWVW91YnpXZkFxWWc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "E! News",
+        "n_sources": 4,
+        "lead_ts": 1786840949
+      },
+      {
+        "title": "2026 Vs. 1996: How Oscars Red Carpet Fashion Has Evolved - aol.com",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE14VkFzRGNBSnhVUklBQ1ZaTnA3c3R1ekJrOVhqazhOSjlJTEgyazNtTzZ4M21OUDAtOUNhZGFUZWxGSm5LcUxsRzZSbTNTT29xSmlUUFAtQUwxRUk5Wmdzc0ZhUmlCVGlCWWxxNm5xcEZsM2RuQXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "aol.com",
+        "n_sources": 3,
+        "lead_ts": 1786793495
+      },
+      {
+        "title": "Over-70 Fashion Icons Who Can Teach Us Valuable Style Tips - glam.com",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5yUGo4bnhqYWNBa2pSWE5OUzA1dk5SZjF5Nkhkd3diWkUtdnhDOWlwYXJ5YW9laFJUWlQzb2VPd3cxclQwZloyRHlpQzRnR2t3ZC1vQlYyaVFRQjNxaEduQzloeW9vU1ZkY29KTEJ5aHRBek95SjhKQ0Q3MFU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "glam.com",
+        "n_sources": 2,
+        "lead_ts": 1786838738
+      },
+      {
+        "title": "Star Wars: Smuggler's Gambit Lets You Keep Helping Hondo Ohnaka in Fortnite After You Leave Disneyland - IGN Southeast Asia",
+        "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNWElxTW05UldDejhJQ2V0UEZmbzNaenZNUG9kZVhTREhfYTkxUHlXQi02ZFpsQnFjTnl0N2RsT2Z5cDd4Q1lYay02OEczNXQ1WENfN0JubU9TeEIxalBRMWlBTlk0WFJLQXNfZHUwWUZ3bng1eGJnRE5uOXpwUGRyNHZGWF9jS2hYTUVxV0p0eFdydjRDa0ZaUFhQc3RTQmZTeE5PU2JJZUdXQVpFNXhpWkRaN21XOXk2RDhSUU1TaWJuNG10QlUzc05aTW5keXk5?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IGN Southeast Asia",
+        "n_sources": 2,
+        "lead_ts": 1786838644
+      },
+      {
+        "title": "7 Years Later, Netflix\u2019s 125-Minute Action Thriller Is Officially Making a Comeback - Collider",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQU3dwS3F4ZnY0QzdZMlVmckY3S1NrU19BZ1VBVUxNRGxCbndGZ3VKaG9KSkJXSXZFWHp3anRxcXNVLUxEUWR5ckhyZzBiN0pvOVJ4dFBTZkJqWE9Vd1NYUXluZjIwa2VoOTRkZDhGNUo0UHJERk5rQmNqb3NveEE3Q2NzTXdaVXNZSnJ3d3luRFM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Collider",
+        "n_sources": 2,
+        "lead_ts": 1786835714
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "Trump shrugs off concerns about dismal conditions on USS Abraham Lincoln - axios.com",
@@ -258,267 +498,6 @@
         "source": "facebook.com",
         "n_sources": 4,
         "lead_ts": 1786783335
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "Trump Says Relief Is Coming for Beleaguered Sailors on USS Abraham Lincoln - News of the United States - NOTUS",
-        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5UQm5VSUF2bnV1NVJzRjVWa2R6V3JPWE1RRFI3SF9Pdjl5aFdzVFJ4bjIxWWtuMnYxMDZ4eDJ4dTJLaHZGNlZpelVGYl9iWXFYVDVQYmVUOEFYT25uZ2dJdWtoeG04a3Q3bmNTZmtjZ3FaZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Notus",
-        "n_sources": 8,
-        "lead_ts": 1786733923
-      },
-      {
-        "title": "Trump dismisses families\u2019 concerns about USS Abraham Lincoln conditions - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNMXBxREg3bWFsR3pibzJqRFY3VlRyTXRuTUpNNXU3ZzhUaEpfc0R2djhMaVlMaW1NVVlmQ1BCS2IyMldCNkdMdXF1QVl2eUcyci1QN0FUMmlYOEU1Mm1KLXJWUVBKX2w5VmJHVlJHNWhRdEVtYVphU3U2N3ZxdTQ3N282cDlRbEd5aGpBMDZhNFZ2TTBrTVByeHluWnFNeDF5R2JoNVRvMlB6bExLeS1ZNHVlM2RoUW05SUFmSDFMUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 7,
-        "lead_ts": 1786746993
-      },
-      {
-        "title": "USS Abraham Lincoln controversy likely to loom over Pentagon - The Hill",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBvc1c1anJfT2lXSXlkMHFQSktlRkhGUGlIamFmZ1lpd1YtX1hXVUdUWFFBaVhtVEJkZ3d1YlRHa0d0dnJ1ZnZFRXhEZjNJMG5QXzNUYUVYcmdtVjMzYmVNSFVfZkxTazYxdGNlbDVIUEZ0QlhIN2FubTdqZ0JJMU3SAYQBQVVfeXFMT0JVQ2xCYVA1a1FjOEtHTDlfaUdLOTJGLU54T2VuRE1VeHBpa00xak80QUR6WDQwek4zNnE4Y2JMZTlyRk5HNzRBUThzaVE4amYwWDBTMFhJY3JMdnp1dmhlTFNSbHRoYlJTaGM2R3lTMU9SV3p1TExWZ0I5enlUc1ZWTlg5?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Hill",
-        "n_sources": 7,
-        "lead_ts": 1786742940
-      },
-      {
-        "title": "Trump Says USS Lincoln Hasn\u2019t Been Deployed \u2018Nearly Long Enough\u2019\u2014Denies Families\u2019 Concerns - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOcU9fNm5IMXVnWExfUXdsMk44VU0yZ2lmXzMtVW5lMmcyLWg0VTdNNzdORmRKSDRQN1BkZlNpSjdYX2VQM0dFNTZoTURIWXNSbmV3TmZXbWlFTktNbDBKSDdHN3RSTGxrUklqeUpMRWJVTDUxMUg1YUpPRWdQYmNob3RWRl9uUXNORkVnVTRIcDVmRTRSdVc5WjRwOFIxZmx3WElURkV5NWJpc056Tm1WdFlEcHE2X256Um5QVS1DT3dmdjh4b1RSd0RiNmM2YzctRUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 7,
-        "lead_ts": 1786738633
-      },
-      {
-        "title": "US says dozens of countries helped China dodge Trump's tariffs - BBC",
-        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1DclM2LWN1ZC1mSFNkWFh4Qkh2YlFuVG1VYkdLYWpJUnZUQnVReGU4NV82UTRua1F4bHZiVjNOQ3A0VE9FTWJTZC1NZUNfdHQ0QmFjdzJWX3Nadw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 7,
-        "lead_ts": 1786696786
-      }
-    ],
-    "mideast": [
-      {
-        "title": "USS George Washington heads to Middle East to replace USS Abraham Lincoln - 13newsnow.com",
-        "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxNOEFla1o0WVF3eUNhVjBSNFNjaDVTWmtVTFpxY2VzNWQxZGppd3Fibm43dG1tU3ZpeGJKMUlJaVhtUmYtZGJnNnZPMmpBOEctM0g2MEhBLWtxZjlucFhEbHdNX0JmUU9fdkRpN2doSy03dzRjTWRKTlJudjV6UXp2dU5Ea3dDcTVjbnFaS2RhbW93Q3lMNy1QMFMyaEFGdzczMFBSUmw5eWtPR1lfQ2dKWmJBa3VfQVNxOGstZGcwQ0cwUDI1NC1fYW5LR0ZNc0xoU043TmlxNzFoZEszWFlpQllWZmY3blNEMFhDdGREdmdsMWlCRl9YbkJ5TDJfNUV4Rk85cnRLWnE5MzA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "13newsnow.com",
-        "n_sources": 14,
-        "lead_ts": 1786745700
-      },
-      {
-        "title": "USS Abraham Lincoln may return home as replacement carrier arrives - cbs19.tv",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPUi1RQzFwcFZRbk5BVllweDVsWFdzaV9RWDlWWHJzNlJndnQ2T0lPYUp2R2o5ZkZ6RV9udDYybnZNcXlSWHBrSVI2a3J4Wk16d0YwU1VySkRFUEFZWTQxbzdtTnEtQjhHMEs2cUhzVFhkUTZpQ0lZMW1VYkZ1TjdsUmJGX0J5Z3JHUHpNSnQyWXhtNmlpd3JTTGRHa001WmlWZFk3MFNSQWVVRXVqajZRbldLMk1lT2tscFozLWctQVhpaE9sYjc0SnRFY0k1eF9Fcy1yTA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "cbs19.tv",
-        "n_sources": 13,
-        "lead_ts": 1786746240
-      },
-      {
-        "title": "Oil prices overtake Iran's nuclear program as top US priority in Middle East war - IOL",
-        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPQlBCNzRDNWhMZ0lyM19FZUJNSkhJUHJxQUdqcEtUMlp1WGdjNDZFR2Z4N3ZmZnlDOXZOX3dCSGlMX0tMWXNKTWQxT3l4REpIM0czWVlFVXhlcVZRZUhiU1p0b2RqR3hPbUxDX280MFlsdXVDRHlOZFlfcXFxMUlPOUtoUlJVUUl2WWpFTS16MG1MazVEU2ZQbTNOTTRyS1pNN0RuQVN0cXd4dHJHaVpJTldvUnphRE1pMTlodQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IOL",
-        "n_sources": 11,
-        "lead_ts": 1786683146
-      },
-      {
-        "title": "New aircraft carrier heads to Middle East amid concerns about USS Lincoln conditions - CBS News",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPcGpiYURDRndlUUxKenhpaE93blpnVm03RVR3QndPUUZDQ0phS3RnTG0yUVVPNnprVHpOeWtzNXpjd1A3aVdTTTRjMUktcTZKXzJubkhPNEpaU2pEMU5VUEx5cS1wQ2k1TW00R2NpYlVuSllMNmlUOGkwYzZ5Znl6UjhFUVoxSzlPWU0wd0RiY3Yyd3NLZWFBUHZ5MzJ5UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS News",
-        "n_sources": 10,
-        "lead_ts": 1786714460
-      },
-      {
-        "title": "Palestinians besieged in West Bank village fear Israeli settlers will seize their homes - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQN1JsTE5LS1BLaFhJSTBpVFhydDAyeWZMcmpoYVZQc2hTUmNsZzkwS25HTkNGSEt5UVZ6RjJEamNPV1V0c0pyYVpWUHNSZm0yNDc2M1JXcTkyMUtaelNXWE1kcmd0b19JamdPQzJDZjdhNmUwUDdPWlRtSkVnUTI1VkhfWTN2ZFB1bmJlUkhCSkQzQ2ZRR3B4MlZ0RXNOV1R4d21qeC1ZSE9KWUtnWDhVd2VxRFIzUzhZellCOXM3UURwYW96bE5WMmZ1ZXFDZ194LUtEWmJWSzlOQVc4TzhJ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 9,
-        "lead_ts": 1786720611
-      }
-    ],
-    "world": [
-      {
-        "title": "2 UAE tankers attacked while transiting Strait of Hormuz, and other news from the Middle East - AP News",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOU19BM2l2RGhNUW5aWGxpdXJRU1QwVWtzekJ1ckw2bUdzWlhBSWcxX3U3T1JVblRkYW92MEhkaS1rakhweUN6MnlYc0xVbzVQcUtwdXRBbGFPUzV5T2Q5a3lmbVNqdE0zZFgyT0J3OGt6bzlwT1dWb2dtdVBieEtuOVFQXzdlNFdzUm8tU3FrV1JQS1hEUGpscjl3Q1BRczR4RlE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 4,
-        "lead_ts": 1786731780
-      },
-      {
-        "title": "Two More Tankers Attacked in the Strait of Hormuz - The Maritime Executive",
-        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPOXhnaEtqWDRzM0Z0ZmZGbmVhVUhxZGtlS2hOdEg1WDlrVkxOcjIyLTBxcG5DOS1nLW56ZTdnS3dDcmZpS2VsTWhNR09mbTl6Ym1EaGV5WDYyVmZvSE5CczBjaFZwMzJFczQtR1A5RE1yQWNNMmxrNWZkVkJlcjQ2R2liemJiSTdoTjNtVlUtQjNydw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Maritime Executive",
-        "n_sources": 3,
-        "lead_ts": 1786748640
-      },
-      {
-        "title": "World in Brief: Luigi Mangione pleads guilty to federal charges; French court blocks social-media ban - The Economist",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPeDh1X1BHOTZlX2hYQ1d4YzNlY2loaTNnOVItRGYtcWlWaGlYMlAybFZIWEp6QmNDNkp6MENMWjZydlVIdkFfTmdRRElRNWJnU0RGdFoyVS1oOXNhT2dDRzg1T0hmckNVQ0JTSDUtM0VRVWpucEhKeWk2RDR4c2RiQi0zNUM0RnA5bkNxVHdQZVhPMnpaMzg4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Economist",
-        "n_sources": 3,
-        "lead_ts": 1786738500
-      },
-      {
-        "title": "EU pushes back as US revives trade pressure on bloc and accuses Brussels of enabling China to evade tariffs - Euronews.com",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOdFdxbEs4eTRrZVpNcE5qaHlEa3p6YmtEOGMxQnQ1eG12MUJmZjdYaDVVVlphUGRTdzZ1dHpNUlpfQnBxLURheC11amcyWERFQ21KaGxqaldYazVYSUdCRkJ3MFh3MVZKSFB2N0hoUmZRdFJieG10dFZ4TFBua3NXUE1KMnIwMkQtRHZwenJWMnRJZy1GNmJFRm5hX0lKdjB1VEdpd2h2S043NFVOQkVOMG14NTJpMmlDVzd2OG1aSzl4eXNSWk4zZ0kxTTNOb1JKUHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Euronews",
-        "n_sources": 3,
-        "lead_ts": 1786736465
-      },
-      {
-        "title": "France\u2019s Constitutional Council Strikes Down Macron\u2019s Under-15 Social Media Ban: 16 outlets compared - NewsCord",
-        "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPNEQwNkIzN1pET29hcWRUQjFBa1MtTVRRVlBsNTYwRS1aNU5wRmlnaXc0SlN2SFltSjFUc1c1YXZQZDJYNkkzN2Y4ZzRma3haSTRBTkVfVDg1VHdIMWhGdjcyRXBNUFpWWVZYdlBmZVhsQmcxMjd6aGNMOHdwbUR0djdBYk5hVkJvTXJBd1RYMEhOUHpDSkJnYmtlbHk3WEwydkhlb1VuQW1IS2RlYWVNTDh0aksyUFFqdGVPRzZ4WVdJdU9yUzFCLWYyN3JNbDF3X0hoY2RaSHpOckZSQU1xUjJQdlNOZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsCord",
-        "n_sources": 3,
-        "lead_ts": 1786731508
-      }
-    ],
-    "tech": [
-      {
-        "title": "A public consultation on a proposed artificial intelligence (AI) data center here broke down on Friday, Aug. 14, after the Norwegian proponent walked out of the venue and then hurled insults and legal threats at journalists covering the event. Link to the full story - facebook.com",
-        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOcExjdVMzU0syUHdjMGN1aWdwdXFtRHJPUFFBSHg2OW1kbWFkbFZVU0V2S0NRdTRHMlppd05VS0c3eXc3NHhtZWpPbTJNeXhCNDVZVVRaNVBCY3NlM3hDZFlMQ0xIYmZhZUhhLTVFaFRWczdheXRnZ29QOWVhYzFibHRUcU9BVVBWMnhOSG9jeTFkR2FfMGZLc2EwMkZPaFVkZ2pJQTdqWjB5N0taRDJBX0I1RlNtcVBEdHpheUhxQ01lWnl2N3VWM2R5RGhnU2ZuTEg3djVNa2tieWhkcUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "facebook.com",
-        "n_sources": 4,
-        "lead_ts": 1786748058
-      },
-      {
-        "title": "Google Play Store May Soon Let You Pause App Downloads - Android Headlines",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNNTBVZ29Odld5OXd6NTJrU3B6SmdxVWJndnNzYXNrVnpsaXhPNVgyN0tuWEZrX0pVcm1wQ3czenZnTkZiRGRXS2JBLXhYN21vN0Y1SE9wdVgwY3dSckVvZGpjaGcxVWV5LXRTdnVYOUtjVnA4Y295OVRGaFBmRGlQU1NlNUY5cUxtMzlMR3BXejNGaUZaVV9iTVoxeHZ6SlB0Z2c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Android Headlines",
-        "n_sources": 3,
-        "lead_ts": 1786738365
-      },
-      {
-        "title": "Everything announced at Made by Google today, including Pixel 11, Pixel Watch 4, and Pixel Tag - Mashable",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPMUN4V1ZzZUR3el9ZQ2o3SGtWVGRscW5SUk1TM3VTRzlzdF9yNGFTSW5kTk9ZeUowLWh4N2Nac2RmczJrdFJZZU9uaktkV3pFOVBpcF94U3JsREVzblBSVEZETG15d2tZYmJpOExKMEZqY2RrUF9HTGRnOHp4aDNnR3NKVzI1SWw4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Mashable",
-        "n_sources": 3,
-        "lead_ts": 1786675402
-      },
-      {
-        "title": "Best Google deal: Save $130 on Google Pixel 11 and Pixel Watch 5 - Mashable",
-        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBocHR3enlYbGhQYWpzUEYybjgwTkhDMnVjY0JoRjV3SjdfZjZJOVhhTjNDcGs4Qmc2YnA4dTRQYXo5QTFhc0loOUFBN3JNbWxrUi1MMmlvWVFHdWpXZExVQUJpMW9DQXhybjIyV3M0RmVvc01l?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Mashable",
-        "n_sources": 3,
-        "lead_ts": 1786660225
-      },
-      {
-        "title": "Clearview AI Named to Inc. 5000 List for Third Consecutive Year, Ranking Among America's Fastest-Growing Private Companies - police1.com",
-        "link": "https://news.google.com/rss/articles/CBMitwJBVV95cUxNWk5rUmJkbVoyXzlLOGRjWlVFZXp1Q2FsbkM4SkF1ejk0SmtFSDhjbWw2WnZGVndaOXNrd3NoRlQ4TTdRb2htbERMLW95cGpYVWFUNlNXLUF5WTJZMUkwTnozY2xsT2JKaXFrOXcyTzBQUWIyUmlLdnVEMXVNMUpQM0JTRVRMMGZLUnNPMmlTWTN1QzcxX0piYlZoS1hIMGliZ2ttRTdQeFptb3VNTkhLTEdVX1RPUGhlM2NheENLbXZPaFpVZDBEbi13YXN5M0hac0MwNDNTVEprQnpWYzU5dUxxckV0dzlweXRuRU1pQjhvd2xESld3NExPNjU2c3A2dENTbEhqcjlQb1M1aEFjT3lkcHFLZGQzQmZTdy1rVHNETWk4UzJHSW5jeUVFRU5scXRmNTVYRQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "police1.com",
-        "n_sources": 2,
-        "lead_ts": 1786742740
-      }
-    ],
-    "business": [
-      {
-        "title": "US retail sales unexpectedly post largest drop in more than a year - AP News",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxORk16TW44WWs3VlZRdGE5Zy1ZeUs5NVNnX2tRanhTSmdnZ0tHbGtMM2tJamJHdlNNdkROdWo4WmZwMkx1STFmdUpEX3ZvRzdXVTlJUmxpako5dDNyS3p2QzB4a3ROa2R6RWtDcXBNMlNJU2RHMGFjeHJrWG1EaUQ3aElIOTVyaWk0WUZoM2g1ZGJqVnJKUmY4cVZrWHA3XzFrbFFNUXNB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 5,
-        "lead_ts": 1786716720
-      },
-      {
-        "title": "Mangione admits to shooting insurance CEO, pleads guilty to federal charges - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQekJIbjNocFFoTi1GeWZCYi1YOVZGdGlNN2JJQjl3XzVjRXBhakh4LTRWQndib1NtLWU0cjZUYjNRQzNFSHNBMXVMd0E4OFk3dnQtRk9jTk1GMzVHNHBtbXF0ZzNhSWpqT1lXWExIckNiLXlmUVh0ZDJfTXZBM0swUEJfUktVVjl6Q0wtcU1EbHdsb3ppU3Bjc2pDbUtqTzVFSFR2M3FWRUxOdzhxb3Z0MnAwT3VMQkNQRVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 4,
-        "lead_ts": 1786735794
-      },
-      {
-        "title": "July Retail Sales Notch Biggest Drop in Over a Year - nytimes.com",
-        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9oTWVrOFJ4X2wzZjc3TTlOa2E5NkFCOHF0elpqUzdYMmt2Q0k1eDBTakhxZHdnNDYwTnpnYlVhU0liVklXalVaenJaa3ZvczlMVzRwc2psMU5qSkZhc0l6SFhyYzVQaV9BaVY2VV9vV1hGQmdv?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "nytimes.com",
-        "n_sources": 4,
-        "lead_ts": 1786722817
-      },
-      {
-        "title": "Retail sales tumble in July, their biggest drop in more than a year - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNNGFJZjBnMk8tMVNSNlgzWWwySWcwdHc4VkFCUUhMUFJqX183ZzVKeHNqTkJWOUJZbGoxXzNKSTdYMlA2NHRmQ1FXZm1LMkYzS1A2d2NhY29fREpsd0JaZXlqNjcxUTBJMmlpem15QnpwMFc4YVhUVlg1eGJDLWc3d0JFM0huWmhSRmVTZmROODd4d0NEcGFxYUJrUUczcGR1cG8wZzhn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 3,
-        "lead_ts": 1786736864
-      },
-      {
-        "title": "OpenAI\u2019s Revenue Run Rate Tops $40 Billion, Bolstering IPO Case - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNVU5keXd6dll5LXFjYWZWa0J6U3BSU0pzZ3pwYUNvVXVnVWJMSkZUeHlTWU1rS0lJTHJfVld2T21qOUIzeTJmSFZ2cGpiQnByMVZiY3Nxd0Q2OG1EM0dCNTJYN3JUNjQybzZreDBNbEdzOXN6all5cFQwek02STcwbGRLUm55Wnc5QWcwc2VqazYzbXdkZ2xqY0V1R2oxOWhYY0prd09YdXFsYkJjS1hjU1dRSWtpQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 3,
-        "lead_ts": 1786733186
-      }
-    ],
-    "sports": [
-      {
-        "title": "Jayden Daniels vs. LSU: How a jersey number became a national controversy - louisianaradionetwork.com",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOamYyeXFUZnF5YWlSeG41NHhMQW00aC1ENm11MmROVUR5aGZ1ajNkd3NMRm13WTN3X2lfbHlDbG01Tk5mNEJfbDAtdGxJLUFCRl9RQVVzUlkxcnJOazU2eE9tMUIxcGpvYk9HYmowZV9GYXQ3T21qbjduSFZ0Yzd2NEM0M25TZ0VEWlNsX2o3TnNMam8wSDE5LUdmWFozMTJTc21GUU1MS3ZvdlVoRUNDQklUT1lGMXlp?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "louisianaradionetwork.com",
-        "n_sources": 7,
-        "lead_ts": 1786701909
-      },
-      {
-        "title": "MLB Sets 2027 Field of Dreams, 2028 All-Star Game Amid Labor Fight - Front Office Sports",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQWXFXRXNnY1dlMnBubWZhZ3lHdWE5ZkFWZHVDYnFyOWx3NFZFbk1vcFJWd0tGdlhIUkI1U2tiLWtVLTcyVzFURkRGcGZ6QUgyMkdlQWpVbm5kWGdnYksyU0ZtS2FTZEJnMmZITnVGWnJUWW5JU0t1QUc0X21WVHNGNjJRaWs4cF9v?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Front Office",
-        "n_sources": 6,
-        "lead_ts": 1786742615
-      },
-      {
-        "title": "Fernando Mendoza\u2019s Preseason Debut Showed Exactly What the Raiders Should Want to See - Sports Illustrated",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPUGZTOEJCTlZrUUpXTG5CT3ZuVXhUR2NWNVVUcHB0SU5PNGpCRmtLa0hPbnFEeHpIMGdwSW15T253cE9DTF9yWHB5eGx3OXJJQ3JNODNna0lCaG1QX1p4UVJaa3I3Zi10SzQ1cVNWWnd5RWpMcDBzbnd6NEhnSVhmcHM2ZnoyQTNFTVc4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "SI",
-        "n_sources": 6,
-        "lead_ts": 1786705203
-      },
-      {
-        "title": "Fernando Mendoza\u2019s preseason debut: Rookie throws one TD, absorbs one big hit - The New York Times",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNZ1J4LXdWZF9aaUJwczdLRGx2cXFZdTkwTXlSWGlJVnBPVWo4QzR1ZXp2SjJmNnZkeTRsSHpQWmpKc3pwdUxkanFsYVlQTFBvN1lmUlhGdURDNEhtck1hMXY2ZFV2UUJ3WmlMeGpOblVVQ2dlM2xpQnZRWUJFald2b0dnR3BIb055cS02UllBVHNkRzUxdXVpMw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 6,
-        "lead_ts": 1786687200
-      },
-      {
-        "title": "Bengals news: Joe Burrow reacts to Jayden Daniels-LSU fiasco - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQMTkySHVvSHllQkNPdnc1T0R0eFpZZW5wOEdWdURDYmlqUXhVR2VrdnRjU19Ub0liR0I3TzJYVHhsTjVwODktYzcwNU9nblNoZFdVQTUybmdtU3dVdkU5SVl1ZmtLTkJLUG53V1g3SG9jaTAzZ1oyT05TU2xyM2RlYkhadm9PQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 6,
-        "lead_ts": 1786679340
-      }
-    ],
-    "culture": [
-      {
-        "title": "Tyga humiliated after AI album receives brutal Pitchfork rating as Doja Cat calls him a 'penis' - The Mirror US",
-        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE43Wl9NRzBFWVlHbk5CUVFMUGVCMDlTUUFKZnpKVU4tU0F6bEZLMG1GcUNYdlFHSzBDUk50UVZYaFdaTnlnM3ZEdW1haUxKMElxODVFbTV1aW5yRzd1b3Vja2Z0T3VoaENhRHpBREY4SXNmVkhJcExLMFBn0gF_QVVfeXFMT2IzTGlVVk1KQ0VtUmJueml2T1g4d3Iyck1hdDJUS0pWVnFDVzZRVEU5ajNyeThGdW1pUXZMT2U2M1VZbWRMT2NPYXlRd2ZsTGJjeDBTTFJEOGhpYXQ5NTYtcEtuMFFOaUp5RGlFeHBJYWx2MnFTeG5CcUZSNWdraw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Mirror US",
-        "n_sources": 6,
-        "lead_ts": 1786735800
-      },
-      {
-        "title": "Tyga defends AI-assisted album $TARFACE after Doja Cat calls him a \u2018pe**s\u2019, brands her album \u2018demonic\u2019 amid Pitchfork clash - PopRant",
-        "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxPZ2FZSlpNcnNKZUVtTDVqbExBbzY0UHA1X3U2T21jb19IcmFodUdLUGRyLTNrV1ctUy1DQmc2R0E4Y2lQUFJpeDQ4azY4SmkxWE4wUndUVGJmS3BTYlpNMXllbExoZ3JTUVB6UEIzTEtkTWJmN19pM3hJRmh3TUFUblk3Ql8wblJCaERBVFQwdG9aQU1IcXd3MDM1TTNySXA1S2d1Q29PYndidDBzQ01RQ2J5ekFiLTczSmFzQzJHYW0wWWdEM1hZN05DZVZNRmNpYTdPYmRqY2JaT0FWemJFUmtpRk0zc3dSQ0ZQMzREMW5lVHZ4T2xPTzVfaE10VmNob1UtWGloQk5TN1RLSXg40gGUAkFVX3lxTE9kcHhMV0NLYTl3VnAwY2ZWN3paM2l2bDhrX0NhQ1BTajhBVktJcmh6elBvN0gtUFZFRmZlUno5SVoxdmVNOWhvODR4SW1lVTItMWNRWlZ3R09KU2VRR1VXdWg4QWlFWS1CWnN5ZnhUTjNvSm5sRkhHQ3ptYkhUNTFJN3hoV3hTZi1pOE1McGdOQm9lNkdmRHNycUFqVWhZRkJvUjJnaS1NNk9PYk9OSmptYklMdWJoc1RCMFJfeDJsbFlnQnIyaXMtbWl2QVkyNXJYeHM4eHFkLU9sVGFSVTRLZHM3QlFkR0JwLW9KSFRGN3dZZWE2dEZrdWhJejdnRnRWY0twQ25TWV9nSi1SdHljMGw1Tw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "PopRant",
-        "n_sources": 6,
-        "lead_ts": 1786725811
-      },
-      {
-        "title": "Tyga humiliated after AI album receives brutal Pitchfork rating as Doja Cat calls him a 'penis' - The Mirror US",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9iM0xpVVZNSkNFbVJibnppdk9YOHdyMnJNYXQyVEtKVlZxQ1c2UVRFOWozcnk4RnVtaVF2TE9lNjNVWW1kTE9jT2F5UXdmbExiY3gwU0xSRDhoaWF0OTU2LXBLbjBRTmlKeURpRXhwSWFsdjJxU3huQnFGUjVna2vSAX9BVV95cUxPYjNMaVVWTUpDRW1SYm56aXZPWDh3cjJyTWF0MlRLSlZWcUNXNlFURTlqM3J5OEZ1bWlRdkxPZTYzVVltZExPY09heVF3ZmxMYmN4MFNMUkQ4aGlhdDk1Ni1wS24wUU5pSnlEaUV4cElhbHYycVN4bkJxRlI1Z2tr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Mirror US",
-        "n_sources": 5,
-        "lead_ts": 1786735320
-      },
-      {
-        "title": "Tyga Reacts to Doja Cat Calling Him a \"Penis\" Over Using AI for Album $tarface - E! News",
-        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPaXlFdkpYYl9naEt1WDQ5T3BkVnI2cHFZaW5IaWNCZWp5LUtCMFBnN2pDdlNvVy1uaXZWT1VqZ05JUnRkUTFtVFFrbDZfMHVhc0dvdXByelg5R085SE1vM1JNM1B4eGF3U3NZR09RRFJyVS1waVB2LU9OWHVxMW55RUtNYV9Zai1DMWZreV83Qkdqc3l2VDdOaFZxdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "E! News",
-        "n_sources": 5,
-        "lead_ts": 1786721760
-      },
-      {
-        "title": "\u2018Spider-Man: Brand New Day\u2019 Secrecy Frustrated Even \u2018Severance\u2019 Star Tramell Tillman - gizmodo.com",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPc0ozLVhOTjhYMHkwdFp3MGFSTEJtMzlLOVM5REFFQmsySnZSLWU4aHRzQU5PTHBhcGFRbllnM1pBQlBuNDRBeU1XWElTc2l0XzFUQ1dWV2FxNGxxWVl0V2cxSXdtZzRaVDZfZnZXM3F0NkxBcWkxZjVsQWM0V3JjN0FBem1RanlmQUpTUllMNVhRUFMwY1d0SW9GeWpUT1ZQM2loazNVUE1PNXRIb3B3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Gizmodo",
-        "n_sources": 5,
-        "lead_ts": 1786705249
       }
     ]
   }
