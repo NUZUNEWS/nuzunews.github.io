@@ -40,11 +40,25 @@
     ],
     "mideast": [
       {
+        "title": "Iran dismisses US economic threats, and other developments in the Middle East - AP News",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZUo2YS1oV3h0ZEw3eTYxSExqYk1RUnpscEFodEZRaXNWeTRXd25BbGxXYlJlVFA3bzdMdVFiQmFzb0dhWnFyRFVjWlo5Rm9mVmhwY3lvUVZ0YmZTMmlkdnd1VUV3UUIwMERCSWNMWkFsVnotdTVOS0tpSHU5QkphbWs0R2VEMDY0T1Nv?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 8,
+        "lead_ts": 1787259600
+      },
+      {
         "title": "Middle East: 94 per cent need shelter in Gaza, Israel ramps up demolitions in Lebanon - UN News",
         "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04VUN2bjRTQTRELURCTFdlWGxjVE4yNk1kUklNOGZfVG1Ycms5TFV1MENIR1pDeTV1dHVhNzctY3NBYkpIQ1k1REZzNEJXLUZ4T3hqVGlRMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "UN News",
         "n_sources": 8,
         "lead_ts": 1787254345
+      },
+      {
+        "title": "USS George Washington arrives in the Middle East to relieve USS Abraham Lincoln - 13newsnow.com",
+        "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxQUUNSNVhJZmIwWEZyc1J1cXYtb2V3cGE1enNacnoxd0E1MUwzeGRoUTBGWmd1eFpFa1hoRXl5TWRwcm13Y3NGZ2tsTmZfMDMyQ2RLRnNxa2U4aHhJT2FIRDkyRVdjdGZEcEFRd1hHOUg3OHg4akFfakdFN3djSmE5TjE0RDZjMWZVdEpEMjdUWjJMWm03RWQ0NU85YjRwMjRYUmtzcUVVQkNGOFB6M01aMHRlUUxOU3F1cUtXWXM1bkhPamRlS1lRekVBLUZlR0VlTkx0TFZKMmtNUldhQ1BFZHdpSHZUWDk3RDhUUUhmcFdoTi02M09ORG16MUdLb3VyS3lmc3ViNmVoel9f?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "13newsnow.com",
+        "n_sources": 7,
+        "lead_ts": 1787259420
       },
       {
         "title": "USS George Washington deployed to Middle East, CENTCOM confirms - Latest news from Azerbaijan",
@@ -59,20 +73,6 @@
         "source": "The Lufkin Daily News",
         "n_sources": 7,
         "lead_ts": 1787231408
-      },
-      {
-        "title": "Middle East Oil Crisis Sends Supertanker Prices to Record Highs - Crude Oil Prices Today | OilPrice.com",
-        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNb3pFMVlZa25sZW1GYnVMaGFHX251eVNmYUo5bF9IUUxNSnQxcmJVcThuRUx2cUxQcTh0TGJjbjEyYnBYeENVYUcxRnNuUjdCaXZlTGd3M29NXzFwY2ZlWVRVc0gtY2ZtaEhrbVBsWk1pWmZMTWJSeWVHOHV4NW1RUnI2UkN3ZzRGcTYwbGhxTW5tMmVLNGJTV2dLcFlwT1RINFdtZFpqb2FSak44SlBKaTZqczhpOHZRUnhV0gHAAUFVX3lxTFBCTThqLTl6UERPQ0JoV2NsWGtwd0xnb0t5QkIzWGF2bUpwczlhSHhEU0RUS0JabkFCNlFodU5Cck1acnBIMWRsNDJmbktrVXhkMUx3VnQxa2drajVYejhnRUZGRko1RlhEQkpfXzgtZWtnMGJ4dHBETlJJdGE1QlpRYVo1cm1hMlYxQ0N0M2xnVVlueFc4aTZRenN0OXhvRVNvSXdsRHoxaE9rakYyOU9xU1lkSnhkWWtRRU1VRTBBcw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Crude Oil Prices Today | OilPrice.com",
-        "n_sources": 7,
-        "lead_ts": 1787212800
-      },
-      {
-        "title": "UAE says it is suspending trade with Iran after missile launch - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNVnA2MnprdC01ZXZreGxyR1pZYl9rTnVReTZ0S2ZiZ3FMcGtabktucW5nT011Vm9aZnNZbHBpX0FkenktVXJnWkluOGJYaThYMHJPcXlwN2F2T3J0dXBaX1VyVXRQU2pESWtEZmo4eDRPTzg5U1JuSmZOLWJuNjFwLXZ5NUJzMk5nb1l0ZWNVOTAzSk9hWnhSZ1J2UGlWRVNBYjJkaHJpbEYyQkdtR1VEYg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 7,
-        "lead_ts": 1787185601
       }
     ],
     "world": [
@@ -165,6 +165,13 @@
         "lead_ts": 1787231190
       },
       {
+        "title": "Why Treasury Secretary Bessent's moves to calm the bond market haven't worked so far - WRAL",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOTF9FRkNRSEVkNmVnNHJBUktsMUc1a0l3MXFiV0pHY3lXaUhCLTBPNTRLSTNuOUFPeGtlTEdHYkNUQXJOTTM5TFNvUHloWTI4Z20zT3VtRHJmWGxpaHMzNFJxNTRHc0R3ZE5sYVNpcjdReDNtZ1VERjFlcmJrYXVmd2JCVzU0UlBvWVR2UW1lWE1VbWVKZVllUmpnTVMxUmRYdmtaOXR5SzZoSGxobjh3VlQ1RHhBYlAtOEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WRAL",
+        "n_sources": 5,
+        "lead_ts": 1787257842
+      },
+      {
         "title": "Scott Bessent on the national debt: \u2018There\u2019s nothing magic about the $40 trillion number\u2019 - Fortune",
         "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNZXhKWmQ1ZEkyQUh1YTByYS01YWIteFU4VF8waDRBUjJZbGpoRGhPZm1JajJCNXd2R1dHMGFpRTA4UHBScmJVWkwzZWlLMDBBUURIdmVvYmxBSjFVT3plc0lIRllzWHNTVGc3UkxWV2N3ZVVDTXV1YUsyWHFkeTRaWkdBZFp5THI5czA2aktn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Fortune",
@@ -177,13 +184,6 @@
         "source": "Reuters",
         "n_sources": 5,
         "lead_ts": 1787235682
-      },
-      {
-        "title": "Why Treasury Secretary Bessent's moves to calm the bond market haven't worked so far - WRAL",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOTF9FRkNRSEVkNmVnNHJBUktsMUc1a0l3MXFiV0pHY3lXaUhCLTBPNTRLSTNuOUFPeGtlTEdHYkNUQXJOTTM5TFNvUHloWTI4Z20zT3VtRHJmWGxpaHMzNFJxNTRHc0R3ZE5sYVNpcjdReDNtZ1VERjFlcmJrYXVmd2JCVzU0UlBvWVR2UW1lWE1VbWVKZVllUmpnTVMxUmRYdmtaOXR5SzZoSGxobjh3VlQ1RHhBYlAtOEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WRAL",
-        "n_sources": 4,
-        "lead_ts": 1787257842
       }
     ],
     "sports": [
