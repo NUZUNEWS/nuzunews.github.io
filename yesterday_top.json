@@ -6,7 +6,7 @@
         "title": "Feds seize Eric Swalwell\u2019s devices, search home as part of sexual assault inquiry - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOTmRBR19iVElWd1JLWHdZRjJWMFRycGZER3AwaWgwQmJWRGxnbmlGRkJOZDJ1V3lKdkp0aURoRFNhSjEzV1FkWE80UGZnT2h3UmMtRkNOd1R1ZGdSc2xVdVFrTW9pVDFOelczbVMxZHktbkgxR0lmcnFCeThNNjBKeFdtZ21LMHJMWVZuVS16Z0Rlb050Q0RUTllrY2tqQkgxbnM1aHkxcGcySGVXZlJwSEVuNGtsWk1VUm9INEdVLXY2WktHTGRPbDBZaGxOZlU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
-        "n_sources": 3,
+        "n_sources": 4,
         "lead_ts": 1787280705
       },
       {
@@ -15,6 +15,13 @@
         "source": "Guardian",
         "n_sources": 3,
         "lead_ts": 1787275800
+      },
+      {
+        "title": "USS Lincoln heads home after extended deployment to the Middle East - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPb0kwTGVEVW1nQ3ZsYk9VcXVQUnkzNlBoWFVZR1E3Z3dUU0FscW1WLWhsM21vLVR5TVZqcnF2SEVfcEZ0VTFIdEtEQ1B2S2dIMGdfd3R1RDFodGFYeGF4TXFqeTFpT21FQTBHT1NFcXRUSG55UkVLZmhQQlFTdHd4WjJJTnFuS1FsSUhROVItUzBVSDVzc01HUF9nbVNqbERWbDhPMlVHelNxNzRrcF9WSWtGZjhoWDA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 3,
+        "lead_ts": 1787273400
       },
       {
         "title": "New York woman charged with plotting to set off explosives at state Capitol, kill lawmakers - AP News",
@@ -29,13 +36,6 @@
         "source": "AP",
         "n_sources": 3,
         "lead_ts": 1787257500
-      },
-      {
-        "title": "Woman arrested in alleged ISIS-inspired plot to bomb New York Capitol - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQaU9scDlfb3N6d0o0VzB5czRISHVUMjY0UEtfNHRaSEZvRVFKZENTajZneVNINFNqLVdTZTBOS1JJQ091ZHd2WDhrZlhMMkN6U1FfdS1CMWdjVVlBYVpGYktpQ2pSOUxxLTRzdW5fWThvcFVvQ0VNMjZiUk5kYU5RdnFyeDhYelU2b09mNkZqUW10d0ZkVFczLURvN2EwOERTSkhoaGwyeHY5aEdKV29HUjZXbXNzZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 2,
-        "lead_ts": 1787276997
       }
     ],
     "mideast": [
@@ -61,18 +61,18 @@
         "lead_ts": 1787275740
       },
       {
-        "title": "Live: Iran condemns new US sanctions, calls them 'economic terrorism' - Middle East Eye",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPMmxVRTlVVnFsLTR4cVU3SVlESDU5V05rWmRXOXp2X0RrM1VoM2h4YjQ3SXd1TmFpVFNVT0FKSmVsZWRsZS0ya2R6cENtNnk2N2dnVzFyc1NUbWUxVXVxeU5Ud1h5cXZQamtlV0Eyd0dReVlxTTY5TmNtajB3YmxsX3JwalBzYUk4Z0RnRzFsRHJfelp4b2hzdEl4MUZKTVU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ME Eye",
-        "n_sources": 4,
-        "lead_ts": 1787270882
+        "title": "Palos Heights, Illinois family awaits USS Abraham Lincoln sailor Terry Stonitsch III's return from extended deployment - ABC7 Chicago",
+        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNOGt2dGZSR0thZWpLOXlfZWRmRkExbWZ3NUNhTjRndE1IRGhXb3dRSjJrQVdrN3JjM0RnMEY2NkZnZE5lQU9QVFBzTElMNVlTX2o2ODVwWkRWdUluWkRiTzJaWmh3RHZtZkg2TXV2dU40akEwNjNWaFp3YjIwYVE4UnpOWHEyX29wMHRNUm1KWXllYVhIOWZ4bk9wTHl2TjQ0eFlzSUFIdkpSOEZRR1FQcFpWM2E4dkhvSXg3VlhJUk9TSVQ1bnN3R2FIV2NUYVBHeFp1ZkxRSHJOS293T0E00gHkAUFVX3lxTE5ZZ1B0V2Q0QldhLTIwQ1RTWUx0SmRIZFh4Wk1iSU9qMzdSWjNaRklIRkI4emZZLWFkM29pMGdScTNuNkNBdGdtVmw2MS01TGI1TG9hMUk3UXVKaURYUVA2Ukw2MEk3ZVpXY2dOYlBBNC1mYVlIQ2ltblpidElHS0N3LTI0NWJ3bmlGMEFkMzNublJTQnpsRTE0WG9WZWFPSEIyVkdJZ0NCQk1Fa2ZVb1VwUklJdklFT0JQeXYzaEVkWVJWdHJHZWhrcml3cE1aWk9PcmpkVW1Wb0hpTEtVVl84TllJRw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC7 Chicago",
+        "n_sources": 7,
+        "lead_ts": 1787281167
       },
       {
-        "title": "Live Updates: Latest from Israel, Iran, and the Middle East - The Jerusalem Post",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE00eEs1LWMyN3dRR3pDQV9lTHpzdkVLdVJWZ25zNV9PaHhvaW8wbVV4cWtPeU9fUENPOERZRTBDaVRld0JrXzBaMktmR1NvOWxvWlVVX1c0bHdrdXdrZnpmeHp0UjFBQVVJSjZnc1VJdmxCQUpMem1CN0N6eWJERFk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Jerusalem Post",
+        "title": "Weary U.S. Aircraft Carrier Leaves the Middle East - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOM0hsRWltSEdKalplVFVtLUxJNENGMHZNYUpXU2dHWjA1QnFpTEpYZHQ4c3otTjFISlZvaEdsN2ZldmdmSkd6WWcya2JELVp3b2kydF9FVkt2TUt4VVQtSmUyTGlycTZUUjNKVFcxTW9hWm9zaHd6VXlELXYzc2dZUmp6bGFiMVBCWXhGbVJxaWlhd1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
         "n_sources": 4,
-        "lead_ts": 1787267853
+        "lead_ts": 1787273390
       }
     ],
     "world": [
@@ -91,6 +91,13 @@
         "lead_ts": 1787263998
       },
       {
+        "title": "Vi\u1ec7t Nam can serve as bridge between Asia, Latin America: Peruvian ambassador - vietnamnews.vn",
+        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPWUxyWTlTaVdfdVFtY3JoVWx6UUJEenlxWFF0cjFtM2d0U0pmUkg2NHlSVXNQcXdXWUR1bzRoeGVaeUhJbExPckt6X3BZUTc0R1hqMk12VDJhYzdtdFN4a3Q1WE1zOXd2Tk4zU3dhSndEWFNWMWdvbnpPZzI1V3Iyb0hYX3Vrc3RlMVNWMkhwVVptbG5IdXZOaWMyV1NEY2pYLUwtUDRkVzY2ZHhYVnlZdW1BbU5zS1loTzVn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "vietnamnews.vn",
+        "n_sources": 2,
+        "lead_ts": 1787280720
+      },
+      {
         "title": "Pakistan summons US diplomat over envoy's remarks on Kashmir - chinadailyasia.com",
         "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5GUmtIRUVhdjA4TVp0cWZDeGlUVHRnRTRTRE5GSWZfQm4wRTBhYnVWWWxMRzFOOGJQdkZlMlR2TUN5UzNoelFkQ3gxZEVxWE9ueHZRWGFZdk8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "chinadailyasia.com",
@@ -98,21 +105,28 @@
         "lead_ts": 1787279938
       },
       {
-        "title": "Japan executes pachinko arsonist in first hanging since 2025 - The Straits Times",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPaFBYTm9VeHhyeUYzWkptQzFaQlBaMUNHMHh0MENjcEtScG1HaHZmUVJkQ2hwT2c3WHRyWXh0TFNjYV9IVTQzNXp5dFpfN3lpdHE3R0t0YWNYNFBPT3ItQnA2dzhjVy1CSmcwM2hYVkhwaFRnaGpDajRiMjE1N0RxWkNXbjFEdC1oQ1ZzSjRtYmdFMV9DWU1N?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Straits Times",
+        "title": "Growing Anxiety Among Asian Allies Over Unstable South Korea\u2013U.S. Relations, While China and Russia Welcome the Rift - \uc544\uc2dc\uc544\uacbd\uc81c",
+        "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBaY2lZS195ZGM0UWhqOWJQNEp0dWJxMU51VUNqU2dLNFRidDQtRFZhV0VwU3YtRHJTUmRpekhBUDNTWHlmWlkzQ3owNnAzZTZ0TUhLYVNhU01XUEd2SzV5OWx5b2o?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "\uc544\uc2dc\uc544\uacbd\uc81c",
         "n_sources": 2,
-        "lead_ts": 1787278020
-      },
-      {
-        "title": "North Korea is ratcheting up its anti-Japan rhetoric - The Japan Times",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQaVcyVDJabzZLTWxfVzdJQi1GdWRwQjVIZEFYbEY0MkkxazJSbGtzZ1hudTE0bGVxZ1VFX3N5cGQ4dVBtOXN6cXpZbnNWZEdBRFpWY1pIVXMwbUtEOVlxQ3hnTEM1QnVTbnlQQTNtd2V4dFRtVW9OOXBIU3VIeHl1OV8tUVZ5UXVLNVQwUFN1SERkWTdMb0c0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Japan Times",
-        "n_sources": 2,
-        "lead_ts": 1787277000
+        "lead_ts": 1787279240
       }
     ],
     "tech": [
+      {
+        "title": "Google will let users customize Discover via an AI chatbot - UA.NEWS",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPTW9NODVtQlhPRjZmV2lKQ1hpdG5iQS1NYnZaWVpRVWhsRjBCUGFONTZlQ21uTUZpY0VYaVRESl9scnE5SkMxbHlESTZTekZKYzFxeExQZWJRcjNGU2F2WkNPUkVKbGQ1THhfVm84Y24xX3A5TUVVQUw1VUowSUVLVktRUFZRV3Y1N0RoZ0tIY1k?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "UA.NEWS",
+        "n_sources": 2,
+        "lead_ts": 1787279802
+      },
+      {
+        "title": "OpenAI is gaining on Anthropic with business users, new data indicates - TechCrunch",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNMGJmajZkeWM5S2ptNElzb25JeVc3Qm1Ic291SXFRSjdBNWtmY3E2Mkk5MENZS3hYWi1HMUQyQ3FOWnhqSllGYlhEMmtXVjVZWGJiUTRyUS1CamJhazJNem9scU5oMHNSSWF2SVdiSlVUNEdOOC1Vc1JYN2Flazl2RURzelJUWkc1dTlzT2hrRGdSQTFZVWJJN3NYalVfM3YtdkZ6cGRuaw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TechCrunch",
+        "n_sources": 2,
+        "lead_ts": 1787265397
+      },
       {
         "title": "Google Pixel Watch 5 vs. Galaxy Watch 9: Is Samsung's Dominance Finally Over? - PCMag",
         "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOSkVHQnBLN1VQcUxrRDdTbXJxM2M5ODJKaEtVSVpqTnBkTW4zVW04VjhSWFVTYURxZjRhZ2FvUGJsSzZPal90Q1loOU1zS2NGWVNuT1RWTmFGeGJkQVI4Qml1ZURTXzhfZWh5TjdsU1JPVjhaWXA1ampQQldPT3lxcFcxZGJkcXpHNkVEZzlXOU1US0xPT1FXMy1rZVNSdi1OUEdBaWw1Q3JzUkk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -133,13 +147,6 @@
         "source": "Simon Fraser University",
         "n_sources": 2,
         "lead_ts": 1787251986
-      },
-      {
-        "title": "No Mic Needed: You Can Create Music and Speech With Adobe\u2019s AI Audio Tools - CNET",
-        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQbWJ2WWJGd3dXXy1pOXlxQ0lTODNSQkh2Z0M3OWpibGtoNTBhWDVKT2ZDRmN3cHB4Znd2YndVT2ZSTERQN25qd2VYQ1JLWkQ5dFp0b1RwTnhVRFp1dzlPLUhKOFczdGowMzFOX2V5RVNGWkVzQlFyMVdlZWJ4SGhzZkdkZlhRTURMWkVmZm9ETWFIX0Z0WUcxaTBTQTlIdGNqa3FQOU11dG13eDZY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNET",
-        "n_sources": 2,
-        "lead_ts": 1787230814
       }
     ],
     "business": [
@@ -225,6 +232,13 @@
         "lead_ts": 1787274414
       },
       {
+        "title": "Gayle King Has a Brutal Message for Hayden Panettiere\u2019s Estranged Mom - Yahoo",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNTmNjSGd3UWJTbXJSYmJjTWdGNXBrZlVaNVJCX1I4NElzLXJ1SDNOLWUzVVlGZGZVNVozS3dQSktHWk5TbmMwdHV0TWFnLXYtWnFsVFlyWGdOR0hEM0lkRlZIdDB5czhfVkRZcHRKOEhBUnBCajdOb2I1Q0lqYXUzRF8zcEpQSE4xZkFmTGt1Z1pURFVMa1dkMjFWYW9pS2xxUzJwag?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo",
+        "n_sources": 6,
+        "lead_ts": 1787275800
+      },
+      {
         "title": "Hayden Panettiere\u2019s mom blames ex Brian Hickerson as history of abuse reemerges - Los Angeles Times",
         "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPYm00TE0wMy11UVpPbXFIYmFMQ0JzbWU3aWMteGZvdlJSU3pzd0hnNThwQnZqQTBYaFFRcFhmRWhyOEZGVlB6QzRHTm5FWmFhaGVPQkY1TFJ3SkNuNEZMQ2pTXzlmNGUyOF9BcGdwczMwRWp4QzZPVEZDUU9PNnRGYkRFOHB0ZjdGcHU4dS14bVduUTh4ZjkxbDZmTGN2bkgzeHZER0tsUzBfbVZjMGptVTMwNHhtdFRRcU9R?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "LAT",
@@ -239,18 +253,11 @@
         "lead_ts": 1787261645
       },
       {
-        "title": "Hayden Panettiere\u2019s boyfriend, present at time of her death, speaks out - KTLA",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNd3d4YXFkSkhkVUF1b3o1emJpdG9GbGd1ZllRZlo0WWs0UTJxZTFuY2Rzc1l6alQ1c090Wk11RkQxUlJmYmVOOWl2ODU0TWJBaUtfUVJTMDdCejA3THVITkw2VlJJS0VVemJBM2kwRThqb2JkcF80Qy1rT0ZFQVZfbXlMVF9HU3Nr0gGOAUFVX3lxTE5MNGIzRk9zc1h3WFNsR2YtN3lHNnpTY0lpR1ZSOHBfS0c4NU9kdW1meTZMTDNVbjYxc241TS13WkhsaDE2ZERHYjVBSVF4QnhVRTNtWWNBUVQ0d1h5cGxsVmNTbVBHVzl1cXVVNFE1empxRGUzVGRZd2FTN1p1enFDbHdzVkZvZTFWcmxBYlE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "KTLA",
+        "title": "Hayden Panettiere\u2019s on-and-off boyfriend Brian Hickerson gives first statement since actress\u2019 death - Chicago Tribune",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPQ1B4UktsRHZhTTB0TzY4U2lnVVNSRUlScDZFcEVzLWVuZGxmUVFjOHhieGJLQjZodHZ5UF9HZTBxWlhQNW1SR1cxSDNEQ29NUHB0VVRwSnh4cEVWZmhmcmt0UTQ0NDdiOEg3cEZ3QTVfTWttc3p2ZjdFMmEweUlkV2pEV2RRbXJhdXZHWUgzem9UNi1VcWJR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Chi Tribune",
         "n_sources": 4,
-        "lead_ts": 1787270336
-      },
-      {
-        "title": "Hayden Panettiere\u2019s mom, Lesley, releases new statement after backlash - Entertainment Weekly",
-        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPa0lQbmhoYzJOWEwwSGN1NzJWTEQ4WDFlR0lXblItODI5YzNwNGUydnQ5UGEzM2RVOVYxVHNScFQ1NHNXTENWVTljbzg4N0xaLVNmcDEtcy1MZGdzXzN3bUxfWjhaWVhodHVhUnBGdTlYaE9RaURacGtaVExHc1IzSTRjTG1IQ3RLNXg5VDcwd2FtU2Rk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "EW",
-        "n_sources": 4,
-        "lead_ts": 1787267683
+        "lead_ts": 1787270344
       }
     ]
   },
