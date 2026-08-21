@@ -77,8 +77,22 @@
     ],
     "world": [
       {
+        "title": "Europe, Canada condemn Israeli plans for new West Bank settlement - Al Jazeera",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOYmNOcVV1NWJFUXJ3SFNqTkwtc0w1TjBXOWhSUklfTk5DRzR2b3NxZkVUMzhVa09MV2ROb0c1eHZKV21HNE96WDZRQTRTWlVNd3dYaFFzaHVWcXBmTEo0MmEtZjE2YTlVRVhBb3FIcEt2OUthZTh1cS1rbVF5VTh2cl9TLU5UY2NIb0J3RmdhTzA3OUNOYnhfTlhmSUcxWkdaalhwd2NYTGHSAa4BQVVfeXFMUFplTVlwa1B5d2NfenAxd2dlaVo4T0dPSzFKMS1vU2RSeE1Cb1RhY2diN1A3MEgtLWFwMFRmLWw0R0FZQlJOMVlHV0dFYUU5RXJMczY4emZ1R2VWV3REUmZvLXpWWXVrTlZPSjVobkpMMHVZaVpleGVmSnFWdnRDS3RsYkNWWGRkRVRhY0dvdEZMdjB2dEhISk1SeU9Rb2F0T2dqa2hrUkFFWkVSdTJB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Al Jazeera",
+        "n_sources": 4,
+        "lead_ts": 1787329755
+      },
+      {
         "title": "Japan protests Russian missile tests off disputed island - The Manila Times",
         "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNazd3bVd3ZUx3dkRwbmp3anFvLVlrY0FsWWtPaWtWN01rbUNqU3BQcmdqa2VEbGktUzZTemFWcDEtS1Bnck9qTVVDT2RkTHhvRFJjWThuNnRvcHdVRkxCbkxmS2RYMnhOcF90LTdwc05OLXBadTZTdDAtbUdETS1nSWZDeTBqTWhOVVRWQWxFZ19rVmRrSnV4cXFnam1RaWRDRTlSZVBSeWNuTEctcXFOcFhoS0tqWG5zR2gzenRBMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The Manila Times",
+        "n_sources": 4,
+        "lead_ts": 1787328180
+      },
+      {
+        "title": "Japan protests Russian missile tests off disputed island - The Manila Times",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOWXlhUjd6QnhkQzVsalRucXI3eGd1ZUY2eG5VMGx1dGFZQ1RPZENCdkdxcWFYX1I0dFNCWmViTmhXM1FTaWFxZ1IwRTcyUFJtQjQ3elN4M1M4UzJFWkxsVDJrVGx3TkV0R195ZGNyZHJESFJlVVZ6LVJRMEdUbnkwY3UtbFZ4bnlkaUFmNlRzVklFSWdQQWg1Sk9kbDE5YnMxWmFtU2JiQkpkbkRwVHM3V19qOUU0ZFZzclJDVVdzb0RuNEtr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "The Manila Times",
         "n_sources": 4,
         "lead_ts": 1787328180
@@ -96,20 +110,6 @@
         "source": "WSLS",
         "n_sources": 4,
         "lead_ts": 1787323319
-      },
-      {
-        "title": "Settlers kill a Palestinian teen in a West Bank clash - Los Angeles Times",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNejRaWm1Ibzdjd1Rrbk1JS1NLaDI0WTJEZDB6N0p5OUczc2VyU2RMc19qXzV6aU1mVWFkeEUtRmZUOWxKa2FObURuem81OWEtdG1UOHgzdDRTdXlkcjBleFlxTjd2NTg2ZjNsT0tjamN6ZVVtN0JZam5QYVZ6SW9zN3NNVmhucFhuMm9mVDRQa2xQUXdPa0ZDQmhZUWg4LWs3cXVHcDNB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "LAT",
-        "n_sources": 3,
-        "lead_ts": 1787324223
-      },
-      {
-        "title": "Markets today: U.S. stocks rise as the bond market steadies a bit - BNN Bloomberg",
-        "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNN0lQTHlvSXFYcnl1a19JX2xfNXlXbmdtaWtLNXZEdlIxTHRqcThOd2J5R0EtanpqN1dybVJ2cmtSdDRwcWdsTFctUk9WTDd5c1RBaFNLS1c4TTNlbzFyVjFKMDJfcXVHN0hNckR5SVJhNDJra2NSdl9hekg4VkxoR0dya0dneDNtU3VNWGgwWEY0NDBUVEZfRmdITzIyUS02YTJ1YkVGWnIxLWNERjl2cnEtNjVVOUhCQ2NzcUhGRlctdEc1LW9GcXkyWkZMd3h1VWJCd0MzNENBZkpZOFBySmZNSW5aS200QjBr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 3,
-        "lead_ts": 1787321192
       }
     ],
     "tech": [
@@ -172,18 +172,18 @@
         "lead_ts": 1787264351
       },
       {
+        "title": "Trump Widens Beef Imports in Bid to Lower Prices - The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE45X3NWUUZ6aWRON0pOb2h0c0VhVWU5eGZndTFBYjk5SGNTbHpqZ21xYWMyc3hYcU1vS0NVUXFuaklONU1FRGd5ajFreUVRMEt0RlJTa0Y4OUVLWURuRV9ZRGlPaWU3RFpCOUFOdlRTX2ZISjdkaUtQb1Z3Yno1Tm8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 3,
+        "lead_ts": 1787330198
+      },
+      {
         "title": "Bitcoin and gold surge as Bessent\u2019s bond market intervention weighs on dollar - Financial Times",
         "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZjhYLWRvY1c5TnNteV9UUFlJT2dNcVJiS0NtU3lRSDNpblJncGh0aWpKYzgtWDNpOEItTnZic0tHYzBVNnZNVnc5R2M1c0RHQmFDbXR5OTV2cVU1RlAzTF9aRFBOYkxvMHBWSWphNWpuSmg2NFZoUGYyZVNVNUhSQVpSVHU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "FT",
         "n_sources": 3,
         "lead_ts": 1787308636
-      },
-      {
-        "title": "Strategy Bitcoin treasury hits breakeven point as BTC price passes $77K - TradingView",
-        "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPLVlqcUFlNUlydVlnSmR3QlhIQ2FkY1FuaDIxMHF1Y0VKZ3c5eTk3NDNTUWs4MjlFNVdDX28ycFBQTlkteko1U3pkTUhrOENiTnZlOUpMWlB2bFFSMlN4NkZRN0M4cFY0Q1VxcmNlQ3UwWElhWF84UHJrTndlZkFJLXZBcFk4NVdjellTYThtMWlEUzVwV2tOdGQwc3pTbHVCUzlQOFNKWHNwU2dOREllUXdCQW1RalpoaURzMkNqc2F0SE12Y0lpaWxuSkQ0QU0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TradingView",
-        "n_sources": 3,
-        "lead_ts": 1787302132
       }
     ],
     "sports": [
