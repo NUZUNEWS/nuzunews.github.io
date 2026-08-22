@@ -1,6 +1,253 @@
 {
-  "today_date": "2026-08-21",
+  "today_date": "2026-08-22",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Pentagon fires Stars and Stripes leaders who criticized DOD\u2019s interference - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNY3RKb05ZWU5uSWhMUDBKTm5iZGM0MGt1VlgwUmZOblM3bl9VTEMtZHFpelRidlBfYldZRW81eXBwRVVRZGlKSUdueWNEamdHd2REcy1lNjFFNlpMRTZWbmI0NTlVU0d2bTR1V3FFaWJDcmU4STZzYlNhbENWZDBDYThRYU5YTW9GdDhVdDQyVW9IWV9PWGdfRXVqaUg5cUFZUF9ENV9vVUh6UmhjelZPbll5RmVPcXZlTy1YUUV3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 4,
+        "lead_ts": 1787353664
+      },
+      {
+        "title": "Supreme Court says Trump can continue ballroom work as it weighs case - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPYmdNUTJ1X3NSdncwZDh2S2NlUm1OcTQ5SHdxVzNVTjM0T2NucEZrc2FKMjBZUWZueGFmcmdUN1VkNnBSc2pXOENMaHp1cmJPdWhMVV9zSVJCSzl5bW84UVFnV2lEWnhicXl3d09UNTkxYmlpMnJVbDN4YWNwaUtxVUNxd19HeS1jMm1hZF9DZTAzeF82UDlCbV95dTFBLVREVXpDSDJEVHhUd2NNckpjN3lsSnNPTExTQnc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 3,
+        "lead_ts": 1787352956
+      },
+      {
+        "title": "As Colorado River reservoirs plummet, the Trump administration orders water cuts - Los Angeles Times",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNY2c4WGpRQ3g0MFREcFVoMmdQQVJKOFhTQlNLTElGVm1SRUdyUmoya2tqNXJjLVpPaGZiclVJeWdRUFhUOVFfOGJsbTJ6UkR1Q0FyVGdMaEt3X2ozNmtxVzQtODRua05YZWRBVGlkUXhncWxKaHR6Q0JTU2pkYWlPeFRhN1FESTJoN3VGcFBMeU4taFJKT25GYzNLTGVud2Rh?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAT",
+        "n_sources": 3,
+        "lead_ts": 1787348400
+      },
+      {
+        "title": "Mexican governor accused by US of cartel ties returns to office - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNRllacHoySWMzOVhfVHo4WU1oaDZubUdLVU1YWXpBZV9XSGI1azZ2Ul9NMFNhNTI1ZjNVRjFzcm9sbHJ6Y01vR25xTWpIS1ZqTzhmQk1Dd3pBYXpZc0pPbGlWM3haUEFZOS1kc3JIcWxQV2xaVHkyQ096STFseGp1ZWF6REZJbkVuaUN1YXQ2bVJ3SVVlRjZQVkNWTXFydHhwakoxMmhQNzFrWHQz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 2,
+        "lead_ts": 1787354921
+      },
+      {
+        "title": "Losses keep piling up for Trump administration over handling of RTO mandate - Federal News Network",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPUnZHMFFCR1MxOTdWcXJXTzJkd1p5STRvcElJeTVLelRfQnRzTW9zMkRmbHpKV0lGcHNwWEoxcTNqWkJoMnRuZE1teTNtTDA3cTRFdmRDUEFPa1d5Tm9QT2Z1WVZWaTZ0YjEzTjhtTzVzd3JYSHMwbUs3eXg1T3dmdVFRMFVzOWJxWU50T1gxQ0xJaFpZTWVILXBhY1A5cmljZ2NQUk9SdFhfZDE1enQxXzB6RkJvNXlKTktHWDVQajNib19TM3NVejk3dUZnOE93MENYMERacGhEdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Fed News Net",
+        "n_sources": 2,
+        "lead_ts": 1787347673
+      }
+    ],
+    "mideast": [
+      {
+        "title": "USS George Washington arrives in Middle East as Iran war continues - KCENTV.com",
+        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxNSFpwaDdLa2t6V1VRRmxmNFZTRGVNQVJhRms3M3dBc1Jaa2MyZGJ0LWc2Zmw3QjJ6OXd5ZkQ4bVFKT2M2V29SaUdCdmxGeno4WmdYMllLd2VGTG41Z1hvb2hRVDRoazZucW9GaEVlZEhlYkJaampMYTcwaGF2X1lDbldKa3V3NWxjS2xaQUNXMi1fWmFNUVhWazEzWUtPbzZRSHdCeUozTU9EX2N1RHhkYW9fdXU0QkFJY0R0N2RoU043dVZkdjlvMzItU2pWaGxOOVIxcWlqb290V0tOLVNCQk1raFQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "KCENTV.com",
+        "n_sources": 5,
+        "lead_ts": 1787350380
+      },
+      {
+        "title": "US stresses opposition to Israeli West Bank annexation but avoids condemning E1 plan - The Times of Israel",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPWUhoTEE3N0hnNjdYQWp2c19wa0p1M1BZdTkxN1RCSjNXOFlpbllLNzFEbzh4S216X2hLUHByRWVOOEZ2bmVpNDNfdHA4OXhSQWFVTXNnTVU4bThkM0VPQkNSeHZ0NXg5VF81NnpRVV8xS0p1anpyRFJQdkZTY0lTWHQwb1lWNFdkVXpqNnp1N0tyWE5wMjZ4aDNZRXNfdW1mWF81dV8tcF9EOVNOX1ZGWmlNWkItUdIBuwFBVV95cUxPSVlLX2VXdHRib19KOWx5VG1IbThhXzBhUXctOUtsZW9IUlI5RVQ4amlpa29UUVdtZEp1SzNrclZzWUFSVWs0NWJ3MHE5RXd0WlE2czBEY0VRVk5ycTltSmlHTGpIVVhHMW5xMDMtZGhZTG5KUk9QeF9DWmpLQm1oREhmcC14OC05RHpHSUlKQWlFNlRRTV9MWTNGN0twWVU3UEJ1QTh0ekhRRk5iaUxSeUR4dW9WVmtOa2Vv?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The Times",
+        "n_sources": 5,
+        "lead_ts": 1787345460
+      },
+      {
+        "title": "Latest on USS Lincoln as it heads home to San Diego - CBS News",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQm1ROVREN1RCZGhZQmdnbVcySGxaRFhFNTZRdjZES2tCNnJWUDl4YlZqSXlqT1ZGWG5wNmVmcDhpYUFEU2dIblRHM0o1Zk1RZkNvTlBsamI4ZHlqbXA1MmpITml2UHFFSWxEVzFKU1c3V3ZYVlNQbU9PMldzZldsSTd0TEttQlo2NXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 4,
+        "lead_ts": 1787350200
+      },
+      {
+        "title": "Turkey vs. Israel: Is Syria the next flashpoint? | DW News - Modern Ghana",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE54cS1mTzktQ1RwYWpCQXc0Yl8zS1g1eHVKYV9xZXBMT3BPRFVkNXpoSDFlckh0UTlMei1wY1RIeFFSdGdrQ0JTLV9sV2VmY285ZkJQY3JSbDZ6VmtuV3fSAVxBVV95cUxPUURvUk1YRkQwVkloWTdncVJXVXNQV2xoUTBSbUJiVWJaV0VBbENuTWdqUTZPSkUzV3hsc1lHdTBmMHVLb1YydFZwTTBpWHNOZzZmNEQ0b3k4ZGtqMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Modern Ghana",
+        "n_sources": 2,
+        "lead_ts": 1787356033
+      },
+      {
+        "title": "'We are going to collapse this regime': Inside the US plan to target Iran's economy - Scripps News",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOdl9KQjdoaDFLWTl3VE1oZnJHYmlwRUVjeDVSTnVmVWxubWd6WDFBSDBYMWs1dFMxZlpVaHlNY2J4WERzSWlvaVFpQlNMTGZkOVZEcUNOTWZZbm85RWFJY08zT2JUMHFUQ2hMTm1BZk9ZbUVtcDBab3RVV0Y5LU4yMXhxV2JCMzhabFVMbWpSWERnZ0hvRU9TVGktQjNfMV9WZUY0SzB4ODUtamR6aVFVSUtKeVU4Q3l6c0N0WGNSUjc0UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Scripps News",
+        "n_sources": 2,
+        "lead_ts": 1787351016
+      }
+    ],
+    "world": [
+      {
+        "title": "\u2018She\u2019s not afraid of anyone\u2019: the prison writings of one of Hong Kong\u2019s last outspoken democracy activists - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOMXhoMTRHR1IwaDBlVWFwQzFlcUppdEFFQndSQW85WkljcWRic1Z1SzNPRk82T01pRDl5MV9FNE1fRVdSbGdfLUtxTFFGNGhvendSclhmcHpmaE9CaC1aTkhMRTNTT21FUmxJX3NDc1lqOHliSTQ2OVBsTjBTeTRPMG94Q0stcUItMFNyNWlTWlFVdHVpOXRXbmZaWm8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 2,
+        "lead_ts": 1787356320
+      },
+      {
+        "title": "South Korea\u2019s Democracy Faces A Critical Test \u2013 OpEd - Eurasia Review",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQWVVLUGY2eHdPaFJaYUZ3V2pHMFFkcHNNejk5WlhXRnlrSFpwZm91TTFndkRiVDl6RUZod01rUGdMS1BBU3pGV2ljUzBlbVI3NkgyejVVMlpWb3lLZC13ekVqQ1c5Z19CWHdzeDdxSnh4ZGpJTHI5U084UHlFY1k3eTVQZXZqcVEzTEZYWGtpeWdORUk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Eurasia Review",
+        "n_sources": 2,
+        "lead_ts": 1787355680
+      },
+      {
+        "title": "Pakistan rejects allegations of mistreatment, medical neglect of imprisoned ex-Premier Imran Khan - The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQU2EzM05wckNTOU5Vc0R3NkxXVGRYZGpqNDhKQ0NzSkhGR296Q0pwaEV1dnlYNU8xdUdSbHJHdFhmWm9GUDR4ajVNTHBiRWxla2pNTEJTaTZQY0dpdlNYaFBDZVVkN2VnNUNMMTQySTR0UExIeUFMU1M3bjZNbHM2NjB0RktnYnczTVQ4SW1tTnUtY1hxZ055RUFiRVBNRk9Ga1luUFp0azNBYWpWaUUta2JsVTI4V0tIN3VZTXZXUXR4NFVNVnZxZ1VjeUdXSVRqOXZqTTRHU3NpendXXy0yUFFZVmdQdnM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 2,
+        "lead_ts": 1787348476
+      }
+    ],
+    "tech": [
+      {
+        "title": "Woman covertly filmed by Meta AI smart glasses raises privacy and consent concerns: \"I had no say\" - CBS News",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE42emlnYXJZb3ZYNVQ5dHhsVUxPTElVeFI5aHRScEdUS1FKZTRQUUNsNVFFUWZBSEUzRkhwMG52bEk2amgzZHZBX3R6eEg2UlphSXZ1aFlkYnNZaVZMNldCTkcxYlhrRlZJS2hQZDhqMHhRQk5lMXB3YkFtNmoxb1k?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 3,
+        "lead_ts": 1787334540
+      },
+      {
+        "title": "Gov. Tina Kotek to back 2027 bill on Oregon data center approach - Statesman Journal",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNT0hpajZEZjV1Q0ZNNHFmYnllUUQzSmRiaG52TVFjLWNCbU05aFNXQWZLbWliVjVfZ1BwM2w1Qm9yZENsTDZ4Z3Z5WkNldDJpNVZWSXBYRjJLdmxYUEszM1g3NVUxb285NXpYZkw0dThJdThtdWxGSlFSMGZzVTNoSFZRQk5RNTVRZXNkTEQxbVBGOEZuMEtlYkJzQmxXaWNjTTIzUlR0U2VhWUJGdldBcGdKaWVxd3ZiQXVjeVg5M0U1T19XNVRnMmpSWXB4SjBUMWFDc0Jhcw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Statesman Journal",
+        "n_sources": 2,
+        "lead_ts": 1787356260
+      },
+      {
+        "title": "ChatGPT Can Take Over Your iMessages. But Do You Really Want That? - CNET",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNVHlrZ1BNczg5MXRpT1FCVEZtNDVXcWhPQzdkblpnYTFaR1FYSHh5Qlp6OVhTc2t1ZkIxRGV1S2RheU5SX0JTZ1hTN25fM2ZKN0VSM0M2aHlRWTdTckw0a18tOUwzUlFqNEx1XzdaRFI2QkNCTlJEejJDRGxsbkw5bQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNET",
+        "n_sources": 2,
+        "lead_ts": 1787356048
+      },
+      {
+        "title": "Inside Jason Kelce\u2019s Potty Humor Marketing Ploy Against AI Data Centers - CNET",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOZ0NoQUtzc0dCaVZiWnFqalFZdml1RTNIYWkxZk1zbDRLVGlHTHRiSFFfZ2NQaHhSeVA4TllhekxQUlZtX25zSE1zRGVkS1g2VTZLNk51NW9DeEVlMUZ1dW43MEJ2ejFPU0hlOEp2alBHSkRWb3RzZWY4QUhmZmQ2ZWxfQXFDRl9JVnFFZzBZb29TRVVOY0E3bTcwOGkzT3d5aHU3NmFpY3Q?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNET",
+        "n_sources": 2,
+        "lead_ts": 1787354940
+      },
+      {
+        "title": "Over 1 million people have clicked LinkedIn\u2019s AI slop button - The Verge",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPQldrMDhqLXpndWltUG5MVlhvbjd6bG5wTTJLUF9yWVkxc2RIVG5MQ1Z1bHVZcTlOSWd0eGNDZ1hmTm5QZjhNU3ZzenZNTlZaaktsNGdXSWdCRldlVC0yME9fOEdseFBjbGwtTzQzaGtoUTJtbEdFNEoxSFhKNzJkWDFqWVpxYXdkV05IMGhVYWVDeFhaZ3pPRHlRRDJrc3F0YVlMY2ZzTUxuS0YxYnc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Verge",
+        "n_sources": 2,
+        "lead_ts": 1787347550
+      }
+    ],
+    "business": [
+      {
+        "title": "Wall Street rebounds as services strengthen despite rising yields - CHOSUNBIZ - Chosunbiz",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQVlB4bUtTbC0xY3NDNERoRy1mNGR0UTZ0b19qRm9NbmszUzdiN3UxN2pvREhoZ3Y2anBVNEhsLWRCcVB6MG95Y3pncDZGVmxfOHpIWmItb0oyRlRPNXFxTzZQSkE3ZWJYN0liQ04zTGcwaDdRU01OWFJSOG8tMFZpRXpoOWNZNlpL0gGcAUFVX3lxTE1xQWlPX3REWWtlMG9oUFRHLThUcDlBTkJCWmFrRlhvUFJCVXZGd1M3VXdqS0M1d1hucl9oWVJ2MkFPQXRONVdYcVRCTkJWeGE1VWg4alEwandlaE1lX28tbHFjNHczTTBGRnFtOHZJQ05qbTFvWHJNb0ZrSlRYVnkwS0ZpUVB6MERnNXp2aHhkN205bFFtc0p1ektOMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Chosunbiz",
+        "n_sources": 4,
+        "lead_ts": 1787351640
+      },
+      {
+        "title": "Soon you can buy Medicare Advantage plans at Costco. What you need to know. - MarketWatch",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdHV2WXFiOTlKR21zSVgxdUV0YzVfX2xHOEloMXNsUU1LWHBneXMwcjhRaEJEZUw0b0I4MnY5TEZIaHhqRE96ek5HTFIwU3FJM1lla1Zjd2hnYU1PVV84MXVQZFhCQ0xBMC1wLW41T25qM0phT2hLbU8xZ3VrVEdveE5xTTlBYTVjT0dxeEhUTV9MblJtQlhLSVV4bk16bGFwQkYwelRjalBrSW5ha2s1NTVNMno5ek0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "MarketWatch",
+        "n_sources": 4,
+        "lead_ts": 1787347020
+      },
+      {
+        "title": "How Bessent\u2019s Efforts to Calm Bond Market Set Gold Prices Ablaze - Barron's",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNOV9NMWM2ZEJ5TnJLUlh6TmNQWGFHclpBTmtscU13N1dtRXBnd0VSblNQbkhhOEduRl8xZUE3Mkd2bExHUXRtbTlxdTl6c2d3MWx5X2h3bEhmWXR2aDhkaUwtR0JSTE9ueXFoNERWMXJrQjB4WXVDQ3pYc0VMT0FXSk9zLTZsVzJf?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Barron's",
+        "n_sources": 3,
+        "lead_ts": 1787350920
+      },
+      {
+        "title": "Wall Street Closes Higher As All Three Major Indexes Post Gains - Bitcoin World",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBwV2IwbENPODZLOWRYeURSaWhBakNJUHdjTVExbzZRLVd0U0IzTGl0MUJLRmdKam5aSkc4bVNfZkxDdXk0eFY0ZDZxWmd5VEFpaF8xRUJOYldUQ3VBeFRlYkJn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bitcoin World",
+        "n_sources": 2,
+        "lead_ts": 1787343911
+      },
+      {
+        "title": "How High Can Treasury Yields Rise Before Tanking the Stock Market? - Barron's",
+        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9wM3BxSjhwRWZNR0pGRDQtZFowNm5wMENlakhzOTFkX1hkWmRzLW1HNVFCVDhBMWVDd0s5YnA5Z2hYc010VWh3Wlhfc210WVhtcmRwMjNfcTZPVXRaa3N3MWVPaVIxTzcycmFUSUcxaFRWRXg4OWZBbGhn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Barron's",
+        "n_sources": 2,
+        "lead_ts": 1787341680
+      }
+    ],
+    "sports": [
+      {
+        "title": "Paul Merson's Premier League season preview: Who wins title and finishes in top five - and who are relegation contenders? - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMigAJBVV95cUxPMjlxNkl1SmRIZFd2ZXlJbkpyVEUtcEhxa1haOXN4VU4zY1dEdlBGXzI0bGRHWUg1OHZ3OFVUMGlxRkwtemU4ajU5WndZN04xUUNGUGdqZ2w4bTVibkpDR01qUDBKWkxmV3JURy1ZaHBDTkZFb0R1UlVYNV81SGdqRkFXTDBWR0o5R3FtQWwxSl9ycXZNWWtQQTdVY0REdHR0ekRwYnJFUEtoMDZGbzg5R2dCNFpCQkF0SFkyRmhxZUN1S0lzcUFQbUtqYjhIU1RaSkg5WkwtUFA0UHR4SEhEekdEMlYxV0EyLW1NRU9xeGVwdTRxNFowbFRlanctRy1r?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 7,
+        "lead_ts": 1787355043
+      },
+      {
+        "title": "Mike Macdonald: Titans QB Cam Ward 'in command' during Seahawks-Titans joint practice - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPYWgybTRKUjV4T1dDTk9XZS05TjRJa09zZHF1U1V3anljZndyQXNUM0t5bjFIbXpXaFY4VkRZQklXUzhwbjN2UFNVZ3hUX051anY3Wk5KdURtejVjcWM2ZEU2cjhuWl9MOTBaRXdoWGpxbXNDbzdPekpNbmt4Zjk3UnhMTG5DRklIdzNJMks5ZDUtdWpsYUJNcU9maVpFUk9ySlhFTkZ5WFY1Y3JSR2Frazk2RUhHR1VRMERDdA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 4,
+        "lead_ts": 1787346434
+      },
+      {
+        "title": "Premier League predictions & Jones Knows' best bets: Brentford to give Spurs a reality check - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPWVFhWUxLV2t0WFBDM042b0ppZjgxWlVNaHZGUmhZdmIzV1FtRnIwZ3A4TUZ5NlZVaVozeUxmMHpYODFieVlvTTIwXzNpZTJ3ZlBiUWw2UkQ5a1dnQ3pLckNjUnI3ZG9fWmNFQTdNV0tKbVhVTV9nQkpobkpFOXppbW1QNDZvcDVPeDhNWVpod0RGdWlNcUJYR0Rhb3lsMUlwaEg1R3pZNWV6WmxMdDFhWGxZZFVqZDN3WTJWb1RuSEZVUmN3RHZ1OXhHMTdqcEtuWkpMRW5pWVF0azlfaWtmbzM4UVFVYmpfMkNrblUtcWNVRG1NbU4tQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 3,
+        "lead_ts": 1787351187
+      },
+      {
+        "title": "Fantasy football rankings 2026: Breakouts by computer model that called Tetairoa McMillan's huge season - CBS Sports",
+        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPc3p5cWxIbzVvSER2OE9BaFVoZU43OHcycnJCRFRTbTd3NDh3YVhHbDkwR0N0VzJEUnVCamh3aTFyRlZfbmZaZ2tYRm1aUm0wczI5aHNhQ3ZmVjhwYVVyeDlxMTFWZVhvX3VrN0lab2hRXzBabjFkRmRMR3hXaEQxd2lJcGVubFJtUHF4ZG15U25TWVhRS2lBemhmTzFZcFFHb1pNZlFYbm5vTS1BUnB2VXZCUTFjWnBwcjlYTXI4Ul8tMmVnVTJHS09VRjN5WTYxZFpnYjdhRXc5N3lKcnhXRmhMWEM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS Sports",
+        "n_sources": 2,
+        "lead_ts": 1787356695
+      },
+      {
+        "title": "Orlando City vs Real Salt Lake: Where to watch, TV channel, live stream & kick-off time | Goal.com US - Goal.com",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOejVUSXA4SzN6TG44MmE4UzctUFg1cDBmQ0ZxMThoS0taYkw5aTkwNmVKanJNUGVZQTBFT3dWcHZta1l4ZloxYm9fZ2NTa3E2ZlRVU0pTdVpJMG9MczlnS2xhNWdDNzdEV3ktdDhRWjdvQkNNZU5CVzJ4Z2laM2xvRGhURU12SmxlNnhfMURrQ1o0cDhpMkZwWVJyZzJuVVRIMlFxUHcwNldHbVlWcXBOa2JteUVWb19G?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Goal",
+        "n_sources": 2,
+        "lead_ts": 1787355233
+      }
+    ],
+    "culture": [
+      {
+        "title": "Hayden Panettiere\u2019s Boyfriend Gave Her Narcan Before Death, Brother Says - The Hollywood Reporter",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOaG1pbGswbkpBcVRYdV9zamhmYWRYWFFMNUItZjBJNU13NElPNUpURXZnOXhqbGlQM083RlVod1drVnVLWUhyT2l0RWRrTkRPbHlOWFFhQmt0SUtLY0RtMEJOd3JhTHF0RFMxb1Zyb1dfUW93djFjUjVyVEppTWc1V2Ewc0VJWjNJR2Q5ajQxMUN3N1d3VHM1UkY1d19vY0NqUFNxOXZFb2lsR0tZdWR4bkZDTzhtZ0NnckRTUg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "THR",
+        "n_sources": 5,
+        "lead_ts": 1787354009
+      },
+      {
+        "title": "New details in Hayden Panettiere\u2019s final moments - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQQWpSMGZuZWkxVGVnTzZSdWdMRHJQREdicURJM3ZVWE5fMkQxVGlCSkEzN05yMGhqeUtNTEdXZk42em1WeGd1TDNWOWE5YlNlTUI5UmNqUW9fVFpRM0M3eFBhSE8yV2Jsc29ycjhRWUhCUHFWYTFUYmdlNEFGdjYyZVNTWFY4RE11N0NlaWMzR2tWZlhvWFBwcXk1ZnFqcWVoVFRBandNUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 4,
+        "lead_ts": 1787354599
+      },
+      {
+        "title": "Kendall Jenner and Jacob Elordi Hold Hands on a London Date - ELLE",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNbXJTSzZta2NVZUNKWXRqUGNpOXFQeVYzUmFGZmdpd2FCd3ZPam5ZU21aUFlHZGtIbnd1WEk1U1N0NkE5d2xEQkJOQlVETzdPWmhLbW0tZ0oyNnZ5NUIzWGFvV0UxTHZuOUd5Q3NBTTVCSnhhZUh5RW54dHBubkVxTVhaQ0dEcVBLV0lFOXNzRUZJcVZNOF83aHctVG9xZFI3SElz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Elle",
+        "n_sources": 3,
+        "lead_ts": 1787348699
+      },
+      {
+        "title": "Meghan Markle In Talks To Join Cast Of Netflix's The Gentlemen In Return To Acting - IMDb",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE92VzNwOHhla3hEOEViTFpBMjRMeDVjelE4Y2NGb1U0LUdqUU1XYnc1YS1LZWpUczFwb202bHdQc2xFeGNMSUNTdHF1dk1fS0ZjWldicGFJMi10YUNkWWtNTkxCR2Q5Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IMDb",
+        "n_sources": 3,
+        "lead_ts": 1787342547
+      },
+      {
+        "title": "Taylor Sheridan, Paramount Sued For Allegedly Stealing Idea For 'Yellowstone' - TMZ",
+        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNNnlMeEwzY21mMU9zSlZxbkRGTnk4SUlCM1A1NG83cm1vdGJBSGpzYjk5YnBZczdFWHVZUHZwZG15WTR5eUFYbkdFSXlGdHpKb3pUcUdPclZOdVlOVi10UTNUckZoMmViRUFnalJiRjVKMFZiT3dMeWF4MTEyME1lU0o1TXE1UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TMZ",
+        "n_sources": 2,
+        "lead_ts": 1787352246
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "Supreme Court lets Trump continue work on White House ballroom for now - Reuters",
@@ -258,267 +505,6 @@
         "source": "People.com",
         "n_sources": 8,
         "lead_ts": 1787317761
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "North Korea launches missile barrage after dismissing Donald Trump\u2019s overture - Financial Times",
-        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPYk5WNzVYZFhJNVVDMllna2RZRnhaZWRpLXA4UGpkSE1qSUNhN3dqZElKRWlxYS1FbzNJcmNYM3NNWWhqSUhwOXZ1RzYyRno4eHNWRUhGV0IzZUlJazFrbl9pLWJ2dzN6czVpVDdadGQ3RERqVzhXRDY4RGhMZDZkbXFMbWU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FT",
-        "n_sources": 7,
-        "lead_ts": 1787222713
-      },
-      {
-        "title": "Bitcoin Soars Above $70,000 After Trump Calls For Passage Of Clarity Act At White House Crypto Event - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNd2dxbExOa0hZXzFZTnQtaEtuWE44c2F3OXR2QjRwMTVQMmRhYlhvWERNWTh0dTY5ejlMMzktRDNfa3FPMjJTN2pKQ2NYWXpxRnRJZDMxS3BSMlNTZnVDN1g4S0lZb240R2RHb2pTR2F4ZVZFZmNCR1hmSXRmZmEzc0JMQmp5Rm9Sa3N6SmV1VVlvZGFSa3g0UTVaMVJ3M3hrM3FWRHR3R1pvV3JOZHdsU1lSbHBPZF9OalBpTTluVlhSUDhfeXhseHQydkJRam5KOGk0RUx6d21ra3lJcTFpNWVNZXo3MXM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 7,
-        "lead_ts": 1787219520
-      },
-      {
-        "title": "Trump hopes Supreme Court sides with him on White House ballroom - DRGNews",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQanlLbGtlUlRLUnhyOGxLUEE1enFSazNwQ2xpWl8zZmhGZm9sVHBsUUdSNUhRTmdsaVBQQ1RVc0JpYzhQMUJIcU9RQ2Y4aXRoT1d3cFNMRmtoMmFpdU9iY0h0b25kRkxXdDBvbEdGeE5PUVZpRDREcUdobjBPd01YaTlBcHpiSHZSaUF2T3hYUEpMbnhnMXlrS2JncEg1TnhIc0ZORg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "DRGNews",
-        "n_sources": 7,
-        "lead_ts": 1787212008
-      },
-      {
-        "title": "Trump undertakes sweeping makeover of the White House and Washington - reuters.com",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQVm5LM3VrQWt6cWgxeExTaDdnSng2VlZZOFd4ODhQaTg5eVVWZTFnN3ZnXzVoX0JrNFBjX0pnRDMxeXJTTDlmN3V1YklxbXlaZXQ3c1pHSDZkQkVwYkZPZklxTkl2Q2FwTVUzTDhlT1pRRk9CMWkyN1lUeFd4SWIyeUtoU3c2OW9wZTdjMUFrUUNfWmtTMzd5cXZSRUJtN0tLVmJrQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 7,
-        "lead_ts": 1787203260
-      },
-      {
-        "title": "Supreme Court to weigh Trump\u2019s authority to build White House ballroom - wng.org",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQUm5QczZncmpIUjFEdGdUdUpQTXQ5S284SXpKR3lTVjUwOS1ObXB4WkRCbkZNV2F1R0tvakwxbEtPcnQwYWlrZUZnLWVDbV9TcUY0SHBhWnR6SjBtMGZfa252NkRXTkwwaFBQb3BfMkp1YVd1T3pTMElqM2tVWlpQcHMyZWFOUDVNbDRNWjBHMFA0dlZrYThKbTdRTVdzRHA2VXhIZkxzTmY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "wng.org",
-        "n_sources": 5,
-        "lead_ts": 1787247600
-      }
-    ],
-    "mideast": [
-      {
-        "title": "USS George Washington arrives in Middle East to relieve USS Abraham Lincoln - CBS News",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNUDFMRTNKZkFobERpTmpTSWJ1QWdScE9UZmZlWkVMUVIxS1FPMnhoSFhwZjhQcVZodVZwSjJIZXZXWEU3TkthbDRnN3Jmb2lGcDJISWJCV3NrQU1ILWx4cll0V0hpZnZETHRuQ2M2cFU4WlluenFVRmV0c3RCSWIwdFN4Z29jMnpJUXk1eTNmb3c1Zi1lTVQ2eXVhSkt1bkVjbG1zd2ZzMG9pYmdldjg0QV9nbjc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS News",
-        "n_sources": 9,
-        "lead_ts": 1787263980
-      },
-      {
-        "title": "Iran dismisses US economic threats, and other developments in the Middle East - AP News",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZUo2YS1oV3h0ZEw3eTYxSExqYk1RUnpscEFodEZRaXNWeTRXd25BbGxXYlJlVFA3bzdMdVFiQmFzb0dhWnFyRFVjWlo5Rm9mVmhwY3lvUVZ0YmZTMmlkdnd1VUV3UUIwMERCSWNMWkFsVnotdTVOS0tpSHU5QkphbWs0R2VEMDY0T1Nv?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 8,
-        "lead_ts": 1787259600
-      },
-      {
-        "title": "Middle East: 94 per cent need shelter in Gaza, Israel ramps up demolitions in Lebanon - UN News",
-        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04VUN2bjRTQTRELURCTFdlWGxjVE4yNk1kUklNOGZfVG1Ycms5TFV1MENIR1pDeTV1dHVhNzctY3NBYkpIQ1k1REZzNEJXLUZ4T3hqVGlRMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "UN News",
-        "n_sources": 8,
-        "lead_ts": 1787254345
-      },
-      {
-        "title": "USS George Washington arrives in the Middle East to relieve USS Abraham Lincoln - 13newsnow.com",
-        "link": "https://news.google.com/rss/articles/CBMijAJBVV95cUxQUUNSNVhJZmIwWEZyc1J1cXYtb2V3cGE1enNacnoxd0E1MUwzeGRoUTBGWmd1eFpFa1hoRXl5TWRwcm13Y3NGZ2tsTmZfMDMyQ2RLRnNxa2U4aHhJT2FIRDkyRVdjdGZEcEFRd1hHOUg3OHg4akFfakdFN3djSmE5TjE0RDZjMWZVdEpEMjdUWjJMWm03RWQ0NU85YjRwMjRYUmtzcUVVQkNGOFB6M01aMHRlUUxOU3F1cUtXWXM1bkhPamRlS1lRekVBLUZlR0VlTkx0TFZKMmtNUldhQ1BFZHdpSHZUWDk3RDhUUUhmcFdoTi02M09ORG16MUdLb3VyS3lmc3ViNmVoel9f?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "13newsnow.com",
-        "n_sources": 7,
-        "lead_ts": 1787259420
-      },
-      {
-        "title": "USS George Washington deployed to Middle East, CENTCOM confirms - Latest news from Azerbaijan",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTTFHU09NdXhLazVONldPNFZiZEloMWNrUjlPbVhXYkFqVE1xTnp1TURoQm9OZnF0c1pHb2NFR2dCazFZbHY3cXhkM3lGV05VZ09hSEs2ajFlY0JacmZrMEhXWUw5c0I4NlQwakhrSExCUDFCRTVKcF9IWHNLc3lRRjFlckZKcjFEUDhj?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Latest news from Azerbaijan",
-        "n_sources": 7,
-        "lead_ts": 1787234558
-      }
-    ],
-    "world": [
-      {
-        "title": "Pakistan: Former PM Khan moved to private hospital - dw.com",
-        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQZ1dOUkZKd2pDRmR4aHoxSmtFTTVTS2J6ZHl6bzkwcnNsZDhLZHFaTUt6Y1pVNlN6Mmk0RmdNYVl0S1BLVDRjY01UeGFqSDQ4YV9iNkRxWU5NUXc3X0NYUFRrR212OXB0YWMweUg5U2k0SXpEbFN2Q0Y3UWk5SGtySXdTbldpN01Rd1HSAYoBQVVfeXFMTjNwWHk1ZlRzN1dua29RZHdPbVNDODc0ZENoSld4dGszUTFuV3pfdVFsVF9xWmtlcmZyd2U5WkRhejZYSU0zZGxVZnBKckxzcnA3ZVotODFpeUZFc3NxX3h1VUNBZHJUajREQTNsbGwzd1pzMnNySDdRTmJkX1plVXhaaEF3R29HdElB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "dw.com",
-        "n_sources": 4,
-        "lead_ts": 1787263071
-      },
-      {
-        "title": "Pakistan\u2019s ex-PM Imran Khan reportedly moved to hospital from jail - Al Jazeera",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNanpZLTNSbi1SNXZsUlh4ZXFjUWh3QWkwUFFsYmJuX3ZReWJOWUpNUUd1dFpCRTd2SEZqdGtza1ZmaG5OeVRxa0gwdHJoTUEyTDM1N2dnNnVTOFMxXzRiLW9lY0VuTDhOWGE4VzFIdF81U3RoR052S0hyVUVrdldsdjd6OUdTMmZGVnFlYmUweGYyc3NtVkZ4cXR3QTRPLVB3ZWtB0gGoAUFVX3lxTFBkOVBtcVVuQVFRanFnX2doSlJxeWgxRDRvMGhtNmxYRWx3azhNMVZsQmVKeHU1MXFRTHNHaXZVU0d1elpQaThleUMzUlFkclJ6WGdac3BCYmdzVGFBZTBPcnNKRnZUM1ZiNXJ0MWZZUExNd3Q1ZVBuak9rdVNZMWtEbkJKT3VrR3BMdlgtdTlXeGpPU2FEU1k3Wl9MWGY0RjVwQmtSdXNZWg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 4,
-        "lead_ts": 1787260813
-      },
-      {
-        "title": "Former 'richest man in Asia' gets life in prison, and Russia strikes Kyiv | Global News Podcast - Modern Ghana",
-        "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE93WjhFNWhnMXBVSXJoa1BBU255ZG9fblhVdEpzNHJRZ2pWcHVSRmw3MHJMRk82aDJNb1pkdlN2dHVUeHNwVUVPNmhVMDEzSDZMQ09NMHR2dmJGWmd4QUxZ0gFcQVVfeXFMTXduS3BOSVhHOE82SlZuWnJ3d2N2U0pUNmFKMzhDUVZraW9vUUtmQ3h0ZHU2RGtNWThSZklfa2NzMVBHWDh0aHcwOUZrTHpjemdJTHkyN3ZQOUdtZjU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Modern Ghana",
-        "n_sources": 3,
-        "lead_ts": 1787250673
-      },
-      {
-        "title": "North Korea fires ballistic missiles as US-South Korea drills near end - Al Jazeera",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNNU9MenpXTWlpbzRXM2xZWFlyLTk2QnJOcUw1MWJvX3FWejFSeGxRRHZEYTNtT0dXOWRYT0I1ZER2SHNNaVdaVnBTOHUzR2gtMG9fNEZWMlZyYzNLenJ2aWctNkFibnR6R1N6QXo0VkV2Z25fMWlGeWVLX0VKMnFpYmZIMlY4bGU3eFEwT2hnV0ZPVWxIOHEzTWpuemtSLS1DaUNHczZUdWZ1dnhNR2fSAbMBQVVfeXFMTmROM2RQSzgyaHB1emQ3NE1QMkpuQ0dmTTktUGxjbVd1UnQxYzBsd0VyWXA0Rl9Sdl9CdmRBV1plQ0o0cU1aUWhYaWRfYkkzNmxBSG1HVkhMSURhamd6TlBMcWpDckZQbE1TR29oVzRJS1E0Z0kwQ21RNXFWT3NGeHltSUJ0d0V0X2Y0RmhaNXlBeTNmZnZ3V2YtRVQxSFpPOXlSSWswdkZEMW9zSkQxYzVSZkk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 3,
-        "lead_ts": 1787245425
-      },
-      {
-        "title": "South Korea's Lee urges China to maintain close communication on Korean Peninsula - Anadolu Ajans\u0131",
-        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOeTlEMFZEcXl5aFJ3bFhKeFY1N2lrd0RJVUJlbGloVmlLR093UGdUdDNLTnpQRVp0aEp1VURPUzdDbEhUamd1emZtaVFMTzllQkRBRC1OSk95bkNvWFNOQ1dLNWFaRjVwQl9ncG45THlpNENvbHZUTmJfLWFXVVl0N2pTSlB5eGplYVRmYkd4YXZiQjVZQWRsQjM3VlUwLUp1TS03V1hfc0dwdDN3RWhUTnFMMzBZMUlJV01YeVFPT0NPeWs?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Anadolu Ajans\u0131",
-        "n_sources": 3,
-        "lead_ts": 1787234416
-      }
-    ],
-    "tech": [
-      {
-        "title": "Google Pixel 11 Series Review: The Experience Is The Upgrade - hothardware.com",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOTGVMWVk5ODhwQ2EwblVrZVVqU3hEN3A5REQwcGtFVTZ0RmJ1SnIwUjB6Vk4xM3pYTzdRTmNRcXJWT0h4V3E0V2I0a1NCWDlIWXd1LXpsUVZjNzd6RVBfbU11bkZzaXJQaVlpYVB1TkNEUC13NU5WQXNzX0NxQUVaYVhfcmEwWlplbGMtcWlYLTBOSlNLX1Y2UUR3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "hothardware.com",
-        "n_sources": 7,
-        "lead_ts": 1787155560
-      },
-      {
-        "title": "T-Mobile is giving away the new Google Pixel 11 Pro for free \u2014 how to qualify - Mashable",
-        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1fdFU0djV6c3JIQjhFQmVFMFUyZzhMdDRfQnNubFZpTFBnSHJzeERzWkJCaFBjeHBxQ2VfVUo2SlUxRUpMcWYxYUVUUnd1alZsalhrYS0zeUFTNXVUMFBMWUFsRXM3dw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Mashable",
-        "n_sources": 5,
-        "lead_ts": 1787187739
-      },
-      {
-        "title": "I'm switching from a Google Pixel to a Samsung Galaxy phone because of this single feature - Android Police",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOZllHMnhaOEJzbVRiUzZ1d21BcWdZQ3EyZ2lsQ0ZfYXpVY255LThUSnM1ZkNHWDlJMnhPcnJJM1JrdmFhSWtPY1ZHNG5KbUhreUpEaXUxUHVxUTVlUElWUkpiSk5tWWVZUzBzQktoZm5HT01fUFduRnpUdUs1VmI3bkNudmtIMmtRSkZ3TFJkeEhCdk5UNkx0MVl4N3Rpb3o2Q0FPSUhvMGFoSVNNaXBPRlZ1RDk0eEkzaHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Android Police",
-        "n_sources": 4,
-        "lead_ts": 1787252410
-      },
-      {
-        "title": "NASA abandons mission to save Swift Observatory from a fiery death - Popular Science",
-        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE16MUd1OGJGbjFpUHFXOFEtNWd2ek1sVDl6TDNJa1RMaDZTZG8wN0RKN1RYOENUckVjY21fVF95SE1Yb09jNkRPc0R5czFqcVRIS2R6YTNQU09ZX0Z1QjlyeDhmWGFaOElLNmFqTTlEblRlWDVIcXl6U3Jn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Pop Sci",
-        "n_sources": 4,
-        "lead_ts": 1787239860
-      },
-      {
-        "title": "NASA\u2019s Swift Is Doomed to a Fiery Death After Rescue Mission Fails - Gizmodo",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPcGRJUlJFdkJBUlowV0FGeG1UWHAzNlVHejJVakUyYlJTclRiU0k4cnVsQ1k5Y0plY2NGdjF6cW5TZkNkdHF3cTBMRmZ6c1lUdmxLUVRKaDZDdm9CSkp2dDZEUF9OOFBsM2NJM3RTS0VkUlZmX01xN09qbnNlOEtpN3NHQzdRWlQ0RmJUazl5SHRtQWJoaVl2cVBfUXQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Gizmodo",
-        "n_sources": 3,
-        "lead_ts": 1787238051
-      }
-    ],
-    "business": [
-      {
-        "title": "The Treasury made a surprise move to calm the bond market. Here's what it means for your money. - Business Insider",
-        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOYzhmM3VLcXJDV1JnSTQ1cW5ZbkFtMWhVcXBZVWZwXzdIR1kwa2dsaVN3Ujl3VE5MT0c5VVV6N2tETnVrelU1Z3hheGlGbEZlSU8wZ2tOOXRYN1hxZ0VWRktPY0h3MjYxTlEyS2ZpN010QTFuUmxMdHF3czg3bGxYZnFiWHgwMmx1dFhVVGU1ZTdTa3ZJck9kcWxHSTI5VFhkSzRXcHIwNUJrdHg4R21NQ2NR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Business Insider",
-        "n_sources": 8,
-        "lead_ts": 1787219423
-      },
-      {
-        "title": "Bitcoin surges 11% in two days as Trump, crypto execs lead last ditch effort for Clarity Act - CNBC",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOYW5ydk13NmdWaS1wZXd0MC1KQnpxOUdGY3R6SFpYMDVIZFNfMW5RQTU2b1dfYXVtMDhiWERTMXdwdjlEQWl5V2dsSm00NE5pY2phS0I1R015QWJ3cEVHaG0wUjZXYU5oUm1LWFl2bVZuNmF2WUZRZlI5LUItQVZNdjF1X0VKeW50b2l4WG5SWWdEN25oajl0bi1qU0ZabEh2c1owQV9jSVDSAa4BQVVfeXFMT3lZRHR0SU5wSjZla2VFbldPbk04ejJ3UUJjLVNaUndRQlgyR2F0SnJsOXltSVV0NTVDemd6VzhyOTlidWNwUXp2WjctTkNRYS1rTjdRblRHcTdVQ05KNXVrdFM5Ulk1NjgtOC1lNWlobUp6NWhXNzNoNlBEWWpnUXVuSy0tTm05VDBIT0JaOTJ4X3BKaW5scUNQYUFIRTR1OG9TQzM5ZFYyUTFhWmln?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 6,
-        "lead_ts": 1787231190
-      },
-      {
-        "title": "Why Treasury Secretary Bessent's moves to calm the bond market haven't worked so far - WRAL",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOTF9FRkNRSEVkNmVnNHJBUktsMUc1a0l3MXFiV0pHY3lXaUhCLTBPNTRLSTNuOUFPeGtlTEdHYkNUQXJOTTM5TFNvUHloWTI4Z20zT3VtRHJmWGxpaHMzNFJxNTRHc0R3ZE5sYVNpcjdReDNtZ1VERjFlcmJrYXVmd2JCVzU0UlBvWVR2UW1lWE1VbWVKZVllUmpnTVMxUmRYdmtaOXR5SzZoSGxobjh3VlQ1RHhBYlAtOEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WRAL",
-        "n_sources": 5,
-        "lead_ts": 1787257842
-      },
-      {
-        "title": "Scott Bessent on the national debt: \u2018There\u2019s nothing magic about the $40 trillion number\u2019 - Fortune",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNZXhKWmQ1ZEkyQUh1YTByYS01YWIteFU4VF8waDRBUjJZbGpoRGhPZm1JajJCNXd2R1dHMGFpRTA4UHBScmJVWkwzZWlLMDBBUURIdmVvYmxBSjFVT3plc0lIRllzWHNTVGc3UkxWV2N3ZVVDTXV1YUsyWHFkeTRaWkdBZFp5THI5czA2aktn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Fortune",
-        "n_sources": 5,
-        "lead_ts": 1787248260
-      },
-      {
-        "title": "Crypto shares climb after Trump advocates for Clarity Act - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPVmM3elp4cktvVklVUlVBN3BvWkliX2FDX2RjbkdWQkhfcVdzVmFweEoxNkZzS3ZuMDhyRGZWOXRiQ2laWFlpUHhzcENKVklXMzduOGNzZFQydl9qMTJpRFczOU5paEU3VmpEYlRFMVlwU01OY21JTWRrbXItQXd4R1lZMUhaQXN5V1RtOVAzeXUwdUdLNDZ0T3ZNVENOVE5hUkYyV2t1d0xPRmEtTmRuQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 5,
-        "lead_ts": 1787235682
-      }
-    ],
-    "sports": [
-      {
-        "title": "NFL Training Camp Injury Report: Tracking the latest news, updates for 2026 fantasy football - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNTUtnVUVXUzZYdFJROGFLOTVsaWFOcTdSYmtOeFJQYUxyQnFFSWZpeU50SVpfajl1TmRlekp6S1BtaC1rUDZIbnB4bmNaYzZCVk1xY01fVUtrWjFDR3l6SmZ5dHZmX1pnRzR1YWZBNGRYNUFYb3JvdjJPWlV5NTI0b0s5WUQwTXFqZW5MNDhuNmlIa19aaFBySW9SZmFRbndCVHpub0N6UUNRT3NxTjVxSzNxSlVqRU1rVmtpZjY3Nll6TVB6YkIyRUNxXzZkNmVQS0ZaUHo2b3VoT0pubU93?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 8,
-        "lead_ts": 1787202987
-      },
-      {
-        "title": "Man Utd could start 2026/27 Premier League season with same back four as 2022/23 opening game - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOQnZWTDk5bDUyWUp3UGZIZE9mQ0Fvdng0RmZadFYwMVQ4OW14dTlodkZNYW9uSE91aUdaME5sNmZhTHdock5vRTRVVk9MWGlKcVJUMGw2aUxjQUY2WWZYYVNtUmpVbnNzOC1TVXM3T2NQblVKVG96b3k3dWFmRmgyOXlqTnhPMG1JOXc5eGlaUDBxSjBBWlR1bjY0b0w4NzdVWDRha3pGa0RtN1pqTzFxMWMydUFCcXA3SGdUNGJYOXNpc3hsZ2xhQVZSbmFXbVMwemNreVo0a3VhQTVuTG5JNnhB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 7,
-        "lead_ts": 1787264911
-      },
-      {
-        "title": "Mamadou Sangare: Brentford's \u00a339m midfielder could be the Premier League's signing of the season - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQUlJYNWdJV1ZkeFU2UTFIWlZZM3h2cWhCeDc0bXNhZ2ZnSXhJeF9laF9JOVpxUEpoUGl1RjlsZGc0VVNHTzg3cjU0eGYxSnJEM3VSRXpxMFJSY2daWU4xTmxWZUI1SEwtXzF1dGNrSnVQbmVDeFNRUU9ndllXcjJ2SGFZRXF1TEtkWDFYY1JLREpvUkxOVFA0SnJjZ0k4TDhKSUhIdGNTNy1XaUtTSnZONno2SnJySnFZMmR6LUxSdEo0WG1UYXhuSEozUWJVZDk0WW9ZZ2VJWGdjd3dtYWVkbjlPOA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 7,
-        "lead_ts": 1787255555
-      },
-      {
-        "title": "Premier League season preview: Each club's pre-season preparations analysed ahead of new campaign's kick-off this Friday - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxPYVQ5aGtlZjVYRmtkMXZ6UEwxVVFxYVBiYzhfSUw0Q1VzZlR0ejIxaUVvaEFFUVpwNFZZZTdBTWcyc1lVTTd4dnhQblFKQ01lS1R6aUlZTVFqbU9RUTFIRjY0aldRaFZGTnR3aEk5MnVYNmdIaVNtbDFhQTdYNWdKRVBLQjBTWVdocVIyeE43UFU0d0pTRXVTbVdxTlpyay1HOFctMjhKUmNvejBYTldEZzhMRm9QZDNqSEZSTnBfcU1pQjBQSUo1OVhpejkwbWQyUFdfTUFUMUpCVzNlbmYwSUpXUktuOHR1eUdMeEJqV2l6cm9xdFJFbTRxdlZNMU5kRmc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 7,
-        "lead_ts": 1787254025
-      },
-      {
-        "title": "What Verstappen\u2019s big deal means for his future, Red Bull and F1 - Autosport",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNYWN2bFA5dnlZMTE0NF9Cb3FfYjhKVnRMY0pISVNkblBlRVhyR2dORXk0dUJsNUZWdVg1aFJjVVdaU1lpcVdGSnhlR3JXUWtxbzZXWDE5STdxVF9qUms0TnJjRThUZ05EMDlfU19yVGVaUWRxeng3N3Y3aDZCLUc3dXJENWRZNERNcFdUcm82a0REYTZBRXNSUzB1cVpRajdmTDVQZlJJYllvdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Autosport",
-        "n_sources": 7,
-        "lead_ts": 1787221953
-      }
-    ],
-    "culture": [
-      {
-        "title": "Hayden Panettiere\u2019s mom\u2019s reaction to actress\u2019 death eviscerated by Holly Robinson Peete: No \u2018integrity\u2019 - Page Six",
-        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPMnhHcHBPbUR1M0JOWWxDT2Q3ZkhCODhHOHZ2NFQ4OWZTZFhlZUpNNWd3VDlPSkh5aG9zVkViUERjbjZ3ekJIS0RqeEdVYTFBX1ZjR1hYYXdwa2lBd0xTZFVrZUhIQ19saExFOFlsTVRINFA4T05sVGljSTVLc3FISnU1SE5DRmlOUDhybzJ2NGhNQlNldEJEeUhZd09ralZrRm1zaEYyZ05sd09MWl80MjN2aDB4Uk1VdkY1T1FacER6Um9TaUFvQUc3cmg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Page Six",
-        "n_sources": 12,
-        "lead_ts": 1787236140
-      },
-      {
-        "title": "Hayden Panettiere\u2019s Boyfriend Breaks Silence on Her Death - IMDb",
-        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5rLXVHMldZOWdCTUpvbjZMRFdlTTh2VnotLV9Dd1JkX1BPeGlTX29sbTk2WVM5S2FrNXIwaWo4LXB3aGVEdkdkVThoUWQxbEZ5X3hSMlJuQkwxT1NWYWpkUlZ6ZHR5cm0xd0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IMDb",
-        "n_sources": 11,
-        "lead_ts": 1787262658
-      },
-      {
-        "title": "Ruby Rose shares somber texts reportedly from Hayden Panettiere before death - Entertainment Weekly",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOOVVvQmRpaFpmUjB6eE1fejhhY1lWcHJhSDY0dXh1RXpNTnhjdC0wdGotSm9sSlhTT3ZQUHNpSGplblFCRUVsdkd1dEVUcE9TZjM5UzN2QUNYNThxTC1HRmRFLVY4MEtuUWVtRnJUVy1xSFlPdUdhX3BfYXBNSjIxOFJZVlNZX2JLNTBvWS00dkktZ0lQa2d3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "EW",
-        "n_sources": 11,
-        "lead_ts": 1787234335
-      },
-      {
-        "title": "Reports: DEA joins investigation into Hayden Panettiere\u2019s death - WISH-TV",
-        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOdzhtTGtMVENSbWhNUmUxLWw1ZEgzTzZjT2lvWmFFNGI0S2Itc0Nua3lhbW9LWFV0bmVVTjdEMlRTZlRNWkd3TFNLTUNHNXJDRnpNQ2RKVHA4Q2hHazFzYm5SX2hQMk96UlRYODREUjN0dVpPYU0tQUFuRTRBWE5BdlplUFNCY1lnWmdrUkxweXg1QQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WISH-TV",
-        "n_sources": 11,
-        "lead_ts": 1787226282
-      },
-      {
-        "title": "Hayden Panettiere\u2019s Boyfriend Breaks Silence on Her Death - IMDb",
-        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5XYUdqcGs3aWZOYjRWTk5zNFBUYUZMVFAtc1pFTUwtZGh6d2lMTWs3V2NDYmx2dDBTS28wVDRQSjUyZnhnS0lvNEdhS3pfN09hM0x0Rl9sN191aVI3UjJ6TkV1bDFhdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IMDb",
-        "n_sources": 10,
-        "lead_ts": 1787261645
       }
     ]
   }
