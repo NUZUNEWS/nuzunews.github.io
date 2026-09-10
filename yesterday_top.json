@@ -40,6 +40,13 @@
     ],
     "mideast": [
       {
+        "title": "Oil Extends Rally Above $100 as Middle East Hostilities Escalate - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQNzR1dHpTWkkydWgyZWI3UFhZRE1ubzVxeTh4bmRMMUxCRzMxRDkwRWtZSXRPLVNJd2FJVUhCWGpadUoxenR3QmM0bWlfMFdCeDA5a25TZzR6R0N5eENMbXNJdm91VFlJQkFERUtDV1JtMEY1MnR3ZWRDWjNabVZ1dHp6QWx4NFRVd0ZXOTJJZjc5bjBJX2RFWTdBNkRFbzQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 6,
+        "lead_ts": 1789078011
+      },
+      {
         "title": "Oil, gas and borrowing costs surge as fears over Middle East escalate - BBC",
         "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE42NnMtdWJzQVdQalFGR2t4WG82QjA5YnBjUXN4djJEV2tfdEYwUXJFd3BjME1NaERRZ2xfbmxtaWtfTnBhakpPT0ZwWS01c20tdmFzRmJHN0swMk1Z?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "BBC",
@@ -54,25 +61,18 @@
         "lead_ts": 1789049700
       },
       {
+        "title": "Israel destroys Hezbollah tunnel network in south Lebanon, triggering 4.1-magnitude tremor - france24.com",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOT2pMbElDZHFoVzZzaHQxVjJqYkN1U2J2ZWNPb1BYX3JWOWlDRUJlekRmZTdKV01aSnhHYWZkSkJycnQyTWhTUmNGR1V5OEVkRkFrZWoyc0xUOG1jeExJc05JVzdYdzhmY2hSakFxVHlhWkpQRVlpWVppM1l4emtyVkZEajIwMlZKeVNuQ0wxRVQ1Nmljang0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "france24.com",
+        "n_sources": 5,
+        "lead_ts": 1789077024
+      },
+      {
         "title": "Brent crude tops $105 as US-Iran conflict fuels supply concerns - Middle East Monitor",
         "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQWkFzdm8yb1NYSmQySjM5ZjZIZG5YZmx3emE2MXdBSGlIdVpjVFFGUHY1YUk5dk9NY1pBLXdkblYyTkZfc0l4dWEyVFN5WGVWSlhEdHZSRkt0TXZ4S2lOcGtyX3UwS2RQc3hjZHhGVFhsZHZORGZudVp0SVlYckdsMjZlcHl2d3k5ZlIwYWNwMUtuYlRiX2ktMTh2ci13bE94eE1fQjc1a1VNdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "ME Monitor",
         "n_sources": 5,
         "lead_ts": 1789062060
-      },
-      {
-        "title": "Iranian-backed Houthis fight to block Red Sea passage for Saudi oil - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQWUYwT2ZBY29SQkhnbTRHTnIxTXVTWndGampQSVo0VlpHUkdDb0lGTkZOMXB0TFVxcEFFcVpWcUZ5RHNEd3NuZTk0ZnZBaFBWU1ZrN3hGNEdHVGtjWkJ5WF9xMU5tUnJlQWl1U1RGWVZuMkhFbjdvRHEtTmw1a2FmRVJ2d2phMTM3V0hLY3poSF9tME54RkZnand2VUV4TW50YnhueDlnc2p6UUp0VEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 5,
-        "lead_ts": 1789051001
-      },
-      {
-        "title": "Turkey\u2019s Nuclear Ambitions in the Post-Iran War Environment - Middle East Institute",
-        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPWU1kVVczamVIZUtMeU9hbFRvS2tPUjhIbzh0aFBWQl9Ca0lyVUxZVjc0aTFtMG03aFFmN0tmc1hDZWFfM3VoNHhZYTBudEt0WFdHVHFhbkFxWFo5NGhEbDBYamVsOG9qOVBUdEpFYkRhNmpBUTdZZU9kTXY1em5ZM083RzlXU21CNUc4MWxTUTY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "MEI",
-        "n_sources": 5,
-        "lead_ts": 1789050460
       }
     ],
     "world": [
@@ -105,11 +105,11 @@
         "lead_ts": 1789038665
       },
       {
-        "title": "The Hindu: The US-Canada dispute is a warning for India - UA.NEWS",
-        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOX3E0VTkzUHdzWTVsRHQzLWt5UzFBY3kzT2NxVktqeVlVdHhxa2J1WFU2bU1GSkZhSDBONUV5d2pfaDJiS0tGdU81UmthQm82UlkxeVlod0hQcWlrVGx6bmpqN3pyNFhrZmRPcHEzaE1YQU00MFdkWVJ2dUV1bV9Na0ZRZU0tZDZIYmh5VUpyUklDcUhD?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "UA.NEWS",
+        "title": "Season\u2019s eatings: How Indian menus are adapting to climate change | Hindustan Times - Hindustan Times",
+        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOejhUel8zRlZtN3pSUGpXQjBaNkZVSGs4UTF5QzRFNjRHQU5nSnppX3lrUlp1Tkl6OHFFR003NHRHUnNDc0FUS2Zia3dPTGRVaTgycExteWk1cFpHXzVHVzNqR19iX3g4bVc1am1TT1RnekF5alJaeUYydmxaWUE4TlVldlFrZ0RRQkJGN1JqSzJ4WUgxYllPLWVteGJUR0VORk1OWXR0UFl5NDliUklwMjhXanRROTdlZTM1cnBxaEFaVHhVcUxHOWhHQS3SAdIBQVVfeXFMT0p6MUE2VWdpM2FzMXp2cGt3N0xyb3NaeWtobzFyNTg3MUdhbUxSbXotZ3VCY1haTjRMa0tkVDdDbWpRVmZxSENkY3pXWUM0YzF5NUdsQ1VwVWJqUHctZ09GQl9WUmhPX3k2UWZwSFNPWjR3Sm5BVXkwUGhBT00wWnVpRlF1dFIyejAwQnpwSnAzaUVNb2FXOUdqSGJQZXFHWTM3T3NmanNwRG11UFdNZ3AtREZHWWxIN0F1Y1hNV0ZUS0RhLXQxZDVOVjlURXUxS3BR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Hindustan Times",
         "n_sources": 2,
-        "lead_ts": 1789071580
+        "lead_ts": 1789076532
       }
     ],
     "tech": [
@@ -151,6 +151,13 @@
     ],
     "business": [
       {
+        "title": "OpenAI launches financial tool for Wall Street bankers - American Banker",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPdDItak5zaXJFOEVSeHJzN01lbHNreGxXM1lKQmRkOHVxekNNSXA3enNIZTJHV2JTLVk4V2FQX3N5Q080dUFPdWpYT3hWRjJDVDBiZXFZd2tibTg1dlpkbFhfMWU1MHhIYmQwTGhIdFM2Vjg3QUF0VHczTWtUejNBUFMtMG5NaWx3dEdiUUJJWXBLbGg5?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "American Banker",
+        "n_sources": 3,
+        "lead_ts": 1789075800
+      },
+      {
         "title": "Global bond selloff resumes as surging oil prices stokes fears about inflation - The Guardian",
         "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQNnZTNldEQUVCaWRsTTNsRGZfSlZqVXVfUXMwZkFpUWVNZEdoamVnUTZvZXRocnZKd1d2cVk2M0tlVEFwLVV0N3A3dGJkbU1yVnZBM0w2MG9kaU4zOUdpTXhSS3U0QjJmU1hPUm5fc09VTDZGaHNUdFAyVjVqVFo1eTQxM1NLWHh2LUN4U1pHbW81TURycVVHTV9iOExmQmlPcndLZXlYdEZ6WVJ2N3FMOFZEVHpvTzZQWnNzS0xkSldnMDNVbnVGeHRWMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Guardian",
@@ -177,13 +184,6 @@
         "source": "apnews.com",
         "n_sources": 3,
         "lead_ts": 1789048620
-      },
-      {
-        "title": "Stocks fall on Wall Street as oil prices jump back above $100 a barrel - djournal.com",
-        "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNQVFoZ25uWUtRM2VXc1pRY3MyY21rTUs5VTVsR1dsdkpCREdvU1VxMWd0ckpXbnNKdWZaNmxSb2FhbEtyQmlDTWJtYVRCOXRjazRFaU5tZWRCRDdTS3ZpcmVYc0dTeDc3TTJMbVI1ZjREZV9XaE9BVExiTjFObGM4OVk2Uzg4QWhsUWd6dHdoWlZNQ1lUYzJZY21rd28tVFFPRUVMMjZIeXFqZTRZS1gyXy1raDZwdVdrMEJVdG04aG50Qmhvc1RkcXNmS2l0R1dKODR6dWstM0lKRmotN2lObThtVlRHeDVhbHJYeUdxTQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "djournal.com",
-        "n_sources": 3,
-        "lead_ts": 1789001100
       }
     ],
     "sports": [
@@ -193,6 +193,13 @@
         "source": "Sky Sports",
         "n_sources": 8,
         "lead_ts": 1789039244
+      },
+      {
+        "title": "Fantasy football 2026 rankings: Best QB, RB, WR and TE picks, draft prep, position tiers, NFL cheat sheets - CBS Sports",
+        "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPWHJFQ0txNkZhVEk1aGVDZm5GZGZGMUJYNWtGczBlRlRhMTNpRTRWNEFQR29VNW1fMWhNTk1DWGQxdVJTOHhoTGY4VjRWVW9IMzRJbkZZU2UtaHFNQVBrckhib0RpV2M0WGJfNkRMeEhKS0szRmpGTjNOVVZzVzJZOVNFa1cwMTE2bUFwdzhwbkhlcEU3dWJGQkpBOVJ1Y04waUtGUm5ULW5kb092QU8yM3BaRENwb0R2YjFBVW56RUtESjA1YUc5SXdIdy13aFhFSDhwWFR1TzJVUjRwZ2w0azV3TQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS Sports",
+        "n_sources": 6,
+        "lead_ts": 1789073345
       },
       {
         "title": "NFL Week 1 fantasy football injury report and weather forecast - The New York Times",
@@ -214,13 +221,6 @@
         "source": "Guardian",
         "n_sources": 6,
         "lead_ts": 1788993240
-      },
-      {
-        "title": "Fantasy Football Rankings Week 1: Wide Receivers (full PPR) - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNQmltZWF5QjVHbVJfNjEzTC1DMnVhRkE0VENEQ3cxemN1dExhUGpON3hIUnJCWlVZekpGdVBsd2hYakp0b3JHZ0ZSakh6WEVKZTdIZWtOMHUyNU9ma1Jnbk5CMWFsbFg4THlTSC1wRzc0dXhvRDZ3WHVxdVhyWkk4Q2w1ek1ld1c2WGs4Wk1LMmRKUmowX0ZDVEZDOWthdlVIUHI5eUNPcHpCS3lpdjF6b2Nn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 5,
-        "lead_ts": 1789051528
       }
     ],
     "culture": [
@@ -246,16 +246,16 @@
         "lead_ts": 1789021214
       },
       {
+        "title": "The Best Celebrity Outfits at New York Fashion Week 2026 Are Putting on Their Own Runway Show - Marie Claire",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNZUQzVTRCSDFLZ25PZkdtbFp1QmRWeXBtQ0lCZDRDa3pQR0FBN0NUWlBZYTIwM3lXekwzakwxaEFuVng0aG5CVjZhUF9FUGxnTmNYenEyc1hzUGhqeWc3RGUzaC1SVi1CdC0tWXRkX1M0Tk9mQy1YZTZlNkNQSGdZbEZvcTBrQU1QMlQxZldDb0IyTHVmOXFEdUU2Y29HT3N2VlE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Marie Claire",
+        "n_sources": 6,
+        "lead_ts": 1789077981
+      },
+      {
         "title": "Harry Styles unveils two Rose Bowl concerts in Together Together tour extension - Yahoo",
         "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQSzRwdFNlVzk3U18yeHdCTDM5Vk9nenlodEZXXzQ0VVpzak9OS3ZsOU1pVUNEX1ZzZFdudW1WUjVvLVRnRWVSN04wSDhKcURjbjBwaWl6V0JVNjZ5eVFWRHVRNWtaNnhweDkwQ0NWRTBONzZFekxwd1dpbHdQTUtPeTVYWHd5YlpMQk9mOW5Xamh2LUo4R0xmcEtGVQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo",
-        "n_sources": 6,
-        "lead_ts": 1789062503
-      },
-      {
-        "title": "Harry Styles unveils two Rose Bowl concerts in Together Together tour extension - Los Angeles Times",
-        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPVm1tZnp0SDZNMExQQl9vaUZmYlBYQ3FLVjJLZDF3MjhZaVA0N2h5Wnd0c3dUSS03MjU2RE5sSU10QW55TmJFdzg3NXBKQWx4SGFwclFxWVhra0pEOU55Sjd0eDMwaDQ3QXgwQmxIOGdpS0dQY3dKc280ZXZYY3Vya3ZnQ3Mwc2ZGTE9lMnVOU2lGZDNwX1NRV0FqM1lXbnJMaDQ3WkFjRjlsMWVvZVVCSHNsMzEwR3FkODdR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "LAT",
         "n_sources": 6,
         "lead_ts": 1789062503
       }
