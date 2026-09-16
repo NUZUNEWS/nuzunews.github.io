@@ -3,6 +3,13 @@
   "today_top_by_section": {
     "us": [
       {
+        "title": "Trump blasts Supreme Court on social media - SCOTUSblog",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNN2JfblNvNHdzQmg1WTJvdHh3cDMydF96d0FldWd4Yk1MZXVITkRRb0wweWRCVm9KclNHZmV2WVJycGQyRy0tcUUtNnBrSHBsTWxBTVJyeHV0MjVMTmpuWmVwT0RHTDVLLUVMZGtHVERqR1B0ZDB2QjJ5YkxvSGpILU1vdzg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "SCOTUSblog",
+        "n_sources": 5,
+        "lead_ts": 1789563705
+      },
+      {
         "title": "Opinion | Trump\u2019s latest Supreme Court tantrum - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOc0kydG5sdDBTa21pRFVlNXJCeWlhdE9WZzB0dTViM18xbXAtT3BncDZ1aGEwLUxZby1lUFJadF81d1liRkxMWW1sazE2R2hiZ2w2eFZmOWhiTTJKREZyY3lDWEZacGJzODhoXzREWlZVUEM5RkNCRTBnQVVRd3F1VnBleG5ZTzlmNzJDSlBDdkF3WG5iV2k1UVJmRGQwZnM1N3llYXZaNmxQQ09xbENrbl9IUWZXUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
@@ -29,13 +36,6 @@
         "source": "washingtonsun.com",
         "n_sources": 4,
         "lead_ts": 1789510954
-      },
-      {
-        "title": "Trump Criticizes His Supreme Court Picks Over Mail-In Ballot Ruling - Time Magazine",
-        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1yNDFUeHBKckRWdWQtRWttV3VOU1dNV1U0eG80WElJUDQxMGktNlpzbUVNNWVFa0t5S0MwVzUyeVhObDJWcDBlU0JYalN5TkdrY3ZyaG5YX3c5X0VxWUp4RnVJRXRaTll1VEtTRUQ1ZF9qX3VEMmNOLTJ1RXRNZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Time Magazine",
-        "n_sources": 3,
-        "lead_ts": 1789552805
       }
     ],
     "mideast": [
@@ -45,6 +45,13 @@
         "source": "tribune.com.pk",
         "n_sources": 7,
         "lead_ts": 1789557809
+      },
+      {
+        "title": "MBS and Saudi Arabia Face Crisis With Escalating Houthi Attacks, Oil Pipeline Shut - Energy Connects",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOZkhxVGE5VTRMN3h4bWhTN0k4S0p3VnlpRHd2MzRMemtoOUxCdVBlcWdsNTNRc0pnMWxGNVdGb1hZZzlyU3FxVS1fdmtlTFlYQS1fYUNoNzN3bTBtMVpNcklRRDk1Tl92RU1vWHd3eHZxOVBzZmlDQzlOSllQOVFmZkgwT1VXMzBLU29HVGFzR1g5WFBKU0tHM01rY2Znb01nRGZnclZoVWlqbUxYYTY2VU0wc3JCWk1VMXNDeXE4c24zMlFpOFVzQXpFVUpxYTZFQ28td1VGcnE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Energy Connects",
+        "n_sources": 6,
+        "lead_ts": 1789571737
       },
       {
         "title": "Saudi Arabia says Houthis target Mecca, warns of 'red line' - dw.com",
@@ -66,13 +73,6 @@
         "source": "NYT",
         "n_sources": 5,
         "lead_ts": 1789518813
-      },
-      {
-        "title": "US, Israel, 7 Arab states held private Iran war meeting: Report - Awaz The Voice",
-        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQbXdOUnJmRjY3NGxrNXo1T0lKbE5Obk5RVUNaSnRlQk1KLXNoX2hWN2dBT0VRVEowZlo4S09VNjI0TW1Xcmo3SG03NzhXclpTa3phNllUVU5yVlVhSmVfMkdQVUN6SmZVQXdta3doX0lXWEp0Y0xIa3FFcTVZVFRadVQxTm9EUllablhUekxiT3FUM2hEOU5feFBYUXpxYkxhUVpyLXl4ZEV3enpt?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Awaz The Voice",
-        "n_sources": 4,
-        "lead_ts": 1789536247
       }
     ],
     "world": [
@@ -84,35 +84,42 @@
         "lead_ts": 1789558113
       },
       {
-        "title": "Saudi Arabia calls attempted attack on Mecca a \u2018red line\u2019 as Iran-backed Houthis deny they did it - myMotherLode.com",
-        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOTG8weWotQ0o5MlVIVEQ4cDZ6VTdGUURhUHh1Qkl6N1ZTTnRaYVZlTHlvbENqelZxcUZnSlBDQWV5Yjg1YThvLVdHZC0xa0x0ZzRhQlM2dHdURHBicDJ2OTBxOVRwbTNOSzZQNEhpZTFjRU5TRklERGVLZ0hZN0k4Y0llMkcxRnhRQ1hsd2VPWXk4WW9QS3JPOU5NUUoyWEVZenhCMjFYem9QM0xZVmh5eEJ2akZCYkxWZXRBTE9qUm56SHRfTXFuZG1LVWMyREhfSnRfU0VWNk9EM05NWGfSAeMBQVVfeXFMT0FQb1JWVmUzWjR2LVhSNHgwX1B5MnJ3TDdwQXNYeDFVVFMxRW16ZHQtVWI1QmthV2VlaXU3b2h3MFN4UUJ1VzRNdmJ4ZE9pWTEzU01pWjkyV1R4Z1ZISldORjlVXzQzRmQydUZxQWhFZzBlZXBseGRSSW83ckgwTEtEMnFWOV91MV9kcVFoMFc2b3RDM21fbnNqSnI0WDRzajdwa0h6eDhBc05oZnpwclRMY0JFcmVRQTJ5ZklxdlJuTTRYNjNjWmxlRjJ0dXVXSlIyVS13Nmd0bjEtZWNVdHhlWDA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "myMotherLode.com",
-        "n_sources": 2,
-        "lead_ts": 1789557726
+        "title": "Wall Street holds steady ahead of the Fed\u2019s decision as oil prices and bond yields ease - KELOLAND.com",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSk1uUk93ZEJ4WXRNQjg0Uk9kazhVbGRxUlZxWWdlWko2ZFphQjFwXzJGeDRXQmp0SFk0UTc1b0JzTTE3d014MVd2QWlaUkdVR1VSOVFiS1ZZajBaZk1odFduV3BEbW96dUk5NWtXU2FQVGN4RWMxeFFMR1ExSDh1RHF2Sy1JbzhsZkNQWjNxY1A2VVozcXBKVy1iaFFIVjRZUkVEYTdGM0xmUXl2c005aWQxa3VxeWxH?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "KELOLAND.com",
+        "n_sources": 3,
+        "lead_ts": 1789566343
       },
       {
-        "title": "India summons Pakistani diplomat after incident in Arabian Sea - Al Jazeera",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOU2hBZ0dsM01sQUpwWm1LVWo0dWZnenFfYTJYSW9OcFVqS0dIX2J1Nnk5RlRiaTlGazdEU3EwWmVvb3pnYlVSR1BUbUkyRy0wZWVRbUw3UzZIMm9EQjJ4eXdkLXRaU1lBNnlEOHFrNHV6RTR6U1lOYk82YzlIWTJiMVNSbkVKeG8yWGhQNjg2bndGUnh4REthYml5SEtCLUU4a2FjT0ln?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
+        "title": "Debris Found in Yemen Suggests Saudi Arabia Fired Its First Chinese Missile - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOYTltOFBPQkhPdUNLSGhWRkZzWGFqV3dEbk0wUWtfbW9PNEJ5ekNVLU9tSkdYQ1JmaFM1TXg3VnVocjRpNUdxSGo5NWlkRlVhazVsYWVKU2lodG5Rb2VfZmYwOTlVYTlLbm4ya1R6MkFYM1NXeHlpVEIyQkd4YXg5OGx1VnNsVUV1dy15cmJFZmN5Zzk3M2tqV19ycDRLS19IM0JrRTNsak9ZcXdKMVR3ZTdxcERhdlhFMGNsdHFrdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
         "n_sources": 2,
-        "lead_ts": 1789555632
+        "lead_ts": 1789572420
       },
       {
-        "title": "EU capitals caught off guard as von der Leyen announces \u2018associate membership\u2019 for Canada - politico.eu",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNNXdGU2c2LUZlbzA5ZkRzZHdZYlVMYlh6ZEl3amxTX0UxZnVDNDIyUjRrWlhzWTQtTmxpcHZYTURRbW91bWRRRjJlUjQ3eG44YkRuclVPMS1KUzhUYUhRU3ZOamNZNGU5S0tmUVRnV282Z3VuVkllSDJkWFRQT05QeFBmalNzZWtHekt4MkE1U08tcjRWbllmWmtRQmlZQlEyWTUzZ0dZNEU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Politico",
+        "title": "EU chief von der Leyen calls for EU security mechanism to respond to drone incidents and sabotage - Boston Herald",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNV3Q1QWdyd2c5UzlqRlhHbGtxVmVhdWNaQThUSEVCSkpMazRqVlBnUFlBejNqSGxiRVZDTVlUc1k1UXZ4Wm5PZ3czOU5xVXE0QzRhTWUwM21JQnR5blFBOFNlR200OU5OQl9fWXp2Qlk5MldicFF1R196b2EtdkhnZFdmdGxXRDQwUkRPTms1TDhCUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Boston Herald",
         "n_sources": 2,
-        "lead_ts": 1789555529
+        "lead_ts": 1789571719
       },
       {
-        "title": "US House takes up Russia sanctions bill backed by late senator Graham - The Straits Times",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQYmhMcE1XVXRNOHhQY0ZJemNWYktNdXRVREhDWmEwemNzUE5nbnZqSngxVElGWDhVSjB4ZWoxb0tzV1BKc0NucVZ2emF5V0pWTW9XQVo3Wkp1Sy1EUlpNZ3NOVWZkdk5VdFF5RUdfYXlRM0laWmE3WjJFamxWMU0tbjZKNzZBeDljdkVyMWJyQTVsV2I1c1dtb3Itc040N0FxNUE3dWtmODBlOVl6d2Y1YQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Straits Times",
+        "title": "Houthi blitz leaves Saudi Arabia exposed, Iran emboldened - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNU210dG1ONGRhN0FKOXF3WUpTLVowR3hJTGlsMVA2LVUtXzlacGVGbE5Hd3VLYktLOEgzYXdBZ3llMzFBdW1RMGJJaUxjRWJHSHRNZmh5T3l5RW9qTDE3Y1NRSFhnVjlEQXR0QzY4Ym0zdUc4MGxNdkZMT2NYVVU1eEtxcUtWYS0tdHpCcmJVXzdXRDZFQU1PeHVuc3I2bnUzb3NBR2pSN1V1YmhMSFFz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
         "n_sources": 2,
-        "lead_ts": 1789554420
+        "lead_ts": 1789571252
       }
     ],
     "tech": [
+      {
+        "title": "iPhone 18 Pro and 18 Pro Max Review: Apple\u2019s Best Camera Isn\u2019t for Everyone - CNET",
+        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBoalpnTGs3ZEttSWpsQ20wdjRmS011Z2NWZ0gyTlBzVnl1eUZvV0dsQnVYejVuV290bWpILVZjNFdxNTNkVGdHWW1lcE9hcVN2NEw2OF9fdXlUcGtzZHlPdHYzVEZhOEloQ3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNET",
+        "n_sources": 5,
+        "lead_ts": 1789564920
+      },
       {
         "title": "We don\u2019t need AI regulation \u2014 leave safety to us, Nvidia\u2019s Jensen Huang says - techcrunch.com",
         "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOTW5yQnNCZkM1c1JRdjA5eFNnTnV4d0dfa2xPcWNrcGFwZ3Z0eTR1UUlWRFhtMlBKU0JfNVdnU1ZzV25Ea282aXhfZ3BkLXVnZ1pHbTIxQkI1enlyMmh6RldUNllKUkhGNUtDZVJMU3JFaVQzaGtVN29zQWZMOTMwYXc1bjFsNnJ5YVVadGtmN29RTENOSDdOcWREY3V3eTUxS1dIOEEtdXJjdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -135,21 +142,21 @@
         "lead_ts": 1789506903
       },
       {
-        "title": "ANZ CEO Matos\u2019 AI Warning, Data-Center Boom - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQLTlrelA2bmg2ckZGOUFEMmloS1FOazN6ckFyMVVaRmsyR2hOT0NkTThsLUlMdFZFUVY4TUZVNkhnOS1IVkU3UDNKQjNxbTVpdS1GQkR6QzhvUlg4N3ZRVWNpTWZNc0xkcWpnb2ZBSW9qRDVzcWxqcm1sU0FTRWlsT2RrazJKRGtqU09oSTJiYTRiUE1FT2k2Y2c3N3lWR1Bncl9NeEtVMk1rdG9ZSnplenUwMWR1UkhFZGYyMjNaRGRhV2UxWVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
+        "title": "Ivey\u2019s ed tech commission weighs how schools should use technology - Alabama Daily News",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNQW5td2pYMVpoV0ZTU3B4MURoT01yUERFY1B2Q1ZZdzNkbEl5Z2NIWTlDYnVjSDRIVEMzbWZNVGF2RzRJOHlmcUJZMGRfS21SdkkxMkNsR3h5X0xyVExPVHBqR3NHMjhNbDNYRkg5a1p4TmFYc204M2JEa282ZkZxN1FEZThBbkxKTU4yUVpwMWE2VWpK?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Alabama Daily News",
         "n_sources": 2,
-        "lead_ts": 1789556027
-      },
-      {
-        "title": "Robust Demand for AI Computing Continues Alongside Calls to Slow the Technology - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNaVJYVmN2NlE1RUhsZW84aWM5bm9SaXRxTlRfNlJ0SVZEaUFwYmpUdXRCQ3dwSGZDdmFEc3NPcjg0SDBmSXNTaEJsOVFxN2FPdmh2ekYybE5PWktoMURhMzV1alBBY2otdmlCbm1UdmVUdUU3TkRYSGY5LXlVbEZWanBkaDlpSVZDWGxKclRJM0hJNnFrY0xSR3FfSEdkd2xGLVhSQ0lWMm1uM1U?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 2,
-        "lead_ts": 1789551388
+        "lead_ts": 1789564197
       }
     ],
     "business": [
+      {
+        "title": "Wall Street holds steady ahead of the Fed\u2019s decision as oil prices and bond yields ease - San Diego Union-Tribune",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPOXJUQ09vRmt4NTZaUGgwQkpqLTFxLVdLd2RLVldsbjVfT24xcW9JcW1VVUg0dVc2bFQ1bmNGaUxvWEhJdXRIM0Foc0dtSlRJdFphamFfajktS3liZ2JqTWpfcVR2blRpME0tQmJ5TnEySnFVY0htOFJwNUdDWnlpVVEtUXFQSk9UUE9lT1R5YjVhN28?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "San Diego Union-Tribune",
+        "n_sources": 5,
+        "lead_ts": 1789568775
+      },
       {
         "title": "Fed rate hike today: 3 storylines investors should watch in stocks, oil and Treasury yields - Business Insider",
         "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNMnFVZVFRVUlPNmpONEZkRk5yc1ZSa3FHaGFMQVdvMTJIbHNLdlhERk9iVThZRkN1N0FkZ3Z3M3IxMFdsMktmZWRPZUFMMmI5TDEzOU1IcjNfRXcyeE9NVURpbndrTVdEdkt4Qkl6eGJDYkFhdWxzbTFMNklOQXQ4QVhFVDhZM2xlMW95SVRkcjdERTczS2hzcEM5STN1Qk53WUdUMTFB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -177,13 +184,6 @@
         "source": "CoinDesk",
         "n_sources": 3,
         "lead_ts": 1789557411
-      },
-      {
-        "title": "Federal Reserve interest rate hikes usually pound stocks, but then something surprising happens - finance.yahoo.com",
-        "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPMjhjWnBNa3pQVm1Yb0taMlNmQjR5RFlUZ3RkR1ZiVHhSeHBuQnE0cnR3ZS1JMERRSGpneEJ0bEV0bDhTTUhiYXp2aXB3SDVSZElYOXJmdkpWSDlXcXFRRkZoT01HaDVUMjNqeWRXXzFyX05HM05CMjFlOWg1NGdENmhwWEdrMmktMWo1QzlZajJnNWRoTjlIUnU2SWJXY3ZoSVBRWmxDLXdfZ3ptSFpoY1FCSFpRRGpiQXczcFRnNXRldFZYSzBIZGR0eEpjQ29udFBMZUJiNG5LX3QwRldjeVZGOXhIUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "finance.yahoo.com",
-        "n_sources": 3,
-        "lead_ts": 1789553089
       }
     ],
     "sports": [
@@ -195,6 +195,13 @@
         "lead_ts": 1789531342
       },
       {
+        "title": "Fantasy Football Start 'Em, Sit 'Em Week 2: WR Edition - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQU2dRdVptV25sRjlZTFotUVMtUk1mQnEtWV8tNl9HSWJ4UEQ2SHNCdTdYM0FXSUZoR3ExRTctU2NGSVdQUkRvdEl2ZVNZOGRaOUliRGhtN2ViVGlrTXUwOGJaSGl5U1NDcGcwQ0ZGYTNSOVM4STEycWJSanlDQXItc2o2WHA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 7,
+        "lead_ts": 1789571243
+      },
+      {
         "title": "Week 2 fantasy football busts: 5 players to bench or fade - sports.yahoo.com",
         "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQcWpVcEROa3hWUjhQUnFPbnpDUFRrTVZ0Zk42ZDR5ZW56eW1BXzNLVGJNUjJ6Y2VUeGRQbEJxZ2pBMjc2LU5Ob0ZwS2plQUc2TXI4TjVQTmZnV0lDaENnLS05QXFUSVFpNmZiUEhubTdjRnZpS2E2ZDY4RFpsMmV0Tzh2a1M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "sports.yahoo.com",
@@ -202,25 +209,18 @@
         "lead_ts": 1789553010
       },
       {
+        "title": "NFL Power Rankings: Cardinals soar, while Packers tumble - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOUXNQYmNWdU1leU1uWkJqUVlYYW04S1J0VWtCcGJ1Q2F1OE5NYlF3MWJKMmRpSnJfV2hOdmJHQXRjUWJvS1V6M2JDd2w3Z0kxX29Pa2pzdTFTTzNVT0hwZHZaZ21pNk1sMFJYYVFVWHNnM0lWVkFDZXRJTjVBWVpxNjg5OFZ6OGdhR0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 5,
+        "lead_ts": 1789570060
+      },
+      {
         "title": "NFL power rankings 2026: Jaguars, Giants surge in Week 2 shake-up - DAZN",
         "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOTllQTng1S1BRSGltV1d1eHhORUhRc2JSY0I5WkVyeHdVM0FpMlczbDI1bXlLeFIyMTVCQjNjcEVhdnpRQnd6VVpkYUp6eFVPZEdRZjRUTzlZYVVueDdOaHAxbkxPVGYzTnFOZ05URTMteVZOc3lreFV5TkxmazhzaUlpZG4weVMxaFhNZkEweE9Wbk5fMkF0RW9ER2oybk1velRVTnFxV3FCZlIxMUNLcG44R1A2UmhHTzlF?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "DAZN",
         "n_sources": 5,
         "lead_ts": 1789557424
-      },
-      {
-        "title": "Karlyn Pickens debuts in 2026 Women's Softball World Cup - sports.yahoo.com",
-        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQSHBPQ1dOemhVQmctT0hJWTI1TXNFeDhHbFVKZXdfUldnRm1GNTVPN3ZuR2xkZkhfZGY4MHNNOGhmd1UzR0s1aDBUSS1IVy0zUWF3RnB5d0hDWTZCQ2xrSzAyXzh5RVE0REtWN1FRNHZZVHVFejZwaE1YUnVEUU1tdUh1RVhNMkhLaXc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "sports.yahoo.com",
-        "n_sources": 5,
-        "lead_ts": 1789557217
-      },
-      {
-        "title": "Alex Morgan, Crystal Dunn, Marta among players calling for FIFA to move U-20 Women\u2019s World Cup - The Athletic - The New York Times",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOT0dzNTV2Vk1yeEFoTV9keHpmTmdCWXpPM3h6eDU5akpEY3ZLUW9LX0xSVmNTTVVhT2hBNFl3NFBtLWpKZUlhd2JsM0EyMG9DVE5ILWFNbk45RVVZcUJua2VjVjlsRU1MY0FnVUktU0NoNnN1UTNzeUtVR2tSVWJEdG1ITDFWSUhWZWtVUEx3QURnVFAtQmRqQkJIclJ3UFYwMGt3SHdB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 5,
-        "lead_ts": 1789513680
       }
     ],
     "culture": [
@@ -239,6 +239,13 @@
         "lead_ts": 1789535340
       },
       {
+        "title": "Ms. Rachel slams Ed Sheeran after Macklemore is dropped from his tour - USA Today",
+        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQSjhKYVM3TVJxUXVFZ3ZhbzBiWGtrU1IybkJXUnNBUzloRWRjZExxU0w0RmpWWEdkY2xOZ1RtTV9fTWlmNnU2TGZMOUg5dFdrbHdKQjdYdmRHTFBlQzVCQTV1TWU3TDlBYVFaQzZlZUNWcWV3QTJVR0Q2aGVzT0VDZDdGTWJhUXdIV2M0dWl4b2NxUzctQ1g0VGNNV2dyQTVyc29QU3JoRHBwM05JbWFGelhlNXhPcG5ORTdQQlRCX0k3TDlQMldQM1hxcVQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "USA Today",
+        "n_sources": 6,
+        "lead_ts": 1789558500
+      },
+      {
         "title": "Ed Sheeran\u2019s Tour Openers, Backing Band Resign After Macklemore Removal - Pitchfork",
         "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNQXpvQmc0eHQ4VGt2M1dET2VrMEdJOHA5YjNaS3VYcnhzZW9WN2gydHBUSzg2dG92X0VuZDBUenUtdDVXQzlDXzVWclJKSG8xVjFELUdZWm1UcWNWbEJoT3NJblAtSnFONmJMbVNvNWkxdG9ZcTFzU0ZIX3VBMGRsWVZHdEZSNElFbVM3QnFEM21uRjZTQXhuR3NJX18?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Pitchfork",
@@ -251,13 +258,6 @@
         "source": "Yahoo",
         "n_sources": 4,
         "lead_ts": 1789529220
-      },
-      {
-        "title": "Kim Kardashian Awarded Symbolic $1.15 Over 2016 Paris Robbery - E! News",
-        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObVlETUx2ZHYxR3BtUVhzSUVWVjVLV0UxSVZ4bnVSaG1CanRfdXM1VEpPdjVjUzlfZ091T2tiZFZzSlBERVRQcE42dEU2cGd3OFlYUmd4REZmbDJRaU95MWt0ZlRWVElfNUoyYXY3THZtZE5TNVY4d1I5SC0tNkpLZlJvRW14bkFvR3BRSjkzRHk1WkU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "E! News",
-        "n_sources": 4,
-        "lead_ts": 1789518960
       }
     ]
   },
