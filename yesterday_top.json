@@ -3,11 +3,25 @@
   "today_top_by_section": {
     "us": [
       {
+        "title": "Trump bans media outlets CNN, MS NOW, Politico from White House - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQMlVWa0ZnX0VIQWsxTUVRTnRrSV9SLVFKd19wQ2FGRGx0QlNtSUZfd3JBbDRZZ2hNU2lXa1haT0dESVZoMWp4UnF5UDFTRllIQ19Ibno2QVVndW1yODN3VUdvV3RpN21Sd2R6dUZyLUFGSGtnd2hrS1FNVTNDajlVNG9TRDVxa0lyN2s3NTgtXzBTMktpU0dQcTFwdmlZX0dEcWc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 5,
+        "lead_ts": 1789759663
+      },
+      {
         "title": "White House withdraws nominee for ICE director allied with DHS chief Mullin - washingtonpost.com",
         "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQb1RqUThVS1BQdDhIT2tmUThwc1VIQ0RiM0pTVFpsTXFBMmZlZHBYV3BUa0VRSEh3Y0Yyc2p6MEhMb1JwNi1XZ1A3NjBndU5jM1ZXTzVvQW5aNWFSUHZKYmRDWHlyTVBvaUJkNHNpX0hDMlg2TnNBVmtHT1VFbE1TekVCYVpDa3A4dnFLekg4dzJmLUQ3MWc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "washingtonpost.com",
         "n_sources": 5,
         "lead_ts": 1789687324
+      },
+      {
+        "title": "White House TikTok post goes silent after scathing Zara Larsson critique - NBC News",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNbW5VVDJxR0YzaXJ5blRjZkRROXMweElfVXJaZE1lYktJbEZqcXZLeVBJSUN4OFk0UVVsejhKbDdrQzhKWHdWZ1F0SUV3VU4ydnNrbnNITW5QdWltV2xSZ1BNVlRJVTNjdHJjYkt3UmVvdUthYXRHZWVtamQ1cUgwTnBZOTVSNUtBaE5pTTZsWlVGeXkzMzJ5QnV3dlBBSFMtN2c4NmZ6cFhlaDZENUJyS0VfY04yU2VuaHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 4,
+        "lead_ts": 1789755478
       },
       {
         "title": "RFK Jr. says Americans worried about vaccines have a \u2018friend at the White House\u2019 - The Washington Post",
@@ -22,20 +36,6 @@
         "source": "Reuters",
         "n_sources": 3,
         "lead_ts": 1789736889
-      },
-      {
-        "title": "Trump withdraws Lance Schroyer, a former Oklahoma state trooper, as his nominee to lead ICE - Federal News Network",
-        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQY3BEZ0hsZVFuNDdhR0NPTW1wSjBEcXAzcHplRk55MmstVkx3WTFST0xkZDluRnpXYlVuZnR5QU50VE5JNTY3WlhWbHRBNHFFT2FTa2lhREFvdXRPWUZMVzNScVo5U1cyT2w1Y3N6MmNSMXdqWmNPUk1wMUE4QlVNeHRIVDRkTDdsUmQ0Vzc1QUI3Uy01Q0pyQmFncmhNVk9mMlFNQUkxNmdObEp0VVhzTFk1UDRSWE5DQjlnZWxOT0YtQzlPckxrRmowb0NfdXNERExMN2E1UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Fed News Net",
-        "n_sources": 3,
-        "lead_ts": 1789716099
-      },
-      {
-        "title": "Security Researchers Hacked Into OpenAI Using Anthropic\u2019s Claude - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQcW5TQ3c4elF6NEloRlVEN3JqZnVOOVFmWW5HdXRvR0pybGRXUzFFanItb0pLdzVDZlpBUkJqX2xMejdKV19ERHM5N2kzOGdZck1Eem9yNVBSWVRSMkNqRFZkckRQb2FCREYtV25iZnNRRjNralRubkM0MXRRekhxZ3lIRm1WallPNFJBOE5oMENhdUk2UVZ2Y0xydVBpVGhuTnlzZFZYeUZnMzg0NGJBQ1dkWGRTOVJy?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 3,
-        "lead_ts": 1789709214
       }
     ],
     "mideast": [
@@ -114,6 +114,20 @@
     ],
     "tech": [
       {
+        "title": "Newsom Wants AI \u2018Kill Switch\u2019 to Rein In Tech Industry - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQVTQ3ejdRYU1ZWlcwbjQtV2o3Sm10R1l3WFpKdmpLMVMzb2h3QTAtY3ZYSlRveHpFYktaOVc4V0JzQlE2eVdkWTkzY010T3owcm53RmlNMW1tdGdXX25TUkdiY0NsVjdQdVFqWE96ajRmSm4ydmpZenY4YXM3QXEzY1hhLWxwT1FwOVpGSmItcG1NS2QwS2xKR1F2NWctMlJTUGl1UElIMTlwV0NJLTVj?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 3,
+        "lead_ts": 1789756374
+      },
+      {
+        "title": "Google\u2019s new \u2018CC\u2019 is an AI agent that helps families run their households - TechCrunch",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNd2ZzZVhmYzUzbWJSbkdnV1QtYnBxT2pwUy1xckI5NFVNRkRHMVUzU0FVcVNxbFEySjNnMlQ1LU9Kc2JLbXpLUmFHb0pqdWNRZVNuVng5Vk9uTmpXYW1NcUdkcXJjdjA1emw2Zk02d3lOdUFQNXo2OFlNZjBvUHl3XzJuNVRUZmJJMXlwbjdJVFhweG1VTUwxZ0dHREFUdGlMUTFuc2ZydGQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TechCrunch",
+        "n_sources": 3,
+        "lead_ts": 1789752830
+      },
+      {
         "title": "Gavin Newsom is pushing for an AI kill switch - The Verge",
         "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWWVkdmlwMUNsZjZ5OUFOVnFINlgtbUFxQlpFQWFYbnB1QWEtbWJXRmdGcVZndnRCU0lfSklrOF8xR2FhS0VkTUp6SG1UZW04dDRLU2UxZ3FmN212cEMxWi03VDMwX2JtMTRvQm9mNVlaWEFaNmpQQTA0enBtaWFpN1ZfaUhjak0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Verge",
@@ -133,20 +147,6 @@
         "source": "Tech Edition",
         "n_sources": 3,
         "lead_ts": 1789747726
-      },
-      {
-        "title": "The king and AI: UK monarch Charles meets artificial intelligence leaders as safety concerns swirl - FOX 8 News",
-        "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQTXVScGdRejlEN1hTeW9NUGdTeHRGQnJOSlktSkVIN21keHJkN1FoSFdsdGxuNzNZVHpvSDRPb2xxV05VNVdSN1d1enk3aHctRl83eU9IbFpHOHRlQWZ0WWpqa2RRcFlSM3lnT1Nrb0ZIa05iX05pQnJZRDlxdEVuRDY5dFRyOEVHZi15dTFDelhEY3NqVUZZWU1sYnp4YU1KUXFZXzZmZjBlaURFNTJoWDVyMEFVd0N4MzlQVGd2dzlWVjNfYkNTa0pLTENQRnZ1SWxvbnF30gHMAUFVX3lxTE5Ca3NUVDdZZnUzQXZieVAycHdfbmNMWjRFTHVKMDBmbUFCSjVWYmtxczRib0RMSVF5Y3c2V3puQnM3bkpJTTRlWS0wNmpLU3JKVDYtazNucHhZdHFJUFpCazQwNGM3bXphbUJRT1ZtX0oyMTdKT3hjbGpyMVZkb0I3dDJpc2ZCbHNfUW94V2szUXY2VjBuQkQzQVcwdGJ0V0FwTXRPR05mdk9kYXJBS0w1T05UNVA1OEhlSmh0VU12Qy13NU53ZTZrVTFZeA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX 8 News",
-        "n_sources": 3,
-        "lead_ts": 1789693585
-      },
-      {
-        "title": "Google's Revamped CC Is An AI Agent For Families And Groups - Engadget",
-        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOZlhqXzFTb3VRNVgtbjNwMXF5bmpUaG1GdVc2SlZTdzFNbHJMUnM0QkY2NFBDaVRSTkRaMG5sZmFNUl9HbEg0OXJadGdMVkJXWUpKbEpiTXFyV1RBdkFSdEgxMmVxZ09SMmtfMDlQNEswTkU1RHVJQms5XzV6R1UzdUhtcFdtNXRncmc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Engadget",
-        "n_sources": 3,
-        "lead_ts": 1789685708
       }
     ],
     "business": [
@@ -188,6 +188,13 @@
     ],
     "sports": [
       {
+        "title": "Will LSU and Ole Miss meet again in CFP? - NBC Sports",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxONDFfYXVSdGUxVFA0VVI1RXRpeHVrd21HemR4aXJ0SzViOE9Rcm9GUGZzTmx1T19ZVEdzMnlBNHNBN0RvUGNMeU9iUGZmNlkxS0VyN0t4OTE0bEZBYlZoUmZJNWk1ZGFCYWp3WEFveFpzSlJVVDY3RjdMdjFJdkxiWWt5NGlIMnU0dTl3bXVUNDQwNGtaX1RhcVlULW1Odw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC Sports",
+        "n_sources": 11,
+        "lead_ts": 1789760323
+      },
+      {
         "title": "Ole Miss football news: Rebels cracking down on LSU fans in student section during Week 3 clash - Yahoo Sports",
         "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPOEJSVnVsUWN2WDJZUHdreHpXVVNKWVlxeVBaanl3VzVDZzZoM0p6TW9VenJjQUI2NEl4TzZZcjd3bFhqcWxiYm96SmVtd2hBU2prSVdSVmJmTzdZQ0FQQWZBaGFHcTIxTmR1bndwWXVaNk5veUhzbmdxU3lLZk5PWUJmWTQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
@@ -202,25 +209,18 @@
         "lead_ts": 1789750809
       },
       {
+        "title": "Fantasy Football Rankings: Hayden Winks' WR Blueprint for Week 2 - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQOWtkVXp0alM0czZITk9KbkFMbG5raG1OOTVzNUVGTWZhVm14aDlDNFp3SFB6RG4tRHo1Z1BqbUJtTWViYnZCVFBqS2VvR1pXdFRTRWpUeUsxUUotMEJIYzVSOERRWFRCcDlJMmVla3hZWVE2T1JLN0oydlFaYkcwT25SMmJiTENNLTRxenRCcnhraTR2N25lWGozb1k4Rkg5RVNLdmVrUWZjeXh2TUsyRS1PYk1CZ0xZeGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 5,
+        "lead_ts": 1789756597
+      },
+      {
         "title": "Fantasy Football Rankings: 5 most polarizing players for Week 2 - Yahoo Sports",
         "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOcTQ1MWFWdF82a1BlNzFESHptejl6OXFOVHNsTWpPYUV2dDBlcnRnTC1zX1gtODJSc3g4b292QnhtRFFFbUZBQk9QN20wcHdHd0pFTkUybXN1UUJBdm1kQVBOeU50X3Y4ekpuRkx5LWoxZzJsVEFaU09ieGtwakZNWWQ5d1dUQXRuNlJNd3dBbk5BME9ESnlSVlM1TlJxaFVVNG9nLVBuZFZaWGZoaW5uYzVQUXVvWkxocnc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
         "n_sources": 5,
         "lead_ts": 1789749830
-      },
-      {
-        "title": "Why thousands of trash cans take over the Grove before LSU-Ole Miss - fox8live.com",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQQjRiTDZtMlU1SmhUN0wxUEhoX2poeXBjN0JJaktnbHAzVVBFNm9PdnVkejNFV2ZjN0VrQzMzdXQ0cGZQNDFsS1ozdVZWZkM2R0Z4c1I0ZDllVkowQVkzcHFwdjcwVUZEUVF2WC02a2NPN29hR1gydTh1dGJOeVpkRE9ZQ21UOUlBWkd6cTE4SmxSVTNTSHo4VXBodGFQUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "fox8live.com",
-        "n_sources": 5,
-        "lead_ts": 1789746720
-      },
-      {
-        "title": "Week 2 Fantasy Football Rankings: Who I'm Higher & Lower On Than Expert Consensus Rankings - FantasyLife",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPVVdzX2JFTjBJcWVKYlFIdGZrdnB1M2pzNlQxMEVFVjljdFJyM3djei01STU2OXdEWnBDcVExaDE2NGpibEEwcHR1UXpFRTE5YmdUQngyMHphbF9iSFQzUDd1ZWlFLUFhZ2Z2V2NyVUVLN3hvc2xmN0hYbV9XNFVVb2lKc0pxajllMU5uZXpRdE1mM3lPSVJjcE5nQkpNZmN0Y3JLazZOLVllQlA2YVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FantasyLife",
-        "n_sources": 5,
-        "lead_ts": 1789718460
       }
     ],
     "culture": [
@@ -239,25 +239,25 @@
         "lead_ts": 1789689736
       },
       {
-        "title": "\u2018Dancing With the Stars\u2019 season 35 week 2 theme, contestants\u2019 songs and dances revealed - Entertainment Weekly",
-        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPZ3hSWm9SZnAyVUNjeExrbDFhQXJUOTNFa3lQajlSb0VaS2VmOXYzM2hoRUpYckh6cXJMVnN4U1BtRVhaM0ljUFoza2VfRlBqQmJsaC1OdUt2c0RBWTBVZHkxNjVSS3FPdUNfa3ZtaFpmWkpQRnVkTVRiWEZuYzhmZ3RSS2pvQXpWSHFNUG5IdjZqQmJUV3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "EW",
+        "title": "Brad Pitt Officially Returning for 'World War Z' Sequel - Collider",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE92ZnBOM2UwT0hGUXZmSlgySktpLWNMUVRJRTZHdFJpX2hUZ3liRlh6SFVFbEFQX3hpOUM3SFZWeTczSms1eWd5X2k4WEtZT0FTOUFxaU5ISGlvak9DSU84VV9ocVJjdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Collider",
         "n_sources": 3,
-        "lead_ts": 1789749484
+        "lead_ts": 1789753993
       },
       {
-        "title": "Millie Bobby Brown, Jake Bongiovi welcome second baby - WHIO TV",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQYWYwYVJrVzc0R01LRFJYb0ZZWWpWVnRBRHktbUNOWno0cEdYa0hDclRMaG1obG1CZG5DVXJHZXRKOTJSeUhVR2dIRm50X1JaTkFRM1RBdUEwSnlWMkRReVJqVFRRU1h3SHlBRGJCc1Q2Q3JtNFJJVmp1dTBWbWhhOEN6cDBsX0JGLXd6U2s1YVhWd20yQ21UT2dnSGlSaEU3NllTMTJMemZwZV9icUpuVWcwcWhtdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WHIO TV",
+        "title": "I Love How Much Tom Cruise Loves Taylor Swift - Vogue",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNZFJkcVgxNUFHUkFwZmZZUW52NUJyWHM4bEhQLU01WnNBb2FxWmVFamFmUEU4ZGJzWXU5aWE0ZU9SbDZ4UHRUNjF5aW41a3dmVU9ZLVNWNUQxaHpKM3hTUVhKUFZkUUtMYWQ4UE5mcVR1R0dVanJBNm1DdHNKeDl2Tg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Vogue",
         "n_sources": 3,
-        "lead_ts": 1789747142
+        "lead_ts": 1789753676
       },
       {
-        "title": "Tom Cruise Says Taylor Swift Was Schooling Him on Football at NFL Game - TMZ",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOY2ZSSmp4RTdkZGd4Y0FUTzlrWDJWZTdDbUhYN1lkZjEwM2NNelR5Xzg1U3ZFc3VSYjZEem5DWFhtZXlNaUtVdS1KMUs5NlZZeTlieFBNSW1yR1NDcERXNVhfaHB1UThOOVJwUVVBME1UeEl3LTJ5SGRmNnNRTU1ILXhnaFZoakpOeDBFNmM2dGtHNGpRcjJ0aVAtcmRQWHRkRDBQag?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TMZ",
+        "title": "Netflix's Biggest Crime Series Reveals Massive 10-Season Plan - IMDb",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE02M0dySlRWRlp5UE9jcjBiZkV2eFhManFENkVMc1VwQ2xqUmMwU0labGNrMTI1M0laWkJSZGNHVzI3dl9KSVdtU1E2aTMyeENOWlQ0U3o5eUVEemtpWVgtUGIzZTVZNlk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IMDb",
         "n_sources": 3,
-        "lead_ts": 1789743294
+        "lead_ts": 1789752018
       }
     ]
   },
