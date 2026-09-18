@@ -47,6 +47,13 @@
         "lead_ts": 1789686005
       },
       {
+        "title": "Live Updates: Latest from Israel, Iran, and the Middle East - The Jerusalem Post",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1jQV9XOV9DUnE5VE9JdWo4UFJmdzBCdDJOZ2llMFppajZuUGJrbTR1N0RnSUlHelVWd2lBenl5MTJYSjMtUGVXT081TUI3ZUhlSXNSSXkyUEV3QXFqN2k4YVQ0bVF1N2p1cW5reFJxX3F5bENfcGdsQ2pXQUZBUEU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Jerusalem Post",
+        "n_sources": 5,
+        "lead_ts": 1789750805
+      },
+      {
         "title": "Iran War Will Make Winter More Expensive for Some Americans - The New York Times",
         "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQaWN2amxlMEJ2cDZ4MndTYTBMdUthTEQ2aE1ud0NXbW9JNnFwWXg5MG5rdEQ4bmEyYXhaV3hqR0ZrUzFOcWJNS1BfYmx5MVdISWVERHBiSDUyREZwMkVTR1hfOTdxaVRLYWZZTTY1czZ1OGJuYzRza1owelNDa2VCOTAxMGtsci1KRWdrTTB0Vzk3bnFjRENEc0ozMA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "NYT",
@@ -66,13 +73,6 @@
         "source": "The Times",
         "n_sources": 5,
         "lead_ts": 1789713955
-      },
-      {
-        "title": "Oil Drops for Third Day as Supply Concerns Ease in Middle East - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQalJzVFVTZXc5UTl5ZXduSEprZ29Wekg0aXRYVUpuYXdacHAwVEQ1VXRyLUFpYVdRa0pDTmNwRG1MbTdZdWxEVzByb0duNmp5OTAxaWNvSHoyZVJMUkgtSlg4WFlFVXYtMG9Zd3FFc3ZVY0k4SmxJN2x3cFg0Ykp4RExXMlREU1ZQbk5ZdU82RHI4WlpydGpqczM5WkF1eWs?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 5,
-        "lead_ts": 1789682755
       }
     ],
     "world": [
@@ -114,6 +114,27 @@
     ],
     "tech": [
       {
+        "title": "Gavin Newsom is pushing for an AI kill switch - The Verge",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWWVkdmlwMUNsZjZ5OUFOVnFINlgtbUFxQlpFQWFYbnB1QWEtbWJXRmdGcVZndnRCU0lfSklrOF8xR2FhS0VkTUp6SG1UZW04dDRLU2UxZ3FmN212cEMxWi03VDMwX2JtMTRvQm9mNVlaWEFaNmpQQTA0enBtaWFpN1ZfaUhjak0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Verge",
+        "n_sources": 3,
+        "lead_ts": 1789751091
+      },
+      {
+        "title": "Disney Names AI Executive as First-Ever Chief Technology Officer - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQdDBJMEI1TVo4YmV6ay1MYndVQmJtS2w1ZnJpeUthOGZaQUlHNEt1TnpOZUZRZ1c2dnZKSDhkblB2Q2ZYbXpUZUJxUk5MTktRVzBxNVdCQ3diSnFpaExvVEJsbmVoMy1jSUkteW4wTnduSjNaTWRjczZweDk3MDhreTQ2eDJENlMyTTkzcDNIeGFrenZsSUFia28wTWVHZjRCYWxLOGdMQndXUFAwc0NWRWZ6UDJMZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 3,
+        "lead_ts": 1789750027
+      },
+      {
+        "title": "Microsoft and OpenAI raised concerns over AI training data in newly unsealed court documents - Tech Edition",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPWEg0OXpnY291UVVNZUJsbUNTMmQwbDVta2hTVzRYdXlwVTgyNGU5NzdYX1lpMmxLbHcyN3hxUDlNdjBycllJWm9uWVlkc3NOdlN5eEl1UTZ3VlNkMmRQYUpvSnFJa2l4cmVVZGtNOTRWdGZqb1Q3YllDZnhsSW5CTWdFdC0ydHdtZDRuSWNMTGN5ckpLZElCNUJQVlI3TGNSS3JLRVlrUUVveXdueTlMZGExRkVnRGM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Tech Edition",
+        "n_sources": 3,
+        "lead_ts": 1789747726
+      },
+      {
         "title": "The king and AI: UK monarch Charles meets artificial intelligence leaders as safety concerns swirl - FOX 8 News",
         "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQTXVScGdRejlEN1hTeW9NUGdTeHRGQnJOSlktSkVIN21keHJkN1FoSFdsdGxuNzNZVHpvSDRPb2xxV05VNVdSN1d1enk3aHctRl83eU9IbFpHOHRlQWZ0WWpqa2RRcFlSM3lnT1Nrb0ZIa05iX05pQnJZRDlxdEVuRDY5dFRyOEVHZi15dTFDelhEY3NqVUZZWU1sYnp4YU1KUXFZXzZmZjBlaURFNTJoWDVyMEFVd0N4MzlQVGd2dzlWVjNfYkNTa0pLTENQRnZ1SWxvbnF30gHMAUFVX3lxTE5Ca3NUVDdZZnUzQXZieVAycHdfbmNMWjRFTHVKMDBmbUFCSjVWYmtxczRib0RMSVF5Y3c2V3puQnM3bkpJTTRlWS0wNmpLU3JKVDYtazNucHhZdHFJUFpCazQwNGM3bXphbUJRT1ZtX0oyMTdKT3hjbGpyMVZkb0I3dDJpc2ZCbHNfUW94V2szUXY2VjBuQkQzQVcwdGJ0V0FwTXRPR05mdk9kYXJBS0w1T05UNVA1OEhlSmh0VU12Qy13NU53ZTZrVTFZeA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "FOX 8 News",
@@ -126,27 +147,6 @@
         "source": "Engadget",
         "n_sources": 3,
         "lead_ts": 1789685708
-      },
-      {
-        "title": "King Charles says AI needs \u201csufficient means of control before it is all too late.\u201d - The Verge",
-        "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPcDhTQXBLTnlmVHZSYXVYSURzaVpwVHpSU1BXeGRSY3IxaUc3R0dVTGNDX1puOVM1dkYzX2pkTHpHb3VLYXRKQ05oVGRrenRFeHdiRkg5dGw3VVhTZ2FIUXlkRnlnd2doLVUzQlJzZHhmbEFCaVZWM2Q2cVFmR2ZOMmd4cWVULWNLb1Ita0YzWDkyWE1NU2p0V1gzZkRCT183eFZwa2dlSndzM3Jrc0lwZWFrSV83eEFyYUlhWlRLM0kwSHdfLTlnSEdsXzZBTnF3dGFZZ2VR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Verge",
-        "n_sources": 3,
-        "lead_ts": 1789675469
-      },
-      {
-        "title": "Researchers used Claude to hack OpenAI - Ars Technica",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1tUFQ2c01oRUhKa0MyVGlERU9Sa2toSEhmcFMyOUg4Z1hRU1NwMUFZRk5DeGxNTll2SGZXT0lUUkRUM3pKOG9FSW16MG1xM1dRa0JsVnZuc2swVjBzOE5YNWxpNmhIZkREdm4ycHd0ZDQ2d25uRzVJLWhjdEc2MmM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Ars Technica",
-        "n_sources": 2,
-        "lead_ts": 1789738212
-      },
-      {
-        "title": "Anthropic AI news: Company says its model Claude is helping to build the next version of itself - ABC11 News",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNaXBaTnBtclVFRTg4bURueHZvX3NqdVQtb0QxRWx3bWQyVldwaHRja0cxY2VyQlgwb0hGTzNVVnpPdjBQRXhiYW1uSld0M3BpajVfQThDVG1LV1FKa1JvMlJNLUhjYzlyV0k4VUx4dEhqbE5JV3BrdzVHY3ZjMG5KZ25jSmFRUkFVNmpwREhseDVmRE1pSzZqUDBQem5JbzNfNXJ30gGoAUFVX3lxTFAyaWtoUUt2ZDRyOTZEX1p2ODh4SktmOEdMcGxlLUJlMlZCSHI1TWl6YVdiUUJsMlBVX0FSSmxkWFI2QUpuNEVqaEFpbHEzR1pWUExROS1sZW52N1JJaEFOODI2Z2RGSGs4SVU5OWNNOEc0SDlOX0JkR1FTXzFhZWRuMmNzaV9kWXduclJTZkdRLWRhdFVNaGdIT3dPTTN3LXE5eUJueFgwXw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ABC11 News",
-        "n_sources": 2,
-        "lead_ts": 1789735918
       }
     ],
     "business": [
@@ -156,6 +156,13 @@
         "source": "WSJ",
         "n_sources": 4,
         "lead_ts": 1789677360
+      },
+      {
+        "title": "Wall Street drifts lower as bond yields rise and oil prices swing - AP News",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOblR6c3AydHhyUC1oMVNJUWpVT0YwN2FJUHU0RF96U1JrNm5Xdk0zMmpuNjgycjBKMXBQR2JMWmtXRFo0ZVRhNFBHWWUwbXFWOFVQa3JQZUxMYlUxdDVqZ0hkQ09STUd2MDRxQnB2NE5BWnpwbkVxR1phMzRpZldUVlZJUFpOV3VOQ0hadDhtY1c2VVhlcy1YT0xCaWJ5UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 3,
+        "lead_ts": 1789747980
       },
       {
         "title": "Why Japanese stocks rose as government bond yields and the yen fell after rate hike - CNBC",
@@ -177,13 +184,6 @@
         "source": "WBOY.com",
         "n_sources": 3,
         "lead_ts": 1789672103
-      },
-      {
-        "title": "Thursday briefing: How the rate hike will affect you; the Kennedy Center closes; gut health; and more - washingtonpost.com",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNc1RBYWRNVUdNNWp1UFcxSng3VHpWUURHSDdLSEhQSENkaXZyXzlOaWc2V01QUlVFbndZZV9wNE9UdTJ6b0lsU2MxY21va1ZHbWUyN1dUc2FnMUY4cWY2UTZTY2NwS3c5WEg1c1lmZjNFNGI5ZDhLYWpOVEpVX2VyZUwtY0piem9ZSFhz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "washingtonpost.com",
-        "n_sources": 3,
-        "lead_ts": 1789666224
       }
     ],
     "sports": [
@@ -195,32 +195,32 @@
         "lead_ts": 1789687481
       },
       {
+        "title": "College Fantasy Football: Bold predictions for this weekend's Week 3 slate - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQY1ZTZE5WNGRJVkZfU1lGRXE4UTFiRm5UZmlxa0pMZjBYMkN1Ty1PSnQxVUI5dGNESTNUc2FKb3NjMFBHT1k4bUw0RWsyVk5hRnZNYWswTWNDakwwUkhzZ3hoNUE4QjE4dGZabzNtekpMOTVTZmVtRUxsbDRRS0VNZmlyZ1Z3c3hZMXdoaDdURjhPWUFxSkQ4TS1INVh4M08xVjB4SXd2bVN2RnF2TnhRdTZ3cUhCMGVkNV9Cb0JUY1locURsOE9z?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 7,
+        "lead_ts": 1789750809
+      },
+      {
+        "title": "Fantasy Football Rankings: 5 most polarizing players for Week 2 - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOcTQ1MWFWdF82a1BlNzFESHptejl6OXFOVHNsTWpPYUV2dDBlcnRnTC1zX1gtODJSc3g4b292QnhtRFFFbUZBQk9QN20wcHdHd0pFTkUybXN1UUJBdm1kQVBOeU50X3Y4ekpuRkx5LWoxZzJsVEFaU09ieGtwakZNWWQ5d1dUQXRuNlJNd3dBbk5BME9ESnlSVlM1TlJxaFVVNG9nLVBuZFZaWGZoaW5uYzVQUXVvWkxocnc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 5,
+        "lead_ts": 1789749830
+      },
+      {
+        "title": "Why thousands of trash cans take over the Grove before LSU-Ole Miss - fox8live.com",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQQjRiTDZtMlU1SmhUN0wxUEhoX2poeXBjN0JJaktnbHAzVVBFNm9PdnVkejNFV2ZjN0VrQzMzdXQ0cGZQNDFsS1ozdVZWZkM2R0Z4c1I0ZDllVkowQVkzcHFwdjcwVUZEUVF2WC02a2NPN29hR1gydTh1dGJOeVpkRE9ZQ21UOUlBWkd6cTE4SmxSVTNTSHo4VXBodGFQUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "fox8live.com",
+        "n_sources": 5,
+        "lead_ts": 1789746720
+      },
+      {
         "title": "Week 2 Fantasy Football Rankings: Who I'm Higher & Lower On Than Expert Consensus Rankings - FantasyLife",
         "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPVVdzX2JFTjBJcWVKYlFIdGZrdnB1M2pzNlQxMEVFVjljdFJyM3djei01STU2OXdEWnBDcVExaDE2NGpibEEwcHR1UXpFRTE5YmdUQngyMHphbF9iSFQzUDd1ZWlFLUFhZ2Z2V2NyVUVLN3hvc2xmN0hYbV9XNFVVb2lKc0pxajllMU5uZXpRdE1mM3lPSVJjcE5nQkpNZmN0Y3JLazZOLVllQlA2YVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "FantasyLife",
         "n_sources": 5,
         "lead_ts": 1789718460
-      },
-      {
-        "title": "European football news and transfers: Barcelona, Real Madrid, PSG, Bayern Munich latest and more - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQOTBvRG5ITDZ1eXlsSkNIWkpKc1dvekxrYVRnWFUwcDRrdWJ1RTEzWTJnUFRISkVnYi11bk1paGVaZ0RqVUctRFJUTFFHTy1sWDlTSkxuS1M5NHB5R2czRkZaWUVnYkdabzdDRl9xS2hDVHRBS09tZnZubjlaUVBoOHc0N2FvWmJ0QzdpVG5nQ1FiS2t1czh5S3pDMVp2Rjl6dUwxaVNUcks0TWZ6QWdCRVNtTTMtVno3SHpIOEY0ZE0xNTlqUW9CUi01cjJoMHNYaEFZWlVXZlVaajEwVHkwLVE0TS1ZT0U?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 5,
-        "lead_ts": 1789717060
-      },
-      {
-        "title": "NFL 2026 season live on Sky Sports: Fixtures, kick-off times, TV channel for games this week and weekend | NFL News - Sky Sports",
-        "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOU2YzU29hV2QtOTlqakdjWU1HYUJXQmNEREJ6eldJYzJRa09pSkJwZ19EQkFqRTB0QjNzcTBUMlQtekdnOC1Rb0dmMnRnaEc0blQ4RlRZNmI4VkpIWV82VlE1UTdWbDlYUFI1d0p4S1g2VlhIU0JYYzIwSkYyQkJzbThVYjBFb3E2WXY0Z1B0UDhuQ2ctM0NsN2Y2X1N6d2t4T0cyRGt4aEN6SEN3V2tIUWpmWjBBc1FVS2tOMlhBeXFvT182Q1BLaDBNVkVadGtnRk9YYU1FOS1xRHZRSy1XRUJxbjdGQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Sky Sports",
-        "n_sources": 5,
-        "lead_ts": 1789712651
-      },
-      {
-        "title": "No. 8 Ole Miss, No. 7 LSU meet in first top-10 Magnolia Bowl since 1962 - WLBT",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNbFIyS0o3WGFzNDFoYjJsM2tUQ2ZGVWI5ZTRsZU0xeGQwaTJvMkxKOU9Wam1IcVo5ci1DdzFaSG9aNmlhUUNBeXQzLXg2SXFTUU5nWHE0cWMzcFVhd3hmZFA4X3ROekwzNWlBT0s3TmJRMmd2Q3cyR3RRMDQ5SXhkREtsbjVfdEhWVVhjaG9rSDRmdUdzT0dmaFF5cFh5Q2PSAbMBQVVfeXFMTXdSLXhBUFZjVWtfMmJyZTR1Y09PTlNLd1pzTVFSUlVkcDNKNGN5TklYNWtIcXhIM0NIN0lCbS1UNGFCNjFfYTBZLTZnMG1nNWJwaDU2REdpaWN2MTNLUGpVZGxUczNrWVN3YkxLSEFRci1nVm5kdEl0UDBraG80M2dFbS1DMlB4a1NRQVBaREhWV0c5Vy10MDBNS2hoMTVNSy1EaUV4MVNZX0MtVjA2ajU1MDg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WLBT",
-        "n_sources": 5,
-        "lead_ts": 1789705680
       }
     ],
     "culture": [
@@ -239,25 +239,25 @@
         "lead_ts": 1789689736
       },
       {
-        "title": "Millie Bobby Brown Is Now Reportedly a Mom of Two - Vogue Arabia",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1xbE5PMDV5M0F4TjFVWW9uRk5NZW5MczhmcHlSX1lJejVYMDBPUGVKdi16VWVNUmhUMlpGbFMzWE51ckZuMUdZQmkwTTY2a1Z2bV9SdXVaeW9Dc0Jfdy1PZFNQRHJLUS0tQWxBVnlXR2x2M3I2ZHhoSVNwYWZQZDA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Vogue",
+        "title": "\u2018Dancing With the Stars\u2019 season 35 week 2 theme, contestants\u2019 songs and dances revealed - Entertainment Weekly",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPZ3hSWm9SZnAyVUNjeExrbDFhQXJUOTNFa3lQajlSb0VaS2VmOXYzM2hoRUpYckh6cXJMVnN4U1BtRVhaM0ljUFoza2VfRlBqQmJsaC1OdUt2c0RBWTBVZHkxNjVSS3FPdUNfa3ZtaFpmWkpQRnVkTVRiWEZuYzhmZ3RSS2pvQXpWSHFNUG5IdjZqQmJUV3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "EW",
         "n_sources": 3,
-        "lead_ts": 1789729336
+        "lead_ts": 1789749484
       },
       {
-        "title": "Juilliard Apologizes to Julia Stiles Over Dancing With the Stars Shade - Yahoo",
-        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPSThCTWl1dWFnYU1SRmZyNk84bjlLT0g1eHlOYnVGTzFzb3M2MjE0QUxwbkRCYnd2aUNEMXR1MGpYQ1dBNUliSklxdTRFcUxfLXd4b1ZFMmcyM2xlWHhmQWtYdTIwZnZGdzRxdVM3VzBZemdmWjg1eGNHWmY5Zm5wTG5McFJ4S25FUEZtX3FiaEgzdTloencxdmlGNkNyOUxXNHRRU1ZYUGZXbTZW?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo",
+        "title": "Millie Bobby Brown, Jake Bongiovi welcome second baby - WHIO TV",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQYWYwYVJrVzc0R01LRFJYb0ZZWWpWVnRBRHktbUNOWno0cEdYa0hDclRMaG1obG1CZG5DVXJHZXRKOTJSeUhVR2dIRm50X1JaTkFRM1RBdUEwSnlWMkRReVJqVFRRU1h3SHlBRGJCc1Q2Q3JtNFJJVmp1dTBWbWhhOEN6cDBsX0JGLXd6U2s1YVhWd20yQ21UT2dnSGlSaEU3NllTMTJMemZwZV9icUpuVWcwcWhtdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WHIO TV",
         "n_sources": 3,
-        "lead_ts": 1789693140
+        "lead_ts": 1789747142
       },
       {
-        "title": "\u2018The Kardashians\u2019 Season 8 Trailer: Kim Reveals Health Scare That Landed Her in the Hospital, Kendall Denies Cara Delevingne Romance Rumors - IMDb",
-        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE96djFoTGlnY094Y2h0Y1hTdExSLWhsWXBsVzAydlQ2b3JiUTBTN19FVTJaTVRJOGt1bFhwRmFFU0tTckE4VjRmOW9OUDl6NERnQUpMTEtnTFNvdGQ4Q1JRMWZmbk9QUXFXQWc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IMDb",
+        "title": "Tom Cruise Says Taylor Swift Was Schooling Him on Football at NFL Game - TMZ",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOY2ZSSmp4RTdkZGd4Y0FUTzlrWDJWZTdDbUhYN1lkZjEwM2NNelR5Xzg1U3ZFc3VSYjZEem5DWFhtZXlNaUtVdS1KMUs5NlZZeTlieFBNSW1yR1NDcERXNVhfaHB1UThOOVJwUVVBME1UeEl3LTJ5SGRmNnNRTU1ILXhnaFZoakpOeDBFNmM2dGtHNGpRcjJ0aVAtcmRQWHRkRDBQag?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "TMZ",
         "n_sources": 3,
-        "lead_ts": 1789689733
+        "lead_ts": 1789743294
       }
     ]
   },
