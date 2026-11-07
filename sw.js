@@ -19,7 +19,7 @@
 //   - /offline.html graceful fallback remains (referenced but not blocking)
 // ═══════════════════════════════════════════════════════════════════════════
 
-const CACHE_VERSION = 'v16';          // NUZU 2.2.0 - NUZU Originals in-house byline system (originals.html + originals/*.html)
+const CACHE_VERSION = 'v17';          // NUZU 2.3.0 (7 Nov 2026) - Onyx redesign, contrast fixes, live-checked video tiles, promo filter, Science/Tech/Health, source expansion
 const CACHE_STATIC  = 'nuzu-static-' + CACHE_VERSION;
 const CACHE_PAGES   = 'nuzu-pages-'  + CACHE_VERSION;
 const CACHE_ICONS   = 'nuzu-icons-'  + CACHE_VERSION;
@@ -34,7 +34,6 @@ const PRECACHE_ASSETS = [
   '/offline.html',
   '/manifest.json',
   '/nuzu-bundle.js',  // ← added: ensure fixed bundle is cached immediately
-  '/originals.html',  // ← NUZU Originals byline hub — available offline
   '/icons/icon-192.png',
   '/icons/icon-512.png',
 ];

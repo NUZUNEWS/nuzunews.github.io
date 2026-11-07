@@ -1,5 +1,5 @@
 {
-  "version": "2.1.2",
-  "build": "2026-07-27",
-  "notes": "NUZU 2.1.2 — Stops the unwanted video rotation. NUZU's tiles are 24/7 live channels and must stay put; a dormant 30-second stall-swap (old NUZU code, activated as a side effect of adding enablejsapi=1 for the audio fix) is now switched off via NZ_AUTO_SWAP=false. Tiles change ONLY on a genuine hard error (removed/private/embedding disabled). Click-to-solo audio unchanged. Service worker v15."
+  "version": "2.3.0",
+  "build": "2026-11-07",
+  "notes": "NUZU 2.3.0 - Onyx edition. New colours matching Argus Media Player's default Onyx look (Ivory in light mode) with every text colour passing WCAG AA in both themes (dark mode went from 1,423 failing text elements to 0). Serif headlines (Source Serif 4) on their own line, newspaper rules kept. Live video tiles come from one list checked at every build: ABC News (US) follows ABC's current live stream, Australia is ABC NEWS Australia, China is CGTN; dead tiles are left out, and the dead phone sports video is removed. Promo/junk filter (sportsbook promo codes, betting picks, shopping deals, puzzle answers, horoscopes, press-release wires, how-to-watch guides). Tech is now Science, Tech & Health. About 75 more sources and short high-signal keywords for every section. Trust tiers match whole words (no more 'Microsoft' rated Tier 1), unrated outlets show grey, Most Reported On is trust-weighted in the news sections. Story grouping ignores publisher names. Horoscope/comic sections and the Originals link retired. Service worker v17."
 }

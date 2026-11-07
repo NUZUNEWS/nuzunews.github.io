@@ -915,6 +915,8 @@ def _save_missing_logos(registry):
 
 _missing_logo_registry = _load_missing_logos()
 
+_NZ_ICON_BUDGET_S = 90   # seconds per build for new logo downloads (NUZU 2.3)
+
 def prewarm_source_icons():
     """
     Self-healing favicon pipeline. Runs every bot.py execution:
@@ -937,6 +939,7 @@ def prewarm_source_icons():
     html_discovered = 0
     seen_domains = set()
     newly_failed = []
+    _nz_icon_stats = {'t0': time.time(), 'backoff': 0, 'deferred': 0}
 
     def _process(dom, override_url=None):
         nonlocal downloaded, skipped, failed, recovered, html_discovered
@@ -950,6 +953,23 @@ def prewarm_source_icons():
             if dom in _missing_logo_registry:
                 del _missing_logo_registry[dom]
                 recovered += 1
+            return
+        # NUZU 2.3: a logo that failed before is retried after a day, then two,
+        # up to a week - not on every build. And the whole logo step stops
+        # starting new downloads after _NZ_ICON_BUDGET_S seconds. Before this, every
+        # build re-tried hundreds of failed logos one at a time (most of each
+        # 9-10 minute refresh run). A missing logo already falls back to a letter tile.
+        _reg = _missing_logo_registry.get(dom)
+        if _reg and _reg.get('retries', 0) >= 1:
+            try:
+                _age = (datetime.utcnow() - datetime.strptime(_reg.get('last_attempt', ''), '%Y-%m-%dT%H:%M')).total_seconds()
+            except Exception:
+                _age = 1e12
+            if _age < 86400 * min(7, _reg.get('retries', 1)):
+                _nz_icon_stats['backoff'] += 1
+                return
+        if time.time() - _nz_icon_stats['t0'] > _NZ_ICON_BUDGET_S:
+            _nz_icon_stats['deferred'] += 1
             return
         # Track whether Tier 5 (HTML discovery) was what succeeded
         before_html = not os.path.exists(path)
@@ -1007,7 +1027,10 @@ def prewarm_source_icons():
         f"{recovered} recovered | {failed} failed | "
         f"auto-learned: {len(_AUTO_DOMAIN_CACHE)} domains | "
         f"persistent failures: {len(persistent_failures)} | "
-        f"retry queue: {len(_missing_logo_registry)}"
+        f"retry queue: {len(_missing_logo_registry)} | "
+        f"waiting to retry: {_nz_icon_stats['backoff']} | "
+        f"left for next build: {_nz_icon_stats['deferred']} | "
+        f"{time.time() - _nz_icon_stats['t0']:.0f}s"
     )
 
 def get_source_icon_html(source_name, size_class=''):
@@ -1101,21 +1124,56 @@ SOURCE_TIERS = {
         "google news","smartnews","patch.com","modern ghana"},
 }
 
-def get_source_tier(raw_name):
-    """Return reliability tier 1-4 (1=best). Default 2."""
-    nl = raw_name.lower()
+# NUZU 2.3 (7 Nov 2026): more outlets rated. Matching is now by whole words - the
+# old substring test rated "Microsoft" Tier 1 (it contains "ft") and TheWrap,
+# Japan Times and Yahoo News Singapore Tier 2 (they contain "ap").
+SOURCE_TIERS[1].update([
+    "los angeles times", "la times", "boston globe", "cbc", "cbc news", "abc news (australia)", "sbs news",
+    "rnz", "nhk", "nhk world", "kyodo", "kyodo news", "yonhap", "the irish times", "the globe and mail",
+    "globe and mail", "le monde", "der spiegel", "el pais", "el país", "the hindu", "straits times",
+    "the straits times", "kff health news", "the marshall project", "calmatters",
+])
+SOURCE_TIERS[2].update([
+    "cnn", "time magazine", "the telegraph", "the independent", "sky news", "itv news", "euronews",
+    "nikkei asia", "nikkei", "the japan times", "japan times", "south china morning post", "scmp",
+    "times of israel", "the times of israel", "haaretz", "jerusalem post", "the jerusalem post", "al-monitor",
+    "the national", "kyiv independent", "the kyiv independent", "meduza", "dawn", "hindustan times",
+    "the diplomat", "rest of world", "christian science monitor", "cs monitor", "texas tribune",
+    "the texas tribune", "stateline", "punchbowl news", "roll call", "the dispatch", "notus", "newsnation",
+    "voice of america", "the conversation", "barron's", "marketwatch", "fortune", "business insider",
+    "quartz", "financial post", "cna", "channel newsasia", "africanews", "daily maverick", "premium times",
+    "mercopress", "buenos aires times", "mexico news daily", "american banker", "automotive news",
+    "scotusblog", "lawfare", "defense one", "military times", "the fiscal times",
+])
+_NZ_TIER_RES = {
+    _t: re.compile(r"(?<![a-z0-9])(" + "|".join(re.escape(_n) for _n in sorted(set(SOURCE_TIERS[_t]), key=len, reverse=True)) + r")(?![a-z0-9])")
+    for _t in (1, 2, 3, 4)
+}
+
+
+def source_tier_explicit(raw_name):
+    """The tier a source is rated at, or None if NUZU has not rated it."""
+    nl = (raw_name or "").lower()
     for t in (1, 2, 3, 4):
-        for s in SOURCE_TIERS[t]:
-            if s in nl:
-                return t
-    return 3  # default: unknown = below-average trust
+        if _NZ_TIER_RES[t].search(nl):
+            return t
+    return None
+
+
+def get_source_tier(raw_name):
+    """Return reliability tier 1-4 (1=best). Unrated outlets count as 3 for the
+    trusted-share bar, exactly as before; only rated Tier 1-2 count as trusted."""
+    t = source_tier_explicit(raw_name)
+    return 3 if t is None else t
 
 def source_trust_color(raw_name):
-    """Return green/amber/red CSS color for source tier."""
-    t = get_source_tier(raw_name)
-    if t == 1: return "#22c55e"
-    if t == 2: return "#f59e0b"
-    return "#ef4444"
+    """Green / amber / red for rated tiers; neutral grey for an outlet not yet rated
+    (it used to show red, as if unknown meant untrustworthy)."""
+    t = source_tier_explicit(raw_name)
+    if t == 1: return "var(--trust-hi)"
+    if t == 2: return "var(--trust-mid)"
+    if t is None: return "var(--ink-4)"
+    return "var(--trust-lo)"
 
 def cluster_trust_pct(cluster):
     """Return % of items from tier-1 or tier-2 sources."""
@@ -2557,6 +2615,138 @@ RAW_BUSINESS_KEYWORDS = [
 ]
 BUSINESS_KEYWORDS = set(kw.lower() for kw in RAW_BUSINESS_KEYWORDS)
 
+# ══════════════════════ KEYWORD EXPANSION (NUZU 2.3, 7 Nov 2026) ══════════════════════
+# Measured on 7 Nov 2026's real feeds: each section's own feeds carried relevant
+# headlines its keyword list rejected - Middle East matched 57%, US 40%, Sports 21%,
+# Culture 17% - because the lists were mostly long phrases ("israel gaza war") that
+# real headlines rarely contain. These are the short, high-signal words headlines
+# actually use. Sports words are also used to KEEP sports out of US / World /
+# Business / Culture, so ambiguous ones (ufc, golf, bills, jets, cardinals, giants,
+# chiefs, trade, draft, coach) are deliberately left out.
+NZ_EXTRA_KEYWORDS = {
+    "mideast": [
+        "gaza", "gazans", "palestinian", "palestinians", "palestine", "west bank", "israel", "israeli", "israelis",
+        "idf", "netanyahu", "eisenkot", "herzog", "knesset", "hamas", "hezbollah", "houthi", "houthis", "yemen",
+        "yemeni", "sanaa", "red sea", "iran", "iranian", "iranians", "tehran", "khamenei", "irgc", "lebanon",
+        "lebanese", "beirut", "syria", "syrian", "damascus", "al-sharaa", "iraq", "iraqi", "baghdad", "kurdish",
+        "kurds", "erbil", "saudi", "saudi arabia", "riyadh", "mbs", "uae", "emirati", "abu dhabi", "dubai",
+        "qatar", "qatari", "doha", "kuwait", "bahrain", "oman", "muscat", "jordan's", "jordanian", "amman",
+        "egypt", "egyptian", "cairo", "sisi", "turkish", "turkiye", "türkiye", "erdogan", "ankara", "istanbul",
+        "opec", "strait of hormuz", "hormuz", "persian gulf", "jerusalem", "tel aviv", "rafah", "khan younis",
+        "unrwa", "hostages", "ceasefire", "two-state", "abraham accords", "nuclear talks", "uranium enrichment",
+    ],
+    "us": [
+        "democrats", "democrat", "democratic", "republicans", "republican", "gop", "congress", "congressional",
+        "senate", "senator", "senators", "house speaker", "speaker johnson", "white house", "trump", "trump's",
+        "vance", "rubio", "hegseth", "stephen miller", "susie wiles", "midterm", "midterms", "election results",
+        "governor", "gubernatorial", "supreme court", "scotus", "justice department", "doj", "fbi",
+        "attorney general", "ice agents", "immigration", "deportation", "deportations", "tariff", "tariffs",
+        "federal judge", "impeachment", "filibuster", "government shutdown", "shutdown", "medicaid", "medicare",
+        "social security", "obamacare", "affordable care act", "irs", "fema", "schumer", "jeffries", "thune",
+        "pelosi", "newsom", "desantis", "ocasio-cortez", "mamdani", "state legislature", "ballot measure",
+        "redistricting", "gerrymander", "voters", "polling", "super pac", "cabinet", "executive order",
+        "national guard", "pardon", "pardons", "subpoena", "indictment", "indicted", "special counsel",
+    ],
+    "sports": [
+        "nfl", "nba", "mlb", "nhl", "mls", "wnba", "ncaa", "ncaaf", "ncaab", "premier league", "champions league",
+        "europa league", "la liga", "serie a", "bundesliga", "ligue 1", "uefa", "fifa", "world cup qualifier",
+        "quarterback", "touchdown", "touchdowns", "running back", "wide receiver", "linebacker", "point guard",
+        "home run", "pitcher", "goalkeeper", "striker", "midfielder", "hat-trick", "hat trick", "atp", "wta",
+        "grand slam", "motogp", "formula one", "formula 1", "grand prix", "nascar", "indycar", "rugby",
+        "six nations", "all blacks", "springboks", "wallabies", "cricket", "test match", "t20", "ipl", "ashes",
+        "tour de france", "cycling", "marathon", "heisman", "transfer portal", "college football",
+        "college basketball", "men's basketball", "women's basketball", "basketball", "volleyball", "softball",
+        "super bowl", "world series", "stanley cup", "davis cup", "ryder cup", "pga tour", "lpga", "liv golf",
+        "golfer", "boxing", "mma", "ufc fight night", "wwe", "olympic", "olympics", "paralympic", "figure skating",
+        "49ers", "steelers", "packers", "seahawks", "broncos", "raiders", "chargers", "bengals", "ravens",
+        "browns", "colts", "jaguars", "titans", "vikings", "buccaneers", "falcons", "cowboys",
+        "lakers", "celtics", "warriors", "knicks", "bucks", "nuggets", "mavericks", "clippers", "suns", "spurs",
+        "grizzlies", "pelicans", "timberwolves", "trail blazers", "pistons", "cavaliers", "76ers", "raptors",
+        "yankees", "dodgers", "red sox", "cubs", "mets", "astros", "braves", "phillies", "padres", "mariners",
+        "orioles", "blue jays", "maple leafs", "canadiens", "bruins", "oilers", "blackhawks", "red wings",
+        "manchester united", "man utd", "man united", "manchester city", "man city", "tottenham", "real madrid",
+        "bayern munich", "juventus", "psg", "inter miami", "everton", "newcastle united", "aston villa",
+        "crystal palace", "nottingham forest", "west ham", "leeds united",
+        "receptions", "rushing yards", "passing yards", "yards", "bowl-eligible", "bowl eligible", "field goal",
+        "interceptions", "high school football", "prep football", "soccer", "goalie", "semifinal", "semifinals",
+        "quarterfinal", "quarterfinals", "playoff", "playoffs", "postseason", "season opener", "home opener",
+        "ncaa tournament", "conference title", "regular season",
+    ],
+    "tech": [
+        # technology
+        "ai", "a.i.", "openai", "chatgpt", "anthropic", "nvidia", "chip", "chips", "chipmaker", "semiconductor",
+        "semiconductors", "data center", "data centers", "datacentre", "datacenter", "cybersecurity",
+        "cyberattack", "cyber attack", "hackers", "hacked", "hack", "ransomware", "data breach", "smartphone",
+        "iphone", "android", "apple", "google", "microsoft", "meta", "amazon", "tesla", "spacex", "starlink",
+        "robot", "robots", "robotics", "humanoid", "autonomous", "self-driving", "robotaxi", "drone", "drones",
+        "quantum", "software", "app", "apps", "social media", "tiktok", "youtube", "elon musk", "zuckerberg",
+        "altman", "video game", "video games", "gaming", "playstation", "xbox", "nintendo", "switch 2", "steam",
+        "gpu", "laptop", "5g", "broadband", "internet outage", "algorithm", "deepfake", "chatbot", "llm",
+        # science
+        "science", "scientists", "scientist", "researchers", "new study", "study finds", "study shows",
+        "nasa", "space station", "spacecraft", "astronaut", "astronauts", "rocket", "moon", "lunar", "mars",
+        "asteroid", "comet", "telescope", "webb telescope", "astronomers", "galaxy", "black hole", "physics",
+        "physicists", "chemistry", "biology", "fossil", "fossils", "dinosaur", "dinosaurs", "archaeologists",
+        "archaeology", "ancient", "climate change", "global warming", "emissions", "carbon dioxide", "species",
+        "wildlife", "ocean", "coral", "genome", "dna", "gene", "genes", "genetic", "crispr", "evolution",
+        "neuroscience", "brain cells", "human brain", "nobel prize", "volcano", "earthquake research",
+        # health
+        "public health", "health officials", "healthcare", "health care", "mental health", "medical",
+        "medicine", "doctors", "patients", "disease", "diseases", "virus", "outbreak", "pandemic", "covid",
+        "flu", "measles", "bird flu", "h5n1", "vaccine", "vaccines", "vaccination", "cancer", "alzheimer's",
+        "dementia", "diabetes", "obesity", "ozempic", "wegovy", "glp-1", "heart disease", "fda", "cdc", "nih",
+        "who says", "drugmaker", "clinical trial", "surgery", "cardiologists", "therapy", "nutrition",
+        "antibiotic", "superbug", "life expectancy", "rfk jr", "kennedy's hhs", "hhs",
+    ],
+    "culture": [
+        "celebrity", "celebrities", "red carpet", "hollywood", "actor", "actress", "box office", "film festival",
+        "movie", "movies", "film", "films", "filmmaker", "netflix", "hbo", "hulu", "disney+", "streaming series",
+        "tv series", "season finale", "sitcom", "documentary", "album", "songwriter", "singer", "rapper",
+        "pop star", "concert", "grammy", "grammys", "oscar", "oscars", "emmy", "emmys", "golden globes",
+        "tony awards", "cma awards", "bafta", "met gala", "fashion week", "runway", "fashion", "broadway",
+        "musical", "comedian", "late-night", "snl", "taylor swift", "beyonce", "beyoncé", "kardashian", "k-pop",
+        "anime", "novel", "novelist", "bestseller", "booker prize", "museum", "exhibition", "art auction",
+        "painting", "sotheby's", "christie's", "theater", "theatre", "ballet", "opera", "royal family",
+        "prince harry", "meghan markle", "king charles", "princess", "reality tv", "trailer", "sequel",
+    ],
+    "world": [
+        "krakow", "poland", "polish", "warsaw", "paraguay", "paraguayan", "uruguay", "argentina", "milei",
+        "brazil", "brazilian", "lula", "chile", "colombia", "colombian", "petro", "venezuela", "venezuelan",
+        "maduro", "peru", "ecuador", "bolivia", "mexico", "mexican", "sheinbaum", "cuba", "haiti", "canada",
+        "canadian", "carney", "ottawa", "britain", "british", "starmer", "london", "france", "french", "macron",
+        "germany", "german", "merz", "berlin", "italy", "italian", "meloni", "spain", "spanish", "madrid",
+        "portugal", "netherlands", "dutch", "belgium", "brussels", "european union", "european commission",
+        "nato", "ukraine", "ukrainian", "kyiv", "zelensky", "zelenskyy", "russia", "russian", "moscow", "putin",
+        "kremlin", "belarus", "armenia", "azerbaijan", "china", "chinese", "beijing", "xi jinping", "taiwan",
+        "hong kong", "japan", "japanese", "tokyo", "south korea", "seoul", "north korea", "pyongyang",
+        "kim jong un", "india", "indian", "modi", "delhi", "pakistan", "islamabad", "afghanistan", "taliban",
+        "bangladesh", "sri lanka", "nepal", "myanmar", "thailand", "vietnam", "philippines", "manila",
+        "indonesia", "jakarta", "prabowo", "malaysia", "singapore", "australia", "australian", "albanese",
+        "new zealand", "pope leo", "vatican", "pope", "nigeria", "kenya", "ethiopia", "sudan", "somalia",
+        "mogadishu", "south africa", "congo", "rwanda", "uganda", "ghana", "sahel", "mali", "africa",
+        "african union", "united nations", "security council", "g20", "g7", "climate summit", "refugees",
+        "migrants", "asylum seekers",
+    ],
+    "business": [
+        "stocks", "stock market", "wall street", "nasdaq", "dow jones", "s&p 500", "earnings",
+        "quarterly results", "revenue", "profit", "shares", "ipo", "merger", "acquisition", "takeover",
+        "layoffs", "job cuts", "jobs report", "payrolls", "unemployment", "labor market", "inflation", "cpi",
+        "interest rates", "rate cut", "federal reserve", "powell", "treasury yields", "bond market",
+        "oil prices", "crude", "brent", "opec", "gold prices", "bitcoin", "crypto", "cryptocurrency", "imf",
+        "world bank", "ceo", "chief executive", "cfo", "startup", "venture capital", "retail sales",
+        "consumer spending", "gdp", "recession", "economy", "economic", "trade deal", "supply chain",
+        "antitrust", "ftc", "bankruptcy", "chapter 11", "mortgage rates", "housing market", "home sales",
+        "real estate", "automaker", "nvidia", "berkshire", "jpmorgan", "goldman sachs", "boeing", "airline",
+        "airlines", "refinery", "ecb", "bank of england", "bank of japan", "yen", "dollar", "currency",
+        "port workers", "contract talks", "dividend", "buyback", "buybacks", "investors",
+    ],
+}
+
+for _nz_sec, _nz_set in (("mideast", ME_KEYWORDS), ("us", US_KEYWORDS), ("sports", SPORTS_KEYWORDS),
+                         ("tech", TECH_KEYWORDS), ("culture", CULTURE_KEYWORDS), ("world", WORLD_KEYWORDS),
+                         ("business", BUSINESS_KEYWORDS)):
+    _nz_set.update(k.lower() for k in NZ_EXTRA_KEYWORDS[_nz_sec])
+
 # ====================== BLOCKLISTS ======================
 ME_BLOCKLIST    = {"trump"}
 US_BLOCKLIST    = {"iran"}
@@ -2647,6 +2837,63 @@ def _is_junk_title(raw_title):
             return True
     return False
 
+# ══════════════════════ PROMO / JUNK FILTER (NUZU 2.3, 7 Nov 2026) ══════════════════════
+# Keeps advertising and non-news "service" items out of every section: sportsbook
+# promo codes, betting picks, shopping deals, puzzle answers, horoscopes, lottery
+# results, sponsored posts, press-release wires, "how to watch" guides and
+# stock-tip clickbait. Each rule names a reason, which the build log prints, so a
+# wrong removal is easy to spot and the rule easy to loosen.
+# Calibrated on 7 Nov 2026's real feeds before it went in.
+import re
+_NZ_PROMO_RULES = [
+    ("promo code", r"\b(promo|bonus|coupon|discount|referral|offer|signup|sign-up)\s+codes?\b"),
+    ("promo code", r"\bbonus bets?\b|\bfree spins?\b|\bno[- ]deposit\b|\bsign[- ]?up (bonus|offer|promo)\b|\bfirst bet (offer|safety|insurance)\b"),
+    ("promo code", r"\b(bet|wager) \$\d[\d,]*,? (get|win)\b|\bget \$\d[\d,]* in (bonus|bets|site credit)\b"),
+    ("sportsbook promo", r"\b(betmgm|draftkings|fanduel|caesars sportsbook|bet365|fanatics sportsbook|espn ?bet|hard rock bet|betrivers|prizepicks|underdog fantasy|sleeper fantasy)\b.{0,60}\b(code|bonus|promo|offer|boost)\b"),
+    ("betting picks", r"\b(best bets?|betting (picks|odds|preview|tips|lines|guide|trends)|player props?|prop bets?|parlays?|same[- ]game parlay|against the spread|(odds|spread|line)s? and picks|picks? (and|&) predictions?)\b"),
+    ("betting picks", r"\b(predictions?|picks?)\b.{0,40}\b(odds|point spread|over/under|best bets?)\b|\bodds\b.{0,25}\b(predictions?|picks?)\b"),
+    ("shopping", r"\b(best (deals?|buys?)|deals? of the (day|week)|(early )?black friday (deals?|sales?)|cyber monday (deals?|sales?)|prime (big )?(deal )?day (deals?|sales?)|gift (guide|ideas)|shop (now|the sale)|lowest price (ever|yet)|price drop|on sale (now|for)|\d+% off\b|save (up to )?\$\d[\d,]* on)\b"),
+    ("shopping", r"\b(\d+|the) best .{1,40} (to buy|you can buy|for (the )?money)\b|\bbest .{1,30} (of|for) 20\d\d,? (tested|reviewed|ranked)\b|\bon amazon\b.{0,30}\b(deal|sale|discount)\b|\bdeals? (starting at|from|under|for) \$\d|\boffers \d+ .{0,40}\bdeals\b"),
+    ("puzzle answers", r"\b(wordle|quordle|connections|strands|spelling bee|crossword|mini crossword|sudoku|nyt (mini|connections|strands))\b.{0,50}\b(answers?|hints?|solutions?|clues?)\b|\bhints? and answers?\b"),
+    ("horoscope", r"\b(horoscopes?|tarot|zodiac sign|astrology forecast)\b"),
+    ("lottery results", r"\b(winning numbers|lottery results|(powerball|mega millions|lotto|pick 3|pick 4|cash4life|lucky for life)\b.{0,30}\b(numbers|results|drawing for))\b"),
+    ("sponsored", r"\b(sponsored( content| post| by)?|paid (content|post|partnership)|advertorial|partner content)\b"),
+    ("how to watch", r"\b(how|where) to (watch|stream)\b|\b(tv channel|start time|kickoff time),? (live stream|how to watch|streaming)\b|\blive stream(ing)? (free|online|for free)\b"),
+    ("fantasy advice", r"\b(start ['’]em|sit ['’]em|start/sit|waiver wire|fantasy (football|basketball|baseball|hockey) (rankings|advice|sleepers|picks|lineups?|projections|busts))\b"),
+    ("stock tips", r"\b(stocks?|etfs?|shares|dividend stocks?) to (buy|own|hold)\b|\b(\d+|top|best)\b.{0,40}\b(stocks?|etfs?) to watch\b|\b(millionaire[- ]maker|no[- ]brainer (stock|buy)|screaming buy|could make you rich|turn \$[\d,]+ into)\b|\bbuy (it )?(now|before|right now)\??$|\bshould you buy\b"),
+]
+_NZ_PROMO_RES = [(why, re.compile(p, re.I)) for why, p in _NZ_PROMO_RULES]
+# Publishers whose items are press releases or stock-promotion copy, not reporting.
+_NZ_PROMO_SOURCES = re.compile(
+    r"\b(pr ?newswire|globe ?newswire|business ?wire|access ?newswire|accesswire|ein ?presswire|"
+    r"newswire\.com|24-7 ?press ?release|openpr|issuewire|pr\.com|prweb|newsfile|"
+    r"motley fool|the motley fool|fool\.com|zacks|investorplace|marketbeat|simply wall st|"
+    r"insider monkey|tipranks|gurufocus|sportsbook ?review|covers\.com|action network|"
+    r"oddschecker|odds shark|pickswise|dimers|bettingpros)\b", re.I)
+
+
+_NZ_LIVE_BLOG = re.compile(r"\blive!|\blive updates?\b|\bscore updates\b|\bas it happened\b|\blive blog\b", re.I)
+
+
+def why_promo(raw_title, source=""):
+    """The reason an item is advertising / non-news, or None if it is news."""
+    t = raw_title or ""
+    for why, rx in _NZ_PROMO_RES:
+        if rx.search(t):
+            if why == "how to watch" and _NZ_LIVE_BLOG.search(t):
+                continue        # a live match blog is coverage, not a viewing guide
+            return why
+    if source and _NZ_PROMO_SOURCES.search(source):
+        return "promo publisher"
+    # Google News puts the publisher at the end of the title: "... - Business Wire"
+    tail = t.rsplit(" - ", 1)[-1] if " - " in t else ""
+    if tail and _NZ_PROMO_SOURCES.search(tail):
+        return "promo publisher"
+    return None
+
+
+_NZ_PROMO_LOG = {}
+
 # ====================== RSS SOURCES ======================
 MIDDLE_EAST_SOURCES = [
     ("Broad Middle East","https://news.google.com/rss/search?q=middle+east+OR+iran+OR+israel+OR+gulf+OR+hezbollah+OR+hamas+when:1d&hl=en-US&gl=US&ceid=US:en"),
@@ -2675,9 +2922,9 @@ MIDDLE_EAST_SOURCES = [
     ("NPR","https://news.google.com/rss/search?q=site:npr.org+middle+east+OR+iran+OR+israel+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("The Atlantic","https://news.google.com/rss/search?q=site:theatlantic.com+middle+east+OR+iran+OR+israel+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("Foreign Policy","https://news.google.com/rss/search?q=site:foreignpolicy.com+middle+east+OR+iran+OR+israel+when:1d&hl=en-US&gl=US&ceid=US:en"),
-    ("Foreign Affairs","https://news.google.com/rss/search?q=site:foreignaffairs.com+middle+east+OR+iran+when:1d&hl=en-US&gl=US&ceid=US:en"),
+    ("Foreign Affairs","https://news.google.com/rss/search?q=site:foreignaffairs.com+middle+east+OR+iran+when:3d&hl=en-US&gl=US&ceid=US:en"),
     ("NBC News","https://news.google.com/rss/search?q=site:nbcnews.com+middle+east+OR+iran+OR+israel+when:1d&hl=en-US&gl=US&ceid=US:en"),
-    ("ABC News","https://news.google.com/rss/search?q=site:abcnews.go.com+middle+east+OR+iran+OR+israel+when:1d&hl=en-US&gl=US&ceid=US:en"),
+    ("ABC News","https://news.google.com/rss/search?q=site:abcnews.com+middle+east+OR+iran+OR+israel+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("CBS News","https://news.google.com/rss/search?q=site:cbsnews.com+middle+east+OR+iran+OR+israel+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("Gulf News","https://news.google.com/rss/search?q=gulf+news+uae+OR+middle+east+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("The National UAE","https://news.google.com/rss/search?q=the+national+uae+middle+east+OR+gulf+when:1d&hl=en-US&gl=US&ceid=US:en"),
@@ -2707,12 +2954,12 @@ US_POLITICS_SOURCES = [
     ("Bloomberg","https://news.google.com/rss/search?q=when:1d+site:bloomberg.com&hl=en-US&gl=US&ceid=US:en"),
     ("The Atlantic","https://news.google.com/rss/search?q=when:1d+site:theatlantic.com&hl=en-US&gl=US&ceid=US:en"),
     ("The New Yorker","https://news.google.com/rss/search?q=when:1d+site:newyorker.com&hl=en-US&gl=US&ceid=US:en"),
-    ("Foreign Affairs","https://news.google.com/rss/search?q=when:1d+site:foreignaffairs.com&hl=en-US&gl=US&ceid=US:en"),
+    ("Foreign Affairs","https://news.google.com/rss/search?q=when:3d+site:foreignaffairs.com&hl=en-US&gl=US&ceid=US:en"),
     ("Foreign Policy","https://news.google.com/rss/search?q=when:1d+site:foreignpolicy.com&hl=en-US&gl=US&ceid=US:en"),
     ("NPR","https://news.google.com/rss/search?q=when:1d+site:npr.org&hl=en-US&gl=US&ceid=US:en"),
     ("PBS NewsHour","https://news.google.com/rss/search?q=when:1d+site:pbs.org/newshour&hl=en-US&gl=US&ceid=US:en"),
     ("CBS News","https://news.google.com/rss/search?q=when:1d+site:cbsnews.com&hl=en-US&gl=US&ceid=US:en"),
-    ("ABC News","https://news.google.com/rss/search?q=when:1d+site:abcnews.go.com&hl=en-US&gl=US&ceid=US:en"),
+    ("ABC News","https://news.google.com/rss/search?q=when:1d+site:abcnews.com+politics&hl=en-US&gl=US&ceid=US:en"),
     ("NBC News","https://news.google.com/rss/search?q=when:1d+site:nbcnews.com&hl=en-US&gl=US&ceid=US:en"),
     ("USA Today","https://news.google.com/rss/search?q=when:1d+site:usatoday.com&hl=en-US&gl=US&ceid=US:en"),
     ("The Hill","https://news.google.com/rss/search?q=when:1d+site:thehill.com&hl=en-US&gl=US&ceid=US:en"),
@@ -2727,23 +2974,23 @@ US_POLITICS_SOURCES = [
     ("Pew Research Center","https://news.google.com/rss/search?q=when:1d+site:pewresearch.org&hl=en-US&gl=US&ceid=US:en"),
     ("Brookings Institution","https://news.google.com/rss/search?q=when:1d+site:brookings.edu&hl=en-US&gl=US&ceid=US:en"),
     ("The Texas Tribune","https://news.google.com/rss/search?q=when:1d+site:texastribune.org&hl=en-US&gl=US&ceid=US:en"),
-    ("Politico Magazine","https://news.google.com/rss/search?q=when:1d+site:politico.com/magazine&hl=en-US&gl=US&ceid=US:en"),
-    ("PolitiFact","https://news.google.com/rss/search?q=when:1d+site:politifact.com&hl=en-US&gl=US&ceid=US:en"),
+    ("Politico Magazine","https://news.google.com/rss/search?q=when:2d+site:politico.com+magazine&hl=en-US&gl=US&ceid=US:en"),
+    ("PolitiFact","https://news.google.com/rss/search?q=when:2d+site:politifact.com&hl=en-US&gl=US&ceid=US:en"),
     ("FactCheck.org","https://news.google.com/rss/search?q=when:1d+site:factcheck.org&hl=en-US&gl=US&ceid=US:en"),
     ("The Dispatch","https://news.google.com/rss/search?q=when:1d+site:thedispatch.com&hl=en-US&gl=US&ceid=US:en"),
     ("Semafor","https://news.google.com/rss/search?q=when:1d+site:semafor.com&hl=en-US&gl=US&ceid=US:en"),
-    ("Defense News","https://news.google.com/rss/search?q=when:1d+site:defensenews.com&hl=en-US&gl=US&ceid=US:en"),
+    ("Defense News","https://news.google.com/rss/search?q=when:2d+site:defensenews.com&hl=en-US&gl=US&ceid=US:en"),
     ("SCOTUSblog","https://news.google.com/rss/search?q=when:1d+site:scotusblog.com&hl=en-US&gl=US&ceid=US:en"),
-    ("Lawfare Blog","https://news.google.com/rss/search?q=when:1d+site:lawfareblog.com&hl=en-US&gl=US&ceid=US:en"),
+    ("Lawfare Blog","https://news.google.com/rss/search?q=when:2d+site:lawfaremedia.org&hl=en-US&gl=US&ceid=US:en"),
     ("Defense One","https://news.google.com/rss/search?q=when:1d+site:defenseone.com&hl=en-US&gl=US&ceid=US:en"),
-    ("War on the Rocks","https://news.google.com/rss/search?q=when:1d+site:warontherocks.com&hl=en-US&gl=US&ceid=US:en"),
+    ("War on the Rocks","https://news.google.com/rss/search?q=when:3d+site:warontherocks.com&hl=en-US&gl=US&ceid=US:en"),
     ("NewsNation","https://news.google.com/rss/search?q=when:1d+site:newsnationnow.com&hl=en-US&gl=US&ceid=US:en"),
     ("Stat News","https://news.google.com/rss/search?q=when:1d+site:statnews.com&hl=en-US&gl=US&ceid=US:en"),
     ("The Bulwark","https://news.google.com/rss/search?q=when:1d+site:thebulwark.com&hl=en-US&gl=US&ceid=US:en"),
     ("Notus","https://news.google.com/rss/search?q=when:1d+site:notus.org&hl=en-US&gl=US&ceid=US:en"),
     ("Roll Call","https://news.google.com/rss/search?q=when:1d+site:rollcall.com&hl=en-US&gl=US&ceid=US:en"),
     ("OpenSecrets.org","https://news.google.com/rss/search?q=when:1d+site:opensecrets.org&hl=en-US&gl=US&ceid=US:en"),
-    ("The Markup","https://news.google.com/rss/search?q=when:1d+site:themarkup.org&hl=en-US&gl=US&ceid=US:en"),
+    ("CalMatters","https://news.google.com/rss/search?q=when:2d+site:calmatters.org&hl=en-US&gl=US&ceid=US:en"),
     ("RAND Corporation","https://news.google.com/rss/search?q=when:1d+site:rand.org&hl=en-US&gl=US&ceid=US:en"),
     ("Council on Foreign Relations","https://news.google.com/rss/search?q=when:1d+site:cfr.org&hl=en-US&gl=US&ceid=US:en"),
     ("Federal News Network","https://news.google.com/rss/search?q=when:1d+site:federalnewsnetwork.com&hl=en-US&gl=US&ceid=US:en"),
@@ -2834,7 +3081,7 @@ CULTURE_SOURCES = [
     ("IndieWire","https://news.google.com/rss/search?q=indiewire+news+entertainment+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("Screen Rant","https://news.google.com/rss/search?q=screen+rant+news+entertainment+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("Collider","https://news.google.com/rss/search?q=collider+news+entertainment+when:1d&hl=en-US&gl=US&ceid=US:en"),
-    ("NME","https://news.google.com/rss/search?q=nme+music+celebrity+when:1d&hl=en-US&gl=US&ceid=US:en"),
+    ("NME","https://news.google.com/rss/search?q=site:nme.com+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("Complex","https://news.google.com/rss/search?q=complex+news+celebrity+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("Women's Wear Daily","https://news.google.com/rss/search?q=womens+wear+daily+fashion+when:1d&hl=en-US&gl=US&ceid=US:en"),
     ("Fashionista","https://news.google.com/rss/search?q=fashionista+fashion+trends+when:1d&hl=en-US&gl=US&ceid=US:en"),
@@ -2906,6 +3153,83 @@ WORLD_SOURCES = [
 ]
 
 # ====================== FETCH LOGIC ======================
+# ══════════════════════ SOURCE EXPANSION (NUZU 2.3, 7 Nov 2026) ══════════════════════
+# About 75 more feeds, same Google News form as the lists above. Science and health
+# outlets join TECH_SOURCES, which now feeds the Science, Tech & Health section.
+_NZ_GN = "https://news.google.com/rss/search?q={q}+when:{d}&hl=en-US&gl=US&ceid=US:en"
+
+
+def _nz_gn(name, q, days=1):
+    return (name, _NZ_GN.format(q=q, d=f"{days}d"))
+
+
+NZ_EXTRA_SOURCES = {
+    "mideast": [
+        _nz_gn("Al-Monitor", "site:al-monitor.com"), _nz_gn("L'Orient Today", "site:lorientlejour.com+OR+site:today.lorientlejour.com"),
+        _nz_gn("Ahram Online", "site:english.ahram.org.eg"), _nz_gn("Rudaw", "site:rudaw.net"),
+        _nz_gn("Hurriyet Daily News", "site:hurriyetdailynews.com"), _nz_gn("Jordan Times", "site:jordantimes.com", 2),
+    ],
+    "us": [
+        _nz_gn("CNN Politics", "site:cnn.com+politics"), _nz_gn("Fox News Politics", "site:foxnews.com+politics"),
+        _nz_gn("Punchbowl News", "site:punchbowl.news", 2), _nz_gn("Stateline", "site:stateline.org", 2),
+        _nz_gn("Christian Science Monitor USA", "site:csmonitor.com+usa", 2),
+    ],
+    "sports": [
+        _nz_gn("NFL.com", "site:nfl.com"), _nz_gn("NBA.com", "site:nba.com"), _nz_gn("MLB.com", "site:mlb.com"),
+        _nz_gn("NHL.com", "site:nhl.com"), _nz_gn("Sporting News", "site:sportingnews.com"),
+        _nz_gn("Tennis (ATP/WTA)", "site:atptour.com+OR+site:wtatennis.com+OR+site:tennis.com"),
+        _nz_gn("Golf Channel", "site:golfchannel.com+OR+site:pgatour.com"), _nz_gn("Formula 1", "site:formula1.com"),
+        _nz_gn("RugbyPass", "site:rugbypass.com"), _nz_gn("Olympics", "site:olympics.com", 2),
+    ],
+    "tech": [
+        _nz_gn("Science News", "site:sciencenews.org", 2), _nz_gn("New Scientist", "site:newscientist.com"),
+        _nz_gn("Science (AAAS)", "site:science.org+news", 2), _nz_gn("Nature News", "site:nature.com+news", 2),
+        _nz_gn("NASA and Space", "nasa+OR+spacex+OR+%22space+station%22+OR+astronauts"),
+        _nz_gn("Space.com", "site:space.com"), _nz_gn("Live Science", "site:livescience.com"),
+        _nz_gn("Phys.org", "site:phys.org"), _nz_gn("Quanta Magazine", "site:quantamagazine.org", 3),
+        _nz_gn("STAT News", "site:statnews.com"), _nz_gn("KFF Health News", "site:kffhealthnews.org", 2),
+        _nz_gn("NPR Health and Science", "site:npr.org+health+OR+science"),
+        _nz_gn("AP Health and Science", "associated+press+health+OR+science+OR+medical"),
+        _nz_gn("Reuters Health", "reuters+health+OR+medical+OR+fda"),
+        _nz_gn("NYT Science and Health", "site:nytimes.com+science+OR+health"),
+        _nz_gn("Guardian Science", "site:theguardian.com+science"),
+        _nz_gn("BBC Science and Health", "bbc+science+OR+health+OR+environment"),
+        _nz_gn("MedPage Today", "site:medpagetoday.com"), _nz_gn("CNN Health", "site:cnn.com+health"),
+        _nz_gn("Climate Science", "climate+change+study+OR+scientists"),
+        _nz_gn("IEEE Spectrum", "site:spectrum.ieee.org", 2), _nz_gn("404 Media", "site:404media.co", 2),
+        _nz_gn("Rest of World", "site:restofworld.org", 2),
+    ],
+    "culture": [
+        _nz_gn("NPR Arts and Music", "site:npr.org+music+OR+arts+OR+movies"), _nz_gn("AV Club", "site:avclub.com"),
+        _nz_gn("Consequence", "site:consequence.net"), _nz_gn("Stereogum", "site:stereogum.com"),
+        _nz_gn("Playbill", "site:playbill.com", 2), _nz_gn("Artnet News", "site:news.artnet.com", 2),
+        _nz_gn("ARTnews", "site:artnews.com", 2), _nz_gn("Publishers Weekly", "site:publishersweekly.com", 2),
+        _nz_gn("Smithsonian Magazine", "site:smithsonianmag.com", 2),
+    ],
+    "business": [
+        _nz_gn("CNN Business", "site:cnn.com+business"), _nz_gn("Fox Business", "site:foxbusiness.com"),
+        _nz_gn("Axios Markets", "site:axios.com+markets+OR+economy"), _nz_gn("Quartz", "site:qz.com"),
+        _nz_gn("Yahoo Finance", "site:finance.yahoo.com+news"), _nz_gn("Financial Post", "site:financialpost.com"),
+        _nz_gn("Automotive News", "site:autonews.com"), _nz_gn("Retail Dive", "site:retaildive.com", 2),
+        _nz_gn("American Banker", "site:americanbanker.com", 2),
+    ],
+    "world": [
+        _nz_gn("CBC News World", "site:cbc.ca+news"), _nz_gn("Globe and Mail", "site:theglobeandmail.com"),
+        _nz_gn("ABC News Australia", "site:abc.net.au+news"), _nz_gn("RNZ", "site:rnz.co.nz"),
+        _nz_gn("CNA", "site:channelnewsasia.com"), _nz_gn("Yonhap", "site:en.yna.co.kr"),
+        _nz_gn("Dawn", "site:dawn.com"), _nz_gn("Kyiv Independent", "site:kyivindependent.com"),
+        _nz_gn("Meduza", "site:meduza.io/en", 2), _nz_gn("Africanews", "site:africanews.com"),
+        _nz_gn("Daily Maverick", "site:dailymaverick.co.za"), _nz_gn("Premium Times Nigeria", "site:premiumtimesng.com"),
+        _nz_gn("El Pais English", "site:english.elpais.com", 2), _nz_gn("Mexico News Daily", "site:mexiconewsdaily.com", 2),
+        _nz_gn("MercoPress", "site:en.mercopress.com", 2),
+    ],
+}
+for _nz_sec, _nz_list in (("mideast", MIDDLE_EAST_SOURCES), ("us", US_POLITICS_SOURCES),
+                          ("sports", SPORTS_SOURCES), ("tech", TECH_SOURCES), ("culture", CULTURE_SOURCES),
+                          ("business", BUSINESS_SOURCES), ("world", WORLD_SOURCES)):
+    _nz_have = {u for _n, u in _nz_list}
+    _nz_list.extend(x for x in NZ_EXTRA_SOURCES[_nz_sec] if x[1] not in _nz_have)
+
 def normalize_title(title):
     """Strip source suffix and lowercase — used for exact-match dedup."""
     if " - " in title:
@@ -3087,6 +3411,10 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                     # attributed to the query term (e.g. "Deutsche Welle"
                     # when the article is actually from Reuters via DW feed).
                     true_source, _src_href = _resolve_entry_source(entry, source_name)
+                    _nz_why = why_promo(raw_title, true_source)
+                    if _nz_why:                      # advertising / non-news: never shown
+                        _NZ_PROMO_LOG[_nz_why] = _NZ_PROMO_LOG.get(_nz_why, 0) + 1
+                        continue
                     # ── Auto-domain learning ──────────────────────────────────
                     # Google News entries carry entry.source.href — the publisher's
                     # canonical homepage URL. When SOURCE_DOMAIN_MAP has no mapping
@@ -3516,8 +3844,38 @@ STOPWORDS = {
 }
 
 def headline_tokens(title):
-    words = re.findall(r'[a-zA-Z]{3,}', title.lower())
-    return set(w for w in words if w not in STOPWORDS)
+    # NUZU 2.3: drop Google's " - Publisher" tail first, so "Washington Post" /
+    # "News" / "Times" in the publisher name never count as shared story words.
+    title = strip_source_from_title(title)
+    words = re.findall(r'[a-zA-Z]{3,}', title.lower().replace("’", "'").replace("'s ", " "))
+    return set(_nz_stem(w) for w in words if w not in STOPWORDS and w not in _NZ_CLUSTER_STOP)
+
+
+# Words too common in headlines to show two items are the same story.
+_NZ_CLUSTER_STOP = {
+    "how", "why", "what", "who", "when", "where", "which", "while", "here", "there", "now", "today",
+    "week", "weeks", "year", "years", "day", "days", "first", "last", "next", "one", "two", "three",
+    "get", "gets", "make", "makes", "take", "takes", "big", "top", "star", "stars", "live", "video",
+    "watch", "latest", "update", "updates", "news", "post", "pre", "man", "woman", "people", "time",
+    "back", "set", "may", "can", "will", "says", "amid", "ahead", "before", "against", "during",
+}
+
+
+def _nz_stem(w):
+    """A light stem so "tasks"/"tasked", "forming"/"forms", "spies"/"spy" match."""
+    if len(w) > 5 and w.endswith("ing"):
+        w = w[:-3]
+    elif len(w) > 4 and w.endswith("ied"):
+        w = w[:-3] + "y"
+    elif len(w) > 4 and w.endswith("ies"):
+        w = w[:-3] + "y"
+    elif len(w) > 4 and w.endswith("ed"):
+        w = w[:-2]
+    elif len(w) > 4 and w.endswith("es") and w[-3] in "sxz":
+        w = w[:-2]
+    elif len(w) > 3 and w.endswith("s") and not w.endswith("ss"):
+        w = w[:-1]
+    return w
 
 CLUSTER_EXCLUDED_SOURCES = {
     "just jared","justjared","just jared jr","hollywood life","hollywoodlife",
@@ -3564,7 +3922,10 @@ def cluster_items(items, min_shared=4):
             if abs(seed_ts - ts_j) > CLUSTER_TIME_WINDOW:
                 continue
             shared = len(token_cache[i] & token_cache[j])
-            if shared >= min_shared:
+            # NUZU 2.3: the shared words must also be a real part of the shorter
+            # headline (a third of it), not three common words in two long ones.
+            _nz_small = max(1, min(len(token_cache[i]), len(token_cache[j])))
+            if shared >= min_shared and shared / _nz_small >= 0.34:
                 cluster.append(items[j])
                 used[j] = True
                 sources_in_cluster.add(source_j.lower())
@@ -3651,7 +4012,7 @@ def render_clusters(clusters, show_trust=True, ctx=""):
             cluster_id = alloc_dom_id("cl-" + hashlib.md5(lead_link.encode()).hexdigest()[:8], ctx, src=lead_link)
             safe_title_attr = sanitize_attr(display_title)  # NUZU: XSS guard
             trust_pct = cluster_trust_pct(cluster)
-            trust_bar_color = "#22c55e" if trust_pct >= 80 else "#f59e0b" if trust_pct >= 50 else "#ef4444"
+            trust_bar_color = "var(--trust-hi)" if trust_pct >= 80 else "var(--trust-mid)" if trust_pct >= 50 else "var(--trust-lo)"
             trust_bar_html = (
                 f'<div class="cluster-trust-line">'
                 f'<div class="cluster-trust-bar-bg">'
@@ -3921,6 +4282,7 @@ for _sid, _bi, _ri in _CLUSTER_INPUTS:
     print(f"  [{_sid}] {len(_cc)} clusters ({_multi_c} multi-source, {_total_items} total items)")
 
 print("Canonical clusters done.")
+print("  promo/junk filtered: " + (", ".join(f"{k} {v}" for k, v in sorted(_NZ_PROMO_LOG.items(), key=lambda kv: -kv[1])) or "none"))
 
 def build_top_stories(max_stories=10):
     section_map = {
@@ -3968,6 +4330,9 @@ def build_trending_topics(max_topics=10):
 trending_topics = build_trending_topics()
 
 # - Section color palette -
+# What readers see; the internal key stays "Tech" (anchors, saved interests, the Argus tab).
+NZ_SECTION_DISPLAY = {"Tech": "Science, Tech & Health"}
+
 SECTION_COLORS = {
     "us":       "#C0392B",
     "mideast":  "#D35400",
@@ -4034,7 +4399,7 @@ html_parts.append(f"""<!DOCTYPE html>
     <link rel="alternate" type="application/rss+xml" title="NUZU News RSS Feed" href="feed.xml">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%230D1B4B'/><text x='32' y='46' font-family='Arial,sans-serif' font-size='24' font-weight='900' fill='%23FFFFFF' text-anchor='middle'>NZ</text></svg>">
     <meta name="description" content="{SITE_DESCRIPTION}">
-    <meta name="theme-color" content="#0D1B4B">
+    <meta name="theme-color" content="#000000">
 
     <!-- Open Graph (Facebook, LinkedIn, Slack, iMessage preview) -->
     <meta property="og:type" content="website">
@@ -4066,22 +4431,63 @@ html_parts.append(f"""<!DOCTYPE html>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-    /* - CSS Custom Properties (Design Tokens) - */
+    /* - Design tokens - NUZU 2.3 "Onyx" (7 Nov 2026) -
+       Dark is Argus Media Player's default Onyx: true black paper, neutral greys,
+       colour only where it carries meaning (a section, live/breaking, trust).
+       Every text colour here is at least 4.5:1 on every surface it sits on
+       (WCAG AA); most are 7:1 or better. Light mode redefines the same names
+       on body.light-mode, so a rule written once works in both themes. */
     :root {{
-        --nuzu-navy:    #000000;
-        --nuzu-dark:    #020912;
-        --nuzu-blue:    #1E4FD8;
-        --nuzu-blue-l:  #2563EB;
-        --nuzu-light:   #7EB3FF;
-        --nuzu-border:  #0F1E35;
-        --nuzu-card:    #060C1A;
-        --nuzu-muted:   #4A6A99;
-        --nuzu-dim:     #2A3D5C;
-        --nuzu-text:    #D0DAE8;
-        --nuzu-white:   #FFFFFF;
-        --nuzu-glow:    rgba(30,79,216,0.07);
+        --paper:   #000000;   /* page */
+        --paper-2: #0B0B0B;   /* panels, column cards */
+        --paper-3: #161616;   /* raised: clusters, inputs, chips */
+        --paper-4: #202020;   /* hover on raised */
+        --paper-rgb: 0,0,0;
+        --rule:    #262626;   /* hairlines */
+        --rule-2:  #3A3A3A;   /* stronger dividers, control borders */
+        --ink-1:   #EDEDED;   /* headlines, primary text   17.9:1 */
+        --ink-2:   #C8C8C8;   /* body text                 12.6:1 */
+        --ink-3:   #A3A3A3;   /* meta: times, sources       8.4:1 */
+        --ink-4:   #8C8C8C;   /* least important text       6.3:1 */
+        --tint:    255,255,255;
+        --accent:    var(--ink-1);   /* filled buttons: ink block, paper text */
+        --accent-hi: #FFFFFF;
+        --on-accent: #000000;
+        --live:     #C62828;  /* BREAKING label fill (white text 5.6:1) */
+        --on-live:  #FFFFFF;
+        --live-ink: #FF8A80;  /* "just in" text on dark */
+        --gold:     #E8C14E;  /* saved star */
+        --sec-us:       #FF6F61;
+        --sec-mideast:  #FF9F43;
+        --sec-world:    #2EC4B6;
+        --sec-tech:     #7C9CFF;
+        --sec-business: #E8C14E;
+        --sec-sports:   #5BD68A;
+        --sec-culture:  #D58CF5;
+        --trust-hi:  #4ADE80;
+        --trust-mid: #FBBF24;
+        --trust-lo:  #F87171;
+        --font-head: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+        --font-mast: 'Playfair Display', Georgia, serif;
+        --font-ui:   'Inter', Arial, sans-serif;
+    }}
+    /* The older names every existing rule reads - re-pointed at the tokens above.
+       Declared on body (not :root) so they follow body.light-mode. */
+    body {{
+        --nuzu-navy:   var(--paper);
+        --nuzu-dark:   var(--paper);
+        --nuzu-card:   var(--paper-2);
+        --nuzu-border: var(--rule);
+        --nuzu-muted:  var(--ink-3);
+        --nuzu-dim:    var(--ink-3);
+        --nuzu-text:   var(--ink-2);
+        --nuzu-white:  var(--ink-1);
+        --nuzu-light:  var(--ink-1);
+        --nuzu-blue:   var(--accent);
+        --nuzu-blue-l: var(--accent-hi);
+        --nuzu-glow:   rgba(var(--tint),0.04);
     }}
 
     /* - Reset & Base - */
@@ -4388,12 +4794,6 @@ html_parts.append(f"""<!DOCTYPE html>
         font-weight: 700; letter-spacing: 0.12em;
         color: var(--nuzu-text); font-size: 0.94em;
     }}
-    body.light-mode .nuzu-masthead-bar {{
-        border-top-color: #c7cbd6 !important;
-        border-bottom-color: #c7cbd6 !important;
-        color: #6a7387 !important;
-    }}
-    body.light-mode .nuzu-masthead-bar .mb-center {{ color: #1a2030 !important; }}
     @media (max-width: 700px) {{
         .nuzu-masthead-bar {{
             font-size: 0.68em; padding: 6px 12px; gap: 8px;
@@ -4544,13 +4944,6 @@ html_parts.append(f"""<!DOCTYPE html>
         max-width: 1400px; margin: 0 auto; padding: 12px 20px;
         display: flex; align-items: center; justify-content: space-between;
     }}
-    .us-color-banner       {{ border-left: 4px solid #C0392B; background: linear-gradient(90deg, rgba(192,57,43,0.15) 0%, transparent 55%); }}
-    .mideast-color-banner  {{ border-left: 4px solid #D35400; background: linear-gradient(90deg, rgba(211,84,0,0.15) 0%, transparent 55%); }}
-    .world-color-banner    {{ border-left: 4px solid #1A6FA8; background: linear-gradient(90deg, rgba(26,111,168,0.15) 0%, transparent 55%); }}
-    .tech-color-banner     {{ border-left: 4px solid #1E4FD8; background: linear-gradient(90deg, rgba(30,79,216,0.15) 0%, transparent 55%); }}
-    .business-color-banner {{ border-left: 4px solid #8B6914; background: linear-gradient(90deg, rgba(139,105,20,0.15) 0%, transparent 55%); }}
-    .sports-color-banner   {{ border-left: 4px solid #1A7A4A; background: linear-gradient(90deg, rgba(26,122,74,0.15) 0%, transparent 55%); }}
-    .culture-color-banner  {{ border-left: 4px solid #7B2D8B; background: linear-gradient(90deg, rgba(123,45,139,0.15) 0%, transparent 55%); }}
 
 
     /* - Section Titles - */
@@ -4594,13 +4987,6 @@ html_parts.append(f"""<!DOCTYPE html>
     .section-collapse-btn:hover {{ opacity: 1; }}
 
     /* - Per-Section Cluster Tints - */
-    #section-us       .cluster {{ border-left-color: #C0392B; background: #160404; }}
-    #section-mideast  .cluster {{ border-left-color: #D35400; background: #160800; }}
-    #section-world    .cluster {{ border-left-color: #1A6FA8; background: #030E1C; }}
-    #section-tech     .cluster {{ border-left-color: #1E4FD8; background: #030A1C; }}
-    #section-business .cluster {{ border-left-color: #A07820; background: #120F00; }}
-    #section-sports   .cluster {{ border-left-color: #1A7A4A; background: #020F06; }}
-    #section-culture  .cluster {{ border-left-color: #9B3DB5; background: #120012; }}
 
     /* - Headlines - */
     .headline {{
@@ -4625,7 +5011,6 @@ html_parts.append(f"""<!DOCTYPE html>
         margin: 2px 0 4px 0;
         font-style: italic;
     }}
-    body.light-mode .hl-summary {{ color: #6B7280; }}
 
     /* Breaking banner marquee (desktop + mobile, single source of truth).
        The headline lives in an absolutely-positioned .bb-scroll that starts one
@@ -4682,10 +5067,6 @@ html_parts.append(f"""<!DOCTYPE html>
         0%, 100% {{ box-shadow: 0 1px 5px rgba(34,197,94,0.30); }}
         50%      {{ box-shadow: 0 1px 10px rgba(34,197,94,0.65); }}
     }}
-    body.light-mode .cluster-updated-badge {{
-        background: linear-gradient(135deg, #166534 0%, #16A34A 100%);
-        color: #fff; border-color: rgba(21,128,61,0.5);
-    }}
     /* "Biggest Stories — Yesterday" block inside Recent columns */
     .yesterday-top-wrap {{
         margin-top: 14px; padding-top: 10px;
@@ -4720,14 +5101,6 @@ html_parts.append(f"""<!DOCTYPE html>
     .yesterday-top-item .yt-title {{ color: var(--nuzu-text); }}
     .yesterday-top-item .yt-source {{
         color: var(--nuzu-muted); font-size: 0.85em; margin-left: 4px;
-    }}
-    body.light-mode .yesterday-top-wrap {{ border-top-color: #d8dae1; }}
-    body.light-mode .yesterday-top-item {{ border-bottom-color: #eceef2; }}
-    body.light-mode .yesterday-top-item .yt-title {{ color: #1F2937; }}
-    body.light-mode .yesterday-top-item .yt-source {{ color: #6B7280; }}
-    body.light-mode .yesterday-top-item .yt-badge {{
-        background: rgba(30,79,216,0.10); color: #1E4FD8;
-        border-color: rgba(30,79,216,0.22);
     }}
     .cluster-lead {{ margin-bottom: 6px; }}
     .cluster-items-wrap {{ transition: none; }}
@@ -4854,63 +5227,42 @@ html_parts.append(f"""<!DOCTYPE html>
     .headline.search-hidden, .cluster.search-hidden {{ display: none !important; }}
     .headline.search-match {{ outline: 1px solid var(--nuzu-blue); }}
 
-    /* - Light Mode - */
+    /* - Light Mode - NUZU 2.3 "Ivory" (matches Argus Ivory): the same token names,
+       light values. Every rule that reads a token follows automatically, so the
+       old page of body.light-mode colour patches is gone. */
     body.light-mode {{
-        background: #FFFFFF !important; color: #1a1a1a !important;
-        --nuzu-navy:    #F0F4FB;
-        --nuzu-dark:    #FFFFFF;
-        --nuzu-blue:    #1E4FD8;
-        --nuzu-blue-l:  #2563EB;
-        --nuzu-light:   #1E4FD8;
-        --nuzu-border:  #D1D9E8;
-        --nuzu-card:    #EBF0FA;
-        --nuzu-muted:   #3A5A8A;
-        --nuzu-dim:     #6A7A9A;
-        --nuzu-text:    #1a1a1a;
-        --nuzu-white:   #000000;
-    }}
-    body.light-mode .sticky-nav {{ background: #EBF0FA !important; border-bottom-color: var(--nuzu-blue) !important; }}
-    body.light-mode .sticky-nav .site-name {{
-        background: linear-gradient(135deg, #0D1B4B 0%, #1E4FD8 60%, #4A7FD8 100%) !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-    }}
-    body.light-mode .breaking-banner {{ background: var(--nuzu-blue) !important; }}
-    body.light-mode .nuzu-hero {{
-        background: linear-gradient(180deg, #E0E8F8 0%, #F5F8FF 100%) !important;
+        background: #FFFFFF; color: #2B2B2B;
+        --paper:   #FFFFFF;
+        --paper-2: #F5F5F3;
+        --paper-3: #EDEDEA;
+        --paper-4: #E4E4E0;
+        --paper-rgb: 255,255,255;
+        --rule:    #DEDEDA;
+        --rule-2:  #C4C4BF;
+        --ink-1:   #111111;   /* 18.9:1 */
+        --ink-2:   #2B2B2B;   /* 14.4:1 */
+        --ink-3:   #565656;   /*  7.4:1 */
+        --ink-4:   #666666;   /*  5.7:1 */
+        --tint:    0,0,0;
+        --accent:    #111111;
+        --accent-hi: #000000;
+        --on-accent: #FFFFFF;
+        --live:     #C62828;
+        --on-live:  #FFFFFF;
+        --live-ink: #B3261E;
+        --gold:     #8A6400;
+        --sec-us:       #C4231A;
+        --sec-mideast:  #B4530A;
+        --sec-world:    #0B7A70;
+        --sec-tech:     #3555D6;
+        --sec-business: #8A6400;
+        --sec-sports:   #13803F;
+        --sec-culture:  #8E3AB8;
+        --trust-hi:  #166534;
+        --trust-mid: #92400E;
+        --trust-lo:  #B91C1C;
     }}
     /* Light-mode NUZU wordmark: invert gradient to dark colors so it's readable */
-    body.light-mode .nuzu-hero-wordmark {{
-        background: linear-gradient(135deg, #0D1B4B 0%, #1E4FD8 55%, #4A7FD8 100%) !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        filter: drop-shadow(0 2px 6px rgba(13,27,75,0.12)) !important;
-    }}
-    body.light-mode .title {{ color: #000 !important; }}
-    body.light-mode .top-story-card {{ background: #EBF0FA !important; }}
-    body.light-mode #section-us       .cluster {{ background: #FFF0F0 !important; border-left-color: #C0392B !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
-    body.light-mode #section-mideast  .cluster {{ background: #FFF5EE !important; border-left-color: #D35400 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
-    body.light-mode #section-world    .cluster {{ background: #EEF4FB !important; border-left-color: #1A6FA8 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
-    body.light-mode #section-tech     .cluster {{ background: #EEF4FF !important; border-left-color: #1E4FD8 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
-    body.light-mode #section-business .cluster {{ background: #FBF8EE !important; border-left-color: #A07820 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
-    body.light-mode #section-sports   .cluster {{ background: #EEF8F3 !important; border-left-color: #1A7A4A !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
-    body.light-mode #section-culture  .cluster {{ background: #F8EEF8 !important; border-left-color: #9B3DB5 !important; border-top-color: rgba(217,119,6,0.30) !important; box-shadow: inset 4px 0 0 rgba(217,119,6,0.10) !important; }}
-    body.light-mode .cluster-badge {{ background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%) !important; color: #fff !important; border-color: rgba(180,83,9,0.5) !important; }}
-    body.light-mode .saved-articles-panel {{ background: #F5F8FF !important; border-left-color: var(--nuzu-blue) !important; }}
-    body.light-mode .section-banner {{ background: #f8f9fc !important; }}
-    body.light-mode .us-color-banner       {{ background: linear-gradient(90deg, rgba(192,57,43,0.10) 0%, transparent 55%) !important; }}
-    body.light-mode .mideast-color-banner  {{ background: linear-gradient(90deg, rgba(211,84,0,0.10) 0%, transparent 55%) !important; }}
-    body.light-mode .world-color-banner    {{ background: linear-gradient(90deg, rgba(26,111,168,0.10) 0%, transparent 55%) !important; }}
-    body.light-mode .tech-color-banner     {{ background: linear-gradient(90deg, rgba(30,79,216,0.10) 0%, transparent 55%) !important; }}
-    body.light-mode .business-color-banner {{ background: linear-gradient(90deg, rgba(139,105,20,0.10) 0%, transparent 55%) !important; }}
-    body.light-mode .sports-color-banner   {{ background: linear-gradient(90deg, rgba(26,122,74,0.10) 0%, transparent 55%) !important; }}
-    body.light-mode .culture-color-banner  {{ background: linear-gradient(90deg, rgba(123,45,139,0.10) 0%, transparent 55%) !important; }}
-    body.light-mode .nuzu-hero {{ background: linear-gradient(180deg, #e8edf8 0%, #f5f8ff 100%) !important; }}
-    body.light-mode .breaking-banner {{ background: #1a1a2e !important; }}
-    body.light-mode .headline:hover {{ background: rgba(30,79,216,0.04) !important; }}
-    body.light-mode .float-mode-btn {{ background: #EBF0FA; color: #000; border-color: #D1D9E8; }}
 
     /* - Float Mode Button - */
     .float-mode-btn {{
@@ -4934,11 +5286,6 @@ html_parts.append(f"""<!DOCTYPE html>
         font-size: 0.85em;
         padding: 0;
     }}
-    body.light-mode .site-footer {{
-        background: #f4f4f4 !important;
-        border-top-color: var(--nuzu-blue) !important;
-        color: #555 !important;
-    }}
     .back-to-top-btn {{
         display: block; margin: 0 auto;
         background: none; border: 0;
@@ -4949,8 +5296,6 @@ html_parts.append(f"""<!DOCTYPE html>
         border-bottom: 1px solid var(--nuzu-border);
     }}
     .back-to-top-btn:hover {{ color: var(--nuzu-white); background: var(--nuzu-card); }}
-    body.light-mode .back-to-top-btn {{ color: #888; border-bottom-color: #ddd; }}
-    body.light-mode .back-to-top-btn:hover {{ color: #000; background: #eee; }}
     .footer-masthead {{
         max-width: 1400px; margin: 0 auto;
         padding: 36px 32px 28px 32px;
@@ -4965,22 +5310,18 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .footer-logo-text strong {{ display: block; font-size: 1.1em; color: var(--nuzu-white); letter-spacing: 0.03em; }}
     .footer-logo-text span {{ font-size: 0.82em; color: var(--nuzu-muted); font-style: italic; }}
-    body.light-mode .footer-logo-text strong {{ color: #222; }}
-    body.light-mode .footer-logo-text span {{ color: #888; }}
     .footer-mission {{ max-width: 760px; line-height: 1.7; color: var(--nuzu-muted); font-size: 0.88em; }}
-    body.light-mode .footer-mission {{ color: #666; }}
     .footer-donate-wrap {{ display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }}
     .footer-donate-label {{ color: var(--nuzu-dim); font-size: 0.82em; }}
     .footer-donate-btn {{
         display: inline-block; padding: 10px 24px;
-        background: var(--nuzu-blue); color: #fff !important;
+        background: var(--nuzu-blue); color: var(--on-accent) !important;
         font-weight: bold; text-decoration: none;
         border-radius: 4px; font-size: 0.88em;
         letter-spacing: 0.04em; transition: background 0.18s;
     }}
     .footer-donate-btn:hover {{ background: var(--nuzu-blue-l); }}
     .footer-divider {{ border: 0; height: 1px; background: var(--nuzu-border); margin: 0; }}
-    body.light-mode .footer-divider {{ background: #ddd; }}
     .footer-grid {{
         max-width: 1400px; margin: 0 auto; padding: 32px;
         display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
@@ -4993,19 +5334,15 @@ html_parts.append(f"""<!DOCTYPE html>
         margin-bottom: 14px; padding-bottom: 6px;
         border-bottom: 1px solid var(--nuzu-border);
     }}
-    body.light-mode .footer-col h3 {{ color: #444; border-bottom-color: #ddd; }}
     .footer-col ul {{ list-style: none; margin: 0; padding: 0; }}
     .footer-col ul li {{ margin-bottom: 8px; }}
     .footer-col ul li a {{ color: var(--nuzu-muted); text-decoration: none; font-size: 0.84em; transition: color 0.15s; }}
     .footer-col ul li a:hover {{ color: var(--nuzu-white); }}
-    body.light-mode .footer-col ul li a {{ color: #666; }}
-    body.light-mode .footer-col ul li a:hover {{ color: #000; }}
     .footer-social {{
         max-width: 1400px; margin: 0 auto; padding: 22px 32px;
         display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
     }}
     .footer-social-label {{ font-size: 0.78em; font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nuzu-text); }}
-    body.light-mode .footer-social-label {{ color: #555; }}
     .footer-social-icons {{ display: flex; gap: 10px; }}
     .social-icon {{
         display: inline-flex; align-items: center; justify-content: center;
@@ -5015,14 +5352,11 @@ html_parts.append(f"""<!DOCTYPE html>
         transition: border-color 0.15s, color 0.15s, background 0.15s;
     }}
     .social-icon:hover {{ border-color: var(--nuzu-white); color: var(--nuzu-white); background: var(--nuzu-card); }}
-    body.light-mode .social-icon {{ border-color: #ccc; color: #555; }}
-    body.light-mode .social-icon:hover {{ border-color: #333; color: #000; background: #eee; }}
     .footer-stay-informed {{
         max-width: 1400px; margin: 0 auto; padding: 0 32px 24px 32px;
         display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
     }}
     .footer-si-label {{ font-size: 0.78em; font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nuzu-text); }}
-    body.light-mode .footer-si-label {{ color: #555; }}
     .footer-si-links {{ display: flex; gap: 10px; flex-wrap: wrap; }}
     .footer-app-btn {{
         display: inline-block; padding: 7px 14px;
@@ -5031,20 +5365,13 @@ html_parts.append(f"""<!DOCTYPE html>
         transition: border-color 0.15s, color 0.15s;
     }}
     .footer-app-btn:hover {{ border-color: var(--nuzu-muted); color: var(--nuzu-white); }}
-    body.light-mode .footer-app-btn {{ border-color: #ccc; color: #666; }}
-    body.light-mode .footer-app-btn:hover {{ border-color: #555; color: #000; }}
     .footer-bottom {{ max-width: 1400px; margin: 0 auto; padding: 22px 32px 40px 32px; text-align: center; }}
     .footer-copyright {{ font-size: 0.82em; color: var(--nuzu-dim); margin-bottom: 6px; }}
-    body.light-mode .footer-copyright {{ color: #777; }}
     .footer-update {{ font-size: 0.76em; color: var(--nuzu-dim); margin-bottom: 14px; }}
-    body.light-mode .footer-update {{ color: #999; }}
     .footer-bottom-links {{ display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin-bottom: 16px; }}
     .footer-bottom-links a {{ color: var(--nuzu-dim); text-decoration: none; font-size: 0.78em; transition: color 0.15s; }}
     .footer-bottom-links a:hover {{ color: var(--nuzu-white); }}
-    body.light-mode .footer-bottom-links a {{ color: #777; }}
-    body.light-mode .footer-bottom-links a:hover {{ color: #000; }}
     .footer-disclaimer {{ font-size: 0.73em; color: var(--nuzu-dim); line-height: 1.6; max-width: 800px; margin: 0 auto; }}
-    body.light-mode .footer-disclaimer {{ color: #aaa; }}
     .newsletter-form {{ display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }}
     .newsletter-form input[type="email"] {{
         flex: 1; min-width: 200px; padding: 8px 14px;
@@ -5061,10 +5388,6 @@ html_parts.append(f"""<!DOCTYPE html>
     }}
     .newsletter-form button:hover {{ background: var(--nuzu-blue-l); }}
     .newsletter-msg {{ font-size: 0.8em; margin-top: 4px; }}
-    body.light-mode .newsletter-form input[type="email"] {{
-        background: #fff !important; color: #000 !important; border-color: #ccc !important;
-    }}
-    body.light-mode .newsletter-form input[type="email"]::placeholder {{ color: #888 !important; }}
     .homepage-wrap {{ margin-top: 22px; text-align: center; }}
     .set-homepage-btn {{
         background: none; border: 1px solid var(--nuzu-border); border-radius: 20px;
@@ -5072,15 +5395,12 @@ html_parts.append(f"""<!DOCTYPE html>
         transition: border-color 0.15s, color 0.15s; letter-spacing: 0.03em;
     }}
     .set-homepage-btn:hover {{ border-color: var(--nuzu-muted); color: var(--nuzu-white); }}
-    body.light-mode .set-homepage-btn {{ border-color: #ccc; color: #888; }}
-    body.light-mode .set-homepage-btn:hover {{ border-color: #888; color: #333; }}
     .homepage-instructions {{
         margin-top: 14px; padding: 14px 18px;
         background: var(--nuzu-card); border: 1px solid var(--nuzu-border);
         border-radius: 6px; font-size: 0.8em; color: var(--nuzu-muted);
         line-height: 1.9; text-align: left; display: inline-block; max-width: 560px;
     }}
-    body.light-mode .homepage-instructions {{ background: #f0f0f0; border-color: #ddd; color: #555; }}
     .homepage-instructions code {{ color: var(--nuzu-light); font-size: 0.9em; }}
     .hp-browser {{ display: block; }}
 
@@ -5322,9 +5642,6 @@ html_parts.append(f"""<!DOCTYPE html>
         font-weight: bold;
     }}
     .bnav-saved-wrap {{ position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; width: 100%; height: 100%; justify-content: center; }}
-    body.light-mode .nuzu-bottom-nav {{ background: #EBF0FA !important; border-top-color: var(--nuzu-blue) !important; }}
-    body.light-mode .nuzu-bottom-nav-item {{ color: #8899BB; }}
-    body.light-mode .nuzu-bottom-nav-item.active {{ color: #000; }}
 
     /* - Float button: push up above bottom nav on mobile - */
     @media (max-width: 900px) {{
@@ -5365,243 +5682,8 @@ html_parts.append(f"""<!DOCTYPE html>
     .container.equal-cols .column .section-col-card {{ flex: 1; }}
 
     /* -─ FIX 7: Per-section card tints + hover colors -─ */
-    #section-us       .section-col-card {{ background:#090101; border-left:2px solid rgba(192,57,43,0.35); }}
-    #section-mideast  .section-col-card {{ background:#090500; border-left:2px solid rgba(211,84,0,0.35); }}
-    #section-world    .section-col-card {{ background:#010912; border-left:2px solid rgba(26,111,168,0.35); }}
-    #section-tech     .section-col-card {{ background:#010712; border-left:2px solid rgba(30,79,216,0.35); }}
-    #section-business .section-col-card {{ background:#080700; border-left:2px solid rgba(139,105,20,0.35); }}
-    #section-sports   .section-col-card {{ background:#010a04; border-left:2px solid rgba(26,122,74,0.35); }}
-    #section-culture  .section-col-card {{ background:#080008; border-left:2px solid rgba(123,45,139,0.35); }}
-    #section-us       .headline:hover {{ background:rgba(192,57,43,0.10) !important; }}
-    #section-mideast  .headline:hover {{ background:rgba(211,84,0,0.07) !important; }}
-    #section-world    .headline:hover {{ background:rgba(26,111,168,0.07) !important; }}
-    #section-tech     .headline:hover {{ background:rgba(30,79,216,0.07) !important; }}
-    #section-business .headline:hover {{ background:rgba(139,105,20,0.07) !important; }}
-    #section-sports   .headline:hover {{ background:rgba(26,122,74,0.07) !important; }}
-    #section-culture  .headline:hover {{ background:rgba(123,45,139,0.07) !important; }}
-    body.light-mode #section-us       .section-col-card{{background:#FFF5F5!important;border-left-color:rgba(192,57,43,0.25)!important;}}
-    body.light-mode #section-mideast  .section-col-card{{background:#FFF8F0!important;border-left-color:rgba(211,84,0,0.25)!important;}}
-    body.light-mode #section-world    .section-col-card{{background:#EEF5FF!important;border-left-color:rgba(26,111,168,0.25)!important;}}
-    body.light-mode #section-tech     .section-col-card{{background:#EEF2FF!important;border-left-color:rgba(30,79,216,0.25)!important;}}
-    body.light-mode #section-business .section-col-card{{background:#FDFAEE!important;border-left-color:rgba(139,105,20,0.25)!important;}}
-    body.light-mode #section-sports   .section-col-card{{background:#EEFBF3!important;border-left-color:rgba(26,122,74,0.25)!important;}}
-    body.light-mode #section-culture  .section-col-card{{background:#FDF0FF!important;border-left-color:rgba(123,45,139,0.25)!important;}}
         
-          /* ═══════════════════════════════════════════════════════════════
-       HOROSCOPE SECTION
-    ═══════════════════════════════════════════════════════════════ */
-    .horoscope-color-banner {{
-        border-left: 4px solid #7B5EA7;
-        background: linear-gradient(90deg, rgba(123,94,167,0.13) 0%, transparent 55%);
-    }}
-    .horoscope-color {{ color: #7B5EA7; }}
- 
-    .horo-grid {{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 14px 20px 20px;
-    }}
-    @media (max-width: 1280px) {{ .horo-grid {{ grid-template-columns: repeat(3, 1fr); }} }}
-    @media (max-width:  900px) {{ .horo-grid {{ grid-template-columns: repeat(2, 1fr); padding: 12px; }} }}
-    @media (max-width:  520px) {{ .horo-grid {{ grid-template-columns: 1fr; }} }}
- 
-    .horo-card {{
-        background: var(--nuzu-card);
-        border: 1px solid var(--nuzu-border);
-        border-left: 3px solid #7B5EA7;
-        border-radius: 6px;
-        padding: 13px 15px 11px;
-        transition: background 0.15s;
-    }}
-    .horo-card:hover {{ background: rgba(123,94,167,0.08); }}
- 
-    .horo-card-header {{
-        display: flex;
-        align-items: flex-start;
-        gap: 9px;
-        margin-bottom: 9px;
-    }}
-    .horo-symbol {{
-        font-size: 1.65em;
-        flex-shrink: 0;
-        line-height: 1;
-        margin-top: 1px;
-    }}
-    .horo-sign-info {{
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        min-width: 0;
-    }}
-    .horo-sign-name {{
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 700;
-        color: var(--nuzu-white);
-        font-size: 0.98em;
-        line-height: 1.2;
-    }}
-    .horo-dates {{
-        color: var(--nuzu-dim);
-        font-size: 0.70em;
-        letter-spacing: 0.02em;
-        margin-top: 2px;
-    }}
-    .horo-element {{
-        font-size: 0.62em;
-        font-weight: bold;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 2px 7px;
-        border-radius: 8px;
-        flex-shrink: 0;
-        align-self: flex-start;
-        margin-top: 3px;
-    }}
-    .horo-elem-fire  {{ background: rgba(220,80,40,0.18);  color: #e06040; }}
-    .horo-elem-earth {{ background: rgba(80,140,60,0.18);  color: #6aaa50; }}
-    .horo-elem-air   {{ background: rgba(40,140,220,0.18); color: #50aaee; }}
-    .horo-elem-water {{ background: rgba(40,80,200,0.18);  color: #608aee; }}
- 
-    .horo-desc {{
-        color: var(--nuzu-text);
-        font-size: 0.83em;
-        line-height: 1.62;
-        margin-bottom: 9px;
-    }}
-    .horo-meta {{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        border-top: 1px solid var(--nuzu-border);
-        padding-top: 8px;
-    }}
-    .horo-meta-item {{
-        font-size: 0.70em;
-        color: var(--nuzu-muted);
-        background: var(--nuzu-border);
-        padding: 2px 8px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }}
-    .horo-meta-label {{
-        color: #9B7ED5;
-        font-weight: bold;
-    }}
-    .horo-updated {{
-        font-size: 0.70em;
-        font-weight: 400;
-        color: var(--nuzu-dim);
-        text-transform: none;
-        letter-spacing: 0.04em;
-    }}
- 
-    /* Light mode */
-    body.light-mode .horo-card                     {{ background: #F7F3FF !important; border-left-color: #7B5EA7 !important; }}
-    body.light-mode .horo-card:hover               {{ background: rgba(123,94,167,0.06) !important; }}
-    body.light-mode .horoscope-color-banner        {{ background: linear-gradient(90deg, rgba(123,94,167,0.09) 0%, transparent 55%) !important; }}
-    body.light-mode .horo-sign-name                {{ color: #1a1a1a !important; }}
- 
-    /* ═══════════════════════════════════════════════════════════════
-       COMICS SECTION
-    ═══════════════════════════════════════════════════════════════ */
-    .comics-color-banner {{
-        border-left: 4px solid #7C4A1E;
-        background: linear-gradient(90deg, rgba(124,74,30,0.13) 0%, transparent 55%);
-    }}
-    .comics-color {{ color: #9A5A28; }}
- 
-    .comic-card {{
-        background: var(--nuzu-card);
-        border: 1px solid var(--nuzu-border);
-        border-radius: 8px;
-        overflow: hidden;
-        max-width: 820px;
-        margin: 0 auto;
-    }}
-    .comic-card-inner {{ padding: 22px 24px 18px; }}
-    .comic-pd-badge {{
-        display: inline-block;
-        background: rgba(124,74,30,0.14);
-        color: #9A5A28;
-        font-size: 0.70em;
-        font-weight: bold;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        padding: 3px 10px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        border: 1px solid rgba(124,74,30,0.28);
-    }}
-    .comic-series-name {{
-        font-size: 0.78em;
-        color: var(--nuzu-muted);
-        margin-bottom: 4px;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-    }}
-    .comic-title {{
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 1.38em;
-        font-weight: 700;
-        color: var(--nuzu-white);
-        margin-bottom: 12px;
-        line-height: 1.32;
-    }}
-    .comic-desc {{
-        color: var(--nuzu-text);
-        font-size: 0.87em;
-        line-height: 1.70;
-        margin-bottom: 18px;
-    }}
-    .comic-footer {{
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        flex-wrap: wrap;
-    }}
-    .comic-read-btn {{
-        display: inline-block;
-        background: #7C4A1E;
-        color: #fff !important;
-        padding: 10px 22px;
-        border-radius: 4px;
-        text-decoration: none;
-        font-size: 0.88em;
-        font-weight: bold;
-        letter-spacing: 0.03em;
-        transition: background 0.15s;
-    }}
-    .comic-read-btn:hover {{ background: #9A5A28; }}
-    .comic-archive-link {{
-        color: var(--nuzu-muted);
-        font-size: 0.80em;
-        text-decoration: underline;
-        transition: color 0.15s;
-    }}
-    .comic-archive-link:hover {{ color: var(--nuzu-white); }}
-    .comic-attribution {{
-        background: rgba(124,74,30,0.07);
-        border-top: 1px solid var(--nuzu-border);
-        padding: 10px 24px;
-        font-size: 0.76em;
-        color: var(--nuzu-dim);
-        line-height: 1.6;
-    }}
-    .comic-attribution a {{ color: #9A5A28; text-decoration: underline; }}
-    .comic-attribution a:hover {{ color: var(--nuzu-white); }}
- 
-    /* Light mode */
-    body.light-mode .comic-card            {{ background: #FDF9F5 !important; }}
-    body.light-mode .comic-title           {{ color: #2a1500 !important; }}
-    body.light-mode .comic-pd-badge        {{ background: rgba(124,74,30,0.09) !important; }}
-    body.light-mode .comic-attribution    {{ background: rgba(124,74,30,0.05) !important; }}
-    body.light-mode .comics-color-banner   {{ background: linear-gradient(90deg, rgba(124,74,30,0.09) 0%, transparent 55%) !important; }}
- 
+    /* Horoscope and comic styles removed with those sections (NUZU 2.3). */
     /* ═══════════════════════════════════════════════════════════════
        VIDEO FEED COUNTRY LABELS
     ═══════════════════════════════════════════════════════════════ */
@@ -5730,16 +5812,6 @@ html_parts.append(f"""<!DOCTYPE html>
     .nuzu-thumb-md {{ width: 44px; height: 44px; font-size: 1.05em; }}
     /* Small thumb = MRO cards */
     .nuzu-thumb-sm {{ width: 36px; height: 36px; font-size: 0.92em; }}
-    body.light-mode .nuzu-thumb {{
-        background: #fff;
-        border-color: #d8dae1;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }}
-    body.light-mode .nuzu-thumb-letter {{
-        background: linear-gradient(135deg, rgba(30,79,216,0.18) 0%, rgba(30,79,216,0.06) 100%);
-        color: #0D1B4B;
-        border-color: rgba(30,79,216,0.25);
-    }}
 
     /* Cluster layout with thumb: image on left, body fills remaining */
     .cluster.cluster-with-thumb {{
@@ -5785,12 +5857,6 @@ html_parts.append(f"""<!DOCTYPE html>
             inset 5px 0 0 rgba(217,119,6,0.38),
             0 4px 10px rgba(0,0,0,0.30),
             0 0 0 1px rgba(217,119,6,0.18);
-    }}
-    body.light-mode .cluster {{
-        box-shadow:
-            inset 5px 0 0 rgba(217,119,6,0.30),
-            0 1px 3px rgba(0,0,0,0.08),
-            0 0 0 1px rgba(217,119,6,0.10);
     }}
 
     /* ═══════════════════════════════════════════════════════════════
@@ -5910,10 +5976,6 @@ html_parts.append(f"""<!DOCTYPE html>
     @media (max-width: 900px) {{
         .pwa-install-btn {{ right: 12px; bottom: 92px; padding: 10px 16px; font-size: 0.78em; }}
     }}
-    body.light-mode .pwa-install-btn {{
-        color: #fff;
-        box-shadow: 0 6px 22px rgba(30,79,216,0.38), 0 2px 5px rgba(0,0,0,0.15);
-    }}
 
     /* ── Updated-ago prominent ── */
     .nav-updated-ago {{
@@ -5946,7 +6008,6 @@ html_parts.append(f"""<!DOCTYPE html>
         .mobile-vid-toggle-wrap {{ display: flex; }}
         .mobile-light-label {{ display: inline-block; }}
     }}
-    body.light-mode .mobile-light-label {{ color: #1E4FD8; }}
 
     /* ── Mobile section video wraps ── */
     .mobile-section-video-wrap {{
@@ -6000,7 +6061,6 @@ html_parts.append(f"""<!DOCTYPE html>
         font-size: 0.75em; color: var(--nuzu-dim); margin-top: 8px;
         border-top: 1px solid var(--nuzu-border); padding-top: 7px; line-height: 1.5;
     }}
-    body.light-mode .src-key-popover {{ background: #EBF0FA !important; }}
 
     /* ── Bottom livestream block ── */
     .bottom-livestream-wrap {{
@@ -6072,74 +6132,283 @@ html_parts.append(f"""<!DOCTYPE html>
         text-decoration: underline; font-family: 'Inter',Arial,sans-serif;
     }}
 
-    /* ══════════════════════ NUZU 2.0 — VISUAL REFRESH LAYER ══════════════════════
-       Additive polish ONLY. Reuses existing :root variables (no new colors, no
-       layout/nav/scroll changes). fully reversible — delete from this banner down to
-       the matching END banner and the site returns to its prior look. Sharpens type,
-       tightens vertical rhythm, crisps borders & video labels, and adds subtle depth,
-       on desktop AND mobile. See MASTER_DIRECTIVE.md, Phase 3, for how to extend it.
-       DO NOT add rules here that touch .sticky-nav height, scroll-margin-top, or
-       content-visibility — those are load-bearing for the scroll-position fix. */
+    /* ══════════════════════ NUZU 2.3 — ONYX EDITION (7 Nov 2026) ══════════════════════
+       Replaces the 2.0 refresh layer. Matches Argus Media Player's default Onyx look
+       (true black, neutral greys) and Argus Ivory in light mode, keeps the newspaper
+       feel (serif headlines, double rules, section flags), and fixes contrast: every
+       text colour comes from the tokens at the top of this stylesheet, all of which
+       pass WCAG AA on every surface they are used on.
+       Section colour now marks things (a rule, a flag, a label) - it is never a
+       background tint behind text. Per-section colour comes from --sec, set once on
+       each section below. */
 
-    /* — Crisper text rendering everywhere (big readability win on a dark theme) — */
-    body {{
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
-    }}
+    /* — Per-section colour, set once — */
+    #section-us, .mro-card[data-section="section-us"], .ts-section-us             {{ --sec: var(--sec-us); }}
+    #section-mideast, .mro-card[data-section="section-mideast"], .ts-section-mideast {{ --sec: var(--sec-mideast); }}
+    #section-world, .mro-card[data-section="section-world"], .ts-section-world    {{ --sec: var(--sec-world); }}
+    #section-tech, .mro-card[data-section="section-tech"], .ts-section-tech       {{ --sec: var(--sec-tech); }}
+    #section-business, .mro-card[data-section="section-business"], .ts-section-business {{ --sec: var(--sec-business); }}
+    #section-sports, .mro-card[data-section="section-sports"], .ts-section-sports {{ --sec: var(--sec-sports); }}
+    #section-culture, .mro-card[data-section="section-culture"], .ts-section-culture {{ --sec: var(--sec-culture); }}
 
-    /* — Headlines: a touch more breathing room + a calm accent bar on hover — */
-    .headline {{
-        padding: 9px 12px 11px 12px;
-        transition: background 0.16s ease, box-shadow 0.16s ease;
-    }}
-    .headline:hover {{ box-shadow: inset 2px 0 0 var(--nuzu-blue); }}
-    .title {{ letter-spacing: -0.006em; }}
-    .hl-summary {{ line-height: 1.55; }}
+    /* — Page — */
+    body {{ background: var(--paper); color: var(--ink-2);
+        -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility; }}
+    ::selection {{ background: rgba(var(--tint),0.22); }}
 
-    /* — Cluster cards: rounded + a hair of depth to lift them off the page — */
-    .cluster {{
-        border-radius: 5px;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.28);
-    }}
+    /* — Top bar — */
+    .sticky-nav {{ background: var(--paper); border-bottom: 1px solid var(--rule-2); }}
+    .sticky-nav .site-name {{ background: none; -webkit-text-fill-color: currentColor;
+        color: var(--ink-1); font-family: var(--font-mast); letter-spacing: 0.08em; }}
+    .sticky-nav a.nav-link {{ color: var(--ink-3); border-left: 0; font-size: 0.8em;
+        box-shadow: inset 0 -3px 0 transparent; transition: color 0.15s, box-shadow 0.15s; }}
+    .sticky-nav a.nav-link:hover {{ color: var(--ink-1); box-shadow: inset 0 -3px 0 var(--rule-2); }}
+    .sticky-nav a.nav-link.nav-active,
+    .sticky-nav a.nav-link[aria-current] {{ color: var(--ink-1); background: rgba(var(--tint),0.06); }}
+    .sticky-nav a.nav-us.nav-active, .sticky-nav a.nav-us[aria-current]             {{ box-shadow: inset 0 -3px 0 var(--sec-us); }}
+    .sticky-nav a.nav-mideast.nav-active, .sticky-nav a.nav-mideast[aria-current]   {{ box-shadow: inset 0 -3px 0 var(--sec-mideast); }}
+    .sticky-nav a.nav-world.nav-active, .sticky-nav a.nav-world[aria-current]       {{ box-shadow: inset 0 -3px 0 var(--sec-world); }}
+    .sticky-nav a.nav-tech.nav-active, .sticky-nav a.nav-tech[aria-current]         {{ box-shadow: inset 0 -3px 0 var(--sec-tech); }}
+    .sticky-nav a.nav-business.nav-active, .sticky-nav a.nav-business[aria-current] {{ box-shadow: inset 0 -3px 0 var(--sec-business); }}
+    .sticky-nav a.nav-sports.nav-active, .sticky-nav a.nav-sports[aria-current]     {{ box-shadow: inset 0 -3px 0 var(--sec-sports); }}
+    .sticky-nav a.nav-culture.nav-active, .sticky-nav a.nav-culture[aria-current]   {{ box-shadow: inset 0 -3px 0 var(--sec-culture); }}
+    .sticky-nav-controls, .wr-nav-wrap, .video-toggle-wrap {{ border-left-color: var(--rule); }}
+    .light-toggle-label, .video-toggle-label {{ color: var(--ink-3); font-size: 0.76em; }}
+    .font-size-btn, .wr-fullscreen-btn {{ color: var(--ink-2); border-color: var(--rule-2); background: none; }}
+    .font-size-btn {{ font-size: 0.8em; padding: 3px 7px; }}
+    .font-size-btn:hover, .wr-fullscreen-btn:hover {{ color: var(--ink-1); border-color: var(--ink-3); background: rgba(var(--tint),0.06); }}
+    .saved-nav-btn {{ color: var(--ink-1); border-color: var(--rule-2); }}
+    .saved-nav-btn:hover {{ color: var(--ink-1); border-color: var(--ink-3); }}
+    .saved-count-badge, .bnav-saved-badge {{ background: var(--accent); color: var(--on-accent); }}
+    .nav-updated-ago {{ color: var(--ink-2); background: var(--paper-3); border: 1px solid var(--rule-2);
+        font-size: 0.76em; font-weight: 600; }}
+    .toggle-slider {{ background: var(--rule-2); }}
+    .toggle-slider:before {{ background: var(--ink-3); }}
+    .toggle-switch input:checked + .toggle-slider {{ background: var(--ink-1); }}
+    .toggle-switch input:checked + .toggle-slider:before {{ background: var(--paper); }}
+    .mobile-vid-toggle-wrap {{ background: rgba(var(--tint),0.06); border-color: var(--rule-2); }}
+    .mobile-vid-label, .mobile-light-label {{ color: var(--ink-2); font-size: 0.74em; }}
 
-    /* — Cleaner single-pixel section dividers — */
-    .top-divider {{ height: 1px; opacity: 0.9; }}
+    /* — Breaking ticker — */
+    .breaking-banner {{ background: var(--paper); border-bottom: 1px solid var(--rule); color: var(--ink-1); }}
+    .breaking-banner .bb-label {{ background: var(--live); color: var(--on-live); border-right: 0; font-size: 0.74em; }}
+    .bb-pulse-dot {{ background: var(--on-live); }}
+    .breaking-banner .bb-text, .breaking-banner .bb-scroll {{ color: var(--ink-1); }}
+    .breaking-banner .bb-text:hover, .breaking-banner .bb-text:hover .bb-scroll {{ color: var(--ink-1); text-decoration: underline; }}
+    .bb-section-pill {{ font-size: 0.72em; background: transparent; }}
 
-    /* — Video feeds: crisper corners + more legible country labels — */
-    .youtube-inset {{ border-radius: 4px; }}
-    .feed-country-label {{
-        background: rgba(0,0,0,0.62);
-        color: rgba(255,255,255,0.94);
-        letter-spacing: 0.11em;
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-    }}
-    #wr-grid .wr-cell-num {{ letter-spacing: 0.07em; }}
+    /* — Masthead: plain ink wordmark between newspaper rules — */
+    .nuzu-hero {{ background: var(--paper); border-bottom: 1px solid var(--rule); }}
+    .nuzu-hero::before {{ display: none; }}
+    .nuzu-hero-wordmark {{ background: none; -webkit-text-fill-color: currentColor; color: var(--ink-1);
+        font-family: var(--font-mast); filter: none; }}
+    .nuzu-masthead-bar {{ color: var(--ink-3); border-top: 3px double var(--rule-2); border-bottom: 1px solid var(--rule-2); }}
+    .nuzu-masthead-bar .mb-center {{ color: var(--ink-1); }}
+    .nuzu-hero-date {{ color: var(--ink-3); }}
+    .nuzu-hero-tagline {{ color: var(--ink-3); border-top-color: var(--rule); font-size: 0.76em; }}
 
-    /* — Accessible, on-brand keyboard focus rings — */
-    a:focus-visible, button:focus-visible, [tabindex]:focus-visible {{
-        outline: 2px solid var(--nuzu-blue);
-        outline-offset: 2px;
-        border-radius: 3px;
-    }}
+    /* — Most Reported On — */
+    .top-stories-title {{ color: var(--ink-1); font-size: 0.78em; letter-spacing: 0.14em;
+        border-top: 3px double var(--rule-2); border-bottom: 1px solid var(--rule); padding: 8px 0 6px; }}
+    .ts-divider-left {{ border-left-color: var(--rule); }}
+    .top-story-card {{ background: var(--paper-2); border-left: 3px solid var(--sec, var(--rule-2)); border-radius: 4px; }}
+    .top-story-card .ts-section-tag {{ background: transparent; color: var(--sec, var(--ink-2));
+        border: 1px solid currentColor; border-radius: 3px; font-size: 0.78em; }}
+    .top-story-card .ts-badge, .ts-badge {{ background: var(--paper-3); color: var(--ink-2); font-size: 0.78em; }}
+    .top-story-card .ts-headline {{ color: var(--ink-1); font-family: var(--font-head); font-weight: 600; font-size: 1em; line-height: 1.38; }}
+    .top-story-card .ts-src {{ color: var(--ink-3); font-size: 0.84em; }}
+    .top-story-card .ts-link, .mro-jump {{ color: var(--ink-3); font-size: 0.8em; text-decoration: underline; text-underline-offset: 2px; }}
+    .top-story-card .ts-link:hover, .mro-jump:hover {{ color: var(--ink-1); }}
+    .top-story-card:hover {{ background: var(--paper-3); }}
+    .src-key-btn {{ color: var(--ink-2); border-color: var(--rule-2); font-size: 0.74em; }}
+    .src-key-btn:hover {{ color: var(--ink-1); border-color: var(--ink-3); }}
+    .src-key-popover {{ background: var(--paper-2); border-color: var(--rule-2); color: var(--ink-2); }}
+    .src-key-title, .src-key-note {{ color: var(--ink-3); }}
 
-    /* — Subtle themed scrollbar (desktop only) — */
+    /* — Search — */
+    .search-bar-wrap {{ background: var(--paper-2); border-color: var(--rule); }}
+    .search-bar-wrap input {{ background: var(--paper); border-color: var(--rule-2); color: var(--ink-1); }}
+    .search-bar-wrap input::placeholder {{ color: var(--ink-4); }}
+    .search-bar-wrap input:focus {{ border-color: var(--ink-3); }}
+    .search-bar-wrap button, #news-search-btn {{ background: var(--accent); color: var(--on-accent); }}
+    .search-bar-wrap button:hover, #news-search-btn:hover {{ background: var(--accent-hi); }}
+    #search-clear-btn {{ background: none !important; color: var(--ink-3) !important; }}
+    #search-result-count {{ color: var(--ink-3) !important; }}
+
+    /* — Section flags: a heavy rule in the section colour, like a newspaper section front — */
+    .section-banner {{ background: var(--paper); border-top: 3px solid var(--sec, var(--rule-2)); border-bottom: 1px solid var(--rule); }}
+    .us-color-banner, .mideast-color-banner, .world-color-banner, .tech-color-banner,
+    .business-color-banner, .sports-color-banner, .culture-color-banner {{ border-left: 0; background: var(--paper); }}
+    .section-title, .section-title.us-color, .section-title.mideast-color, .section-title.world-color,
+    .section-title.tech-color, .section-title.business-color, .section-title.sports-color,
+    .section-title.culture-color {{ color: var(--sec, var(--ink-1)); font-size: 0.98em; letter-spacing: 0.12em; }}
+    .sec-dot {{ background: var(--sec, var(--ink-3)) !important; width: 10px; height: 10px; }}
+    .section-collapse-btn {{ color: var(--ink-2); opacity: 1; }}
+    .section-collapse-btn:hover {{ color: var(--ink-1); }}
+    .src-summary {{ color: var(--ink-3); font-size: 0.8em; }}
+
+    /* — Columns — */
+    .section-col-card {{ background: var(--paper-2); border: 1px solid var(--rule); border-left: 1px solid var(--rule); }}
+    .section-col-label {{ border-bottom-color: var(--rule); font-size: 0.78em; }}
+    .scl-breaking {{ color: var(--live-ink); }}
+    .scl-daily {{ color: var(--ink-2); }}
+    .scl-dot {{ background: currentColor !important; }}
+
+    /* — Story clusters: raised card, section-coloured rule on the left — */
+    .cluster, #section-us .cluster, #section-mideast .cluster, #section-world .cluster,
+    #section-tech .cluster, #section-business .cluster, #section-sports .cluster, #section-culture .cluster {{
+        background: var(--paper-3); border: 1px solid var(--rule); border-left: 4px solid var(--sec, var(--rule-2));
+        border-radius: 6px; box-shadow: none; }}
+    .cluster:hover, #section-us .cluster:hover, #section-mideast .cluster:hover, #section-world .cluster:hover,
+    #section-tech .cluster:hover, #section-business .cluster:hover, #section-sports .cluster:hover,
+    #section-culture .cluster:hover {{ background: var(--paper-4); box-shadow: none; transform: none; }}
+    .cluster-badge {{ background: var(--accent); color: var(--on-accent); border: 0; box-shadow: none;
+        text-shadow: none; font-size: 0.84em; font-weight: 700; }}
+    .cluster-updated-badge {{ background: transparent; color: var(--trust-hi); border: 1px solid currentColor;
+        box-shadow: none; text-shadow: none; animation: none; font-size: 0.72em; }}
+    .cluster-toggle-btn {{ color: var(--ink-2); border-color: var(--rule-2); font-size: 0.84em; }}
+    .cluster-toggle-btn:hover, .cluster-toggle-btn.open {{ color: var(--ink-1); border-color: var(--ink-3); }}
+    .cluster-sources-line {{ color: var(--ink-3); border-bottom-color: var(--rule); font-size: 0.78em; }}
+    .cluster-item {{ border-bottom-color: var(--rule); }}
+    .cluster-src-pill {{ background: transparent; border: 1px solid var(--rule-2); color: var(--ink-2); font-size: 0.8em; }}
+    .cluster-trust-line {{ font-size: 0.84em !important; }}
+    .cluster-trust-label {{ font-size: 1em !important; }}
+    .cluster-trust-bar-bg {{ background: var(--rule-2); box-shadow: none; }}
+    .cluster-trust-bar-fill {{ box-shadow: none; }}
+    .cluster-trust-label {{ color: var(--ink-3); }}
+    .src-tier-pip {{ box-shadow: none; }}
+
+    /* — Headlines: serif headline on its own line, a quiet dateline under it — */
+    .headline {{ border-bottom: 1px solid var(--rule); border-radius: 0; padding: 10px 6px 11px; margin-bottom: 0; }}
+    .headline:hover, #section-us .headline:hover, #section-mideast .headline:hover, #section-world .headline:hover,
+    #section-tech .headline:hover, #section-business .headline:hover, #section-sports .headline:hover,
+    #section-culture .headline:hover {{ background: rgba(var(--tint),0.04) !important; box-shadow: none; }}
+    .title {{ display: block; color: var(--ink-1); font-family: var(--font-head); font-weight: 600;
+        font-size: 1.06em; line-height: 1.34; letter-spacing: -0.003em; margin-bottom: 3px; }}
+    .headline .title, .cluster-lead .title, .cluster-item .title {{ cursor: pointer; }}
+    .ts-label {{ color: var(--ink-3); font-size: 0.8em; margin-left: 0; }}
+    .ts-hot {{ color: var(--live-ink) !important; }}
+    .src-label {{ color: var(--ink-2); font-size: 0.8em; }}
+    .hl-summary {{ color: var(--ink-3); font-style: normal; font-size: 0.84em; }}
+    .link {{ color: var(--ink-2); background: none; border: 0; text-decoration: underline;
+        text-underline-offset: 2px; font-size: 0.84em; padding: 2px 4px; }}
+    .cluster .link, .cluster-item .link {{ font-size: 0.96em; }}
+    .bookmark-btn, .share-btn {{ font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'Noto Sans Symbols', 'Apple Symbols', var(--font-ui); font-variant-emoji: text; }}
+    .link:hover {{ color: var(--ink-1); background: none; }}
+    .bookmark-btn, .share-btn {{ color: var(--ink-3); }}
+    .bookmark-btn:hover, .bookmark-btn.saved {{ color: var(--gold); }}
+    .share-btn:hover {{ color: var(--ink-1); }}
+    .new-dot {{ color: var(--live-ink); }}
+    .trust-badge {{ color: var(--trust-hi); }}
+    .headline.search-match {{ outline: 2px solid var(--ink-3); }}
+
+    /* — Yesterday's biggest — */
+    .yesterday-top-wrap {{ border-top-color: var(--rule-2); }}
+    .yesterday-top-label {{ color: var(--ink-2); font-size: 0.8em; }}
+    .yesterday-top-item {{ border-bottom-color: var(--rule); }}
+    .yesterday-top-item .yt-badge {{ background: transparent; color: var(--ink-2); border-color: var(--rule-2); font-size: 0.92em; }}
+    .yesterday-top-item .yt-title {{ color: var(--ink-1); font-family: var(--font-head); }}
+    .yesterday-top-item .yt-source {{ color: var(--ink-3); font-size: 0.94em; }}
+
+    /* — Thumbnails — */
+    .nuzu-thumb {{ background: #FFFFFF; border-color: var(--rule); box-shadow: none; }}
+    .nuzu-thumb-letter {{ background: var(--paper-3); color: var(--ink-1); border-color: var(--rule-2); }}
+
+    /* — Saved panel, popovers, small floating things — */
+    .saved-articles-panel, .saved-panel-header {{ background: var(--paper-2); }}
+    .saved-articles-panel {{ border-left: 1px solid var(--rule-2); }}
+    .saved-panel-empty {{ color: var(--ink-3); }}
+    .saved-item-title {{ color: var(--ink-2); }}
+    .saved-item-remove {{ color: var(--ink-3); }}
+    .saved-item-remove:hover {{ color: var(--live-ink); }}
+    .ptr-indicator {{ background: var(--accent); color: var(--on-accent); }}
+    .float-mode-btn {{ background: var(--paper-3); color: var(--ink-1); border-color: var(--rule-2); }}
+    .trend-tag {{ background: var(--paper-2); border-color: var(--rule-2); }}
+    .trend-word {{ color: var(--ink-1); }}
+    .trend-count {{ background: var(--paper-3); color: var(--ink-2); }}
+    .pwa-install-btn {{ background: var(--accent); color: var(--on-accent); border: 0; box-shadow: 0 4px 16px rgba(0,0,0,0.35); }}
+    .pwa-install-btn:hover {{ box-shadow: 0 6px 20px rgba(0,0,0,0.4); }}
+
+    /* — Live video — */
+    .youtube-inset.audio-active {{ outline-color: var(--ink-1); }}
+    .youtube-inset .nz-audio-btn:hover {{ background: rgba(0,0,0,0.85); border-color: #FFFFFF; }}
+    .youtube-inset .nz-audio-btn.nz-on {{ background: #FFFFFF; color: #000000; border-color: #FFFFFF; box-shadow: none; }}
+    .feed-country-label {{ background: rgba(0,0,0,0.72); color: #FFFFFF; font-size: 0.66em; }}
+    .msv-label {{ background: rgba(0,0,0,0.72); color: #FFFFFF; font-size: 0.7em; }}
+    #wr-header {{ background: var(--paper); border-bottom: 1px solid var(--rule-2); }}
+    #wr-subtitle {{ color: var(--ink-3); }}
+    #wr-close-btn {{ background: var(--accent); color: var(--on-accent); }}
+    #wr-close-btn:hover {{ background: var(--accent-hi); }}
+    #wr-close-btn kbd {{ background: rgba(var(--paper-rgb),0.15); }}
+    .wr-cell:hover {{ outline-color: var(--ink-3); }}
+    .wr-cell.wr-audio-active {{ outline-color: #FFFFFF; }}
+    .wr-cell-num, #wr-grid .wr-cell-num {{ background: rgba(0,0,0,0.72); color: #FFFFFF; }}
+
+    /* — Phone bottom bar — */
+    .nuzu-bottom-nav {{ background: var(--paper); border-top: 1px solid var(--rule-2); box-shadow: none; }}
+    .nuzu-bottom-nav-item {{ color: var(--ink-3); font-size: 11px; }}
+    .nuzu-bottom-nav-item:hover, .nuzu-bottom-nav-item.active {{ color: var(--ink-1); }}
+    .nuzu-bottom-nav-item.active .bnav-icon {{ color: var(--ink-1); }}
+
+    /* — Footer — */
+    .site-footer {{ background: var(--paper); border-top: 3px double var(--rule-2); color: var(--ink-3); }}
+    .back-to-top-btn {{ color: var(--ink-2); border-bottom-color: var(--rule); }}
+    .back-to-top-btn:hover {{ color: var(--ink-1); background: var(--paper-2); }}
+    .footer-logo-nz {{ background: var(--accent); color: var(--on-accent); font-family: var(--font-mast); }}
+    .footer-logo-text strong {{ color: var(--ink-1); }}
+    .footer-logo-text span, .footer-mission, .footer-donate-label {{ color: var(--ink-3); }}
+    .footer-donate-btn {{ background: var(--accent); }}
+    .footer-donate-btn:hover {{ background: var(--accent-hi); }}
+    .footer-divider {{ background: var(--rule); }}
+    .footer-col h3, .footer-social-label, .footer-si-label {{ color: var(--ink-1); border-bottom-color: var(--rule); font-size: 0.9em; }}
+    .footer-col ul li a, .footer-bottom-links a {{ color: var(--ink-2); font-size: 0.96em; }}
+    .footer-col ul li a:hover, .footer-bottom-links a:hover {{ color: var(--ink-1); text-decoration: underline; }}
+    .social-icon, .footer-app-btn, .set-homepage-btn {{ color: var(--ink-2); border-color: var(--rule-2); }}
+    .social-icon:hover, .footer-app-btn:hover, .set-homepage-btn:hover {{ color: var(--ink-1); border-color: var(--ink-3); background: var(--paper-2); }}
+    .footer-copyright, .footer-update, .footer-disclaimer {{ color: var(--ink-3); }}
+    .footer-update, .footer-disclaimer {{ font-size: 0.9em; }}
+    .homepage-instructions {{ background: var(--paper-2); border-color: var(--rule-2); color: var(--ink-2); }}
+    .homepage-instructions code {{ color: var(--ink-1); }}
+    .newsletter-form input[type="email"] {{ background: var(--paper); border-color: var(--rule-2); color: var(--ink-1); }}
+    .newsletter-form input[type="email"]::placeholder {{ color: var(--ink-4); }}
+    .newsletter-form input[type="email"]:focus {{ border-color: var(--ink-3); }}
+    .newsletter-form button {{ background: var(--accent); color: var(--on-accent); }}
+    .newsletter-form button:hover {{ background: var(--accent-hi); }}
+
+    /* — First visit picker (the bundle styles the rest of it) — */
+    #nuzu-onboard {{ background: rgba(var(--paper-rgb),0.97); }}
+    .onboard-wordmark {{ background: none; -webkit-text-fill-color: currentColor; color: var(--ink-1); }}
+    .onboard-sub {{ color: var(--ink-2); }}
+
+    /* — Keyboard focus: always visible, never colour-only — */
+    :focus-visible, a:focus-visible, button:focus-visible, [tabindex]:focus-visible {{
+        outline: 2px solid var(--ink-1); outline-offset: 2px; border-radius: 3px; }}
+
+    /* — Scrollbars (desktop) — */
     @media (min-width: 901px) {{
-        * {{ scrollbar-width: thin; scrollbar-color: var(--nuzu-dim) transparent; }}
+        * {{ scrollbar-width: thin; scrollbar-color: var(--rule-2) transparent; }}
         *::-webkit-scrollbar {{ width: 10px; height: 10px; }}
-        *::-webkit-scrollbar-thumb {{ background: var(--nuzu-border); border-radius: 6px; }}
-        *::-webkit-scrollbar-thumb:hover {{ background: var(--nuzu-dim); }}
+        *::-webkit-scrollbar-thumb {{ background: var(--rule-2); border-radius: 6px; }}
+        *::-webkit-scrollbar-thumb:hover {{ background: var(--ink-4); }}
     }}
 
-    /* — Mobile refinements (desktop AND mobile improved equally) — */
+    /* — Phones (and the Play Store app) — */
     @media (max-width: 900px) {{
-        .headline {{ padding: 8px 11px 10px 11px; }}
-        .title {{ line-height: 1.4; }}
-        .hl-summary {{ line-height: 1.5; }}
-        .cluster {{ box-shadow: 0 1px 2px rgba(0,0,0,0.22); }}
+        .title {{ font-size: 1.08em; line-height: 1.32; }}
+        .ts-section-tag, .ts-badge, .cluster-src-pill {{ letter-spacing: 0.04em; }}
+        .headline {{ padding: 10px 4px 11px; }}
+        .sticky-nav a.nav-link {{ font-size: 0.76em; }}
+        .link {{ font-size: 0.86em; }}
+        .ts-section-tag, .ts-badge {{ font-size: 0.78em !important; }}
+        .ts-link.mro-jump {{ font-size: 0.82em; }}
+        .top-stories-title {{ font-size: 0.76em; }}
+        .nav-updated-ago {{ font-size: 0.72em; }}
     }}
-    /* ════════════════════ END NUZU 2.0 — VISUAL REFRESH LAYER ════════════════════ */
+    @media (max-width: 460px) {{
+        .nuzu-masthead-bar {{ font-size: 0.7em; }}
+    }}
+    /* ════════════════════ END NUZU 2.3 — ONYX EDITION ════════════════════ */
 {NZO_CSS}
     </style>
 </head>
@@ -6187,9 +6456,9 @@ html_parts.append("""
     <span class="bnav-icon">&#9888;&#65039;</span>
     <span>Mid East</span>
   </a>
-  <a href="#section-tech" class="nuzu-bottom-nav-item" data-section="section-tech" aria-label="Tech News">
-    <span class="bnav-icon">&#128187;</span>
-    <span>Tech</span>
+  <a href="#section-tech" class="nuzu-bottom-nav-item" data-section="section-tech" aria-label="Science, Tech and Health News">
+    <span class="bnav-icon">&#128300;</span>
+    <span>Sci-Tech</span>
   </a>
   <a href="#section-business" class="nuzu-bottom-nav-item" data-section="section-business" aria-label="Business">
     <span class="bnav-icon">&#128200;</span>
@@ -6221,7 +6490,7 @@ html_parts.append(f"""
     <a href="#section-us"       class="nav-link nav-us"       role="menuitem">US</a>
     <a href="#section-mideast"  class="nav-link nav-mideast"  role="menuitem">Mid East</a>
     <a href="#section-world"    class="nav-link nav-world"    role="menuitem">World</a>
-    <a href="#section-tech"     class="nav-link nav-tech"     role="menuitem">Tech</a>
+    <a href="#section-tech"     class="nav-link nav-tech"     role="menuitem">Science, Tech &amp; Health</a>
     <a href="#section-business" class="nav-link nav-business" role="menuitem">Business</a>
     <a href="#section-sports"   class="nav-link nav-sports"   role="menuitem">Sports</a>
     <a href="#section-culture"  class="nav-link nav-culture"  role="menuitem">Culture</a>
@@ -6288,13 +6557,16 @@ if show_breaking_banner:
         "Business": SECTION_COLORS["business"], "Sports": SECTION_COLORS["sports"],
         "Culture": SECTION_COLORS["culture"],
     }
+    _NZ_BB_SEC_VAR = {"US": "var(--sec-us)", "Middle East": "var(--sec-mideast)", "World": "var(--sec-world)",
+                      "Tech": "var(--sec-tech)", "Business": "var(--sec-business)", "Sports": "var(--sec-sports)",
+                      "Culture": "var(--sec-culture)"}
     banner_data = [
         {
             "title": it[1][:140].replace('"', '&quot;'),
             "link":  it[3],
             "time":  ts_to_pdt(it[0]),
-            "section": _link_to_section.get(it[3], ""),
-            "scolor":  _section_colors_bb.get(_link_to_section.get(it[3], ""), "#555"),
+            "section": NZ_SECTION_DISPLAY.get(_link_to_section.get(it[3], ""), _link_to_section.get(it[3], "")),
+            "scolor":  _NZ_BB_SEC_VAR.get(_link_to_section.get(it[3], ""), "var(--ink-2)"),
         }
         for it in hot_items[:20]
     ]
@@ -6325,6 +6597,36 @@ html_parts.append("""
 
 # ====================== MRO STRIP ======================
 TAB_ORDER = ["US","Middle East","World","Tech","Business","Sports","Culture"]
+# NUZU 2.3: in the four news sections (the ones that show trust bars) a story's
+# weight is the sum of its outlets' tiers - Tier 1 counts 3, Tier 2 counts 2, others
+# 1, aggregators 0.5 - so three wire services outrank three unrated sites. Sports,
+# Culture and Science/Tech/Health keep a plain count of outlets, as before.
+NZ_NEWS_SECTIONS = {"US", "Middle East", "World", "Business"}
+_NZ_TIER_WEIGHT = {1: 3.0, 2: 2.0, 3: 1.0, 4: 0.5}
+
+
+def _nz_cluster_score(cl, sec_label):
+    if sec_label not in NZ_NEWS_SECTIONS:
+        return float(len(cl))
+    return sum(_NZ_TIER_WEIGHT.get(get_source_tier(it[2]), 1.0) for it in cl)
+
+
+def _nz_same_story(a, b):
+    ta, tb = headline_tokens(a), headline_tokens(b)
+    shared = len(ta & tb)
+    return shared >= 3 and shared / max(1, min(len(ta), len(tb))) >= 0.3
+
+
+def _nz_display_item(cl, sec_label):
+    """The item whose headline the Most Reported card shows: in news sections the
+    best-rated outlet's (newest among equals), elsewhere the newest. The card's
+    jump target is unchanged (it still points at the cluster as the column draws it)."""
+    if not cl:
+        return None
+    if sec_label not in NZ_NEWS_SECTIONS:
+        return cl[0]
+    best = min(get_source_tier(it[2]) for it in cl)
+    return next(it for it in cl if get_source_tier(it[2]) == best)
 _SID_MAP = {
     "US":"us","Middle East":"mideast","World":"world",
     "Tech":"tech","Business":"business","Sports":"sports","Culture":"culture",
@@ -6347,15 +6649,16 @@ for _sec_label in TAB_ORDER:
     _scored = []
     for _cl in _combined_clusters:
         _cl.sort(key=lambda x: x[0], reverse=True)
-        _scored.append((len(_cl), _cl[0][0], _cl))
+        _scored.append((_nz_cluster_score(_cl, _sec_label), _cl[0][0], _cl))
     _scored.sort(key=lambda x: (x[0], x[1]), reverse=True)
     _n, _lead_ts0, _cl0 = _scored[0]
+    _n = len(_cl0)
     _lt0, _lttl0, _ls0, _ll0 = _cl0[0]
     _best_per_section[_sec_label] = (_sec_label, _cl0, _n, _lt0, _lttl0, _ll0)
 
 _ordered_by_popularity = sorted(
     [_best_per_section[s] for s in TAB_ORDER if s in _best_per_section],
-    key=lambda c: (c[2], c[3]), reverse=True
+    key=lambda c: (_nz_cluster_score(c[1], c[0]), c[3]), reverse=True
 )
 first_seven = _ordered_by_popularity
 _first_seven_norms = {normalize_title(c[4]) for c in first_seven}
@@ -6372,7 +6675,7 @@ for _sec_label2 in TAB_ORDER:
         if _lead_norm2 in _first_seven_norms:
             continue
         _remaining_pool.append((_sec_label2, _cl2, len(_cl2), _cl2[0][0], _cl2[0][1], _cl2[0][3]))
-_remaining_pool.sort(key=lambda c: (c[2], c[3]), reverse=True)
+_remaining_pool.sort(key=lambda c: (_nz_cluster_score(c[1], c[0]), c[3]), reverse=True)
 
 last_three = []
 _seen_last3_norms = set()
@@ -6384,6 +6687,10 @@ for _card in _remaining_pool:
     if _norm2 in _seen_last3_norms:
         continue
     if _section_count.get(_sl2, 0) >= 2:
+        continue
+    # NUZU 2.3: no second card for a story already on the strip (e.g. two angles
+    # on the same shooting from two different groups of outlets).
+    if any(_nz_same_story(_lt2, _c[4]) for _c in first_seven + last_three):
         continue
     last_three.append(_card)
     _seen_last3_norms.add(_norm2)
@@ -6427,7 +6734,10 @@ def render_mro_cards(cards):
     }
     h = ''
     for section_label, cluster, n_src, lead_ts2, lead_title, lead_link in cards:
-        safe_title = lead_title.replace('<','&lt;').replace('>','&gt;')
+        _disp = _nz_display_item(cluster, section_label) if cluster else None
+        _disp_title = strip_source_from_title(_disp[1] if _disp else lead_title)
+        _disp_src = get_friendly_source(_disp[2]) if _disp else ''
+        safe_title = _disp_title.replace('<','&lt;').replace('>','&gt;')
         safe_title = safe_title[0].upper() + safe_title[1:] if safe_title else safe_title
         tag_css = section_css_map.get(section_label, "")
         section_dom_id = _SECTION_DOM_ID.get(section_label, "")
@@ -6443,7 +6753,7 @@ def render_mro_cards(cards):
         anchor_cluster = alloc_dom_id("cl-" + link_hash, _card_sid, src=lead_link) + "-anchor"
         anchor_single  = alloc_dom_id("hl-" + link_hash, _card_sid, src=lead_link)
         # Lead source favicon for the MRO card
-        _lead_src = cluster[0][2] if cluster else ''
+        _lead_src = (_disp[2] if _disp else (cluster[0][2] if cluster else ''))
         _thumb_html = get_source_icon_html(_lead_src, 'nuzu-thumb-sm')
         h += (
             f'<div class="top-story-card mro-card" '
@@ -6452,9 +6762,10 @@ def render_mro_cards(cards):
             f'style="cursor:pointer" title="Jump to story on this page">'
             f'{_thumb_html}'
             f'<div class="mro-body">'
-            f'<span class="ts-section-tag {tag_css}">{section_label}</span>'
+            f'<span class="ts-section-tag {tag_css}">{NZ_SECTION_DISPLAY.get(section_label, section_label)}</span>'
             f'<span class="ts-badge">{n_src} sources</span>'
             f'<span class="ts-headline">{safe_title}</span>'
+            + (f'<span class="ts-src"> &middot; {sanitize_title(_disp_src)}</span>' if _disp_src else '') +
             f'<span class="ts-link mro-jump">[&#8595; Go to story]</span>'
             f'</div>'
             f'</div>\n'
@@ -6467,12 +6778,12 @@ col2_html = render_mro_cards(col2_cards)
 # Trending tags
 trend_tags = ''
 SECTION_TOPIC_COLORS = {
-    "iran":SECTION_COLORS["mideast"],"israel":SECTION_COLORS["mideast"],
-    "trump":SECTION_COLORS["us"],"tariff":SECTION_COLORS["us"],
-    "tariffs":SECTION_COLORS["us"],"gaza":SECTION_COLORS["mideast"],
+    "iran":"var(--sec-mideast)","israel":"var(--sec-mideast)",
+    "trump":"var(--sec-us)","tariff":"var(--sec-us)",
+    "tariffs":"var(--sec-us)","gaza":"var(--sec-mideast)",
 }
 for count, word in trending_topics:
-    color = SECTION_TOPIC_COLORS.get(word, "#1A2A4A")
+    color = SECTION_TOPIC_COLORS.get(word, "var(--rule-2)")
     safe_word = word.replace("'", "\\'")
     trend_tags += (
         f'<button class="trend-tag" style="border-color:{color};cursor:pointer;" '
@@ -6505,19 +6816,24 @@ ts_html += '''
     <div class="src-key-popover" id="src-key-popover" role="tooltip">
       <div class="src-key-title">Source Reliability Indicators</div>
       <div class="src-key-row">
-        <span class="src-key-pip" style="background:#22c55e"></span>
-        <span><strong style="color:#22c55e">Tier 1</strong> &mdash; Wire services &amp; flagship outlets<br>
+        <span class="src-key-pip" style="background:var(--trust-hi)"></span>
+        <span><strong style="color:var(--trust-hi)">Tier 1</strong> &mdash; Wire services &amp; flagship outlets<br>
         <small>Reuters, AP, BBC, NYT, FT, Bloomberg, NPR, Al Jazeera</small></span>
       </div>
       <div class="src-key-row">
-        <span class="src-key-pip" style="background:#f59e0b"></span>
-        <span><strong style="color:#f59e0b">Tier 2</strong> &mdash; Solid editorial reporting<br>
+        <span class="src-key-pip" style="background:var(--trust-mid)"></span>
+        <span><strong style="color:var(--trust-mid)">Tier 2</strong> &mdash; Solid editorial reporting<br>
         <small>Axios, Politico, CNBC, The Atlantic, Foreign Affairs</small></span>
       </div>
       <div class="src-key-row">
-        <span class="src-key-pip" style="background:#ef4444"></span>
-        <span><strong style="color:#ef4444">Tier 3</strong> &mdash; Partisan, tabloid, or unverified<br>
-        <small>Opinionated outlets, aggregators, unknown sources</small></span>
+        <span class="src-key-pip" style="background:var(--trust-lo)"></span>
+        <span><strong style="color:var(--trust-lo)">Tier 3</strong> &mdash; Partisan, tabloid, or aggregator<br>
+        <small>Opinion-led outlets, tabloids, aggregators</small></span>
+      </div>
+      <div class="src-key-row">
+        <span class="src-key-pip" style="background:var(--ink-4)"></span>
+        <span><strong>Unrated</strong> &mdash; Not yet reviewed by NUZU<br>
+        <small>Local and specialist outlets we have not rated</small></span>
       </div>
       <div class="src-key-note">The % bar on clustered stories shows what share of sources covering that story are Tier 1 or 2. Applies to news sections only.</div>
     </div>
@@ -6537,52 +6853,164 @@ ts_html += '''<div class="search-bar-wrap">
   <span id="search-result-count" style="font-size:0.8em;color:var(--nuzu-muted);white-space:nowrap;"></span>
 </div>\n'''
 
-ts_html += '''<!-- VIDEO BANNER desktop only -->
-<div class="banner">
-  <div class="video-grid">
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">United States</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">France</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">Bloomberg Business</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">Europe</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">Australia</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">India</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">China</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">United States</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">Germany</span>
-    </div>
-    <div class="youtube-inset">
-      <iframe data-src="https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen></iframe>
-      <span class="feed-country-label">Middle East</span>
-    </div>
-  </div>
-</div>
-'''
+# ═══════════════ LIVE VIDEO TILES - one list, checked at every build ═══════════════
+# NUZU 2.3 (7 Nov 2026). Before this, the same YouTube links were copied into four
+# lists (main grid, restore list, Waiting Room, phone sections) and drifted apart;
+# dead links stayed up for weeks and a broken tile "recovered" onto a dead backup.
+#
+# Each tile lists its candidates, best first:
+#   "vid:<id>"      one specific YouTube live video
+#   "live:@handle"  whatever that channel is streaming live RIGHT NOW, looked up at
+#                   build time (for channels like ABC News that start a new stream
+#                   every day - YouTube's own channel embed does not work for them)
+# Every build asks YouTube about each candidate. The first one that is confirmed
+# live is used. One that YouTube reports as ended, private or removed is never
+# used. If YouTube cannot be reached at all, nothing is judged dead and the first
+# fixed id is kept, so a network hiccup never empties the wall. A tile with no
+# usable candidate is left out - NUZU never shows a dead box.
+# Tiles still never rotate on their own (NZ_AUTO_SWAP below stays false).
+import json as _nzjson
+
+NZ_VIDEO_TILES = {
+    "us1":       ("United States",      ["live:@ABCNews", "vid:fcQXGWwEbMo"]),
+    "france":    ("France",             ["vid:HvZt-nh9sGg", "live:@France24_en"]),
+    "bloomberg": ("Bloomberg Business", ["vid:QB5BNdBFujE"]),
+    "europe":    ("Europe",             ["vid:pykpO5kQJ98", "live:@euronews"]),
+    "australia": ("Australia",          ["vid:vOTiJkg1voo", "live:@abcnewsaustralia"]),
+    "india":     ("India",              ["vid:vfszY1JYbMc", "live:@WION"]),
+    "china":     ("China",              ["vid:0i7n3r01L2U", "live:@cgtn"]),
+    "us2":       ("United States",      ["vid:C96oohpWBGw", "live:@livenowfox"]),
+    "germany":   ("Germany",            ["vid:LuKwFajn37U", "live:@dwnews"]),
+    "mideast":   ("Middle East",        ["vid:gCNeDWCI0vo", "live:@aljazeeraenglish"]),
+    "earth":     ("Earth",              ["vid:fO9e9jnhYK8", "live:@Sen"]),
+    "finance":   ("Finance",            ["vid:KQp-e_XQnDE", "live:@YahooFinance"]),
+    "culture":   ("Culture",            ["vid:HfgIFGbdGJ0"]),
+    "uk":        ("United Kingdom",     ["vid:umLWFz4izTM", "live:@SkyNews"]),
+    "japan":     ("Japan",              ["vid:IimtbuqYIE8", "live:@NHKWORLDJAPAN"]),
+    "asia":      ("Asia",               ["vid:-PWMxjBgr0k", "live:@channelnewsasia"]),
+    "canada":    ("Canada",             ["vid:5vfaDsMhCF4", "live:@CBCNews"]),
+}
+# Main row on the home page (desktop), in order.
+NZ_MAIN_GRID = ["us1", "france", "bloomberg", "europe", "australia",
+                "india", "china", "us2", "germany", "mideast"]
+# Waiting Room wall, in order.
+NZ_WAITING_ROOM = ["us1", "france", "us2", "europe", "australia", "india",
+                   "china", "earth", "germany", "mideast", "bloomberg", "finance"]
+# What a tile switches to if YouTube reports an error while it is playing - channels
+# that are not already on the wall, so a backup never shows the same stream twice.
+NZ_BACKUPS = ["uk", "japan", "asia", "canada"]
+# The single video at the top of a section on phones (sports removed 7 Nov 2026:
+# no reliable 24/7 sports stream - and NUZU shows no dead links).
+NZ_PHONE_SECTIONS = {
+    "section-us":       ("us1",       "U.S. Live"),
+    "section-world":    ("france",    "World Live"),
+    "section-mideast":  ("mideast",   "Middle East Live"),
+    "section-business": ("bloomberg", "Bloomberg Live"),
+    "section-culture":  ("culture",   "Culture Live"),
+}
+
+_NZ_YT_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Cookie": "CONSENT=YES+1; SOCS=CAI",
+}
+_NZ_YT_DEAD = re.compile(r"unavailable|not available|private|removed|terminated|"
+                         r"no longer|has ended|does not exist|offline", re.I)
+_NZ_YT_UNSURE = re.compile(r"not a bot|confirm you|unusual traffic|sign in to confirm", re.I)
+
+
+def _nz_yt_player_response(page):
+    m = re.search(r"var ytInitialPlayerResponse\s*=\s*(\{.+?\});\s*(?:var |</script>)", page, re.S)
+    if not m:
+        return None
+    try:
+        return _nzjson.loads(m.group(1))
+    except Exception:
+        return None
+
+
+def _nz_yt_probe(cand):
+    """(video id or None, 'live' | 'dead' | 'unknown') for one candidate."""
+    kind, _, val = cand.partition(":")
+    fixed = val if kind == "vid" else None
+    url = ("https://www.youtube.com/watch?v=" + val) if kind == "vid" else \
+          ("https://www.youtube.com/" + val + "/live")
+    try:
+        req = urllib.request.Request(url, headers=_NZ_YT_HEADERS)
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            page = resp.read().decode("utf-8", "ignore")
+    except Exception:
+        return (fixed, "unknown")
+    if _NZ_YT_UNSURE.search(page[:60000]):
+        return (fixed, "unknown")
+    pr = _nz_yt_player_response(page)
+    if pr is None:
+        # A channel page that loaded properly but has no player = not live now.
+        if kind == "live" and '"externalId":"UC' in page:
+            return (None, "dead")
+        return (fixed, "unknown")
+    ps = pr.get("playabilityStatus") or {}
+    vd = pr.get("videoDetails") or {}
+    vid = vd.get("videoId") or fixed
+    status = str(ps.get("status", ""))
+    reason = str(ps.get("reason", ""))
+    if status == "OK":
+        if ps.get("playableInEmbed") is False:
+            return (vid, "dead")
+        return (vid, "live" if vd.get("isLive") else "dead")
+    if status == "LOGIN_REQUIRED":
+        return (vid, "dead" if "private" in reason.lower() else "unknown")
+    if status in ("ERROR", "UNPLAYABLE", "LIVE_STREAM_OFFLINE"):
+        return (vid, "dead" if (_NZ_YT_DEAD.search(reason) or not reason) else "unknown")
+    return (fixed, "unknown")
+
+
+def _nz_resolve_video_tiles():
+    cands = sorted({c for _lbl, cs in NZ_VIDEO_TILES.values() for c in cs})
+    probes = {}
+    try:
+        with ThreadPoolExecutor(max_workers=8) as _ex:
+            for c, res in zip(cands, _ex.map(_nz_yt_probe, cands)):
+                probes[c] = res
+    except Exception as _e_yt:
+        print(f"WARNING: video check failed ({_e_yt}) - keeping fixed ids")
+    chosen = {}
+    for key, (label, cs) in NZ_VIDEO_TILES.items():
+        results = [probes.get(c, (c.split(":", 1)[1] if c.startswith("vid:") else None, "unknown")) for c in cs]
+        pick = next((v for v, st in results if st == "live" and v), None)
+        if pick is None:
+            pick = next((v for v, st in results if st == "unknown" and v), None)
+        chosen[key] = pick
+        print(f"  video {key:10s} {label:20s} -> {pick or 'LEFT OUT (nothing live)'}   "
+              + ", ".join(f"{c}={st}" for c, (v, st) in zip(cs, results)))
+    return chosen
+
+
+print("Checking live video tiles...")
+NZ_VIDEO_IDS = _nz_resolve_video_tiles()
+_NZ_EMBED_Q = "autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
+_NZ_EMBED_Q_WR = "autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1"
+
+
+def nz_embed_src(key, wr=False):
+    vid = NZ_VIDEO_IDS.get(key)
+    if not vid:
+        return ""
+    return "https://www.youtube.com/embed/" + vid + "?" + (_NZ_EMBED_Q_WR if wr else _NZ_EMBED_Q)
+
+
+NZ_MAIN_LIVE = [k for k in NZ_MAIN_GRID if NZ_VIDEO_IDS.get(k)]
+NZ_WR_LIVE = [k for k in NZ_WAITING_ROOM if NZ_VIDEO_IDS.get(k)]
+NZ_BACKUP_SRCS = [{'src': nz_embed_src(k), 'label': NZ_VIDEO_TILES[k][0]} for k in NZ_BACKUPS if NZ_VIDEO_IDS.get(k)]
+
+ts_html += '<!-- VIDEO BANNER desktop only -->\n<div class="banner">\n  <div class="video-grid">\n'
+for _vk in NZ_MAIN_LIVE:
+    ts_html += ('    <div class="youtube-inset">\n'
+                '      <iframe data-src="' + nz_embed_src(_vk) + '" allow="autoplay;encrypted-media" allowfullscreen></iframe>\n'
+                '      <span class="feed-country-label">' + NZ_VIDEO_TILES[_vk][0] + '</span>\n'
+                '    </div>\n')
+ts_html += '  </div>\n</div>\n'
 
 html_parts.append(ts_html)
 
@@ -6710,20 +7138,13 @@ def section_block(section_id, color_class, breaking_items, recent_items,
     else:
         _b_label = 'BREAKING &#8212; Last 12 Hours'
         _r_label = 'RECENT &#8212; Up to 36 Hours'
-    # Mobile section video wrap (hidden on desktop via CSS).
-    _vid_map = {
-        'section-us':       ('iipR5yUp36o',  'U.S. Live'),
-        'section-world':    ('HvZt-nh9sGg',  'World Live'),
-        'section-mideast':  ('gCNeDWCI0vo',  'Middle East Live'),
-        'section-business': ('QB5BNdBFujE',  'Bloomberg Live'),
-        'section-sports':   ('7NPsqFA14eQ',  'Sports Live'),
-        'section-culture':  ('HfgIFGbdGJ0',  'Culture Live'),
-        # section-tech intentionally omitted — static embed removed per UX audit
-    }
-    _ve = _vid_map.get(section_id)
+    # Mobile section video wrap (hidden on desktop via CSS). Comes from
+    # NZ_PHONE_SECTIONS / NZ_VIDEO_TILES, checked live at build time; a section
+    # whose stream is not live gets no video at all.
+    _ve = NZ_PHONE_SECTIONS.get(section_id)
     _msv = ''
-    if _ve:
-        _eid, _lbl = _ve
+    if _ve and NZ_VIDEO_IDS.get(_ve[0]):
+        _eid, _lbl = NZ_VIDEO_IDS[_ve[0]], _ve[1]
         _msv = (
             '<div class="mobile-section-video-wrap" data-msv-section="' + section_id + '">'
             '<iframe data-msv-src="https://www.youtube.com/embed/' + _eid
@@ -6813,8 +7234,8 @@ _ALL_SECTION_DATA = {
     ),
     "section-tech": (
         "tech-color", tech_breaking, tech_recent,
-        '<span class="sec-dot" style="background:#1E4FD8"></span>TECH &mdash; Breaking News',
-        '<span class="sec-dot" style="background:#1E4FD8"></span>TECH &mdash; Daily Headlines',
+        '<span class="sec-dot" style="background:#1E4FD8"></span>SCIENCE, TECH &amp; HEALTH &mdash; Breaking News',
+        '<span class="sec-dot" style="background:#1E4FD8"></span>SCIENCE, TECH &amp; HEALTH &mdash; Daily Headlines',
         12*3600
     ),
     "section-business": (
@@ -6861,17 +7282,7 @@ for i, (sid, sc, bi, ri, bt, rt, *_bthresh) in enumerate(SECTION_DATA):
 
 html_parts.append('</div>\n')
 
-# - Horoscope section ----------------------─
-_horo_html = render_horoscope_section()
-if _horo_html:
-    html_parts.append('<hr class="top-divider">\n')
-    html_parts.append(_horo_html)
- 
-# - Comic section (always last) ------------------
-_comic_html = render_comic_section()
-if _comic_html:
-    html_parts.append('<hr class="top-divider">\n')
-    html_parts.append(_comic_html)
+# - Horoscopes and comics: retired (NUZU 2.3, 7 Nov 2026) - not rendered. -
 
 # - Bottom live stream video: REMOVED for launch (was Mickey Mouse cartoons,
 #   replaced by the per-section live video feeds and top corner videos).
@@ -6883,33 +7294,9 @@ update_time = _now_pdt.strftime("%-I:%M %p PDT, %B %-d, %Y")
 
 html_parts.append(f"""
 <script>
-// - NUZU Feed URLs (hardcoded for reliable restore) -
-var MAIN_FEED_SRCS = [
-  'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1'
-];
-var WR_FEEDS = [
-  {{src:'https://www.youtube.com/embed/iipR5yUp36o?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'United States'}},
-  {{src:'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'France'}},
-  {{src:'https://www.youtube.com/embed/C96oohpWBGw?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'United States'}},
-  {{src:'https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Europe'}},
-  {{src:'https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Australia'}},
-  {{src:'https://www.youtube.com/embed/vfszY1JYbMc?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'India'}},
-  {{src:'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'China'}},
-  {{src:'https://www.youtube.com/embed/fO9e9jnhYK8?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Earth'}},
-  {{src:'https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Germany'}},
-  {{src:'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Middle East'}},
-  {{src:'https://www.youtube.com/embed/QB5BNdBFujE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Business'}},
-  {{src:'https://www.youtube.com/embed/KQp-e_XQnDE?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1',label:'Finance'}}
-];
+// - NUZU feed URLs - generated from NZ_VIDEO_TILES in bot.py, checked live at every build -
+var MAIN_FEED_SRCS = {_nzjson.dumps([nz_embed_src(k) for k in NZ_MAIN_LIVE])};
+var WR_FEEDS = {_nzjson.dumps([{'src': nz_embed_src(k, wr=True), 'label': NZ_VIDEO_TILES[k][0]} for k in NZ_WR_LIVE])};
 
 var IS_MOBILE = window.innerWidth <= 900;
 var players = [];
@@ -6927,11 +7314,7 @@ if (!IS_MOBILE) {{
 
 var _stallTimers = {{}};
 var _backupIdx = 0;
-var BACKUP_FEEDS = [
-  'https://www.youtube.com/embed/_6dRRfnYJws?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/HvZt-nh9sGg?autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1',
-  'https://www.youtube.com/embed/live_stream?channel=UCNye-wNBqNL5ZzHSJj3l8Bg&autoplay=1&mute=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1'
-];
+var BACKUP_FEEDS = {_nzjson.dumps(NZ_BACKUP_SRCS)};
 
 function _setAudioActive(activePlayer) {{
   document.querySelectorAll('.youtube-inset').forEach(function(inset) {{
@@ -6942,7 +7325,7 @@ function _setAudioActive(activePlayer) {{
       var iframe = activePlayer.getIframe ? activePlayer.getIframe() : null;
       if (iframe && iframe.parentElement) {{
         iframe.parentElement.classList.add('audio-active');
-        iframe.parentElement.style.outline = '3px solid #1E4FD8';
+        iframe.parentElement.style.outline = '3px solid var(--ink-1)';
         iframe.parentElement.style.outlineOffset = '2px';
       }}
     }} catch(e) {{}}
@@ -6982,13 +7365,33 @@ function _attachAudioButton(inset, player) {{
 function _muteAllExcept(activePlayer) {{
   players.forEach(function(p) {{ if (p !== activePlayer) {{ try {{ p.mute(); }} catch(e) {{}} }} }});
 }}
-function _getBackupSrc() {{ var s = BACKUP_FEEDS[_backupIdx % BACKUP_FEEDS.length]; _backupIdx++; return s; }}
+/* A tile that YouTube reports dead moves to the next backup it has not tried yet.
+   When every backup has been tried, the tile is hidden - NUZU never shows a dead box. */
+var _tileTries = {{}};
 function _clearStallTimer(idx) {{ if (_stallTimers[idx]) {{ clearTimeout(_stallTimers[idx]); delete _stallTimers[idx]; }} }}
 function _swapToBackup(player, idx) {{
   _clearStallTimer(idx);
   try {{
     var iframe = player.getIframe ? player.getIframe() : null;
-    if (iframe) {{ iframe.src = _getBackupSrc(); }}
+    if (!iframe) return;
+    var tried = _tileTries[idx] || (_tileTries[idx] = []);
+    var cur = (iframe.src || '').split('?')[0];
+    if (cur && tried.indexOf(cur) < 0) tried.push(cur);
+    var onScreen = [];
+    document.querySelectorAll('.youtube-inset iframe').forEach(function(f) {{ if (f !== iframe) onScreen.push((f.src || '').split('?')[0]); }});
+    var next = null;
+    for (var k = 0; k < BACKUP_FEEDS.length; k++) {{
+      var cand = BACKUP_FEEDS[(_backupIdx + k) % BACKUP_FEEDS.length];
+      var base = cand.src.split('?')[0];
+      if (tried.indexOf(base) < 0 && onScreen.indexOf(base) < 0) {{ next = cand; _backupIdx = (_backupIdx + k + 1) % BACKUP_FEEDS.length; break; }}
+    }}
+    var inset = iframe.closest('.youtube-inset');
+    if (next) {{
+      tried.push(next.src.split('?')[0]); iframe.src = next.src;
+      var lab = inset && inset.querySelector('.feed-country-label');
+      if (lab) lab.textContent = next.label;     /* the label says what is really playing */
+    }}
+    else {{ if (inset) inset.style.display = 'none'; iframe.src = 'about:blank'; }}
   }} catch(e) {{}}
 }}
 /* ═══════════════ NUZU: NO AUTO-ROTATION (deliberate) ═══════════════
@@ -7134,7 +7537,7 @@ function _nuzu_soft_refresh() {{
           }}
           window._nz_scroll(target, 'smooth');
           target.style.transition = 'outline 0s';
-          target.style.outline = '2px solid #1E4FD8';
+          target.style.outline = '2px solid var(--ink-1)';
           setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
         }});
       }});
@@ -7173,7 +7576,7 @@ function showRefreshToast() {{
   if (!toast) {{
     toast = document.createElement('div');
     toast.id = 'refresh-toast';
-    toast.style.cssText = 'position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#1E4FD8;color:#fff;padding:10px 22px;border-radius:6px;font-size:0.85em;font-weight:bold;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,0.5);letter-spacing:0.04em;display:flex;align-items:center;gap:12px;cursor:pointer;';
+    toast.style.cssText = 'position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--on-accent);padding:10px 22px;border-radius:6px;font-size:0.85em;font-weight:bold;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,0.5);letter-spacing:0.04em;display:flex;align-items:center;gap:12px;cursor:pointer;';
     var msg = document.createElement('span');
     msg.textContent = 'New headlines available \u2014 tap to update';
     msg.addEventListener('click', _nuzu_soft_refresh);
@@ -7499,7 +7902,7 @@ window._nz_scroll = function(el, behavior) {{
       // Route through _nz_scroll so content-visibility + lazy-image settle is handled
       window._nz_scroll(target, 'smooth');
       target.style.transition = 'outline 0s';
-      target.style.outline = '2px solid #1E4FD8';
+      target.style.outline = '2px solid var(--ink-1)';
       setTimeout(function() {{ target.style.transition = 'outline 0.8s'; target.style.outline = 'none'; }}, 1400);
     }});
   }});
@@ -7657,7 +8060,7 @@ window._nz_scroll = function(el, behavior) {{
         countEl.style.color = 'var(--nuzu-muted)'; countEl.style.cursor = 'default'; countEl.onclick = null;
       }} else {{
         countEl.textContent = 'No matches \u2014 search Google News \u2192';
-        countEl.style.color = '#1E4FD8'; countEl.style.cursor = 'pointer';
+        countEl.style.color = 'var(--ink-1)'; countEl.style.cursor = 'pointer';
         countEl.onclick = function() {{ window.open('https://news.google.com/search?q=' + encodeURIComponent(input.value.trim()) + '&hl=en-US&gl=US&ceid=US:en', '_blank'); }};
       }}
     }}
@@ -7713,7 +8116,7 @@ window._nz_scroll = function(el, behavior) {{
     allHl.forEach(function(el) {{ el.style.outline = ''; }});
     if (idx < 0 || idx >= allHl.length) return;
     var el = allHl[idx];
-    el.style.outline = '2px solid #1E4FD8'; el.style.outlineOffset = '2px'; el.style.borderRadius = '4px';
+    el.style.outline = '2px solid var(--ink-1)'; el.style.outlineOffset = '2px'; el.style.borderRadius = '4px';
     window.scrollTo({{ top: el.getBoundingClientRect().top + window.pageYOffset - window._nz_nh(), behavior: 'smooth' }});
   }}
   document.addEventListener('keydown', function(e) {{
@@ -7771,9 +8174,9 @@ window._nz_scroll = function(el, behavior) {{
     if (sectionPill && item.section) {{
       sectionPill.textContent = item.section;
       sectionPill.style.display = 'inline-flex';
-      sectionPill.style.background = (item.scolor || '#1E4FD8') + '33';
-      sectionPill.style.color = '#fff';
-      sectionPill.style.border = '1px solid ' + (item.scolor || '#1E4FD8');
+      sectionPill.style.background = 'transparent';
+      sectionPill.style.color = item.scolor || 'var(--ink-2)';
+      sectionPill.style.border = '1px solid ' + (item.scolor || 'var(--rule-2)');
     }} else if (sectionPill) {{
       sectionPill.style.display = 'none';
     }}
@@ -8061,7 +8464,7 @@ document.addEventListener('load', function(e){{
       }}
     }});
     activeInset.classList.add('audio-active');
-    activeInset.style.outline = '3px solid #1E4FD8';
+    activeInset.style.outline = '3px solid #FFFFFF';
     activeInset.style.outlineOffset = '2px';
   }});
 }})();
@@ -8355,7 +8758,7 @@ document.addEventListener('load', function(e){{
         if (f) {{ try {{ f.contentWindow.postMessage(JSON.stringify({{event:'command',func:'mute',args:[]}}), '*'); }} catch(ex) {{}} }}
       }}
     }});
-    activeCell.style.outline = '3px solid #1E4FD8';
+    activeCell.style.outline = '3px solid #FFFFFF';
     activeCell.style.outlineOffset = '-3px';
   }});
 }})();
@@ -8428,17 +8831,17 @@ document.addEventListener('click', function(e) {{
       toast.setAttribute('aria-label', 'Rate NUZU News');
       toast.style.cssText = [
         'position:fixed','bottom:80px','left:50%','transform:translateX(-50%)',
-        'background:#0A1535','border:1px solid #1E4FD8','border-radius:10px',
+        'background:var(--paper-2)','border:1px solid var(--rule-2)','border-radius:10px',
         'padding:18px 22px','z-index:9999','box-shadow:0 4px 24px rgba(0,0,0,0.6)',
         'text-align:center','max-width:300px','width:90%','animation:slideUp 0.3s ease'
       ].join(';');
       toast.innerHTML = [
         '<style>@keyframes slideUp{{from{{opacity:0;transform:translateX(-50%) translateY(20px)}}to{{opacity:1;transform:translateX(-50%) translateY(0)}}}}/style',
-        '<p style="color:#fff;font-weight:bold;margin-bottom:6px;font-size:1em">Enjoying NUZU? &#11088;</p>',
-        '<p style="color:#5577AA;font-size:0.82em;margin-bottom:14px;line-height:1.5">A quick rating helps us reach more readers. Takes 5 seconds.</p>',
+        '<p style="color:var(--ink-1);font-weight:bold;margin-bottom:6px;font-size:1em">Enjoying NUZU? &#11088;</p>',
+        '<p style="color:var(--ink-2);font-size:0.86em;margin-bottom:14px;line-height:1.5">A quick rating helps us reach more readers. Takes 5 seconds.</p>',
         '<div style="display:flex;gap:10px;justify-content:center">',
-        '<button id="nuzu-rate-yes" style="background:#1E4FD8;color:#fff;border:none;border-radius:6px;padding:9px 18px;font-size:0.88em;font-weight:bold;cursor:pointer">Rate Now</button>',
-        '<button id="nuzu-rate-no" style="background:none;color:#5577AA;border:1px solid #1A2A4A;border-radius:6px;padding:9px 14px;font-size:0.82em;cursor:pointer">Maybe Later</button>',
+        '<button id="nuzu-rate-yes" style="background:var(--accent);color:var(--on-accent);border:none;border-radius:6px;padding:9px 18px;font-size:0.88em;font-weight:bold;cursor:pointer">Rate Now</button>',
+        '<button id="nuzu-rate-no" style="background:none;color:var(--ink-2);border:1px solid var(--rule-2);border-radius:6px;padding:9px 14px;font-size:0.82em;cursor:pointer">Maybe Later</button>',
         '</div>'
       ].join('');
       document.body.appendChild(toast);
@@ -8630,7 +9033,7 @@ document.addEventListener('click', function(e) {{
   var defs = [
     {{id:'us',       icon:'🇺🇸', label:'US Politics'}},
     {{id:'mideast',  icon:'🌍',            label:'Middle East'}},
-    {{id:'tech',     icon:'💻',            label:'Tech & AI'}},
+    {{id:'tech',     icon:'🔬',            label:'Science, Tech & Health'}},
     {{id:'sports',   icon:'🏆',            label:'Sports'}},
     {{id:'business', icon:'💰',            label:'Business'}},
     {{id:'culture',  icon:'🎬',            label:'Culture'}},
@@ -8714,18 +9117,18 @@ html_parts.append(f"""
     </div>
     <!-- Newsletter signup via Formspree -->
     <div>
-      <p style="color:#5577AA;font-size:0.88em;margin-bottom:6px;font-weight:bold;">&#9993; Stay Informed &mdash; Join the NUZU Newsletter</p>
+      <p style="color:var(--ink-2);font-size:0.88em;margin-bottom:6px;font-weight:bold;">&#9993; Stay Informed &mdash; Join the NUZU Newsletter</p>
       <form class="newsletter-form" action="https://formspree.io/f/xjgjrrge" method="POST"
             onsubmit="var btn=this.querySelector('button');btn.textContent='Sending...';btn.disabled=true;
             fetch(this.action,{{method:'POST',body:new FormData(this),headers:{{'Accept':'application/json'}}}})
             .then(function(r){{return r.json()}})
             .then(function(){{
               document.querySelector('.newsletter-msg').textContent='Thanks! You are subscribed.';
-              document.querySelector('.newsletter-msg').style.color='#4CAF50';
+              document.querySelector('.newsletter-msg').style.color='var(--trust-hi)';
             }})
             .catch(function(){{
               document.querySelector('.newsletter-msg').textContent='Error. Please email us directly.';
-              document.querySelector('.newsletter-msg').style.color='#E74C3C';
+              document.querySelector('.newsletter-msg').style.color='var(--live-ink)';
             }});
             return false;">
         <input type="email" name="email" placeholder="Your email address" required aria-label="Email address">
@@ -8785,7 +9188,7 @@ html_parts.append(f"""
         <li><a href="#section-us">US News</a></li>
         <li><a href="#section-mideast">Middle East</a></li>
         <li><a href="#section-world">World</a></li>
-        <li><a href="#section-tech">Tech</a></li>
+        <li><a href="#section-tech">Science, Tech &amp; Health</a></li>
         <li><a href="#section-business">Business</a></li>
         <li><a href="#section-sports">Sports</a></li>
         <li><a href="#section-culture">Culture</a></li>
@@ -8818,7 +9221,6 @@ html_parts.append(f"""
     <p class="footer-copyright">&copy; 2026 NUZU News. All rights reserved.</p>
     <p class="footer-update">Last updated: {update_time}</p>
     <div class="footer-bottom-links">
-      <a href="originals.html" style="color:#E3C15A;font-weight:600">Original Articles</a>
       <a href="about.html">About</a>
       <a href="mailto:NUZU-NEWS@protonmail.com?subject=NUZU%20Advertising%20Inquiry">Advertise</a>
       <a href="advertising.html">Advertising Guidelines</a>
