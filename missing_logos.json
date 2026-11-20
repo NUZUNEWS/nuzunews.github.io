@@ -514,6 +514,11 @@
     "last_attempt": "2026-11-14T23:56",
     "retries": 1987
   },
+  "moj.gov.cn": {
+    "first_seen": "2026-11-20T04:23",
+    "last_attempt": "2026-11-20T04:23",
+    "retries": 1
+  },
   "moveablefest.com": {
     "first_seen": "2026-08-16T22:28",
     "last_attempt": "2026-11-15T04:24",
@@ -699,6 +704,11 @@
     "last_attempt": "2026-11-15T18:48",
     "retries": 1889
   },
+  "schiffgold.com": {
+    "first_seen": "2026-11-20T04:23",
+    "last_attempt": "2026-11-20T04:23",
+    "retries": 1
+  },
   "sdjewishworld.com": {
     "first_seen": "2026-07-18T19:49",
     "last_attempt": "2026-11-15T18:47",
@@ -811,8 +821,8 @@
   },
   "theflintcouriernews.com": {
     "first_seen": "2026-11-16T20:30",
-    "last_attempt": "2026-11-18T02:20",
-    "retries": 2
+    "last_attempt": "2026-11-20T04:23",
+    "retries": 3
   },
   "theins.in": {
     "first_seen": "2026-11-13T08:21",
