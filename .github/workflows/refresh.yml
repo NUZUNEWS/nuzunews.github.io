@@ -2,17 +2,14 @@ name: refresh
 
 on:
   schedule:
-    # Every 5 minutes. This is GitHub Actions' HARD MINIMUM interval — you cannot
-    # schedule any faster (cron '*/1' etc. is silently clamped to ~5 min). This is
-    # already 3x more frequent than a 15-minute cadence. On a PUBLIC repo (this one)
-    # Actions minutes are free & unlimited, so this is the fastest, most aggressive
-    # refresh possible. Note: under heavy GitHub load, scheduled runs can be delayed
-    # or skipped by GitHub itself — that is outside our control and normal.
+    # GitHub's shortest schedule is every 5 minutes, but in practice it starts scheduled runs
+    # only every few hours. So once a run starts it keeps building: a new build about every
+    # 10 minutes for up to about 5.5 hours (NUZU 2.4). A build takes about a minute.
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
-# Cancel any in-progress run when a newer one starts.
-# Prevents overlapping deploys and queue pileups on GitHub Actions.
+# Never two runs at once. A newer run (the next scheduled one, or Run workflow pressed after an
+# upload) cancels the one in progress and takes over the building.
 concurrency:
   group: nuzu-refresh
   cancel-in-progress: true
@@ -20,6 +17,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 350
     permissions:
       contents: write
 
@@ -30,7 +28,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      # Cache pip packages — saves ~15s on every run
+      # Cache pip packages - saves ~15s on every run
       - name: Cache pip dependencies
         uses: actions/cache@v4
         with:
@@ -41,71 +39,67 @@ jobs:
       - name: Install dependencies
         run: pip install --quiet feedparser requests
 
-      - name: Capture pre-run hash of index.html
-        id: pre_hash
-        run: |
-          if [ -f index.html ]; then
-            echo "hash=$(sha256sum index.html | cut -d' ' -f1)" >> $GITHUB_OUTPUT
-          else
-            echo "hash=none" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Run main bot (builds index.html)
-        run: python bot.py
-
-      - name: Capture post-run hash of index.html
-        id: post_hash
-        run: |
-          if [ -f index.html ]; then
-            echo "hash=$(sha256sum index.html | cut -d' ' -f1)" >> $GITHUB_OUTPUT
-          else
-            echo "hash=none" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Commit and push updated files
-        if: steps.pre_hash.outputs.hash != steps.post_hash.outputs.hash
+      - name: Build about every 10 minutes for up to 5.5 hours
+        env:
+          BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html feed.xml feed.json _headers || true
-          git add yesterday_top.json feed_health.json missing_logos.json source_domain_cache.json 2>/dev/null || true
-          git add trending_terms.json 2>/dev/null || true
-          git add icons/sources/ 2>/dev/null || true
-          # NUZU Originals: the in-house byline pages generated from articles/.
-          # -A is required on the originals/ folder so that pages for DELETED
-          # articles are staged as deletions, not left orphaned on the live site.
-          git add originals.html 2>/dev/null || true
-          git add -A originals/ 2>/dev/null || true
-          git commit -m "Auto-refresh $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
-          # Push with retry.
-          #
-          # A bare "git push" fails outright if anything landed on the branch
-          # while this run was building - which is precisely what happens when
-          # you upload an article in the middle of a refresh. The run goes red
-          # and the article sits unpublished until someone reruns it by hand.
-          #
-          # Rebasing puts our generated files on top of whatever arrived. An
-          # uploaded article only touches articles/, so it never conflicts with
-          # the files the bot regenerates.
-          PUSHED=0
-          for attempt in 1 2 3 4 5; do
-            if git push; then
-              PUSHED=1
+          START=$(date +%s)
+          GAP=600          # seconds from the start of one build to the start of the next
+          LIMIT=19800      # 330 minutes: no build starts later than this
+          N=0
+          while true; do
+            T0=$(date +%s)
+            N=$((N+1))
+            echo "::group::Build $N - $(date -u '+%H:%M UTC')"
+            # Pick up anything uploaded since the last build (an article, a new bot.py).
+            if git fetch --quiet origin "$BRANCH"; then
+              git reset --quiet --hard "origin/$BRANCH"
+            fi
+            if [ -f index.html ]; then PRE=$(sha256sum index.html | cut -d' ' -f1); else PRE=none; fi
+            if timeout 15m python bot.py; then
+              if [ -f index.html ]; then POST=$(sha256sum index.html | cut -d' ' -f1); else POST=none; fi
+              if [ "$PRE" != "$POST" ]; then
+                git add index.html feed.xml feed.json _headers || true
+                git add health.json 2>/dev/null || true
+                git add yesterday_top.json feed_health.json missing_logos.json source_domain_cache.json 2>/dev/null || true
+                git add trending_terms.json 2>/dev/null || true
+                git add icons/sources/ 2>/dev/null || true
+                # NUZU Originals: the in-house byline pages generated from articles/.
+                # -A stages the pages of DELETED articles as deletions.
+                git add originals.html 2>/dev/null || true
+                git add -A originals/ 2>/dev/null || true
+                git commit --quiet -m "Auto-refresh $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
+                # Push with retry: if something landed meanwhile (an uploaded article), rebase the
+                # generated files on top of it. On a conflict, skip; the next build redoes it.
+                PUSHED=0
+                for attempt in 1 2 3 4 5; do
+                  if git push --quiet origin "HEAD:$BRANCH"; then
+                    PUSHED=1
+                    break
+                  fi
+                  echo "Push rejected (attempt $attempt) - rebasing onto the latest and retrying"
+                  if ! git pull --quiet --rebase --autostash origin "$BRANCH"; then
+                    git rebase --abort 2>/dev/null || true
+                    echo "Rebase failed - skipping this build; the next build redoes it"
+                    break
+                  fi
+                  sleep 3
+                done
+                if [ "$PUSHED" != "1" ]; then echo "Not pushed this time; the next build tries again."; fi
+              else
+                echo "Content unchanged - nothing to push."
+              fi
+            else
+              echo "bot.py failed or took over 15 minutes - the next build tries again."
+            fi
+            echo "::endgroup::"
+            NEXT=$((T0 + GAP))
+            if [ $((NEXT - START)) -gt $LIMIT ]; then
+              echo "Done: $N builds in this run."
               break
             fi
-            echo "Push rejected (attempt $attempt) - rebasing onto latest and retrying"
-            if ! git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}"; then
-              git rebase --abort 2>/dev/null || true
-              echo "Rebase failed - leaving the branch untouched for a human to look at"
-              break
-            fi
-            sleep 3
+            NOW=$(date +%s)
+            if [ "$NEXT" -gt "$NOW" ]; then sleep $((NEXT - NOW)); fi
           done
-          if [ "$PUSHED" != "1" ]; then
-            echo "Could not push after 5 attempts. The next scheduled run will pick this up."
-            exit 1
-          fi
-
-      - name: Skip deploy (content unchanged)
-        if: steps.pre_hash.outputs.hash == steps.post_hash.outputs.hash
-        run: echo "Content hash unchanged — skipping deploy to conserve action minutes."
