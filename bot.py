@@ -3230,6 +3230,287 @@ for _nz_sec, _nz_list in (("mideast", MIDDLE_EAST_SOURCES), ("us", US_POLITICS_S
     _nz_have = {u for _n, u in _nz_list}
     _nz_list.extend(x for x in NZ_EXTRA_SOURCES[_nz_sec] if x[1] not in _nz_have)
 
+# ══════════════════════ NUZU 2.4 (ORDER-701 B4): DIRECT LINKS ══════════════════════
+# The outlets' own RSS feeds, so their headlines open the article itself; Google News stays
+# as the fallback. Every feed below passed a live probe on 21 Nov 2026 (at least 5 entries,
+# direct article links, newest under 48 h) - NUZU test tools\nz24_feedprobe.py.
+import threading as _nz_threading
+import urllib.parse as _nz_urlparse
+import time as _nz_time
+_NZ_T0 = _nz_time.time()
+NZ_DIRECT_FEEDS = {
+    'business': [
+        ('BBC News', 'https://feeds.bbci.co.uk/news/business/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1006/rss.xml'),
+        ('The Guardian', 'https://www.theguardian.com/business/rss'),
+        ('DW', 'https://rss.dw.com/rdf/rss-en-bus'),
+        ('France 24', 'https://www.france24.com/en/business/rss'),
+        ('France 24', 'https://www.france24.com/en/business-tech/rss'),
+        ('CBC News', 'https://www.cbc.ca/webfeed/rss/rss-business'),
+        ('ABC News (Australia)', 'https://www.abc.net.au/news/feed/51892/rss.xml'),
+        ('Sky News', 'https://feeds.skynews.com/feeds/rss/business.xml'),
+        ('PBS NewsHour', 'https://www.pbs.org/newshour/feeds/rss/economy'),
+        ('CBS News', 'https://www.cbsnews.com/latest/rss/moneywatch'),
+        ('ABC News', 'https://abcnews.go.com/abcnews/moneyheadlines'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/Business.xml'),
+        ('Washington Post', 'https://feeds.washingtonpost.com/rss/business'),
+        ('CNBC', 'https://www.cnbc.com/id/10001147/device/rss/rss.html'),
+        ('CNBC', 'https://www.cnbc.com/id/100003114/device/rss/rss.html'),
+        ('MarketWatch', 'https://feeds.content.dowjones.io/public/rss/mw_topstories'),
+        ('Fortune', 'https://fortune.com/feed/'),
+        ('Business Insider', 'https://feeds.businessinsider.com/custom/all'),
+    ],
+    'culture': [
+        ('BBC News', 'https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1008/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1039/rss.xml'),
+        ('The Guardian', 'https://www.theguardian.com/culture/rss'),
+        ('The Guardian', 'https://www.theguardian.com/music/rss'),
+        ('The Guardian', 'https://www.theguardian.com/film/rss'),
+        ('DW', 'https://rss.dw.com/rdf/rss-en-cul'),
+        ('France 24', 'https://www.france24.com/en/culture/rss'),
+        ('CBC News', 'https://www.cbc.ca/webfeed/rss/rss-arts'),
+        ('CBS News', 'https://www.cbsnews.com/latest/rss/entertainment'),
+        ('ABC News', 'https://abcnews.go.com/abcnews/entertainmentheadlines'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/Arts.xml'),
+        ('Variety', 'https://variety.com/feed/'),
+        ('The Hollywood Reporter', 'https://www.hollywoodreporter.com/feed/'),
+        ('Rolling Stone', 'https://www.rollingstone.com/feed/'),
+        ('Billboard', 'https://www.billboard.com/feed/'),
+        ('Pitchfork', 'https://pitchfork.com/rss/news/'),
+        ('Deadline', 'https://deadline.com/feed/'),
+        ('Stereogum', 'https://www.stereogum.com/feed/'),
+        ('Consequence', 'https://consequence.net/feed/'),
+        ('IndieWire', 'https://www.indiewire.com/feed/'),
+    ],
+    'mideast': [
+        ('BBC News', 'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml'),
+        ('The Guardian', 'https://www.theguardian.com/world/middleeast/rss'),
+        ('Al Jazeera', 'https://www.aljazeera.com/xml/rss/all.xml'),
+        ('DW', 'https://rss.dw.com/rdf/rss-en-all'),
+        ('France 24', 'https://www.france24.com/en/middle-east/rss'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml'),
+        ('Times of Israel', 'https://www.timesofisrael.com/feed/'),
+        ('Arab News', 'https://www.arabnews.com/rss.xml'),
+        ('Al-Monitor', 'https://www.al-monitor.com/rss'),
+    ],
+    'sports': [
+        ('BBC Sport', 'https://feeds.bbci.co.uk/sport/rss.xml'),
+        ('The Guardian', 'https://www.theguardian.com/sport/rss'),
+        ('France 24', 'https://www.france24.com/en/sport/rss'),
+        ('CBC News', 'https://www.cbc.ca/webfeed/rss/rss-sports'),
+        ('ABC News', 'https://abcnews.go.com/abcnews/sportsheadlines'),
+        ('ESPN', 'https://www.espn.com/espn/rss/news'),
+        ('CBS Sports', 'https://www.cbssports.com/rss/headlines/'),
+        ('Yahoo Sports', 'https://sports.yahoo.com/rss/'),
+        ('Sky Sports', 'https://www.skysports.com/rss/12040'),
+    ],
+    'tech': [
+        ('BBC News', 'https://feeds.bbci.co.uk/news/technology/rss.xml'),
+        ('BBC News', 'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml'),
+        ('BBC News', 'https://feeds.bbci.co.uk/news/health/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1007/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1128/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1019/rss.xml'),
+        ('The Guardian', 'https://www.theguardian.com/technology/rss'),
+        ('The Guardian', 'https://www.theguardian.com/science/rss'),
+        ('The Guardian', 'https://www.theguardian.com/society/health/rss'),
+        ('CBC News', 'https://www.cbc.ca/webfeed/rss/rss-technology'),
+        ('CBC News', 'https://www.cbc.ca/webfeed/rss/rss-health'),
+        ('ABC News (Australia)', 'https://www.abc.net.au/news/feed/2942460/rss.xml'),
+        ('Sky News', 'https://feeds.skynews.com/feeds/rss/technology.xml'),
+        ('PBS NewsHour', 'https://www.pbs.org/newshour/feeds/rss/health'),
+        ('PBS NewsHour', 'https://www.pbs.org/newshour/feeds/rss/science'),
+        ('CBS News', 'https://www.cbsnews.com/latest/rss/technology'),
+        ('CBS News', 'https://www.cbsnews.com/latest/rss/health'),
+        ('ABC News', 'https://abcnews.go.com/abcnews/technologyheadlines'),
+        ('ABC News', 'https://abcnews.go.com/abcnews/healthheadlines'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/Science.xml'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/Health.xml'),
+        ('CNBC', 'https://www.cnbc.com/id/19854910/device/rss/rss.html'),
+        ('The Verge', 'https://www.theverge.com/rss/index.xml'),
+        ('Ars Technica', 'https://feeds.arstechnica.com/arstechnica/index'),
+        ('Wired', 'https://www.wired.com/feed/rss'),
+        ('Engadget', 'https://www.engadget.com/rss.xml'),
+        ('Science News', 'https://www.sciencenews.org/feed'),
+        ('New Scientist', 'https://www.newscientist.com/feed/home/'),
+        ('Space.com', 'https://www.space.com/feeds/all'),
+        ('STAT News', 'https://www.statnews.com/feed/'),
+        ('Live Science', 'https://www.livescience.com/feeds/all'),
+        ('Phys.org', 'https://phys.org/rss-feed/'),
+        ('NASA', 'https://www.nasa.gov/news-release/feed/'),
+    ],
+    'us': [
+        ('BBC News', 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1014/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1003/rss.xml'),
+        ('The Guardian', 'https://www.theguardian.com/us-news/rss'),
+        ('France 24', 'https://www.france24.com/en/americas/rss'),
+        ('CBC News', 'https://www.cbc.ca/webfeed/rss/rss-topstories'),
+        ('Sky News', 'https://feeds.skynews.com/feeds/rss/us.xml'),
+        ('PBS NewsHour', 'https://www.pbs.org/newshour/feeds/rss/headlines'),
+        ('PBS NewsHour', 'https://www.pbs.org/newshour/feeds/rss/politics'),
+        ('CBS News', 'https://www.cbsnews.com/latest/rss/main'),
+        ('CBS News', 'https://www.cbsnews.com/latest/rss/politics'),
+        ('NBC News', 'https://feeds.nbcnews.com/nbcnews/public/news'),
+        ('NBC News', 'https://feeds.nbcnews.com/nbcnews/public/politics'),
+        ('ABC News', 'https://abcnews.go.com/abcnews/topstories'),
+        ('ABC News', 'https://abcnews.go.com/abcnews/politicsheadlines'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/US.xml'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml'),
+        ('Washington Post', 'https://feeds.washingtonpost.com/rss/politics'),
+        ('Politico', 'https://rss.politico.com/politics-news.xml'),
+        ('The Hill', 'https://thehill.com/news/feed/'),
+    ],
+    'world': [
+        ('BBC News', 'https://feeds.bbci.co.uk/news/world/rss.xml'),
+        ('BBC News', 'https://feeds.bbci.co.uk/news/world/europe/rss.xml'),
+        ('BBC News', 'https://feeds.bbci.co.uk/news/world/asia/rss.xml'),
+        ('NPR', 'https://feeds.npr.org/1004/rss.xml'),
+        ('The Guardian', 'https://www.theguardian.com/world/rss'),
+        ('Al Jazeera', 'https://www.aljazeera.com/xml/rss/all.xml'),
+        ('DW', 'https://rss.dw.com/rdf/rss-en-world'),
+        ('France 24', 'https://www.france24.com/en/rss'),
+        ('France 24', 'https://www.france24.com/en/europe/rss'),
+        ('France 24', 'https://www.france24.com/en/asia-pacific/rss'),
+        ('France 24', 'https://www.france24.com/en/africa/rss'),
+        ('CBC News', 'https://www.cbc.ca/webfeed/rss/rss-world'),
+        ('ABC News (Australia)', 'https://www.abc.net.au/news/feed/51120/rss.xml'),
+        ('Sky News', 'https://feeds.skynews.com/feeds/rss/world.xml'),
+        ('PBS NewsHour', 'https://www.pbs.org/newshour/feeds/rss/world'),
+        ('CBS News', 'https://www.cbsnews.com/latest/rss/world'),
+        ('NBC News', 'https://feeds.nbcnews.com/nbcnews/public/world'),
+        ('ABC News', 'https://abcnews.go.com/abcnews/internationalheadlines'),
+        ('New York Times', 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml'),
+        ('Washington Post', 'https://feeds.washingtonpost.com/rss/world'),
+        ('CNBC', 'https://www.cnbc.com/id/100727362/device/rss/rss.html'),
+        ('Euronews', 'https://www.euronews.com/rss'),
+        ('The Japan Times', 'https://www.japantimes.co.jp/feed/'),
+        ('South China Morning Post', 'https://www.scmp.com/rss/91/feed'),
+        ('CNA', 'https://www.channelnewsasia.com/rssfeeds/8395986'),
+        ('The Hindu', 'https://www.thehindu.com/news/international/feeder/default.rss'),
+        ('The Kyiv Independent', 'https://kyivindependent.com/news-archive/rss/'),
+        ('Africanews', 'https://www.africanews.com/feed/rss'),
+        ('The Globe and Mail', 'https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/world/'),
+    ],
+}
+NZ_DIRECT_CAP = 5            # at most 5 matched items from one direct feed (a Google feed: 8)
+_NZ_DIRECT_URLS = set()
+for _nz_sec, _nz_list in (("mideast", MIDDLE_EAST_SOURCES), ("us", US_POLITICS_SOURCES),
+                          ("sports", SPORTS_SOURCES), ("tech", TECH_SOURCES), ("culture", CULTURE_SOURCES),
+                          ("business", BUSINESS_SOURCES), ("world", WORLD_SOURCES)):
+    _nz_have = {u for _n, u in _nz_list}
+    for _nz_name, _nz_url in NZ_DIRECT_FEEDS.get(_nz_sec, []):
+        _NZ_DIRECT_URLS.add(_nz_url)
+        if _nz_url not in _nz_have:
+            _nz_list.append((_nz_name, _nz_url))
+            _nz_have.add(_nz_url)
+_NZ_DIRECT_LOCK = _nz_threading.Lock()
+_NZ_DIRECT_INDEX = {}    # site label -> [(lowercased title, token set, article link, summary)]
+_NZ_GN_PUBLISHER = {}    # Google News link -> the publisher's home page (entry.source.href)
+_NZ_FEED_LOG = {}        # feed url -> (status, feed name); status: ok / empty / failed / skipped
+_NZ_SUFFIX2 = {"co.uk", "org.uk", "ac.uk", "gov.uk", "com.au", "net.au", "org.au", "co.nz", "org.nz",
+               "co.jp", "co.za", "com.br", "co.in", "com.sg", "com.hk", "co.kr", "com.mx", "com.tr",
+               "com.ar", "com.cn", "com.pk", "com.ng", "co.il", "com.my", "com.ph", "com.eg", "com.sa",
+               "co.ke", "com.tw", "com.vn", "co.th", "com.co", "com.pe", "com.ua"}
+_NZ_TOK_STOP = {"the", "and", "for", "with", "from", "that", "this", "after", "over", "into", "about",
+                "says", "said", "will", "has", "have", "are", "was", "were", "its", "not", "but", "new"}
+
+
+def _nz_site_label(url):
+    """'https://www.bbc.co.uk/news/x' -> 'bbc', 'abc.net.au' -> 'abc'; '' when unknown."""
+    try:
+        u = url if "://" in url else "https://" + url
+        host = (_nz_urlparse.urlsplit(u).hostname or "").lower()
+    except Exception:
+        return ""
+    if host.startswith("www."):
+        host = host[4:]
+    parts = [p for p in host.split(".") if p]
+    if len(parts) >= 3 and ".".join(parts[-2:]) in _NZ_SUFFIX2:
+        return parts[-3]
+    if len(parts) >= 2:
+        return parts[-2]
+    return host
+
+
+def _nz_tok(s):
+    return set(w for w in re.findall(r"[a-z0-9]{3,}", (s or "").lower()) if w not in _NZ_TOK_STOP)
+
+
+def _nz_plain(s):
+    s = re.sub(r"<[^>]+>", " ", s or "")
+    s = re.sub(r"&[a-zA-Z]+;|&#\d+;", " ", s)
+    s = " ".join(s.split())
+    return (s[:200].rstrip() + "…") if len(s) > 200 else s
+
+
+def _nz_index_direct(entries):
+    """Every entry of a direct feed, matched or not, so a Google item can find its own link."""
+    rows = []
+    for e in entries:
+        try:
+            t = (e.get("title") or "").strip()
+            l = e.get("link") or ""
+            if not t or not l.startswith("http"):
+                continue
+            n = t.lower()
+            rows.append((_nz_site_label(l), n, _nz_tok(n), l,
+                         _nz_plain(e.get("summary", "") or e.get("description", "") or "")))
+        except Exception:
+            continue
+    with _NZ_DIRECT_LOCK:
+        for lab, n, tk, l, s in rows:
+            if lab:
+                _NZ_DIRECT_INDEX.setdefault(lab, []).append((n, tk, l, s))
+
+
+def _nz_upgrade_links():
+    """A Google News item whose publisher has a direct feed gets the direct link when the same
+    headline is in that feed (same words, or 75% of the words with 5 or more); then the same
+    link twice in one section is shown once."""
+    upgraded = 0
+    for _sec in list(_section_results.keys()):
+        out, seen = [], set()
+        for it in _section_results[_sec]:
+            ts, title, source, link = it
+            if "news.google.com" in link:
+                href = _NZ_GN_PUBLISHER.get(link, "")
+                label = _nz_site_label(href) if href else ""
+                if not label:
+                    try:
+                        dom = get_source_domain(source)
+                    except Exception:
+                        dom = ""
+                    label = _nz_site_label(dom) if dom else ""
+                cands = _NZ_DIRECT_INDEX.get(label) if label else None
+                if cands:
+                    nt = normalize_title(title)
+                    tt = _nz_tok(nt)
+                    hit = None
+                    for dn, dt, dl, ds in cands:
+                        if dn == nt or (len(tt) >= 5 and len(dt) >= 5 and len(tt & dt) >= 0.75 * len(tt | dt)):
+                            hit = (dl, ds)
+                            break
+                    if hit:
+                        new_link = add_utm(hit[0])
+                        if new_link not in _ARTICLE_SUMMARIES:
+                            summ = _ARTICLE_SUMMARIES.get(link, "") or hit[1]
+                            if summ:
+                                _ARTICLE_SUMMARIES[new_link] = summ
+                        it = (ts, title, source, new_link)
+                        upgraded += 1
+            if it[3] in seen:
+                continue
+            seen.add(it[3])
+            out.append(it)
+        _section_results[_sec] = out
+    total = sum(len(v) for v in _section_results.values())
+    direct = sum(1 for v in _section_results.values() for it in v if "news.google.com" not in it[3])
+    print("  direct links: " + str(upgraded) + " Google items upgraded; " + str(direct) + " of "
+          + str(total) + " items open the outlet directly")
+
 def normalize_title(title):
     """Strip source suffix and lowercase — used for exact-match dedup."""
     if " - " in title:
@@ -3362,8 +3643,11 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
     results = []
     seen_local = set()
     count = 0
+    _nz_direct = url in _NZ_DIRECT_URLS          # NUZU 2.4 (B4): an outlet's own feed
+    _nz_cap = NZ_DIRECT_CAP if _nz_direct else 8
     if _should_skip_feed(url):
         print(f"  {source_name} - SKIPPED (circuit-breaker tripped)")
+        _NZ_FEED_LOG[url] = ("skipped", source_name)
         return results
     last_err = None
     # Exponential backoff: 1s, 3s, 9s
@@ -3376,12 +3660,15 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                 last_err = f"bozo={feed.get('bozo_exception', 'parse error')}"
                 break
             print(f"  {source_name} - {len(feed.entries)} entries")
+            _NZ_FEED_LOG[url] = ("ok" if feed.entries else "empty", source_name)
+            if _nz_direct:
+                _nz_index_direct(feed.entries)
             if len(feed.entries) == 0:
                 # Zero-entry warning — Google News may have rate-limited or
                 # changed format. Don't mark as failure (valid RSS, just empty).
                 print(f"  WARNING: {source_name} returned zero entries")
             for entry in feed.entries:
-                if count >= 8:  # raised from 5 — captures more stories on busy news days
+                if count >= _nz_cap:  # raised from 5 — captures more stories on busy news days (direct feeds: 5)
                     break
                 raw_title = entry.title.strip()
                 norm_title = normalize_title(raw_title)
@@ -3410,7 +3697,12 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                     # feed label — prevents every Google News result being
                     # attributed to the query term (e.g. "Deutsche Welle"
                     # when the article is actually from Reuters via DW feed).
-                    true_source, _src_href = _resolve_entry_source(entry, source_name)
+                    if _nz_direct:                   # NUZU 2.4: the configured outlet, never a " - " tail
+                        true_source, _src_href = source_name, ''
+                    else:
+                        true_source, _src_href = _resolve_entry_source(entry, source_name)
+                        if _src_href:
+                            _NZ_GN_PUBLISHER[link] = _src_href
                     _nz_why = why_promo(raw_title, true_source)
                     if _nz_why:                      # advertising / non-news: never shown
                         _NZ_PROMO_LOG[_nz_why] = _NZ_PROMO_LOG.get(_nz_why, 0) + 1
@@ -3462,7 +3754,9 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                                     else _raw_sum[:200].strip() + '\u2026')
                     if _raw_sum:
                         _ARTICLE_SUMMARIES[link] = _raw_sum
-                    results.append((ts, raw_title, true_source, link))
+                    # NUZU 2.4: a direct title carries its outlet as the tail, so
+                    # strip_source_from_title only ever strips the outlet's name.
+                    results.append((ts, (raw_title + " - " + source_name) if _nz_direct else raw_title, true_source, link))
                     seen_local.add(norm_title)
                     count += 1
             _record_feed_success(url)
@@ -3472,6 +3766,7 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
             if attempt < 2:
                 time.sleep([1, 3, 9][attempt])
     _record_feed_failure(url)
+    _NZ_FEED_LOG[url] = ("failed", source_name)
     if last_err:
         print(f"  {source_name} - fetch FAILED: {last_err[:120]}")
     return results
@@ -3769,6 +4064,11 @@ with ThreadPoolExecutor(max_workers=7) as _sec_executor:
             print(f"  Section '{_sec_name}' failed: {_e}")
             _section_results[_sec_name] = []
 
+try:
+    _nz_upgrade_links()                       # NUZU 2.4 (B4)
+except Exception as _e_nzup:
+    print("WARNING: direct-link upgrade skipped: " + str(_e_nzup))
+
 middle_matches   = _section_results.get("mideast",  [])
 us_matches       = _section_results.get("us",       [])
 sports_matches   = _section_results.get("sports",   [])
@@ -3990,6 +4290,7 @@ def render_clusters(clusters, show_trust=True, ctx=""):
                 f'{_hl_sum_html}'
                 f' <span class="ts-label{ts_cls}">{time_str}</span>'
                 f' {trust_pip}<span class="src-label">\u2014 {friendly}</span>'
+                f'{_nz_also_html(cluster)}'
                 f' <button class="bookmark-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
                 f' <a class="link" href="{link}" target="_blank" rel="noopener noreferrer">Read ↗</a>'
@@ -4062,6 +4363,7 @@ def render_clusters(clusters, show_trust=True, ctx=""):
                 f'{_cl_sum_html}'
                 f' <span class="ts-label{ts_cls}">{time_str}</span>'
                 f' <span class="src-label">\u2014 {lead_friendly}</span>'
+                f'{_nz_also_html(cluster)}'
                 f' <button class="bookmark-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Save article" title="Save for later">&#9733;</button>'
                 f' <button class="share-btn" data-link="{lead_link}" data-title="{safe_title_attr}" aria-label="Share article" title="Share">&#8679;</button>'
                 f' <a class="link" href="{lead_link}" target="_blank" rel="noopener noreferrer">Read ↗</a>'
@@ -4282,6 +4584,109 @@ for _sid, _bi, _ri in _CLUSTER_INPUTS:
     print(f"  [{_sid}] {len(_cc)} clusters ({_multi_c} multi-source, {_total_items} total items)")
 
 print("Canonical clusters done.")
+
+# ══════════════════════ NUZU 2.4 (ORDER-701 B3): EACH STORY ONCE ══════════════════════
+# A story found in two sections shows once - where it has most outlets - with an "also in
+# World" tag. Two clusters are one story when they share a link, a headline of 4 or more
+# words, or 4 story words that are at least half of the shorter headline.
+_NZ_ALSO_IN = {}     # article link (utm stripped) -> ["World", ...]
+_NZ_FOLD_LOG = []
+_NZ_SEC_LABEL = {"us": "US", "mideast": "Middle East", "world": "World", "business": "Business",
+                 "tech": "Science, Tech & Health", "sports": "Sports", "culture": "Culture"}
+
+
+def _nz_bare(link):
+    try:
+        p = _nz_urlparse.urlsplit(link)
+        q = "&".join(kv for kv in p.query.split("&") if kv and not kv.lower().startswith("utm_"))
+        return _nz_urlparse.urlunsplit((p.scheme, p.netloc.lower(), p.path, q, ""))
+    except Exception:
+        return link
+
+
+def _nz_fold_cross_section():
+    order = ["us", "mideast", "world", "business", "tech", "sports", "culture"]
+    info = {}
+    for sid in order:
+        for cl in SECTION_CLUSTERS[sid]["combined"]:
+            norms = set()
+            for it in cl:
+                nt = normalize_title(it[1])
+                if len(nt.split()) >= 4:
+                    norms.add(nt)
+            info[id(cl)] = ({_nz_bare(it[3]) for it in cl}, norms, [headline_tokens(it[1]) for it in cl])
+
+    def same(a, b):
+        la, na, ta = info[id(a)]
+        lb, nb, tb = info[id(b)]
+        if (la & lb) or (na & nb):
+            return True
+        for x in ta:
+            for y in tb:
+                sh = len(x & y)
+                if sh >= 4 and sh >= 0.5 * max(1, min(len(x), len(y))):
+                    return True
+        return False
+
+    def outlets(cl):
+        return len({it[2].lower() for it in cl})
+
+    gone = set()
+    for i, sa in enumerate(order):
+        for cla in SECTION_CLUSTERS[sa]["combined"]:
+            for sb in order[i + 1:]:
+                if id(cla) in gone:
+                    break
+                for clb in SECTION_CLUSTERS[sb]["combined"]:
+                    if id(clb) in gone or id(cla) in gone or not same(cla, clb):
+                        continue
+                    if outlets(cla) >= outlets(clb):
+                        keep, drop, ks, ds = cla, clb, sa, sb
+                    else:
+                        keep, drop, ks, ds = clb, cla, sb, sa
+                    have_src = {it[2].lower() for it in keep}
+                    have_lnk = {_nz_bare(it[3]) for it in keep}
+                    for it in drop:
+                        if it[2].lower() in have_src or _nz_bare(it[3]) in have_lnk:
+                            continue
+                        keep.append(it)
+                        have_src.add(it[2].lower())
+                        have_lnk.add(_nz_bare(it[3]))
+                    lk, nk, tk = info[id(keep)]
+                    ld, nd, td = info[id(drop)]
+                    info[id(keep)] = (lk | ld, nk | nd, tk + td)
+                    home = _NZ_SEC_LABEL[ks]
+                    labels = [_NZ_SEC_LABEL[ds]]
+                    for it in drop:
+                        for lab in _NZ_ALSO_IN.get(_nz_bare(it[3]), []):
+                            if lab not in labels:
+                                labels.append(lab)
+                    for it in keep:
+                        cur = _NZ_ALSO_IN.setdefault(_nz_bare(it[3]), [])
+                        for lab in labels:
+                            if lab not in cur and lab != home:
+                                cur.append(lab)
+                    gone.add(id(drop))
+                    _NZ_FOLD_LOG.append((ks, ds, outlets(keep), strip_source_from_title(keep[0][1])[:90]))
+    for sid in order:
+        SECTION_CLUSTERS[sid]["combined"] = [cl for cl in SECTION_CLUSTERS[sid]["combined"] if id(cl) not in gone]
+    print("  each story once: " + str(len(_NZ_FOLD_LOG)) + " stories folded across sections")
+    for ks, ds, n, ttl in _NZ_FOLD_LOG:
+        print("    [" + ks + " <- " + ds + "] " + str(n) + " outlets: " + ttl)
+
+
+def _nz_also_html(cluster):
+    for it in cluster:
+        labs = _NZ_ALSO_IN.get(_nz_bare(it[3]))
+        if labs:
+            return ' <span class="nz-also">also in ' + ", ".join(labs).replace("&", "&amp;") + '</span>'
+    return ''
+
+
+try:
+    _nz_fold_cross_section()
+except Exception as _e_nzf:
+    print("WARNING: cross-section fold skipped: " + str(_e_nzf))
 print("  promo/junk filtered: " + (", ".join(f"{k} {v}" for k, v in sorted(_NZ_PROMO_LOG.items(), key=lambda kv: -kv[1])) or "none"))
 
 def build_top_stories(max_stories=10):
@@ -4364,6 +4769,59 @@ if not hot_items:
                          culture_recent)
     hot_items = sorted(_all_breaking, key=lambda x: x[0], reverse=True)[:20]
 show_breaking_banner = len(hot_items) > 0
+
+# ══════════════════════ NUZU 2.4 (ORDER-701 B2): THE BREAKING TICKER ══════════════════════
+# Only US / World / Middle East / Business, and only stories several outlets carry or a Tier
+# 1-2 outlet reports (on 7 Nov it led with a football result). The newest window that holds 8
+# such stories wins: 3 h, then 6 h, then 12 h. The last resort is the newest news stories of
+# those four sections - never Sports, Culture or Science/Tech. Ranked by outlets weighted by
+# tier (Tier 1 counts 3, Tier 2 counts 2, others 1), then newest; one line per story.
+def _nz_ticker_pick(want=20):
+    now = time.time()
+    cands = []
+    for sid, label in (("us", "US"), ("world", "World"), ("mideast", "Middle East"), ("business", "Business")):
+        for cl in SECTION_CLUSTERS[sid]["combined"]:
+            items = sorted(cl, key=lambda x: x[0], reverse=True)
+            by_outlet = {}
+            for it in items:
+                by_outlet.setdefault(it[2].lower(), it)
+            best = min(items, key=lambda it: (get_source_tier(it[2]), -it[0]))
+            score = sum({1: 3, 2: 2}.get(get_source_tier(it[2]), 1) for it in by_outlet.values())
+            cands.append({"sid": sid, "label": label, "n": len(by_outlet), "tier": get_source_tier(best[2]),
+                          "ts": items[0][0], "score": score, "item": best, "toks": headline_tokens(best[1])})
+    pool = []
+    for window in (3 * 3600, 6 * 3600, 12 * 3600):
+        pool = [c for c in cands if (c["n"] >= 2 or c["tier"] <= 2) and now - c["ts"] <= window]
+        if len(pool) >= 8:
+            break
+    if not pool:
+        pool = sorted(cands, key=lambda c: c["ts"], reverse=True)[:want]
+    pool.sort(key=lambda c: (c["score"], c["ts"]), reverse=True)
+    picked = []
+    for c in pool:
+        dup = False
+        for p in picked:
+            sh = len(c["toks"] & p["toks"])
+            if sh >= 3 and sh >= 0.3 * max(1, min(len(c["toks"]), len(p["toks"]))):
+                dup = True
+                break
+        if not dup:
+            picked.append(c)
+        if len(picked) >= want:
+            break
+    return picked
+
+
+try:
+    NZ_TICKER = _nz_ticker_pick()
+except Exception as _e_nzt:
+    print("WARNING: ticker pick failed, keeping the old ticker: " + str(_e_nzt))
+    NZ_TICKER = None
+if NZ_TICKER is not None:
+    hot_items = [c["item"] for c in NZ_TICKER]
+    show_breaking_banner = len(NZ_TICKER) > 0
+    print("  ticker: " + str(len(NZ_TICKER)) + " stories - " + ", ".join(
+        c["label"] + " " + str(c["n"]) + "x T" + str(c["tier"]) for c in NZ_TICKER[:10]))
 
 # Warm the source-icon cache. Downloads any missing publisher favicons into
 # icons/sources/ so the generated HTML points at local PNGs (fast, no
@@ -6570,7 +7028,24 @@ if show_breaking_banner:
         }
         for it in hot_items[:20]
     ]
-    banner_json = _json_banner.dumps(banner_data)
+    if NZ_TICKER is not None:    # NUZU 2.4 (B2): section and outlets from the ticker's own pick
+        banner_data = []
+        for _tk in NZ_TICKER[:20]:
+            _it = _tk["item"]
+            _ttl = strip_source_from_title(_it[1]).strip()
+            _ttl = _ttl[:1].upper() + _ttl[1:]
+            if len(_ttl) > 140:
+                _ttl = _ttl[:139].rstrip() + "…"
+            _ttl = _ttl + " — " + get_friendly_source(_it[2])
+            if _tk["n"] >= 2:
+                _ttl = _ttl + " · " + str(_tk["n"]) + " outlets"
+            banner_data.append({
+                "title": _ttl, "link": _it[3], "time": ts_to_pdt(_it[0]),
+                "section": NZ_SECTION_DISPLAY.get(_tk["label"], _tk["label"]),
+                "scolor": _NZ_BB_SEC_VAR.get(_tk["label"], "var(--ink-2)"),
+                "n": _tk["n"], "tier": _tk["tier"],
+            })
+    banner_json = _json_banner.dumps(banner_data).replace("</", "<\\/")
     html_parts.append(
         f'<div class="breaking-banner" id="breaking-banner" role="alert" aria-live="polite">'
         f'<span class="bb-label"><span class="bb-pulse-dot"></span>BREAKING</span>'
@@ -9092,6 +9567,158 @@ document.addEventListener('click', function(e) {{
 </script>
 """)
 
+# ORDER-700 (Argus 1.0.2, 14 Nov 2026): the tile being heard is HELD when the window or Argus's
+# side tab is resized - narrow, it stays on screen as the phone-size player; wide, it goes first -
+# by CSS alone, so its player is never moved or reloaded. TAB and ARGUS full screen inside Argus
+# (the one full-screen button anywhere else), never hidden by a resize while full screen, and
+# Argus's accent colour in dark mode. A PLAIN string (not an f-string): no doubled braces here,
+# and nothing Python 3.11 could object to.
+NZ_ARGUS_1_0_2 = """
+<style>
+/* ORDER-700 (Argus 1.0.2): full screen at every width, and the heard tile held across a resize */
+.nz-fs-bar{position:absolute;top:6px;left:6px;display:flex;gap:5px;z-index:6;opacity:0;transition:opacity .15s;pointer-events:none}
+.youtube-inset:hover .nz-fs-bar,.mobile-section-video-wrap:hover .nz-fs-bar,.youtube-inset.nz-held-tile .nz-fs-bar{opacity:1;pointer-events:auto}
+.mobile-section-video-wrap{position:relative}
+.nz-fs-btn{height:24px;min-width:24px;padding:0 8px;border-radius:12px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.78);color:#fff;font:700 10px/1 Inter,Arial,sans-serif;letter-spacing:.08em;cursor:pointer}
+.nz-fs-btn:hover{border-color:#fff}
+.youtube-inset.nz-held-tile{order:-1}
+@media (max-width:900px){
+  .nz-fs-bar{opacity:1;pointer-events:auto}
+  body.nz-held .banner{display:block!important}
+  body.nz-held .video-grid{display:grid!important;grid-template-columns:1fr!important}
+  body.nz-held .banner .youtube-inset:not(.nz-held-tile){display:none!important}
+}
+body.nz-fs .banner{display:block!important}
+</style>
+<script>
+/* ORDER-700 (Argus 1.0.2) - see bot.py NZ_ARGUS_1_0_2 */
+(function(){
+  var IN_ARGUS = !!(window.chrome && window.chrome.webview);
+  function goFs(el){ try{ if(el.requestFullscreen) el.requestFullscreen(); else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen(); }catch(e){} }
+  function button(cls, label, title, fn){
+    var b=document.createElement('button'); b.type='button'; b.className='nz-fs-btn '+cls; b.innerHTML=label;
+    b.title=title; b.setAttribute('aria-label', title);
+    b.addEventListener('click', function(ev){ ev.stopPropagation(); ev.preventDefault(); fn(); });
+    return b;
+  }
+  function bar(holder){
+    if(!holder || holder.querySelector('.nz-fs-bar')) return;
+    var target=function(){ return holder.querySelector('iframe') || holder; };
+    var b=document.createElement('div'); b.className='nz-fs-bar';
+    if(IN_ARGUS){
+      b.appendChild(button('nz-fs-tab','TAB','Full screen in this tab',function(){ goFs(target()); }));
+      b.appendChild(button('nz-fs-argus','ARGUS','Full screen across the whole Argus window',function(){
+        try{ window.chrome.webview.postMessage('argus:fill'); }catch(e){} goFs(target()); }));
+    } else {
+      b.appendChild(button('nz-fs-one','&#9974;','Full screen',function(){ goFs(target()); }));
+    }
+    holder.appendChild(b);
+  }
+  function decorate(){ document.querySelectorAll('.youtube-inset, .mobile-section-video-wrap').forEach(bar); }
+  var accentNow=null;
+  function accent(){
+    var r=document.body.style;
+    if(!accentNow || document.body.classList.contains('light-mode')){ r.removeProperty('--nuzu-blue'); return; }
+    r.setProperty('--nuzu-blue', accentNow);
+  }
+  function sync(){
+    var held=document.querySelector('.youtube-inset.audio-active');
+    document.body.classList.toggle('nz-held', !!held);
+    document.querySelectorAll('.youtube-inset.nz-held-tile').forEach(function(el){ if(el!==held) el.classList.remove('nz-held-tile'); });
+    if(held && !held.classList.contains('nz-held-tile')) held.classList.add('nz-held-tile');
+    accent();
+  }
+  function fs(){ document.body.classList.toggle('nz-fs', !!(document.fullscreenElement||document.webkitFullscreenElement)); }
+  /* Argus hands in its theme colour (null on its own Onyx: NUZU's dark already is Argus Onyx) */
+  window.__argusSetAccent=function(c){ accentNow=(c && /^#[0-9a-fA-F]{6}$/.test(c)) ? c : null; if(document.body) accent(); };
+  function start(){
+    decorate(); sync();
+    new MutationObserver(function(list){
+      var again=false;
+      for(var i=0;i<list.length;i++){ if(list[i].type==='childList'){ again=true; break; } }
+      if(again) decorate();
+      sync();
+    }).observe(document.body, {subtree:true, childList:true, attributes:true, attributeFilter:['class']});
+    document.addEventListener('fullscreenchange', fs); document.addEventListener('webkitfullscreenchange', fs);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>
+"""
+NZ_NUZU_2_4 = """
+<style>
+/* NUZU 2.4 (ORDER-701) - see bot.py NZ_NUZU_2_4 */
+.nz-also{display:inline-block;margin-left:6px;padding:0 6px;border:1px solid var(--rule-2,rgba(128,128,128,.5));border-radius:8px;font:700 10px/16px Inter,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2,#c9cfdb);white-space:nowrap;vertical-align:1px}
+/* B5: the top bar shared with Party Portal - SAVED, UPDATED, LIGHT, LIVE VIDEO, the main button, then A- A+ */
+@media (min-width:901px){
+  .sticky-nav-controls{gap:10px;padding:0 12px}
+  .sticky-nav-controls .light-toggle-wrap{display:contents}
+  .sticky-nav-controls>.saved-nav-btn{order:1;margin:0}
+  .sticky-nav-controls .nav-updated-ago{order:2}
+  .sticky-nav-controls .light-toggle-label{order:3}
+  .sticky-nav-controls .light-toggle-wrap>.toggle-switch{order:4}
+  .sticky-nav-controls>.video-toggle-wrap{order:5}
+  .sticky-nav-controls>.wr-nav-wrap{order:6}
+  .sticky-nav-controls .font-size-btn{order:7}
+  .sticky-nav-controls>.video-toggle-wrap,.sticky-nav-controls>.wr-nav-wrap{margin:0;padding:0;border-left:0;gap:10px;height:auto}
+  .sticky-nav-controls .saved-nav-btn,.sticky-nav-controls .wr-fullscreen-btn,.sticky-nav-controls .font-size-btn{height:30px;padding:0 12px;border-radius:8px;font:700 11px/28px Inter,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+  .sticky-nav-controls .wr-fullscreen-btn{background:var(--accent,#1E4FD8);color:var(--on-accent,#fff);border:0;line-height:30px}
+  .sticky-nav-controls .light-toggle-label,.sticky-nav-controls .video-toggle-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .sticky-nav-controls .nav-updated-ago{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:0;padding:0;margin:0}
+  .sticky-nav-controls .toggle-switch{width:36px;height:20px}
+  .sticky-nav-controls .toggle-slider:before{width:16px;height:16px;left:2px;top:2px}
+  .sticky-nav-controls .toggle-switch input:checked+.toggle-slider:before{transform:translateX(16px)}
+}
+</style>
+<script>
+/* NUZU 2.4 (ORDER-701 B6): the silent tiles pause while the page is hidden (Argus marks a hidden
+   tab hidden); the tile being heard keeps playing; a tile known to be live rejoins the live edge. */
+(function(){
+  var paused=[];
+  var SEL='.youtube-inset iframe, .wr-cell iframe, .mobile-section-video-wrap iframe';
+  function cmd(ifr,f,args){ try{ ifr.contentWindow.postMessage(JSON.stringify({event:'command',func:f,args:args||[]}),'*'); }catch(e){} }
+  function heard(ifr){
+    var t=ifr.closest('.youtube-inset, .wr-cell, .mobile-section-video-wrap');
+    if(!t) return true;
+    if(t.classList.contains('audio-active')||t.classList.contains('wr-audio-active')) return true;
+    if(t.classList.contains('mobile-section-video-wrap')) return ifr.getAttribute('data-nz-muted')!=='1';
+    return false;
+  }
+  window.addEventListener('message',function(e){
+    var d=e.data;
+    if(typeof d==='string'){ if(d.indexOf('infoDelivery')<0) return; try{ d=JSON.parse(d); }catch(x){ return; } }
+    if(!d||d.event!=='infoDelivery'||!d.info) return;
+    var list=document.querySelectorAll(SEL);
+    for(var i=0;i<list.length;i++){
+      if(list[i].contentWindow!==e.source) continue;
+      if(typeof d.info.muted==='boolean') list[i].setAttribute('data-nz-muted',d.info.muted?'1':'0');
+      if(d.info.videoData&&typeof d.info.videoData.isLive==='boolean') list[i].setAttribute('data-nz-live',d.info.videoData.isLive?'1':'0');
+      break;
+    }
+  });
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){
+      paused=[];
+      document.querySelectorAll(SEL).forEach(function(ifr){
+        if(!ifr.getAttribute('src')||heard(ifr)) return;
+        cmd(ifr,'pauseVideo'); paused.push(ifr);
+      });
+      window.__nzPaused=paused.length;
+    } else {
+      paused.forEach(function(ifr){
+        if(!document.contains(ifr)) return;
+        if(ifr.getAttribute('data-nz-live')==='1') cmd(ifr,'seekTo',[1e9,true]);
+        cmd(ifr,'playVideo');
+      });
+      paused=[]; window.__nzPaused=0;
+    }
+  });
+})();
+</script>
+"""
+html_parts.append(NZ_ARGUS_1_0_2)
+html_parts.append(NZ_NUZU_2_4)
+
 html_parts.append(f"""
 <footer class="site-footer">
   <button class="back-to-top-btn" onclick="window.scrollTo({{top:0,behavior:'smooth'}})">&#8679; Back to Top</button>
@@ -9706,3 +10333,43 @@ try:
     print(f"✅ yesterday_top.json saved for date {_today_utc}")
 except Exception as _e_yt:
     print(f"WARNING: yesterday_top.json not saved: {_e_yt}")
+
+
+# ══════════════════════ NUZU 2.4 (ORDER-701 B8): health.json ══════════════════════
+# One small report each build: feeds, sections, video tiles, the ticker. Never breaks a build.
+try:
+    import json as _nz_hjson
+    _nz_fl = list(_NZ_FEED_LOG.items())
+    _nz_by = {}
+    for _nz_u, (_nz_st, _nz_nm) in _nz_fl:
+        _nz_by[_nz_st] = _nz_by.get(_nz_st, 0) + 1
+    _nz_dir = [(_nz_u, _nz_st) for _nz_u, (_nz_st, _nz_nm) in _nz_fl if _nz_u in _NZ_DIRECT_URLS]
+    _nz_items = [it for _nz_s in SECTION_CLUSTERS for cl in SECTION_CLUSTERS[_nz_s]["combined"] for it in cl]
+    _nz_health = {
+        "version": "2.4.0",
+        "built_utc": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "build_seconds": round(_nz_time.time() - _NZ_T0, 1),
+        "feeds": {"total": len(_nz_fl), "ok": _nz_by.get("ok", 0), "empty": _nz_by.get("empty", 0),
+                  "failed": _nz_by.get("failed", 0), "skipped": _nz_by.get("skipped", 0),
+                  "direct_total": len(_nz_dir), "direct_ok": sum(1 for _d in _nz_dir if _d[1] == "ok"),
+                  "failed_names": sorted({_nz_nm for _nz_u, (_nz_st, _nz_nm) in _nz_fl if _nz_st == "failed"})[:40]},
+        "sections": {_nz_s: {"items": sum(len(cl) for cl in SECTION_CLUSTERS[_nz_s]["combined"]),
+                             "clusters": len(SECTION_CLUSTERS[_nz_s]["combined"]),
+                             "multi_outlet": sum(1 for cl in SECTION_CLUSTERS[_nz_s]["combined"] if len(cl) > 1)}
+                     for _nz_s in SECTION_CLUSTERS},
+        "video_tiles": {"checked": len(NZ_VIDEO_IDS), "live": sum(1 for _v in NZ_VIDEO_IDS.values() if _v),
+                        "left_out": sorted(_k for _k, _v in NZ_VIDEO_IDS.items() if not _v)},
+        "ticker": {"count": len(NZ_TICKER or []), "by_section": {}},
+        "stories_folded": len(_NZ_FOLD_LOG),
+        "links_direct_pct": round(100.0 * sum(1 for it in _nz_items if "news.google.com" not in it[3])
+                                  / max(1, len(_nz_items)), 1),
+        "promo_filtered": dict(_NZ_PROMO_LOG),
+    }
+    for _nz_c in (NZ_TICKER or []):
+        _nz_bs = _nz_health["ticker"]["by_section"]
+        _nz_bs[_nz_c["label"]] = _nz_bs.get(_nz_c["label"], 0) + 1
+    with open(os.path.join(CURRENT_DIR, "health.json"), "w", encoding="utf-8") as _nz_hf:
+        _nz_hjson.dump(_nz_health, _nz_hf, indent=1)
+    print("health.json saved")
+except Exception as _e_nzh:
+    print("WARNING: health.json not saved: " + str(_e_nzh))
