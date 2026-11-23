@@ -1770,5 +1770,17 @@
   "https://www.timesofisrael.com/feed/": {
     "fails": 14,
     "last_fail": 1795443445
+  },
+  "https://www.france24.com/en/sport/rss": {
+    "fails": 1,
+    "last_fail": 1795445240
+  },
+  "https://www.france24.com/en/americas/rss": {
+    "fails": 1,
+    "last_fail": 1795445242
+  },
+  "https://www.france24.com/en/rss": {
+    "fails": 1,
+    "last_fail": 1795445242
   }
 }
