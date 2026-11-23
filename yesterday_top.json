@@ -17,6 +17,13 @@
         "lead_ts": 1795390207
       },
       {
+        "title": "ICE officers arrest 2 passengers boarding flight in Seattle - CBS News",
+        "link": "https://www.cbsnews.com/news/ice-arrest-alaska-airlines-flight-seattle/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 3,
+        "lead_ts": 1795395270
+      },
+      {
         "title": "Trump hosts third crypto gala for meme coin amid conflict of interest outcry - The Guardian",
         "link": "https://www.theguardian.com/us-news/2026/nov/22/trump-cryptocurrency-gala-meme-coin?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Guardian",
@@ -29,13 +36,6 @@
         "source": "WSJ",
         "n_sources": 2,
         "lead_ts": 1795388940
-      },
-      {
-        "title": "Army plans to carry out detonation at Iowa plant despite indefinite pause - CBS News",
-        "link": "https://www.cbsnews.com/news/us-army-iowa-plant-detonation-court-records/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS News",
-        "n_sources": 2,
-        "lead_ts": 1795381382
       }
     ],
     "mideast": [
@@ -45,6 +45,13 @@
         "source": "WaPo",
         "n_sources": 9,
         "lead_ts": 1795389607
+      },
+      {
+        "title": "Drone strikes kill four in Khartoum and damage UN building - ABC News (Australia)",
+        "link": "https://www.abc.net.au/news/2026-11-23/deadly-drone-strikes-in-khartoum-sudan-war/107415908?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 4,
+        "lead_ts": 1795394795
       },
       {
         "title": "Iran war live: Tankers set ablaze in Hormuz as IRGC warns of unrest threat - Al Jazeera",
@@ -61,18 +68,11 @@
         "lead_ts": 1795389918
       },
       {
-        "title": "Drone strikes hit homes, United Nations building in Sudan's capital - France 24",
-        "link": "https://www.france24.com/en/video/20261123-drone-strikes-hit-homes-united-nations-building-in-sudan-s-capital?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "France 24",
-        "n_sources": 3,
-        "lead_ts": 1795392832
-      },
-      {
-        "title": "Oil Steadies as Middle East Tensions Vie With Ample Supply - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZldpS0pzSnV4MTFveW5XYzJmeGg5MTIzNm9RVWZka25nb05xbmU0T2s4Sm5vbllUTnZTLVNpUnEyUk01a1otTVpKQ20zU2l5VmhsNkdSWV9EMExoa0VaVWpYUXZVREoxdjk5Mk1wN2Q2QkswQmU5aUY1T2pBUTRyVnVmOHg2b05YNmxSaDdZYzZKbWM5UTFUVndxUGlwQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 3,
-        "lead_ts": 1795390239
+        "title": "Australia\u2019s Sanctions on West Bank Settlers Increase Pressure - Human Rights Watch",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOck01SmhWdVVnRTFFWE5hNU9zUjFKTjh6anRUblpNZDE5dnE0VGlFcVoybVFRU2xLRWdrT0xuc3F5STgtV3RRMmt5aVZtenhYYW9VQ1BEOHUxc3dPQk1qTVZSa1A2Q0xPS2FSNzVOaXhaeFBuY1p0NmVqTFlMcDBOc0Jsa09Uc2VDaHRjVndybXRVVDhoRDQtYlZ6Tlo?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Human Rights Watch",
+        "n_sources": 4,
+        "lead_ts": 1795388400
       }
     ],
     "world": [
@@ -105,11 +105,11 @@
         "lead_ts": 1795390356
       },
       {
-        "title": "Boy, 7, pulled from rubble hours after Russian strike in Ukraine, rescuers say - BBC",
-        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBhX19ZRlJhZ1RFOHBpZ2tOWnI3c3FlMlVZLXRfbDhMVU4tNG02U1VLaFh6QzBaSm9mWDhYaWZkMk9jZTFGandmdTMtd3FjOHJ1bXdxQ3J6bXFYcjRsc0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "title": "COP31 fails to reach major climate deal as talks expose deep divisions - BBC News",
+        "link": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "BBC",
         "n_sources": 3,
-        "lead_ts": 1795386300
+        "lead_ts": 1795395035
       }
     ],
     "tech": [
@@ -119,6 +119,13 @@
         "source": "BBC",
         "n_sources": 3,
         "lead_ts": 1795344252
+      },
+      {
+        "title": "Can AI spot breast cancer earlier? NHS launches world's largest trial to find out - BBC",
+        "link": "https://www.bbc.co.uk/news/articles/cmpdwnw3nvzjo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 2,
+        "lead_ts": 1795394962
       },
       {
         "title": "San Francisco's AI boom meets a market selloff as crash worries grow - Startup Fortune",
@@ -140,13 +147,6 @@
         "source": "Sky News",
         "n_sources": 2,
         "lead_ts": 1795392060
-      },
-      {
-        "title": "OpenAI Chief Scientist Jakub Pachocki Urges Common AI Development Limits Using Log-Perplexity - NewsCord",
-        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQWWJGUUU4RFhOaFZTX2JYOGFjdVBEUXZ0LWUwRDU2OXN1ajhNbXI1YzM4ZnVjclJCWml6UHRSSHdvQjB2RmxYamdVcnhsV3N5Ym1oS1ItREFQUVdfXzc1VFBTdlRKc0lhUkhIbXlOZDgySXluTHRFbG9mekh6aFA2OXZRUEI0bFBTZ29zZ09mU2Y3RHNFTWc5bmM5MWJOc0FjMFBDQWlsNzFWMDkyRjRReU94NU5zaWtEVC1oaGxKaU9TWUE1dGFPbDdndW9mX0R1bUVtcmNiWjR0Qmt2a0FuLTFsR3dpZ2N5VWc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NewsCord",
-        "n_sources": 2,
-        "lead_ts": 1795389618
       }
     ],
     "business": [
@@ -188,6 +188,13 @@
     ],
     "sports": [
       {
+        "title": "'Something that I've never seen before in F1' \u2013 Verstappen reflects on Las Vegas GP win after thriller - Formula 1",
+        "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxPWmRYaWVUWGdjNS00SWtPejlaNjdkeXk5MHZqc0R3TVR0TkxVdW5TU1lSd1NwWmpUTzdLRGRjODlkVGo5ekJOR2dfdVByLTFUVWRGZG5XVHRZendFYVdfR2dfUDkzRWVwOWZpN2Q5LTUtQm1nemFKOUpWeXg3SXpuS0ZfU0wtTm5MbXJtaGlRS1p4aEFKREo1OHM1WEU0MXY2UXJNdUFtMmJSUlJlTFFKUVQyZ08yeVJ3MmNjMGhjY0xSSFAtS0ZHYU45Qk5NTkpkdnBsb0J0THBkOHNrUmU1bUlQd19PVVNqak5ILWoyendJLVNUMzNtZ0VaakdUckpJT2lvVA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Formula 1",
+        "n_sources": 4,
+        "lead_ts": 1795330800
+      },
+      {
         "title": "Mets\u2019 biggest contracts right now after $450M Tarik Skubal deal - Yahoo Sports",
         "link": "https://sports.yahoo.com/articles/mets-biggest-contracts-now-450m-003402098.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
@@ -214,13 +221,6 @@
         "source": "CBS Sports",
         "n_sources": 3,
         "lead_ts": 1795389568
-      },
-      {
-        "title": "'Something that I've never seen before in F1' \u2013 Verstappen reflects on Las Vegas GP win after thriller - Formula 1",
-        "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxPWmRYaWVUWGdjNS00SWtPejlaNjdkeXk5MHZqc0R3TVR0TkxVdW5TU1lSd1NwWmpUTzdLRGRjODlkVGo5ekJOR2dfdVByLTFUVWRGZG5XVHRZendFYVdfR2dfUDkzRWVwOWZpN2Q5LTUtQm1nemFKOUpWeXg3SXpuS0ZfU0wtTm5MbXJtaGlRS1p4aEFKREo1OHM1WEU0MXY2UXJNdUFtMmJSUlJlTFFKUVQyZ08yeVJ3MmNjMGhjY0xSSFAtS0ZHYU45Qk5NTkpkdnBsb0J0THBkOHNrUmU1bUlQd19PVVNqak5ILWoyendJLVNUMzNtZ0VaakdUckpJT2lvVA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Formula 1",
-        "n_sources": 3,
-        "lead_ts": 1795330800
       }
     ],
     "culture": [
