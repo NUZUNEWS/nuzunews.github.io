@@ -1,52 +1,54 @@
 {
  "version": "2.4.0",
- "built_utc": "2026-11-23T17:37:47Z",
- "build_seconds": 37.2,
+ "built_utc": "2026-11-23T17:47:38Z",
+ "build_seconds": 26.8,
  "feeds": {
   "total": 460,
   "ok": 452,
   "empty": 7,
-  "failed": 0,
-  "skipped": 1,
+  "failed": 1,
+  "skipped": 0,
   "direct_total": 140,
   "direct_ok": 138,
-  "failed_names": []
+  "failed_names": [
+   "Times of Israel"
+  ]
  },
  "sections": {
   "us": {
-   "items": 87,
-   "clusters": 73,
-   "multi_outlet": 9
+   "items": 88,
+   "clusters": 75,
+   "multi_outlet": 8
   },
   "mideast": {
-   "items": 96,
-   "clusters": 75,
-   "multi_outlet": 13
+   "items": 92,
+   "clusters": 78,
+   "multi_outlet": 9
   },
   "world": {
-   "items": 96,
-   "clusters": 80,
-   "multi_outlet": 7
+   "items": 102,
+   "clusters": 82,
+   "multi_outlet": 8
   },
   "tech": {
-   "items": 82,
-   "clusters": 75,
+   "items": 83,
+   "clusters": 76,
    "multi_outlet": 7
   },
   "business": {
-   "items": 109,
-   "clusters": 66,
-   "multi_outlet": 9
+   "items": 110,
+   "clusters": 67,
+   "multi_outlet": 6
   },
   "sports": {
    "items": 100,
-   "clusters": 91,
-   "multi_outlet": 7
+   "clusters": 90,
+   "multi_outlet": 8
   },
   "culture": {
    "items": 99,
-   "clusters": 85,
-   "multi_outlet": 11
+   "clusters": 87,
+   "multi_outlet": 9
   }
  },
  "video_tiles": {
@@ -59,22 +61,22 @@
  "ticker": {
   "count": 20,
   "by_section": {
-   "Business": 4,
-   "Middle East": 7,
-   "World": 5,
-   "US": 4
+   "Business": 2,
+   "World": 7,
+   "Middle East": 6,
+   "US": 5
   }
  },
- "stories_folded": 35,
- "links_direct_pct": 29.1,
+ "stories_folded": 33,
+ "links_direct_pct": 29.8,
  "promo_filtered": {
-  "shopping": 18,
-  "betting picks": 9,
-  "stock tips": 2,
-  "sponsored": 2,
-  "how to watch": 9,
+  "shopping": 20,
   "promo publisher": 1,
-  "fantasy advice": 2,
-  "puzzle answers": 1
+  "puzzle answers": 1,
+  "how to watch": 7,
+  "sponsored": 2,
+  "betting picks": 8,
+  "stock tips": 2,
+  "fantasy advice": 2
  }
 }
