@@ -31,11 +31,11 @@
         "lead_ts": 1795393891
       },
       {
-        "title": "UC Davis Closes Out Impressive Win At Boise State - UC Davis Athletics",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPS3E4ajVDbDBUNk9QSndiZFlxTkFWTnZJWWtSV1hLYWMyTkZjeUlELU5lcGR6U25ER0tjSHE2S0lHMWtfcDAwRUtxd09EMmQyT3I5WFg2QnlJVHhfMjZnV05ITndrUG1PNHNCbnI3QmJYTk92WUFtNE5sZlAzSHdCUWVFUXFRQVFvSmJZNnJ2QTI3NVMzYXFSV3ROOHp1WEo2dEdEblhOaXBhcnZmelBqZmNLTGo?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "UC Davis Athletics",
+        "title": "U.S. Army plans to carry out detonation at Iowa plant despite indefinite pause, court records say - CBS News",
+        "link": "https://www.cbsnews.com/news/us-army-iowa-plant-detonation-court-records/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
         "n_sources": 2,
-        "lead_ts": 1795394469
+        "lead_ts": 1795395092
       }
     ],
     "mideast": [
@@ -45,6 +45,20 @@
         "source": "WaPo",
         "n_sources": 9,
         "lead_ts": 1795389607
+      },
+      {
+        "title": "Suspected Ukrainian sea drones hit Russian warship at Benghazi naval base, Libyan officials say - The Hindu",
+        "link": "https://www.thehindu.com/news/international/suspected-ukrainian-sea-drones-hit-russian-warship-at-benghazi-naval-base-libyan-officials-say/article71733178.ece?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The Hindu",
+        "n_sources": 8,
+        "lead_ts": 1795395776
+      },
+      {
+        "title": "Israeli Political Leaders Decry \u2018Jewish Terrorism\u2019 After West Bank Attacks - New York Times",
+        "link": "https://www.nytimes.com/2026/11/22/world/middleeast/israeli-political-leaders-decry-jewish-terrorism-after-west-bank-attacks.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 6,
+        "lead_ts": 1795396279
       },
       {
         "title": "Australia\u2019s Sanctions on West Bank Settlers Increase Pressure - Human Rights Watch",
@@ -59,20 +73,6 @@
         "source": "ABC News",
         "n_sources": 4,
         "lead_ts": 1795394795
-      },
-      {
-        "title": "Iran war live: Tankers set ablaze in Hormuz as IRGC warns of unrest threat - Al Jazeera",
-        "link": "https://www.aljazeera.com/news/liveblog/2026/11/22/iran-war-live-tankers-set-ablaze-in-hormuz-as-irgc-warns-of-unrest-threat?traffic_source=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 4,
-        "lead_ts": 1795391962
-      },
-      {
-        "title": "Israel's coalition talks stall as Netanyahu, Eisenkot clash over premiership - TRT World",
-        "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9hSTZSUlV5ZDkwRDhRYThuNGxGYmExNGZYMlZBRDNHSERmZEllLTJ0dElVLTVDTFBlWG5WSDBsQmhRSi1oS0VGXzU2WlpCanFXXzZxM2hnUDI?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TRT World",
-        "n_sources": 4,
-        "lead_ts": 1795389918
       }
     ],
     "world": [
@@ -82,6 +82,13 @@
         "source": "NHK\u30cb\u30e5\u30fc\u30b9",
         "n_sources": 10,
         "lead_ts": 1795393127
+      },
+      {
+        "title": "COP31 fails to reach major climate deal as talks expose deep divisions - BBC News",
+        "link": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 6,
+        "lead_ts": 1795395035
       },
       {
         "title": "Finance, fossil fuels and the \u2018overshoot\u2019: six key takeaways from Cop31 - The Guardian",
@@ -103,16 +110,16 @@
         "source": "NHK\u30cb\u30e5\u30fc\u30b9",
         "n_sources": 4,
         "lead_ts": 1795390356
-      },
-      {
-        "title": "COP31 fails to reach major climate deal as talks expose deep divisions - BBC News",
-        "link": "https://www.bbc.co.uk/news/articles/cqwy06zrd26lo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 3,
-        "lead_ts": 1795395035
       }
     ],
     "tech": [
+      {
+        "title": "The Newest Apple Watch SE 3 Just Dropped to a New Price Low for Black Friday - IGN Southeast Asia",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNSmJMWkJEbUI3UmhMOHZjY3FkX2o2bHZLSnpMSE43dHpXcGRmVnJuZ2xVNUYtOVBab090ZWVUUzFMZzlHb1lvek5nQWc0QUxNbERka0NUNUlPREZ3d3pxc2duYjdFZnVWNkhXcVNUUU1TQnhhYmttb0ktYXNfbjFJcW9OVlJUc0U4RUxFQldrSEJ6SzhLNzFkZzVhdXZUS3B1S2ExQnZJN0sxblFYdC1iZXdIc0JBTXBJ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IGN Southeast Asia",
+        "n_sources": 3,
+        "lead_ts": 1795396211
+      },
       {
         "title": "BepiColombo spacecraft arrives at Mercury after eight years - BBC",
         "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBFc1plT0pHdW9mdk5HMHFSUHpXS3FOWUI5WFBEcFNfbW94WkFDcWpITU5PUElRaEtESUFYcmZxRlp4dmZUdG1DaERmZEFjcVNCNXNvekNrbWlRR0k?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -140,13 +147,6 @@
         "source": "IGN",
         "n_sources": 2,
         "lead_ts": 1795392600
-      },
-      {
-        "title": "The Alienware Aurora RTX 5070 Gaming PC Drops to $1,899 at Amazon for Black Friday - IGN Southeast Asia",
-        "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQRU5HQWVGNzQ4djVWeWdNMVhnZ0Nhd1lCSjU5amVmd09oTy1GTnJJRzd2eWNURnMzMGRhdUgyQ25UNE50RThIdzdrWWZmTlpoT1ZuZHdlYkFzQmliNG5UYktvXzlvMzBRZWhLLVM1TzFkVHcyb3JoZW9jZno4a2RmV1pvbkRCWC10R003SzhFQ2YySWRIS1BsOE5wUjVmeExZNUJxMF9IbEpKbmtOVmZRSmhIUnMxMmZKRUdpZnVST0xVVkNyYWMwbkJ1SG1IbjEzTjg4RktZZDdtdk0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IGN Southeast Asia",
-        "n_sources": 2,
-        "lead_ts": 1795392251
       }
     ],
     "business": [
@@ -172,21 +172,28 @@
         "lead_ts": 1795387500
       },
       {
+        "title": "Trump and Musk back Huang return to Nvidia as 175,000 sign letter - qz.com",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9SeV9rTGY2NXp0Y1VvTnlSang1bDB1NWlNYUJ5dXRGN2hIdC1MMzBMd185OGRSLW0tZnhCRE9jcGhCRHhzWWNxYkVZUnlVVVFvVmlVNkhSS0hIS1NzdEozQ3lpUFNCa0lIbmVUdm9NMFdmN0t4?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "qz.com",
+        "n_sources": 3,
+        "lead_ts": 1795396559
+      },
+      {
         "title": "Sen. Kennedy urges scrutiny of Lutnick over China\u2019s access to Nvidia chips - The Washington Post",
         "link": "https://www.washingtonpost.com/politics/2026/11/22/sen-kennedy-urges-scrutiny-lutnick-over-chinas-access-nvidia-chips/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
         "n_sources": 3,
         "lead_ts": 1795387542
-      },
-      {
-        "title": "Nvidia\u2019s Cloudy Future: How Jensen Huang\u2019s CEO Successors Fall Short - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPeUExZTZob1dIbEJMRHhKLWRnUXN0emdtbGx4NmFsa0ZJcHZnNGktb3plczNuSk5BUkZCN1lDVE1TMGJLbzN6VVZGaEhoSFJIdDZva0xldWI5NDlNRDZSNlZFSldDc2hydkRrdXg2NXhNX240QW9MVVU1cUJBMS0xd2hTWERFVVBVamV3QTNaaTl3b0c0ekIyRnpPeUxla3E5Sk9kMUxGd01zN29HcEQ4WVNEa2k?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 3,
-        "lead_ts": 1795379860
       }
     ],
     "sports": [
+      {
+        "title": "Justin Herbert in concussion protocol after loss to Jets: Chargers QB played entire game - CBS Sports",
+        "link": "https://www.cbssports.com/nfl/news/justin-herbert-concussion-protocol-update-jets/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS Sports",
+        "n_sources": 4,
+        "lead_ts": 1795395939
+      },
       {
         "title": "'Something that I've never seen before in F1' \u2013 Verstappen reflects on Las Vegas GP win after thriller - Formula 1",
         "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxPWmRYaWVUWGdjNS00SWtPejlaNjdkeXk5MHZqc0R3TVR0TkxVdW5TU1lSd1NwWmpUTzdLRGRjODlkVGo5ekJOR2dfdVByLTFUVWRGZG5XVHRZendFYVdfR2dfUDkzRWVwOWZpN2Q5LTUtQm1nemFKOUpWeXg3SXpuS0ZfU0wtTm5MbXJtaGlRS1p4aEFKREo1OHM1WEU0MXY2UXJNdUFtMmJSUlJlTFFKUVQyZ08yeVJ3MmNjMGhjY0xSSFAtS0ZHYU45Qk5NTkpkdnBsb0J0THBkOHNrUmU1bUlQd19PVVNqak5ILWoyendJLVNUMzNtZ0VaakdUckpJT2lvVA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -214,13 +221,6 @@
         "source": "Yahoo Sports",
         "n_sources": 3,
         "lead_ts": 1795393109
-      },
-      {
-        "title": "NFL DFS, 49ers vs. Vikings: Top daily Fantasy picks, lineup advice for 'Sunday Night Football' - CBS Sports",
-        "link": "https://www.cbssports.com/betting/news/nfl-dfs-49ers-vikings-daily-fantasy-picks-fanduel-draftkings-lineup-advice-sunday-night-football/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS Sports",
-        "n_sources": 3,
-        "lead_ts": 1795392990
       }
     ],
     "culture": [
