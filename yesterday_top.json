@@ -151,18 +151,18 @@
     ],
     "business": [
       {
+        "title": "Trump tells CNBC 'I convinced\u2019 Nvidia board to reinstate Jensen Huang - CNBC",
+        "link": "https://www.cnbc.com/2026/11/23/trump-nvidia-jensen-huang.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNBC",
+        "n_sources": 32,
+        "lead_ts": 1795448776
+      },
+      {
         "title": "Nvidia skyrockets 33% on Huang\u2019s return as CEO, recovering nearly all the losses since he disclosed affair - CNBC",
         "link": "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "CNBC",
         "n_sources": 32,
         "lead_ts": 1795446993
-      },
-      {
-        "title": "Trump tells CNBC he spoke to Nvidia board directly about Jensen Huang - CNBC",
-        "link": "https://www.cnbc.com/2026/11/23/trump-nvidia-jensen-huang.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 30,
-        "lead_ts": 1795447593
       },
       {
         "title": "Trump urges Nvidia to reinstate Jensen Huang, calling him \u2018best thing\u2019 for U.S. - The Washington Post",
@@ -187,6 +187,13 @@
       }
     ],
     "sports": [
+      {
+        "title": "USA to co-host 2031 FIFA Women's World Cup with Mexico, Costa Rica and Jamaica - CBS Sports",
+        "link": "https://www.cbssports.com/soccer/news/u-s-a-co-host-2031-fifa-womens-world-cup-mexico-costa-rica-jamaica/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS Sports",
+        "n_sources": 7,
+        "lead_ts": 1795447896
+      },
       {
         "title": "Tom Jackson, Broncos star and ESPN \u2018Sunday NFL Countdown\u2019 analyst, dead at 75 - AP News",
         "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQYTl4XzZoM3NxaG5raTlnemhKM2xYSDlpTUt5cERCeVlJQ2FFME5rczRsRk5DMFFnTWpHX3paMmFWRzhUeWtDelpJd1VMUlhCbV9VM2N5LUp3eUhqbE5zUndTcGxvbVZLQU93SEIxTURRc3hRUktFMTJUZHp5MFZxeUthbHNkTG0zdXVkcWxHcjJWa00?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -214,13 +221,6 @@
         "source": "Yahoo Sports",
         "n_sources": 5,
         "lead_ts": 1795447740
-      },
-      {
-        "title": "49ers win in Mexico and Bills stay top - NFL week 11 - Yahoo Sports",
-        "link": "https://sports.yahoo.com/articles/49ers-win-mexico-bills-stay-065934069.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 5,
-        "lead_ts": 1795420116
       }
     ],
     "culture": [
@@ -230,6 +230,13 @@
         "source": "CBC",
         "n_sources": 6,
         "lead_ts": 1795439052
+      },
+      {
+        "title": "Don Toliver Concert in Manchester Is Evacuated Over \u2018Unknown Substance\u2019 - New York Times",
+        "link": "https://www.nytimes.com/2026/11/23/world/europe/manchester-don-toliver-concert-evacuation-uk.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 5,
+        "lead_ts": 1795448221
       },
       {
         "title": "Finally, the U.K. Can See Everything: Nathan Fielder\u2019s Elizabeth Holmes Doc Makes British Box Office History - The Hollywood Reporter",
@@ -251,13 +258,6 @@
         "source": "Vogue",
         "n_sources": 5,
         "lead_ts": 1795436222
-      },
-      {
-        "title": "Why You Can See Everything is the perfect film for 2026 - Financial Times",
-        "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5YaWxMQ2lXbnVuS2xFVy1wTkp6bFk3UGZlY2dMNGZfZmdCRGZYRXNMejhGQ2VxdVlOUFdEaHJUQ2M0Z2J5RzltWlkwanYyZ0t0QnRFdHJlZ0RJTGx2dHRJU1BaZlVpSjdySXlqbXliNC0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FT",
-        "n_sources": 5,
-        "lead_ts": 1795410153
       }
     ]
   },
