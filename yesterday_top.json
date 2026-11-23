@@ -40,6 +40,13 @@
     ],
     "mideast": [
       {
+        "title": "Russian warship hit by Ukrainian drones in Libya, Zelensky says - BBC",
+        "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 10,
+        "lead_ts": 1795448483
+      },
+      {
         "title": "Ukraine sinks Russian warship in Libya as conflict spreads beyond Europe - The Japan Times",
         "link": "https://www.japantimes.co.jp/news/2026/11/23/world/libya-drone-attack-russian-ship-ukraine/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Japan Times",
@@ -66,13 +73,6 @@
         "source": "BBC",
         "n_sources": 10,
         "lead_ts": 1795409040
-      },
-      {
-        "title": "COP31 negotiations break down as countries fail to agree on climate deal - The Washington Post",
-        "link": "https://www.washingtonpost.com/climate-environment/2026/11/22/cop31-negotiations-break-down-countries-fail-agree-climate-deal/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 10,
-        "lead_ts": 1795403253
       }
     ],
     "world": [
@@ -165,6 +165,13 @@
         "lead_ts": 1795446993
       },
       {
+        "title": "Markets soar as Huang returns as Nvidia CEO - The Washington Post",
+        "link": "https://www.washingtonpost.com/business/2026/11/23/markets-soar-huang-returns-nvidia-ceo/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 29,
+        "lead_ts": 1795449146
+      },
+      {
         "title": "Trump urges Nvidia to reinstate Jensen Huang, calling him \u2018best thing\u2019 for U.S. - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQWlhuUEVYcUhfSzZoYm1EM3RHZ1NmdkJkZ0JqX01MZzZJbzRZdFdMVl8tV1BGWG5Ba1FwWnlwVUNUVVNiN25OQ2JPLUN3TGotNjd3UEMyVGcyc0lIVWJsWDFvN2FodTdwSnVzWnhsRXNpc3NrNHVNOGlEdGFUVVBOdHV3VGFwOVJ0eVBWSEQwaUk3QkFodnhSNWc2QmJhN3h5eGR6enBWcUxFbnVsZ0RhUDJFa25BWUQ0Vnh6NThn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
@@ -177,16 +184,16 @@
         "source": "TechCrunch",
         "n_sources": 26,
         "lead_ts": 1795446241
-      },
-      {
-        "title": "Nvidia jumps 27% as Jensen Huang returns as CEO, bitcoin hits $63,800 - CoinDesk",
-        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQOUVTdkwzWVhFTG1raTUtb05MalpFalV1UkJPWEE4VG90OC1hOV9WVWxLT3JiYWJIRHRCS0s2TGVpYnlMWjRPS1hTZzl3ZWFlaTFMbE8yYng3LVpwNHBRWUl6OTRsQnVTeW5nYWJvaGxacUk4Z0pZQU80QUxhdjAzV19IVWsxa2hHZ0x0TGpwSXFUXzc3OWFxWDhTcms?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CoinDesk",
-        "n_sources": 15,
-        "lead_ts": 1795443224
       }
     ],
     "sports": [
+      {
+        "title": "UK to host 2035 Women's World Cup, Fifa confirms - Yahoo Sports",
+        "link": "https://sports.yahoo.com/articles/fifa-confirm-uk-bid-host-214916273.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 7,
+        "lead_ts": 1795448855
+      },
       {
         "title": "USA to co-host 2031 FIFA Women's World Cup with Mexico, Costa Rica and Jamaica - CBS Sports",
         "link": "https://www.cbssports.com/soccer/news/u-s-a-co-host-2031-fifa-womens-world-cup-mexico-costa-rica-jamaica/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -214,13 +221,6 @@
         "source": "Yahoo Sports",
         "n_sources": 6,
         "lead_ts": 1795366363
-      },
-      {
-        "title": "\ud83c\udfc6FIFA confirms hosts for the 2031 and 2035 Women's World Cups - Yahoo Sports",
-        "link": "https://sports.yahoo.com/articles/fifa-confirms-hosts-2031-2035-152900818.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 5,
-        "lead_ts": 1795447740
       }
     ],
     "culture": [
