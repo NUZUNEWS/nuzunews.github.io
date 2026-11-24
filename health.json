@@ -1,54 +1,52 @@
 {
  "version": "2.4.0",
- "built_utc": "2026-11-24T20:49:59Z",
- "build_seconds": 31.9,
+ "built_utc": "2026-11-24T21:09:51Z",
+ "build_seconds": 23.2,
  "feeds": {
   "total": 460,
-  "ok": 456,
-  "empty": 3,
-  "failed": 1,
-  "skipped": 0,
+  "ok": 455,
+  "empty": 4,
+  "failed": 0,
+  "skipped": 1,
   "direct_total": 140,
   "direct_ok": 138,
-  "failed_names": [
-   "Times of Israel"
-  ]
+  "failed_names": []
  },
  "sections": {
   "us": {
-   "items": 94,
-   "clusters": 78,
-   "multi_outlet": 13
+   "items": 96,
+   "clusters": 81,
+   "multi_outlet": 12
   },
   "mideast": {
-   "items": 96,
-   "clusters": 79,
+   "items": 95,
+   "clusters": 81,
    "multi_outlet": 12
   },
   "world": {
-   "items": 93,
-   "clusters": 92,
-   "multi_outlet": 1
+   "items": 97,
+   "clusters": 93,
+   "multi_outlet": 3
   },
   "tech": {
-   "items": 72,
-   "clusters": 70,
-   "multi_outlet": 2
+   "items": 78,
+   "clusters": 78,
+   "multi_outlet": 0
   },
   "business": {
-   "items": 118,
+   "items": 108,
    "clusters": 63,
-   "multi_outlet": 13
+   "multi_outlet": 9
   },
   "sports": {
    "items": 100,
-   "clusters": 93,
-   "multi_outlet": 7
+   "clusters": 92,
+   "multi_outlet": 8
   },
   "culture": {
    "items": 99,
    "clusters": 88,
-   "multi_outlet": 9
+   "multi_outlet": 8
   }
  },
  "video_tiles": {
@@ -61,20 +59,21 @@
  "ticker": {
   "count": 20,
   "by_section": {
-   "Business": 8,
-   "US": 9,
-   "Middle East": 3
+   "Business": 7,
+   "US": 8,
+   "World": 1,
+   "Middle East": 4
   }
  },
- "stories_folded": 34,
- "links_direct_pct": 29.8,
+ "stories_folded": 29,
+ "links_direct_pct": 30.2,
  "promo_filtered": {
-  "shopping": 14,
-  "stock tips": 3,
+  "shopping": 12,
+  "fantasy advice": 6,
+  "how to watch": 4,
+  "betting picks": 4,
+  "stock tips": 2,
   "promo publisher": 2,
-  "betting picks": 6,
-  "how to watch": 5,
-  "fantasy advice": 7,
   "sponsored": 1
  }
 }
