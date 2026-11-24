@@ -128,6 +128,13 @@
         "lead_ts": 1795483036
       },
       {
+        "title": "Every Track From \u2018Grand Theft Auto VI: The Album\u2019 Ranked \u2014 Now Including the Deluxe Bonus Tracks - Billboard",
+        "link": "https://www.billboard.com/lists/grand-theft-auto-vi-the-album-songs-ranked/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Billboard",
+        "n_sources": 2,
+        "lead_ts": 1795491532
+      },
+      {
         "title": "AI has solved a host of big math problems\u2014here's why this threatens the whole field of mathematics - Phys.org",
         "link": "https://phys.org/news/2026-11-ai-host-big-math-problems.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Phys.org",
@@ -140,13 +147,6 @@
         "source": "WSJ",
         "n_sources": 2,
         "lead_ts": 1795485635
-      },
-      {
-        "title": "Amazon faces FAA probe after delivery drone strikes Michigan fiber cable, garage - CNBC",
-        "link": "https://www.cnbc.com/2026/11/23/amazon-drone-crash-michigan-faa-investigation.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 2,
-        "lead_ts": 1795481770
       }
     ],
     "business": [
@@ -179,14 +179,28 @@
         "lead_ts": 1795484700
       },
       {
-        "title": "Live Updates: Trump Pressed Nvidia to Reinstate Jensen Huang as C.E.O. - The New York Times",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNdnQ0LTNaSmJtV2pfeHlCZmVqWDM1QXU0TkZZcnYxS1JpTGozTVR2dVhfM013NUp2VWdoMmdFWjZtR0tUenJlOURYNGFtcmZwZjJrd2VnSjUxVnFoZk90bWhrV3d3NzNkTTlyNjM3NzZXaXZLUEdEWlV4ZGdEeUZQY0xZbzBnZUYz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 26,
-        "lead_ts": 1795486140
+        "title": "He\u2019s so back: Silicon Valley celebrates Jensen Huang\u2019s return - The Washington Post",
+        "link": "https://www.washingtonpost.com/business/2026/11/23/hes-so-back-silicon-valley-celebrates-jensen-huangs-return/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 27,
+        "lead_ts": 1795493878
       }
     ],
     "sports": [
+      {
+        "title": "\u2018Celebrate, inspire, unite\u2019: UK confirmed as host of 2035 Women\u2019s World Cup - The Guardian",
+        "link": "https://www.theguardian.com/football/2026/nov/23/uk-confirmed-hosts-2035-womens-world-cup-fifa?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 5,
+        "lead_ts": 1795487400
+      },
+      {
+        "title": "Mystery solved: Here's why the 'Monday Night Football' lights went out on Bengals-Commanders - Yahoo Sports",
+        "link": "https://sports.yahoo.com/nfl/breaking-news/article/mystery-solved-heres-why-the-monday-night-football-lights-went-out-on-bengals-commanders-042305219.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 4,
+        "lead_ts": 1795494185
+      },
       {
         "title": "Monday Night Football: Bengals lead 10-7 at halftime - NBC Sports",
         "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQN1VkeFMwZXkxWEhLWEJYbE5vTkNpV1RhQjFTYU9oYUpTVVRUQ1NXOV9LcURzVTNDanEzb0VXWkp5Rm95UEJjMS1LcEtoVW1JZUtPSXlKaW9Ha2pBa2pVWXJoTFhPVUd2X1FNcnZaSkJJalA4MkNEb2VZSTI3MjluNU9NakluMHRNUVFlVG1OY3NvZy1oUjBqNVo0UXRuV1J4dDlRMFBQTWI2YVlGWE9Meks5TQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -202,28 +216,21 @@
         "lead_ts": 1795487400
       },
       {
-        "title": "\u2018Celebrate, inspire, unite\u2019: UK confirmed as host of 2035 Women\u2019s World Cup - The Guardian",
-        "link": "https://www.theguardian.com/football/2026/nov/23/uk-confirmed-hosts-2035-womens-world-cup-fifa?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 4,
-        "lead_ts": 1795487400
-      },
-      {
         "title": "Monday Night Football: Joe Burrow\u2019s second TD pass puts Bengals up 17-10 - NBC Sports",
         "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPRUFtaDNzMVluYlNrSU5rYTNENU9BXzNnakF6eG40QmdWRjRTWVV3LS1YVWhlbkQyV3BZUk5hT3lIbU1FYmtNTEkybzFsMWJ1LUpHaDZIM1hSckRPaFl3UVQ0RTRERldfSnpRNmVuY1lOWUdFcDBOUkd4bTN0Tm9kc0ViYUY1SEhfT1JMQWZlYzE4T2NFdFhVM1JVOGt1TXdNcWtPS2RwT1hxOC1xbVNxaHk3Z3U4OEhDaXVaZjF0T1Zxc295bjA4aldCLUk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "NBC Sports",
         "n_sources": 3,
         "lead_ts": 1795490470
-      },
-      {
-        "title": "ESPN continues Tom Jackson tributes during 'Monday Night Football' - USA Today",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOUUNKRU9qUjBEbm51MEFzRmpyY1M2a2dzdzAzSmFSZHAxazlxRzV5S3pPY0dub0E2UlY1b1VGazNERS1PaEo4TU9MLUxLQ3pPWkQ4SE9vRGdlUU1jVDVPc3Q2NnMzNlIwT2JleS1TV1Z5TGVNSHFldld3SmdzeVBCdzNjRHpZT21JbmFPdVI1MXNIbWpCQnEzTDViLS1acjF2aWtLSXdmM3FNNTJ4UVFqdENtdFdVT3piLUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "USA Today",
-        "n_sources": 3,
-        "lead_ts": 1795489920
       }
     ],
     "culture": [
+      {
+        "title": "Vanity Fair\u2019s Harsh Taylor Swift Expos\u00e9 Takes Aim at What She Did With Her Feet in High School - Parade Magazine",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOdl9nTjJmQVIta014UlJFSzFxYlVIQ0Vla2Q1OFJOckZTZWVQclRfT1pQU1JTSlZ1WEF6UU5LT0Q0aENzWDI3dHNxVGdpTTQ5dGwteVRYbnBpaHpfbF9kU0VJVmtaQWo1LVpCaFZMTkR4REh4YTFkc0FkSFEtbV9IVXVySkZ2bi1JTnBOX0hmam0xVm9zX3lnREJuVWRIQ2lKcHZGWElKb1g4TWVMTzAtVnhmVGY5cFlq?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Parade Magazine",
+        "n_sources": 5,
+        "lead_ts": 1795491076
+      },
       {
         "title": "Decoding All of Vanity Fair\u2019s Code Names in Alleged Taylor Swift-Inspired \u2018Mastermind\u2019 Article - IMDb",
         "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5SUVlEZFBMRkc3dEtGU2NHZktwWjVqQmJFZkctZ1lNNUZ5NGg0Wk0xTDVRSFlUN256aXRNU0c2cEVqT2Qxd0ZaQWNib1AtZkxRd1I2RllWaklPLWFGNkR6dlV0RFZtRnM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -251,13 +258,6 @@
         "source": "Yahoo",
         "n_sources": 4,
         "lead_ts": 1795482240
-      },
-      {
-        "title": "Sister of guest who wore yellow to Miley Cyrus\u2019 all-black wedding reveals pop star\u2019s reaction to fashion faux pas - Entertainment Weekly",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPTDlock10SHUzZzZmWmFjRGs3VUFXREFmNm5HQWhZWUtoX0NsLWJBcnVDb2pzYUlCaG9tQUF0QmFISGkwVVNsVTV6V2VzaUhINWVtOE9yZzFBZ24xTVVwYW1uWkhzLWUySmVsZFU0dVl6U25OTjRwV21CcXljemFjOUlzMmczVzVYem1CVDdGS0JFVzNJSlpNaDl5YU95TzRE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "EW",
-        "n_sources": 3,
-        "lead_ts": 1795486986
       }
     ]
   },
