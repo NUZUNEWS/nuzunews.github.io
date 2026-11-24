@@ -1784,7 +1784,11 @@
     "last_fail": 0
   },
   "https://www.livescience.com/feeds/all": {
-    "fails": 0,
-    "last_fail": 0
+    "fails": 1,
+    "last_fail": 1795531766
+  },
+  "https://www.space.com/feeds/all": {
+    "fails": 1,
+    "last_fail": 1795531766
   }
 }
