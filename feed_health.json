@@ -1782,5 +1782,9 @@
   "https://www.france24.com/en/rss": {
     "fails": 0,
     "last_fail": 0
+  },
+  "https://www.livescience.com/feeds/all": {
+    "fails": 1,
+    "last_fail": 1795522764
   }
 }
