@@ -31,11 +31,11 @@
         "lead_ts": 1795616040
       },
       {
-        "title": "Trump says pardon for Nvidia boss Huang \u2018always an option\u2019 after accusations of breaking export laws \u2013 US politics live - The Guardian",
-        "link": "https://www.theguardian.com/us-news/live/2026/nov/25/donald-trump-jensen-huang-nvidia-pardon-senate-hearing-iowa-abdul-el-sayed-latest-news-updates?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
+        "title": "US plans to hike tariffs on China, EU, Brazil and others over subsidized production - ABC News",
+        "link": "https://abcnews.com/US/wireStory/us-plans-hike-tariffs-china-eu-brazil-subsidized-138438618?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
         "n_sources": 15,
-        "lead_ts": 1795613542
+        "lead_ts": 1795616298
       }
     ],
     "mideast": [
@@ -91,6 +91,13 @@
         "lead_ts": 1795579996
       },
       {
+        "title": "China sends first Pakistani astronaut into space - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOclcxM205aDZ6bnRXOG1UYzRKaFZ1NVJESmV2cEZ4UEw4cmdoN3JkUk9BY1IzbFdDR3ZMck5PTUtVSnpmblpqQ0p5QndRVmRnRWpaQ0pRX3ktekVuZUNaU2xnVHdPckVjVENkZGZ6ZU1meHpjN25YOTFJTzJ4c280VzJhbTVKUUNjcC1ZUVRmNVcxZnNibWplWUJlcGk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 4,
+        "lead_ts": 1795616340
+      },
+      {
         "title": "Russian strikes kill seven in Ukraine as Kyiv hits three refineries - Euronews",
         "link": "https://www.euronews.com/2026/11/25/russian-strikes-kill-seven-in-ukraine-as-kyiv-hits-three-refineries?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Euronews",
@@ -103,16 +110,16 @@
         "source": "WaPo",
         "n_sources": 4,
         "lead_ts": 1795586057
-      },
-      {
-        "title": "China\u2019s Huawei convicted in US trial over covert business with Iran - Iran International",
-        "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9CdTViUEhiaU05Z1JfV1NTNGw4Z2VBUFB3N1RBMWpzcHI5cmlDM2RRVi1ZS0d0dFVxNEJzMldWLVkzaGFneU5JNlNXM3RTZ0puN0E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Iran Intl",
-        "n_sources": 4,
-        "lead_ts": 1795577578
       }
     ],
     "tech": [
+      {
+        "title": "Jensen Huang Returns: Timeline Of The Scandal That Led To Resignation And Comeback - Forbes",
+        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQSFRIdWRHVmVac0xGXzEzVnFTZTZzc29qYngwSEtMVENRSlJrOWpuQU43eHJmRTAzWVU5LXZkNktHQmVSQnVzZEFtSDgxOG9YUDVLMWxLdjBzMmRlMVZDZm8zT2pNY1FteHJkT1FLVWYzQlFiQXBKaURmdnktNElHSVdEOFc5X3V5VG1pS2NXYW9GNGJOR3JROU5hLXRUS21DdzUzT0ZIbmhmMndlRFRLdm41eEJLYjUzNHQ4RHhhay1qTEhQRk1IZ3dJNGpBVkNNa1hz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Forbes",
+        "n_sources": 24,
+        "lead_ts": 1795616381
+      },
       {
         "title": "Jensen Huang says he\u2019s thankful for second chance at Nvidia employee meeting - NBC News",
         "link": "https://www.nbcnews.com/business/business-news/jensen-huang-says-s-thankful-second-chance-nvidia-employee-meeting-rcna611235?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -140,13 +147,6 @@
         "source": "The Hindu",
         "n_sources": 6,
         "lead_ts": 1795587062
-      },
-      {
-        "title": "China-Pakistan crewed space mission was a decade in the making: minister - South China Morning Post",
-        "link": "https://www.scmp.com/news/china/science/article/3375722/china-pakistan-crewed-space-mission-was-decade-making-minister?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "SCMP",
-        "n_sources": 5,
-        "lead_ts": 1795590674
       }
     ],
     "business": [
