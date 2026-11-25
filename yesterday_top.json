@@ -27,7 +27,7 @@
         "title": "New York jury convicts Huawei of stealing trade secrets - France 24",
         "link": "https://www.france24.com/en/americas/20261124-new-york-jury-convicts-huawei-of-stealing-trade-secrets?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "France 24",
-        "n_sources": 3,
+        "n_sources": 4,
         "lead_ts": 1795563082
       },
       {
@@ -91,6 +91,13 @@
         "lead_ts": 1795563922
       },
       {
+        "title": "Armed men take hostages at supermarket in Cartagena, Colombia - CBS News",
+        "link": "https://www.cbsnews.com/news/cartagena-colombia-hostages-supermarket/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 3,
+        "lead_ts": 1795566554
+      },
+      {
         "title": "Armed men take hostages in Cartagena, one of Colombia's top tourist destinations - The Washington Post",
         "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQWFFzZlBTMDMwOXNFWVRYTl9adzlGNGtLcTlIVnJrQ0ZMMHdMT2J4dVExdzJmZ3ZSM19FQ0o1Z2hQaDlUemh5QXJFZk50V1JTbVpxX2NvcHdadE0wLUJDX0JwNlRBRnBpTjBrcTN4ZUlsd3J4UlE2blhKMk9rV2tpQlNTaGMyZzVpNTVVbzR2Q0ZZejZHckxqeGdQTFBSN1N2UXBtRTRfcU43ZmNYUmxWSzBtV2hDaHlDWE9WNTIySFZROVlSbVA2S2YxRzFnRFk3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "WaPo",
@@ -103,16 +110,16 @@
         "source": "CNN",
         "n_sources": 2,
         "lead_ts": 1795564558
-      },
-      {
-        "title": "Genocide Ruling Changes Terms Of Engagement Eith Myanmar \u2013 OpEd - Eurasia Review",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPZUhDT2dJOHE3cXU1cUppTWxwUzNwdG5samNDWWNwV1ZVaFBuclg2VXNCQTc3Z1ZCWG9DbUgxZVBIbkxrUXpVSFY3dHB4bFhnMk9QazhBN1VIamR3SFpxeC04OE1pTWpaeTVTODhZV25abVE3VzBRaS1lTV9MaDFhMV9yNFV2WldmT3Q3M2NMWDRSaHozM1o3XzNaQk1LRHhZSC1F?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Eurasia Review",
-        "n_sources": 2,
-        "lead_ts": 1795563743
       }
     ],
     "tech": [
+      {
+        "title": "Dell Raises Annual Sales Forecast Again on AI Server Demand - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxONlktLXNFZFFZMnhsdFNfbU8wZnFzeGNPNkVyX0VQdHN6cGVqUmgxYkxXdHFta1NGMDgzU19FeXktakdNbWJTMWZLd04xaVZEZXdDTW1Kc0s5VEZtaC1pQWhFUXl4ZUlSWDdZQzJITFQ0SWw1c3Z4dFF4SEdxeGt6ZFotSnE5US0zZkJHWWphY1BBNnRUaDBycS12bFFKUmlhMGw5NDNIWXVFV0ZoOTdMTC1JYUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 3,
+        "lead_ts": 1795562198
+      },
       {
         "title": "Black Friday Beats Solo Buds Deal, Just $34 for Limited Time - CNET",
         "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBmVC1LN0hZYkozMW5HMll6NmNhWW9YdTl2emVyOHlWbFR1T3ZiQXhLQWtmanBnc2JNUG9oaGNTNzczSjFiSC16ZmlPYjhzd2dlazV1RGh4Wk5yYWhfd1NIVlNuS3NraG1zeDJUMlZ5Yw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -121,18 +128,18 @@
         "lead_ts": 1795565211
       },
       {
-        "title": "Dell Raises Annual Sales Forecast Again on AI Server Demand - Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxONlktLXNFZFFZMnhsdFNfbU8wZnFzeGNPNkVyX0VQdHN6cGVqUmgxYkxXdHFta1NGMDgzU19FeXktakdNbWJTMWZLd04xaVZEZXdDTW1Kc0s5VEZtaC1pQWhFUXl4ZUlSWDdZQzJITFQ0SWw1c3Z4dFF4SEdxeGt6ZFotSnE5US0zZkJHWWphY1BBNnRUaDBycS12bFFKUmlhMGw5NDNIWXVFV0ZoOTdMTC1JYUE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Bloomberg",
-        "n_sources": 2,
-        "lead_ts": 1795562198
-      },
-      {
         "title": "OpenAI and Anthropic Employees Are Reportedly Clashing With Company Leaders Over AI Safety - Gizmodo",
         "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNY2d6Tkh0dTFIMEJ0QW80OHlCZWRoWGtBN3Z1cUdTQV9rM3ZTU0JWdVBhM3NYcnJJaFlkcjYwaG5nczA2RHczQ2FpcXNMWDRyTFRYMFZ4dkZCaXdmaEdvU3dQb1B1d1N3RjZyX3ZRQS1rX3dDdzd4THlpYWJkeXh5dlB3ZXBqT01PeU0ycUdHUUpJaW9meThYTEY3NHRhUVdUYU55b2lpZGtiVFVpeFNPcVdCVXdwSVJaakRBcmx3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Gizmodo",
         "n_sources": 2,
         "lead_ts": 1795558530
+      },
+      {
+        "title": "For workplace culture champions, Jensen Huang's return is 'unfathomable' - NPR",
+        "link": "https://www.npr.org/2026/11/24/nx-s1-6051583/nvidia-huang-dei-trump-women?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NPR",
+        "n_sources": 2,
+        "lead_ts": 1795514400
       },
       {
         "title": "Meta's Muse has launched in the UK. I found it helpful but awkward - BBC",
@@ -188,6 +195,13 @@
         "lead_ts": 1795563783
       },
       {
+        "title": "Man City vs Napoli LIVE! Champions League lineups, match updates, news, score and analysis - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPX29SU3prZFNWWWxTTmxPMmlFeTNIX2JfUkVnZ05nRVJTdDRVZjJocWhnbDhZbXRzdXJ0WURBSkQtWU45aVI3dXRfVm5MaEwyT0N0TVd1bkhKZmp2OFpWajRaVmYta3JING1ZRUo2ZE5WTHpyNHRnS2xVUUhwQ3R3bi0xbDFJVXJJVXRrT3FhQUR5c0ZFbUV3SjgwZ0FadzZSaF9INGJCUy0xVXVMdGtOMjZlQzg0YzhkRjkySUFsQ0lQQlRWc2RvYWtSQkNFbThyZzJDNkM0WQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 2,
+        "lead_ts": 1795566535
+      },
+      {
         "title": "Has J.K. Dobbins played his final game for the Broncos? - Yahoo Sports",
         "link": "https://sports.yahoo.com/nfl/articles/j-k-dobbins-played-final-001157955.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
@@ -207,13 +221,6 @@
         "source": "Yahoo Sports",
         "n_sources": 2,
         "lead_ts": 1795563001
-      },
-      {
-        "title": "Broncos Suspend RB J.K. Dobbins One Game For Conduct Detrimental To the Team - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOMVJRVlBPUzZuY0FkczNrM3FESi0wTmtrZi1Mdlo0TUJ5aFRRZG16X1JZZ1N1LUZvUzl3MEZLLUtDNGVRY3F1T0pGOGRBSW5NY0M4TjJNZVp2R3hfb0NZWDBUNUVaZzUzOEZ0ZFdpd2hiT0xFZWxmOEZVRFRZSTAxTXR0VVlkX0lmTnpRQUxGT3R5SC1ON05jUHlUemwyT3NLMGNwbg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 2,
-        "lead_ts": 1795561395
       }
     ],
     "culture": [
