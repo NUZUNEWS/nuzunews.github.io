@@ -1,6 +1,253 @@
 {
-  "today_date": "2026-11-24",
+  "today_date": "2026-11-25",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Huang's return to Nvidia brings open-weight AI debate to forefront in Washington - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQcE80eU84aDZfY24tLUhfMURrVFZHdkt3UHZuNjcxOXA3MUdWU0ZXUV9Od0d2QUJUWVFtZEN4X19BekxhdUFzcUNlVFYtZVdiMHgtTEFPQWtxU2xIS2NwUW1HVzJkUjNRS2tiMkJEa1ltcG42enk0czYyQXNjN0xibUd1SFNGU3pzd1diLWxDcFlmUVVqUmRoNVJ5VzVDNUVmMDJNRmxTY2dJSjJ3MGk4UUNhTk9DaGNLQ1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 27,
+        "lead_ts": 1795564768
+      },
+      {
+        "title": "Details on Army plan to detonate unstable explosives in Iowa on Wednesday - CBS News",
+        "link": "https://www.cbsnews.com/video/details-on-army-plan-to-detonate-toxic-material-in-iowa-on-wednesday/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 5,
+        "lead_ts": 1795563788
+      },
+      {
+        "title": "Trump reportedly says he is open to pardoning Jensen Huang ahead of CEO\u2019s planned Senate committee testimony \u2013 live - The Guardian",
+        "link": "https://www.theguardian.com/us-news/live/2026/nov/24/donald-trump-nvidia-jensen-huang-republicans-democrats-china-latest-news-updates?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 4,
+        "lead_ts": 1795564425
+      },
+      {
+        "title": "Trump pardons 2 turkeys, Freedom and Feathers - CBS News",
+        "link": "https://www.cbsnews.com/news/white-house-turkey-pardon-trump-thanksgiving-freedom-feathers/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 3,
+        "lead_ts": 1795559308
+      },
+      {
+        "title": "Authorities drop criminal charge against incoming House Democrat over unreturned rental car - NBC News",
+        "link": "https://www.nbcnews.com/politics/congress/criminal-charge-dropped-nc-house-democrat-lakesha-womack-rental-car-rcna611200?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 2,
+        "lead_ts": 1795564740
+      }
+    ],
+    "mideast": [
+      {
+        "title": "U.S. Spy Agencies Suffer Breach of Some Unclassified Information - The New York Times",
+        "link": "https://www.nytimes.com/2026/11/24/us/politics/spy-agencies-computer-network-breaches.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 3,
+        "lead_ts": 1795561269
+      },
+      {
+        "title": "Security Alert: U.S. Mission Saudi Arabia \u2013 November 24, 2026 - U.S. Embassy & Consulates in Saudi Arabia (.gov)",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNenhZUnJuYTY3QnRZTTFnOTVDZUpKWUc5Y0M4V2hBQmNYZlp4QXphMnRjanItRmFzUFlSRHZwZjBUaVlqel9jTUQtdFVSajBha0R6R1BUQldMRUx6V2YtWFFmZHVPdVdQWV9KM1lIaTZUYTdDYnJmMzRDVXVLdEEzMV9RX2ZRc1oxZEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "U.S. Embassy & Consulates in Saudi Arabia (.gov)",
+        "n_sources": 3,
+        "lead_ts": 1795558493
+      },
+      {
+        "title": "UN slams Iran after it flogs singer for performing without veil - France 24",
+        "link": "https://www.france24.com/en/asia-pacific/20261124-un-condemns-iran-flogging-singer-parastoo-ahmadi?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "France 24",
+        "n_sources": 3,
+        "lead_ts": 1795553637
+      },
+      {
+        "title": "Middle East latest: Iran navy says two tankers ablaze in Strait of Hormuz - The National",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQNW14YjRmMTY1a0preF9JQmJVaDFGVmZWUlNJbmRNelFCQjFqYVpfbzJMSFJPN2hwQ1diRDZYdkh3Z09LalBnb3hBZ0k1LUtZNWVpZnprZDlzMzAtVnZZZzAxNTlQYXZYcHNHdjJEZkE5Y3Nfall1Vnk0YkQ5NUpTZDctU3BLbXhz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The National",
+        "n_sources": 3,
+        "lead_ts": 1795517564
+      },
+      {
+        "title": "Israel kills Hamas internal security chief in Gaza - The Washington Post",
+        "link": "https://www.washingtonpost.com/world/2026/11/24/israel-kills-hamas-internal-security-chief-gaza/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 2,
+        "lead_ts": 1795565067
+      }
+    ],
+    "world": [
+      {
+        "title": "China\u2019s Huawei Convicted of Fraud in U.S. Criminal Trial - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPbEdCYmowNkNwbExkSE9NeGFWWmVsV2F0d1pTUnlsblp2aGVFd1JxaFdIU1BpY0V3ZTl0S2tlUHRpZmNldFBpZ3IydkVGY0FWUFZ2VXVMY1JYUFk3TlNWNjRIdW5fYjRMZmkxNEViaHF5TGVzemk3blIzc1RKdzVqa1pjV2hRM1VMZHYydTNSQUFZU3FKUVVsd2czNURDSE1nT3c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 4,
+        "lead_ts": 1795563922
+      },
+      {
+        "title": "NATO chief on reports Russia plans to launch a nuclear-armed satellite - CNN",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNdU5yZ3ExMWhYS2NKQU9xRjhYZ1k3MGhxMG1GUEhtV2FwNS0wU0x6S2V6U3Y2M1BaeHdPRHNQNXlCYm81YnRMMHRTeHVBTTdfQ1Bvc2J0eDdyMEVINklQRlNsMUV3eXRWZEtMVmF5UmtmLTllR2xOUkxudTB5MGZILTRySFBwWjh4d3pFaWpSMGQ2QjdYWnNmYk5iQy1QYmMwUFo2bjR0TkFhdmhJLXRXTF95TEQ4VEJ3Sml4Ym1wZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNN",
+        "n_sources": 2,
+        "lead_ts": 1795564558
+      },
+      {
+        "title": "Genocide Ruling Changes Terms Of Engagement Eith Myanmar \u2013 OpEd - Eurasia Review",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPZUhDT2dJOHE3cXU1cUppTWxwUzNwdG5samNDWWNwV1ZVaFBuclg2VXNCQTc3Z1ZCWG9DbUgxZVBIbkxrUXpVSFY3dHB4bFhnMk9QazhBN1VIamR3SFpxeC04OE1pTWpaeTVTODhZV25abVE3VzBRaS1lTV9MaDFhMV9yNFV2WldmT3Q3M2NMWDRSaHozM1o3XzNaQk1LRHhZSC1F?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Eurasia Review",
+        "n_sources": 2,
+        "lead_ts": 1795563743
+      },
+      {
+        "title": "South Africa convicts Zimbabwean who tried to fight Ukraine for Russia - Al Jazeera",
+        "link": "https://www.aljazeera.com/news/2026/11/24/south-africa-convicts-zimbabwean-who-tried-to-fight-ukraine-for-russia?traffic_source=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Al Jazeera",
+        "n_sources": 2,
+        "lead_ts": 1795562980
+      },
+      {
+        "title": "Ukraine says attack on Russian ships off Libya was self-defence - RNZ",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOZTNrYUE2ZFYwc3Vib01MdVRubnNYdHlvQ3hLTDhBMjVmUVdNSE11bWJvQTNFb2w0TG1YT0NoOXQ1bjIzZEw5TzVJUlV1cWNIaXdvNFhiY0NBYS0xZkREc3R0ejVrMVNiQ3FyS2gxWXdIYWcxMnVlQ2xiM2JfZFpnT3RZZ1JJWjdXMmFrVEdud2xpQm9XbkdOdWVDV3VfQ2FNRHR3ZTQybw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "RNZ",
+        "n_sources": 2,
+        "lead_ts": 1795561983
+      }
+    ],
+    "tech": [
+      {
+        "title": "Black Friday Beats Solo Buds Deal, Just $34 for Limited Time - CNET",
+        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBmVC1LN0hZYkozMW5HMll6NmNhWW9YdTl2emVyOHlWbFR1T3ZiQXhLQWtmanBnc2JNUG9oaGNTNzczSjFiSC16ZmlPYjhzd2dlazV1RGh4Wk5yYWhfd1NIVlNuS3NraG1zeDJUMlZ5Yw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNET",
+        "n_sources": 2,
+        "lead_ts": 1795565211
+      },
+      {
+        "title": "OpenAI and Anthropic Employees Are Reportedly Clashing With Company Leaders Over AI Safety - Gizmodo",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNY2d6Tkh0dTFIMEJ0QW80OHlCZWRoWGtBN3Z1cUdTQV9rM3ZTU0JWdVBhM3NYcnJJaFlkcjYwaG5nczA2RHczQ2FpcXNMWDRyTFRYMFZ4dkZCaXdmaEdvU3dQb1B1d1N3RjZyX3ZRQS1rX3dDdzd4THlpYWJkeXh5dlB3ZXBqT01PeU0ycUdHUUpJaW9meThYTEY3NHRhUVdUYU55b2lpZGtiVFVpeFNPcVdCVXdwSVJaakRBcmx3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Gizmodo",
+        "n_sources": 2,
+        "lead_ts": 1795558530
+      },
+      {
+        "title": "Meta's Muse has launched in the UK. I found it helpful but awkward - BBC",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5oSU14S0tpY0hfZVFMUDNiX1Q0WGthaXc4cmdoMVQ1Qm5PQVlaTzFLZHJoeEdhQWJyUmpPeWpGYWFIWGNocGRTNlhnRHZSZVZISVBicmxUemk5LUViN2c?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 2,
+        "lead_ts": 1795512780
+      }
+    ],
+    "business": [
+      {
+        "title": "Analysis | Trump\u2019s Nvidia gambit shows the stock market is the economy - The Washington Post",
+        "link": "https://www.washingtonpost.com/business/2026/11/24/maybe-market-is-economy-after-all/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 7,
+        "lead_ts": 1795564582
+      },
+      {
+        "title": "Nasdaq, S&P 500 slip following Monday's Nvidia-fueled rally - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSTdTSVk1YVg0WC1SRVJKVW1XYTZJbjRhRVctYkNzZHZRcW5TaVE3MVdSd2JfYUNaV3otX1FzR1lxYkwyWWZtbS1ONDdiem9UVUI0ckV6c2tiOEt0TGViNlUxZFdSeDV0aVJ4cjZkSkE5Nk9veE1UTmxad0xxaXhScndGMV9IdWVrNUpOQnY0Y0hXVmpZVFgwbTFQMDZiX0NqdExaejlYMzJnbjg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 3,
+        "lead_ts": 1795557660
+      },
+      {
+        "title": "AI debt markets shudder as Nvidia's top 'banker' returns - CNBC",
+        "link": "https://www.cnbc.com/2026/11/24/nvidia-jensen-huang-ai-credit-markets.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNBC",
+        "n_sources": 2,
+        "lead_ts": 1795556283
+      },
+      {
+        "title": "OpenAI Engineer Secretly Recorded Dozens of Meetings, Prosecutors Say - The New York Times",
+        "link": "https://www.nytimes.com/2026/11/23/technology/openai-engineer-secret-recordings.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 2,
+        "lead_ts": 1795554540
+      },
+      {
+        "title": "\u2018The mistake has been corrected\u2019: end of Jensen Huang\u2019s brief walk in the wilderness - The Guardian",
+        "link": "https://www.theguardian.com/technology/2026/nov/24/mistake-corrected-jensen-huang-resinstated-nvidia-analysis?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 2,
+        "lead_ts": 1795553820
+      }
+    ],
+    "sports": [
+      {
+        "title": "Man City 2-2 Napoli: Rayan Cherki equalises late but Enzo Maresca's team frustrate in Champions League draw - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPNWdfbURkdHJuRUg0cWJRbEx0WDdleGR6RGtsczV2bEp0TThqSVpTRWgwYXJNVWxRc295ODFmaHBNdlVzTlYxRmhwMjZpbWgzLTBmRV9qWjhCdFREaGxseXBxM0lzMGxwMG5XS2dKRW95NEd4VzFwTEJzV2pZWGZ4TVNIbl9DelFHZEJVYTdxSXdiSkhYeWhfSTZSVDFkaW1xR0ZPVG8xS1FIRjRSQ2JZVnktcW9EOUd3eFFJWEFXSTJLYUtpX3hDOVRXTm83Vi1KNWVWY2tQRkIwdXpnaVpwMF9kREFsV3BoNHc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 4,
+        "lead_ts": 1795563783
+      },
+      {
+        "title": "Vikings & Bengals fall, Lions return, Chiefs rise, Bills or 49ers the best team in the NFL? | FTF - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBpMEw2OFFKWk9nQ1VDNmJ6YjAxaFpfTFg5bklGelhlN2M0RGpKcnNwR0JiZWV3bnNoRUcyYWhVLWRHZkxJSUpRaUkxWEJ3ZGZLNkFlZ0hFLXpQMHVNZ3ZIdE5B?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 2,
+        "lead_ts": 1795563498
+      },
+      {
+        "title": "Lando Norris expects 2030 F1 racing to surpass Las Vegas GP spectacle - Yahoo Sports",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQN2pOc1hhOXp6cVZMTzg4b2RBUWdTbjZYcm41aDc0NGJHQmVjSmZkdWY2LURjRkZPRks2QTlCenZfUlN0TTMtQjlkVUdFcGJnRWZ1VzI5QlNySDJpTWhEeEk2RENhZVhTLWlZdUJEYTJOR3BEYmJpeVN1eGs3Wm81X2o3MDB4eDA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 2,
+        "lead_ts": 1795563001
+      },
+      {
+        "title": "Broncos Suspend RB J.K. Dobbins One Game For Conduct Detrimental To the Team - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOMVJRVlBPUzZuY0FkczNrM3FESi0wTmtrZi1Mdlo0TUJ5aFRRZG16X1JZZ1N1LUZvUzl3MEZLLUtDNGVRY3F1T0pGOGRBSW5NY0M4TjJNZVp2R3hfb0NZWDBUNUVaZzUzOEZ0ZFdpd2hiT0xFZWxmOEZVRFRZSTAxTXR0VVlkX0lmTnpRQUxGT3R5SC1ON05jUHlUemwyT3NLMGNwbg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 2,
+        "lead_ts": 1795561395
+      },
+      {
+        "title": "Champions League: Real Madrid thrash PSV 5-1 in comeback win as Manchester City held by Napoli - France 24",
+        "link": "https://www.france24.com/en/sport/20261124-champions-league-real-madrid-thrash-psv-5-1-in-comeback-win-as-manchester-city-held-by-napoli?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "France 24",
+        "n_sources": 2,
+        "lead_ts": 1795561179
+      }
+    ],
+    "culture": [
+      {
+        "title": "Taylor Swift\u2019s former classmate speaks out on her viral Uggs comment from Vanity Fair piece - Entertainment Weekly",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPMlp5NTIzU3Y0RzRGSzAzNi0zbjJTUmlxZGFfemRYNlVQQ1V1TzFMWDVSV3Z0Ql9ETk5DTVBraHkzQXFoeHpPajkzZ2JhWE1tZ2tETHdfU0doSjR4SXphcU1hQVM2YUlSMVdQd0NLSjYxd2JGRXc4S3JfREVnak9ESE1PTUpSY05BblR1MWFpUkFoYXM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "EW",
+        "n_sources": 5,
+        "lead_ts": 1795562696
+      },
+      {
+        "title": "Netflix is buying Seinfeld\u2019s old studio lot for roughly a fifth of its 2021 price - Digg",
+        "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9YTkFiemo1VWhPeG1Jb0JzZ1MzS2R6eXZUdEI5XzV5SFNXQ3NqN1JhdXU5Wjc3dEJRTm1aX0laS0wtMERtNHl5X1hncU5GRjh1?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Digg",
+        "n_sources": 3,
+        "lead_ts": 1795562905
+      },
+      {
+        "title": "Ninajirachi Drops I Love My Computer Remix Album - Pitchfork",
+        "link": "https://pitchfork.com/story/ninajirachi-drops-i-love-my-computer-remix-album/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Pitchfork",
+        "n_sources": 2,
+        "lead_ts": 1795561585
+      },
+      {
+        "title": "Robert De Niro, Jane Fonda Among Hollywood Elites Pushing Democrats to Dump Schumer as Majority Leader - Breitbart News",
+        "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQc2ZRekdEc2d0TDBaVTFpcXZSZEJvRHlyb241Z1dYc2lMSXBSS0xYME9LS2ZuN3JKMXViN0lRNVIyVVNmT0Q4SEdBVEJfaERlWHVIUG1sODNsUTFUWXE0RUI2YkpDcXhzdF9GcFhKRWVhLUZCaW9MZm5WcWswUkoxMzlGaGh5U0ljQ0wzM2hkOElSNmZWWlpNN3k5SEtiMlBTb0J0Tjd6OUFJQkJ4cmxVbkM0WURpODAwTWMtN1pGazBEeUtlaWlYS3dkNzItV3h6QnRpdnlrOFF3YUFuem1xU0I0c25GRUppMlJkTlRyV0s?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Breitbart News",
+        "n_sources": 2,
+        "lead_ts": 1795560375
+      },
+      {
+        "title": "A Guide to the Best Black Friday Streaming Deals: See Platforms, Prices & Plans for Less - Billboard",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQRmJLRmRkY2JkRTJ4VVNDWUZTNTRtN3hIQ2hJbm12U0FuYWYtbVhMMEdYMEpsZkRBVGlic3pSNV9KZVVwTTd0WUpub01rMHpTdWlxQlpvaHo3UV9RUlJyWXY2ak5tWGxJdnk0R29BTVRMVXNXT2xNYnVXcjJ2NVpxeDlWdS1DQVkwbFM3OTEyeEtlQ0dybVVnNmJXNFBnVHhoRDA4RnFvOXBfbTVVYjFDTHdiUUVYbF9YRXY2UzJB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Billboard",
+        "n_sources": 2,
+        "lead_ts": 1795559333
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "Trump's intervention on behalf of Jensen Huang gives Democrats another 2028 target - WKMG",
@@ -258,267 +505,6 @@
         "source": "Nine.com.au",
         "n_sources": 4,
         "lead_ts": 1795559444
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "Trump urges Nvidia to reinstate Jensen Huang, calling him \u2018best thing\u2019 for U.S. - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQWlhuUEVYcUhfSzZoYm1EM3RHZ1NmdkJkZ0JqX01MZzZJbzRZdFdMVl8tV1BGWG5Ba1FwWnlwVUNUVVNiN25OQ2JPLUN3TGotNjd3UEMyVGcyc0lIVWJsWDFvN2FodTdwSnVzWnhsRXNpc3NrNHVNOGlEdGFUVVBOdHV3VGFwOVJ0eVBWSEQwaUk3QkFodnhSNWc2QmJhN3h5eGR6enBWcUxFbnVsZ0RhUDJFa25BWUQ0Vnh6NThn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 35,
-        "lead_ts": 1795456485
-      },
-      {
-        "title": "\u2018Worst COP ever\u2019: Climate talks collapse after draft deal fails to include fossil fuels - CNBC",
-        "link": "https://www.cnbc.com/2026/11/23/cop31-climate-summit-fossil-fuels.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 10,
-        "lead_ts": 1795439798
-      },
-      {
-        "title": "COP31 negotiations break down as countries fail to agree on climate deal - The Washington Post",
-        "link": "https://www.washingtonpost.com/climate-environment/2026/11/22/cop31-negotiations-break-down-countries-fail-agree-climate-deal/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 9,
-        "lead_ts": 1795403253
-      },
-      {
-        "title": "Ukraine claims drone strikes that sank Russian warship off Libya - CBS News",
-        "link": "https://www.cbsnews.com/video/ukraine-claims-drone-strikes-on-russian-warship-off-libya/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS News",
-        "n_sources": 8,
-        "lead_ts": 1795444138
-      },
-      {
-        "title": "COP31 ends without a deal: Is global climate diplomacy breaking? | The Hindu Analysis - The Hindu",
-        "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOQUU0ZFVYTkVpd3oyN19vMGFmMWc5Z0ROX3d3dDFlNnpLX01hQnhNa192dE1sbTdpVWxSaGtZMVByd1FEcTREcVYzQzMxcnJuVVpWSF9MSjZacUY0cUVFVm84cE1lUHJWeFhzTGQxd0FOeE1EV056ZF9zRHRDNUxrUzR1SDhmRnZ4dzJxYjFJUnA2ZXRFVWttcEZhc3NRSkRtYWRmWWJsQWstdTRoYWpYNlNYTHd0aDU5bVFOVmdUbmZlV3JVQk5BTkRfeHBHdXc2NTJNRkJvTmlfUWlsb2xmR2gxbUJTazRSQ3puUDgxTdIB9gFBVV95cUxOcTFISHAxUmxzTHNEOW1qUDM5ODY3LWxPQzMwbjF4MEhjekxma0VVTmZGdE5jcFVYeU5QaU1HRHlFR1dNdXhPUmZPUml2ajVkMGhXdmFaZXRPN0dsRENKR21mZlZ4bnVmWFFCeUE5bHVnc2RhcmZ2NDVjMXdkN1VzUDZlb2xpb3ZFR2ZPd19Sd19uT19JV2JoS2d1S3hBcHQ2MlVvekFXOWIyNURPUkl4dmt2RUxrVGpsS1R1eXFwLWxmMjY0TzdYQVNITWtBUmhRdWhublF0OEJPejUyV2steDdTSkhXZjhUSGFZWExQcUpfRmVNZ1E?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Hindu",
-        "n_sources": 8,
-        "lead_ts": 1795438752
-      }
-    ],
-    "mideast": [
-      {
-        "title": "Russian warship hit by Ukrainian drones in Libya, Zelensky says - BBC",
-        "link": "https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 10,
-        "lead_ts": 1795448483
-      },
-      {
-        "title": "Ukraine sinks Russian warship in Libya as conflict spreads beyond Europe - The Japan Times",
-        "link": "https://www.japantimes.co.jp/news/2026/11/23/world/libya-drone-attack-russian-ship-ukraine/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Japan Times",
-        "n_sources": 10,
-        "lead_ts": 1795444510
-      },
-      {
-        "title": "Ukraine says Russian air strikes kill at least 15 in Kyiv region - Euronews",
-        "link": "https://www.euronews.com/2026/11/23/russian-air-strikes-kill-at-least-15-people-across-kyiv-region-ukraine-says?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Euronews",
-        "n_sources": 10,
-        "lead_ts": 1795414398
-      },
-      {
-        "title": "UN urges probe after Russian ship attacked by drones off Libya - Euronews",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVzlwN1FxOUR1VW9kTnQ0OHZlb1kyRklTX1BvanhBRDlqQkhaM0JVRmxnTmhXblRRN1BQSjJOeWN4QXQ0QjBzWnN3MUhwandEQ2JfVFJDdnVUOXdiZzVkTnA5OFYzVVFlQ3k2X3M3elVCbTUza010UW5WUzBQeFR1QXZIdi1VcEhmS19VSkk5SWtoWFVVZmEzQVN5ZzZUdzF2YU41My1vYmllaVdzdl9xTVB1cw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Euronews",
-        "n_sources": 10,
-        "lead_ts": 1795413502
-      },
-      {
-        "title": "Boy, 7, pulled alive from rubble hours after Russian strike on Ukraine, rescuers say - BBC News",
-        "link": "https://www.bbc.co.uk/news/articles/cqdr15l32d3go?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 10,
-        "lead_ts": 1795409040
-      }
-    ],
-    "world": [
-      {
-        "title": "COP31 talks end without an overarching UN climate deal - The Globe and Mail",
-        "link": "https://www.theglobeandmail.com/canada/video-cop31-talks-end-without-an-overarching-un-climate-deal/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Globe and Mail",
-        "n_sources": 13,
-        "lead_ts": 1795440839
-      },
-      {
-        "title": "#Daily_Brief: #COP31 ends without overarching climate agreement, disappoints #UN chief, climate scientists The main divisions centred on demands by the #European_Union, the #UK and Pacific island nations for stronger language on transitioning away fro - Facebook",
-        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxObFVoM1d1TDBXQ1ZJdXU2bVpjc2FBQ2hfMHl1UlpSMDVwNFNFaWpVLURoT2E0MlktSXc4OXRkcUlzQTRwOVNGUlZLcDlTaDh5aldQajliWjk1TmFKNXJYU2FMYkxmV0o0M2NCRWRtWWdxRzcwUEExNWgwVTBYdkJEUkJJQS05Yk84VV9oUkhSa2wxd2tsOXU4dnNqbFA2aENMS2RvSWo3cHZ2LTZmN2RwSkM2OG8wanRYTU5XZDdfMU03UHFKcWx1SGdBQ1JkNkFnbWl6bF9uVlE4QTdIRm1N?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Facebook",
-        "n_sources": 13,
-        "lead_ts": 1795413283
-      },
-      {
-        "title": "What's next after no deal at COP31 climate talks? - BBC News",
-        "link": "https://www.bbc.co.uk/news/videos/cr1ewge81q4qo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 12,
-        "lead_ts": 1795412079
-      },
-      {
-        "title": "COP31 Update 14: Summit Ends Without Agreement Amid Disputes Over Fossil Fuels - commonspace.eu",
-        "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1ObGdKdzdPZTRuamhIem1ZSUxJVXk3ZWlGZHBLVVlGTWlqSHNPcU1jMkVfdGlmV2drRDdTb2RuQXczTDdNT0VlSDFsYUtYQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "commonspace.eu",
-        "n_sources": 12,
-        "lead_ts": 1795409775
-      },
-      {
-        "title": "COP31 ends without a major climate deal amid divisions over fossil fuels - MercoPress",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNTDgxLWpna21iSmtDMUduN3ZRcHU1Wmk5Tmp3OV81ZjRkaUVMVUFCOEZuSFRFdHZ1WHdtZmhDYktWTWtnZi1CNHk1Z09RTGNGMnptX0ZhZldyTlh3TG8zaXpEYzZKRVlETDdsNnJyTk1qRHlMT0RjaXNEemNmWlY2U1lQV2NmUmJVcXR3NU5jcjI5ZDRDdV9OUXVRcVQ4U1RRNFZnbUZzcmRWUV9uYVE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "MercoPress",
-        "n_sources": 12,
-        "lead_ts": 1795407120
-      }
-    ],
-    "tech": [
-      {
-        "title": "Nvidia reinstates Jensen Huang as CEO. Stock skyrockets 31% - CNBC",
-        "link": "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 17,
-        "lead_ts": 1795443931
-      },
-      {
-        "title": "Early Black Friday Puts Microsoft Office Professional 2021 at $22.97 for Life - Entrepreneur",
-        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQM09qTkl0eGc1Ry1ENXVzQUhsdFQtaFloZ2l5UGk0Z0lsTFREMGRXUmt2b1BiZUlXdGxyQVdfcUt0YWo0aktXS2ZxVzNxR1FtNmRpbzBtXzBSTk80aTlodUc3V250Umx2RHU3VkU0dHV4N1l1bUhuSk94cEFpTTVKQXNxMWsyTEQwa05teHBwWm9CWE41SmsyQkdOWGdaS0xwQlI4dHZOZWJFUlRlQ096SW5EcnZvMGxEM3JCdGFNYWIxUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Entrepreneur",
-        "n_sources": 5,
-        "lead_ts": 1795442458
-      },
-      {
-        "title": "Black Friday 8TB External Hard Drive deal drops price to just $299.99 - PC Guide",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNMkJBSzFpZ1BJMWJ2b1MwaXBHbFdlbElzNVI2UkZzcUxzMmYwdlp2N1g5MUhENEhWZ0I1UUtETXZGMVRRaTdNZzlOOW56cFpvNHVEdTFRNW54MUtnRWU3b2xDZndEOHd0NXJRRlNhVmVFR0lNTF9jcF9nU2tBRDlFTUJJYWNuTDlaYWZlV05Ja3o0bU0tRGNJU0VuRkIwbVVD?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "PC Guide",
-        "n_sources": 5,
-        "lead_ts": 1795396516
-      },
-      {
-        "title": "Deluxe Grand Theft Auto VI Album Adds 23 Tracks By Travis Scott, Slayyyter, Power Trip, & More - Stereogum",
-        "link": "https://stereogum.com/2520215/deluxe-grand-theft-auto-vi-album-adds-23-tracks-by-travis-scott-slayyyter-power-trip-more/music/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Stereogum",
-        "n_sources": 4,
-        "lead_ts": 1795444958
-      },
-      {
-        "title": "Rockstar Releases Deluxe Edition of Grand Theft Auto VI: The Album - Consequence",
-        "link": "https://consequence.net/2026/11/rockstar-releases-deluxe-edition-of-grand-theft-auto-vi-the-album/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Consequence",
-        "n_sources": 4,
-        "lead_ts": 1795444518
-      }
-    ],
-    "business": [
-      {
-        "title": "Nvidia shares surge 33% on Jensen Huang\u2018s return, adding $1tn to company\u2019s value \u2013 business live - The Guardian",
-        "link": "https://www.theguardian.com/business/live/2026/nov/23/tech-sell-off-ai-stock-market-support-measures-deployed-south-korea-taiwan-china-ftse-nasdaq-latest-news-updates?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 32,
-        "lead_ts": 1795458634
-      },
-      {
-        "title": "Trump urges Nvidia to reinstate Jensen Huang, calling him \u2018best thing\u2019 for U.S. - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQWlhuUEVYcUhfSzZoYm1EM3RHZ1NmdkJkZ0JqX01MZzZJbzRZdFdMVl8tV1BGWG5Ba1FwWnlwVUNUVVNiN25OQ2JPLUN3TGotNjd3UEMyVGcyc0lIVWJsWDFvN2FodTdwSnVzWnhsRXNpc3NrNHVNOGlEdGFUVVBOdHV3VGFwOVJ0eVBWSEQwaUk3QkFodnhSNWc2QmJhN3h5eGR6enBWcUxFbnVsZ0RhUDJFa25BWUQ0Vnh6NThn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 32,
-        "lead_ts": 1795449959
-      },
-      {
-        "title": "Trump tells CNBC 'I convinced\u2019 Nvidia board to reinstate Jensen Huang - CNBC",
-        "link": "https://www.cnbc.com/2026/11/23/trump-nvidia-jensen-huang.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 32,
-        "lead_ts": 1795448776
-      },
-      {
-        "title": "Nvidia skyrockets 33% on Huang\u2019s return as CEO, recovering nearly all the losses since he disclosed affair - CNBC",
-        "link": "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNBC",
-        "n_sources": 32,
-        "lead_ts": 1795446993
-      },
-      {
-        "title": "Exclusive | SEC Is Probing Nvidia Amid Departure of CEO Jensen Huang - WSJ",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQbjl2b0tzT1ROT2plV1p5RHhQd3hXOEJKRFhOZ1ItZExOQV9oVGkzTU9tcEEyTXhjNHRKQVExRTNRdEtlY24zUFhmS0h0c21FUVVrVVh0NGF2SXFmdm1wcmVRLUlCcG5CMGRIZklSdVBkVElkS3lwRF9LaGg4YzU5b0dsZXlveWxSNzhGYzJlZmRSRkhvUWZRTHB3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WSJ",
-        "n_sources": 31,
-        "lead_ts": 1795457610
-      }
-    ],
-    "sports": [
-      {
-        "title": "USA joint bid and UK confirmed as 2031 and 2035 Women's World Cup hosts - Yahoo Sports",
-        "link": "https://sports.yahoo.com/articles/usa-joint-bid-uk-confirmed-160835031.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 7,
-        "lead_ts": 1795450115
-      },
-      {
-        "title": "UK to host 2035 Women's World Cup, Fifa confirms - Yahoo Sports",
-        "link": "https://sports.yahoo.com/articles/fifa-confirm-uk-bid-host-214916273.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 7,
-        "lead_ts": 1795448855
-      },
-      {
-        "title": "USA to co-host 2031 FIFA Women's World Cup with Mexico, Costa Rica and Jamaica - CBS Sports",
-        "link": "https://www.cbssports.com/soccer/news/u-s-a-co-host-2031-fifa-womens-world-cup-mexico-costa-rica-jamaica/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS Sports",
-        "n_sources": 7,
-        "lead_ts": 1795447896
-      },
-      {
-        "title": "UK confirmed as 2035 Women's World Cup hosts as football's biggest tournament returns for the first time since 1966 - Goal.com",
-        "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPZVFjakFab3J0SXQ3VXcxMmhNSk5TMUs3MkhpNEJOam9sZlNhLS1MT0xSZnY0NkV4WE1HVlYzS0VTMm5xUE5aTjRPNFI2WTBqa3pRNmtiYlpqOW42OC1wR0o4emt1UnM5ZGVtRFhQM1JkMnZoVWE3U19VaGpPSFp4WVJyYW1pUElqcW02N2I3ajcxSjZZZmxibWZTcFRFdWZaTWJOX1ZNeUdYU3Jsc1pvYVZndkc1TGt5bkJaTWxUalV1N21PRTZRWW5keUpXR0Y5b2tMbXJXdnZrOHBMN0Z6REVqd2NIWWVhQ3NIYUJpakdRS0Fi?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Goal",
-        "n_sources": 6,
-        "lead_ts": 1795448506
-      },
-      {
-        "title": "Tom Jackson, Broncos star and ESPN \u2018Sunday NFL Countdown\u2019 analyst, dead at 75 - AP News",
-        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQYTl4XzZoM3NxaG5raTlnemhKM2xYSDlpTUt5cERCeVlJQ2FFME5rczRsRk5DMFFnTWpHX3paMmFWRzhUeWtDelpJd1VMUlhCbV9VM2N5LUp3eUhqbE5zUndTcGxvbVZLQU93SEIxTURRc3hRUktFMTJUZHp5MFZxeUthbHNkTG0zdXVkcWxHcjJWa00?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AP",
-        "n_sources": 6,
-        "lead_ts": 1795402380
-      }
-    ],
-    "culture": [
-      {
-        "title": "Audience evacuated from Don Toliver concert in Manchester after unknown substance released in crowd - CBC",
-        "link": "https://www.cbc.ca/news/entertainment/don-toliver-concert-evacuated-9.7432218?cmp=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBC",
-        "n_sources": 6,
-        "lead_ts": 1795439052
-      },
-      {
-        "title": "Don Toliver Delays London Gig After Manchester Set Evacuated for \u2018Unknown Substance\u2019: \u2018Stop Bringing Bulls\u2013t\u2019 Into My\u00a0Shows!\u2019 - Billboard",
-        "link": "https://www.billboard.com/music/rb-hip-hop/don-toliver-show-evacuated-unknown-substance-rapper-reacts-1236387729/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Billboard",
-        "n_sources": 5,
-        "lead_ts": 1795449254
-      },
-      {
-        "title": "Don Toliver Concert in Manchester Is Evacuated Over \u2018Unknown Substance\u2019 - New York Times",
-        "link": "https://www.nytimes.com/2026/11/23/world/europe/manchester-don-toliver-concert-evacuation-uk.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 5,
-        "lead_ts": 1795448221
-      },
-      {
-        "title": "Finally, the U.K. Can See Everything: Nathan Fielder\u2019s Elizabeth Holmes Doc Makes British Box Office History - The Hollywood Reporter",
-        "link": "https://www.hollywoodreporter.com/movies/movie-news/uk-you-can-see-everything-holmes-nathan-fielder-film-a24-1236761013/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "THR",
-        "n_sources": 5,
-        "lead_ts": 1795439110
-      },
-      {
-        "title": "Don Toliver Concert Evacuated After Airborne Substance Released Into Crowd - Pitchfork",
-        "link": "https://pitchfork.com/story/don-toliver-concert-evacuated-after-airborne-substance-released-into-crowd/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Pitchfork",
-        "n_sources": 5,
-        "lead_ts": 1795438094
       }
     ]
   }
