@@ -1,7 +1,7 @@
 {
  "version": "2.4.0",
- "built_utc": "2026-11-25T17:38:50Z",
- "build_seconds": 29.2,
+ "built_utc": "2026-11-25T17:48:57Z",
+ "build_seconds": 35.6,
  "feeds": {
   "total": 460,
   "ok": 457,
@@ -14,9 +14,9 @@
  },
  "sections": {
   "us": {
-   "items": 100,
-   "clusters": 83,
-   "multi_outlet": 7
+   "items": 90,
+   "clusters": 80,
+   "multi_outlet": 6
   },
   "mideast": {
    "items": 99,
@@ -24,24 +24,24 @@
    "multi_outlet": 10
   },
   "world": {
-   "items": 96,
-   "clusters": 92,
-   "multi_outlet": 3
+   "items": 99,
+   "clusters": 93,
+   "multi_outlet": 4
   },
   "tech": {
-   "items": 85,
-   "clusters": 78,
+   "items": 88,
+   "clusters": 80,
    "multi_outlet": 6
   },
   "business": {
-   "items": 91,
-   "clusters": 66,
-   "multi_outlet": 10
+   "items": 97,
+   "clusters": 71,
+   "multi_outlet": 8
   },
   "sports": {
-   "items": 101,
-   "clusters": 87,
-   "multi_outlet": 6
+   "items": 99,
+   "clusters": 85,
+   "multi_outlet": 7
   },
   "culture": {
    "items": 100,
@@ -59,21 +59,22 @@
  "ticker": {
   "count": 20,
   "by_section": {
-   "Business": 7,
-   "US": 5,
-   "Middle East": 6,
-   "World": 2
+   "Business": 5,
+   "Middle East": 5,
+   "US": 6,
+   "World": 4
   }
  },
- "stories_folded": 36,
- "links_direct_pct": 31.4,
+ "stories_folded": 34,
+ "links_direct_pct": 31.8,
  "promo_filtered": {
-  "shopping": 30,
-  "promo publisher": 3,
+  "shopping": 24,
+  "promo publisher": 2,
+  "betting picks": 5,
   "fantasy advice": 11,
-  "how to watch": 8,
-  "betting picks": 7,
+  "how to watch": 7,
   "sponsored": 3,
+  "promo code": 1,
   "stock tips": 1
  }
 }
