@@ -266,8 +266,8 @@
   },
   "europeafrica.army.mil": {
     "first_seen": "2026-11-24T11:09",
-    "last_attempt": "2026-11-24T11:09",
-    "retries": 1
+    "last_attempt": "2026-11-25T13:38",
+    "retries": 2
   },
   "feeds.texastribune.org": {
     "first_seen": "2026-05-15T22:04",
@@ -848,6 +848,11 @@
     "first_seen": "2026-09-28T06:05",
     "last_attempt": "2026-11-21T22:19",
     "retries": 216
+  },
+  "thenewworld.substack.com": {
+    "first_seen": "2026-11-25T13:38",
+    "last_attempt": "2026-11-25T13:38",
+    "retries": 1
   },
   "thephoenixnews.com": {
     "first_seen": "2026-11-01T18:22",
