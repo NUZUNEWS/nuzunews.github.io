@@ -1,52 +1,54 @@
 {
  "version": "2.4.0",
- "built_utc": "2026-11-26T05:29:49Z",
- "build_seconds": 24.0,
+ "built_utc": "2026-11-26T05:39:50Z",
+ "build_seconds": 24.6,
  "feeds": {
   "total": 459,
   "ok": 456,
   "empty": 2,
-  "failed": 0,
-  "skipped": 1,
+  "failed": 1,
+  "skipped": 0,
   "direct_total": 140,
   "direct_ok": 138,
-  "failed_names": []
+  "failed_names": [
+   "Times of Israel"
+  ]
  },
  "sections": {
   "us": {
-   "items": 102,
-   "clusters": 75,
-   "multi_outlet": 14
-  },
-  "mideast": {
    "items": 99,
-   "clusters": 82,
+   "clusters": 77,
    "multi_outlet": 10
   },
+  "mideast": {
+   "items": 100,
+   "clusters": 75,
+   "multi_outlet": 15
+  },
   "world": {
-   "items": 92,
-   "clusters": 89,
-   "multi_outlet": 3
+   "items": 89,
+   "clusters": 86,
+   "multi_outlet": 2
   },
   "tech": {
-   "items": 93,
-   "clusters": 84,
-   "multi_outlet": 7
+   "items": 102,
+   "clusters": 83,
+   "multi_outlet": 9
   },
   "business": {
-   "items": 91,
-   "clusters": 76,
-   "multi_outlet": 7
+   "items": 81,
+   "clusters": 73,
+   "multi_outlet": 5
   },
   "sports": {
-   "items": 95,
-   "clusters": 83,
-   "multi_outlet": 8
+   "items": 93,
+   "clusters": 78,
+   "multi_outlet": 9
   },
   "culture": {
-   "items": 101,
-   "clusters": 83,
-   "multi_outlet": 8
+   "items": 100,
+   "clusters": 85,
+   "multi_outlet": 4
   }
  },
  "video_tiles": {
@@ -59,22 +61,22 @@
  "ticker": {
   "count": 20,
   "by_section": {
-   "US": 9,
-   "Middle East": 6,
-   "Business": 3,
-   "World": 2
+   "US": 6,
+   "Business": 2,
+   "Middle East": 8,
+   "World": 4
   }
  },
- "stories_folded": 37,
- "links_direct_pct": 24.7,
+ "stories_folded": 48,
+ "links_direct_pct": 24.1,
  "promo_filtered": {
-  "shopping": 30,
-  "betting picks": 8,
-  "stock tips": 1,
+  "shopping": 27,
   "how to watch": 8,
-  "puzzle answers": 1,
-  "promo publisher": 1,
   "sponsored": 2,
-  "fantasy advice": 1
+  "fantasy advice": 1,
+  "betting picks": 8,
+  "puzzle answers": 1,
+  "stock tips": 1,
+  "promo publisher": 1
  }
 }
