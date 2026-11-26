@@ -24,18 +24,18 @@
         "lead_ts": 1795656180
       },
       {
+        "title": "Macy's Thanksgiving Day parade postponed due to weather - ABC News",
+        "link": "https://abcnews.com/US/macys-thanksgiving-day-parade-postponed-sources/story?id=138452401&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 6,
+        "lead_ts": 1795659414
+      },
+      {
         "title": "California warns of flooding as king tides peak over Thanksgiving - BBC News",
         "link": "https://www.bbc.co.uk/news/articles/ckn806qq760po?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "BBC",
         "n_sources": 6,
         "lead_ts": 1795656175
-      },
-      {
-        "title": "Videos capture Army's detonation of explosives in Iowa - CBS News",
-        "link": "https://www.cbsnews.com/video/videos-capture-loud-boom-smoke-rising-as-army-detonates-explosives-in-iowa/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS News",
-        "n_sources": 6,
-        "lead_ts": 1795653348
       }
     ],
     "mideast": [
@@ -77,6 +77,13 @@
     ],
     "world": [
       {
+        "title": "Over 30 countries demand Russia stop using chemical agents as weapons of war in Ukraine - The Kyiv Independent",
+        "link": "https://kyivindependent.com/over-30-countries-demand-russia-stop-using-chemical-agents-as-weapons-of-war-in-ukraine/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "The Kyiv Independent",
+        "n_sources": 4,
+        "lead_ts": 1795659537
+      },
+      {
         "title": "Kim Jong Un says North Korea should widen deployment of tactical nukes - Al Jazeera",
         "link": "https://www.aljazeera.com/news/2026/11/26/kim-jong-un-says-north-korea-should-widen-deployment-of-tactical-nukes?traffic_source=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Al Jazeera",
@@ -103,13 +110,6 @@
         "source": "NBC News",
         "n_sources": 3,
         "lead_ts": 1795614855
-      },
-      {
-        "title": "Watch: How the Russia-Ukraine war tore my family apart - BBC",
-        "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE11SUp4aWdiU3pqSGtQQzFENGZLamgwdlVTSXlLemJDczlDdkdjZnVkTF9IWnBKQS1ZcWtRdWIyVVFwSGJrYkdjTWpPaG9qelNHLVN2aEx2a00?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 3,
-        "lead_ts": 1795613256
       }
     ],
     "tech": [
