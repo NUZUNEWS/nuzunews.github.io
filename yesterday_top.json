@@ -1,6 +1,232 @@
 {
-  "today_date": "2026-11-25",
+  "today_date": "2026-11-26",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Army calls detonation of bomb chemicals in Iowa a success after earlier fears of a toxic plume - AP News",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPZi1lalA4QTR1T3RxVkRDblVuYkY3SDBXV3A3bWhpaWJzN29ZT2xEWTR5b1RDMzZWUWRfdldya2R1ZlZiQ2ptLThvVjMxQmpMWUFKeFVEWnhjOGMzVUcyZDVjb3ZYa1o0RjFiYXVQSUFCczNFelNVYjQ2ZzFiOWxUSmlKdFVXWW8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 4,
+        "lead_ts": 1795650780
+      },
+      {
+        "title": "Trump proposes new tariffs on China, European Union - USA Today",
+        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQR2JDNnVSbzVwSXEzWmJYRl85QXVvYlB4TUtjQm5zWGxzQkRzNTFmMTlyX0kzVF9fWExFN3QwV28xOTZwajBMWUptaVVEWVY4UG5BUUxka21rem4yRmM2RS1RY0hQSndUTUZObmRqOXpMUWtoc2pZZ18tOGhobllFc2lXV0ppOXFGbGFKcHBaUHU4c0Q3MzJHV3VSZm1YS2pnMUFtdTNtYndibWNXdkhidnc5R1MwVy1tN3lKWVBralBxOUNuTkZTVzdR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "USA Today",
+        "n_sources": 4,
+        "lead_ts": 1795649820
+      },
+      {
+        "title": "Chris Van Hollen picks up more support for Senate majority leader role ahead of Democrats vote next week \u2013 live - The Guardian",
+        "link": "https://www.theguardian.com/us-news/live/2026/nov/25/donald-trump-jensen-huang-nvidia-pardon-senate-hearing-iowa-abdul-el-sayed-latest-news-updates?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 2,
+        "lead_ts": 1795651152
+      },
+      {
+        "title": "WATCH: Vance defends Iowa lead azide detonation as he visits Air Force troops in Ohio - PBS NewsHour",
+        "link": "https://www.pbs.org/newshour/politics/watch-vance-defends-iowa-lead-azide-detonation-as-he-visits-air-force-troops-in-ohio?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "PBS",
+        "n_sources": 2,
+        "lead_ts": 1795650709
+      },
+      {
+        "title": "Judge halts order requiring Fulton County to turn over copies of 2020 ballots - NBC News",
+        "link": "https://www.nbcnews.com/politics/elections/judge-halts-order-fulton-county-copies-2020-ballots-georgia-election-rcna611353?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC News",
+        "n_sources": 2,
+        "lead_ts": 1795646954
+      }
+    ],
+    "mideast": [
+      {
+        "title": "At least 30 killed as fuel tanker crash ignites large fire on Cairo highway - The Guardian",
+        "link": "https://www.theguardian.com/world/2026/nov/25/people-killed-fuel-tanker-crash-ignites-large-fire-cairo-highway?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 6,
+        "lead_ts": 1795649340
+      },
+      {
+        "title": "Houthis target Saudi Arabia\u2019s Red Sea ports as strikes escalate - Al Jazeera",
+        "link": "https://www.aljazeera.com/news/2026/11/25/houthis-target-saudi-arabias-red-sea-ports-as-strikes-escalate?traffic_source=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Al Jazeera",
+        "n_sources": 5,
+        "lead_ts": 1795649850
+      },
+      {
+        "title": "Iran war live: Oil prices jump 3.5% after Houthis claim attack on Saudi Arabia refinery - Arabian Business",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNeGVzSjhrbUhOTTctX0ViTkJTRnFEZnkwNTJQR3gySTJRQlk3aXNwenJ2Qk1DejVYcF84dmF4WDFPd2xKRzEwazEtOEdOb05OOFhJaXZQVTd3R2lDRHdGbTgtM1JSSEMxeFN5OTlLc0tLNE55MHlHRDZNU3lOVFBDaTJwQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Arabian Business",
+        "n_sources": 5,
+        "lead_ts": 1795644363
+      },
+      {
+        "title": "Large fire engulfs vehicles in Cairo highway accident that kills dozens \u2013 video - The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNWVFFQlo1dG9ScEZzeXQ5dmVtU0stMElUMzZUMVB5QnNmTHhyVTdxTWRHMHlQRE42YWd2Y3lIS3p2VlRJc0Jrczh1S2pNSmtMVDZZS1UyWWFCM2I2OGFzc3c1ZVQ1U21fUHJxbmhTVDM1b0dDUUxmRHJ5X1VWRVl2SWQweWJTNkl6Yy1PYkpPSTh1c2xtSkZwOWEzR2VjY2IxQ0dzWklRMmotNHk4clBncVhtWmlHR2pMSFNYVUVjVzNaYUZ5WnhrMg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 3,
+        "lead_ts": 1795645260
+      },
+      {
+        "title": "Israeli parliament advances bill that could block Netanyahu from forming government - The Washington Post",
+        "link": "https://www.washingtonpost.com/world/2026/11/25/israeli-parliament-advances-bill-that-could-block-netanyahu-forming-government/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 2,
+        "lead_ts": 1795650469
+      }
+    ],
+    "world": [
+      {
+        "title": "Angelina Jolie and Brad Pitt settle winery fight lawsuit that surfaced abuse allegations - ABC News",
+        "link": "https://abcnews.com/Entertainment/wireStory/angelina-jolie-brad-pitt-settle-winery-fight-lawsuit-138455488?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 2,
+        "lead_ts": 1795651058
+      },
+      {
+        "title": "Starbucks is said to engage banks for sale of Japan business - The Japan Times",
+        "link": "https://www.japantimes.co.jp/business/2026/11/25/companies/stabucks-banks-sale/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Japan Times",
+        "n_sources": 2,
+        "lead_ts": 1795600980
+      }
+    ],
+    "tech": [
+      {
+        "title": "Black Friday power station deals: Anker, DJI, EcoFlow, and more - Mashable",
+        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPOVZ0c3paXzBXNi1kSDZGMHZiYzU3OGFZZ1k5S0VfM1V6VzlZM01iaUxFaGJXUVNHbF9RRngyMXJNRHdBZlVJckZmTzNCRXlfUGhkZGF1MmZUQjB5Rk9POUVUNTFWbFNzOHNFT2M3RzgtUzdHUVNsdWE2dWdHZFF6Qk9nVHNVZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Mashable",
+        "n_sources": 5,
+        "lead_ts": 1795647340
+      },
+      {
+        "title": "China sends first foreign astronaut to ISS rival as it globalises space operations - The Guardian",
+        "link": "https://www.theguardian.com/science/2026/nov/25/china-sends-first-pakistani-astronaut-into-space?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 2,
+        "lead_ts": 1795644240
+      },
+      {
+        "title": "China launches Shenzhou 24 spacecraft carrying 2 Chinese and 1 Pakistani astronaut - ABC News",
+        "link": "https://abcnews.com/Technology/wireStory/china-launches-shenzhou-24-spacecraft-carrying-2-chinese-138427131?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 2,
+        "lead_ts": 1795603342
+      }
+    ],
+    "business": [
+      {
+        "title": "In backing Nvidia\u2019s Huang, Trump deals his China hawks a setback - The Washington Post",
+        "link": "https://www.washingtonpost.com/politics/2026/11/25/backing-jensen-huang-trump-delivers-setback-china-hawks/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WaPo",
+        "n_sources": 9,
+        "lead_ts": 1795649647
+      },
+      {
+        "title": "Jensen Huang\u2019s message to Nvidia: We don\u2019t need a Plan B - Business Insider",
+        "link": "https://www.businessinsider.com/jensen-huangs-succession-message-nvidia-we-dont-need-plan-b-2026-11?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Business Insider",
+        "n_sources": 7,
+        "lead_ts": 1795647425
+      },
+      {
+        "title": "Asian Stocks Set for Gains After Late US Rebound: Markets Wrap - Bloomberg",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPeEQtTUQwY0ZyTEpubU1fOUV6eVQzR2llam9uaF9UUnQ5LVNvcWJFT0dRYW9NRHM2cDQtYkpaOF9rS1ZuVE8zaDhmYWk0S1IzdU1sOER5aWJLOTQteFZFTjRkMUJwUTdta0ZnemNITTBEa1VVb1c1MGJkUnZoMFRKNDZjM1d6SDBqZ1g2NDZTenZfSEZK?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 2,
+        "lead_ts": 1795648825
+      },
+      {
+        "title": "Wall Street recovers most early losses as pullback in AI stocks eases - AP News",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQdVFZQmxpUGVXLUtXYzR6ZzYzX0Njd0I2bzBVbkJMb2JhcDJkRHJnVGV5eC1Ma0o2djdvZUhROXVpYjRzbTVQUGliYlRINU1kdnJVOXpRd21KdlJYcFQySlR5aWRCc0ZLMjZESjdYOWlrZEpiR0owcTRILVhqNVZZeGtweUNoM21XQndPZEl4Ym1OeTQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "AP",
+        "n_sources": 2,
+        "lead_ts": 1795647900
+      },
+      {
+        "title": "Bitcoin holds up better than ether as stocks slide, ETF outflows hit sixth day - CoinDesk",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNUFhzaDdWajNwYTlhWGl6LVlQazYyckdleTJWYU5KNW9XdmdHTkJWODhNM1FtUlFGMmU3eUtMZmprRS0yTlR1U3hmbFFLdUd1TEoybXBnSUhHeVhNRDI4Q2VtTUlFYkFXcTh1UzdiZjNXZFNZRnNOZVFObVM1TWFFVVNQbktpRmdzVzQ0YzBSVFA3XzNuQXJGQktWLWFyWHdXZTh5cjJNR0FBc3I0RndWeWpB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CoinDesk",
+        "n_sources": 2,
+        "lead_ts": 1795607870
+      }
+    ],
+    "sports": [
+      {
+        "title": "Sporting 2-2 Man Utd: Mauricio Pochettino denied first win by Senne Lammens howler in Champions League - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPX3dhNkRtdDg1bmhNbk5aUUhaaFp1WVJHWk9ZbWdOaTZTakpmNHAwRjlfc2ZaSTk5WXNLOWpEVWxVNnQzbmlFUlBraUtjR1Y3TVRpcGtmWjlla3M5Zm5pN0l1X1VVMWo4aFpidzZ1bk8ydG55QU4zd1I5a25XYlVNT1AtMDJlbnJtSnVPa0VzRmFFZFFMdWJZSm1WSDZxZ29FbHU0VE1KbjBLUXM5Rmx5Y1pRMzhldm9pUlN6N3NSalVlOWxlQnFRX1pPbW8tU2xHRkJrMWFVc0FZbGd2dTllck9jVHY?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 5,
+        "lead_ts": 1795650497
+      },
+      {
+        "title": "What NFL games are on Thanksgiving Day 2026: Schedule, TV channels, live stream info, kick off times - NBC Sports",
+        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOeGVVa2xldUp2MGVHT3Z6b1N5YmVuY0hTYVFhV0RkTTlmMDlLWGlVT1hNZDIyTHZtVHhJTkt4Z0RxWkJyWVl6Y2N1eWdyRHhxRHlZM2prSlprcFdLT3NWQndUVklvaWpCd3FkZlNHSUYtV3M4dlZEWlg5Q2FTeFN5SHpLUEZFLXpqNFM2bE14SWYydDZwQ2Q3dk1BN2JaRktSMUpHRHhnTUo5bzFZWnluUGlrdldkaGZ3Qi1hUElzWkN1SUxOS3ZPdGQxNA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NBC Sports",
+        "n_sources": 3,
+        "lead_ts": 1795650756
+      },
+      {
+        "title": "Aaron Rodgers released by Pittsburgh Steelers after accusing head coach Mike McCarthy of 'sleeping in meetings' - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNWlhIU0hkbU85eVRhQjZGTnZ2d01sNTVTdEhTamZReXQ0UjdxUEQ4d1dzbGJ5ZWZrZHJ4UTVmZGxGYXZVMkpQRExsSks5WTd3QVBGN3N2ZEFvQndhZ0pVek5QUHh4YWRITmRjWEtyQXBvSUJFWk10VjZwNE54RlJrN2FONWZYMWRaT213SFp5RkpGbnIwYnhZLXgtMzdlS3FYZ2NZaHNNQnZXUmlUdkNlWEpNRWNyS0g0alBfeGdOQXJtLTRhR2tiNFBHeW82TC1ST1Q5cVo0bWhac2czMEhMU09mYUU1YVU3MkVfUVhNbE8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 3,
+        "lead_ts": 1795649910
+      },
+      {
+        "title": "NCAA women's volleyball bracket predictions: Who's in 64-team tournament? - USA Today",
+        "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOY09qaVo1VkNycTZrblJicW5pU0ZKV29PMldXNGRkRGlKYnlta2RfZzdzRzNQaV8tdG5tLS1fUHdWYWEyRTVyc0JtWExhNmNhZDFXN0pfREdZc0c4WDdmR3h1VmU5QS0wdElmSEdMZzdDSXIwMFZndDVoLVJackJHR2ZkbmNfZkRjWFJPNElHLXY4WU1nTW9zeU9JR2RzbFM2dXl5MkU1NUc5emlsZl91OVJ6MUhjNGdkV05aWUduZENSb3JMMGdJYzhwNXlDZkZ1a0JDNEdHWVlUc3hnOTBQR0Ryaw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "USA Today",
+        "n_sources": 2,
+        "lead_ts": 1795604760
+      },
+      {
+        "title": "Connelly, Eichel power the Golden Knights past the Oilers 5-3 as Edmonton skid continues - ABC News",
+        "link": "https://abcnews.com/Sports/wireStory/connelly-eichel-power-golden-knights-past-oilers-5-138431377?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 2,
+        "lead_ts": 1795594773
+      }
+    ],
+    "culture": [
+      {
+        "title": "British show Top Gear revived with Gordon Ramsay as new host - CBC News",
+        "link": "https://www.cbc.ca/news/entertainment/top-gear-gordon-ramsay-host-9.7435980?cmp=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBC News",
+        "n_sources": 5,
+        "lead_ts": 1795636240
+      },
+      {
+        "title": "Duran Duran guitarist Andy Taylor dies aged 65 - France 24",
+        "link": "https://www.france24.com/en/culture/20261125-duran-duran-guitarist-andy-taylor-dies-aged-65?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "France 24",
+        "n_sources": 3,
+        "lead_ts": 1795649820
+      },
+      {
+        "title": "Taylor Swift\u2019s Former Music Teacher Speaks Out About Controversial Vanity Fair Article, Says Her Praise Was Left Out - IMDb",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5tSDl3cVlVbTAxSFFLc013WTA5NnVSdDZtRnlPN0llMk1QNlViN3JZTTk3ODhlUG8tNFlHOEE0YVVJNk84TDAwNjg4OGFXZ2kzSzZRR0REOERXc3BwY0pIYXJkbmxDblE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "IMDb",
+        "n_sources": 3,
+        "lead_ts": 1795641572
+      },
+      {
+        "title": "\u2018You Can See Everything\u2019 \u2014 Except, Perhaps, the Truth - Atlanta Jewish Times",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNaVpXNWszLUVCNFFJN2VuM2pzTmdtdkFPOGYyYmVqbi1fX2xwd1lDT0hVUVNiRmZqZ2FObVNtY1p1TnNpYXltVlhWMmhFRGpTRC1XY1Q5WE91eVVBOTFxTzk3SzU3bzBKTmcxUFJtTDI0Z3BNYTNVME1yU1Fsa3ZYWVlhTndnOFAtTURz0gGQAUFVX3lxTFB6VUxFNDJIRVhFcGo1NVVmaGQ4UV9DSGlJTFdNVHBMRmVNZ3luelR3Z3czSzNzVWNJMVY5ZzZ4YnVOYkVLWDNsY2dKNW0yOUttWGx3SjhRXzA3bktLLTNkSXlzVkQ1d0ZRVG1VX3ZEYWRRSExjNUQ0cnhsV2NmVnFMT2laTkRjUDVOSU9OM21LaA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Atlanta Jewish Times",
+        "n_sources": 3,
+        "lead_ts": 1795638738
+      },
+      {
+        "title": "EXCLUSIVE: Presales per solid sources for Disney/Marvel Studios\u2019 #AvengersDoomsday are well ahead of $100M+ before the pic opens on Dec. 18. We learned this as the Anthony and Joe Russo directed movie has hit NRG tracking with $270M, the highest - Facebook",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNRG9STHZWUTZJb0paZW1rOFV5MGViaFp3VXZSOFRXU0V4N1B6S1VUM2djdFZTcTR2R2tFWEpmWHU0ajhpLVJTbTZkQjg5aHE3SHVCVlhyNWdRTVBraE1aNEtDVDBRc1ZyVHFLNkY5aXNpeVBhR0h2dFVnM1liaGpIRDZaR2Z0ZloxNUZic29nUE1zU2xLTVhXSlM5OVUwY2RZeFR1VmNKUFVEZzFDaUQxZmhERFV1eDdBLUVSVG84TVFsa2RMcFJLd3RZSjBHSFVORnhqbw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Facebook",
+        "n_sources": 2,
+        "lead_ts": 1795650620
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "Huang's return to Nvidia brings open-weight AI debate to forefront in Washington - Reuters",
@@ -258,267 +484,6 @@
         "source": "BBC",
         "n_sources": 4,
         "lead_ts": 1795628908
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "Trump's intervention on behalf of Jensen Huang gives Democrats another 2028 target - WKMG",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQRWdRa2VsN2ZGWFZMR2IxVzNVWUJIU2JjNWFYeUc5WnB3LTRtbF9BamhENHNlVERETEh6UzB1RS1jcENCV3Jpdy1GbUxyQjJvSG54a3cxMUNVOVZacFhUTnpfTDJRMGpMLUNnLVpmVXlHM3pPaE1jUy1PemVydTE1ZDFFTV9WTTZOY1M2QTc5dEZLVmRvTzFxYU1XSUZITElEWnI4TUNlLUxYRnJsSE1TVjdkaDZzdnVPTTNBRElaLVo1cHJYRGYwZE1YRDQyQnpxbGc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WKMG",
-        "n_sources": 44,
-        "lead_ts": 1795496475
-      },
-      {
-        "title": "For China, Jensen Huang\u2019s Return to Nvidia Is a Mixed Blessing - New York Times",
-        "link": "https://www.nytimes.com/2026/11/24/world/asia/jensen-huang-nvidia-china.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 41,
-        "lead_ts": 1795521330
-      },
-      {
-        "title": "Democrats hit out at Nvidia and Trump over Huang\u2019s return \u2013 US politics live - The Guardian",
-        "link": "https://www.theguardian.com/us-news/live/2026/nov/24/donald-trump-nvidia-jensen-huang-republicans-democrats-china-latest-news-updates?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 38,
-        "lead_ts": 1795526221
-      },
-      {
-        "title": "Nvidia's position as cornerstone of AI trade confirmed by market reaction to Huang's return - France 24",
-        "link": "https://www.france24.com/en/tv-shows/business/20261124-nvidia-s-position-as-cornerstone-of-ai-trade-confirmed-by-market-reaction-to-huang-s-return?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "France 24",
-        "n_sources": 37,
-        "lead_ts": 1795516584
-      },
-      {
-        "title": "Republican lawmakers are in revolt over Jensen Huang\u2019s return - The Economist",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQbEZHYk1aU3pnWkgwNEVlRm82VllxeEFhR3dhQUQwQUJlRm5ScnhvdXNQM21ROHNWb3FjZ0hiM2E3dnEyQmxhb1hLX1hUWTllVU5tTWRuUC1ZMXpOY2ZaaExXSjZQS0dfMnpUaU8wdk43UzFjcm5pVW1DZmlKNHZ0eWN3MkU4Ump1Q2E5YkFJUTRqVGVoTFZVclRXbFN2a2R3Y0hwVUNzSnNhZGE5MTF0Qg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Economist",
-        "n_sources": 36,
-        "lead_ts": 1795523852
-      }
-    ],
-    "mideast": [
-      {
-        "title": "Russian attack kills two people, wounds 22 in Ukraine's Zaporizhzhia, official says - The Hindu",
-        "link": "https://www.thehindu.com/news/international/russian-attack-kills-two-people-wounds-22-in-ukraines-zaporizhzhia-official-says/article71737237.ece?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The Hindu",
-        "n_sources": 9,
-        "lead_ts": 1795497051
-      },
-      {
-        "title": "Oil Futures Post Weekly Losses on Rising Middle East Supply - WSJ",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPcVBOSVRMajQ2dG1xZGpJSFdUY21QeURFN3NpV21KeTBZRmFaaXU1ZEFZWVJjc2lqWk1yUkp1TGlZQ0JNX2dmdi15Nlc5aHZFSzhRdVpxOWVHYk90bjdkekxxU1lLa2h2eEFOaTA3SmJUbERUM1BudzhGYWRxeUsyLURFM1ZKMUdtTWxpSmF5TklJVnkzOXZz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WSJ",
-        "n_sources": 8,
-        "lead_ts": 1795521781
-      },
-      {
-        "title": "Ukraine confirms it used naval drones to strike two Russian ships off Libya - The Guardian",
-        "link": "https://www.theguardian.com/world/2026/nov/23/ukraine-naval-drones-strike-russian-warship-libya?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 6,
-        "lead_ts": 1795487400
-      },
-      {
-        "title": "Zelenskyy says Ukraine sank Russian warship off Libya's coast - CBS News",
-        "link": "https://www.cbsnews.com/news/ukraine-zelenskyy-2-russian-ships-libya/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS News",
-        "n_sources": 6,
-        "lead_ts": 1795483255
-      },
-      {
-        "title": "11 injured in Houthi drone attack on Riyadh tower, Saudi civil defence says - Al Jazeera",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQT3JsaU96a05ySk9rVHZIazNjQmt6Z2ZCZF9nRWFSVHVqa0s1LVhhRXhVc1VSMjNfWHhQTVZyZU9GZEtsZHRRVU5yVGVUYmVwZkRDNC1iSmYyWDc0UTdhV2pOenhuWDFkQ0ZWWkhwcTFoN2tsU3JjcllUWWJkcDBvUHU4MTAzSi0zX05oM0NLQVpua1VFNmJfcWE3cmh1al82V29SdDhCSkc4d9IBrwFBVV95cUxPQ1M5eHo1Rk9NaE5DM2hNbGF1akUxczVaekNKRWRUN3JxZ0ZJd05TYno2b2o2bVU0ZWJxWE5GWE5kT19lRHR6Z3k0TVpkaXFuY2dBMXNmaFE2YWpubno0VGZFUFlEbEJqY2NKODVWX09BVUpEUGZTXzRrY3RZWi1YUFdtaUN2amFOSm1sNXJRRzA3TW84Sk0wcUJYN1NCSEpKbV9ZZk8zNUtZSzJVdjFV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 5,
-        "lead_ts": 1795555995
-      }
-    ],
-    "world": [
-      {
-        "title": "Zelenskyy says Ukraine sank Russian warship off Libya's coast - CBS News",
-        "link": "https://www.cbsnews.com/news/ukraine-zelenskyy-2-russian-ships-libya/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS News",
-        "n_sources": 8,
-        "lead_ts": 1795483255
-      },
-      {
-        "title": "China\u2019s Huawei convicted in sprawling US criminal trial over Iran business - Al Arabiya English",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQaExJNVU1dnFfcThWa2dGU2hmUEFCamE3M2dwVF9QY3ROQUtZNzJZZUN3eVUwSGZhZHpoUFFtSHBidXg1T1VuUjV2VjRTb25FRU5QUGNKckFnYlY5eXdRSXFZbm9naVV2cWZtN0h1bkJHelJnOGYzdFJ0X3RlNWpPRzVubHFQLURNb0lQRTlkU3hCNUp6S29ERHllM01SNTBQZ3NYbXhfTHlzbFh6a3JWNzZuM1ZoNWtDdEh4TkpjTnhET1QyZFBVcDZTSlQ3enRwa1HSAdcBQVVfeXFMT1hsWlNVTkEwTEtyazJyR3FKalR1MU1DcE5JYjFOX3Y1ZnFmOWV1RWZyQ3M4MDVtdkVlQk1IbHhwVmVoSnFUMk9PMXhOUXdvMjdxSDVzNXkxdzYzMk5JdUxZZXJjV216MHZvRnRUMTk4aklQSFdiZkNrRkEyc0lDU0UwaUppNXhHZi1IeFFHMU1uekRlZzc1OUNhYXBabmVaNGlfSHg3Sk9VemJDNDB5YUYtZzE0cS1JVFhwbk4xQ0RzZ09ia1I4el9FYTY5aklsN1NRVWhtWlU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Arabiya",
-        "n_sources": 7,
-        "lead_ts": 1795557000
-      },
-      {
-        "title": "China's Huawei convicted in sprawling US criminal trial over Iran business - Al-Monitor",
-        "link": "https://www.al-monitor.com/originals/2026/11/chinas-huawei-convicted-sprawling-us-criminal-trial-over-iran-business?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al-Monitor",
-        "n_sources": 6,
-        "lead_ts": 1795560392
-      },
-      {
-        "title": "Russian drone flies into Poland during overnight strikes on Ukraine, Warsaw says - ABC News",
-        "link": "https://abcnews.com/International/russian-drone-flies-poland-overnight-strikes-ukraine-warsaw/story?id=138403724&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ABC News",
-        "n_sources": 6,
-        "lead_ts": 1795514065
-      },
-      {
-        "title": "Ukraine confirms it used naval drones to strike two Russian ships off Libya - The Guardian",
-        "link": "https://www.theguardian.com/world/2026/nov/23/ukraine-naval-drones-strike-russian-warship-libya?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 6,
-        "lead_ts": 1795487400
-      }
-    ],
-    "tech": [
-      {
-        "title": "OpenAI Engineer Secretly Recorded Dozens of Meetings, Prosecutors Say - New York Times",
-        "link": "https://www.nytimes.com/2026/11/23/technology/openai-engineer-secret-recordings.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 4,
-        "lead_ts": 1795554565
-      },
-      {
-        "title": "The best Black Friday streaming deals from 99 cents: Apple TV, HBO Max, Paramount+, Peacock, and more - TechRadar",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPLW1fTzJlYS1PZlFpUng3QlhrT0wzS0JkX2NEUXIxbno2Um1RR05taFduc2FCeUN4YWVxVVRiUzJOSXBnbmtKN0FCRkQ0TnRPZ2tmLUhUZmtyd0ZNRTUzR040MDkxTVJ2WVV4NXFBaDhKamJGSXdSbG5pZGYwYVFxMUNjM0tQUUlF?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TechRadar",
-        "n_sources": 4,
-        "lead_ts": 1795519829
-      },
-      {
-        "title": "Congress to grill Jensen Huang over ties with China and Trump\u2019s intervention - The Guardian",
-        "link": "https://www.theguardian.com/technology/2026/nov/24/nvidia-jensen-huang-congress?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 4,
-        "lead_ts": 1795514414
-      },
-      {
-        "title": "US adds Megaspeed, firm at centre of Nvidia scandal, to export control list - Al Jazeera",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPUzQzaW8ybWpocDRMUXdIRU1XWXk5TmZEa0F4VG10U19qamdObWdpMDFKeFNsdWMtRlI2RDRxUDllUm9WaTEyVlc3MllMZWZueVRIWGtVTTZJdVhyQm1DbnVaNU1YMkRhbHdKQUxRT3FOQ2dXOXR4LXlnNXBNVkpKeE9hQlRzbHhLbWJHdlMydHllMGJMamNCVm04TWwxUUtRTXhhQUZoY3ZONURYVHFpdDliWWRONGR1NHfSAb8BQVVfeXFMTUtjTm5TTXAxUTFsSERQWTlKQ1c2NDd0NVJDa1dBTm1fSEJyZ2hGZTRJX29YamI4TFB1TUJiY0hoTjQtWk41aUpObzFGX0E5QVBCNFZUNzFyNHh6c2JkcU90MWxXZVE3WnpZOFdlR2VCU1MwemJvTGVOZTJLLXZUY201N0hVc0RhYjUyejluZ0U5UDhZZ2MyeU1MbXh6RkpJSUx5dmtub2F5bW9GZFF1Z0JJQTVOeGNvLXk0cHhMam8?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 4,
-        "lead_ts": 1795481858
-      },
-      {
-        "title": "UK financial watchdog delivers AI warning as Meta launches adapted Muse - Reuters",
-        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQa3dIeGlGcm82OGVfY2ZzWWFXY3FWZ3RVTWFyZV95dlN2a1NWTWhiV19OX1A2OVBTNFI5dGF2dzVMQVhmNjdxa2taQkpHeUpJZnVxTlNZYmZPVFJXYkdxYTNzLTVxTHVfSVVOU1pNbFBUU3BMYzNCZ290d3RIN0RzbE8xekZxNGRBTVdYZlY5UlVpMnJFMFdSNlE5WkpENThvSlVCZjE3eXdMY0ZqUkNSYkxQeGxLMlVJZ19XaGg4NkVDcVU?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Reuters",
-        "n_sources": 3,
-        "lead_ts": 1795556615
-      }
-    ],
-    "business": [
-      {
-        "title": "Huang returns to Nvidia: What it means for Europe's AI stocks - Euronews.com",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQV3NFS2xNMTBvMzRTQzgwYWduYktVWkgyTVl0ZFI3d2FqdTBMUFhhUkcwYUZtZ1h6Qk9rcTBFT0o1TzdJTUpIcWVPYjNJMzZhWGVCV05XQUExVzR0TTFTZjFhaENwVW9SLXB6Ync1X09KYmQ4VWJPQ09WV1lXOFhTWDFfaTlGMjZmemNIMXRFUTctQ2hrd0lGUVU4Xzh0a0JOd1NHNHpFdUR3UQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Euronews",
-        "n_sources": 43,
-        "lead_ts": 1795499241
-      },
-      {
-        "title": "Nvidia reinstates Jensen Huang after Trump speaks \u2018directly\u2019 to board - The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOQmNHaTN2YnhWcEZ0QVVkbkdNamZzRU5VWFRYd0JhaDVpaEpveDRzc2F6X21RS1lqZjIxbVZUaXhsYllvelpqQjdfYWtuYm0yVUV4eEdoT00xNV9aalVLSm9SNFVReTZQVXpqU2Z5WXBwNHo0RDBfY2FuaENWUy16UHNPU1E0eV9pUGN5VlByS0RzM09BS1NVQ3FlbENIMjB6WkcyQ2lOb3BRUldJZHJBdW1Ebm8yZVk?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 42,
-        "lead_ts": 1795497863
-      },
-      {
-        "title": "Why Taiwan\u2019s chip industry welcomes Jensen Huang\u2019s Nvidia comeback - South China Morning Post",
-        "link": "https://www.scmp.com/tech/big-tech/article/3375627/why-taiwans-chip-industry-welcomes-jensen-huangs-nvidia-comeback?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "SCMP",
-        "n_sources": 41,
-        "lead_ts": 1795518011
-      },
-      {
-        "title": "Jensen Huang Returns to Nvidia: What We Know | Tech Today - CNET",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOcFB2LWpreHZoLU9McVlreldmdDB4QjNReEJ3NDJmVEN4SC1MX3dSaGRSWExsbk56OWVCbmJvX1JxX3dUY3Z5Vnp3TlhBRHo0T3owSGhKS3FNeU9ZazRjMzZhZlVhYkNfOFlYMjVnQ3NMbjc5V0NtU3pWZ2l5M1dpYzBaWlk3NjkwamF3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CNET",
-        "n_sources": 40,
-        "lead_ts": 1795515715
-      },
-      {
-        "title": "Wall St futures dip as chip stocks cool after Nvidia-fueled rally - KELO-AM",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPWEtTWEMtUmE4T1pRd1JaSkI5cDNoTHhyR0s2OWxLNVR6UWtCb3Badzk5YUpCaFE3OTlNcE5SeGlnTERyZ3NVZ0xrdl9yYmdoVEhualBpT0Z1a251aEd6UE1kLVNPRlVIRG9HanNZQUVMdUJwLUxQdmxSdnNtRE5ZdFI4cDJ6MWFxd2ttZGxOZnhCSEhEWGJWeEJR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "KELO-AM",
-        "n_sources": 38,
-        "lead_ts": 1795518620
-      }
-    ],
-    "sports": [
-      {
-        "title": "Jayden Daniels rallies Commanders in final seconds to set up winning kick in 22-20 win over Bengals - ABC News",
-        "link": "https://abcnews.com/Sports/wireStory/jayden-daniels-rallies-commanders-final-seconds-set-winning-138400250?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ABC News",
-        "n_sources": 5,
-        "lead_ts": 1795504461
-      },
-      {
-        "title": "\u2018Celebrate, inspire, unite\u2019: UK confirmed as host of 2035 Women\u2019s World Cup - The Guardian",
-        "link": "https://www.theguardian.com/football/2026/nov/23/uk-confirmed-hosts-2035-womens-world-cup-fifa?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 5,
-        "lead_ts": 1795487400
-      },
-      {
-        "title": "49ers release WR Brandon Aiyuk, finally ending messy divorce - The Athletic - The New York Times",
-        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOZ3pfOEVZOGloTjZXdzkzMHRweENHazVkV3o3Z2ZsNWJhRWpVSHdFREwtaWNzbG9qUlo4RkMwbFhPa2pleWl6NUItU1lRYkdwUkFUTUhHNUF2cDI0UkN3eHVGSWJuam9FRmxBMmxiWmhBak9rZHRXOG1vWnBrdVpvc18zZnhSTlgwNEhNWE5YcndweG9P?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 5,
-        "lead_ts": 1795471753
-      },
-      {
-        "title": "Commanders beat Bengals on last second field goal despite clock issue that ended 'Monday Night Football' battle early - Yahoo Sports",
-        "link": "https://sports.yahoo.com/nfl/breaking-news/article/commanders-beat-bengals-on-last-second-field-goal-despite-clock-issue-that-ended-monday-night-football-battle-early-053920796.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 4,
-        "lead_ts": 1795498760
-      },
-      {
-        "title": "Studs and duds from Commanders' critical win over Bengals - Yahoo Sports",
-        "link": "https://sports.yahoo.com/articles/studs-duds-commanders-critical-win-052201726.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 4,
-        "lead_ts": 1795497721
-      }
-    ],
-    "culture": [
-      {
-        "title": "Miley Cyrus celebrates 34th birthday after wedding weekend: 'So grateful' - Yahoo",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQWEM5ekw1aFphZ1hvSElRQVZRSVFtZ2ZiQWJmamRqZFk5MmFUOTMwZDU4OUhQZnlyNEdVekVjSzJVSDNjTEduRXl1U05Ba0p0UEUzLXVnOEV5YlBwS2poWnRGMTRsc0dKQmtfT3dvZUkyREhkSXhpQlFEY1A4LTFTRnROcldiRnk3SEhrcFh2b1FIRkk0MmlKWERWeFM2cEtfQkVlQV9pYWdWUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo",
-        "n_sources": 6,
-        "lead_ts": 1795497060
-      },
-      {
-        "title": "Taylor Swift\u2019s former classmate speaks out on her viral Uggs comment from \u2018Vanity Fair\u2019 piece - Entertainment Weekly",
-        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPMlp5NTIzU3Y0RzRGSzAzNi0zbjJTUmlxZGFfemRYNlVQQ1V1TzFMWDVSV3Z0Ql9ETk5DTVBraHkzQXFoeHpPajkzZ2JhWE1tZ2tETHdfU0doSjR4SXphcU1hQVM2YUlSMVdQd0NLSjYxd2JGRXc4S3JfREVnak9ESE1PTUpSY05BblR1MWFpUkFoYXM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "EW",
-        "n_sources": 5,
-        "lead_ts": 1795562696
-      },
-      {
-        "title": "Vanity Fair\u2019s Harsh Taylor Swift Expos\u00e9 Takes Aim at What She Did With Her Feet in High School - Parade Magazine",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOdl9nTjJmQVIta014UlJFSzFxYlVIQ0Vla2Q1OFJOckZTZWVQclRfT1pQU1JTSlZ1WEF6UU5LT0Q0aENzWDI3dHNxVGdpTTQ5dGwteVRYbnBpaHpfbF9kU0VJVmtaQWo1LVpCaFZMTkR4REh4YTFkc0FkSFEtbV9IVXVySkZ2bi1JTnBOX0hmam0xVm9zX3lnREJuVWRIQ2lKcHZGWElKb1g4TWVMTzAtVnhmVGY5cFlq?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Parade Magazine",
-        "n_sources": 5,
-        "lead_ts": 1795491076
-      },
-      {
-        "title": "Decoding All of Vanity Fair\u2019s Code Names in Alleged Taylor Swift-Inspired \u2018Mastermind\u2019 Article - IMDb",
-        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5SUVlEZFBMRkc3dEtGU2NHZktwWjVqQmJFZkctZ1lNNUZ5NGg0Wk0xTDVRSFlUN256aXRNU0c2cEVqT2Qxd0ZaQWNib1AtZkxRd1I2RllWaklPLWFGNkR6dlV0RFZtRnM?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "IMDb",
-        "n_sources": 5,
-        "lead_ts": 1795488132
-      },
-      {
-        "title": "Taylor Swift\u2019s former classmate breaks silence after Vanity Fair \u2018hit piece\u2019 Ugg boot claims - Nine.com.au",
-        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQR19wR0hFcWxXal92UEJqUlJMeWxYbUdBWjBBek9LTG1UeU9vSlUxeGx1MnpDeG5tSTVQR1BmUjBkZng2d0NDVld4TDJpdnpoYzNjdWFsOVVhQ2dIOXhQT2NHNnluMGNoVThrbU9zb1NPTy1JSXctLWpyZ3FoNTNtdXhjWVBOWXlDckNzaDdlcm52ZUFlMWVaTkRqMmZqNEhUMHI5M1VhaDZ0V1l2ZGVQOTJhckVRY0xpRjU4TnVJeGtNRE5Ea05RckR1TURoUQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Nine.com.au",
-        "n_sources": 4,
-        "lead_ts": 1795559444
       }
     ]
   }
