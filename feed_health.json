@@ -1480,8 +1480,8 @@
     "last_fail": 0
   },
   "https://news.google.com/rss/search?q=site:sportingnews.com+when:1d&hl=en-US&gl=US&ceid=US:en": {
-    "fails": 1,
-    "last_fail": 1795702628
+    "fails": 0,
+    "last_fail": 0
   },
   "https://news.google.com/rss/search?q=site:channelnewsasia.com+when:1d&hl=en-US&gl=US&ceid=US:en": {
     "fails": 0,
@@ -1792,7 +1792,7 @@
     "last_fail": 0
   },
   "https://www.france24.com/en/culture/rss": {
-    "fails": 1,
-    "last_fail": 1795702629
+    "fails": 0,
+    "last_fail": 0
   }
 }
