@@ -1480,8 +1480,8 @@
     "last_fail": 0
   },
   "https://news.google.com/rss/search?q=site:sportingnews.com+when:1d&hl=en-US&gl=US&ceid=US:en": {
-    "fails": 0,
-    "last_fail": 0
+    "fails": 1,
+    "last_fail": 1795702628
   },
   "https://news.google.com/rss/search?q=site:channelnewsasia.com+when:1d&hl=en-US&gl=US&ceid=US:en": {
     "fails": 0,
@@ -1768,8 +1768,8 @@
     "last_fail": 0
   },
   "https://www.timesofisrael.com/feed/": {
-    "fails": 52,
-    "last_fail": 1795684177
+    "fails": 53,
+    "last_fail": 1795702632
   },
   "https://www.france24.com/en/sport/rss": {
     "fails": 0,
@@ -1790,5 +1790,9 @@
   "https://www.space.com/feeds/all": {
     "fails": 0,
     "last_fail": 0
+  },
+  "https://www.france24.com/en/culture/rss": {
+    "fails": 1,
+    "last_fail": 1795702629
   }
 }
