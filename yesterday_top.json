@@ -10,6 +10,13 @@
         "lead_ts": 1795653348
       },
       {
+        "title": "Army detonates toxic explosives at Iowa plant despite concerns - CBS News",
+        "link": "https://www.cbsnews.com/news/iowa-army-ammunition-plant-unstable-explosives-detonation/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS News",
+        "n_sources": 4,
+        "lead_ts": 1795654237
+      },
+      {
         "title": "US Army says controlled blast of explosives in Iowa was 'huge success' - BBC News",
         "link": "https://www.bbc.co.uk/news/articles/cwg7l5ve251ko?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "BBC",
@@ -29,13 +36,6 @@
         "source": "USA Today",
         "n_sources": 4,
         "lead_ts": 1795649820
-      },
-      {
-        "title": "Inflation remains uncomfortably high for consumers - Dallas News",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxONWVLUy10T1pJRVo5UzNzMzRNZW9VUW0yeXlfMWtjZVNMUTNQYmxpTHRHZ2JPQTFBRFRZRXFmVWVPRVJGdlNDdmd4M0xyTFZxTjFSX3QwTFhVZlREb3VHbXQ1VW5Kd1hWa056dnJsRHhsQWNUVGlodGJacXJvN0ZNTFQ4ZjZoM0hGMzhxWS1BeVg2RC0zY05wZHhrcUNaVk00eGhBbndZT3JXN0RienVXRw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Dallas News",
-        "n_sources": 3,
-        "lead_ts": 1795652415
       }
     ],
     "mideast": [
@@ -68,14 +68,28 @@
         "lead_ts": 1795644363
       },
       {
-        "title": "Israeli judges advise prosecutors to drop some charges against Netanyahu - Financial Times",
-        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPQ0dteFhYU0R5SElzaXN6cjJ1X0dNZ0VrYVVxTXlnZTFBUWpTallsV1A0YkZ2MmhLTWREUmN4eWw2MnlGbktBYTRaaGhLaTJ3b09DVUVnYnkxdEhfVFlFUDhraW90MnJnVVlwZXE5S3RpNDFuajJjMlBpeFM0Rkp2azRuN2s?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FT",
+        "title": "Large fire engulfs vehicles in Cairo highway accident that kills dozens \u2013 video - The Guardian",
+        "link": "https://www.theguardian.com/world/video/2026/nov/26/large-fire-engulfs-vehicles-in-cairo-highway-accident-that-kills-dozens-video?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
         "n_sources": 3,
-        "lead_ts": 1795648728
+        "lead_ts": 1795653876
       }
     ],
     "world": [
+      {
+        "title": "EU unveils \u20ac50 billion tech fund to challenge US and China - Euronews.com",
+        "link": "https://www.euronews.com/2026/11/25/eu-unveils-50-billion-quantum-industry-investment-plans?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Euronews",
+        "n_sources": 3,
+        "lead_ts": 1795609649
+      },
+      {
+        "title": "Anthropic's first data centre in Australia given environmental approval - ABC News (Australia)",
+        "link": "https://www.abc.net.au/news/2026-11-26/western-downs-digital-park-federal-environmental-approval/107428970?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 2,
+        "lead_ts": 1795654131
+      },
       {
         "title": "Brad Pitt and Angelina Jolie Settle Bitter Winery War That Detailed Abuse Claims - Rolling Stone",
         "link": "https://www.rollingstone.com/tv-movies/tv-movie-news/brad-pitt-angelina-jolie-miraval-winery-war-settled-abuse-1235664703/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
@@ -96,20 +110,6 @@
         "source": "Barron's",
         "n_sources": 2,
         "lead_ts": 1795646640
-      },
-      {
-        "title": "EU unveils \u20ac50 billion tech fund to challenge US and China - Euronews.com",
-        "link": "https://www.euronews.com/2026/11/25/eu-unveils-50-billion-quantum-industry-investment-plans?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Euronews",
-        "n_sources": 2,
-        "lead_ts": 1795609649
-      },
-      {
-        "title": "Russia's own figures show it has lost nearly 500,000 people in Ukraine war - BBC News",
-        "link": "https://www.bbc.co.uk/news/articles/cmx27g533zwyo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 2,
-        "lead_ts": 1795609309
       }
     ],
     "tech": [
@@ -202,6 +202,13 @@
         "lead_ts": 1795650497
       },
       {
+        "title": "Aaron Rodgers Is Done With The Steelers. Is His Time In The NFL Done, Too? - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQcHkxaVBLYlR1RjhzRXZNMzV0TG5mSngtSVRfdzI4RTk3c2NSMDB6cjUxUS1xdXJuZjFOZjlDamhwQXF0bGNOQkVFTll2dUJfTmx0V2NlVXFQSkZaV0Y3Wnl1UVk2Q2hwckZaR1VuLS1NNGZ2SEd0TWVndFJyM2RZTkF0ZjUzNDZxb0tNYzA2aGRHQdIBkgFBVV95cUxPVU0zNzJHTThmVWhsbUxiMmhsSVpvcDJXYzYyekEtR1dQTnh0Uk5tZy1BUW54VDV5ekp5Q1BzajRQQ2hVQ0tPZTN2RzVHckhZM0N4STFGc0EzVVVVcndpU0pQT3RBbm5GbW9QQkpXUFZvaFdBRzJ6UjVGNEFLY1kweEZUZ0xXYVJJSVRoQjVLdFFOdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 4,
+        "lead_ts": 1795651772
+      },
+      {
         "title": "NFL Week 12 injury report: Thanksgiving game statuses, latest updates for Sam Darnold, Brock Purdy - CBS Sports",
         "link": "https://www.cbssports.com/nfl/news/nfl-week-12-injury-report-updates-kenneth-walker-brock-purdy-sam-darnold/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "CBS Sports",
@@ -214,13 +221,6 @@
         "source": "AFP",
         "n_sources": 3,
         "lead_ts": 1795652478
-      },
-      {
-        "title": "Aaron Rodgers Is Done With The Steelers. Is His Time In The NFL Done, Too? - FOX Sports",
-        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQcHkxaVBLYlR1RjhzRXZNMzV0TG5mSngtSVRfdzI4RTk3c2NSMDB6cjUxUS1xdXJuZjFOZjlDamhwQXF0bGNOQkVFTll2dUJfTmx0V2NlVXFQSkZaV0Y3Wnl1UVk2Q2hwckZaR1VuLS1NNGZ2SEd0TWVndFJyM2RZTkF0ZjUzNDZxb0tNYzA2aGRHQdIBkgFBVV95cUxPVU0zNzJHTThmVWhsbUxiMmhsSVpvcDJXYzYyekEtR1dQTnh0Uk5tZy1BUW54VDV5ekp5Q1BzajRQQ2hVQ0tPZTN2RzVHckhZM0N4STFGc0EzVVVVcndpU0pQT3RBbm5GbW9QQkpXUFZvaFdBRzJ6UjVGNEFLY1kweEZUZ0xXYVJJSVRoQjVLdFFOdw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "FOX Sports",
-        "n_sources": 3,
-        "lead_ts": 1795651772
       }
     ],
     "culture": [
