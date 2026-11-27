@@ -3,8 +3,10 @@ name: refresh
 on:
   schedule:
     # GitHub's shortest schedule is every 5 minutes, but in practice it starts scheduled runs
-    # only every few hours. So once a run starts it keeps building: a new build about every
-    # 10 minutes for up to about 5.5 hours (NUZU 2.4). A build takes about a minute.
+    # only every few hours. So once a run starts it keeps building: a new build every
+    # 15 minutes for up to about 5.5 hours (NUZU 2.5; 2.4 built every 10). A build reads about
+    # 460 feeds and takes under a minute; 15 minutes keeps that gentle on the outlets and on
+    # Google News, and well under GitHub Pages' soft limit of about 10 builds an hour.
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
@@ -39,14 +41,14 @@ jobs:
       - name: Install dependencies
         run: pip install --quiet feedparser requests
 
-      - name: Build about every 10 minutes for up to 5.5 hours
+      - name: Build every 15 minutes for up to 5.5 hours
         env:
           BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           START=$(date +%s)
-          GAP=600          # seconds from the start of one build to the start of the next
+          GAP=900          # seconds from the start of one build to the start of the next (15 min)
           LIMIT=19800      # 330 minutes: no build starts later than this
           N=0
           while true; do
