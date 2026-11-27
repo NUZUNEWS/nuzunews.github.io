@@ -1,81 +1,85 @@
 {
  "version": "2.5.0",
- "built_utc": "2026-11-27T19:30:09Z",
- "build_seconds": 18.3,
+ "built_utc": "2026-11-27T19:45:09Z",
+ "build_seconds": 18.9,
  "feeds": {
   "total": 459,
-  "ok": 449,
-  "empty": 9,
-  "failed": 0,
-  "skipped": 1,
+  "ok": 448,
+  "empty": 10,
+  "failed": 1,
+  "skipped": 0,
   "direct_total": 140,
   "direct_ok": 139,
-  "failed_names": []
+  "failed_names": [
+   "Times of Israel"
+  ]
  },
  "sections": {
   "us": {
-   "items": 99,
-   "clusters": 86,
-   "multi_outlet": 8
+   "items": 103,
+   "clusters": 85,
+   "multi_outlet": 9
   },
   "mideast": {
-   "items": 101,
-   "clusters": 92,
-   "multi_outlet": 6
+   "items": 102,
+   "clusters": 89,
+   "multi_outlet": 10
   },
   "world": {
-   "items": 96,
-   "clusters": 87,
+   "items": 95,
+   "clusters": 85,
    "multi_outlet": 8
   },
   "tech": {
-   "items": 86,
-   "clusters": 77,
-   "multi_outlet": 8
+   "items": 89,
+   "clusters": 83,
+   "multi_outlet": 6
   },
   "business": {
-   "items": 96,
-   "clusters": 83,
-   "multi_outlet": 10
-  },
-  "sports": {
-   "items": 98,
-   "clusters": 89,
+   "items": 92,
+   "clusters": 79,
    "multi_outlet": 7
   },
+  "sports": {
+   "items": 99,
+   "clusters": 88,
+   "multi_outlet": 9
+  },
   "culture": {
-   "items": 91,
-   "clusters": 86,
+   "items": 89,
+   "clusters": 85,
    "multi_outlet": 4
   }
  },
  "video_tiles": {
   "checked": 17,
-  "live": 17,
-  "left_out": []
+  "live": 16,
+  "left_out": [
+   "uk"
+  ]
  },
  "ticker": {
   "count": 20,
   "by_section": {
    "US": 8,
+   "World": 6,
    "Business": 4,
-   "Middle East": 3,
-   "World": 5
+   "Middle East": 2
   }
  },
- "stories_folded": 44,
- "links_direct_pct": 28.2,
+ "stories_folded": 41,
+ "links_direct_pct": 26.6,
  "promo_filtered": {
+  "shopping": 282,
+  "not an article": 19,
   "no headline": 25,
-  "shopping": 321,
-  "promo publisher": 1,
-  "fantasy advice": 1,
-  "not an article": 18,
-  "promo code": 6,
-  "how to watch": 8,
-  "puzzle answers": 1,
+  "how to watch": 9,
   "betting picks": 13,
+  "promo publisher": 2,
+  "horoscope": 1,
+  "promo code": 6,
+  "fantasy advice": 1,
   "stock tips": 1,
-  "horoscope": 1
+  "puzzle answers": 1
  }
 }
