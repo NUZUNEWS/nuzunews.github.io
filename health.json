@@ -1,27 +1,29 @@
 {
  "version": "2.5.0",
- "built_utc": "2026-11-27T15:45:19Z",
- "build_seconds": 27.9,
+ "built_utc": "2026-11-27T16:00:05Z",
+ "build_seconds": 15.1,
  "feeds": {
   "total": 459,
-  "ok": 446,
-  "empty": 12,
-  "failed": 0,
-  "skipped": 1,
+  "ok": 448,
+  "empty": 10,
+  "failed": 1,
+  "skipped": 0,
   "direct_total": 140,
   "direct_ok": 139,
-  "failed_names": []
+  "failed_names": [
+   "Times of Israel"
+  ]
  },
  "sections": {
   "us": {
-   "items": 105,
+   "items": 106,
    "clusters": 91,
-   "multi_outlet": 13
+   "multi_outlet": 14
   },
   "mideast": {
-   "items": 102,
-   "clusters": 82,
-   "multi_outlet": 14
+   "items": 104,
+   "clusters": 83,
+   "multi_outlet": 17
   },
   "world": {
    "items": 96,
@@ -29,56 +31,53 @@
    "multi_outlet": 4
   },
   "tech": {
-   "items": 90,
-   "clusters": 84,
-   "multi_outlet": 6
+   "items": 89,
+   "clusters": 80,
+   "multi_outlet": 8
   },
   "business": {
-   "items": 90,
-   "clusters": 77,
+   "items": 91,
+   "clusters": 76,
    "multi_outlet": 10
   },
   "sports": {
-   "items": 98,
+   "items": 96,
    "clusters": 85,
    "multi_outlet": 10
   },
   "culture": {
-   "items": 99,
-   "clusters": 95,
-   "multi_outlet": 3
+   "items": 100,
+   "clusters": 97,
+   "multi_outlet": 2
   }
  },
  "video_tiles": {
   "checked": 17,
-  "live": 16,
-  "left_out": [
-   "uk"
-  ]
+  "live": 17,
+  "left_out": []
  },
  "ticker": {
   "count": 20,
   "by_section": {
-   "Business": 3,
-   "Middle East": 5,
-   "US": 11,
-   "World": 1
+   "Business": 4,
+   "Middle East": 6,
+   "US": 10
   }
  },
- "stories_folded": 31,
- "links_direct_pct": 28.5,
+ "stories_folded": 34,
+ "links_direct_pct": 28.6,
  "promo_filtered": {
-  "no headline": 29,
+  "no headline": 22,
+  "shopping": 228,
   "not an article": 21,
-  "shopping": 237,
-  "puzzle answers": 3,
-  "sponsored": 3,
-  "betting picks": 18,
-  "fantasy advice": 3,
+  "stock tips": 1,
+  "sponsored": 4,
+  "betting picks": 16,
+  "fantasy advice": 4,
   "how to watch": 14,
-  "stock tips": 3,
-  "promo publisher": 2,
+  "puzzle answers": 3,
+  "promo code": 2,
   "horoscope": 1,
-  "promo code": 4
+  "promo publisher": 1
  }
 }
