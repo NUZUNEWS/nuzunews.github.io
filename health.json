@@ -1,52 +1,54 @@
 {
- "version": "2.4.0",
- "built_utc": "2026-11-27T10:27:08Z",
- "build_seconds": 21.3,
+ "version": "2.5.0",
+ "built_utc": "2026-11-27T14:45:20Z",
+ "build_seconds": 29.4,
  "feeds": {
   "total": 459,
-  "ok": 446,
-  "empty": 12,
-  "failed": 0,
-  "skipped": 1,
+  "ok": 448,
+  "empty": 10,
+  "failed": 1,
+  "skipped": 0,
   "direct_total": 140,
-  "direct_ok": 138,
-  "failed_names": []
+  "direct_ok": 139,
+  "failed_names": [
+   "Times of Israel"
+  ]
  },
  "sections": {
   "us": {
-   "items": 108,
-   "clusters": 88,
-   "multi_outlet": 14
+   "items": 104,
+   "clusters": 89,
+   "multi_outlet": 9
   },
   "mideast": {
-   "items": 99,
-   "clusters": 81,
-   "multi_outlet": 11
+   "items": 102,
+   "clusters": 85,
+   "multi_outlet": 12
   },
   "world": {
-   "items": 91,
-   "clusters": 82,
-   "multi_outlet": 6
+   "items": 100,
+   "clusters": 93,
+   "multi_outlet": 3
   },
   "tech": {
-   "items": 97,
-   "clusters": 82,
-   "multi_outlet": 6
+   "items": 92,
+   "clusters": 89,
+   "multi_outlet": 3
   },
   "business": {
-   "items": 78,
-   "clusters": 71,
-   "multi_outlet": 6
+   "items": 86,
+   "clusters": 73,
+   "multi_outlet": 9
   },
   "sports": {
-   "items": 99,
-   "clusters": 95,
-   "multi_outlet": 4
+   "items": 100,
+   "clusters": 88,
+   "multi_outlet": 8
   },
   "culture": {
-   "items": 96,
-   "clusters": 90,
-   "multi_outlet": 4
+   "items": 99,
+   "clusters": 95,
+   "multi_outlet": 3
   }
  },
  "video_tiles": {
@@ -59,22 +61,24 @@
  "ticker": {
   "count": 20,
   "by_section": {
-   "Middle East": 6,
-   "US": 6,
-   "Business": 4,
-   "World": 4
+   "Middle East": 4,
+   "US": 9,
+   "World": 2,
+   "Business": 5
   }
  },
- "stories_folded": 48,
- "links_direct_pct": 26.3,
+ "stories_folded": 28,
+ "links_direct_pct": 27.7,
  "promo_filtered": {
-  "shopping": 69,
-  "betting picks": 11,
-  "how to watch": 7,
-  "sponsored": 3,
-  "fantasy advice": 4,
-  "puzzle answers": 2,
+  "shopping": 233,
+  "no headline": 26,
+  "betting picks": 18,
+  "how to watch": 13,
+  "not an article": 18,
+  "sponsored": 2,
+  "fantasy advice": 1,
+  "stock tips": 2,
   "promo publisher": 1,
-  "stock tips": 1
+  "puzzle answers": 3
  }
 }

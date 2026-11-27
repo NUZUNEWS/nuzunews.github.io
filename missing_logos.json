@@ -231,8 +231,8 @@
   },
   "dailyguidenetwork.com": {
     "first_seen": "2026-11-26T14:27",
-    "last_attempt": "2026-11-26T14:27",
-    "retries": 1
+    "last_attempt": "2026-11-27T14:45",
+    "retries": 2
   },
   "dailynews.lk": {
     "first_seen": "2026-06-17T23:06",
@@ -271,8 +271,8 @@
   },
   "europeafrica.army.mil": {
     "first_seen": "2026-11-24T11:09",
-    "last_attempt": "2026-11-25T13:38",
-    "retries": 2
+    "last_attempt": "2026-11-27T14:45",
+    "retries": 3
   },
   "feeds.texastribune.org": {
     "first_seen": "2026-05-15T22:04",
@@ -338,6 +338,11 @@
     "first_seen": "2026-10-28T06:10",
     "last_attempt": "2026-11-22T09:58",
     "retries": 49
+  },
+  "hk.ocmfa.gov.cn": {
+    "first_seen": "2026-11-27T14:45",
+    "last_attempt": "2026-11-27T14:45",
+    "retries": 1
   },
   "holloman.af.mil": {
     "first_seen": "2026-10-22T19:15",
