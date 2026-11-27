@@ -44,8 +44,8 @@
     "last_fail": 0
   },
   "https://news.google.com/rss/search?q=france24+middle+east+OR+iran+OR+israel+when:1d&hl=en-US&gl=US&ceid=US:en": {
-    "fails": 0,
-    "last_fail": 0
+    "fails": 1,
+    "last_fail": 1795756615
   },
   "https://news.google.com/rss/search?q=site:axios.com+technology+ai+when:1d&hl=en-US&gl=US&ceid=US:en": {
     "fails": 0,
