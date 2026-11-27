@@ -1,67 +1,75 @@
-NUZU NEWS 2.4 - UPLOAD TO GITHUB (made with Argus 1.0.3, 21 November 2026)
+NUZU NEWS 2.5 - UPLOAD TO GITHUB (made with Argus 1.0.3, 27 November 2026)
 ===========================================================================
 
 WHAT IS IN THIS FOLDER (only the files that changed; everything else on GitHub stays as it is)
-  bot.py                         NUZU's builder (2.4; includes 2.3.1 from ORDER-700, never uploaded)
-  version.json                   2.4.0
-  CHANGELOG.md                   what changed, 2.4.0 at the top
-  README.md                      the site's read-me, now with the "Argus contract"
-  .github\workflows\refresh.yml  the refresh workflow: builds about every 10 minutes
+  bot.py                         NUZU's builder (2.5 - everything 2.4 does, plus the junk filter)
+  version.json                   2.5.0
+  CHANGELOG.md                   what changed, 2.5.0 at the top
+  README.md                      the site's read-me (builds every 15 minutes)
+  .github\workflows\refresh.yml  the refresh workflow: builds every 15 minutes
   HOW TO INSTALL.txt             this note (do not upload it)
 
-WHAT CHANGED
-  1. Nearly real time. GitHub starts a scheduled run only every few hours. Now each run keeps
-     building about every 10 minutes for up to 5.5 hours (a build takes about a minute). A new
-     run replaces the one in progress; two never overlap.
-  2. The BREAKING ticker is news: only US, World, Middle East and Business stories that several
-     outlets carry or a Tier 1-2 outlet reports. Each line names its outlet and how many outlets
-     carry the story. (Measured on the same news: the old ticker had 9 sports, culture or tech
-     lines out of 19 and led with a video-game story; the new one has none, and 14 of its 20
-     stories are carried by 2 or more outlets.)
-  3. Each story once: a story that was in two sections now shows once, with an "also in" tag
-     (42 repeated cards before, 0 now, on the same news).
-  4. Straight to the article: 141 outlets' own feeds (BBC, NPR, Guardian, Al Jazeera, DW,
-     France 24, CBC and more, each checked live), so their headlines open the outlet's page
-     itself. 27% of the Read links now open the outlet directly (0% before); Google News stays
-     as the fallback for the rest.
-  5. The same top bar as Party Portal 3.2: SAVED, UPDATED, LIGHT, LIVE VIDEO, WAITING ROOM,
-     then A- A+. Phones keep their own controls.
-  6. While the page is hidden (another browser tab or another Argus tab) the silent video tiles
-     pause; the tile being heard keeps playing.
-  7. health.json is written each build (open https://nuzunews.github.io/health.json).
-  Also in it (2.3.1, from ORDER-700): the heard tile held on a resize, TAB and ARGUS full
-  screen inside Argus, Argus's accent colour in dark mode.
+WHAT CHANGED (your notes of 26 November)
+  1. No deal lists. "I found 39 Black Friday tech deals actually worth shopping", the other
+     deal posts ("... drops to $60 for Black Friday") and buying guides ("Best Power Banks
+     (2026): My Picks After Testing Over 100") no longer show. News ABOUT Black Friday stays:
+     "Rising interest rates fail to dampen Black Friday sales frenzy", "Four in five Black
+     Friday deals are duds, research finds" (2.4 hid those two; 2.5 shows them).
+  2. Only articles. "Membership" (the warontherocks.com/membership-2/ link), subscribe, donate,
+     newsletter, login, shop and account pages, and archive, topic and stock-quote pages are
+     left out.
+  3. Every headline has words. "- The New York Times" and other items that are only the
+     publisher's name, or one or two words, are left out. The feeds carry no real headline for
+     them (checked on 650 such items), so there is nothing to recover.
+  4. A calmer pace: a build every 15 minutes (2.4: every 10).
+  Measured on exactly the same recorded news (26 Nov): the 2.4 page showed 30 such items (20 deal
+  posts, 5 non-article pages, 5 without a headline - your three examples among them); the 2.5
+  page shows 0. Every removal was read by eye so no real news is lost, and the build log lists
+  every item left out, so a wrong removal is easy to spot.
   Untouched: nuzu-bundle.js, sw.js, manifest.json, .well-known, twa-manifest.json and every
   Play Store file.
 
 HOW TO UPLOAD
   1. Open https://github.com/NUZUNEWS/nuzunews.github.io
   2. Add file > Upload files. Drag in bot.py, version.json, CHANGELOG.md and README.md from this
-     folder. Commit message, for example: "NUZU 2.4". Commit changes.
+     folder. Commit message, for example: "NUZU 2.5". Commit changes.
   3. Still on GitHub, open the folder .github, then workflows. Add file > Upload files. Drag in
      refresh.yml from this folder's .github\workflows folder (it replaces the old one).
      Commit changes.
   4. Actions tab > refresh > Run workflow (this starts the new loop at once).
 
-CHECK (about 5 minutes after step 4)
-  - https://nuzunews.github.io/ : the BREAKING ticker shows US, World, Middle East or Business
-    stories, each ending with its outlet (and "N outlets" when several carry it).
-  - Some headlines carry a small "also in ..." tag.
-  - A BBC, NPR or Guardian headline's Read link opens bbc.co.uk / npr.org / theguardian.com.
-  - https://nuzunews.github.io/health.json shows "version": "2.4.0".
-  - Actions tab: the refresh run is still going after 15 minutes and shows "Build 2", "Build 3"...
+CHECK (about 20 minutes after step 4)
+  - https://nuzunews.github.io/health.json shows "version": "2.5.0".
+  - The Science, Tech & Health section shows no "... Black Friday deals" lists.
+  - Actions tab: the refresh run shows "Build 2" about 15 minutes after "Build 1".
 
-TESTED ON THIS PC (21 November 2026)
-  - A real build with live feeds: 149 seconds, 460 feeds read (140 of them the new direct
-    feeds, all OK), every video tile live (17 of 17). The old bot.py was rebuilt on exactly the
-    same news for the comparisons above.
+YOUR QUESTION: IS THE PACE OK? (measured on the live site, 27 Nov)
+  Every 10 minutes worked: 98 site builds in the last 20 hours, all successful; 0 feeds failed;
+  no "too many requests" (429) answers. But it ran close to the edges. GitHub Pages allows about
+  10 builds an hour (2.4 made 6-7, plus the old daily-content.yml at 00:05 UTC). Each build makes
+  about 500 requests (327 of them to Google News) from GitHub's shared addresses, which Google can
+  slow down or block when many bots use them; one site (Harvard Business Review) did answer 429
+  to a test build from this PC today. Every 15 minutes means 4 builds an hour and a third fewer
+  requests (about 2,000 an hour instead of 3,000), and the news is at most about 15 minutes old.
+  Nothing shows a ban. Conditional requests ("only send it if it changed") were measured and not
+  added: only 4 of 25 feeds support them, Google News not at all.
+
+TESTED ON THIS PC (27 November 2026)
+  - A real build with live feeds: 60 seconds, 459 feeds (448 ok, 11 empty, 0 failed), all 140
+    direct outlet feeds OK, no junk on the page (an earlier test build got the one 429 above).
+  - Same recorded news as 2.4: BREAKING ticker 20 news stories (0 sports/culture/tech), 0
+    stories repeated across sections, about 25-28% of Read links open the outlet directly.
   - Contrast: 0 failing text elements on desktop and phone, dark and light, with and without
-    video (8 runs, about 3,200 text elements each). All 40 feature checks pass; the only
-    console messages are the old harmless "navigator.vibrate" notices.
-  - Hidden-page pause: fails on the old page, passes on the new one.
+    video (8 runs, about 3,100 text elements each). The feature checks give the same results as
+    2.4's; the only console messages are the old harmless "navigator.vibrate" notices.
+  - Hidden-page pause still works (the silent tiles pause, the heard one plays on).
   - Argus's own NUZU tests pass on this bot.py: nuzu_holds_the_heard_video,
     nuzu_and_party_portal_first_visit, only_nuzu_news_remembers.
   - bot.py passes the Python 3.11 check GitHub needs (0 problems).
 
+STILL YOURS TO DECIDE (nothing was deleted)
+  daily-content.yml still builds and pushes once a day at 00:05 UTC; it is on 2.4's cleanup list.
+
 UNTIL YOU UPLOAD
-  Argus 1.0.2 and 1.0.3 both work with NUZU as it is live now; this upload only adds to it.
+  Argus 1.0.3 works with NUZU as it is live now; this upload changes which items the page shows
+  and how often it rebuilds, nothing else.

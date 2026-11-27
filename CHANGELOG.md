@@ -1,5 +1,22 @@
 # NUZU NEWS - changelog
 
+## 2.5.0 - 26 November 2026 (made with Argus 1.0.3)
+
+- **Junk out.** Deal lists, deal posts and buying guides ("I found 39 Black Friday tech deals
+  actually worth shopping", "... drops to $60 for Black Friday", "The 36 best gifts for dads",
+  "Best Power Banks (2026): My Picks After Testing Over 100") no longer show.
+  News about Black Friday - spending, shoppers, retailers, scams, strikes - still does.
+- **Only articles.** Membership, subscribe, donate, newsletter, login, shop and account pages,
+  archive, topic and stock-quote pages and "page not found" pages are left out ("Membership"
+  that opened warontherocks.com/membership-2/).
+- **Every headline has words.** An item that is only the publisher's name ("- The New York Times")
+  or one or two words is left out; the feeds carry no headline for it to recover.
+- Stories saved by an older build in "Biggest stories - yesterday" go through the same rules.
+- The build log lists every item left out, so a wrong removal is easy to spot; health.json counts
+  them under promo_filtered.
+- **A calmer pace.** `.github/workflows/refresh.yml` builds every 15 minutes (2.4: every 10).
+- Files: `bot.py`, `version.json`, `CHANGELOG.md`, `README.md`, `.github/workflows/refresh.yml`.
+
 ## 2.4.0 - 21 November 2026 (made with Argus 1.0.3)
 
 - **Nearly real time.** `.github/workflows/refresh.yml`: GitHub starts a scheduled run only every

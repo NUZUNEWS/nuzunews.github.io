@@ -2,8 +2,9 @@
 NUZU News — Real News in Real Time
 
 `bot.py` builds the whole site (`index.html`, `feed.json`, `feed.xml`, `health.json` ...) from
-hundreds of news feeds. `.github/workflows/refresh.yml` runs it: each run builds about every 10
-minutes for up to 5.5 hours. `health.json` says how the last build went.
+hundreds of news feeds. `.github/workflows/refresh.yml` runs it: each run builds every 15
+minutes for up to 5.5 hours. `health.json` says how the last build went, and the build log lists
+every item left out as not news (deal lists, membership or login pages, no headline).
 
 ## The Argus contract
 

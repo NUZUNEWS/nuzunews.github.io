@@ -2882,7 +2882,11 @@ def why_promo(raw_title, source=""):
         if rx.search(t):
             if why == "how to watch" and _NZ_LIVE_BLOG.search(t):
                 continue        # a live match blog is coverage, not a viewing guide
+            if why == "shopping" and _nz_shopping_news(_nz_headline(t, source)):
+                continue        # NUZU 2.5 (G1): news ABOUT the deals stays ("... research finds")
             return why
+    if _nz_deals(_nz_headline(t, source)):     # NUZU 2.5 (G1): deal lists and deal posts
+        return "shopping"
     if source and _NZ_PROMO_SOURCES.search(source):
         return "promo publisher"
     # Google News puts the publisher at the end of the title: "... - Business Wire"
@@ -2890,6 +2894,222 @@ def why_promo(raw_title, source=""):
     if tail and _NZ_PROMO_SOURCES.search(tail):
         return "promo publisher"
     return None
+
+
+# ══════════════════════ NUZU 2.5 (ORDER-701 G1): JUNK OUT ══════════════════════
+# Items that are not news stories never reach a section, the ticker, Most Reported or
+# "Biggest stories - yesterday" (the user's notes of 26 Nov 2026):
+#   shopping       - deal lists and deal posts: "I found 39 Black Friday tech deals actually worth
+#                    shopping", "... drops to $60 for Black Friday", "The 36 best gifts for dads",
+#                    buying guides ("Best Power Banks (2026): My Picks After Testing Over 100").
+#                    A news story ABOUT the shopping days (spending, shoppers, retailers, scams,
+#                    workers) stays.
+#   not an article - membership, subscribe, donate, newsletter, login, shop and account pages;
+#                    archive, topic and stock-quote pages; 404 pages.
+#   no headline    - nothing left once the " - Publisher" tail is dropped ("- The New York Times"),
+#                    or only one or two words (a page name, not a headline). In the 650 such items
+#                    in the recorded feeds of 21 and 26 Nov the feed's other field (the description)
+#                    never held the headline either, so there is nothing certain to recover.
+# Calibrated on the real feeds of 26 Nov 2026 (NUZU test tools\nz25_junk.py), every removal read.
+import urllib.parse as _nz25_url
+
+_NZ_EVENT = re.compile(r"\b(black friday|cyber monday|prime (big )?(deal )?days?|boxing day|singles['’]? day|travel tuesday)\b", re.I)
+_NZ_DEAL_WORD = re.compile(r"\b(deals?|savings|doorbusters?|bargains?|steals|offers?|discounts?|price cuts?|price drops?)\b", re.I)
+_NZ_DEAL_STRONG = re.compile(
+    r"[$£€]\s?\d[\d,.]*\s?k?\s+(off|discount)\b"
+    r"|\b\d+(\.\d+)?\s?(%|percent)\s+(off|discount|cheaper)\b"
+    r"|\bsave (up to |over |more than )?(\d+\s?%|[$£€]\s?\d[\d,.]*\s+(off|on|at|when|with|and)\b)"
+    r"|\b(deals?|offers?|prices?)\b[^.?!|]{0,12}\b(start(ing)? (at|from)|as low as)\b"
+    r"|\b(from|starting at|for) (just|only) [a-z]{0,2}[$£€]\s?\d"
+    r"|\bworth (shopping|buying)\b"
+    r"|\b(deals|sales|bargains|savings) to (grab|shop|snag|score)\b"
+    r"|\bdeals (&|and) steals\b|\bmornings deals\b|\bgift deals\b"
+    r"|\bcoupons?( codes?)?:"
+    r"|\b(lowest|best)[- ](seen |ever )?prices? (of the year|ever|yet)\b|\bnew price lows?\b|\blowest[- ]seen prices?\b"
+    r"|\b(best|top|favou?rite|perfect|editor[- ]approved|last[- ]minute|\d+\+?)\b[^.?!|]{0,40}\bgifts (for|to buy|under)\b|^gifts for\b"
+    r"|\b(\d+|ten|five|six|seven|eight|nine|twelve|fifteen|twenty) best [^.?!|]{1,40} (to buy|you can buy|to own)\b"
+    r"|\bbest [^.?!|]{1,50} (of|for) (january|february|march|april|may|june|july|august|september|october|november|december) 20\d\d\b"
+    r"|\bbest to (shop|buy)\b|\bgifts? under [$£€]\d|\b(give|gave) as gifts?\b|\bwhere to buy [^.?!|]{0,30}\bgifts?\b"
+    r"|\b(our|my|the|\d+) (favou?rite|best|top)\b[^.?!|]{0,40}\bgifts?\b"
+    r"|\b(drops?|dropped|falls?|fell|down) to [$£€]\d[\d,.]*\b[^.?!|]{0,20}\b(at|on) (amazon|walmart|best buy|target|newegg|costco|b&h)\b"
+    r"|\b(amazon|walmart|best buy)['’]?s? (new )?all[- ]time low\b|\bshop the (best|edit|look|trend|sale)\b"
+    r"|^(the )?(\d+ )?(very )?best\b[^|]{0,90}\((19|20)\d\d\)|^which\b[^|]{0,40}\bto buy\b[^|]{0,60}\((19|20)\d\d\)",
+    re.I)
+# A story ABOUT the shopping days is news: these words keep it.
+_NZ_NEWS_WORDS = re.compile(
+    r"\b(shoppers?|consumers?|retailers?|retail sales|spending|spent|economy|economic|economists?|analysts?|survey|study|"
+    r"workers?|strikes?|protests?|unions?|scams?|scammers?|fraud|warns?|warning|police|officials?|lawmakers?|ftc|"
+    r"regulators?|lawsuit|sues|sued|investigation|parents|spot|safety|crowds?|stampede|tariffs?|inflation|futures|"
+    r"wall street|earnings|layoffs?|commentary|opinion|analysis|behind|researchers?|interest rates?|frenzy|playbook)\b"
+    r"|\bhits? (a |an )?(new |20\d\d |record |all[- ]time )?highs?\b|\brecord (levels?|highs?|spending|numbers|turnout)\b"
+    r"|\b(new )?(report|research|data|poll)\b[^.?!|]{0,20}\b(finds?|found|shows?|showed|says|reveals?)\b"
+    r"|\b(finds?|found|shows?|says),? (a |new )?(report|research|data|poll)\b", re.I)
+_NZ_EVENT_SHOP = re.compile(
+    r"\b(just|now|only|from|under|below|as low as|starting at)\s+[a-z]{0,2}[$£€]\s?\d"
+    r"|\b(drops?|dropped|falls?|fell|slashed|cut|plunges?)\s+(by|to)\s+[a-z]{0,2}[$£€]\s?\d"
+    r"|\bdropped in price\b|\bprice (tag|cut|drop|lows?)\b|\bcheaper\b|\bcheapest\b|\bon offer\b|\bhalf[- ]price\b"
+    r"|\bpractically (free|giving)\b|\bat no cost\b|\blow [a-z]{0,2}[$£€]\s?\d|\b(black friday|cyber monday) prices\b"
+    r"|\btoday only\b|\bsave (big )?on\b|\bto buy (this|on|for)\b|\bworth (it|your time)\b"
+    r"|\b(got|gets|getting|receiving|receives|has|sees|with) an? (big |rare |huge |massive |major |steep |deep |surprise )?discount\b"
+    r"|^(?!20\d\d\b)\d+\+?\s"
+    r"|^(buying|shopping) [^?]{0,40}\?"
+    r"|\b(top|best|favou?rite)\b[^.?!|]{0,30}\b(finds|picks|buys)\b"
+    r"|\bbest (early )?(black friday|cyber monday)\b"
+    r"|\b\d+ (things|tips|ways)\b[^.?!|]{0,40}\b(shop|shopping|buy|buying)\b",
+    re.I)
+_NZ_FIRST_PERSON = re.compile(
+    r"^(i|i['’]m|i['’]ve|i['’]d|i was|if i|we|we['’]ve|we['’]re)\b.*\b(buy|buying|get|recommend|pick|picked|choose|deals?|shop|shopping)\b", re.I)
+_NZ_DEAL_LIST = re.compile(
+    r"\b(best|top|favou?rite|hottest|unmissable|can['’]t[- ]miss|early)\b[^.?!|:]{0,50}\bdeals?\b"
+    r"|\bthese\b[^.?!|]{0,50}\bdeals\b"
+    r"|\b(i|we)['’]?(ve| have)? (found|tested|hand[- ]picked|picked|rounded up)\b[^.?!|]{0,80}\b(deals?|gifts|buys)\b"
+    r"|\b(grab|snag|score|shop)\b[^.?!|]{0,40}\b(deals|savings)\b",
+    re.I)
+# "deals" that are news: trade deals, peace deals, contracts ...
+_NZ_NOT_DEALS = re.compile(
+    r"\b(trade|peace|nuclear|ceasefire|hostage|arms|budget|tariffs?|coalition|merger|acquisitions?|business|defen[cs]e|"
+    r"oil|gas|energy|mining|minerals?|transfer|contracts?|plea|settlement|tax|debt|loans?|bonds?|sponsorship|shirt|"
+    r"broadcast|media rights|signings?|free[- ]agents?|labou?r|government|china|russia|ukraine|iran|israel|eu|nato|"
+    r"trump|biden|president|minister|congress|senate|white house|parliament|leaders?|talks)\b", re.I)
+
+
+def _nz_deals(head):
+    """True for a deal list or a deal post (head = the headline without its publisher)."""
+    t = head or ""
+    if _NZ_DEAL_STRONG.search(t):
+        return True
+    if _NZ_NEWS_WORDS.search(t):
+        return False
+    if _NZ_EVENT.search(t) and (_NZ_DEAL_WORD.search(t) or _NZ_EVENT_SHOP.search(t) or _NZ_FIRST_PERSON.search(t)):
+        return True
+    if _NZ_DEAL_LIST.search(t) and not _NZ_NOT_DEALS.search(t):
+        return True
+    return False
+
+
+def _nz_shopping_news(head):
+    """True for a news story about the deals that the older (2.3) shopping rule would drop:
+    "Four in five Black Friday deals are duds, research finds" - but not when a deal test
+    above also fires ("I've spent two weeks with ... one of the best early Black Friday deals")."""
+    t = head or ""
+    return bool(_NZ_NEWS_WORDS.search(t)) and not (
+        _NZ_DEAL_STRONG.search(t) or _NZ_FIRST_PERSON.search(t) or _NZ_DEAL_LIST.search(t))
+
+
+_NZ_PAGE_NAMES = re.compile(
+    r"^(membership|members?( area| only| login)?|become an? (member|subscriber|patron|supporter)|join( us| now| today)?"
+    r"|subscribe( now| today| here)?|subscriptions?|subscription (options|plans|offers)|subscriber[- ]only"
+    r"|donate( now| today| here)?|donations?|make a donation|support (us|our (work|journalism|newsroom))"
+    r"|support independent journalism|give a gift|gift subscriptions?|newsletters?|our newsletters|email newsletters?"
+    r"|sign ?up|sign ?in|log ?in|log ?out|register|registration|my account|account|your account|account settings"
+    r"|manage (your )?(account|subscription)|create (an |your )?account|shop|store|the store|online store|gift shop"
+    r"|merch(andise)?|cart|checkout|e-?edition|e-?paper|digital (edition|replica)|about( us)?|contact( us)?"
+    r"|advertise( with us)?|careers|jobs|privacy( policy)?|terms( of (use|service))?|cookie (policy|settings)"
+    r"|page not found|not found|404|error|untitled|no title|home ?page|home|access denied|just a moment)[.!…]*$",
+    re.I)
+_NZ_PAGE_MARKS = re.compile(
+    r"\b(error 404|404 (error|page|not found)|page not found|access denied)\b|^404\b"
+    r"|^(sign in|log ?in|login|subscribe to|sign up for|register for|create an account)\b"
+    r"|^(category|tag|author|monthly|daily|yearly) archives?\b|(?<!national )(?<!state )(?<!the )\barchives?$"
+    r"|\blatest news(,| and| &) (top stories|photos?|investigations|analysis|coverage|updates|headlines)\b"
+    r"|\ball news (&|and) analysis about\b|:\s*latest news$|^(video\.? )?latest news bulletin\b"
+    r"|\bstock (price|quote)\b[^|]{0,20}\||\|[^|]{0,60}\bstock quote\b|\bstock price, (news|quote)\b"
+    r"|\bstock quote (price|and)\b|\bstock quotes$|^news archives? for\b|\bnews archive for\b"
+    r"|\bdeliver(ed)? to your inbox\b|\bshop top picks\b|^join our\b",
+    re.I)
+_NZ_STORE_SOURCE = re.compile(r"\b(store|shop|bookstore)$", re.I)     # "F1 Store", "NBA Store", "... - Shop"
+_NZ_PAGE_TAIL = re.compile(r"\b(log ?in|login|sign in|sign up|subscribe|newsletters?)$", re.I)   # short titles only
+_NZ_PAGE_HOST = re.compile(
+    r"^(my)?accounts?\.|^(login|signin|auth|sso|profile|subscribe|subscriptions?|join|members?|membership|shop|store|"
+    r"checkout|donate|newsletters?)\.", re.I)
+_NZ_PAGE_PATH = {"membership", "members", "member", "join", "subscribe", "subscription", "subscriptions",
+                 "subscriber", "donate", "donation", "donations", "support", "support-us", "give", "newsletter",
+                 "newsletters", "login", "log-in", "signin", "sign-in", "signup", "sign-up", "register",
+                 "registration", "account", "my-account", "myaccount", "profile", "shop", "store", "cart",
+                 "checkout", "e-edition", "eedition", "epaper"}
+
+
+def _nz_headline(raw_title, source=""):
+    """The headline alone: the title without its ' - Publisher' tail (Google News adds one,
+    sometimes twice: 'Sign in - The Washington Post - The Washington Post')."""
+    h = " ".join((raw_title or "").split())
+    s = " ".join((source or "").split()).lower()
+    if s:
+        for _ in range(3):
+            low = h.lower()
+            if low == s or low in ("- " + s, "– " + s, "— " + s):
+                return ""
+            if low.endswith(" - " + s):
+                h = h[:len(h) - len(s) - 3].rstrip()
+            else:
+                break
+    elif " - " in h:
+        head, tail = h.rsplit(" - ", 1)
+        if len(tail.split()) <= 5:
+            h = head.strip()
+    return h.strip(" -–—|:·")
+
+
+def _nz_page_link(url):
+    """True when a link is a site page (membership, subscribe, login, shop ...), not an article."""
+    try:
+        u = _nz25_url.urlsplit(url or "")
+        host = (u.hostname or "").lower()
+        if host.startswith("www."):
+            host = host[4:]
+        if host and _NZ_PAGE_HOST.search(host):
+            return True
+        segs = [p for p in (u.path or "").lower().split("/") if p]
+        if 1 <= len(segs) <= 2:
+            for seg in (segs[0], segs[-1]):
+                seg = re.sub(r"\.(html?|php|aspx?)$", "", seg)
+                seg = re.sub(r"-\d+$", "", seg)
+                if seg in _NZ_PAGE_PATH:
+                    return True
+    except Exception:
+        pass
+    return False
+
+
+def why_not_article(raw_title, source="", link="", src_href=""):
+    """NUZU 2.5 (G1): 'not an article' or 'no headline' for an item that is not a news story, else None."""
+    head = _nz_headline(raw_title, source)
+    if not re.sub(r"[\W_]+", "", head):
+        return "no headline"
+    if _NZ_PAGE_NAMES.match(head) or _NZ_PAGE_MARKS.search(head) or _NZ_STORE_SOURCE.search((source or "").strip()):
+        return "not an article"
+    words = head.split()
+    if len(words) <= 6 and _NZ_PAGE_TAIL.search(head):
+        return "not an article"
+    if (link and "news.google.com" not in link and _nz_page_link(link)) or (src_href and _nz_page_link(src_href)):
+        return "not an article"
+    if len(words) <= 2:
+        return "no headline"
+    return None
+
+
+def _nz_top_is_junk(item):
+    """A story saved in yesterday_top.json by an older build that the 2.5 rules leave out."""
+    try:
+        t, s = item.get("title") or "", item.get("source") or ""
+        return bool(why_promo(t, s) or why_not_article(t, s, item.get("link") or ""))
+    except Exception:
+        return False
+
+
+def _nz_clean_top(by_section):
+    try:
+        return {k: [it for it in (v or []) if not _nz_top_is_junk(it)] for k, v in (by_section or {}).items()}
+    except Exception:
+        return by_section or {}
+
+
+_NZ_JUNK_NOTES = []     # (reason, title) of every deal / non-article / no-headline item left out
+
+
+def _nz_junk_note(why, title):
+    if why in ("shopping", "not an article", "no headline") and len(_NZ_JUNK_NOTES) < 600:
+        _NZ_JUNK_NOTES.append((why, " ".join((title or "").split())))
 
 
 _NZ_PROMO_LOG = {}
@@ -3608,6 +3828,7 @@ try:
             _state = _jsonytl.load(_ytlf)
             if isinstance(_state, dict):
                 _YESTERDAY_TOP = _state.get("yesterday_top_by_section", {}) or {}
+                _YESTERDAY_TOP = _nz_clean_top(_YESTERDAY_TOP)   # NUZU 2.5 (G1): saved by an older build
                 print(f"Loaded yesterday's top stories for {len(_YESTERDAY_TOP)} sections")
 except Exception as _e_ytl:
     print(f"Note: could not load yesterday_top.json ({_e_ytl})")
@@ -3704,8 +3925,11 @@ def _fetch_one_source(source_name, url, pattern, block_pat, is_sports_excluded):
                         if _src_href:
                             _NZ_GN_PUBLISHER[link] = _src_href
                     _nz_why = why_promo(raw_title, true_source)
+                    if not _nz_why:                  # NUZU 2.5 (G1): not an article, or no headline
+                        _nz_why = why_not_article(raw_title, true_source, raw_link, _src_href)
                     if _nz_why:                      # advertising / non-news: never shown
                         _NZ_PROMO_LOG[_nz_why] = _NZ_PROMO_LOG.get(_nz_why, 0) + 1
+                        _nz_junk_note(_nz_why, raw_title)
                         continue
                     # ── Auto-domain learning ──────────────────────────────────
                     # Google News entries carry entry.source.href — the publisher's
@@ -4688,6 +4912,10 @@ try:
 except Exception as _e_nzf:
     print("WARNING: cross-section fold skipped: " + str(_e_nzf))
 print("  promo/junk filtered: " + (", ".join(f"{k} {v}" for k, v in sorted(_NZ_PROMO_LOG.items(), key=lambda kv: -kv[1])) or "none"))
+if _NZ_JUNK_NOTES:                          # NUZU 2.5 (G1): read these when a removal looks wrong
+    print("  left out as not news (each headline once):")
+    for _nz_w, _nz_t in sorted(set(_NZ_JUNK_NOTES)):
+        print("    [" + _nz_w + "] " + _nz_t[:150])
 
 def build_top_stories(max_stories=10):
     section_map = {
@@ -10318,6 +10546,7 @@ try:
         if not _scored_yt:
             continue
         existing = _yt_state["today_top_by_section"].get(_yt_sid, []) or []
+        existing = [it for it in existing if not _nz_top_is_junk(it)]   # NUZU 2.5 (G1)
         # Merge by link (unique), keeping the version with more sources.
         merged = {item["link"]: item for item in existing}
         for item in _scored_yt:
@@ -10346,7 +10575,7 @@ try:
     _nz_dir = [(_nz_u, _nz_st) for _nz_u, (_nz_st, _nz_nm) in _nz_fl if _nz_u in _NZ_DIRECT_URLS]
     _nz_items = [it for _nz_s in SECTION_CLUSTERS for cl in SECTION_CLUSTERS[_nz_s]["combined"] for it in cl]
     _nz_health = {
-        "version": "2.4.0",
+        "version": "2.5.0",
         "built_utc": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "build_seconds": round(_nz_time.time() - _NZ_T0, 1),
         "feeds": {"total": len(_nz_fl), "ok": _nz_by.get("ok", 0), "empty": _nz_by.get("empty", 0),
