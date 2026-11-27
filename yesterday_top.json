@@ -131,8 +131,15 @@
         "title": "Amazon Has Restocked Loads of Pok\u00e9mon Cards for Black Friday - IGN",
         "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5yVnBrTDFEbFpYankybUhtVkhqSkhobDE0V005Z1FPdEhjZDJfRFF4UDltYVpkT1hjNHJ3eVNtcnJlT3Q5M0o0a3VndEg1MUwyZlB1NmtTN2d6aWo0RFdlZUlGaXJEOEs3SVlPeXA5eXJSWEJlV2VGT1BhTVo4SEE?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "IGN",
-        "n_sources": 3,
+        "n_sources": 4,
         "lead_ts": 1795794482
+      },
+      {
+        "title": "Hackers reportedly breach US Air Force\u2019s flagship cloud computing platform - The Guardian",
+        "link": "https://www.theguardian.com/technology/2026/nov/27/hackers-breach-us-air-force-cloud-computing?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Guardian",
+        "n_sources": 3,
+        "lead_ts": 1795791015
       },
       {
         "title": "Metro Detroit shoppers brave cold, rain for Black Friday deals - The Detroit News",
@@ -140,13 +147,6 @@
         "source": "The Detroit News",
         "n_sources": 3,
         "lead_ts": 1795788840
-      },
-      {
-        "title": "Avoid the scams this Black Friday with my detailed guide - Space",
-        "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQRVc4TEU0eFBLeGpMNzktSE5TTkNoU05ucThSX0N4c2pRRG5nUkVPa09NSjdGTWcwQ21uZExfMGxlbVFkdGw3NlBmUnpzTXEyMldHeUNXX0N1b0lRN2VFc3VkdXFtSFpDWkd6Y2d1TXJnc3d0R19hTHk5N1FqUEdVaXBUWlJ0dlVPY3lCTG9zN1JNR1M2N2QwXzF6S1l6dE8wSmRkSXdjaU5ma05zNC1qR0Y2dWF4UjAtVDhkV2dpNzRZU3RxX2ZyTUJURlZBZU0?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Space",
-        "n_sources": 2,
-        "lead_ts": 1795794387
       }
     ],
     "business": [
@@ -202,6 +202,13 @@
         "lead_ts": 1795745532
       },
       {
+        "title": "Joe Milton has huge game as Eagles shock Cowboys on Thanksgiving - ESPN",
+        "link": "https://www.espn.com/nfl/story/_/id/50605786/cowboys-eagles-thanksgiving-dak-prescott-saquon-barkley?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ESPN",
+        "n_sources": 5,
+        "lead_ts": 1795795658
+      },
+      {
         "title": "3 Cowboys to blame for historic Thanksgiving collapse vs. Eagles - Yahoo Sports",
         "link": "https://sports.yahoo.com/nfl/articles/3-cowboys-blame-historic-thanksgiving-033113098.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
         "source": "Yahoo Sports",
@@ -214,13 +221,6 @@
         "source": "Yahoo Sports",
         "n_sources": 5,
         "lead_ts": 1795745793
-      },
-      {
-        "title": "Hope is now gone for Cowboys' season after historic Thanksgiving collapse vs. Eagles - CBS Sports",
-        "link": "https://www.cbssports.com/nfl/news/hope-is-gone-for-dak-prescott-cowboys-thanksgiving-loss-eagles/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS Sports",
-        "n_sources": 4,
-        "lead_ts": 1795787811
       }
     ],
     "culture": [
