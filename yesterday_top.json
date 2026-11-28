@@ -1,6 +1,246 @@
 {
-  "today_date": "2026-11-27",
+  "today_date": "2026-11-28",
   "today_top_by_section": {
+    "us": [
+      {
+        "title": "Thanksgiving Storm Leaves More Than 400,000 Without Power on the East Coast - The New York Times",
+        "link": "https://www.nytimes.com/2026/11/27/us/thanksgiving-weather-east-coast-storm.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 5,
+        "lead_ts": 1795824338
+      },
+      {
+        "title": "Mexico\u2019s government criticizes DEA crime tip line as foreign interference. Others support it - Los Angeles Times",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNcTlEZ1YzVzc2bDByenREUHZqWExkZ3ZFa2Q1dV9aaW54cHRyVzJyUTBKSTE5VmNhNjFyTy1qZ3ZtMFRBLU91QUNuNUI4eTNoZDVNMFBhZUpWeFhsbElSVUhlbUlmUEZjdzdSVTQ2YnFqcFMzNUFrZmxLR0tmRWFxb0dLaXNpeG1GNGZIZzBxdHBBekFBcmQ4R0FlRGFuWW9mY2VNSFZpM0dhcmdF?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAT",
+        "n_sources": 2,
+        "lead_ts": 1795820760
+      },
+      {
+        "title": "Andrea Stewart-Cousins, New York\u2019s First Female Senate Majority Leader, Dies - New York Times",
+        "link": "https://www.nytimes.com/2026/11/27/us/andrea-stewart-cousins-dead.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "NYT",
+        "n_sources": 2,
+        "lead_ts": 1795820689
+      },
+      {
+        "title": "U.N. warns hunger will deepen in the Middle East as war, fuel costs and aid cuts collide - Los Angeles Times",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxObkJYRE92ekF5Q1JZeTUtVEh3SUllbEZQZW93QmdLNk5RclE5Rng4aDZXV3BObjJWNTJmazhzYjRya2hGdHFSTm1DU2hqVUhnakY4bVN3b1JXOUI3bzJYY3dMNFBkbF9kcFB4Y1I0Sk0tWTdrRXZMRDdha3NFY3RfeTUtSjJXVWpNRklhakpqc3VGakgwTk51NXBVTm1lZw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAT",
+        "n_sources": 2,
+        "lead_ts": 1795820220
+      },
+      {
+        "title": "Prosecutors seek 25-year prison term for 'poison seller' Kenneth Law - BBC",
+        "link": "https://www.bbc.co.uk/news/articles/cmx2898wq2qjo?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "BBC",
+        "n_sources": 2,
+        "lead_ts": 1795817026
+      }
+    ],
+    "mideast": [
+      {
+        "title": "US Black Friday online sales to cross $13 billion, Adobe says - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPU2loNkhNMG01Y25zc2J6ZzlvOHNwS1VpVko3MDBMeF9CMFpTVGhFR2VDSmlaY1UyS25Tam81eGdHSlFid1lVajIxTFVPWWt6ZzQ4dW9UaEw3TFRZR3NzMi16SEJSdDdqLW9IMVdsYkgtQTZYTl9mQnlYLUh6T0dSV1Z4ektOMjlKUC1MUU0xbGlmVU15VUNndVgwNGlWc2YtNWs3NzhhTTJnUmhOS050ZnBla2RiT2Nn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 20,
+        "lead_ts": 1795824360
+      },
+      {
+        "title": "Inspired Steelers move on from Rodgers' exit with cathartic 27-5 win over Broncos - ABC News",
+        "link": "https://abcnews.com/Sports/wireStory/inspired-steelers-move-rodgers-exit-cathartic-27-5-138489367?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 6,
+        "lead_ts": 1795822226
+      },
+      {
+        "title": "Doctors Without Borders denounces Israeli strike on Gaza clinic - Anadolu Ajans\u0131",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNVlltdmlCd0R5R2V2Ti1RSEVyaWJYV0twcXhDZjIzOHFxUFF0TFR4RGxhdTZkSHM5ZDZCTzJNQjFhYTIxT0o5eVRTMGoxYmp0YTVIQ0FwdVdMOGlmNk1EU1FCX0Y1VDE0MTBlUk9CbE5tQjBEbnAzb2t4NU1BLXdyUUlBejJJbnp2N3UxVzc4ajdDZHpvS3JGc2N5MXBMWHhVbVBTVks4amhNVFB6?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Anadolu Ajans\u0131",
+        "n_sources": 4,
+        "lead_ts": 1795823442
+      },
+      {
+        "title": "Kuwait summons Iran ambassador over \u2018continued Iranian attacks\u2019 - Arab News",
+        "link": "https://www.arabnews.com/middle-east/kuwait-summons-iran-ambassador-over-continued-iranian-attacks-3014269?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Arab News",
+        "n_sources": 4,
+        "lead_ts": 1795815654
+      },
+      {
+        "title": "US disables ship attempting to breach Iran blockade - Al Jazeera",
+        "link": "https://www.aljazeera.com/video/newsfeed/2026/11/27/us-disables-ship-attempting-to-breach-iran-blockade?traffic_source=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Al Jazeera",
+        "n_sources": 3,
+        "lead_ts": 1795823716
+      }
+    ],
+    "world": [
+      {
+        "title": "Taiwan holds elections to choose mayors and other local leaders - Toronto Star",
+        "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQMkNadVFHdWFiUWg1S1haRkNYWW5WaXNiQ2Ixc1hNUmtEQW8wTkpzcFFRZU0zRFNXX1dWRHBBRUVZQzh0OU11S01SWEF1bDVWQUVJR2lRajdscndQczRmc2tDajFvUEVHeWFDWG1KVl8yZXJ5ZjJJVzd5dUFLZ2RBMTVwUWM3dTFXQ1dJVmJ4RDI1ZUtrMjJHSWxWYU14MWdFM2FpT2lLSHJNbHUyWWFWSmRkeFhZcXFKaHBjMUR6WjdjSzFGX3Y1NV84VUpDRDZTQlhYZlB6MUxGLWs0UURqUmFHRV9CT3RW?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Toronto Star",
+        "n_sources": 2,
+        "lead_ts": 1795820488
+      },
+      {
+        "title": "Lyon dropped from Australia's test squad v New Zealand - CNA",
+        "link": "https://www.channelnewsasia.com/sport/lyon-dropped-australias-test-squad-v-new-zealand-6588736?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNA",
+        "n_sources": 2,
+        "lead_ts": 1795820242
+      },
+      {
+        "title": "Explainer: Why EU leaders are struggling to Le Pen-proof the bloc\u2019s \u20ac1.6 trillion budget - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPOXNCT24ycjVGZVlCV1Q4bnFlalVUNXhHc0xLVzlFdkJtNGhZM2NXSmpyWnZXU2Q2ZWRPcXRza2tZM1ZPMGVMWjM2V2U5NHBBYWdSSFZLb29odWtqZW1SVXZNZDAxUVdLUVl6X2FiYTMzZzFqTHhaLW51X0s0TnJPVk45Rmd0Um5UdnVfdXRkWGR1UGNtY3h6a2JsNFhfZTd5N25VVWRGdE5iVUpkXzhQWkZPRkc5UDFjSzhvRmxNc1M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 2,
+        "lead_ts": 1795819421
+      }
+    ],
+    "tech": [
+      {
+        "title": "(WAY) TO WATCH: Cardinal Mooney vs Nature Coast Tech Live Friday Night HS Football Playoff Coverage on November 27, 2026 - tallahatchienews.ms",
+        "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1fZk9WMlJ4TXFDLUU3MFF2dThlR2lMeVFkUmdlSG5NMzZMSlpBeHNQUzdMdUZkMUdtNWNFVFZ0X2NhLUlqeEVKV3doQUZ4UEZkeFFPUW5R?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "tallahatchienews.ms",
+        "n_sources": 2,
+        "lead_ts": 1795824516
+      },
+      {
+        "title": "Roborock, Dreame, and Eufy are cutting robovac prices in half for Black Friday - The Verge",
+        "link": "https://www.theverge.com/gadgets/1044487/best-black-friday-robot-vacuum-mop-deals-2026?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Verge",
+        "n_sources": 2,
+        "lead_ts": 1795822337
+      },
+      {
+        "title": "OpenAI countersues Apple for stealing trade secrets - Reuters",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQa0FibW0xZFFBUlJ2MGJkd0NEcWZtRzkzUkdWcFl1VnlRN2dRMkpjWHpKVXlIekttSno1b1RMeWxJN2dtU0ZlS085Y1ZqTkpfM2Jaci13RUdMNFVPOWtqRldaazVrX25mMExUSkU0SmJRcHJsdnZxMWJXU05MNXFzc211YzlXNzMwRTVUM1k1MW5RQTdHbnRpU1p6Y2hQMFE0UnVBSk45eHg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Reuters",
+        "n_sources": 2,
+        "lead_ts": 1795820408
+      },
+      {
+        "title": "L.A. Schools Block Google\u2019s AI Overview Despite Company\u2019s Latest AI Policy - LAmag",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNeHg2T09iaURrWGVzdFFYWkVvNHpLZFRocVNPNHBxQURWVmpiLWZzR3NZRnlwamdWNzJCWVRrWHV0bWR5eFdUZDd1LVdrMC1xZjNXQlREaUVrUGFwZ0xXQm1DYkZBelNTUjVsdEJGRXVMQlpoVm1kb1IxWV9tN2l0SjBxMGtVTloyQk54MEc3R01jNHBZS0M3WURYVmJpREtKSmc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAmag",
+        "n_sources": 2,
+        "lead_ts": 1795820265
+      },
+      {
+        "title": "Using a drone and a poop-sniffing dog, scientists perform health checks on endangered orcas - Los Angeles Times",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQdGZTQ0RQNVRjaS1rZ2xyREtxRGVrUk5YVmV3RGNMbVRua280TmtpUUxiVFExaUNrRkxKOUR4YjhmSGNLaUQ5ZHlIMGZ5VG5MZ0h5M2VCNURvckJMMlNONVF5T3RxSE9TMWk0MWVLcGV3OUVKa1ZRaDJaZTZYRGRNcjZUZ01FVHFBcHB0MndFVURVNDhkdXlOODhDWjZnZUlWZVNWYkJnam5GQQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "LAT",
+        "n_sources": 2,
+        "lead_ts": 1795820118
+      }
+    ],
+    "business": [
+      {
+        "title": "How parents can claim SpaceX stock after Elon Musk promises billions for kids' Trump Accounts - New York Post",
+        "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNMmxMc2pEY0owQkRSeE52Q0c4MURGY3p6alVVYzFlRzV2OVBMblJWUTJZQjdHSzMwc2xsdFBick1mSjI2Q0dSQUVycW5UUHp4aEJhd2E5dVM5NXJydnJEQWMxZkloTEVOOFlBMzZIUlZUSWI2RGt1UUZ4OEg5Um93N2dwYlc5dkw5VFZWeE5jN0pOWDJWR3dOcnhRNlVZYkFZN0k4TThuNjN4YW9mMzBoSUxoWks3RmdIMU9mQjZCZnJJU0ZFNWJ1am54dU9mc09BN1JGUVN0S3p2QjlqSTZiYUhkcEUzYUpKYlZCMS1Odw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "New York Post",
+        "n_sources": 4,
+        "lead_ts": 1795810080
+      },
+      {
+        "title": "EM Asia Stocks Set for Weekly Gain as Markets Regain Footing - Bloomberg.com",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPb0FRem01bXg4QVpyOEpqQ3BDcUl1YUdfMHVOcGpjWTlMaU9yTDdLMGNUNnlKMzRlc2dPcUlkb1luUWcza3BPZXY3YkN0OFA4dXk0R2x0a2hBYXpOelNkak9wMi1xSHFubU51X1U0VF9WX2FkX1YyaDRudG9GbW5uWDlHMjhBTkExbFpCQUxwWnQxRkFrVmpsS2NHQlNSMG55bnF3UWNabE5icXZGb2wwRg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Bloomberg",
+        "n_sources": 3,
+        "lead_ts": 1795815507
+      },
+      {
+        "title": "New Tariffs on China Risk Undermining Trade Truce With U.S. - WSJ",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPWUcwQ3JjLUlNWjhSZnFuYWMzVEFGd0RMR2lZT2VmWUdBejNHckpxbWFSb0lsTUNuTzktdm9qTk94eTgxMXFRQkplOTdZZkFDSEVaUkVZcWFfb1lEMTNEVzFHd013bXhoRFU4ajZjOTB0UXFhM1FacVliRVdqcFY5dG11UURVYmFZang5ZEpaZEVCazhBMjFz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "WSJ",
+        "n_sources": 2,
+        "lead_ts": 1795817632
+      },
+      {
+        "title": "Norwegian budget airline Norse Atlantic files for bankruptcy after halting flights - ABC News",
+        "link": "https://abcnews.com/Business/wireStory/norwegian-budget-airline-norse-atlantic-files-bankruptcy-after-138484676?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "ABC News",
+        "n_sources": 2,
+        "lead_ts": 1795816947
+      },
+      {
+        "title": "Shopify president on Black Friday spending trends - CNN",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPYVJyV0psY2xLczBiUU5IekFXVEg4b2dkblA1M0NzYUkwMTFwMVFwRFBGUkRTc2dVbWRkSG5wZ2RqdXpZaUszUG9WMUhzUk5HWTBfaUVydU9pNExJMkt5ZEc3T2o5WjRCdndBbXdDQjhMU1lndDBkZ19VVnFYWHhOTFFqSkxGbV9hNGhOdDdLOEpsWlMyNlFUOEdmd1ZiRFozX0ZBdTl5NDdjTTI0VnlV?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CNN",
+        "n_sources": 2,
+        "lead_ts": 1795816292
+      }
+    ],
+    "sports": [
+      {
+        "title": "Mason Rudolph and Steelers defense can clean up Aaron Rodgers' mess, but the franchise's problems run deeper - CBS Sports",
+        "link": "https://www.cbssports.com/nfl/news/mason-rudolph-defense-can-steady-steelers-but-real-progress-far-off/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS Sports",
+        "n_sources": 3,
+        "lead_ts": 1795823117
+      },
+      {
+        "title": "Brock Purdy Out, Sam Darnold Back As 49ers And Seahawks Head Into Pivotal Matchup - FOX Sports",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOY2FVeHdvWVBBV0JGYVpwZENiSFR3dFM3eWEzYnJpUWxoa0tWc0M1WFR3LU9aOUd1ZEt5V05OWXlaaFhKU1hwcHdXYlFZZlJDdnpQSDNtRXR0N0ZBaURLOWtqVkRuVU9SLUFtcXliZExwYm1Vei1hazREazRDenpEQjRwdVk4aFhzam9pbms5YVBxQi1sZ2fSAZYBQVVfeXFMTTdXVk1CdnJXa3RoeDRQb0FYWm96MWtTYkJRcTMwSjlyUE0yY1RvS0h0T1JlLVZmemNNZmhOR0VZSkEzb01yUGJYTlpkU0ZTM2p6VzRTbDJnRTlsdGpLbWJZRmhnVHp2RkcwUFk5dVBFZzk3ZUJXdkk1WGJWQjdpcUh0UWhvNW12VUNsOWN4RGJBUlpYTldB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "FOX Sports",
+        "n_sources": 3,
+        "lead_ts": 1795821383
+      },
+      {
+        "title": "Steelers cap tumultuous week with 27-5 rout of Broncos - Yahoo Sports",
+        "link": "https://sports.yahoo.com/nfl/articles/steelers-cap-tumultuous-week-27-000741919.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Yahoo Sports",
+        "n_sources": 2,
+        "lead_ts": 1795824461
+      },
+      {
+        "title": "Xabi Alonso called for Chelsea to get back to fundamentals before slipping to new low at Nottingham Forest - Sky Sports",
+        "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxQT2F3b3F2Z1Y1bVJ4dW9zb0IybUZILXVxQ0hycEpESG9hT2JJM0tWU2VtdHJuVTVTcU4wQ0x2bFhMaGFDalFFbk9hTnp0U1NteFhoOTZfUXpJLVI2Q2JiZlFuTEw5cUttRG92bE5jdFFRVXNoSTdoSjBMeFA1NHE4VTVma0FBSmhPZG1pSnluYU9jT0xxbHZoaWhIbVlnbmZLRVN5Wll4M3BDa0g1TXMzWlJ4Z0RSTTZ2V0JxcFRNWEZKZnJCQm94ZTQ0U1NVODRrOXE2dGpOTnZ3M0xJaDlBTl93T1dqUXNSaXhF?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Sky Sports",
+        "n_sources": 2,
+        "lead_ts": 1795824401
+      },
+      {
+        "title": "Chargers poised to start DJ Uiagalelei with Justin Herbert ruled out for Week 12 - CBS Sports",
+        "link": "https://www.cbssports.com/nfl/news/chargers-poised-to-start-dj-uiagalelei-with-justin-herbert-ruled-out-for-week-12/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBS Sports",
+        "n_sources": 2,
+        "lead_ts": 1795823914
+      }
+    ],
+    "culture": [
+      {
+        "title": "Gayle King to Miss Week of \u2018CBS Mornings\u2019 Shows Amid Death of Her Son-in-Law Virgil Miller - The Hollywood Reporter",
+        "link": "https://www.hollywoodreporter.com/tv/tv-news/gayle-king-miss-cbs-mornings-death-son-in-law-virgil-miller-1236764264/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "THR",
+        "n_sources": 2,
+        "lead_ts": 1795823092
+      },
+      {
+        "title": "BAFTA 2027 Entries Revealed: 126 Best Film Contenders, 728 Performances and No Spot for \u2018You Can See Everything\u2019 Star Amanda Seyfried - Variety",
+        "link": "https://variety.com/2026/film/awards/bafta-2027-entries-full-list-amanda-seyfried-1236959765/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Variety",
+        "n_sources": 2,
+        "lead_ts": 1795818032
+      },
+      {
+        "title": "The Editors\u2019 Edit of Black Friday Fashion Shopping - Vogue",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPekRjSnp5VUxFWnhRb2hEdU1kX3VXZkZQV3RZN3hmNnozZ3hWalFUVVZ4STlaUGhmMzB1MlktZXRFSUl0NVZkcDA3V2o1a21XLTNoNnBCdmMtV0FuUU90TUNiYWJaMjJLRmFmZ2Z3SmpaemxlUlJmWVJtSnhpSEtkUA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "Vogue",
+        "n_sources": 2,
+        "lead_ts": 1795816860
+      },
+      {
+        "title": "British show Top Gear revived with Gordon Ramsay as new host - CBC News",
+        "link": "https://www.cbc.ca/news/entertainment/top-gear-gordon-ramsay-host-9.7435980?cmp=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
+        "source": "CBC News",
+        "n_sources": 2,
+        "lead_ts": 1795636240
+      }
+    ]
+  },
+  "yesterday_top_by_section": {
     "us": [
       {
         "title": "Performers and marching bands scramble after Macy\u2019s Thanksgiving Day Parade delay - NBC News",
@@ -258,267 +498,6 @@
         "source": "IMDb",
         "n_sources": 3,
         "lead_ts": 1795772216
-      }
-    ]
-  },
-  "yesterday_top_by_section": {
-    "us": [
-      {
-        "title": "Macy's Thanksgiving Day parade postponed for the first time in its history - Business Insider",
-        "link": "https://www.businessinsider.com/macys-thanksgiving-day-parade-postponed-until-saturday-due-to-weather-2026-11?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Business Insider",
-        "n_sources": 12,
-        "lead_ts": 1795677120
-      },
-      {
-        "title": "Trump tariff threat \u2018unacceptable\u2019, says Brazil, as China denounces levies as baseless - The Guardian",
-        "link": "https://www.theguardian.com/us-news/2026/nov/26/brazil-china-react-to-new-trump-tariffs-threat?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Guardian",
-        "n_sources": 11,
-        "lead_ts": 1795665264
-      },
-      {
-        "title": "Macy\u2019s Thanksgiving Day Parade Postponed Because of Severe Weather - Native News Online",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTXhONFJQNkZCYmliYWlLcnlYSHQ1ZE51Nzc0SlY2eUQxMll6S0gtcExHZVVON1BKSHdoVVhDNVd0c2FlM1R0WTQ5SC14b1hLSnlIRExvbTZINXhzb05ueFRYMXdOWGkxM3U0cm13ZTZoVkNxNjVkTmJ2eTFucUEyU09GQURhd1FzRVVEakZWTXMzSlEwMDNfMlpsMFZrd28wV2NtLWpiSUN0aHRpclQ3X0ZQdFc?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Native News Online",
-        "n_sources": 11,
-        "lead_ts": 1795664377
-      },
-      {
-        "title": "Trump proposes new tariffs on China, Europe and other trade partners - The Washington Post",
-        "link": "https://www.washingtonpost.com/politics/2026/11/25/trump-proposes-new-tariffs-china-europe-other-trade-partners/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 10,
-        "lead_ts": 1795656265
-      },
-      {
-        "title": "Macy's Thanksgiving Day Parade postponed to Saturday as severe storm nears NYC - ABC7 New York",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOYk15R1RqVTY0RkJLczFNaDAxeTA4cG1oVnJVcFZiRktWd0RvZGNrcnVWTG9zR2xKV0MzQmpFSkxUWk0waXFHQ2ZaWl85TDdlOEI2WG15OVZXMm1fUmJaelJQSTlYelNtRDc2MHRTS0M2bWQ5cXNjS0NoLVY5R0R0SHBQNnVPendiRXU1ZFFLbXFiSUVKcjRB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ABC7 New York",
-        "n_sources": 9,
-        "lead_ts": 1795715724
-      }
-    ],
-    "mideast": [
-      {
-        "title": "Oil prices rise as an attack on Saudi Arabia's Jazan refinery kills a worker - Startup Fortune",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOV0pLbDZjUEk0YW5sMnhXTXAzLVdqcEltZXVYNFFsdVBiODJuU1lSMUR6ZzJnSlRzRkhLczVSTFdHWEktM2FkSENNTldyZkRBUnJ1SlRLYlpsNmxVTW1PMy0zVVRRY1dmdjV6dWxhTnYzbjFxeHZ3ODIweXhKUkFPbU9scHFKbVlqTEdrdmtYODZ4ZU1SdlA4cTJ6Y3J3WnhFdFdYa2Jn?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Startup Fortune",
-        "n_sources": 8,
-        "lead_ts": 1795736636
-      },
-      {
-        "title": "Two Italians killed in Kuwait as a strained Iran ramps up attacks - The Washington Post",
-        "link": "https://www.washingtonpost.com/world/2026/11/26/two-italians-killed-kuwait-strained-iran-ramps-up-attacks/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 8,
-        "lead_ts": 1795712692
-      },
-      {
-        "title": "Two Italians Killed in Iranian Drone Attack on Kuwait, Officials Say - New York Times",
-        "link": "https://www.nytimes.com/2026/11/26/world/middleeast/italians-killed-iran-drone-attack-kuwait.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NYT",
-        "n_sources": 7,
-        "lead_ts": 1795719999
-      },
-      {
-        "title": "2 Italians killed in Iranian drone attack in Kuwait, Italy says - CBC News",
-        "link": "https://www.cbc.ca/news/world/italian-workers-killed-kuwait-iran-strike-9.7437089?cmp=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBC News",
-        "n_sources": 7,
-        "lead_ts": 1795709037
-      },
-      {
-        "title": "Middle East latest: Houthis claim attacks on refinery and Riyadh as Saudis strike Hodeidah port - The National",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPcnZ5TGlIcndkLWs0YmFxMzl1Z1dkVlE2ODFrUnAzejJXNC1tY1AzR3hVTVJ6OW9hSnZIanJpTFZDUDhySXBVZHFicTMweEktY3E1SXBtQ0lvNlctbmlQak9XcjZRYTZGQVd6YTBNeXlpMUotVHB6TXc4NHBIVTJGVmRaUFA1b2trOWRINVV5UVNURi1ZLTJZRjdR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "The National",
-        "n_sources": 7,
-        "lead_ts": 1795651415
-      }
-    ],
-    "world": [
-      {
-        "title": "Two Italians killed by \u2018drone strike debris\u2019 in Kuwait - Al Jazeera",
-        "link": "https://www.aljazeera.com/news/2026/11/26/two-italians-killed-after-iranian-drones-strike-facility-says-kuwait?traffic_source=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Al Jazeera",
-        "n_sources": 8,
-        "lead_ts": 1795711275
-      },
-      {
-        "title": "World in Brief: Trump proposes fresh tariffs; S&P put Nvidia on downgrade watchlist - The Economist",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxObGtwYjFCYkl3cGtHNzk3d2RSMGlaOUN6cUx1Y21KMkx0VTBSYkxoaUZZTUdpUjVqNktSLXpDOWNsVVFNYW9pTFlMamViS09xWHVXS1U0M2NVX0ZnYnRRbWZtWDZSR0k3aTFsWU5uM28xeUJNRjhBeWxTTjhsbXYtVlVNMkQ1bU51X3VTd29IREx6bmEwMWpr?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Economist",
-        "n_sources": 8,
-        "lead_ts": 1795670993
-      },
-      {
-        "title": "Nvidia Pauses Advanced Chip Orders in Southeast Asia - Investing News Network",
-        "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5TSEJuajdiT01OOU1kaEFxam54MDA5ZHB6Z1NEdEJHb3hrUGt0QzN3b3hSUGVycTNJMlZBMVJkOVRRd2NERndoQUtfLVl6MDVvVGFGLVAwSDg3NGhJRmFSQ0NMLXY0QnBJN2M0Yw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Investing News Network",
-        "n_sources": 6,
-        "lead_ts": 1795712404
-      },
-      {
-        "title": "NVIDIA Reportedly Halts AI Chip Shipments To Southeast Asia - Engadget",
-        "link": "https://www.engadget.com/2329200/nvidia-reportedly-halts-chip-shipments-to-southeast-asia/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Engadget",
-        "n_sources": 5,
-        "lead_ts": 1795716558
-      },
-      {
-        "title": "Nvidia Tells Partners to Pause Shipments to Southeast Asia - WSJ",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOMGFER2Vpbl9JMXo5TFF1MFdQemdLcWFENFE0eGhwRS1pWkVyVTJvMFQ3RnRxUURGSjBxbHVMVVlyYzk0N3ZVU0tfb0tJa3NJREFmSzNmbkVWd0xxdDlvLUlqNzQ1bnBmUExWNWxmVTczRG1UNEQzd3NReXh5N2xTU3IwbkRwcDJFT1BXYzExU3NLMVNkZ3RR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WSJ",
-        "n_sources": 5,
-        "lead_ts": 1795712760
-      }
-    ],
-    "tech": [
-      {
-        "title": "The 121 Best Black Friday Home and Kitchen Deals - WSJ",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQZnVta29tMm5nOGFJc3BmcWNpcU9ZM0prdjF1VTV4OWtrTkt5d0RVbWJlbENIRE1pcEZ4U1FwUkU3bEdfdEFvbnQ2Wll4aFl4dDNxdzlUc1hKM0JkREQ0WmVLc1B1eEdDQVJ6R1VLbTRfR3ZkZk1WaXNxNmNvX1hPS0stcmJsVUVLb0NYUkZ6X05jb2ZDTGhZUjhqNHA5SlZB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WSJ",
-        "n_sources": 12,
-        "lead_ts": 1795669392
-      },
-      {
-        "title": "We\u2019re Tracking The Best Black Friday Furniture Deals In Real Time - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOYWp5bWNLMldaYWtmZEpoaUdRZHdYcDBnUmtTV1pYdTJVbGFfbnU4ZExmT2pvanFqdjJpNlc5MUE2WExQZVZ0cFBXb255bnJNRXk5SXQxSFRGS29RZnRFUEhLR3RDZUFuX0lReVpGaXJGYllBMV91QWZCSHI5RTdSZjBqUEJLaURpcmRwa0ZzaERlTEMwa3Fkag?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 10,
-        "lead_ts": 1795669064
-      },
-      {
-        "title": "These Are the Best Video Doorbell Deals During Black Friday 2026 - Lifehacker",
-        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9wby13LXdyVTZJSGJoLVFpZ1hFRVJOZGpId3JWdWoyT1BxZXpQR2dGdkVMTWRhQlFwMURRLUlzbl9YczVNbl9uQTUzeHFlaDV1UjFQLUVWZ1E3cDNhUmx3ay1jUEJ2RURyNVlPNjB2enMxdW9oSjctWFQ5WQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Lifehacker",
-        "n_sources": 9,
-        "lead_ts": 1795709917
-      },
-      {
-        "title": "What time is the NFL Black Friday game in 2026? TV schedule, channel, live stream to watch Steelers vs. Broncos - Yahoo Sports",
-        "link": "https://sports.yahoo.com/nfl/articles/time-nfl-black-friday-game-053001004.html?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 9,
-        "lead_ts": 1795671001
-      },
-      {
-        "title": "Black Friday 2026 monitor deals: amazing savings on screens for work and play, including Samsung, LG and Asus ROG - TechRadar",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1WN1pUMk15YnMybDczNm9zU3A5dUJQaWM2ODFhVkFtandTS0t6YzFubXNGR2RyNENuWXZ3WW42d2VZS0pZZ0xNTWM4c29WWWVmeEFHU3VhN3ZTbnRyWmpiQlZKZ1o0dGZjQkttb181dTg3WXlYbDBaV0I2R1M?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "TechRadar",
-        "n_sources": 8,
-        "lead_ts": 1795719156
-      }
-    ],
-    "business": [
-      {
-        "title": "In backing Nvidia\u2019s Huang, Trump deals his China hawks a setback - The Washington Post",
-        "link": "https://www.washingtonpost.com/politics/2026/11/25/backing-jensen-huang-trump-delivers-setback-china-hawks/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WaPo",
-        "n_sources": 15,
-        "lead_ts": 1795649647
-      },
-      {
-        "title": "US announces new tariffs on host of countries including China - BBC News",
-        "link": "https://www.bbc.co.uk/news/articles/c893r9ke5p97o?at_medium=RSS&at_campaign=rss&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "BBC",
-        "n_sources": 13,
-        "lead_ts": 1795666258
-      },
-      {
-        "title": "The 121 Best Black Friday Home and Kitchen Deals - WSJ",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQZnVta29tMm5nOGFJc3BmcWNpcU9ZM0prdjF1VTV4OWtrTkt5d0RVbWJlbENIRE1pcEZ4U1FwUkU3bEdfdEFvbnQ2Wll4aFl4dDNxdzlUc1hKM0JkREQ0WmVLc1B1eEdDQVJ6R1VLbTRfR3ZkZk1WaXNxNmNvX1hPS0stcmJsVUVLb0NYUkZ6X05jb2ZDTGhZUjhqNHA5SlZB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WSJ",
-        "n_sources": 12,
-        "lead_ts": 1795669392
-      },
-      {
-        "title": "Trade commission proposes antidumping tariffs on PVC suspension from China - Yonhap News Agency",
-        "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5uTXg5Y0ExejhfckVDdWlLN0x1RV9BU1dRaG9fc213d0szSm12OHNiY3FNYnVmRjVPclFTVTg1TEtpeXMwNXR4SVctUUVNWExMRzg0RHpCZUk3Zw?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yonhap News Agency",
-        "n_sources": 12,
-        "lead_ts": 1795667402
-      },
-      {
-        "title": "We\u2019re Tracking The Best Black Friday Furniture Deals In Real Time - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOYWp5bWNLMldaYWtmZEpoaUdRZHdYcDBnUmtTV1pYdTJVbGFfbnU4ZExmT2pvanFqdjJpNlc5MUE2WExQZVZ0cFBXb255bnJNRXk5SXQxSFRGS29RZnRFUEhLR3RDZUFuX0lReVpGaXJGYllBMV91QWZCSHI5RTdSZjBqUEJLaURpcmRwa0ZzaERlTEMwa3Fkag?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 11,
-        "lead_ts": 1795676142
-      }
-    ],
-    "sports": [
-      {
-        "title": "Top Landing Spots for Aaron Rodgers After QB's Dramatic Steelers Release - Bleacher Report",
-        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOSldob1E2V2xnOGpKdUFlc3p3X055R256bndHM3I4OWVwWG01QnQwSDJ2UjhWNTZuOFZ1UkhwVTdaTHU2TFlsZ2E1U0xqWHhpVlFINERpdnNIdU95aXBnS0pGb1QtZFRjNjdlMkZlMkdXM1g5dnkyZlBYQXpvcmJ1aWMxb2N1SnhKQ3o3eERLYUhWV2NqWjdDNGNZVXdqM3FxNzl0TXRneUljTmpqaWRzTERB?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "B/R",
-        "n_sources": 8,
-        "lead_ts": 1795683600
-      },
-      {
-        "title": "T. J. Houshmandzadeh sides with Aaron Rodgers over Steelers HC Mike McCarthy - Yahoo Sports",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPRTVvUmY0SHZMY0EtVEFqOHItMHRYOGNHZnplY25IaXlYeVVyMWtXTmN5bmZOQjF4aHA4akVvV1ZLWTk0TnZMZlh5ZW5GaHM2bXM4VUJscEFmTzdXa2lWc3BseFFVYi03NEp4bVJNRjExcVY5cmRReDF3c3ZxV2ZiRVFPWnB4amFRVzNz?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Yahoo Sports",
-        "n_sources": 8,
-        "lead_ts": 1795679400
-      },
-      {
-        "title": "Bears stun Lions in NFL Thanksgiving thriller - AFP.com",
-        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBWbWNSQmE3QVBLRWZ4T2RrMExtTkRiR0hyNFpHNVhxbVFhY0JhQTBQU0lEUXRramRpM3VIdnFjZVVWcFRKWEJFUXIycEh5ZjQtZjFEcF9HMzJlZFU4U0hUc2IxOVY1TEdBanpudFNPQTNoNTg?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "AFP",
-        "n_sources": 7,
-        "lead_ts": 1795734143
-      },
-      {
-        "title": "Steelers cut Aaron Rodgers after the QB rips coach Mike McCarthy on TV - NPR",
-        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1TeEN0MGF1bVVQN2xXOGdNT1htY053T3ZMS01SbnZyMlk4UVpGQlNPaGh3UWxTRjFTMFNXQThJSFdSUVpVdzNadXBPU1Y0QXVxQW9UVUZSTnlYTDBzbTFzeHktTXhWb3pUNFYxNWh5V2FSMk1yZGxxTVFENA?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "NPR",
-        "n_sources": 7,
-        "lead_ts": 1795674363
-      },
-      {
-        "title": "Steelers cut Aaron Rodgers after McCarthy blowup; Blake Corum and Rams run wild vs. Packers - CBS Sports",
-        "link": "https://www.cbssports.com/nfl/news/steelers-aaron-rodgers-mccarthy-corum-rams-packers-thanksgiving-nfl/?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS Sports",
-        "n_sources": 6,
-        "lead_ts": 1795701016
-      }
-    ],
-    "culture": [
-      {
-        "title": "Macy's Thanksgiving Day Parade 2026 to march through NYC Saturday. How and when to watch in person - CBS News",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOQ0UwNkg2RzFEbnNLRVFqZndObUJ5X0stOHdBVzFnejVFSF8xLWNRM0IyU2Zma25DdjU2ZWJYcF96QVAtaUQ5Sm9zYUVaYTJtY2sxT2F6S0Fkc2FKQlI0MjlhS2JTNy13c1RDSFJmSjBDTWN2RHR3NlBTSXN1NDV2bjJRQnFFM0FFZllFNzlR?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "CBS News",
-        "n_sources": 17,
-        "lead_ts": 1795701799
-      },
-      {
-        "title": "When Is The 2026 Macy\u2019s Thanksgiving Day Parade And Why Was It Postponed? - Forbes",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQa2tPNjhucTA5T0FvNkZqVlVWd3VUdXJuODZGbUNrSVZNUTNJdE0yM2NvOUFVXzVucjZTUzFRZmhIeHowdTZjenFicFY2Y2JCNE5kbmVmWjA2Q0FCTWM1TVVKT2o1d09aQkYxcXYwSmR6bk5nbjlrN0hBYzRmbVpCUW4yZ3lEdjVBZUt3MHZvZDUxTXVsWFNzT19WZHlRVEVxU0NKSFhfRmd4RE8tSXF3cnhUTmRia0NtbjVVYll3?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Forbes",
-        "n_sources": 16,
-        "lead_ts": 1795703940
-      },
-      {
-        "title": "Thanksgiving storms cause havoc, lead to delay of Macy\u2019s Thanksgiving Day Parade - WSMV",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQd2VuNnYyb1dVQlBzU2wyTDdUeGxJMzM3TmlQZEFONS16elhZaE9pQkFXM0hiaXV5QkRHaWhXUDdvb1BIcTBuWXptUGgtQVk3T2RZTjFCZGFOOEFFcDUycHhfaTdISG5WVEw4NEhsQUVoMFhDbEY2NUs4RDF3WGNRZmFtNjlzOGlpZGY2MFBoSm1ldF9LbU92cUIwNHY5Q2NGQkZEbXlEY3lMVlhuUDhJOQ?oc=5&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "WSMV",
-        "n_sources": 16,
-        "lead_ts": 1795681800
-      },
-      {
-        "title": "Macy's Thanksgiving Day parade postponed for the first time in its history - Business Insider",
-        "link": "https://www.businessinsider.com/macys-thanksgiving-day-parade-postponed-until-saturday-due-to-weather-2026-11?utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "Business Insider",
-        "n_sources": 15,
-        "lead_ts": 1795677120
-      },
-      {
-        "title": "Macy's Thanksgiving Day parade postponed for weather for 1st time in 100-year history - ABC News",
-        "link": "https://abcnews.com/US/macys-thanksgiving-day-parade-postponed-sources/story?id=138452401&utm_source=nuzu_news&utm_medium=referral&utm_campaign=nuzu_app",
-        "source": "ABC News",
-        "n_sources": 15,
-        "lead_ts": 1795666907
       }
     ]
   }

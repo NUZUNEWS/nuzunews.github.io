@@ -1,52 +1,54 @@
 {
  "version": "2.5.0",
- "built_utc": "2026-11-27T23:59:59Z",
+ "built_utc": "2026-11-28T00:14:59Z",
  "build_seconds": 27.9,
  "feeds": {
   "total": 459,
   "ok": 444,
   "empty": 14,
-  "failed": 0,
-  "skipped": 1,
+  "failed": 1,
+  "skipped": 0,
   "direct_total": 140,
   "direct_ok": 138,
-  "failed_names": []
+  "failed_names": [
+   "Times of Israel"
+  ]
  },
  "sections": {
   "us": {
-   "items": 97,
-   "clusters": 90,
-   "multi_outlet": 6
+   "items": 99,
+   "clusters": 89,
+   "multi_outlet": 7
   },
   "mideast": {
-   "items": 108,
-   "clusters": 78,
+   "items": 114,
+   "clusters": 76,
    "multi_outlet": 10
   },
   "world": {
-   "items": 95,
+   "items": 94,
+   "clusters": 91,
+   "multi_outlet": 3
+  },
+  "tech": {
+   "items": 94,
    "clusters": 87,
    "multi_outlet": 7
   },
-  "tech": {
-   "items": 87,
-   "clusters": 81,
-   "multi_outlet": 5
-  },
   "business": {
-   "items": 92,
-   "clusters": 79,
+   "items": 86,
+   "clusters": 75,
    "multi_outlet": 8
   },
   "sports": {
-   "items": 99,
-   "clusters": 88,
-   "multi_outlet": 9
+   "items": 97,
+   "clusters": 85,
+   "multi_outlet": 10
   },
   "culture": {
-   "items": 84,
-   "clusters": 81,
-   "multi_outlet": 3
+   "items": 89,
+   "clusters": 85,
+   "multi_outlet": 4
   }
  },
  "video_tiles": {
@@ -59,23 +61,23 @@
  "ticker": {
   "count": 20,
   "by_section": {
-   "Middle East": 6,
-   "US": 5,
-   "World": 6,
-   "Business": 3
+   "Middle East": 7,
+   "US": 7,
+   "Business": 3,
+   "World": 3
   }
  },
- "stories_folded": 44,
- "links_direct_pct": 27.0,
+ "stories_folded": 34,
+ "links_direct_pct": 26.2,
  "promo_filtered": {
-  "shopping": 324,
-  "betting picks": 7,
-  "no headline": 23,
-  "not an article": 14,
+  "no headline": 20,
+  "shopping": 332,
   "sponsored": 2,
-  "how to watch": 15,
-  "promo code": 2,
-  "fantasy advice": 3,
+  "how to watch": 13,
+  "not an article": 23,
+  "betting picks": 15,
+  "promo code": 3,
+  "fantasy advice": 2,
   "stock tips": 1,
   "promo publisher": 2
  }
