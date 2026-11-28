@@ -1,80 +1,81 @@
 {
  "version": "2.5.0",
- "built_utc": "2026-11-28T09:55:17Z",
- "build_seconds": 27.4,
+ "built_utc": "2026-11-28T13:37:40Z",
+ "build_seconds": 18.5,
  "feeds": {
   "total": 459,
-  "ok": 446,
-  "empty": 12,
-  "failed": 0,
-  "skipped": 1,
+  "ok": 444,
+  "empty": 14,
+  "failed": 1,
+  "skipped": 0,
   "direct_total": 140,
-  "direct_ok": 138,
-  "failed_names": []
+  "direct_ok": 139,
+  "failed_names": [
+   "Times of Israel"
+  ]
  },
  "sections": {
   "us": {
    "items": 98,
-   "clusters": 91,
-   "multi_outlet": 5
+   "clusters": 89,
+   "multi_outlet": 7
   },
   "mideast": {
-   "items": 100,
-   "clusters": 83,
-   "multi_outlet": 10
+   "items": 96,
+   "clusters": 84,
+   "multi_outlet": 8
   },
   "world": {
-   "items": 93,
-   "clusters": 80,
-   "multi_outlet": 9
-  },
-  "tech": {
-   "items": 82,
-   "clusters": 78,
-   "multi_outlet": 4
-  },
-  "business": {
-   "items": 104,
-   "clusters": 82,
-   "multi_outlet": 10
-  },
-  "sports": {
-   "items": 99,
-   "clusters": 94,
+   "items": 98,
+   "clusters": 84,
    "multi_outlet": 5
   },
+  "tech": {
+   "items": 91,
+   "clusters": 78,
+   "multi_outlet": 6
+  },
+  "business": {
+   "items": 102,
+   "clusters": 88,
+   "multi_outlet": 6
+  },
+  "sports": {
+   "items": 100,
+   "clusters": 81,
+   "multi_outlet": 13
+  },
   "culture": {
-   "items": 95,
-   "clusters": 90,
-   "multi_outlet": 2
+   "items": 93,
+   "clusters": 89,
+   "multi_outlet": 4
   }
  },
  "video_tiles": {
   "checked": 17,
-  "live": 16,
-  "left_out": [
-   "uk"
-  ]
+  "live": 17,
+  "left_out": []
  },
  "ticker": {
   "count": 20,
   "by_section": {
-   "Business": 2,
-   "Middle East": 6,
-   "World": 8,
-   "US": 4
+   "World": 6,
+   "Business": 5,
+   "US": 3,
+   "Middle East": 6
   }
  },
- "stories_folded": 43,
- "links_direct_pct": 24.1,
+ "stories_folded": 26,
+ "links_direct_pct": 26.5,
  "promo_filtered": {
-  "no headline": 23,
-  "shopping": 359,
-  "how to watch": 18,
+  "shopping": 327,
+  "how to watch": 17,
+  "betting picks": 13,
   "promo publisher": 3,
-  "sponsored": 2,
-  "not an article": 44,
+  "not an article": 53,
+  "no headline": 25,
+  "sponsored": 3,
   "promo code": 3,
-  "betting picks": 7
+  "horoscope": 1
  }
 }
