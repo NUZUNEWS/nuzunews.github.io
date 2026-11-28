@@ -1,54 +1,53 @@
 {
  "version": "2.5.0",
- "built_utc": "2026-11-28T01:29:58Z",
- "build_seconds": 27.5,
+ "built_utc": "2026-11-28T01:44:56Z",
+ "build_seconds": 25.2,
  "feeds": {
   "total": 459,
   "ok": 446,
   "empty": 11,
-  "failed": 2,
-  "skipped": 0,
+  "failed": 1,
+  "skipped": 1,
   "direct_total": 140,
   "direct_ok": 137,
   "failed_names": [
-   "The Hindu",
-   "Times of Israel"
+   "The Hindu"
   ]
  },
  "sections": {
   "us": {
-   "items": 105,
-   "clusters": 90,
-   "multi_outlet": 9
+   "items": 100,
+   "clusters": 91,
+   "multi_outlet": 7
   },
   "mideast": {
-   "items": 103,
-   "clusters": 82,
-   "multi_outlet": 13
+   "items": 96,
+   "clusters": 79,
+   "multi_outlet": 15
   },
   "world": {
    "items": 93,
-   "clusters": 91,
-   "multi_outlet": 2
+   "clusters": 89,
+   "multi_outlet": 4
   },
   "tech": {
-   "items": 85,
+   "items": 88,
    "clusters": 78,
-   "multi_outlet": 5
+   "multi_outlet": 4
   },
   "business": {
-   "items": 99,
-   "clusters": 78,
-   "multi_outlet": 10
+   "items": 107,
+   "clusters": 81,
+   "multi_outlet": 9
   },
   "sports": {
-   "items": 96,
-   "clusters": 85,
-   "multi_outlet": 8
+   "items": 97,
+   "clusters": 84,
+   "multi_outlet": 10
   },
   "culture": {
-   "items": 89,
-   "clusters": 86,
+   "items": 88,
+   "clusters": 85,
    "multi_outlet": 3
   }
  },
@@ -63,22 +62,22 @@
   "count": 20,
   "by_section": {
    "Business": 4,
-   "US": 8,
-   "Middle East": 7,
-   "World": 1
+   "US": 5,
+   "Middle East": 8,
+   "World": 3
   }
  },
- "stories_folded": 40,
- "links_direct_pct": 27.6,
+ "stories_folded": 41,
+ "links_direct_pct": 27.2,
  "promo_filtered": {
-  "no headline": 24,
-  "shopping": 331,
-  "sponsored": 3,
-  "how to watch": 11,
+  "shopping": 346,
+  "how to watch": 13,
+  "not an article": 42,
+  "no headline": 27,
   "promo publisher": 2,
   "promo code": 2,
-  "not an article": 38,
-  "betting picks": 3,
+  "sponsored": 3,
+  "betting picks": 5,
   "stock tips": 1
  }
 }
