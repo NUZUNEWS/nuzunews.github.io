@@ -1,54 +1,52 @@
 {
  "version": "2.5.0",
- "built_utc": "2026-11-28T08:55:21Z",
- "build_seconds": 32.4,
+ "built_utc": "2026-11-28T09:10:20Z",
+ "build_seconds": 30.7,
  "feeds": {
   "total": 459,
   "ok": 446,
   "empty": 12,
-  "failed": 1,
-  "skipped": 0,
+  "failed": 0,
+  "skipped": 1,
   "direct_total": 140,
   "direct_ok": 138,
-  "failed_names": [
-   "Times of Israel"
-  ]
+  "failed_names": []
  },
  "sections": {
   "us": {
-   "items": 103,
-   "clusters": 89,
-   "multi_outlet": 12
+   "items": 102,
+   "clusters": 90,
+   "multi_outlet": 9
   },
   "mideast": {
-   "items": 102,
-   "clusters": 84,
-   "multi_outlet": 10
+   "items": 101,
+   "clusters": 82,
+   "multi_outlet": 11
   },
   "world": {
-   "items": 90,
-   "clusters": 80,
-   "multi_outlet": 7
+   "items": 86,
+   "clusters": 76,
+   "multi_outlet": 8
   },
   "tech": {
-   "items": 88,
-   "clusters": 85,
-   "multi_outlet": 2
+   "items": 86,
+   "clusters": 82,
+   "multi_outlet": 3
   },
   "business": {
-   "items": 102,
-   "clusters": 78,
-   "multi_outlet": 10
+   "items": 104,
+   "clusters": 81,
+   "multi_outlet": 9
   },
   "sports": {
    "items": 99,
-   "clusters": 96,
-   "multi_outlet": 3
+   "clusters": 95,
+   "multi_outlet": 4
   },
   "culture": {
-   "items": 90,
-   "clusters": 84,
-   "multi_outlet": 4
+   "items": 91,
+   "clusters": 89,
+   "multi_outlet": 2
   }
  },
  "video_tiles": {
@@ -61,22 +59,22 @@
  "ticker": {
   "count": 20,
   "by_section": {
-   "Business": 5,
-   "Middle East": 5,
-   "US": 3,
-   "World": 7
+   "Business": 3,
+   "Middle East": 3,
+   "US": 4,
+   "World": 10
   }
  },
- "stories_folded": 43,
- "links_direct_pct": 25.7,
+ "stories_folded": 44,
+ "links_direct_pct": 24.7,
  "promo_filtered": {
-  "no headline": 25,
-  "shopping": 319,
-  "betting picks": 6,
-  "sponsored": 3,
+  "shopping": 335,
+  "promo publisher": 2,
+  "no headline": 22,
+  "not an article": 23,
   "how to watch": 14,
-  "not an article": 25,
+  "betting picks": 7,
   "promo code": 3,
-  "promo publisher": 2
+  "sponsored": 2
  }
 }
