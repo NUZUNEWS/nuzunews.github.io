@@ -1798,5 +1798,9 @@
   "https://www.thehindu.com/news/international/feeder/default.rss": {
     "fails": 0,
     "last_fail": 0
+  },
+  "https://www.france24.com/en/africa/rss": {
+    "fails": 1,
+    "last_fail": 1795853403
   }
 }
