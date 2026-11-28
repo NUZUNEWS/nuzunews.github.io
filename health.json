@@ -1,54 +1,52 @@
 {
  "version": "2.5.0",
- "built_utc": "2026-11-28T00:14:59Z",
- "build_seconds": 27.9,
+ "built_utc": "2026-11-28T00:29:56Z",
+ "build_seconds": 26.0,
  "feeds": {
   "total": 459,
-  "ok": 444,
-  "empty": 14,
-  "failed": 1,
-  "skipped": 0,
+  "ok": 445,
+  "empty": 13,
+  "failed": 0,
+  "skipped": 1,
   "direct_total": 140,
   "direct_ok": 138,
-  "failed_names": [
-   "Times of Israel"
-  ]
+  "failed_names": []
  },
  "sections": {
   "us": {
    "items": 99,
-   "clusters": 89,
-   "multi_outlet": 7
+   "clusters": 91,
+   "multi_outlet": 4
   },
   "mideast": {
-   "items": 114,
+   "items": 112,
    "clusters": 76,
-   "multi_outlet": 10
+   "multi_outlet": 14
   },
   "world": {
-   "items": 94,
+   "items": 95,
    "clusters": 91,
-   "multi_outlet": 3
+   "multi_outlet": 4
   },
   "tech": {
-   "items": 94,
-   "clusters": 87,
+   "items": 89,
+   "clusters": 82,
    "multi_outlet": 7
   },
   "business": {
-   "items": 86,
-   "clusters": 75,
+   "items": 88,
+   "clusters": 76,
    "multi_outlet": 8
   },
   "sports": {
-   "items": 97,
-   "clusters": 85,
-   "multi_outlet": 10
+   "items": 98,
+   "clusters": 88,
+   "multi_outlet": 9
   },
   "culture": {
-   "items": 89,
-   "clusters": 85,
-   "multi_outlet": 4
+   "items": 91,
+   "clusters": 88,
+   "multi_outlet": 3
   }
  },
  "video_tiles": {
@@ -61,24 +59,24 @@
  "ticker": {
   "count": 20,
   "by_section": {
-   "Middle East": 7,
-   "US": 7,
-   "Business": 3,
+   "Middle East": 8,
+   "US": 5,
+   "Business": 4,
    "World": 3
   }
  },
  "stories_folded": 34,
- "links_direct_pct": 26.2,
+ "links_direct_pct": 26.3,
  "promo_filtered": {
-  "no headline": 20,
-  "shopping": 332,
-  "sponsored": 2,
-  "how to watch": 13,
-  "not an article": 23,
-  "betting picks": 15,
-  "promo code": 3,
-  "fantasy advice": 2,
+  "no headline": 27,
+  "shopping": 350,
+  "promo publisher": 2,
+  "not an article": 39,
+  "how to watch": 12,
+  "betting picks": 6,
+  "sponsored": 3,
   "stock tips": 1,
-  "promo publisher": 2
+  "promo code": 3,
+  "fantasy advice": 1
  }
 }
